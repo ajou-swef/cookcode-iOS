@@ -22,7 +22,7 @@ final class LoginView_UITests: XCTestCase {
 
     func test_LoginView_MembershipViewNavigationLink_shouldNavigateToMembershipView() {
         //  Given
-        let navigation = app.buttons["MembershipViewNavigationLink"]
+        let navigation = app.otherElements.buttons["MembershipViewNavigationLink"]
         let membershipView = app.collectionViews["MembershipView"]
         
         app.launch()
