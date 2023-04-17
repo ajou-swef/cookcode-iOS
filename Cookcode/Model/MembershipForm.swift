@@ -11,5 +11,13 @@ struct MembershipForm {
     var email: String = ""
     var nickname: String = ""
     var password: String = ""
-    var passwordCheck: String = "" 
+    var passwordCheck: String = ""
+    
+    var passwordMatch: Bool {
+        password == passwordCheck
+    }
+    
+    var isNicknaemEmpty: Bool {
+        nickname.isEmpty
+    }
 }

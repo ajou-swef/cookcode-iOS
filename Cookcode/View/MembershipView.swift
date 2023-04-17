@@ -23,31 +23,95 @@ struct MembershipView: View {
         VStack(spacing: 20) {
             
             TextField("이메일", text: $viewModel.membershipForm.email)
+                .font(CustomFontFactory.INTER_SECTION_TITLE)
                 .focused($focus, equals: .email)
                 .padding(.leading, 10)
                 .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
                                   focused: focus == .email)
+                .tint(.mainColor)
+                .onSubmit {
+                    if viewModel.membershipForm.nickname.isEmpty {
+                        focus = .nickname
+                    }
+                }
 
                 
             
             TextField("닉네임", text: $viewModel.membershipForm.nickname)
+                .font(CustomFontFactory.INTER_SECTION_TITLE)
                 .padding(.leading, 10)
                 .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
                                   focused: focus == .nickname)
                 .focused($focus, equals: .nickname)
+                .tint(.mainColor)
+                .onSubmit {
+                    if viewModel.membershipForm.password.isEmpty {
+                        focus = .password
+                    }
+                }
+                .overlay(alignment: .trailing) {
+                    Button {
+                        
+                    } label: {
+                        Text("중복확인")
+                            .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                            .foregroundColor(.gray808080)
+                            .padding(.trailing, 10)
+                    }
+
+                }
             
-            TextField("비밀번호", text: $viewModel.membershipForm.password)
+            HStack {
+                Text("닉네임 중복을 확인해주세요.")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                    .padding(.top, -10)
+                    .padding(.leading, 10)
+                Spacer()
+            }
+            .frame(maxWidth: 320)
+            .hidden(viewModel.membershipForm.nickname.isEmpty)
+            
+            SecureField("비밀번호", text: $viewModel.membershipForm.password)
+                .font(CustomFontFactory.INTER_SECTION_TITLE)
                 .padding(.leading, 10)
                 .focused($focus, equals: .password)
                 .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
                                   focused: focus == .password)
+                .tint(.mainColor)
+                .onSubmit {
+                    if viewModel.membershipForm.passwordCheck.isEmpty {
+                        focus = .passwordCheck
+                    }
+                }
             
             
-            TextField("비밀번호 확인", text: $viewModel.membershipForm.passwordCheck)
+            SecureField("비밀번호 확인", text: $viewModel.membershipForm.passwordCheck)
+                .font(CustomFontFactory.INTER_SECTION_TITLE)
                 .padding(.leading, 10)
                 .focused($focus, equals: .passwordCheck)
                 .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
                                   focused: focus == .passwordCheck)
+                .tint(.mainColor)
+            
+            HStack {
+                Text("비밀번호가 일치하지 않습니다.")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                    .padding(.top, -10)
+                    .padding(.leading, 10)
+                Spacer()
+            }
+            .frame(maxWidth: 320)
+            .hidden(viewModel.passwordMatch)
+            
+            Button {
+                
+            } label: {
+                Text("완료")
+                    .foregroundColor(.white)
+                    .roundedRectangle(.ORANGE_320_FILLED)
+            }
+
+            
         }
         .navigationTitle(
             Text("회원가입")
@@ -57,9 +121,6 @@ struct MembershipView: View {
             focus = .email
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onTapGesture {
-            focus = nil 
-        }
     }
 }
 

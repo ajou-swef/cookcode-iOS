@@ -32,6 +32,8 @@
 		153B4DAD29ED179200543730 /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DAC29ED179200543730 /* LoginForm.swift */; };
 		153B4DAF29ED1AB400543730 /* MembershipForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DAE29ED1AB400543730 /* MembershipForm.swift */; };
 		153B4DB129ED1B1300543730 /* MembershipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DB029ED1B1300543730 /* MembershipViewModel.swift */; };
+		153B4DB329ED286300543730 /* View + Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DB229ED286300543730 /* View + Hidden.swift */; };
+		153B4DB529ED2B5600543730 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DB429ED2B5600543730 /* Tab.swift */; };
 		1584033329B48E0F0092032A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033229B48E0F0092032A /* LoginView.swift */; };
 		1584033529B48EAA0092032A /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033429B48EAA0092032A /* MembershipView.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +85,8 @@
 		153B4DAC29ED179200543730 /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
 		153B4DAE29ED1AB400543730 /* MembershipForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipForm.swift; sourceTree = "<group>"; };
 		153B4DB029ED1B1300543730 /* MembershipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewModel.swift; sourceTree = "<group>"; };
+		153B4DB229ED286300543730 /* View + Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Hidden.swift"; sourceTree = "<group>"; };
+		153B4DB429ED2B5600543730 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		1584033229B48E0F0092032A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1584033429B48EAA0092032A /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,6 +204,7 @@
 			children = (
 				153B4DAC29ED179200543730 /* LoginForm.swift */,
 				153B4DAE29ED1AB400543730 /* MembershipForm.swift */,
+				153B4DB429ED2B5600543730 /* Tab.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				153B4DAA29ED0FF000543730 /* RoundedRectangleModifier.swift */,
+				153B4DB229ED286300543730 /* View + Hidden.swift */,
 			);
 			path = "View + Extension";
 			sourceTree = "<group>";
@@ -415,7 +421,9 @@
 				1503F92329B45560002F3D26 /* CookcodeApp.swift in Sources */,
 				1584033329B48E0F0092032A /* LoginView.swift in Sources */,
 				1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */,
+				153B4DB529ED2B5600543730 /* Tab.swift in Sources */,
 				153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */,
+				153B4DB329ED286300543730 /* View + Hidden.swift in Sources */,
 				153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */,
 				153B4DAD29ED179200543730 /* LoginForm.swift in Sources */,
 				153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */,

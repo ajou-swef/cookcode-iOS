@@ -9,4 +9,12 @@ import SwiftUI
 
 class MembershipViewModel: ObservableObject {
     @Published var membershipForm = MembershipForm()
+    
+    var passwordMatch: Bool {
+        membershipForm.passwordMatch
+    }
+    
+    var isNicknameEmpty: Bool {
+        membershipForm.isNicknaemEmpty
+    }
 }
