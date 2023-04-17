@@ -8,20 +8,88 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    enum Field: Hashable {
+        case email
+        case password
+    }
+    
+    @State private var path: NavigationPath = NavigationPath()
+    @StateObject private var viewModel = LoginViewModel()
+    @FocusState private var focused: Field?
     var body: some View {
-        NavigationStack {
-            VStack {
-                Text("로그인 화면")
+        NavigationStack(path: $path) {
+            VStack(spacing: 10) {
+                Text("로그인")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                    .padding(.bottom, 10)
                 
-                NavigationLink {
-                    MembershipView()
+                
+                TextField("이메일", text: $viewModel.loginForm.email)
+                    .font(CustomFontFactory.INTER_SECTION_TITLE)
+                    .padding(10)
+                    .focused($focused, equals: .email)
+                    .frame(maxWidth: 320, maxHeight: 50, alignment: .leading)
+                    .foregroundColor(focused == .email ? .mainColor : .gray808080)
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 2)
+                            .fill(focused == .email ? Color.mainColor :  Color.gray808080)
+                    }
+                
+                TextField("비밀번호", text: $viewModel.loginForm.password)
+                    .font(CustomFontFactory.INTER_SECTION_TITLE)
+                    .padding(10)
+                    .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
+                                      focused: focused == .password)
+                    .focused($focused, equals: .password)
+                    .onChange(of: focused) { newValue in
+                        focused = newValue
+                    }
+          
+                
+                Button {
+                    
                 } label: {
-                    Text("회원가입")
-                        .accessibilityIdentifier("MembershipViewNavigationLink")
+                    Text("로그인")
+                        .foregroundColor(.white)
+                        .font(CustomFontFactory.INTER_SECTION_TITLE)
+                        .roundedRectangle(.ORANGE_320_FILLED)
                 }
-
+                
+                VStack(alignment: .trailing, spacing: 5) {
+                    navigateCredentialButton()
+                    navigateMembershipViewButton()
+                }
+                .frame(maxWidth: 320, alignment: .trailing)
+                
+               
             }
+            .frame(maxWidth: .infinity)
             .accessibilityIdentifier("LoginView")
+        }
+    }
+    
+    @ViewBuilder
+    private func navigateCredentialButton() -> some View {
+        NavigationLink {
+            EmptyView()
+        } label: {
+            Text("이메일/비밀번호 찾기")
+                .foregroundColor(.mainColor)
+                .font(CustomFontFactory.INTER_SECTION_TITLE)
+        }
+    }
+//
+    @ViewBuilder
+    private func navigateMembershipViewButton() -> some View {
+        NavigationLink {
+            MembershipView()
+        } label: {
+            Text("회원가입")
+                .foregroundColor(.mainColor)
+                .font(CustomFontFactory.INTER_SECTION_TITLE)
+                .accessibilityIdentifier("MembershipViewNavigationLink")
         }
     }
 }

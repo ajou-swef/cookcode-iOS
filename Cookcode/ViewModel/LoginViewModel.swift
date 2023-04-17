@@ -9,21 +9,7 @@ import Foundation
 
 class LoginViewModel: ObservableObject {
     
-    @Published var isShowingInefficientInputMessage: Bool = false
+    @Published var loginForm = LoginForm()
     
-    @Published var idText: String = ""
-    @Published var passwordText: String = ""
     
-    func loginButtonTapped() {
-        guard !idText.isEmpty && !passwordText.isEmpty else {
-            isShowingInefficientInputMessage = true
-            return
-        }
-        
-        isShowingInefficientInputMessage = false
-    }
-    
-    func login() {
-        
-    }
 }
