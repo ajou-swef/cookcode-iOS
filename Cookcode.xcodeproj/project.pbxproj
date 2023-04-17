@@ -34,6 +34,8 @@
 		153B4DB129ED1B1300543730 /* MembershipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DB029ED1B1300543730 /* MembershipViewModel.swift */; };
 		153B4DB329ED286300543730 /* View + Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DB229ED286300543730 /* View + Hidden.swift */; };
 		153B4DB529ED2B5600543730 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DB429ED2B5600543730 /* Tab.swift */; };
+		153B4DB929ED58B900543730 /* MembershipForm_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DB829ED58B900543730 /* MembershipForm_Tests.swift */; };
+		153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DBC29ED599C00543730 /* Character + Extension.swift */; };
 		1584033329B48E0F0092032A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033229B48E0F0092032A /* LoginView.swift */; };
 		1584033529B48EAA0092032A /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033429B48EAA0092032A /* MembershipView.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +89,8 @@
 		153B4DB029ED1B1300543730 /* MembershipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewModel.swift; sourceTree = "<group>"; };
 		153B4DB229ED286300543730 /* View + Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Hidden.swift"; sourceTree = "<group>"; };
 		153B4DB429ED2B5600543730 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		153B4DB829ED58B900543730 /* MembershipForm_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipForm_Tests.swift; sourceTree = "<group>"; };
+		153B4DBC29ED599C00543730 /* Character + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character + Extension.swift"; sourceTree = "<group>"; };
 		1584033229B48E0F0092032A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1584033429B48EAA0092032A /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +178,7 @@
 		1503F93C29B45561002F3D26 /* CookcodeUITests */ = {
 			isa = PBXGroup;
 			children = (
+				153B4DB729ED589F00543730 /* Model */,
 				1503F93D29B45561002F3D26 /* CookcodeUITests.swift */,
 				1503F93F29B45561002F3D26 /* CookcodeUITestsLaunchTests.swift */,
 				1503F94E29B456CE002F3D26 /* LoginView_UITests.swift */,
@@ -219,6 +224,7 @@
 		153B4D8A29ED050A00543730 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				153B4DBA29ED598C00543730 /* Character + Extension */,
 				153B4DA929ED0F9500543730 /* View + Extension */,
 				153B4DA529ED095C00543730 /* CustomFontFactory */,
 				153B4D9129ED081C00543730 /* Font */,
@@ -273,6 +279,22 @@
 				153B4DB229ED286300543730 /* View + Hidden.swift */,
 			);
 			path = "View + Extension";
+			sourceTree = "<group>";
+		};
+		153B4DB729ED589F00543730 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				153B4DB829ED58B900543730 /* MembershipForm_Tests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		153B4DBA29ED598C00543730 /* Character + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				153B4DBC29ED599C00543730 /* Character + Extension.swift */,
+			);
+			path = "Character + Extension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +447,7 @@
 				153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */,
 				153B4DB329ED286300543730 /* View + Hidden.swift in Sources */,
 				153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */,
+				153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */,
 				153B4DAD29ED179200543730 /* LoginForm.swift in Sources */,
 				153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */,
 			);
@@ -434,6 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153B4DB929ED58B900543730 /* MembershipForm_Tests.swift in Sources */,
 				1503F94D29B4557A002F3D26 /* LoginViewModel_Tests.swift in Sources */,
 				1503F93429B45561002F3D26 /* CookcodeTests.swift in Sources */,
 			);

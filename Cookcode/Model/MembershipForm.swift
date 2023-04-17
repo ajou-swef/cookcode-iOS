@@ -17,7 +17,41 @@ struct MembershipForm {
         password == passwordCheck
     }
     
+    var isEmptyEmail: Bool {
+        email.isEmpty
+    }
+    
+    var isEmptyPassword: Bool {
+        password.isEmpty
+    }
     var isNicknaemEmpty: Bool {
         nickname.isEmpty
+    }
+    
+    var isEnoughLongPassword: Bool {
+        password.count >= 8
+    }
+    
+    
+    var passwordContainsAlphabet: Bool {
+        password.contains {
+            $0.isAlphabet
+        }
+    }
+    
+    var passwordContainsSpecialCharacter: Bool {
+        password.contains {
+            $0.isSpecialCharacter
+        }
+    }
+    
+    var passwordContainsNumber: Bool {
+        password.contains {
+            $0.isNumber
+        }
+    }
+    
+    var isValidPassword: Bool {
+        passwordContainsNumber && passwordContainsAlphabet && passwordContainsSpecialCharacter && isEnoughLongPassword
     }
 }

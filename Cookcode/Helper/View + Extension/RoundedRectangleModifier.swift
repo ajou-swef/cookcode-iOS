@@ -14,7 +14,7 @@ extension View {
         switch selection {
         case .ORANGE_280_FILLED:
             self
-                .frame(maxWidth: 280, maxHeight: 50, alignment: alignment)
+                .frame(minWidth: 280, maxWidth: 280, minHeight: 50, alignment: alignment)
                 .foregroundColor(.mainColor)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
@@ -22,7 +22,7 @@ extension View {
                 }
         case .ORANGE_320_FILLED:
             self
-                .frame(maxWidth: 320, maxHeight: 50, alignment: alignment)
+                .frame(minWidth: 320, minHeight: 50, alignment: alignment)
                 .foregroundColor(.mainColor)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
@@ -30,16 +30,17 @@ extension View {
                 }
         case .GRAY_320_STROKE:
             self
-                .frame(maxWidth: 320, maxHeight: 50, alignment: alignment)
+                .frame(minWidth: 320, maxWidth: 320, minHeight: 50, alignment: alignment)
                 .foregroundColor(focused ? .mainColor : .gray808080)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(lineWidth: 2)
                         .fill(focused ? Color.mainColor : Color.gray808080)
                 }
+            
         case .GRAY_280_STROKE:
             self
-                .frame(maxWidth: 280, maxHeight: 50, alignment: alignment)
+                .frame(minWidth: 280, minHeight: 50, alignment: alignment)
                 .foregroundColor(.gray808080)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
@@ -48,12 +49,19 @@ extension View {
                 }
         case .ORANGE_320_STROKE:
             self
-                .frame(maxWidth: 320, maxHeight: 50, alignment: alignment)
+                .frame(minWidth: 320, minHeight: 50, alignment: alignment)
                 .foregroundColor(.mainColor)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(lineWidth: 2)
                         .fill(Color.mainColor)
+                }
+        case .GRAY_320_FILLED:
+            self
+                .frame(minWidth: 320, minHeight: 50, alignment: alignment)
+                .background {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.gray808080)
                 }
                 
         }
@@ -66,5 +74,5 @@ enum RoundedRectangleModifier {
     case GRAY_320_STROKE
     case GRAY_280_STROKE
     case ORANGE_320_STROKE
-    
+    case GRAY_320_FILLED
 }
