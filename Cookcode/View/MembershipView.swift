@@ -53,7 +53,7 @@ struct MembershipView: View {
 
                         } label: {
                             Text("중복확인")
-                                .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                                .font(CustomFontFactory.INTER_SEMIBOLD_14)
                                 .foregroundColor(.gray808080)
                                 .padding(.trailing, 10)
                         }
@@ -62,7 +62,7 @@ struct MembershipView: View {
 
                 HStack {
                     Text("닉네임 중복을 확인해주세요.")
-                        .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
                         .padding(.top, -10)
                         .padding(.leading, 10)
                     Spacer()
@@ -86,7 +86,7 @@ struct MembershipView: View {
                 HStack {
                     Text("영문, 특수문자, 숫자를 포함한 8자리 이상을 입력해주세요.")
                         .foregroundColor(.gray808080)
-                        .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
                         .padding(.top, -10)
                         .padding(.leading, 10)
                     Spacer()
@@ -105,13 +105,13 @@ struct MembershipView: View {
                 HStack {
                     
                     Text("비밀번호가 유효하지 않습니다.")
-                        .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
                         .padding(.top, -10)
                         .padding(.leading, 10)
                         .hidden(viewModel.hidePasswordValidText)
                     
                     Text("비밀번호가 일치하지 않습니다.")
-                        .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
                         .padding(.top, -10)
                         .padding(.leading, 10)
                         .hidden(viewModel.hidePasswordMismatchText)

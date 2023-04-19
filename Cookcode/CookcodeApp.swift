@@ -16,6 +16,18 @@ struct CookcodeApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(navigateViewModel)
+                .onAppear {
+//                    showFonts()
+                }
         }
+    }
+    
+    func showFonts() {
+        for family: String in UIFont.familyNames {
+                        print(family)
+                        for names : String in UIFont.fontNames(forFamilyName: family){
+                            print("=== \(names)")
+                        }
+                    }
     }
 }

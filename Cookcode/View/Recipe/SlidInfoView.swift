@@ -18,28 +18,24 @@ struct SlidInfoView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack {
+                VStack(spacing: 10) {
                     TitleSection()
                     
-                    if let selectedData, let uiImage = UIImage(data: selectedData) {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .frame(maxWidth: 300, maxHeight: 300)
-                            .scaledToFit()
-                        
-                    } else {
-                        PhotosPicker(selection: $selectedItem) {
-                            Text("사진 고르기")
-                        }
-                    }
+                    ImageSection()
                     
-                    CCDivider()
+                    DescriptionSection()
+
                     
                     MainIngredients()
-                    CCDivider()
+                    
                     OptionalIngredients()
                 }
                 .padding(.horizontal, 10)
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("홈")
+                }
             }
             .onChange(of: selectedItem) { newItem in
                 Task {
@@ -53,19 +49,82 @@ struct SlidInfoView: View {
     }
     
     @ViewBuilder
-    private func TitleSection() -> some View {
+    private func DescriptionSection() -> some View {
         Section {
+            VStack(spacing: 5) {
+                TextField("설명을 입력해주세요",
+                          text: $createRecipeViewModel.recipeMetadata.description)
+                    .font(CustomFontFactory.INTER_REGULAR_14)
+                
+                CCDivider()
+                    .padding(.bottom, 20)
+            }
+        } header: {
             HStack {
-                TextField("입력해주세요",
-                          text: $createRecipeViewModel.recipeMetadata.title)
-                    .font(CustomFontFactory.INTER_TITLE)
+                Text("설명")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
                 
                 Spacer()
+            }
+        }
+    }
+    @ViewBuilder
+    private func ImageSection() -> some View {
+        Section {
+            VStack(spacing: 5) {
+                PhotosPicker(selection: $selectedItem) {
+                    if let selectedData, let uiImage = UIImage(data: selectedData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .frame(maxWidth: 320, maxHeight: 200)
+                            .scaledToFill()
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        
+                    } else {
+                        Image(systemName: "photo.fill")
+                            .resizable()
+                            .foregroundColor(.gray_bcbcbc)
+                            .frame(maxWidth: 120, minHeight: 100)
+                            .padding(.horizontal, 100)
+                            .padding(.vertical, 50)
+                            .background {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(lineWidth: 3)
+                                    .foregroundColor(.gray_bcbcbc)
+                            }
+                    }
+                }
+                .padding(.bottom, 20)
+            }
+        } header: {
+            HStack {
+                Text("대표 이미지")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                
+                Spacer()
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func TitleSection() -> some View {
+        Section {
+            VStack(spacing: 5) {
+                HStack {
+                    TextField("입력해주세요",
+                              text: $createRecipeViewModel.recipeMetadata.title)
+                    .font(CustomFontFactory.INTER_TITLE)
+                    
+                    Spacer()
+                }
+                
+                CCDivider()
+                    .padding(.bottom, 20)
             }
         } header: {
             HStack {
                 Text("레시피 이름")
-                    .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
                     .frame(alignment: .leading)
                 
                 Spacer()
@@ -76,11 +135,14 @@ struct SlidInfoView: View {
     @ViewBuilder
     private func MainIngredients() -> some View {
         Section {
-            
+            VStack(spacing: 5) {
+                CCDivider()
+                    .padding(.bottom, 20)
+            }
         } header: {
             HStack {
                 Text("필수재료")
-                    .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
                 
                 Spacer()
                 
@@ -92,7 +154,7 @@ struct SlidInfoView: View {
                             .resizable()
                             .frame(width: 10, height: 10)
                         Text("추가")
-                            .font(CustomFontFactory.INTER_REGULAR_12)
+                            .font(CustomFontFactory.INTER_REGULAR_14)
                     }
                     .foregroundColor(.primary)
                 }
@@ -108,7 +170,7 @@ struct SlidInfoView: View {
         } header: {
             HStack {
                 Text("보조재료")
-                    .font(CustomFontFactory.INTER_SEMIBOLD_12)
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
                 
                 Spacer()
                 
@@ -120,7 +182,7 @@ struct SlidInfoView: View {
                             .resizable()
                             .frame(width: 10, height: 10)
                         Text("추가")
-                            .font(CustomFontFactory.INTER_REGULAR_12)
+                            .font(CustomFontFactory.INTER_REGULAR_14)
                     }
                     .foregroundColor(.primary)
                 }

@@ -12,7 +12,6 @@ struct CCDivider: View {
         Rectangle()
             .frame(maxHeight: 2)
             .foregroundColor(.gray_bcbcbc)
-            .padding(.horizontal, 10)
     }
 }
 
