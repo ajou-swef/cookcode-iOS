@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct CookcodeApp: App {
+    
+    @StateObject private var navigateViewModel: NavigateViewModel = .init()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(navigateViewModel)
         }
     }
 }

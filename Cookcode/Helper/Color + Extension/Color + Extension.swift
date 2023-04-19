@@ -10,4 +10,5 @@ import SwiftUI
 extension Color {
     static let mainColor = Color("MainColor")
     static let gray808080 = Color("Gray_808080")
+    static let gray_bcbcbc = Color("gray.bcbcbc")
 }

@@ -7,30 +7,38 @@
 
 import SwiftUI
 
-enum Tab: String, CaseIterable {
+enum Tab: String, CaseIterable, Equatable {
     case cookie = "Cookie"
     case home = "Home"
     case refrigerator = "Refrigerator"
     
-    var image: Image {
+    func selectImage(_ tab: Tab) -> Image {
+        if self.rawValue == tab.rawValue {
+            return selectedImage
+        } else {
+            return unselectedImage
+        }
+    }
+    
+    var unselectedImage: Image {
         switch self {
         case .cookie:
             return Image("cookie")
         case .home:
-            return Image(systemName: "apple.logo")
+            return Image("home")
         case .refrigerator:
-            return Image(systemName: "apple.logo")
+            return Image("refrigerator")
         }
     }
     
-    var filledImage: Image {
+    var selectedImage: Image {
         switch self {
         case .cookie:
             return Image("cookie.fill")
         case .home:
-            return Image(systemName: "apple.logo")
+            return Image("home.fill")
         case .refrigerator:
-            return Image(systemName: "apple.logo")
+            return Image("refrigerator.fill")
         }
     }
     

@@ -64,6 +64,14 @@ extension View {
                         .fill(Color.gray808080)
                 }
                 
+        case .ORANGE_80_FILLE:
+            self
+                .frame(minWidth: 80, maxWidth: 80, minHeight: 40, alignment: alignment)
+                .foregroundColor(.mainColor)
+                .background {
+                    RoundedRectangle(cornerRadius: 18)
+                        .fill(Color.mainColor)
+                }
         }
     }
 }
@@ -75,4 +83,5 @@ enum RoundedRectangleModifier {
     case GRAY_280_STROKE
     case ORANGE_320_STROKE
     case GRAY_320_FILLED
+    case ORANGE_80_FILLE
 }

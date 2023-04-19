@@ -18,15 +18,6 @@
 		1503F94F29B456CE002F3D26 /* LoginView_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F94E29B456CE002F3D26 /* LoginView_UITests.swift */; };
 		1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F95429B459DD002F3D26 /* LoginViewModel.swift */; };
 		153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4D8C29ED061E00543730 /* Color + Extension.swift */; };
-		153B4D9B29ED083700543730 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153B4D9229ED083600543730 /* Inter-Bold.ttf */; };
-		153B4D9C29ED083700543730 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153B4D9329ED083700543730 /* Inter-Light.ttf */; };
-		153B4D9D29ED083700543730 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153B4D9429ED083700543730 /* Inter-ExtraLight.ttf */; };
-		153B4D9E29ED083700543730 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153B4D9529ED083700543730 /* Inter-ExtraBold.ttf */; };
-		153B4D9F29ED083700543730 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153B4D9629ED083700543730 /* Inter-Medium.ttf */; };
-		153B4DA029ED083700543730 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153B4D9729ED083700543730 /* Inter-SemiBold.ttf */; };
-		153B4DA129ED083700543730 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153B4D9829ED083700543730 /* Inter-Black.ttf */; };
-		153B4DA229ED083700543730 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153B4D9929ED083700543730 /* Inter-Thin.ttf */; };
-		153B4DA329ED083700543730 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 153B4D9A29ED083700543730 /* Inter-Regular.ttf */; };
 		153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DA729ED097500543730 /* CustomFontFactory.swift */; };
 		153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DAA29ED0FF000543730 /* RoundedRectangleModifier.swift */; };
 		153B4DAD29ED179200543730 /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DAC29ED179200543730 /* LoginForm.swift */; };
@@ -38,6 +29,15 @@
 		153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DBC29ED599C00543730 /* Character + Extension.swift */; };
 		1584033329B48E0F0092032A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033229B48E0F0092032A /* LoginView.swift */; };
 		1584033529B48EAA0092032A /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033429B48EAA0092032A /* MembershipView.swift */; };
+		15AA2F2029EFE47C0069813F /* SlidInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F1F29EFE47C0069813F /* SlidInfoView.swift */; };
+		15AA2F2229EFE8DE0069813F /* RecipeMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F2129EFE8DE0069813F /* RecipeMetadata.swift */; };
+		15AA2F2429EFEA250069813F /* CreateRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F2329EFEA250069813F /* CreateRecipeViewModel.swift */; };
+		15AA2F2829EFEBE00069813F /* CCDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F2729EFEBE00069813F /* CCDivider.swift */; };
+		15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B129EFD9B900A02872 /* MainTabView.swift */; };
+		15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */; };
+		15B869B929EFDC3600A02872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B829EFDC3600A02872 /* HomeView.swift */; };
+		15B869BB29EFDC4600A02872 /* CookieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869BA29EFDC4600A02872 /* CookieView.swift */; };
+		15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869BC29EFDC5000A02872 /* RefrigeratorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,15 +72,6 @@
 		1503F94E29B456CE002F3D26 /* LoginView_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView_UITests.swift; sourceTree = "<group>"; };
 		1503F95429B459DD002F3D26 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		153B4D8C29ED061E00543730 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
-		153B4D9229ED083600543730 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Bold.ttf"; path = "../../../../../../../Downloads/Inter/static/Inter-Bold.ttf"; sourceTree = "<group>"; };
-		153B4D9329ED083700543730 /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Light.ttf"; path = "../../../../../../../Downloads/Inter/static/Inter-Light.ttf"; sourceTree = "<group>"; };
-		153B4D9429ED083700543730 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-ExtraLight.ttf"; path = "../../../../../../../Downloads/Inter/static/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
-		153B4D9529ED083700543730 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-ExtraBold.ttf"; path = "../../../../../../../Downloads/Inter/static/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
-		153B4D9629ED083700543730 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Medium.ttf"; path = "../../../../../../../Downloads/Inter/static/Inter-Medium.ttf"; sourceTree = "<group>"; };
-		153B4D9729ED083700543730 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-SemiBold.ttf"; path = "../../../../../../../Downloads/Inter/static/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
-		153B4D9829ED083700543730 /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Black.ttf"; path = "../../../../../../../Downloads/Inter/static/Inter-Black.ttf"; sourceTree = "<group>"; };
-		153B4D9929ED083700543730 /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Thin.ttf"; path = "../../../../../../../Downloads/Inter/static/Inter-Thin.ttf"; sourceTree = "<group>"; };
-		153B4D9A29ED083700543730 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Regular.ttf"; path = "../../../../../../../Downloads/Inter/static/Inter-Regular.ttf"; sourceTree = "<group>"; };
 		153B4DA429ED085E00543730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		153B4DA729ED097500543730 /* CustomFontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontFactory.swift; sourceTree = "<group>"; };
 		153B4DAA29ED0FF000543730 /* RoundedRectangleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleModifier.swift; sourceTree = "<group>"; };
@@ -93,6 +84,24 @@
 		153B4DBC29ED599C00543730 /* Character + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character + Extension.swift"; sourceTree = "<group>"; };
 		1584033229B48E0F0092032A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1584033429B48EAA0092032A /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
+		15AA2F1529EFDD7E0069813F /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		15AA2F1629EFDD7E0069813F /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		15AA2F1729EFDD7E0069813F /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		15AA2F1829EFDD7E0069813F /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		15AA2F1929EFDD7E0069813F /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		15AA2F1A29EFDD7E0069813F /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.ttf"; sourceTree = "<group>"; };
+		15AA2F1B29EFDD7E0069813F /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
+		15AA2F1C29EFDD7E0069813F /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.ttf"; sourceTree = "<group>"; };
+		15AA2F1D29EFDD7E0069813F /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		15AA2F1F29EFE47C0069813F /* SlidInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidInfoView.swift; sourceTree = "<group>"; };
+		15AA2F2129EFE8DE0069813F /* RecipeMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMetadata.swift; sourceTree = "<group>"; };
+		15AA2F2329EFEA250069813F /* CreateRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewModel.swift; sourceTree = "<group>"; };
+		15AA2F2729EFEBE00069813F /* CCDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCDivider.swift; sourceTree = "<group>"; };
+		15B869B129EFD9B900A02872 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateViewModel.swift; sourceTree = "<group>"; };
+		15B869B829EFDC3600A02872 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		15B869BA29EFDC4600A02872 /* CookieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieView.swift; sourceTree = "<group>"; };
+		15B869BC29EFDC5000A02872 /* RefrigeratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +200,8 @@
 			children = (
 				1503F95429B459DD002F3D26 /* LoginViewModel.swift */,
 				153B4DB029ED1B1300543730 /* MembershipViewModel.swift */,
+				15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */,
+				15AA2F2329EFEA250069813F /* CreateRecipeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -198,8 +209,13 @@
 		1503F95129B459C4002F3D26 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				15AA2F1E29EFE4750069813F /* Recipe */,
+				15B869B729EFDC2B00A02872 /* Refrigerator */,
+				15B869B629EFDC2900A02872 /* Cookie */,
+				15B869B529EFDC2600A02872 /* Home */,
 				1584033229B48E0F0092032A /* LoginView.swift */,
 				1584033429B48EAA0092032A /* MembershipView.swift */,
+				15B869B129EFD9B900A02872 /* MainTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,6 +226,7 @@
 				153B4DAC29ED179200543730 /* LoginForm.swift */,
 				153B4DAE29ED1AB400543730 /* MembershipForm.swift */,
 				153B4DB429ED2B5600543730 /* Tab.swift */,
+				15AA2F2129EFE8DE0069813F /* RecipeMetadata.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,6 +261,7 @@
 		153B4D9029ED06A500543730 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				15AA2F2729EFEBE00069813F /* CCDivider.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -251,15 +269,15 @@
 		153B4D9129ED081C00543730 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				153B4D9829ED083700543730 /* Inter-Black.ttf */,
-				153B4D9229ED083600543730 /* Inter-Bold.ttf */,
-				153B4D9529ED083700543730 /* Inter-ExtraBold.ttf */,
-				153B4D9429ED083700543730 /* Inter-ExtraLight.ttf */,
-				153B4D9329ED083700543730 /* Inter-Light.ttf */,
-				153B4D9629ED083700543730 /* Inter-Medium.ttf */,
-				153B4D9A29ED083700543730 /* Inter-Regular.ttf */,
-				153B4D9729ED083700543730 /* Inter-SemiBold.ttf */,
-				153B4D9929ED083700543730 /* Inter-Thin.ttf */,
+				15AA2F1A29EFDD7E0069813F /* Inter-Black.ttf */,
+				15AA2F1D29EFDD7E0069813F /* Inter-Bold.ttf */,
+				15AA2F1529EFDD7E0069813F /* Inter-ExtraBold.ttf */,
+				15AA2F1729EFDD7E0069813F /* Inter-ExtraLight.ttf */,
+				15AA2F1B29EFDD7E0069813F /* Inter-Light.ttf */,
+				15AA2F1829EFDD7E0069813F /* Inter-Medium.ttf */,
+				15AA2F1629EFDD7E0069813F /* Inter-Regular.ttf */,
+				15AA2F1929EFDD7E0069813F /* Inter-SemiBold.ttf */,
+				15AA2F1C29EFDD7E0069813F /* Inter-Thin.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -295,6 +313,38 @@
 				153B4DBC29ED599C00543730 /* Character + Extension.swift */,
 			);
 			path = "Character + Extension";
+			sourceTree = "<group>";
+		};
+		15AA2F1E29EFE4750069813F /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				15AA2F1F29EFE47C0069813F /* SlidInfoView.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		15B869B529EFDC2600A02872 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				15B869B829EFDC3600A02872 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		15B869B629EFDC2900A02872 /* Cookie */ = {
+			isa = PBXGroup;
+			children = (
+				15B869BA29EFDC4600A02872 /* CookieView.swift */,
+			);
+			path = Cookie;
+			sourceTree = "<group>";
+		};
+		15B869B729EFDC2B00A02872 /* Refrigerator */ = {
+			isa = PBXGroup;
+			children = (
+				15B869BC29EFDC5000A02872 /* RefrigeratorView.swift */,
+			);
+			path = Refrigerator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,17 +451,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153B4D9B29ED083700543730 /* Inter-Bold.ttf in Resources */,
-				153B4DA129ED083700543730 /* Inter-Black.ttf in Resources */,
-				153B4D9D29ED083700543730 /* Inter-ExtraLight.ttf in Resources */,
 				1503F92A29B45561002F3D26 /* Preview Assets.xcassets in Resources */,
-				153B4D9C29ED083700543730 /* Inter-Light.ttf in Resources */,
-				153B4DA029ED083700543730 /* Inter-SemiBold.ttf in Resources */,
-				153B4D9F29ED083700543730 /* Inter-Medium.ttf in Resources */,
 				1503F92729B45561002F3D26 /* Assets.xcassets in Resources */,
-				153B4DA329ED083700543730 /* Inter-Regular.ttf in Resources */,
-				153B4DA229ED083700543730 /* Inter-Thin.ttf in Resources */,
-				153B4D9E29ED083700543730 /* Inter-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,18 +477,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15AA2F2029EFE47C0069813F /* SlidInfoView.swift in Sources */,
+				15B869BB29EFDC4600A02872 /* CookieView.swift in Sources */,
 				153B4DB129ED1B1300543730 /* MembershipViewModel.swift in Sources */,
+				15AA2F2829EFEBE00069813F /* CCDivider.swift in Sources */,
 				1503F92529B45560002F3D26 /* ContentView.swift in Sources */,
+				15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */,
 				153B4DAF29ED1AB400543730 /* MembershipForm.swift in Sources */,
 				1584033529B48EAA0092032A /* MembershipView.swift in Sources */,
 				1503F92329B45560002F3D26 /* CookcodeApp.swift in Sources */,
+				15AA2F2229EFE8DE0069813F /* RecipeMetadata.swift in Sources */,
+				15B869B929EFDC3600A02872 /* HomeView.swift in Sources */,
 				1584033329B48E0F0092032A /* LoginView.swift in Sources */,
 				1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */,
 				153B4DB529ED2B5600543730 /* Tab.swift in Sources */,
 				153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */,
 				153B4DB329ED286300543730 /* View + Hidden.swift in Sources */,
+				15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */,
 				153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */,
 				153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */,
+				15AA2F2429EFEA250069813F /* CreateRecipeViewModel.swift in Sources */,
+				15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */,
 				153B4DAD29ED179200543730 /* LoginForm.swift in Sources */,
 				153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */,
 			);
