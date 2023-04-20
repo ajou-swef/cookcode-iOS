@@ -24,14 +24,14 @@ struct StepFormView: View {
     var body: some View {
         TabView(selection: $viewModel.stepSelction) {
             ForEach(viewModel.stepForms.indices, id: \.self) {  i in
-                VStack(spacing: 20) {
-                    
+                VStack(spacing: 40) {
                     HStack {
                         Text("\(i+1)단계")
                             .font(CustomFontFactory.INTER_SEMIBOLD_20)
                         
                         Spacer()
                     }
+                    .padding(.bottom, -20)
                     
                     PhotosPicker(selection: $viewModel.stepForms[i].photoPickerItems, maxSelectionCount: 3, matching: .images) {
                         
@@ -63,6 +63,8 @@ struct StepFormView: View {
                        }
                    }
                     
+                    TitleSection(i)
+                    DescriptionSection(i)
                     
                     Spacer()
                     
@@ -89,10 +91,11 @@ struct StepFormView: View {
                     }
                 }
                 .padding(.top, 20)
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 20)
                 .tag(i)
             }
         }
+        .ignoresSafeArea(.keyboard)
         .tabViewStyle(.page(indexDisplayMode: .never))
 //        .onChange(of: photoItem) { newItem in
 //            print("onChange")
@@ -107,6 +110,45 @@ struct StepFormView: View {
 //                }
 //            }
 //        }
+        
+    }
+    
+    @ViewBuilder
+    private func DescriptionSection(_ index: Int) -> some View {
+        Section {
+            VStack {
+                TextField("입력해주세요", text: $viewModel.stepForms[index].stepForm.description)
+                    .font(CustomFontFactory.INTER_REGULAR_14)
+            }
+            .padding(.top, -30)
+        } header: {
+            HStack {
+                Text("자세한 설명")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                
+                Spacer()
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func TitleSection(_ index: Int) -> some View {
+        Section {
+            VStack {
+                TextField("입력해주세요", text: $viewModel.stepForms[index].stepForm.title)
+                
+                CCDivider()
+            }
+            .padding(.top, -30)
+            
+        } header: {
+            HStack {
+                Text("간략한 설명")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                
+                Spacer()
+            }
+        }
     }
 }
 
