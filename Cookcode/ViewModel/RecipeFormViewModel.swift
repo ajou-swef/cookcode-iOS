@@ -15,7 +15,7 @@ class RecipeFormViewModel: ObservableObject {
     
     @Published var stepFormTrigger: RecipePathWithIndex?
     
-    @Published var stepForms: [StepForm] = .init()
+    @Published var stepForms: [ContentWrappedStepForm] = .init()
     @Published var stepSelction: Int = 0
 
     
@@ -25,7 +25,7 @@ class RecipeFormViewModel: ObservableObject {
     
     init(_ preview: Bool = false) {
         if preview {
-            stepForms.append(StepForm())
+            stepForms.append(ContentWrappedStepForm())
         }
     }
     
@@ -38,7 +38,7 @@ class RecipeFormViewModel: ObservableObject {
     }
     
     fileprivate func appendStepForm() {
-        stepForms.append(StepForm())
+        stepForms.append(ContentWrappedStepForm())
     }
     
     func addStepButotnTapped() {

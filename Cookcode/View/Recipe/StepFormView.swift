@@ -24,7 +24,7 @@ struct StepFormView: View {
     var body: some View {
         TabView(selection: $viewModel.stepSelction) {
             ForEach(viewModel.stepForms.indices, id: \.self) {  i in
-                VStack {
+                VStack(spacing: 20) {
                     
                     HStack {
                         Text("\(i+1)단계")
@@ -32,6 +32,37 @@ struct StepFormView: View {
                         
                         Spacer()
                     }
+                    
+                    PhotosPicker(selection: $viewModel.stepForms[i].photoPickerItems, maxSelectionCount: 3, matching: .images) {
+                        
+                        ForEach(0..<3, id: \.self) { j in
+                            if j < viewModel.stepForms[i].imageDatas.count, let uiImage = UIImage(data: viewModel.stepForms[i].imageDatas[j]) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                                    .cornerRadius(15)
+                                
+                            } else {
+                                Image(systemName: "photo.fill")
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                                    .foregroundColor(.gray_bcbcbc)
+                            }
+                        }
+                        
+                    }
+                    .onChange(of: viewModel.stepForms[i].photoPickerItems) { _ in
+                       Task {
+                           viewModel.stepForms[i].imageDatas.removeAll()
+
+                           for item in viewModel.stepForms[i].photoPickerItems {
+                               if let data = try? await item.loadTransferable(type: Data.self) {
+                                   viewModel.stepForms[i].imageDatas.append(data)
+                               }
+                           }
+                       }
+                   }
+                    
                     
                     Spacer()
                     

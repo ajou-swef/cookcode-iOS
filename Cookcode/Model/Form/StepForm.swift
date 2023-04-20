@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StepForm: Codable, Identifiable {
+struct StepForm: Codable, Identifiable, Equatable {
     var id: String = UUID().uuidString
     var title: String = ""
     var description: String = "" 
