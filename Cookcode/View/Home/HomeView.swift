@@ -17,7 +17,7 @@ struct HomeView: View {
         }
         .overlay(alignment: .bottomTrailing) {
             Button {
-                navigateViewModel.isPresentedSlide = true 
+                navigateViewModel.showRecipeFormView = true 
             } label: {
                 Image(systemName: "plus")
                     .foregroundColor(.white)

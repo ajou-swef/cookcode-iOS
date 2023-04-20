@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeMetadata: Codable {
+struct RecipeForm: Codable {
     var title: String = ""
     var description: String = ""
     var mainIngredients: [String] = []

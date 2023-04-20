@@ -8,12 +8,14 @@
 import SwiftUI
 import PhotosUI
 
-struct SlidInfoView: View {
+struct RecipeFormView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    @StateObject private var createRecipeViewModel: CreateRecipeViewModel = .init()
+    @StateObject private var createRecipeViewModel: RecipeFormViewModel = .init()
     @State private var selectedItem: PhotosPickerItem?
     @State private var selectedData: Data?
+    
+    @State private var step: StepForm?
     
     var body: some View {
         NavigationStack {
@@ -32,9 +34,33 @@ struct SlidInfoView: View {
                 }
                 .padding(.horizontal, 10)
             }
+            .overlay(alignment: .bottom) {
+                Button {
+                    createRecipeViewModel.addStepButtonTapped()
+                } label: {
+                    Text("1단계 스텝 작성하기")
+                        .font(CustomFontFactory.INTER_SECTION_TITLE)
+                        .foregroundColor(.white)
+                        .roundedRectangle(.ORANGE_320_FILLED)
+                }
+
+            }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text("홈")
+                    Button {
+                        navigateViewModel.dismissRecipeFormView()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.primary)
+                    }
+
+                }
+                
+                ToolbarItem(placement: .principal) {
+                    Text("새 레시피")
+                        .font(CustomFontFactory.INTER_SECTION_TITLE)
                 }
             }
             .onChange(of: selectedItem) { newItem in
@@ -192,8 +218,8 @@ struct SlidInfoView: View {
     }
 }
 
-struct SlidInfoView_Previews: PreviewProvider {
+struct RecipeFormView_Previews: PreviewProvider {
     static var previews: some View {
-        SlidInfoView()
+        RecipeFormView()
     }
 }

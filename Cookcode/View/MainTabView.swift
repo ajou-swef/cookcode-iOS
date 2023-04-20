@@ -14,8 +14,8 @@ struct MainTabView: View {
     var body: some View {
         
         Group {
-            if navigateViewModel.isPresentedSlide {
-                SlidInfoView()
+            if navigateViewModel.showRecipeFormView {
+                RecipeFormView()
                     .transition(.move(edge: .trailing))
             } else {
                 TabView(selection: $navigateViewModel.tab) {
@@ -26,7 +26,7 @@ struct MainTabView: View {
                 .transition(.move(edge: .leading))
             }
         }
-        .animation(.linear(duration: 0.1), value: navigateViewModel.isPresentedSlide)
+        .animation(.linear(duration: 0.1), value: navigateViewModel.showRecipeFormView)
     }
     
     @ViewBuilder

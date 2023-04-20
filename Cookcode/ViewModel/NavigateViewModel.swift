@@ -8,6 +8,18 @@
 import SwiftUI
 
 class NavigateViewModel: ObservableObject {
+    
     @Published var tab: Tab = .home
-    @Published var isPresentedSlide: Bool = false
+    
+    @Published var recipePath: NavigationPath = .init()
+    @Published var showRecipeFormView: Bool = true
+    
+//    func navigatTo(_ path: Binding<StepForm>) {
+//        recipePath.append(path)
+//    }
+    
+    func dismissRecipeFormView() {
+        showRecipeFormView = false
+    }
+    
 }

@@ -67,7 +67,6 @@ extension View {
         case .ORANGE_80_FILLE:
             self
                 .frame(minWidth: 80, maxWidth: 80, minHeight: 40, alignment: alignment)
-                .foregroundColor(.mainColor)
                 .background {
                     RoundedRectangle(cornerRadius: 18)
                         .fill(Color.mainColor)
