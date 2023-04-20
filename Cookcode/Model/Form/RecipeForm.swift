@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import PhotosUI
 
 struct RecipeForm: Codable {
     var title: String = ""
     var description: String = ""
     var mainIngredients: [String] = []
-    var optionalIngredients: [String] = [] 
+    var optionalIngredients: [String] = []
 }

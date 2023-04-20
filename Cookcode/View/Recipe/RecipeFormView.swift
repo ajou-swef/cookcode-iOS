@@ -11,14 +11,11 @@ import PhotosUI
 struct RecipeFormView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    @StateObject private var createRecipeViewModel: RecipeFormViewModel = .init()
-    @State private var selectedItem: PhotosPickerItem?
-    @State private var selectedData: Data?
-    
+    @StateObject private var viewModel: RecipeFormViewModel = .init()
     @State private var step: StepForm?
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigateViewModel.recipePath) {
             ScrollView {
                 VStack(spacing: 10) {
                     TitleSection()
@@ -33,10 +30,14 @@ struct RecipeFormView: View {
                     OptionalIngredients()
                 }
                 .padding(.horizontal, 10)
+                .padding(.top, 30)
+            }
+            .sheet(item: $viewModel.stepFormTrigger) { item in
+                StepFormView(viewModel: viewModel, stepIndex: item.index)
             }
             .overlay(alignment: .bottom) {
                 Button {
-                    createRecipeViewModel.addStepButtonTapped()
+                    viewModel.addStepButtonTapped()
                 } label: {
                     Text("1단계 스텝 작성하기")
                         .font(CustomFontFactory.INTER_SECTION_TITLE)
@@ -55,7 +56,6 @@ struct RecipeFormView: View {
                         Image(systemName: "xmark")
                             .foregroundColor(.primary)
                     }
-
                 }
                 
                 ToolbarItem(placement: .principal) {
@@ -63,11 +63,11 @@ struct RecipeFormView: View {
                         .font(CustomFontFactory.INTER_SECTION_TITLE)
                 }
             }
-            .onChange(of: selectedItem) { newItem in
+            .onChange(of: viewModel.mainImageItem) { newItem in
                 Task {
                     // Retrive selected asset in the form of Data
                     if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                        selectedData = data
+                        viewModel.mainImageData = data
                     }
                 }
             }
@@ -79,7 +79,7 @@ struct RecipeFormView: View {
         Section {
             VStack(spacing: 5) {
                 TextField("설명을 입력해주세요",
-                          text: $createRecipeViewModel.recipeMetadata.description)
+                          text: $viewModel.recipeMetadata.description)
                     .font(CustomFontFactory.INTER_REGULAR_14)
                 
                 CCDivider()
@@ -98,8 +98,8 @@ struct RecipeFormView: View {
     private func ImageSection() -> some View {
         Section {
             VStack(spacing: 5) {
-                PhotosPicker(selection: $selectedItem) {
-                    if let selectedData, let uiImage = UIImage(data: selectedData) {
+                PhotosPicker(selection: $viewModel.mainImageItem) {
+                    if let selectedData = viewModel.mainImageData, let uiImage = UIImage(data: selectedData) {
                         Image(uiImage: uiImage)
                             .resizable()
                             .frame(maxWidth: 320, maxHeight: 200)
@@ -138,7 +138,7 @@ struct RecipeFormView: View {
             VStack(spacing: 5) {
                 HStack {
                     TextField("입력해주세요",
-                              text: $createRecipeViewModel.recipeMetadata.title)
+                              text: $viewModel.recipeMetadata.title)
                     .font(CustomFontFactory.INTER_TITLE)
                     
                     Spacer()

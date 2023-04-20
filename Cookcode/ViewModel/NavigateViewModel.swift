@@ -14,10 +14,6 @@ class NavigateViewModel: ObservableObject {
     @Published var recipePath: NavigationPath = .init()
     @Published var showRecipeFormView: Bool = true
     
-//    func navigatTo(_ path: Binding<StepForm>) {
-//        recipePath.append(path)
-//    }
-    
     func dismissRecipeFormView() {
         showRecipeFormView = false
     }
