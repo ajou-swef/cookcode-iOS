@@ -16,8 +16,8 @@ struct CookcodeApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(navigateViewModel)
-                .onAppear {
-//                    showFonts()
+                .onOpenURL {
+                    navigateViewModel.separateURL($0.absoluteString)
                 }
         }
     }
