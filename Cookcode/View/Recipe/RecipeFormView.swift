@@ -37,7 +37,7 @@ struct RecipeFormView: View {
             }
             .overlay(alignment: .bottom) {
                 Button {
-                    viewModel.addStepButtonTapped()
+                    viewModel.addFirstStepButtonTapped()
                 } label: {
                     Text("1단계 스텝 작성하기")
                         .font(CustomFontFactory.INTER_SECTION_TITLE)

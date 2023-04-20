@@ -33,7 +33,6 @@
 		15AA2F2229EFE8DE0069813F /* RecipeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F2129EFE8DE0069813F /* RecipeForm.swift */; };
 		15AA2F2429EFEA250069813F /* RecipeFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F2329EFEA250069813F /* RecipeFormViewModel.swift */; };
 		15AA2F2829EFEBE00069813F /* CCDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F2729EFEBE00069813F /* CCDivider.swift */; };
-		15AA2F3229EFF5720069813F /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15AA2F2929EFF5710069813F /* Inter-ExtraBold.ttf */; };
 		15AA2F3329EFF5720069813F /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15AA2F2A29EFF5710069813F /* Inter-Bold.ttf */; };
 		15AA2F3429EFF5720069813F /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15AA2F2B29EFF5710069813F /* Inter-Black.ttf */; };
 		15AA2F3529EFF5720069813F /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15AA2F2C29EFF5710069813F /* Inter-Light.ttf */; };
@@ -45,6 +44,7 @@
 		15AA2F4029F0C9110069813F /* StepForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F3F29F0C9110069813F /* StepForm.swift */; };
 		15AA2F4B29F0D80E0069813F /* RecipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F4A29F0D80D0069813F /* RecipePath.swift */; };
 		15AA2F4D29F0D9400069813F /* StepFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F4C29F0D9400069813F /* StepFormView.swift */; };
+		15AA2F8829F102720069813F /* VideURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F8729F102720069813F /* VideURL.swift */; };
 		15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B129EFD9B900A02872 /* MainTabView.swift */; };
 		15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */; };
 		15B869B929EFDC3600A02872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B829EFDC3600A02872 /* HomeView.swift */; };
@@ -96,7 +96,6 @@
 		153B4DBC29ED599C00543730 /* Character + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character + Extension.swift"; sourceTree = "<group>"; };
 		1584033229B48E0F0092032A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1584033429B48EAA0092032A /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
-		15AA2F1529EFDD7E0069813F /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
 		15AA2F1629EFDD7E0069813F /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		15AA2F1729EFDD7E0069813F /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
 		15AA2F1829EFDD7E0069813F /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
@@ -109,7 +108,6 @@
 		15AA2F2129EFE8DE0069813F /* RecipeForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeForm.swift; sourceTree = "<group>"; };
 		15AA2F2329EFEA250069813F /* RecipeFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFormViewModel.swift; sourceTree = "<group>"; };
 		15AA2F2729EFEBE00069813F /* CCDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCDivider.swift; sourceTree = "<group>"; };
-		15AA2F2929EFF5710069813F /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
 		15AA2F2A29EFF5710069813F /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		15AA2F2B29EFF5710069813F /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.ttf"; sourceTree = "<group>"; };
 		15AA2F2C29EFF5710069813F /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
@@ -121,6 +119,7 @@
 		15AA2F3F29F0C9110069813F /* StepForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepForm.swift; sourceTree = "<group>"; };
 		15AA2F4A29F0D80D0069813F /* RecipePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePath.swift; sourceTree = "<group>"; };
 		15AA2F4C29F0D9400069813F /* StepFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFormView.swift; sourceTree = "<group>"; };
+		15AA2F8729F102720069813F /* VideURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideURL.swift; sourceTree = "<group>"; };
 		15B869B129EFD9B900A02872 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateViewModel.swift; sourceTree = "<group>"; };
 		15B869B829EFDC3600A02872 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -250,6 +249,7 @@
 				15AA2F4929F0D8050069813F /* Path */,
 				15AA2F4129F0C9DC0069813F /* Form */,
 				153B4DB429ED2B5600543730 /* Tab.swift */,
+				15AA2F8729F102720069813F /* VideURL.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,7 +295,6 @@
 			children = (
 				15AA2F2B29EFF5710069813F /* Inter-Black.ttf */,
 				15AA2F2A29EFF5710069813F /* Inter-Bold.ttf */,
-				15AA2F2929EFF5710069813F /* Inter-ExtraBold.ttf */,
 				15AA2F2D29EFF5710069813F /* Inter-ExtraLight.ttf */,
 				15AA2F2C29EFF5710069813F /* Inter-Light.ttf */,
 				15AA2F2E29EFF5710069813F /* Inter-Medium.ttf */,
@@ -304,7 +303,6 @@
 				15AA2F3129EFF5720069813F /* Inter-Thin.ttf */,
 				15AA2F1A29EFDD7E0069813F /* Inter-Black.ttf */,
 				15AA2F1D29EFDD7E0069813F /* Inter-Bold.ttf */,
-				15AA2F1529EFDD7E0069813F /* Inter-ExtraBold.ttf */,
 				15AA2F1729EFDD7E0069813F /* Inter-ExtraLight.ttf */,
 				15AA2F1B29EFDD7E0069813F /* Inter-Light.ttf */,
 				15AA2F1829EFDD7E0069813F /* Inter-Medium.ttf */,
@@ -521,7 +519,6 @@
 				15AA2F3329EFF5720069813F /* Inter-Bold.ttf in Resources */,
 				15AA2F3529EFF5720069813F /* Inter-Light.ttf in Resources */,
 				15AA2F3929EFF5720069813F /* Inter-SemiBold.ttf in Resources */,
-				15AA2F3229EFF5720069813F /* Inter-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +546,7 @@
 				15AA2F2029EFE47C0069813F /* RecipeFormView.swift in Sources */,
 				15B869BB29EFDC4600A02872 /* CookieView.swift in Sources */,
 				153B4DB129ED1B1300543730 /* MembershipViewModel.swift in Sources */,
+				15AA2F8829F102720069813F /* VideURL.swift in Sources */,
 				15AA2F2829EFEBE00069813F /* CCDivider.swift in Sources */,
 				1503F92529B45560002F3D26 /* ContentView.swift in Sources */,
 				15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */,
