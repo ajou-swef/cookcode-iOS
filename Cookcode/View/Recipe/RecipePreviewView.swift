@@ -12,7 +12,70 @@ struct RecipePreviewView: View {
     @ObservedObject var viewModel: RecipeFormViewModel
     
     var body: some View {
-        Text("Recipe Preview")
+        ZStack {
+            Color.gray808080
+                .ignoresSafeArea(.all)
+                .overlay(alignment: .top) {
+                   TopButton()
+                }
+            
+            TabView {
+                GeometryReader { proxy in
+                    RecipeEntranceView(recipeForm: viewModel.recipeMetadata, imageData: viewModel.mainImageData, cgSize: proxy.size)
+                }
+                Text("스텝1")
+                Text("스텝2")
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .frame(maxWidth: .infinity)
+            .background {
+                Color.white
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 25))
+            .padding(.horizontal, 10)
+            .padding(.top, 30)
+
+        }
+        .statusBarHidden()
+    }
+    
+    @ViewBuilder
+    private func TopButton() -> some View {
+        HStack {
+            Button {
+                viewModel.isShowingPreviewView = false
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .resizable()
+                    .foregroundColor(.mainColor)
+                    .frame(maxWidth: 40, maxHeight: 40)
+                    .background(
+                        Circle()
+                            .fill(Color.white)
+                            .frame(maxWidth: 30, maxHeight: 30)
+                    )
+            }
+            
+            Spacer()
+            
+            Button {
+                
+            } label: {
+                Image(systemName: "square.and.arrow.up.circle.fill")
+                    .resizable()
+                    .foregroundColor(.mainColor)
+                    .frame(maxWidth: 40, maxHeight: 40)
+                    .background(
+                        Circle()
+                            .fill(Color.white)
+                            .frame(maxWidth: 30, maxHeight: 30)
+                    )
+            }
+
+        }
+        .padding(.top, 20)
+        .ignoresSafeArea()
+        .padding(.horizontal, 20)
     }
 }
 

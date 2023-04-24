@@ -19,6 +19,7 @@
 		1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F95429B459DD002F3D26 /* LoginViewModel.swift */; };
 		150CD44329F397830001FFEB /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150CD44229F397830001FFEB /* ContentType.swift */; };
 		150CD44629F628CC0001FFEB /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150CD44529F628CC0001FFEB /* String + Extension.swift */; };
+		152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152389D329F69AD60090CA9B /* RecipeEntranceView.swift */; };
 		153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4D8C29ED061E00543730 /* Color + Extension.swift */; };
 		153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DA729ED097500543730 /* CustomFontFactory.swift */; };
 		153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DAA29ED0FF000543730 /* RoundedRectangleModifier.swift */; };
@@ -89,6 +90,7 @@
 		1503F95429B459DD002F3D26 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		150CD44229F397830001FFEB /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		150CD44529F628CC0001FFEB /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		152389D329F69AD60090CA9B /* RecipeEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeEntranceView.swift; sourceTree = "<group>"; };
 		153B4D8C29ED061E00543730 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		153B4DA429ED085E00543730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		153B4DA729ED097500543730 /* CustomFontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontFactory.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				15AA2F1F29EFE47C0069813F /* RecipeFormView.swift */,
 				15AA2F4C29F0D9400069813F /* StepFormView.swift */,
 				1593D94129F689D1008AF49E /* RecipePreviewView.swift */,
+				152389D329F69AD60090CA9B /* RecipeEntranceView.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */,
 				15AA2F4B29F0D80E0069813F /* RecipePath.swift in Sources */,
 				150CD44329F397830001FFEB /* ContentType.swift in Sources */,
+				152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */,
 				153B4DB329ED286300543730 /* View + Hidden.swift in Sources */,
 				15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */,
 				153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */,
