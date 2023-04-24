@@ -9,15 +9,23 @@ import SwiftUI
 import PhotosUI
 
 class RecipeFormViewModel: ObservableObject {
+    
     @Published var recipeMetadata: RecipeForm = .init()
     @Published var mainImageItem: PhotosPickerItem?
     @Published var mainImageData: Data? 
     
-    @Published var stepFormTrigger: RecipePathWithIndex?
-    
     @Published var stepForms: [ContentWrappedStepForm] = .init()
-    @Published var stepSelction: Int = 0
-
+    
+    // sheet, fullscreen을 위한 프로퍼티
+    @Published var stepFormTrigger: RecipePathWithIndex?
+    @Published var isShowingPreviewView: Bool = false
+    
+    // step 작성 시의 tabSelection
+    @Published var stepTabSelection: Int = 0
+    
+    var containsAnyStep: Bool {
+        stepForms.count >= 1 
+    }
     
     var isRemovableStep: Bool {
         stepForms.count >= 2
@@ -41,11 +49,11 @@ class RecipeFormViewModel: ObservableObject {
         stepForms.append(ContentWrappedStepForm())
     }
     
-    func addStepButotnTapped() {
+    func addStepButtonTapped() {
         appendStepForm()
         
         withAnimation {
-            stepSelction = stepForms.count - 1
+            stepTabSelection = stepForms.count - 1
         }
     }
     
@@ -54,7 +62,9 @@ class RecipeFormViewModel: ObservableObject {
         
         if stepForms.count >= 0 {
             showStepFormView(0)
-            stepSelction = 0
+            stepTabSelection = 0
         }
     }
+    
+    
 }

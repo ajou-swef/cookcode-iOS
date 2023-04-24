@@ -12,15 +12,13 @@ import PhotosUI
 struct StepFormView: View {
     
     @ObservedObject var viewModel: RecipeFormViewModel
-//    @State private var tabSelection: Int
     
     init(viewModel: RecipeFormViewModel, stepIndex: Int) {
         self.viewModel = viewModel
-//        self.tabSelection = stepIndex
     }
     
     var body: some View {
-        TabView(selection: $viewModel.stepSelction) {
+        TabView(selection: $viewModel.stepTabSelection) {
             ForEach(viewModel.stepForms.indices, id: \.self) {  i in
                 VStack(spacing: 40) {
                     HStack {
@@ -60,20 +58,6 @@ struct StepFormView: View {
         }
         .ignoresSafeArea(.keyboard)
         .tabViewStyle(.page(indexDisplayMode: .never))
-//        .onChange(of: photoItem) { newItem in
-//            print("onChange")
-//            Task {
-//                // Retrive selected asset in the form of Data
-//                do {
-//                    if let video = try? await newItem?.loadTransferable(type: VideoURL.self) {
-//                        videoURL = video
-//                    }
-//                } catch {
-//                    print("\(error)")
-//                }
-//            }
-//        }
-        
     }
     
     @ViewBuilder
@@ -166,6 +150,7 @@ struct StepFormView: View {
         .padding(.trailing, 10)
         .animation(.spring(), value: viewModel.stepForms[i].contentType)
     }
+    
     @ViewBuilder
     private func BottomButton(_ i: Int) -> some View {
         HStack {
@@ -181,7 +166,7 @@ struct StepFormView: View {
 
             
             Button {
-                viewModel.addStepButotnTapped()
+                viewModel.addStepButtonTapped()
             } label: {
                 Text("스텝 추가")
                     .foregroundColor(.white)

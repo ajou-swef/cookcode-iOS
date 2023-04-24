@@ -15,4 +15,5 @@ struct RecipePathWithIndex: Hashable, Identifiable {
 
 enum RecipePath: String, CaseIterable {
     case step = "step"
+    case preview = "preview"
 }

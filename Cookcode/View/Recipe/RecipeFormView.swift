@@ -24,27 +24,42 @@ struct RecipeFormView: View {
                     
                     DescriptionSection()
 
-                    
+
                     MainIngredients()
-                    
+
                     OptionalIngredients()
                 }
                 .padding(.horizontal, 10)
                 .padding(.top, 30)
             }
+            .fullScreenCover(isPresented: $viewModel.isShowingPreviewView) {
+                RecipePreviewView(viewModel: viewModel)
+            }
             .sheet(item: $viewModel.stepFormTrigger) { item in
                 StepFormView(viewModel: viewModel, stepIndex: item.index)
             }
             .overlay(alignment: .bottom) {
-                Button {
-                    viewModel.addFirstStepButtonTapped()
-                } label: {
-                    Text("1단계 스텝 작성하기")
-                        .font(CustomFontFactory.INTER_SECTION_TITLE)
-                        .foregroundColor(.white)
-                        .roundedRectangle(.ORANGE_320_FILLED)
-                }
+                VStack {
+                    Button {
+                        viewModel.addFirstStepButtonTapped()
+                    } label: {
+                        Text("스텝 작성하기")
+                            .font(CustomFontFactory.INTER_SECTION_TITLE)
+                            .foregroundColor(.white)
+                            .roundedRectangle(.ORANGE_320_FILLED)
+                    }
+                    
+                    Button {
+                        viewModel.isShowingPreviewView = true
+                    } label: {
+                        Text("미리보기")
+                            .font(CustomFontFactory.INTER_SECTION_TITLE)
+                            .foregroundColor(.white)
+                            .roundedRectangle(.ORANGE_320_FILLED)
+                    }
+                    .hidden(!viewModel.containsAnyStep)
 
+                }
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
