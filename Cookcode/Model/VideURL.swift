@@ -14,10 +14,10 @@ struct VideoURL: Transferable {
 
     static var transferRepresentation: some TransferRepresentation {
         FileRepresentation(contentType: .movie) { movie in
-            SentTransferredFile(movie.url)
+            return SentTransferredFile(movie.url)
         } importing: { received in
-            let copy = URL.documentsDirectory.appending(path: "movie.mp4")
-
+            let randomString = String.createRandomString(length: 10)
+            let copy = URL.documentsDirectory.appending(path: "\(randomString).movie.mp4")
             if FileManager.default.fileExists(atPath: copy.path()) {
                 try FileManager.default.removeItem(at: copy)
             }

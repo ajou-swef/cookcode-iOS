@@ -17,6 +17,8 @@
 		1503F94D29B4557A002F3D26 /* LoginViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F94C29B4557A002F3D26 /* LoginViewModel_Tests.swift */; };
 		1503F94F29B456CE002F3D26 /* LoginView_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F94E29B456CE002F3D26 /* LoginView_UITests.swift */; };
 		1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F95429B459DD002F3D26 /* LoginViewModel.swift */; };
+		150CD44329F397830001FFEB /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150CD44229F397830001FFEB /* ContentType.swift */; };
+		150CD44629F628CC0001FFEB /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150CD44529F628CC0001FFEB /* String + Extension.swift */; };
 		153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4D8C29ED061E00543730 /* Color + Extension.swift */; };
 		153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DA729ED097500543730 /* CustomFontFactory.swift */; };
 		153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DAA29ED0FF000543730 /* RoundedRectangleModifier.swift */; };
@@ -84,6 +86,8 @@
 		1503F94C29B4557A002F3D26 /* LoginViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel_Tests.swift; sourceTree = "<group>"; };
 		1503F94E29B456CE002F3D26 /* LoginView_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView_UITests.swift; sourceTree = "<group>"; };
 		1503F95429B459DD002F3D26 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		150CD44229F397830001FFEB /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		150CD44529F628CC0001FFEB /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		153B4D8C29ED061E00543730 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		153B4DA429ED085E00543730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		153B4DA729ED097500543730 /* CustomFontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontFactory.swift; sourceTree = "<group>"; };
@@ -248,10 +252,11 @@
 		1503F95229B459C7002F3D26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				150CD44229F397830001FFEB /* ContentType.swift */,
+				15AA2F8729F102720069813F /* VideURL.swift */,
 				15AA2F4929F0D8050069813F /* Path */,
 				15AA2F4129F0C9DC0069813F /* Form */,
 				153B4DB429ED2B5600543730 /* Tab.swift */,
-				15AA2F8729F102720069813F /* VideURL.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,11 +268,20 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		150CD44429F628900001FFEB /* Swift Standar + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				153B4DBC29ED599C00543730 /* Character + Extension.swift */,
+				150CD44529F628CC0001FFEB /* String + Extension.swift */,
+			);
+			path = "Swift Standar + Extension";
+			sourceTree = "<group>";
+		};
 		153B4D8A29ED050A00543730 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				150CD44429F628900001FFEB /* Swift Standar + Extension */,
 				15AA2F4829F0D4210069813F /* Binding + Extension */,
-				153B4DBA29ED598C00543730 /* Character + Extension */,
 				153B4DA929ED0F9500543730 /* View + Extension */,
 				153B4DA529ED095C00543730 /* CustomFontFactory */,
 				153B4D9129ED081C00543730 /* Font */,
@@ -338,14 +352,6 @@
 				153B4DB829ED58B900543730 /* MembershipForm_Tests.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		153B4DBA29ED598C00543730 /* Character + Extension */ = {
-			isa = PBXGroup;
-			children = (
-				153B4DBC29ED599C00543730 /* Character + Extension.swift */,
-			);
-			path = "Character + Extension";
 			sourceTree = "<group>";
 		};
 		15AA2F1E29EFE4750069813F /* Recipe */ = {
@@ -548,6 +554,7 @@
 			files = (
 				15AA2F2029EFE47C0069813F /* RecipeFormView.swift in Sources */,
 				15B869BB29EFDC4600A02872 /* CookieView.swift in Sources */,
+				150CD44629F628CC0001FFEB /* String + Extension.swift in Sources */,
 				153B4DB129ED1B1300543730 /* MembershipViewModel.swift in Sources */,
 				15AA2F8829F102720069813F /* VideURL.swift in Sources */,
 				15AA2F2829EFEBE00069813F /* CCDivider.swift in Sources */,
@@ -565,6 +572,7 @@
 				153B4DB529ED2B5600543730 /* Tab.swift in Sources */,
 				153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */,
 				15AA2F4B29F0D80E0069813F /* RecipePath.swift in Sources */,
+				150CD44329F397830001FFEB /* ContentType.swift in Sources */,
 				153B4DB329ED286300543730 /* View + Hidden.swift in Sources */,
 				15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */,
 				153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */,
