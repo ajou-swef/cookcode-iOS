@@ -10,7 +10,7 @@ import SwiftUI
 extension View {
     
     @ViewBuilder
-    func roundedRectangle(_ selection: RoundedRectangleModifier, alignment: Alignment = .center, focused: Bool = false ) -> some View {
+    func roundedRectangle(_ selection: RoundedRectangleModifier, alignment: Alignment = .center, focused: Bool = false) -> some View {
         switch selection {
         case .ORANGE_280_FILLED:
             self
@@ -23,10 +23,9 @@ extension View {
         case .ORANGE_320_FILLED:
             self
                 .frame(minWidth: 320, minHeight: 50, alignment: alignment)
-                .foregroundColor(.mainColor)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.mainColor)
+                        .fill(focused ? Color.mainColor : .gray808080)
                 }
         case .GRAY_320_STROKE:
             self
@@ -50,7 +49,6 @@ extension View {
         case .ORANGE_320_STROKE:
             self
                 .frame(minWidth: 320, minHeight: 50, alignment: alignment)
-                .foregroundColor(.mainColor)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(lineWidth: 2)
@@ -61,7 +59,7 @@ extension View {
                 .frame(minWidth: 320, minHeight: 50, alignment: alignment)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.gray808080)
+                        .fill(focused ? Color.gray808080 : .mainColor)
                 }
                 
         case .ORANGE_80_FILLE:

@@ -20,15 +20,13 @@ struct RecipeFormView: View {
                 ScrollView {
                     VStack(spacing: 10) {
                         TitleSection()
-                        
                         ImageSection()
-                        
                         DescriptionSection()
 
-
                         MainIngredients()
-
                         OptionalIngredients()
+                        
+                        Steps()
                     }
                     .padding(.horizontal, 10)
                     .padding(.top, 30)
@@ -36,23 +34,15 @@ struct RecipeFormView: View {
                 
                 VStack {
                     Button {
-                        viewModel.addFirstStepButtonTapped()
-                    } label: {
-                        Text("스텝 작성하기")
-                            .font(CustomFontFactory.INTER_SECTION_TITLE)
-                            .foregroundColor(.white)
-                            .roundedRectangle(.ORANGE_320_FILLED)
-                    }
-                    
-                    Button {
                         viewModel.isShowingPreviewView = true
                     } label: {
                         Text("미리보기")
                             .font(CustomFontFactory.INTER_SECTION_TITLE)
                             .foregroundColor(.white)
-                            .roundedRectangle(.ORANGE_320_FILLED)
+                            .roundedRectangle(.GRAY_320_FILLED,
+                                              focused: !viewModel.isAvailablePreviewButton)
                     }
-                    .hidden(!viewModel.containsAnyStep)
+                    .disabled(!viewModel.isAvailablePreviewButton)
 
                 }
             }
@@ -177,10 +167,7 @@ struct RecipeFormView: View {
     @ViewBuilder
     private func MainIngredients() -> some View {
         Section {
-            VStack(spacing: 5) {
-                CCDivider()
-                    .padding(.bottom, 20)
-            }
+           
         } header: {
             HStack {
                 Text("필수재료")
@@ -209,6 +196,8 @@ struct RecipeFormView: View {
     private func OptionalIngredients() -> some View {
         Section {
             
+            CCDivider()
+                .padding(.bottom, 20)
         } header: {
             HStack {
                 Text("보조재료")
@@ -218,6 +207,50 @@ struct RecipeFormView: View {
                 
                 Button {
                     
+                } label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 10, height: 10)
+                        Text("추가")
+                            .font(CustomFontFactory.INTER_REGULAR_14)
+                    }
+                    .foregroundColor(.primary)
+                }
+
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func Steps() -> some View {
+        Section {
+            VStack {
+                ForEach(viewModel.stepForms.indices, id: \.self) { i in
+                    Button {
+                        
+                    } label: {
+                        HStack {
+                            Text("\(i+1) 단계")
+                                .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                            
+                            Text("\(viewModel.stepForms[i].stepForm.title)")
+                                .font(CustomFontFactory.INTER_REGULAR_14)
+                            
+                            Spacer()
+                        }
+                    }
+                }
+            }
+        } header: {
+            HStack {
+                Text("스텝")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                
+                Spacer()
+                
+                Button {
+                    viewModel.addFirstStepButtonTapped()
                 } label: {
                     HStack(spacing: 5) {
                         Image(systemName: "plus")
