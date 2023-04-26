@@ -16,14 +16,14 @@ class RecipeFormViewModel: ObservableObject {
     
     @Published var stepForms: [ContentWrappedStepForm] = .init()
     
-    // sheet, fullscreen을 위한 프로퍼티
+    // sheet, fullscreen 등의 navigate를 위한 프로퍼티
     @Published var stepFormTrigger: RecipePathWithIndex?
     @Published var isShowingPreviewView: Bool = false
     
     // step 작성 시의 tabSelection
     @Published var stepTabSelection: String = ""
     
-    //  alert
+    // alert
     @Published var isPresentedContentDeleteAlert: Bool = false
     
     // 부드러운 스텝 삭제 애니메이션을 위한 프로퍼티

@@ -10,38 +10,12 @@ import AVKit
 
 struct StepPreviewView: View {
     
-    let contentWrappedStepForm: ContentWrappedStepForm
     let stepSequence: Int
     @ObservedObject var viewModel: RecipeFormViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
-            if contentWrappedStepForm.useImageType {
-                TabView {
-                    ForEach(contentWrappedStepForm.imageDatas, id: \.self) { data in
-                        if let uiImage = UIImage(data: data) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(maxWidth: .infinity, maxHeight: 300)
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: 300)
-                .tabViewStyle(.page(indexDisplayMode: .always))
-            }
-            
-            if contentWrappedStepForm.useVideoType {
-                TabView {
-                    ForEach(contentWrappedStepForm.videoURLs, id: \.self) {
-                        VideoPlayer(player: AVPlayer(url: $0.url)) {
-                            
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: 300)
-                .tabViewStyle(.page(indexDisplayMode: .always))
-            }
+            ContentViewer()
             
             Group {
                 HStack {
@@ -60,7 +34,7 @@ struct StepPreviewView: View {
                                 .font(CustomFontFactory.INTER_REGULAR_14)
                         }
                         
-                        Text("\(contentWrappedStepForm.stepForm.title)")
+                        Text("\(viewModel.stepForms[stepSequence - 1].stepForm.title)")
                     }
 
                 }
@@ -70,7 +44,7 @@ struct StepPreviewView: View {
             Button {
                 viewModel.showStepFormView(stepSequence - 1)
             } label: {
-                Text("수정")
+                Text("임시수정 버튼")
             }
             
             Spacer()
@@ -78,6 +52,65 @@ struct StepPreviewView: View {
         .sheet(item: $viewModel.stepFormTrigger) { item in
             StepFormView(viewModel: viewModel, stepIndex: item.index)
         }
+    }
+    
+    @ViewBuilder
+    private func ContentViewer() -> some View {
+        if viewModel.stepForms[stepSequence - 1].containsAnyContent {
+            if viewModel.stepForms[stepSequence - 1].containsAnyImage {
+                ImageContent()
+            }
+            
+            if viewModel.stepForms[stepSequence - 1].containsAnyVideoURL {
+                VideoContent()
+            }
+            
+        } else {
+            EmptyContent()
+        }
+    }
+    
+    @ViewBuilder
+    private func EmptyContent() -> some View {
+        Image(systemName: "photo.fill")
+            .resizable()
+            .scaledToFill()
+            .frame(maxWidth: .infinity, maxHeight: 300)
+            .foregroundColor(.gray_bcbcbc)
+            .background {
+                Rectangle()
+                    .stroke(lineWidth: 30)
+                    .foregroundColor(.gray_bcbcbc)
+            }
+    }
+    
+    @ViewBuilder
+    private func VideoContent() -> some View {
+        TabView {
+            ForEach(viewModel.stepForms[stepSequence - 1].videoURLs, id: \.self) {
+                VideoPlayer(player: AVPlayer(url: $0.url)) {
+                    
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: 300)
+        .tabViewStyle(.page(indexDisplayMode: .always))
+    }
+    
+    @ViewBuilder
+    private func ImageContent() -> some View {
+        TabView {
+            ForEach(viewModel.stepForms[stepSequence - 1].imageDatas, id: \.self) { data in
+                if let uiImage = UIImage(data: data) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity, maxHeight: 300)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: 300)
+        .tabViewStyle(.page(indexDisplayMode: .always))
     }
 }
 

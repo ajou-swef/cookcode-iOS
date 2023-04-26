@@ -50,6 +50,10 @@ struct ContentWrappedStepForm: Identifiable {
         contentType == .video
     }
     
+    var containsAnyContent: Bool {
+        containsAnyImage || containsAnyVideoURL
+    }
+    
     var containsAnyImage: Bool {
         !imageDatas.isEmpty
     }
