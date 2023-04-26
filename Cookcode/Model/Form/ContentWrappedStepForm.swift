@@ -22,6 +22,7 @@ struct ContentWrappedStepForm: Identifiable {
     }
     
     var imageDatas: [Data] = .init()
+    
     var videoURLs: [VideoURL] = .init() {
         willSet(newValue) {
             for value in newValue {
@@ -54,6 +55,11 @@ struct ContentWrappedStepForm: Identifiable {
     
     var useVideo: Bool {
         contentType == .video
+    }
+    
+    var fillAllRequiredInformation: Bool {
+        !stepForm.isEmptyTitle && !stepForm.isEmptyDescription &&
+        (!photoPickerItems.isEmpty || !imageDatas.isEmpty)
     }
     
     mutating func load() async {
