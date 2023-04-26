@@ -32,9 +32,9 @@ struct StepFormView: View {
                     .padding(.bottom, -20)
                     
                     PhotosPicker(selection: $viewModel.stepForms[i].photoPickerItems, maxSelectionCount: viewModel.stepForms[i].maxSelection, matching: viewModel.stepForms[i].phpFilter) {
-                        if viewModel.stepForms[i].useImage {
+                        if viewModel.stepForms[i].useImageType {
                             SelectImageButton(i)
-                        } else if viewModel.stepForms[i].useVideo {
+                        } else if viewModel.stepForms[i].useVideoType {
                             SelectVideoButton(i)
                         }
                     }
@@ -46,6 +46,7 @@ struct StepFormView: View {
                     
                     TitleSection(i)
                     DescriptionSection(i)
+
                     
                     Spacer()
                     
@@ -102,28 +103,45 @@ struct StepFormView: View {
     private func SelectContentTypeButton(_ i: Int) -> some View {
         HStack {
             Button {
-                viewModel.stepForms[i].contentType = .image
+                if viewModel.stepForms[i].containsAnyVideoURL {
+                    viewModel.isPresentedContentDeleteAlert = true
+                } else {
+                    viewModel.stepForms[i].changeContent()
+                }
             } label: {
                 Text("이미지")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
             }
             .padding(.leading, 10)
-            .foregroundColor(viewModel.stepForms[i].useImage ?
+            .foregroundColor(viewModel.stepForms[i].useImageType ?
                 .white : .primary)
             
             Spacer()
             
             Button {
-                viewModel.stepForms[i].contentType = .video
+                if viewModel.stepForms[i].containsAnyImage {
+                    viewModel.isPresentedContentDeleteAlert = true
+                } else {
+                    viewModel.stepForms[i].changeContent()
+                }
             } label: {
                 Text("동영상")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
                 
             }
             .padding(.trailing, 10)
-            .foregroundColor(viewModel.stepForms[i].useVideo ?
+            .foregroundColor(viewModel.stepForms[i].useVideoType ?
                 .white : .primary)
 
+        }
+        .alert("현재 선택된 컨텐츠가 삭제됩니다.", isPresented: $viewModel.isPresentedContentDeleteAlert) {
+            Button("삭제") {
+                viewModel.stepForms[i].changeContent()
+            }
+            
+            Button("취소", role: .cancel) {
+                
+            }
         }
         .frame(width: 140, height: 25)
         .padding(.vertical, 10)
@@ -132,7 +150,7 @@ struct StepFormView: View {
             
             HStack {
                 Spacer()
-                    .hidden(viewModel.stepForms[i].useImage)
+                    .hidden(viewModel.stepForms[i].useImageType)
                 
                 RoundedRectangle(cornerRadius: 25)
                     .foregroundColor(.mainColor)
@@ -140,7 +158,7 @@ struct StepFormView: View {
                     .padding(5)
                 
                 Spacer()
-                    .hidden(viewModel.stepForms[i].useVideo)
+                    .hidden(viewModel.stepForms[i].useVideoType)
             }
         )
         .background(
@@ -206,7 +224,7 @@ struct StepFormView: View {
             
         } header: {
             HStack {
-                Text("간략한 설명")
+                Text("스텝 제목")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
                 
                 Spacer()

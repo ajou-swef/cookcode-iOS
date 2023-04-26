@@ -26,7 +26,7 @@ struct RecipePreviewView: View {
                 
                 ForEach(viewModel.stepForms.indices, id: \.self) { i in
                     StepPreviewView(contentWrappedStepForm: viewModel.stepForms[i],
-                                    step: i+1, viewModel: viewModel)
+                                    stepSequence: i+1, viewModel: viewModel)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))

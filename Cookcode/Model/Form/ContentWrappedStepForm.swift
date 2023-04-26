@@ -22,14 +22,7 @@ struct ContentWrappedStepForm: Identifiable {
     }
     
     var imageDatas: [Data] = .init()
-    
-    var videoURLs: [VideoURL] = .init() {
-        willSet(newValue) {
-            for value in newValue {
-                print("\(value.url.absoluteString)")
-            }
-        }
-    }
+    var videoURLs: [VideoURL] = .init()
     
     var contentType: ContentType {
         get {
@@ -49,17 +42,33 @@ struct ContentWrappedStepForm: Identifiable {
         contentType.maxSelection
     }
     
-    var useImage: Bool {
+    var useImageType: Bool {
         contentType == .image
     }
     
-    var useVideo: Bool {
+    var useVideoType: Bool {
         contentType == .video
+    }
+    
+    var containsAnyImage: Bool {
+        !imageDatas.isEmpty
+    }
+    
+    var containsAnyVideoURL: Bool {
+        !videoURLs.isEmpty
     }
     
     var fillAllRequiredInformation: Bool {
         !stepForm.isEmptyTitle && !stepForm.isEmptyDescription &&
         (!photoPickerItems.isEmpty || !imageDatas.isEmpty)
+    }
+    
+    mutating func changeContent() {
+        if contentType == .image {
+            contentType = .video
+        } else {
+            contentType = .image
+        }
     }
     
     mutating func load() async {

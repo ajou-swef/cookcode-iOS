@@ -11,12 +11,12 @@ import AVKit
 struct StepPreviewView: View {
     
     let contentWrappedStepForm: ContentWrappedStepForm
-    let step: Int
+    let stepSequence: Int
     @ObservedObject var viewModel: RecipeFormViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
-            if contentWrappedStepForm.useImage {
+            if contentWrappedStepForm.useImageType {
                 TabView {
                     ForEach(contentWrappedStepForm.imageDatas, id: \.self) { data in
                         if let uiImage = UIImage(data: data) {
@@ -31,7 +31,7 @@ struct StepPreviewView: View {
                 .tabViewStyle(.page(indexDisplayMode: .always))
             }
             
-            if contentWrappedStepForm.useVideo {
+            if contentWrappedStepForm.useVideoType {
                 TabView {
                     ForEach(contentWrappedStepForm.videoURLs, id: \.self) {
                         VideoPlayer(player: AVPlayer(url: $0.url)) {
@@ -45,18 +45,30 @@ struct StepPreviewView: View {
             
             Group {
                 HStack {
-                    Text("\(step)")
+                    Text("\(stepSequence)")
                         .font(CustomFontFactory.INTER_TITLE)
                         .foregroundColor(.mainColor)
                     
-                    Text("\(contentWrappedStepForm.stepForm.title)")
+                    VStack {
+                        if !viewModel.stepForms[stepSequence - 1].fillAllRequiredInformation {
+                            Text("정보가 부족합니다.")
+                                .foregroundColor(.red)
+                                .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                            
+                            Text("해당 스텝을 수정해주세요.")
+                                .foregroundColor(.red)
+                                .font(CustomFontFactory.INTER_REGULAR_14)
+                        }
+                        
+                        Text("\(contentWrappedStepForm.stepForm.title)")
+                    }
 
                 }
             }
             .padding(.leading, 10)
             
             Button {
-                viewModel.showStepFormView(step - 1)
+                viewModel.showStepFormView(stepSequence - 1)
             } label: {
                 Text("수정")
             }

@@ -23,6 +23,9 @@ class RecipeFormViewModel: ObservableObject {
     // step 작성 시의 tabSelection
     @Published var stepTabSelection: Int = 0
     
+    //  alert
+    @Published var isPresentedContentDeleteAlert: Bool = false
+    
     var isAvailablePreviewButton: Bool {
         containsAnyStep && !recipeMetadata.isEmptyTitle && mainImageData != nil
     }
