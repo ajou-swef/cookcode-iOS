@@ -54,7 +54,10 @@ struct StepFormView: View {
                 }
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
-                .tag(i)
+                .tag(viewModel.stepForms[i].id)
+                .onDisappear {
+                    viewModel.onDisappearStep()
+                }
             }
         }
         .ignoresSafeArea(.keyboard)
@@ -103,11 +106,7 @@ struct StepFormView: View {
     private func SelectContentTypeButton(_ i: Int) -> some View {
         HStack {
             Button {
-                if viewModel.stepForms[i].containsAnyVideoURL {
-                    viewModel.isPresentedContentDeleteAlert = true
-                } else {
-                    viewModel.stepForms[i].changeContent()
-                }
+                viewModel.changeToImageButtonTapped(i)
             } label: {
                 Text("이미지")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
@@ -119,11 +118,7 @@ struct StepFormView: View {
             Spacer()
             
             Button {
-                if viewModel.stepForms[i].containsAnyImage {
-                    viewModel.isPresentedContentDeleteAlert = true
-                } else {
-                    viewModel.stepForms[i].changeContent()
-                }
+                viewModel.changeToVideoButtonTapped(i)
             } label: {
                 Text("동영상")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
@@ -136,12 +131,9 @@ struct StepFormView: View {
         }
         .alert("현재 선택된 컨텐츠가 삭제됩니다.", isPresented: $viewModel.isPresentedContentDeleteAlert) {
             Button("삭제") {
-                viewModel.stepForms[i].changeContent()
+                viewModel.deleteContentsButtonInAlertTapped(i)
             }
-            
-            Button("취소", role: .cancel) {
-                
-            }
+            Button("취소", role: .cancel) {   }
         }
         .frame(width: 140, height: 25)
         .padding(.vertical, 10)

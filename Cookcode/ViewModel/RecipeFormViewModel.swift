@@ -21,10 +21,13 @@ class RecipeFormViewModel: ObservableObject {
     @Published var isShowingPreviewView: Bool = false
     
     // step 작성 시의 tabSelection
-    @Published var stepTabSelection: Int = 0
+    @Published var stepTabSelection: String = ""
     
     //  alert
     @Published var isPresentedContentDeleteAlert: Bool = false
+    
+    // 부드러운 스텝 삭제 애니메이션용
+    @Published var deletedStepIndex: Int?
     
     var isAvailablePreviewButton: Bool {
         containsAnyStep && !recipeMetadata.isEmptyTitle && mainImageData != nil
@@ -44,19 +47,58 @@ class RecipeFormViewModel: ObservableObject {
         }
     }
     
-    func trashButtonTapped(_ index: Int) {
-        stepForms.remove(at: index)
-    }
-    
     fileprivate func appendStepForm() {
         stepForms.append(ContentWrappedStepForm())
     }
     
     //  MARK: StepView 관련 기능들
+    func showStepFormView(_ i: Int) {
+        stepTabSelection = stepForms[i].id
+        stepFormTrigger = RecipePathWithIndex(path: .step, index: i)
+    }
+    
+    func flushDeletedStepIndex() {
+        if let i = deletedStepIndex {
+            stepForms.remove(at: i)
+        }
+        
+        deletedStepIndex = nil
+    }
+    
+    //  MARK: UI 상호작용
+    func trashButtonTapped(_ i: Int) {
+        withAnimation {
+            stepTabSelection = stepForms[i-1].id
+            deletedStepIndex = i
+        }
+    }
+    
+    func changeToImageButtonTapped(_ i: Int) {
+        if stepForms[i].containsAnyVideoURL {
+            isPresentedContentDeleteAlert = true
+        } else {
+            stepForms[i].changeContent()
+        }
+    }
+    
+    func changeToVideoButtonTapped(_ i: Int) {
+        if stepForms[i].containsAnyImage {
+            isPresentedContentDeleteAlert = true
+        } else {
+            stepForms[i].changeContent()
+        }
+    }
+    
+    func deleteContentsButtonInAlertTapped(_ i: Int) {
+        stepForms[i].changeContent()
+    }
+    
     func addStepButtonTapped() {
         appendStepForm()
         withAnimation {
-            stepTabSelection = stepForms.count - 1
+            if let last = stepForms.last {
+                stepTabSelection = last.id
+            }
         }
     }
     
@@ -65,9 +107,7 @@ class RecipeFormViewModel: ObservableObject {
         showStepFormView(stepForms.count - 1)
     }
     
-    
-    func showStepFormView(_ index: Int) {
-        stepTabSelection = index
-        stepFormTrigger = RecipePathWithIndex(path: .step, index: index)
+    func onDisappearStep() {
+        flushDeletedStepIndex()
     }
 }
