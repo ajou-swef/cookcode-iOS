@@ -26,7 +26,7 @@ class RecipeFormViewModel: ObservableObject {
     //  alert
     @Published var isPresentedContentDeleteAlert: Bool = false
     
-    // 부드러운 스텝 삭제 애니메이션용
+    // 부드러운 스텝 삭제 애니메이션을 위한 프로퍼티
     @Published var deletedStepIndex: Int?
     
     var isAvailablePreviewButton: Bool {
@@ -66,6 +66,8 @@ class RecipeFormViewModel: ObservableObject {
     }
     
     //  MARK: UI 상호작용
+    
+    // 바로 삭제하지 않고 삭제될 Index를 저장한다. 바로 삭제하면 애니메이션이 이상해진다.
     func trashButtonTapped(_ i: Int) {
         withAnimation {
             stepTabSelection = stepForms[i-1].id
