@@ -41,10 +41,6 @@ class RecipeFormViewModel: ObservableObject {
         }
     }
     
-    func showStepFormView(_ index: Int) {
-        stepFormTrigger = RecipePathWithIndex(path: .step, index: index)
-    }
-    
     func trashButtonTapped(_ index: Int) {
         stepForms.remove(at: index)
     }
@@ -53,9 +49,9 @@ class RecipeFormViewModel: ObservableObject {
         stepForms.append(ContentWrappedStepForm())
     }
     
+    //  MARK: StepView 관련 기능들
     func addStepButtonTapped() {
         appendStepForm()
-        
         withAnimation {
             stepTabSelection = stepForms.count - 1
         }
@@ -63,12 +59,12 @@ class RecipeFormViewModel: ObservableObject {
     
     func addFirstStepButtonTapped() {
         appendStepForm()
-        
-        if stepForms.count >= 0 {
-            showStepFormView(0)
-            stepTabSelection = 0
-        }
+        showStepFormView(stepForms.count - 1)
     }
     
     
+    func showStepFormView(_ index: Int) {
+        stepTabSelection = index
+        stepFormTrigger = RecipePathWithIndex(path: .step, index: index)
+    }
 }

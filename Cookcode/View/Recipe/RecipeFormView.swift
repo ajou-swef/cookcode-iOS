@@ -225,17 +225,20 @@ struct RecipeFormView: View {
     @ViewBuilder
     private func Steps() -> some View {
         Section {
-            VStack {
+            VStack(spacing: 10) {
                 ForEach(viewModel.stepForms.indices, id: \.self) { i in
                     Button {
-                        
+                        viewModel.showStepFormView(i)
                     } label: {
                         HStack {
                             Text("\(i+1) 단계")
-                                .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                                .font(CustomFontFactory.INTER_SECTION_TITLE)
+                                .padding(.trailing, 15)
+                                .foregroundColor(.mainColor)
                             
                             Text("\(viewModel.stepForms[i].stepForm.title)")
                                 .font(CustomFontFactory.INTER_REGULAR_14)
+                                .foregroundColor(.black)
                             
                             Spacer()
                         }
