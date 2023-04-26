@@ -23,8 +23,11 @@ struct RecipePreviewView: View {
                 GeometryReader { proxy in
                     RecipeEntranceView(recipeForm: viewModel.recipeMetadata, imageData: viewModel.mainImageData, cgSize: proxy.size)
                 }
-                Text("스텝1")
-                Text("스텝2")
+                
+                ForEach(viewModel.stepForms.indices, id: \.self) { i in
+                    StepPreviewView(contentWrappedStepForm: viewModel.stepForms[i],
+                                    step: i+1, viewModel: viewModel)
+                }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .frame(maxWidth: .infinity)

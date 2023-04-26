@@ -231,14 +231,10 @@ struct RecipeFormView: View {
                         viewModel.showStepFormView(i)
                     } label: {
                         HStack {
-                            Text("\(i+1) 단계")
+                            Text("\(i+1)단계")
                                 .font(CustomFontFactory.INTER_SECTION_TITLE)
                                 .padding(.trailing, 15)
                                 .foregroundColor(.mainColor)
-                            
-                            Text("\(viewModel.stepForms[i].stepForm.title)")
-                                .font(CustomFontFactory.INTER_REGULAR_14)
-                                .foregroundColor(.black)
                             
                             Spacer()
                         }

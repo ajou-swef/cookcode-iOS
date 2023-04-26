@@ -9,7 +9,7 @@ import AVKit
 import PhotosUI
 import SwiftUI
 
-struct VideoURL: Transferable {
+struct VideoURL: Transferable, Hashable {
     let url: URL
 
     static var transferRepresentation: some TransferRepresentation {

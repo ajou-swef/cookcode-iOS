@@ -8,11 +8,12 @@
 import SwiftUI
 import PhotosUI
 
-struct ContentWrappedStepForm {
+struct ContentWrappedStepForm: Identifiable {
+    let id: String = UUID().uuidString
     var stepForm: StepForm = .init()
     var photoPickerItems: [PhotosPickerItem] = .init()
     
-    private(set) var _contentType: ContentType = .image {
+    private var _contentType: ContentType = .image {
         willSet {
             photoPickerItems.removeAll()
             imageDatas.removeAll()
