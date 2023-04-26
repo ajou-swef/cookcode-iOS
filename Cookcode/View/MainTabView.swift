@@ -10,6 +10,8 @@ import SwiftUI
 struct MainTabView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
+    let tabItemImageWidth: CGFloat = 35
+    let tabItemImageHeight: CGFloat = 35
     
     var body: some View {
         
@@ -37,6 +39,8 @@ struct MainTabView: View {
         .tag(Tab.cookie)
         .tabItem {
             Tab.cookie.selectImage(navigateViewModel.tab)
+                .resizable()
+                .frame(width: tabItemImageWidth, height: tabItemImageHeight)
         }
     }
     
@@ -48,6 +52,8 @@ struct MainTabView: View {
         .tag(Tab.home)
         .tabItem {
             Tab.home.selectImage(navigateViewModel.tab)
+                .resizable()
+                .frame(width: tabItemImageWidth, height: tabItemImageHeight)
         }
     }
     
@@ -59,6 +65,8 @@ struct MainTabView: View {
         .tag(Tab.refrigerator)
         .tabItem {
             Tab.refrigerator.selectImage(navigateViewModel.tab)
+                .resizable()
+                .frame(width: tabItemImageWidth, height: tabItemImageHeight)
         }
     }
 }

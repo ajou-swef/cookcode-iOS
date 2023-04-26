@@ -16,29 +16,24 @@ struct RecipeFormView: View {
     
     var body: some View {
         NavigationStack(path: $navigateViewModel.recipePath) {
-            ScrollView {
-                VStack(spacing: 10) {
-                    TitleSection()
-                    
-                    ImageSection()
-                    
-                    DescriptionSection()
+            VStack {
+                ScrollView {
+                    VStack(spacing: 10) {
+                        TitleSection()
+                        
+                        ImageSection()
+                        
+                        DescriptionSection()
 
 
-                    MainIngredients()
+                        MainIngredients()
 
-                    OptionalIngredients()
+                        OptionalIngredients()
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.top, 30)
                 }
-                .padding(.horizontal, 10)
-                .padding(.top, 30)
-            }
-            .fullScreenCover(isPresented: $viewModel.isShowingPreviewView) {
-                RecipePreviewView(viewModel: viewModel)
-            }
-            .sheet(item: $viewModel.stepFormTrigger) { item in
-                StepFormView(viewModel: viewModel, stepIndex: item.index)
-            }
-            .overlay(alignment: .bottom) {
+                
                 VStack {
                     Button {
                         viewModel.addFirstStepButtonTapped()
@@ -60,6 +55,12 @@ struct RecipeFormView: View {
                     .hidden(!viewModel.containsAnyStep)
 
                 }
+            }
+            .fullScreenCover(isPresented: $viewModel.isShowingPreviewView) {
+                RecipePreviewView(viewModel: viewModel)
+            }
+            .sheet(item: $viewModel.stepFormTrigger) { item in
+                StepFormView(viewModel: viewModel, stepIndex: item.index)
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
