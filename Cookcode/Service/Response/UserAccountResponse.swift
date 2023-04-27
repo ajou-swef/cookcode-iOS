@@ -12,7 +12,9 @@ struct UserAccountResponse: Codable {
     let status: Int
     let data: Data
     
-    // MARK: - DataClass
+    
+    static let MOCK_DATA: Data = Data(userID: 123, email: "nou0jid@ajou.ac.kr", nickname: "page", authority: "USER", status: "VALID")
+    
     struct Data: Codable {
         let userID: Int
         let email, nickname, authority, status: String

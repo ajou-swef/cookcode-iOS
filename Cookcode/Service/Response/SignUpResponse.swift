@@ -12,6 +12,8 @@ struct SignUpResponse: Codable {
     let status: Int
     let data: Data
     
+    static let MOCK_DATA: Data = Data(userID: 123, nickname: "Page", email: "nou0jid@ajou.ac.kr")
+    
     struct Data: Codable {
         let userID: Int
         let nickname, email: String
