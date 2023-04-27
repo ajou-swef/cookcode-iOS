@@ -63,7 +63,7 @@ struct ContentWrappedStepForm: Identifiable {
     }
     
     var fillAllRequiredInformation: Bool {
-        !stepForm.isEmptyTitle && !stepForm.isEmptyDescription &&
+        !stepForm.titleIsEmpty && !stepForm.descriptionIsEmpty &&
         (!photoPickerItems.isEmpty || !imageDatas.isEmpty)
     }
     

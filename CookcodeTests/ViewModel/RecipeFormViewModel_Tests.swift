@@ -33,7 +33,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         vm.stepForms.append(ContentWrappedStepForm())
         
         //  Then
-        XCTAssertTrue(vm.isAvailablePreviewButton)
+        XCTAssertTrue(vm.previewButtonIsAvailable)
     }
     
     func test_RecipeFormViewModel_isAvailablePreviewButton_shouldBeFalse1() {
@@ -48,7 +48,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         vm.stepForms.append(ContentWrappedStepForm())
         
         //  Then
-        XCTAssertFalse(vm.isAvailablePreviewButton)
+        XCTAssertFalse(vm.previewButtonIsAvailable)
     }
     
     func test_RecipeFormViewModel_isAvailablePreviewButton_shouldBeFalse2() {
@@ -63,7 +63,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         vm.stepForms.append(ContentWrappedStepForm())
         
         //  Then
-        XCTAssertFalse(vm.isAvailablePreviewButton)
+        XCTAssertFalse(vm.previewButtonIsAvailable)
     }
     
     func test_RecipeFormViewModel_isAvailablePreviewButton_shouldBeFalse3() {
@@ -78,6 +78,6 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         vm.mainImageData = Data() 
         
         //  Then
-        XCTAssertFalse(vm.isAvailablePreviewButton)
+        XCTAssertFalse(vm.previewButtonIsAvailable)
     }
 }

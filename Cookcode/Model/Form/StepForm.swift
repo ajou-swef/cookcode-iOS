@@ -12,11 +12,11 @@ struct StepForm: Codable, Identifiable, Equatable {
     var title: String = ""
     var description: String = ""
     
-    var isEmptyTitle: Bool {
+    var titleIsEmpty: Bool {
         title.isEmpty
     }
     
-    var isEmptyDescription: Bool {
+    var descriptionIsEmpty: Bool {
         description.isEmpty
     }
 }

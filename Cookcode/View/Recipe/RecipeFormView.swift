@@ -40,9 +40,9 @@ struct RecipeFormView: View {
                             .font(CustomFontFactory.INTER_SECTION_TITLE)
                             .foregroundColor(.white)
                             .roundedRectangle(.GRAY_320_FILLED,
-                                              focused: !viewModel.isAvailablePreviewButton)
+                                              focused: !viewModel.previewButtonIsAvailable)
                     }
-                    .disabled(!viewModel.isAvailablePreviewButton)
+                    .disabled(!viewModel.previewButtonIsAvailable)
 
                 }
             }

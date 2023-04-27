@@ -14,7 +14,7 @@ struct RecipeForm: Codable {
     var mainIngredients: [String] = []
     var optionalIngredients: [String] = []
     
-    var isEmptyTitle: Bool {
+    var titleIsEmpty: Bool {
         title.isEmpty
     }
 }

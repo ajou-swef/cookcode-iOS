@@ -122,13 +122,13 @@ struct MembershipView: View {
                 
 
                 Button {
-                    print("\(viewModel.complebuttonEnables)")
+                    print("\(viewModel.completeButtonIsAvailable)")
                 } label: {
                     Text("완료")
                         .foregroundColor(.white)
-                        .roundedRectangle(viewModel.complebuttonEnables ?  .ORANGE_320_FILLED : .GRAY_320_FILLED)
+                        .roundedRectangle(viewModel.completeButtonIsAvailable ?  .ORANGE_320_FILLED : .GRAY_320_FILLED)
                 }
-                .disabled(!viewModel.complebuttonEnables)
+                .disabled(!viewModel.completeButtonIsAvailable)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

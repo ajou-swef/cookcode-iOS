@@ -138,7 +138,7 @@ final class MembershipForm_Tests: XCTestCase {
             membershipForm.password = password
             
             //  Then
-            XCTAssertTrue(membershipForm.isEnoughLongPassword)
+            XCTAssertTrue(membershipForm.passwordIsEnoughLong)
         }
     }
     
@@ -155,7 +155,7 @@ final class MembershipForm_Tests: XCTestCase {
             membershipForm.password = password
             
             //  Then
-            XCTAssertFalse(membershipForm.isEnoughLongPassword)
+            XCTAssertFalse(membershipForm.passwordIsEnoughLong)
         }
     }
     
@@ -172,7 +172,7 @@ final class MembershipForm_Tests: XCTestCase {
             membershipForm.password = password
             
             //  Then
-            XCTAssertTrue(membershipForm.isValidPassword)
+            XCTAssertTrue(membershipForm.passwordIsValid)
         }
     }
 }
