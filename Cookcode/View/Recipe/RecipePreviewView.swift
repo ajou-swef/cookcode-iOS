@@ -24,7 +24,7 @@ struct RecipePreviewView: View {
                 GeometryReader { proxy in
                     RecipeEntranceView(recipeForm: viewModel.recipeMetadata, imageData: viewModel.mainImageData, cgSize: proxy.size)
                 }
-                .tag("preview")
+                .tag("main")
                 
                 ForEach(viewModel.stepForms.indices, id: \.self) { i in
                     StepPreviewView(stepSequence: i+1, viewModel: viewModel)

@@ -18,7 +18,6 @@ class RecipeFormViewModel: ObservableObject {
     
     // sheet, fullscreen 등의 navigate를 위한 프로퍼티
     @Published var stepFormTrigger: RecipePathWithIndex?
-    @Published var previewViewIsPresented: Bool = false
     
     // step 작성 시의 tabSelection
     @Published var stepTabSelection: String = ""
