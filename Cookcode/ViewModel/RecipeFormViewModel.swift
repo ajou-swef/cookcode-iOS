@@ -22,6 +22,7 @@ class RecipeFormViewModel: ObservableObject {
     
     // step 작성 시의 tabSelection
     @Published var stepTabSelection: String = ""
+    @Published var previewTabSelection: String = "main" 
     
     // alert
     @Published var isPresentedContentDeleteAlert: Bool = false
@@ -73,6 +74,10 @@ class RecipeFormViewModel: ObservableObject {
     
     func stepFormContainsAnyVideoURL(at: Int) -> Bool {
         stepForms[at].containsAnyVideoURL
+    }
+    
+    func stepFormID(at: Int) -> String {
+        stepForms[at].id
     }
     
     //  MARK: StepView 관련 기능들

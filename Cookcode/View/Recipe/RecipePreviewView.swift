@@ -20,13 +20,15 @@ struct RecipePreviewView: View {
                    TopButton()
                 }
             
-            TabView {
+            TabView(selection: $viewModel.previewTabSelection) {
                 GeometryReader { proxy in
                     RecipeEntranceView(recipeForm: viewModel.recipeMetadata, imageData: viewModel.mainImageData, cgSize: proxy.size)
                 }
+                .tag("preview")
                 
                 ForEach(viewModel.stepForms.indices, id: \.self) { i in
                     StepPreviewView(stepSequence: i+1, viewModel: viewModel)
+                        .tag(viewModel.stepFormID(at: i))
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
