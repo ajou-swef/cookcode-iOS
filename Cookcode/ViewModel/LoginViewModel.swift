@@ -9,5 +9,5 @@ import Foundation
 
 class LoginViewModel: ObservableObject {
     
-    @Published var loginForm = LoginForm()
+    @Published var loginForm = SignInForm()
 }

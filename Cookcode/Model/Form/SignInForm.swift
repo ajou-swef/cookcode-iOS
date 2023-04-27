@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginForm {
+struct SignInForm {
     var email: String = ""
     var password: String = "" 
 }
