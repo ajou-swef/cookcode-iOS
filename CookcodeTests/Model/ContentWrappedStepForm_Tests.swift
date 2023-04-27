@@ -33,7 +33,7 @@ final class ContentWrappedStepForm_Tests: XCTestCase {
         contentWrapedStepFrom.stepForm = stepForm
         
         //  Then
-        XCTAssertTrue(contentWrapedStepFrom.fillAllRequiredInformation)
+        XCTAssertTrue(contentWrapedStepFrom.containsAllRequiredInformation)
     }
     
     func test_ContentWrappedStepForm_fillAllRequiredInformation_shouldBeFalse() {
@@ -63,7 +63,7 @@ final class ContentWrappedStepForm_Tests: XCTestCase {
             //  When
             
             //  Then
-            XCTAssertFalse(cwst.fillAllRequiredInformation)
+            XCTAssertFalse(cwst.containsAllRequiredInformation)
         }
         
     }

@@ -34,6 +34,14 @@ struct ContentWrappedStepForm: Identifiable {
         }
     }
     
+    var title: String {
+        stepForm.title
+    }
+    
+    var description: String {
+        stepForm.description
+    }
+    
     var phpFilter: PHPickerFilter {
         contentType.phpFilter
     }
@@ -62,9 +70,9 @@ struct ContentWrappedStepForm: Identifiable {
         !videoURLs.isEmpty
     }
     
-    var fillAllRequiredInformation: Bool {
+    var containsAllRequiredInformation: Bool {
         !stepForm.titleIsEmpty && !stepForm.descriptionIsEmpty &&
-        (!photoPickerItems.isEmpty || !imageDatas.isEmpty)
+        containsAnyContent
     }
     
     mutating func changeContent() {

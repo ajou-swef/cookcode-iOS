@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipePreviewView: View {
     
     @ObservedObject var viewModel: RecipeFormViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -36,8 +37,8 @@ struct RecipePreviewView: View {
             .clipShape(RoundedRectangle(cornerRadius: 25))
             .padding(.horizontal, 10)
             .padding(.top, 30)
-
         }
+        .navigationBarBackButtonHidden()
         .statusBarHidden()
     }
     
@@ -45,7 +46,7 @@ struct RecipePreviewView: View {
     private func TopButton() -> some View {
         HStack {
             Button {
-                viewModel.isShowingPreviewView = false
+                dismiss()
             } label: {
                 Image(systemName: "xmark.circle.fill")
                     .resizable()

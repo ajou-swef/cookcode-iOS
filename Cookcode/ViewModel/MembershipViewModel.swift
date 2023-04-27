@@ -9,11 +9,11 @@ import SwiftUI
 
 class MembershipViewModel: ObservableObject {
     @Published var membershipForm = MembershipForm()
-    @Published private(set) var uniqueNickname: Bool = true
+    @Published private(set) var uniqueNicknameCheckCompleted: Bool = true
 
     var completeButtonIsAvailable: Bool {
         !membershipForm.emailIsEmpty && membershipForm.passwordIsValid &&
-        membershipForm.passwordMatch && uniqueNickname
+        membershipForm.passwordMatch && uniqueNicknameCheckCompleted
     }
  
     var hidePasswordValidText: Bool {

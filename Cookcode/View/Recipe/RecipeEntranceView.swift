@@ -23,7 +23,7 @@ struct RecipeEntranceView: View {
             
             Group {
                 Text(recipeForm.title)
-                    .font(CustomFontFactory.INTER_TITLE)
+                    .font(CustomFontFactory.INTER_BOLD_30)
                 
                 Text(recipeForm.description)
                     .font(CustomFontFactory.INTER_REGULAR_14)

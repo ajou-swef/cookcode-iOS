@@ -15,7 +15,6 @@ extension View {
         case .ORANGE_280_FILLED:
             self
                 .frame(minWidth: 280, maxWidth: 280, minHeight: 50, alignment: alignment)
-                .foregroundColor(.mainColor)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.mainColor)

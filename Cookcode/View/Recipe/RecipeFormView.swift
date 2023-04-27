@@ -33,21 +33,18 @@ struct RecipeFormView: View {
                 }
                 
                 VStack {
-                    Button {
-                        viewModel.isShowingPreviewView = true
+                    
+                    NavigationLink {
+                        RecipePreviewView(viewModel: viewModel)
                     } label: {
                         Text("미리보기")
-                            .font(CustomFontFactory.INTER_SECTION_TITLE)
+                            .font(CustomFontFactory.INTER_BOLD_16)
                             .foregroundColor(.white)
                             .roundedRectangle(.GRAY_320_FILLED,
                                               focused: !viewModel.previewButtonIsAvailable)
                     }
                     .disabled(!viewModel.previewButtonIsAvailable)
-
                 }
-            }
-            .fullScreenCover(isPresented: $viewModel.isShowingPreviewView) {
-                RecipePreviewView(viewModel: viewModel)
             }
             .sheet(item: $viewModel.stepFormTrigger) { item in
                 StepFormView(viewModel: viewModel, stepIndex: item.index)
@@ -66,7 +63,7 @@ struct RecipeFormView: View {
                 
                 ToolbarItem(placement: .principal) {
                     Text("새 레시피")
-                        .font(CustomFontFactory.INTER_SECTION_TITLE)
+                        .font(CustomFontFactory.INTER_BOLD_16)
                 }
             }
             .onChange(of: viewModel.mainImageItem) { newItem in
@@ -145,7 +142,7 @@ struct RecipeFormView: View {
                 HStack {
                     TextField("입력해주세요",
                               text: $viewModel.recipeMetadata.title)
-                    .font(CustomFontFactory.INTER_TITLE)
+                    .font(CustomFontFactory.INTER_BOLD_30)
                     
                     Spacer()
                 }
@@ -232,7 +229,7 @@ struct RecipeFormView: View {
                     } label: {
                         HStack {
                             Text("\(i+1)단계")
-                                .font(CustomFontFactory.INTER_SECTION_TITLE)
+                                .font(CustomFontFactory.INTER_BOLD_16)
                                 .padding(.trailing, 15)
                                 .foregroundColor(.mainColor)
                             

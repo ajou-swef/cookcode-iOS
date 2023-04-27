@@ -26,7 +26,7 @@ struct LoginView: View {
                 
                 
                 TextField("이메일", text: $viewModel.loginForm.email)
-                    .font(CustomFontFactory.INTER_SECTION_TITLE)
+                    .font(CustomFontFactory.INTER_BOLD_16)
                     .padding(10)
                     .focused($focused, equals: .email)
                     .frame(maxWidth: 320, maxHeight: 50, alignment: .leading)
@@ -38,7 +38,7 @@ struct LoginView: View {
                     }
                 
                 TextField("비밀번호", text: $viewModel.loginForm.password)
-                    .font(CustomFontFactory.INTER_SECTION_TITLE)
+                    .font(CustomFontFactory.INTER_BOLD_16)
                     .padding(10)
                     .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
                                       focused: focused == .password)
@@ -53,7 +53,7 @@ struct LoginView: View {
                 } label: {
                     Text("로그인")
                         .foregroundColor(.white)
-                        .font(CustomFontFactory.INTER_SECTION_TITLE)
+                        .font(CustomFontFactory.INTER_BOLD_16)
                         .roundedRectangle(.ORANGE_320_FILLED)
                 }
                 
@@ -77,7 +77,7 @@ struct LoginView: View {
         } label: {
             Text("이메일/비밀번호 찾기")
                 .foregroundColor(.mainColor)
-                .font(CustomFontFactory.INTER_SECTION_TITLE)
+                .font(CustomFontFactory.INTER_BOLD_16)
         }
     }
 //
@@ -88,7 +88,7 @@ struct LoginView: View {
         } label: {
             Text("회원가입")
                 .foregroundColor(.mainColor)
-                .font(CustomFontFactory.INTER_SECTION_TITLE)
+                .font(CustomFontFactory.INTER_BOLD_16)
                 .accessibilityIdentifier("MembershipViewNavigationLink")
         }
     }

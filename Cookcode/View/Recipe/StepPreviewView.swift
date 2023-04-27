@@ -17,37 +17,24 @@ struct StepPreviewView: View {
         VStack(alignment: .leading) {
             ContentViewer()
             
-            Group {
-                HStack {
-                    Text("\(stepSequence)")
-                        .font(CustomFontFactory.INTER_TITLE)
-                        .foregroundColor(.mainColor)
-                    
-                    VStack {
-                        if !viewModel.stepForms[stepSequence - 1].fillAllRequiredInformation {
-                            Text("정보가 부족합니다.")
-                                .foregroundColor(.red)
-                                .font(CustomFontFactory.INTER_SEMIBOLD_20)
-                            
-                            Text("해당 스텝을 수정해주세요.")
-                                .foregroundColor(.red)
-                                .font(CustomFontFactory.INTER_REGULAR_14)
-                        }
-                        
-                        Text("\(viewModel.stepForms[stepSequence - 1].stepForm.title)")
-                    }
-
+            HStack {
+                Text("\(stepSequence)")
+                    .font(CustomFontFactory.INTER_BOLD_30)
+                    .foregroundColor(.mainColor)
+                
+                if viewModel.stepFormContainsAllRequiredInformation(at: stepSequence - 1) {
+                    StepView()
+                } else {
+                    LackOfInformationView()
                 }
+
             }
             .padding(.leading, 10)
             
-            Button {
-                viewModel.showStepFormView(stepSequence - 1)
-            } label: {
-                Text("임시수정 버튼")
-            }
-            
             Spacer()
+            
+            ModifyStepButton()
+            
         }
         .sheet(item: $viewModel.stepFormTrigger) { item in
             StepFormView(viewModel: viewModel, stepIndex: item.index)
@@ -55,13 +42,58 @@ struct StepPreviewView: View {
     }
     
     @ViewBuilder
+    private func StepView() -> some View {
+        VStack {
+            VStack {
+                Text("\(viewModel.stepFormTitle(at: stepSequence - 1))")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                
+                Text("\(viewModel.stepFormDescription(at: stepSequence - 1))")
+                    .font(CustomFontFactory.INTER_REGULAR_14)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func ModifyStepButton() -> some View {
+        HStack {
+            Spacer()
+            
+            Button {
+                viewModel.showStepFormView(stepSequence - 1)
+            } label: {
+                Text("수정하기")
+                    .roundedRectangle(.ORANGE_280_FILLED)
+                    .foregroundColor(.white)
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                    .padding(.bottom, 10)
+            }
+            
+            Spacer()
+        }
+    }
+    
+    @ViewBuilder
+    private func LackOfInformationView() -> some View {
+        VStack {
+            Text("정보가 부족합니다.")
+                .foregroundColor(.red)
+                .font(CustomFontFactory.INTER_SEMIBOLD_20)
+            
+            Text("해당 스텝을 수정해주세요.")
+                .foregroundColor(.red)
+                .font(CustomFontFactory.INTER_REGULAR_14)
+        }
+    }
+    
+    @ViewBuilder
     private func ContentViewer() -> some View {
-        if viewModel.stepForms[stepSequence - 1].containsAnyContent {
-            if viewModel.stepForms[stepSequence - 1].containsAnyImage {
+        if viewModel.stepFormContainsAnyContent(at: stepSequence - 1) {
+            if viewModel.stepFormContainsAnyImage(at: stepSequence - 1) {
                 ImageContent()
             }
             
-            if viewModel.stepForms[stepSequence - 1].containsAnyVideoURL {
+            if viewModel.stepFormContainsAnyVideoURL(at: stepSequence - 1) {
                 VideoContent()
             }
             
@@ -79,8 +111,12 @@ struct StepPreviewView: View {
             .foregroundColor(.gray_bcbcbc)
             .background {
                 Rectangle()
-                    .stroke(lineWidth: 30)
                     .foregroundColor(.gray_bcbcbc)
+                    .overlay {
+                        Rectangle()
+                            .padding(.vertical, 20)
+                            .foregroundColor(.white)
+                    }
             }
     }
     
@@ -114,8 +150,9 @@ struct StepPreviewView: View {
     }
 }
 
-//struct StepPreviewView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StepPreviewView()
-//    }
-//}
+struct StepPreviewView_Previews: PreviewProvider {
+    static var previews: some View {
+        StepPreviewView(stepSequence: 1,
+                        viewModel: RecipeFormViewModel())
+    }
+}

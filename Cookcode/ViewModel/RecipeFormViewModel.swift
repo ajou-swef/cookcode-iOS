@@ -18,7 +18,7 @@ class RecipeFormViewModel: ObservableObject {
     
     // sheet, fullscreen 등의 navigate를 위한 프로퍼티
     @Published var stepFormTrigger: RecipePathWithIndex?
-    @Published var isShowingPreviewView: Bool = false
+    @Published var previewViewIsPresented: Bool = false
     
     // step 작성 시의 tabSelection
     @Published var stepTabSelection: String = ""
@@ -37,7 +37,7 @@ class RecipeFormViewModel: ObservableObject {
         stepForms.count >= 1 
     }
     
-    var isRemovableStep: Bool {
+    var trashButtonIsShowing: Bool {
         stepForms.count >= 2
     }
     
@@ -49,6 +49,30 @@ class RecipeFormViewModel: ObservableObject {
     
     fileprivate func appendStepForm() {
         stepForms.append(ContentWrappedStepForm())
+    }
+    
+    func stepFormContainsAllRequiredInformation(at: Int) -> Bool {
+        stepForms[at].containsAllRequiredInformation
+    }
+    
+    func stepFormTitle(at: Int) -> String {
+        stepForms[at].title
+    }
+    
+    func stepFormDescription(at: Int) -> String {
+        stepForms[at].description
+    }
+    
+    func stepFormContainsAnyContent(at: Int) -> Bool {
+        stepForms[at].containsAnyContent
+    }
+    
+    func stepFormContainsAnyImage(at: Int) -> Bool {
+        stepForms[at].containsAnyImage
+    }
+    
+    func stepFormContainsAnyVideoURL(at: Int) -> Bool {
+        stepForms[at].containsAnyVideoURL
     }
     
     //  MARK: StepView 관련 기능들

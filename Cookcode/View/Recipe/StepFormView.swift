@@ -172,7 +172,7 @@ struct StepFormView: View {
                     .frame(maxWidth: 50, maxHeight: 50)
                     .foregroundColor(.gray808080)
             }
-            .hidden(!viewModel.isRemovableStep)
+            .hidden(!viewModel.trashButtonIsShowing)
 
             
             Button {

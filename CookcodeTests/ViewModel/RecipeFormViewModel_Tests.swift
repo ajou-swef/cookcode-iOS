@@ -20,7 +20,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func test_RecipeFormViewModel_isAvailablePreviewButton_shouldBeTrue() {
+    func test_RecipeFormViewModel_previewButtonIsAvailable_shouldBeTrue() {
         //  Given
         guard let vm = viewModel else {
             XCTFail()
@@ -36,7 +36,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         XCTAssertTrue(vm.previewButtonIsAvailable)
     }
     
-    func test_RecipeFormViewModel_isAvailablePreviewButton_shouldBeFalse1() {
+    func test_RecipeFormViewModel_previewButtonIsAvailable_shouldBeFalse1() {
         //  Given
         guard let vm = viewModel else {
             XCTFail()
@@ -51,7 +51,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         XCTAssertFalse(vm.previewButtonIsAvailable)
     }
     
-    func test_RecipeFormViewModel_isAvailablePreviewButton_shouldBeFalse2() {
+    func test_RecipeFormViewModel_previewButtonIsAvailable_shouldBeFalse2() {
         //  Given
         guard let vm = viewModel else {
             XCTFail()
@@ -66,7 +66,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         XCTAssertFalse(vm.previewButtonIsAvailable)
     }
     
-    func test_RecipeFormViewModel_isAvailablePreviewButton_shouldBeFalse3() {
+    func test_RecipeFormViewModel_previewButtonIsAvailable_shouldBeFalse3() {
         //  Given
         guard let vm = viewModel else {
             XCTFail()

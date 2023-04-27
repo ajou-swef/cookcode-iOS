@@ -23,7 +23,7 @@ struct MembershipView: View {
         ScrollView {
             VStack(spacing: 20) {
                 TextField("이메일", text: $viewModel.membershipForm.email)
-                    .font(CustomFontFactory.INTER_SECTION_TITLE)
+                    .font(CustomFontFactory.INTER_BOLD_16)
                     .focused($focus, equals: .email)
                     .padding(.leading, 10)
                     .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
@@ -37,7 +37,7 @@ struct MembershipView: View {
                     .padding(.top, 60)
 
                 TextField("닉네임", text: $viewModel.membershipForm.nickname)
-                    .font(CustomFontFactory.INTER_SECTION_TITLE)
+                    .font(CustomFontFactory.INTER_BOLD_16)
                     .padding(.leading, 10)
                     .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
                                       focused: focus == .nickname)
@@ -71,7 +71,7 @@ struct MembershipView: View {
                 .hidden(viewModel.membershipForm.nickname.isEmpty)
 
                 SecureField("비밀번호", text: $viewModel.membershipForm.password)
-                    .font(CustomFontFactory.INTER_SECTION_TITLE)
+                    .font(CustomFontFactory.INTER_BOLD_16)
                     .padding(.leading, 10)
                     .focused($focus, equals: .password)
                     .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
@@ -95,7 +95,7 @@ struct MembershipView: View {
 
 
                 SecureField("비밀번호 확인", text: $viewModel.membershipForm.passwordCheck)
-                    .font(CustomFontFactory.INTER_SECTION_TITLE)
+                    .font(CustomFontFactory.INTER_BOLD_16)
                     .padding(.leading, 10)
                     .focused($focus, equals: .passwordCheck)
                     .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
