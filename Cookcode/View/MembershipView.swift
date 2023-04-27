@@ -16,8 +16,13 @@ struct MembershipView: View {
         case passwordCheck
     }
     
-    @StateObject private var viewModel = MembershipViewModel()
+    @StateObject private var viewModel: MembershipViewModel
     @FocusState private var focus: Field?
+    
+    init (accountService: AccountServiceProtocol) {
+        self._viewModel = StateObject(wrappedValue: MembershipViewModel(accountService: accountService))
+        
+    }
     
     var body: some View {
         ScrollView {
@@ -145,6 +150,6 @@ struct MembershipView: View {
 
 struct MembershipView_Previews: PreviewProvider {
     static var previews: some View {
-        MembershipView()
+        MembershipView(accountService: AccountSuccessService())
     }
 }

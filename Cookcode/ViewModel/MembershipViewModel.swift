@@ -8,6 +8,8 @@
 import SwiftUI
 
 class MembershipViewModel: ObservableObject {
+    
+    let accountService: AccountServiceProtocol
     @Published var membershipForm = MembershipForm()
     @Published private(set) var uniqueNicknameCheckCompleted: Bool = true
 
@@ -22,5 +24,9 @@ class MembershipViewModel: ObservableObject {
     
     var hidePasswordMismatchText: Bool {
         !(hidePasswordValidText && !membershipForm.passwordMatch)
+    }
+    
+    init (accountService: AccountServiceProtocol) {
+        self.accountService = accountService
     }
 }
