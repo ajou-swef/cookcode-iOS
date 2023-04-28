@@ -16,9 +16,15 @@ struct MainTabView: View {
     var body: some View {
         
         Group {
-            if navigateViewModel.showRecipeFormView {
-                RecipeFormView()
-                    .transition(.move(edge: .trailing))
+            if let path = navigateViewModel.outerPath {
+                switch path {
+                case .recipe:
+                    RecipeFormView()
+                        .transition(.move(edge: .trailing))
+                case .profile:
+                    EmptyView()
+                        .transition(.move(edge: .trailing))
+                }
             } else {
                 TabView(selection: $navigateViewModel.tab) {
                     cookieView()
@@ -34,7 +40,7 @@ struct MainTabView: View {
                 }
             }
         }
-        .animation(.linear(duration: 0.1), value: navigateViewModel.showRecipeFormView)
+        .animation(.linear(duration: 0.1), value: navigateViewModel.outerPath)
     }
     
     @ViewBuilder

@@ -12,7 +12,7 @@ class NavigateViewModel: ObservableObject {
     @Published var tab: Tab = .home
     
     @Published var recipePath: NavigationPath = .init()
-    @Published var showRecipeFormView: Bool = false
+    @Published var outerPath: OuterPath? 
     
     init() {
         if let openURL = ProcessInfo.processInfo.environment["-openURL"] {
@@ -30,22 +30,21 @@ class NavigateViewModel: ObservableObject {
             }
             
             if component.contains("outer=") {
-                navigateOuter(component.replacingOccurrences(of: "outer=", with: ""))
+                let rawValue = component.replacingOccurrences(of: "outer=", with: "")
+                let outerPath = OuterPath(rawValue: rawValue)
+                if let outerPath = outerPath {
+                    navigateToOuter(outerPath)
+                }
             }
         }
     }
     
-    private func navigateOuter(_ string: String) {
-        switch string {
-        case "recipe":
-            showRecipeFormView = true
-        default:
-            break
-        }
+    func navigateToOuter(_ path: OuterPath) {
+        outerPath = path
     }
     
     func dismissRecipeFormView() {
-        showRecipeFormView = false
+        outerPath = nil
     }
     
 }

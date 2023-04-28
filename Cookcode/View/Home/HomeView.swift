@@ -28,7 +28,12 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                Text("프로필")
+                Button {
+                    navigateViewModel.navigateToOuter(.profile)
+                } label: {
+                    Text("프로필")
+                }
+
             }
             
             Spacer()
@@ -47,7 +52,7 @@ struct HomeView: View {
         }
         .overlay(alignment: .bottomTrailing) {
             Button {
-                navigateViewModel.showRecipeFormView = true
+                navigateViewModel.navigateToOuter(.recipe)
             } label: {
                 Image(systemName: "plus")
                     .foregroundColor(.white)
