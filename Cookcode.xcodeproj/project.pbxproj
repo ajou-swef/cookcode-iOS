@@ -40,6 +40,7 @@
 		159BE2A929FB6E7900DE7448 /* AccountFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */; };
 		159BE2AC29FB810200DE7448 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 159BE2AB29FB810200DE7448 /* Introspect */; };
 		159BE2AF29FB875F00DE7448 /* RecipeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2AE29FB875F00DE7448 /* RecipeCellView.swift */; };
+		159BE2B229FB87CD00DE7448 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 159BE2B129FB87CD00DE7448 /* Kingfisher */; };
 		159FA86C29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FA86B29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift */; };
 		159FA86E29F8C9B800ECB9E7 /* StepPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FA86D29F8C9B800ECB9E7 /* StepPreviewView.swift */; };
 		15AA2F2029EFE47C0069813F /* RecipeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F1F29EFE47C0069813F /* RecipeFormView.swift */; };
@@ -176,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159BE2B229FB87CD00DE7448 /* Kingfisher in Frameworks */,
 				15F82A6A29FA8D5F00DA9381 /* Alamofire in Frameworks */,
 				159BE2AC29FB810200DE7448 /* Introspect in Frameworks */,
 			);
@@ -523,6 +525,7 @@
 			packageProductDependencies = (
 				15F82A6929FA8D5F00DA9381 /* Alamofire */,
 				159BE2AB29FB810200DE7448 /* Introspect */,
+				159BE2B129FB87CD00DE7448 /* Kingfisher */,
 			);
 			productName = Cookcode;
 			productReference = 1503F91F29B45560002F3D26 /* Cookcode.app */;
@@ -599,6 +602,7 @@
 			packageReferences = (
 				15F82A6829FA8D5F00DA9381 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				159BE2AA29FB810200DE7448 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				159BE2B029FB87CC00DE7448 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 1503F92029B45560002F3D26 /* Products */;
 			projectDirPath = "";
@@ -1037,6 +1041,14 @@
 				minimumVersion = 0.2.3;
 			};
 		};
+		159BE2B029FB87CC00DE7448 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		15F82A6829FA8D5F00DA9381 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1052,6 +1064,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 159BE2AA29FB810200DE7448 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		159BE2B129FB87CD00DE7448 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 159BE2B029FB87CC00DE7448 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		15F82A6929FA8D5F00DA9381 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
