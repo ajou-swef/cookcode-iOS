@@ -15,7 +15,7 @@ struct LoginView: View {
     }
     
     @State private var path: NavigationPath = NavigationPath()
-    @StateObject private var viewModel = LoginViewModel()
+    @StateObject private var viewModel = LoginViewModel(accountService: AccountFailureService())
     @FocusState private var focused: Field?
     var body: some View {
         NavigationStack(path: $path) {
@@ -25,7 +25,7 @@ struct LoginView: View {
                     .padding(.bottom, 10)
                 
                 
-                TextField("이메일", text: $viewModel.loginForm.email)
+                TextField("이메일", text: $viewModel.signInForm.email)
                     .font(CustomFontFactory.INTER_BOLD_16)
                     .padding(10)
                     .focused($focused, equals: .email)
@@ -37,7 +37,7 @@ struct LoginView: View {
                             .fill(focused == .email ? Color.mainColor :  Color.gray808080)
                     }
                 
-                TextField("비밀번호", text: $viewModel.loginForm.password)
+                TextField("비밀번호", text: $viewModel.signInForm.password)
                     .font(CustomFontFactory.INTER_BOLD_16)
                     .padding(10)
                     .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
@@ -49,12 +49,12 @@ struct LoginView: View {
           
                 
                 Button {
-                    
+                    viewModel.signIn()
                 } label: {
                     Text("로그인")
                         .foregroundColor(.white)
                         .font(CustomFontFactory.INTER_BOLD_16)
-                        .roundedRectangle(.ORANGE_320_FILLED)
+                        .roundedRectangle(.ORANGE_320_FILLED, focused: true)
                 }
                 
                 VStack(alignment: .trailing, spacing: 5) {
@@ -67,6 +67,9 @@ struct LoginView: View {
             }
             .frame(maxWidth: .infinity)
             .accessibilityIdentifier("LoginView")
+        }
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+            ServiceAlert.CANCEL_BUTTON
         }
     }
     

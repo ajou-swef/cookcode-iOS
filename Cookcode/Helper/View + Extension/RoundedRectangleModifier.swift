@@ -29,7 +29,6 @@ extension View {
         case .GRAY_320_STROKE:
             self
                 .frame(minWidth: 320, maxWidth: 320, minHeight: 50, alignment: alignment)
-                .foregroundColor(focused ? .mainColor : .gray808080)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(lineWidth: 2)

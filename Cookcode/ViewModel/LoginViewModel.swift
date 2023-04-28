@@ -9,5 +9,22 @@ import Foundation
 
 class LoginViewModel: ObservableObject {
     
-    @Published var loginForm = SignInForm()
+    let accountService: AccountServiceProtocol
+    @Published var signInForm: SignInForm = .init()
+    @Published var serviceAlert: ServiceAlert = .init()
+    
+    init (accountService: AccountServiceProtocol) {
+        self.accountService = accountService
+    }
+    
+    func signIn() {
+        let result = accountService.signIn(signInForm)
+        
+        switch result {
+        case .success(let _):
+            print("로그인 성공 ")
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
+    }
 }
