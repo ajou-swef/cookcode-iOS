@@ -12,10 +12,14 @@ struct HomeView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @StateObject private var viewModel = HomeViewModel()
+    
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 20),
         GridItem(.flexible(), spacing: 20),
     ]
+    
+    let recipeCellHeight: CGFloat = 200
+    let offsetY: CGFloat = 20
     
     var body: some View {
         VStack {
@@ -30,32 +34,14 @@ struct HomeView: View {
             Spacer()
             
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    Rectangle()
-                        .foregroundColor(.mainColor)
-                        .frame(height: 140)
-                    
-                    Rectangle()
-                        .foregroundColor(.mainColor)
-                        .frame(height: 140)
-                    
-                    Rectangle()
-                        .foregroundColor(.mainColor)
-                        .frame(height: 140)
-                    
-                    Rectangle()
-                        .foregroundColor(.mainColor)
-                        .frame(height: 140)
-                    
-                    Rectangle()
-                        .foregroundColor(.mainColor)
-                        .frame(height: 140)
-                    
-                    Rectangle()
-                        .foregroundColor(.mainColor)
-                        .frame(height: 140)
+                LazyVGrid(columns: columns, spacing: 20 + offsetY) {
+                    ForEach(0..<10, id: \.self) { _ in
+                        RecipeCellView(offsetY: offsetY)
+                            .frame(height: recipeCellHeight)
+                    }
                 }
                 .padding(.horizontal, 10)
+                .padding(.bottom, offsetY)
             }
             
         }

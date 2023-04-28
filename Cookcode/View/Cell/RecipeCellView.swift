@@ -6,18 +6,44 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct RecipeCellView: View {
     
-    let imageURL: String
+    let offsetY: CGFloat
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack(alignment: .center) {
+            KFImage(URL(string: "https://picsum.photos/seed/picsum/200/300"))
+                .resizable()
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay(alignment: .bottom) {
+                    Text("맛있는 요리")
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 10)
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.white)
+                                .shadow(radius: 10)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(lineWidth: 1)
+                                        .foregroundColor(.gray_bcbcbc)
+                                }
+                                .padding(.horizontal, 10)
+                        }
+                        .offset(y: offsetY)
+                }
+        }
     }
 }
 
-struct RecipeCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeCellView(imageURL: "")
-    }
-}
+//struct RecipeCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecipeCellView(imageURL: "https://picsum.photos/seed/picsum/200/300")
+//    }
+//}
