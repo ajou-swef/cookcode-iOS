@@ -9,9 +9,12 @@ import Foundation
 
 struct MembershipForm {
     var email: String = ""
-    var nickname: String = ""
+    var nickname: String = "" 
     var password: String = ""
     var passwordCheck: String = ""
+    
+    private(set) var nicknameIsUnique: Bool = false
+    private(set) var nicknameCheckComplete: Bool = false
     
     var passwordMatch: Bool {
         password == passwordCheck
@@ -53,5 +56,14 @@ struct MembershipForm {
     
     var passwordIsValid: Bool {
         passwordContainsNumber && passwordContainsAlphabet && passwordContainsSpecialCharacter && passwordIsEnoughLong
+    }
+    
+    mutating func setNicknameIsUnique(_ nicknameIsUnique: Bool) {
+        self.nicknameCheckComplete = true
+        self.nicknameIsUnique = nicknameIsUnique
+    }
+    
+    mutating func setNicknameCheckComplte(_ nicknameCheckComplete: Bool) {
+        self.nicknameCheckComplete = nicknameCheckComplete
     }
 }

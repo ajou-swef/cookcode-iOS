@@ -12,8 +12,11 @@ struct AccountCheckResponse: Codable {
     let status: Int
     let data: Data
     
-    static let MOCK_DATA_UNIQUE: Data = Data(isUnique: true)
-    static let MOCK_DATA_NOT_UNIQUE: Data = Data(isUnique: false)
+    var isUnique: Bool {
+        data.isUnique
+    }
+    
+    static let MOCK_DATA: Data = Data(isUnique: ([false, true].randomElement()!))
     
     struct Data: Codable {
         let isUnique: Bool

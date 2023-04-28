@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct NetworkError: Codable, Error {
-    
+struct ServiceError: Codable, Error {
+    let message: String
+    let status: Int
 }
