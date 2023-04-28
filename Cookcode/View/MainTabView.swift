@@ -13,6 +13,10 @@ struct MainTabView: View {
     let tabItemImageWidth: CGFloat = 35
     let tabItemImageHeight: CGFloat = 35
     
+    init() {
+        UITabBar.appearance().isTranslucent = true
+    }
+    
     var body: some View {
         
         Group {

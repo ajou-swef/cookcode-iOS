@@ -13,6 +13,8 @@ struct ContentWrappedStepForm: Identifiable {
     var stepForm: StepForm = .init()
     var photoPickerItems: [PhotosPickerItem] = .init()
     
+    private(set) var deletedVideos: [String] = .init()
+    private(set) var deletedPhotos: [String] = .init()
     private var _contentType: ContentType = .image {
         willSet {
             photoPickerItems.removeAll()

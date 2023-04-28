@@ -22,18 +22,13 @@ struct HomeView: View {
                 Text("프로필")
             }
             
+            Spacer()
+            
             ScrollView {
-                VStack {
-                    Rectangle()
-                        .frame(minHeight: 300)
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .frame(minHeight: 300)
-                    Rectangle()
-                        .frame(minHeight: 300)
-                        .foregroundColor(.blue)
-                }
+                Rectangle()
+                    .frame(maxWidth: .infinity, minHeight: 900)
             }
+            
         }
         .overlay(alignment: .bottomTrailing) {
             Button {
