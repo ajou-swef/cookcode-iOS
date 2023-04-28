@@ -13,10 +13,6 @@ struct MainTabView: View {
     let tabItemImageWidth: CGFloat = 35
     let tabItemImageHeight: CGFloat = 35
     
-    init() {
-        UITabBar.appearance().isTranslucent = true
-    }
-    
     var body: some View {
         
         Group {
@@ -30,6 +26,12 @@ struct MainTabView: View {
                     refrigeratorView()
                 }
                 .transition(.move(edge: .leading))
+                .introspectTabBarController {
+                    let appearance: UITabBarAppearance = UITabBarAppearance()
+                    appearance.configureWithOpaqueBackground()
+                    $0.tabBar.scrollEdgeAppearance = appearance
+                    $0.tabBar.standardAppearance = appearance
+                }
             }
         }
         .animation(.linear(duration: 0.1), value: navigateViewModel.showRecipeFormView)

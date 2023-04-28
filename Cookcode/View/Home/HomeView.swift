@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct HomeView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @StateObject private var viewModel = HomeViewModel()
+    let columns: [GridItem] = [
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20),
+    ]
     
     var body: some View {
         VStack {
@@ -25,8 +30,32 @@ struct HomeView: View {
             Spacer()
             
             ScrollView {
-                Rectangle()
-                    .frame(maxWidth: .infinity, minHeight: 900)
+                LazyVGrid(columns: columns, spacing: 20) {
+                    Rectangle()
+                        .foregroundColor(.mainColor)
+                        .frame(height: 140)
+                    
+                    Rectangle()
+                        .foregroundColor(.mainColor)
+                        .frame(height: 140)
+                    
+                    Rectangle()
+                        .foregroundColor(.mainColor)
+                        .frame(height: 140)
+                    
+                    Rectangle()
+                        .foregroundColor(.mainColor)
+                        .frame(height: 140)
+                    
+                    Rectangle()
+                        .foregroundColor(.mainColor)
+                        .frame(height: 140)
+                    
+                    Rectangle()
+                        .foregroundColor(.mainColor)
+                        .frame(height: 140)
+                }
+                .padding(.horizontal, 10)
             }
             
         }
