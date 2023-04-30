@@ -58,8 +58,11 @@ struct MainTabView: View {
     
     @ViewBuilder
     func homeView() -> some View {
-        NavigationStack {
+        NavigationStack(path: $navigateViewModel.homePath) {
             HomeView()
+                .navigationDestination(for: HomePath.self) { _ in
+                    Text("검색화면")
+                }
         }
         .tag(Tab.home)
         .tabItem {

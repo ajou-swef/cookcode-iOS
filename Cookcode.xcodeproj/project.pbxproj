@@ -30,6 +30,8 @@
 		153B4DB529ED2B5600543730 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DB429ED2B5600543730 /* Tab.swift */; };
 		153B4DB929ED58B900543730 /* MembershipForm_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DB829ED58B900543730 /* MembershipForm_Tests.swift */; };
 		153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DBC29ED599C00543730 /* Character + Extension.swift */; };
+		153F127329FE18F9008BDB4E /* HomePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F127229FE18F9008BDB4E /* HomePath.swift */; };
+		153F127529FE1B8A008BDB4E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F127429FE1B8A008BDB4E /* SearchView.swift */; };
 		1566059029F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566058F29F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift */; };
 		1566059229F93740008B9F9F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566059129F93740008B9F9F /* HomeViewModel.swift */; };
 		1566059429F937A3008B9F9F /* View + offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566059329F937A3008B9F9F /* View + offset.swift */; };
@@ -122,6 +124,8 @@
 		153B4DB429ED2B5600543730 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		153B4DB829ED58B900543730 /* MembershipForm_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipForm_Tests.swift; sourceTree = "<group>"; };
 		153B4DBC29ED599C00543730 /* Character + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character + Extension.swift"; sourceTree = "<group>"; };
+		153F127229FE18F9008BDB4E /* HomePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePath.swift; sourceTree = "<group>"; };
+		153F127429FE1B8A008BDB4E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		1566058F29F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWrappedStepForm_Tests.swift; sourceTree = "<group>"; };
 		1566059129F93740008B9F9F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1566059329F937A3008B9F9F /* View + offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + offset.swift"; sourceTree = "<group>"; };
@@ -469,6 +473,7 @@
 				153B4DB429ED2B5600543730 /* Tab.swift */,
 				15AA2F4A29F0D80D0069813F /* RecipePath.swift */,
 				159BE2B329FB8DB300DE7448 /* OuterPath.swift */,
+				153F127229FE18F9008BDB4E /* HomePath.swift */,
 			);
 			path = Path;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				15B869B829EFDC3600A02872 /* HomeView.swift */,
+				153F127429FE1B8A008BDB4E /* SearchView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -660,6 +666,7 @@
 				15AA2F2029EFE47C0069813F /* RecipeFormView.swift in Sources */,
 				15B869BB29EFDC4600A02872 /* CookieView.swift in Sources */,
 				150CD44629F628CC0001FFEB /* String + Extension.swift in Sources */,
+				153F127329FE18F9008BDB4E /* HomePath.swift in Sources */,
 				153B4DB129ED1B1300543730 /* MembershipViewModel.swift in Sources */,
 				15E43A9E29FA94DF0008DC7A /* AccountSuccessService.swift in Sources */,
 				15AA2F8829F102720069813F /* VideURL.swift in Sources */,
@@ -694,6 +701,7 @@
 				159BE2A929FB6E7900DE7448 /* AccountFailureService.swift in Sources */,
 				15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */,
 				159BE2B429FB8DB300DE7448 /* OuterPath.swift in Sources */,
+				153F127529FE1B8A008BDB4E /* SearchView.swift in Sources */,
 				153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */,
 				153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */,
 				15AA2F2429EFEA250069813F /* RecipeFormViewModel.swift in Sources */,

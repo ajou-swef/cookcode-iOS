@@ -29,12 +29,21 @@ struct HomeView: View {
                 Spacer()
                 
                 Button {
+                    navigateViewModel.navigateWithHome(.search)
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.black)
+                }
+                
+                Button {
                     navigateViewModel.navigateToOuter(.profile)
                 } label: {
-                    Text("프로필")
+                    Image(systemName: "person.fill")
+                        .foregroundColor(.black)
                 }
-
             }
+            .padding(.horizontal, 10)
+            .padding(.bottom, 20)
             
             Spacer()
             
