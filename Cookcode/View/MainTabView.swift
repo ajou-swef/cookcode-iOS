@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct MainTabView: View {
     
@@ -48,6 +49,7 @@ struct MainTabView: View {
         NavigationStack {
             CookieView()
         }
+        .tint(.mainColor)
         .tag(Tab.cookie)
         .tabItem {
             Tab.cookie.selectImage(navigateViewModel.tab)
@@ -60,10 +62,14 @@ struct MainTabView: View {
     func homeView() -> some View {
         NavigationStack(path: $navigateViewModel.homePath) {
             HomeView()
-                .navigationDestination(for: HomePath.self) { _ in
-                    Text("검색화면")
+                .navigationDestination(for: HomePath.self) { path in
+                    switch path {
+                    case .search:
+                        SearchView()
+                    }
                 }
         }
+        .tint(.mainColor)
         .tag(Tab.home)
         .tabItem {
             Tab.home.selectImage(navigateViewModel.tab)
@@ -77,6 +83,7 @@ struct MainTabView: View {
         NavigationStack {
             RefrigeratorView()
         }
+        .tint(.mainColor)
         .tag(Tab.refrigerator)
         .tabItem {
             Tab.refrigerator.selectImage(navigateViewModel.tab)
