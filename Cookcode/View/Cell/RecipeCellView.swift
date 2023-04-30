@@ -10,16 +10,17 @@ import Kingfisher
 
 struct RecipeCellView: View {
     
+    let recipeCell: RecipeCell
     let offsetY: CGFloat
     
     var body: some View {
         
         VStack(alignment: .center) {
-            KFImage(URL(string: "https://picsum.photos/seed/picsum/200/300"))
+            KFImage(URL(string: recipeCell.thumbanil))
                 .resizable()
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .overlay(alignment: .bottom) {
-                    Text("맛있는 요리")
+                    Text(recipeCell.title)
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 5)

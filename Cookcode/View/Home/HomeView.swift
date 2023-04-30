@@ -50,7 +50,7 @@ struct HomeView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20 + offsetY) {
                     ForEach(0..<10, id: \.self) { _ in
-                        RecipeCellView(offsetY: offsetY)
+                        RecipeCellView(recipeCell: RecipeCell.MOCK_DATA, offsetY: offsetY)
                             .frame(height: recipeCellHeight)
                     }
                 }

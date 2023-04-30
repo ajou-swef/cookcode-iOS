@@ -8,9 +8,45 @@
 import Foundation
 
 struct RecipeCellSearch: Codable {
-    let content: [RecipeCell]
-    let numberOfElements, offset, pageNumber, pageSize: Int
-    let totalElements, totalPages: Int
+    var recipeCells: [RecipeCell]
+    var numberOfElements, offset, pageNumber, pageSize: Int
+    var totalElements, totalPages: Int
     
-    static let MOCK_DATA: RecipeCellSearch = [RecipeCell.MOCK_DATA, RecipeCell.MOCK_DATA, RecipeCell.MOCK_DATA]
+    static let MOCK_DATA: RecipeCellSearch = RecipeCellSearch(recipeCells: [RecipeCell.MOCK_DATA, RecipeCell.MOCK_DATA], numberOfElements: 0, offset: 0, pageNumber: 0, pageSize: 0, totalElements: 0, totalPages: 0)
+    
+    enum CodingKeys: String, CodingKey {
+        case recipeCells = "content"
+        case numberOfElements, offset, pageNumber, pageSize
+        case totalElements, totalPages
+    }
+    
+    init () {
+        recipeCells = .init()
+        numberOfElements = 0
+        offset = 0
+        pageNumber = 0
+        pageSize = 0
+        totalElements = 0
+        totalPages = 0
+    }
+    
+    init (recipeCells: [RecipeCell], numberOfElements: Int, offset: Int, pageNumber: Int, pageSize: Int, totalElements: Int, totalPages: Int) {
+        self.recipeCells = recipeCells
+        self.numberOfElements = numberOfElements
+        self.offset = offset
+        self.pageNumber = pageNumber
+        self.pageSize = pageSize
+        self.totalElements = totalElements
+        self.totalPages = totalPages
+    }
+    
+    mutating func update(_ newSearchResult: RecipeCellSearch) {
+        recipeCells.append(contentsOf: newSearchResult.recipeCells)
+        numberOfElements = newSearchResult.numberOfElements
+        offset = newSearchResult.offset
+        pageNumber = newSearchResult.pageNumber
+        pageSize = newSearchResult.pageSize
+        totalElements = newSearchResult.totalElements
+        totalPages += newSearchResult.totalPages
+    }
 }

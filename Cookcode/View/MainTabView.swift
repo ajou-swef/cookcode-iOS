@@ -65,7 +65,7 @@ struct MainTabView: View {
                 .navigationDestination(for: HomePath.self) { path in
                     switch path {
                     case .search:
-                        SearchView()
+                        SearchRecipeView()
                     }
                 }
         }
