@@ -6,41 +6,93 @@
 //
 
 import SwiftUI
+import ObservedOptionalObject
 
 struct RecipePreviewView: View {
     
-    @ObservedObject var viewModel: RecipeFormViewModel
+    @ObservedOptionalObject var recipeFormViewModel: RecipeFormViewModel?
+    @StateObject var recipeViewModel: RecipeViewModel = .init()
     @Environment(\.dismiss) var dismiss
+    
+    init() {
+        
+    }
+    
+    init(recipeCell: RecipeCell) {
+        self._recipeViewModel = StateObject(wrappedValue: RecipeViewModel())
+    }
+    
+    var isPreview: Bool {
+        recipeFormViewModel != nil
+    }
+    
+    var selection: Binding<String>? {
+        if isPreview {
+            return $recipeFormViewModel.previewTabSelection
+        }
+        
+        return $recipeViewModel.tabSelection
+    }
+    
+    var title: String {
+        if let viewModel = recipeFormViewModel {
+            return viewModel.recipeMetadata.title
+        } else {
+            return "디테일 제목"
+        }
+    }
+    
+    var description: String {
+        if let viewModel = recipeFormViewModel {
+            return viewModel.recipeMetadata.description
+        } else {
+            return "디테일 설명"
+        }
+    }
+    
+    var imageURL: String {
+        guard let viewModel = recipeFormViewModel else {
+            return "https://picsum.photos/200"
+        }
+        return "https://picsum.photos/200"
+    }
+    
     
     var body: some View {
         ZStack {
-            Color.gray808080
-                .ignoresSafeArea(.all)
-                .overlay(alignment: .top) {
-                   TopButton()
-                }
-            
-            TabView(selection: $viewModel.previewTabSelection) {
-                GeometryReader { proxy in
-                    RecipeEntranceView(recipeForm: viewModel.recipeMetadata, imageData: viewModel.mainImageData, cgSize: proxy.size)
-                }
-                .tag("main")
-                
-                ForEach(viewModel.stepForms.indices, id: \.self) { i in
-                    StepPreviewView(stepSequence: i+1, viewModel: viewModel)
-                        .tag(viewModel.stepFormID(at: i))
-                }
+            if recipeFormViewModel != nil {
+                Color.gray808080
+                    .ignoresSafeArea(.all)
+                    .overlay(alignment: .top) {
+                        TopButton()
+                    }
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .frame(maxWidth: .infinity)
-            .background {
-                Color.white
+        
+            if let viewModel = recipeFormViewModel {
+                TabView(selection: selection) {
+                    GeometryReader { proxy in
+                        RecipeEntranceView(title: title, description: description, imageURL: imageURL, cgSize: proxy.size)
+                    }
+                    .tag("main")
+                    
+                    ForEach(viewModel.stepForms.indices, id: \.self) { i in
+                        StepPreviewView(stepSequence: i+1, viewModel: viewModel)
+                            .tag(viewModel.stepFormID(at: i))
+                    }
+                }
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                .frame(maxWidth: .infinity)
+                .background {
+                    Color.white
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 25))
+                .padding(.horizontal, 10)
+                .padding(.top, 30)
+            } else {
+                Text("레시피 디테일")
             }
-            .clipShape(RoundedRectangle(cornerRadius: 25))
-            .padding(.horizontal, 10)
-            .padding(.top, 30)
         }
-        .navigationBarBackButtonHidden()
+        .navigationBarBackButtonHidden(recipeFormViewModel != nil)
         .statusBarHidden()
     }
     
@@ -86,6 +138,6 @@ struct RecipePreviewView: View {
 
 struct RecipePreviewView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipePreviewView(viewModel: RecipeFormViewModel(true))
+        RecipePreviewView(recipeFormViewModel: RecipeFormViewModel(true))
     }
 }

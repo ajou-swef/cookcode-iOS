@@ -6,26 +6,26 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct RecipeEntranceView: View {
     
-    let recipeForm: RecipeForm
-    let imageData: Data?
+    let title: String
+    let description: String
+    let imageURL: String
     let cgSize: CGSize
     
     var body: some View {
         VStack(alignment: .leading) {
-            if let data = imageData, let uiImage = UIImage(data: data) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .frame(maxWidth:. infinity, maxHeight: 300)
-            }
+            KFImage(URL(string: imageURL))
+                .resizable()
+                .frame(maxWidth:. infinity, maxHeight: 300)
             
             Group {
-                Text(recipeForm.title)
+                Text(title)
                     .font(CustomFontFactory.INTER_BOLD_30)
                 
-                Text(recipeForm.description)
+                Text(description)
                     .font(CustomFontFactory.INTER_REGULAR_14)
             }
             .padding(.leading, 10)

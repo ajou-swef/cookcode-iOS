@@ -35,7 +35,7 @@ struct RecipeFormView: View {
                 VStack {
                     
                     NavigationLink {
-                        RecipePreviewView(viewModel: viewModel)
+                        RecipePreviewView(recipeFormViewModel: viewModel)
                     } label: {
                         Text("미리보기")
                             .font(CustomFontFactory.INTER_BOLD_16)
