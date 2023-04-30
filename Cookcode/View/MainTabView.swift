@@ -62,6 +62,9 @@ struct MainTabView: View {
     func homeView() -> some View {
         NavigationStack(path: $navigateViewModel.homePath) {
             HomeView()
+                .navigationDestination(for: RecipeCell.self) { recipe in
+                    Text("Recipe Detail")
+                }
                 .navigationDestination(for: HomePath.self) { path in
                     switch path {
                     case .search:

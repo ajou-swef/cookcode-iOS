@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeStep: Codable {
+struct RecipeStep: Codable, Hashable {
     let stepID, seq: Int
     let title, description: String
     let photos: [ImageContent]

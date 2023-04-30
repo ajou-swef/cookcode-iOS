@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageContent: Codable {
+struct ImageContent: Codable, Hashable {
     let stepPhotoID: Int
     let photoURL: String
     

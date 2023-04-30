@@ -7,6 +7,6 @@
 
 import SwiftUI
 
-enum HomePath: String {
+enum HomePath: String, Hashable {
     case search 
 }

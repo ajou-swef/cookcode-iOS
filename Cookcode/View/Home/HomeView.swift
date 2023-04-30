@@ -29,7 +29,7 @@ struct HomeView: View {
                 Spacer()
                 
                 Button {
-                    navigateViewModel.navigateWithHome(.search)
+                    navigateViewModel.navigateWithHome(HomePath.search)
                 } label: {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.black)
@@ -50,8 +50,13 @@ struct HomeView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20 + offsetY) {
                     ForEach(0..<10, id: \.self) { _ in
-                        RecipeCellView(recipeCell: RecipeCell.MOCK_DATA, offsetY: offsetY)
-                            .frame(height: recipeCellHeight)
+                        Button {
+                            navigateViewModel.navigateWithHome(RecipeCell.MOCK_DATA)
+                        } label: {
+                            RecipeCellView(recipeCell: RecipeCell.MOCK_DATA, offsetY: offsetY)
+                                .frame(height: recipeCellHeight)
+                                .foregroundColor(.black)
+                        }
                     }
                 }
                 .padding(.horizontal, 10)

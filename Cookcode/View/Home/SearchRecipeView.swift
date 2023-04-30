@@ -10,6 +10,7 @@ import Kingfisher
 
 struct SearchRecipeView: View {
     
+    @EnvironmentObject var navigateViewModel: NavigateViewModel
     @StateObject private var viewModel: SearchRecipeViewModel = SearchRecipeViewModel(recipeService: RecipeSuccessService())
     
     let columns: [GridItem] = [
@@ -25,8 +26,13 @@ struct SearchRecipeView: View {
             LazyVGrid(columns: columns, spacing: 20 + offsetY) {
                 ForEach(viewModel.recipeCellSearch.recipeCells.indices, id: \.self) { i in
                     let recipeCell = viewModel.recipeCellSearch.recipeCells[i]
-                    RecipeCellView(recipeCell: recipeCell, offsetY: offsetY)
-                        .frame(height: recipeCellHeight)
+                    
+                    Button {
+                        navigateViewModel.navigateWithHome(recipeCell)
+                    } label: {
+                        RecipeCellView(recipeCell: recipeCell, offsetY: offsetY)
+                            .frame(height: recipeCellHeight)
+                    }
                 }
             }
             .padding(.horizontal, 10)

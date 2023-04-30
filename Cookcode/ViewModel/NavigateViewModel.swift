@@ -45,7 +45,7 @@ class NavigateViewModel: ObservableObject {
         outerPath = path
     }
     
-    func navigateWithHome(_ path: HomePath) {
+    func navigateWithHome(_ path: any Hashable) {
         homePath.append(path)
     }
     

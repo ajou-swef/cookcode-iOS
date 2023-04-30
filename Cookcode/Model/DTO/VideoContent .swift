@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VideoContent: Codable {
+struct VideoContent: Codable, Hashable {
     let stepVideoID: Int
     let videoURL: String
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeCell: Codable {
+struct RecipeCell: Codable, Hashable {
     let recipeID: Int
     let user: User
     let title, description, createdAt, updatedAt: String
