@@ -79,6 +79,7 @@
 		15B869B929EFDC3600A02872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B829EFDC3600A02872 /* HomeView.swift */; };
 		15B869BB29EFDC4600A02872 /* CookieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869BA29EFDC4600A02872 /* CookieView.swift */; };
 		15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869BC29EFDC5000A02872 /* RefrigeratorView.swift */; };
+		15DAE25829FE3CCA00A4B00A /* ObservedOptionalObject in Frameworks */ = {isa = PBXBuildFile; productRef = 15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */; };
 		15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9B29FA94A40008DC7A /* AccountService.swift */; };
 		15E43A9E29FA94DF0008DC7A /* AccountSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */; };
 		15F82A6729FA8D3300DA9381 /* AccountServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A6629FA8D3300DA9381 /* AccountServiceProtocol.swift */; };
@@ -206,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				159BE2B229FB87CD00DE7448 /* Kingfisher in Frameworks */,
+				15DAE25829FE3CCA00A4B00A /* ObservedOptionalObject in Frameworks */,
 				15F82A6A29FA8D5F00DA9381 /* Alamofire in Frameworks */,
 				159BE2AC29FB810200DE7448 /* Introspect in Frameworks */,
 			);
@@ -592,6 +594,7 @@
 				15F82A6929FA8D5F00DA9381 /* Alamofire */,
 				159BE2AB29FB810200DE7448 /* Introspect */,
 				159BE2B129FB87CD00DE7448 /* Kingfisher */,
+				15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */,
 			);
 			productName = Cookcode;
 			productReference = 1503F91F29B45560002F3D26 /* Cookcode.app */;
@@ -669,6 +672,7 @@
 				15F82A6829FA8D5F00DA9381 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				159BE2AA29FB810200DE7448 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				159BE2B029FB87CC00DE7448 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				15DAE25629FE3CCA00A4B00A /* XCRemoteSwiftPackageReference "observed-optional-object" */,
 			);
 			productRefGroup = 1503F92029B45560002F3D26 /* Products */;
 			projectDirPath = "";
@@ -1129,6 +1133,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		15DAE25629FE3CCA00A4B00A /* XCRemoteSwiftPackageReference "observed-optional-object" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fourplusone/observed-optional-object.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		15F82A6829FA8D5F00DA9381 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1149,6 +1161,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 159BE2B029FB87CC00DE7448 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15DAE25629FE3CCA00A4B00A /* XCRemoteSwiftPackageReference "observed-optional-object" */;
+			productName = ObservedOptionalObject;
 		};
 		15F82A6929FA8D5F00DA9381 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
