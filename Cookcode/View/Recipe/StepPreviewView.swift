@@ -7,11 +7,54 @@
 
 import SwiftUI
 import AVKit
+import ObservedOptionalObject
+import Kingfisher
 
 struct StepPreviewView: View {
     
     let stepSequence: Int
-    @ObservedObject var viewModel: RecipeFormViewModel
+    
+    @ObservedOptionalObject var viewModel: RecipeFormViewModel?
+    let step: RecipeStep?
+    
+    var title: String {
+        guard let viewModel = viewModel else {
+            return step?.title ?? "타이틀 에러"
+        }
+        return viewModel.stepFormTitle(at: stepSequence - 1)
+    }
+    
+    var description: String {
+        guard let viewModel = viewModel else {
+            return step?.description ?? "설명 에러"
+        }
+        return viewModel.stepFormDescription(at: stepSequence - 1)
+    }
+    
+    var stepViewIsPresented: Bool {
+        guard let viewModel = viewModel else {
+            return true
+        }
+        return viewModel.stepFormContainsAllRequiredInformation(at: stepSequence - 1)
+    }
+    
+    var usesImage: Bool {
+        guard let viewModel = viewModel else {
+            return !(step?.photosIsEmpty ?? false)
+        }
+        return viewModel.stepFormContainsAnyImage(at: stepSequence - 1)
+    }
+    
+    var contentURL: [String] {
+        guard let viewModel = viewModel else {
+            guard let step = step else {
+                return []
+            }
+            return step.contentURLs
+        }
+        
+        return ["https://picsum.photos/200", "https://picsum.photos/seed/picsum/200/300"]
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -22,7 +65,7 @@ struct StepPreviewView: View {
                     .font(CustomFontFactory.INTER_BOLD_30)
                     .foregroundColor(.mainColor)
                 
-                if viewModel.stepFormContainsAllRequiredInformation(at: stepSequence - 1) {
+                if stepViewIsPresented {
                     StepView()
                 } else {
                     LackOfInformationView()
@@ -36,19 +79,16 @@ struct StepPreviewView: View {
             ModifyStepButton()
             
         }
-        .sheet(item: $viewModel.stepFormTrigger) { item in
-            StepFormView(viewModel: viewModel, stepIndex: item.index)
-        }
     }
     
     @ViewBuilder
     private func StepView() -> some View {
         VStack {
             VStack {
-                Text("\(viewModel.stepFormTitle(at: stepSequence - 1))")
+                Text("\(title)")
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
                 
-                Text("\(viewModel.stepFormDescription(at: stepSequence - 1))")
+                Text("\(description)")
                     .font(CustomFontFactory.INTER_REGULAR_14)
             }
         }
@@ -56,20 +96,25 @@ struct StepPreviewView: View {
     
     @ViewBuilder
     private func ModifyStepButton() -> some View {
-        HStack {
-            Spacer()
-            
-            Button {
-                viewModel.showStepFormView(stepSequence - 1)
-            } label: {
-                Text("수정하기")
-                    .roundedRectangle(.ORANGE_280_FILLED)
-                    .foregroundColor(.white)
-                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                    .padding(.bottom, 10)
+        if let viewModel = viewModel {
+            HStack {
+                Spacer()
+                
+                Button {
+                    viewModel.showStepFormView(stepSequence - 1)
+                } label: {
+                    Text("수정하기")
+                        .roundedRectangle(.ORANGE_280_FILLED)
+                        .foregroundColor(.white)
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                        .padding(.bottom, 10)
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
+            .sheet(item: $viewModel.stepFormTrigger ?? .constant(nil)) { item in
+                StepFormView(viewModel: viewModel, stepIndex: item.index)
+            }
         }
     }
     
@@ -88,17 +133,27 @@ struct StepPreviewView: View {
     
     @ViewBuilder
     private func ContentViewer() -> some View {
-        if viewModel.stepFormContainsAnyContent(at: stepSequence - 1) {
-            if viewModel.stepFormContainsAnyImage(at: stepSequence - 1) {
-                ImageContent()
+        if usesImage {
+            TabView {
+                ForEach(contentURL, id: \.self) { data in
+                    KFImage(URL(string: data))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity, maxHeight: 300)
+                }
             }
-            
-            if viewModel.stepFormContainsAnyVideoURL(at: stepSequence - 1) {
-                VideoContent()
-            }
-            
+            .frame(maxWidth: .infinity, maxHeight: 300)
+            .tabViewStyle(.page(indexDisplayMode: .always))
         } else {
-            EmptyContent()
+            TabView {
+                ForEach(contentURL, id: \.self) { data in
+                    VideoPlayer(player: AVPlayer(url: URL(string: data)!)) {
+                        
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: 300)
+            .tabViewStyle(.page(indexDisplayMode: .always))
         }
     }
     
@@ -119,40 +174,11 @@ struct StepPreviewView: View {
                     }
             }
     }
-    
-    @ViewBuilder
-    private func VideoContent() -> some View {
-        TabView {
-            ForEach(viewModel.stepForms[stepSequence - 1].videoURLs, id: \.self) {
-                VideoPlayer(player: AVPlayer(url: $0.url)) {
-                    
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: 300)
-        .tabViewStyle(.page(indexDisplayMode: .always))
-    }
-    
-    @ViewBuilder
-    private func ImageContent() -> some View {
-        TabView {
-            ForEach(viewModel.stepForms[stepSequence - 1].imageDatas, id: \.self) { data in
-                if let uiImage = UIImage(data: data) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: 300)
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: 300)
-        .tabViewStyle(.page(indexDisplayMode: .always))
-    }
 }
 
-struct StepPreviewView_Previews: PreviewProvider {
-    static var previews: some View {
-        StepPreviewView(stepSequence: 1,
-                        viewModel: RecipeFormViewModel())
-    }
-}
+//struct StepPreviewView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StepPreviewView(stepSequence: 1,
+//                        viewModel: RecipeFormViewModel())
+//    }
+//}

@@ -14,12 +14,12 @@ struct RecipePreviewView: View {
     @StateObject var recipeViewModel: RecipeViewModel = .init()
     @Environment(\.dismiss) var dismiss
     
-    init() {
-        
+    init(recipeFormViewModel: RecipeFormViewModel) {
+        self._recipeFormViewModel = ObservedOptionalObject(wrappedValue: recipeFormViewModel)
     }
     
     init(recipeCell: RecipeCell) {
-        self._recipeViewModel = StateObject(wrappedValue: RecipeViewModel())
+        self._recipeViewModel = StateObject(wrappedValue: RecipeViewModel(recipeService: RecipeSuccessService(), recipeID: recipeCell.recipeID))
     }
     
     var isPreview: Bool {
@@ -57,6 +57,13 @@ struct RecipePreviewView: View {
         return "https://picsum.photos/200"
     }
     
+    var indicies: Range<Int> {
+        guard let viewModel = recipeFormViewModel else {
+            return recipeViewModel.recipeDetail?.steps.indices ?? 0..<0
+        }
+        return viewModel.stepForms.indices
+    }
+    
     
     var body: some View {
         ZStack {
@@ -68,32 +75,35 @@ struct RecipePreviewView: View {
                     }
             }
         
-            if let viewModel = recipeFormViewModel {
-                TabView(selection: selection) {
-                    GeometryReader { proxy in
-                        RecipeEntranceView(title: title, description: description, imageURL: imageURL, cgSize: proxy.size)
-                    }
-                    .tag("main")
-                    
-                    ForEach(viewModel.stepForms.indices, id: \.self) { i in
-                        StepPreviewView(stepSequence: i+1, viewModel: viewModel)
-                            .tag(viewModel.stepFormID(at: i))
-                    }
+            TabView(selection: selection) {
+                GeometryReader { proxy in
+                    RecipeEntranceView(title: title, description: description, imageURL: imageURL, cgSize: proxy.size)
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .frame(maxWidth: .infinity)
-                .background {
-                    Color.white
+                .tag("main")
+                
+                ForEach(indicies, id: \.self) { i in
+                    StepPreviewView(stepSequence: i+1, viewModel: recipeFormViewModel, step: recipeViewModel.recipeDetail?.steps[i])
+                        .tag(stepID(at: i))
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 25))
-                .padding(.horizontal, 10)
-                .padding(.top, 30)
-            } else {
-                Text("레시피 디테일")
             }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .frame(maxWidth: .infinity)
+            .background {
+                Color.white
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 25))
+            .padding(.horizontal, 10)
+            .padding(.top, 30)
         }
         .navigationBarBackButtonHidden(recipeFormViewModel != nil)
         .statusBarHidden()
+    }
+    
+    func stepID(at: Int) -> String {
+        guard let viewModel = recipeFormViewModel else {
+            return recipeViewModel.stepID(at: at)
+        }
+        return viewModel.stepFormID(at: at)
     }
     
     @ViewBuilder
@@ -136,8 +146,8 @@ struct RecipePreviewView: View {
     }
 }
 
-struct RecipePreviewView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipePreviewView(recipeFormViewModel: RecipeFormViewModel(true))
-    }
-}
+//struct RecipePreviewView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecipePreviewView(recipeFormViewModel: RecipeFormViewModel())
+//    }
+//}
