@@ -9,7 +9,36 @@ import SwiftUI
 
 struct RefrigeratorView: View {
     var body: some View {
-        Text("냉장고")
+        VStack {
+            Rectangle()
+                .frame(maxWidth: .infinity, maxHeight: 2)
+                .foregroundColor(.mainColor)
+            
+            HStack {
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Text("+ 추가")
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                        .foregroundColor(.primary)
+                }
+            }
+
+            
+            ScrollView {
+                VStack {
+                    
+                }
+            }
+        }
+        .padding(.horizontal, 10)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Text("냉장고")
+                    .font(CustomFontFactory.INTER_BOLD_30)
+            }
+        }
     }
 }
 

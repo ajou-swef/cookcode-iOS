@@ -29,7 +29,11 @@ class NavigateViewModel: ObservableObject {
         
         for component in components {
             if component.contains("tab=") {
-                continue
+                let rawValue = component.replacingOccurrences(of: "tab=", with: "")
+                let tab = Tab.convert(from: rawValue)
+                if let tab = tab {
+                    navigateWithTab(tab)
+                }
             }
             
             if component.contains("outer=") {
@@ -40,6 +44,10 @@ class NavigateViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func navigateWithTab(_ tab: Tab) {
+        self.tab = tab
     }
     
     func navigateToOuter(_ path: OuterPath) {
