@@ -101,7 +101,7 @@ struct StepPreviewView: View {
                 Spacer()
                 
                 Button {
-                    viewModel.showStepFormView(stepSequence - 1)
+                    viewModel.presentStepFormView(stepSequence - 1)
                 } label: {
                     Text("수정하기")
                         .roundedRectangle(.ORANGE_280_FILLED)

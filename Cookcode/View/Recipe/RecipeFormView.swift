@@ -224,7 +224,7 @@ struct RecipeFormView: View {
             VStack(spacing: 10) {
                 ForEach(viewModel.stepForms.indices, id: \.self) { i in
                     Button {
-                        viewModel.showStepFormView(i)
+                        viewModel.presentStepFormView(i)
                     } label: {
                         HStack {
                             Text("\(i+1)단계")

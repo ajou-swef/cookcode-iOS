@@ -100,7 +100,7 @@ class RecipeFormViewModel: ObservableObject {
     }
     
     //  MARK: StepView 관련 기능들
-    func showStepFormView(_ i: Int) {
+    func presentStepFormView(_ i: Int) {
         stepTabSelection = stepForms[i].id
         stepFormTrigger = RecipePathWithIndex(path: .step, index: i)
     }
@@ -117,7 +117,7 @@ class RecipeFormViewModel: ObservableObject {
     
     // 바로 삭제하지 않고 삭제될 Index를 저장한다. 바로 삭제하면 애니메이션이 이상해진다.
     // 삭제될 stepIndex를 저장한 후에 view disappear 시점에서 삭제한다. 
-    func trashButtonTapped(_ i: Int) {
+    func removeThisStep(_ i: Int) {
         withAnimation {
             stepTabSelection = stepForms[i-1].id
             deletedStepIndex = i
@@ -132,7 +132,7 @@ class RecipeFormViewModel: ObservableObject {
         }
     }
     
-    func changeToVideoButtonTapped(_ i: Int) {
+    func changeContentTypeToVideo(_ i: Int) {
         if stepForms[i].containsAnyImage {
             isPresentedContentDeleteAlert = true
         } else {
@@ -144,7 +144,7 @@ class RecipeFormViewModel: ObservableObject {
         stepForms[i].changeContent()
     }
     
-    func addStepButtonTapped() {
+    func appendNewStepForm() {
         appendStepForm()
         withAnimation {
             if let last = stepForms.last {
@@ -155,7 +155,7 @@ class RecipeFormViewModel: ObservableObject {
     
     func addFirstStepButtonTapped() {
         appendStepForm()
-        showStepFormView(stepForms.count - 1)
+        presentStepFormView(stepForms.count - 1)
     }
     
     func onDisappearStep() {

@@ -109,7 +109,7 @@ struct StepFormView: View {
     private func SelectContentTypeButton(_ i: Int) -> some View {
         HStack {
             Button {
-                viewModel.changeToImageButtonTapped(i)
+                viewModel.changeContentType(i)
             } label: {
                 Text("이미지")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
@@ -121,7 +121,7 @@ struct StepFormView: View {
             Spacer()
             
             Button {
-                viewModel.changeToVideoButtonTapped(i)
+                viewModel.changeContentTypeToVideo(i)
             } label: {
                 Text("동영상")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
@@ -168,7 +168,7 @@ struct StepFormView: View {
     private func BottomButton(_ i: Int) -> some View {
         HStack {
             Button {
-                viewModel.trashButtonTapped(i)
+                viewModel.removeThisStep(i)
             } label: {
                 Image(systemName: "trash.square")
                     .resizable()
@@ -179,7 +179,7 @@ struct StepFormView: View {
 
             
             Button {
-                viewModel.addStepButtonTapped()
+                viewModel.appendNewStepForm()
             } label: {
                 Text("스텝 추가")
                     .foregroundColor(.white)
