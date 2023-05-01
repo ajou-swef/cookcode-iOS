@@ -23,7 +23,7 @@ struct MainTabView: View {
                     RecipeFormView()
                         .transition(.move(edge: .trailing))
                 case .profile:
-                    EmptyView()
+                    ProfileView()
                         .transition(.move(edge: .trailing))
                 }
             } else {

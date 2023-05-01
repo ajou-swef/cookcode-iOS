@@ -12,9 +12,10 @@ class NavigateViewModel: ObservableObject {
     @Published var tab: Tab = .home
     
     @Published var recipePath: NavigationPath = .init()
-    @Published var outerPath: OuterPath?
-    
     @Published var homePath: NavigationPath = .init()
+    
+    @Published var outerPath: OuterPath?
+    @Published var profilePath: NavigationPath = .init()
     
     init() {
         if let openURL = ProcessInfo.processInfo.environment["-openURL"] {
@@ -49,7 +50,7 @@ class NavigateViewModel: ObservableObject {
         homePath.append(path)
     }
     
-    func dismissRecipeFormView() {
+    func dismissOuter() {
         outerPath = nil
     }
     

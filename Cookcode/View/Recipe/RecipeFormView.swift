@@ -55,7 +55,7 @@ struct RecipeFormView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        navigateViewModel.dismissRecipeFormView()
+                        navigateViewModel.dismissOuter()
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundColor(.primary)
