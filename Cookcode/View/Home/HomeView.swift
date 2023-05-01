@@ -23,8 +23,9 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("타이틀")
+            HStack(spacing: 15) {
+                Text("cookcode logo")
+                    .font(CustomFontFactory.INTER_BOLD_16)
                 
                 Spacer()
                 
@@ -32,20 +33,21 @@ struct HomeView: View {
                     navigateViewModel.navigateWithHome(HomePath.search)
                 } label: {
                     Image(systemName: "magnifyingglass")
+                        .resizable()
                         .foregroundColor(.black)
+                        .frame(width: 20, height: 20)
                 }
                 
                 Button {
                     navigateViewModel.navigateToOuter(.profile)
                 } label: {
                     Image(systemName: "person.fill")
+                        .resizable()
                         .foregroundColor(.black)
+                        .frame(width: 20, height: 20)
                 }
             }
             .padding(.horizontal, 10)
-            .padding(.bottom, 20)
-            
-            Spacer()
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20 + offsetY) {

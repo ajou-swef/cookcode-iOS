@@ -41,7 +41,7 @@ struct MainTabView: View {
                 }
             }
         }
-        .animation(.linear(duration: 0.1), value: navigateViewModel.outerPath)
+        .animation(.easeIn(duration: 0.2), value: navigateViewModel.outerPath)
     }
     
     @ViewBuilder

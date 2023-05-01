@@ -67,7 +67,7 @@ struct RecipePreviewView: View {
     
     var body: some View {
         ZStack {
-            if recipeFormViewModel != nil {
+            if isPreview {
                 Color.gray808080
                     .ignoresSafeArea(.all)
                     .overlay(alignment: .top) {
@@ -93,9 +93,10 @@ struct RecipePreviewView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 25))
             .padding(.horizontal, 10)
-            .padding(.top, 30)
+            .padding(.top, isPreview ? 30 : 0)
         }
-        .navigationBarBackButtonHidden(recipeFormViewModel != nil)
+        .ignoresSafeArea(.all)
+        .navigationBarBackButtonHidden(isPreview)
         .statusBarHidden()
     }
     
