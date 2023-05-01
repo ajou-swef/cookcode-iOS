@@ -8,6 +8,7 @@
 import AVKit
 import SwiftUI
 import PhotosUI
+import Kingfisher
 
 struct StepFormView: View {
     
@@ -31,17 +32,19 @@ struct StepFormView: View {
                     }
                     .padding(.bottom, -20)
                     
-                    PhotosPicker(selection: $viewModel.stepForms[i].photoPickerItems, maxSelectionCount: viewModel.stepForms[i].maxSelection, matching: viewModel.stepForms[i].phpFilter) {
+                    PhotosPicker(selection: $viewModel.stepItems, maxSelectionCount: viewModel.stepForms[i].maxSelection, matching: viewModel.stepForms[i].phpFilter) {
                         if viewModel.stepForms[i].useImageType {
                             SelectImageButton(i)
                         } else if viewModel.stepForms[i].useVideoType {
                             SelectVideoButton(i)
                         }
                     }
-                    .onChange(of: viewModel.stepForms[i].photoPickerItems) { _ in
-                       Task {
-                           await viewModel.stepForms[i].load()
-                       }
+                    .onChange(of: viewModel.stepItems) { newValue in
+                        if !newValue.isEmpty {
+                            Task {
+                                await viewModel.loadItemAt(i)
+                            }
+                        }
                    }
                     
                     TitleSection(i)
@@ -67,8 +70,8 @@ struct StepFormView: View {
     @ViewBuilder
     private func SelectImageButton(_ i: Int) -> some View {
         ForEach(0..<3, id: \.self) { j in
-            if j < viewModel.stepForms[i].imageDatas.count, let uiImage = UIImage(data: viewModel.stepForms[i].imageDatas[j]) {
-                Image(uiImage: uiImage)
+            if j < viewModel.stepForms[i].imageURLs.count {
+                KFImage(URL(string: viewModel.stepForms[i].imageURLs[j]))
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: 100)
                     .cornerRadius(15)

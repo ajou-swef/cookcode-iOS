@@ -6,7 +6,9 @@
 //
 
 import XCTest
+import PhotosUI
 @testable import Cookcode
+import _PhotosUI_SwiftUI
 
 final class ContentWrappedStepForm_Tests: XCTestCase {
     
@@ -65,8 +67,5 @@ final class ContentWrappedStepForm_Tests: XCTestCase {
             //  Then
             XCTAssertFalse(cwst.containsAllRequiredInformation)
         }
-        
     }
-    
-    
 }

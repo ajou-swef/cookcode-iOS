@@ -18,6 +18,9 @@ class RecipeFormViewModel: ObservableObject {
     @Published var mainImageItem: PhotosPickerItem?
     @Published var mainImageData: Data? 
     
+    @Published var stepItems: [PhotosPickerItem] = .init()
+    @Published var stepImageData: [Data] = .init()
+    
     @Published var stepForms: [ContentWrappedStepForm] = .init()
     @Published var serviceAlert: ServiceAlert = .init()
     
@@ -86,6 +89,10 @@ class RecipeFormViewModel: ObservableObject {
     
     func stepFormContainsAnyVideoURL(at: Int) -> Bool {
         stepForms[at].containsAnyVideoURL
+    }
+    
+    func stepFormContentType(at :Int) -> ContentType {
+        stepForms[at].contentType
     }
     
     func stepFormID(at: Int) -> String {
@@ -166,5 +173,32 @@ class RecipeFormViewModel: ObservableObject {
                 serviceAlert.presentAlert(failure)
             }
         }
+    }
+    
+    @MainActor
+    func loadItemAt(_ at: Int) async {
+        let contentType = stepFormContentType(at: at)
+        
+        switch contentType {
+        case .video:
+            break
+        case .image:
+            for item in stepItems {
+                if let data = try? await item.loadTransferable(type: Data.self) {
+                    stepImageData.append(data)
+                }
+            }
+            
+            let result = await contentService.postPhotos(stepImageData)
+            switch result {
+            case .success(let success):
+                stepForms[at].imageURLs = success.data.photoURL
+            case .failure(let failure):
+                serviceAlert.presentAlert(failure)
+            }
+        }
+        
+        stepItems = .init()
+        stepImageData = .init()
     }
 }

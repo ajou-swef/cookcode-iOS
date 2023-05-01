@@ -25,6 +25,7 @@ struct ContentWrappedStepForm: Identifiable {
     
     var imageDatas: [Data] = .init()
     var videoURLs: [VideoURL] = .init()
+    var imageURLs: [String] = .init()
     
     var contentType: ContentType {
         get {
