@@ -6,14 +6,16 @@
 //
 
 import XCTest
+import Combine
 @testable import Cookcode
 
 final class RecipeFormViewModel_Tests: XCTestCase {
     
     var viewModel: RecipeFormViewModel?
+    var cancellable = Set<AnyCancellable>()
     
     override func setUpWithError() throws {
-        viewModel = RecipeFormViewModel()
+        viewModel = RecipeFormViewModel(contentService: ContentSuccessService(), recipeService: RecipeSuccessService())
     }
 
     override func tearDownWithError() throws {
@@ -79,5 +81,22 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         
         //  Then
         XCTAssertFalse(vm.previewButtonIsAvailable)
+    }
+    
+    @MainActor
+    func test_RecipeFormViewModel_postImage_returnsOneURL() async {
+        //  Given
+        guard let vm = viewModel else {
+            XCTFail()
+            return
+        }
+
+        
+        //  When
+        vm.mainImageData = Data()
+        await vm.postImage()
+        
+        //  Then
+        XCTAssertTrue(vm.recipeMetadataHasThumbnail)
     }
 }

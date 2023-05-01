@@ -225,8 +225,8 @@ struct StepFormView: View {
     }
 }
 
-struct StepFormView_Previews: PreviewProvider {
-    static var previews: some View {
-        StepFormView(viewModel: RecipeFormViewModel(true), stepIndex: 0)
-    }
-}
+//struct StepFormView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StepFormView(viewModel: RecipeFormViewModel(true), stepIndex: 0)
+//    }
+//}

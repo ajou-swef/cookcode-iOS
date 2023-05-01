@@ -14,7 +14,24 @@ struct RecipeForm: Codable {
     var mainIngredients: [String] = []
     var optionalIngredients: [String] = []
     
+    var thumbnail: String = ""
+    var deletedThumbnails: [String] = .init()
+    
+    var thumbnailIsEmpty: Bool {
+        thumbnail.isEmpty
+    }
+    
     var titleIsEmpty: Bool {
         title.isEmpty
+    }
+    
+    mutating func updateThumbnail(url: [String]) {
+        if !thumbnailIsEmpty {
+            deletedThumbnails.append(thumbnail)
+        }
+        
+        if url.count >= 1 {
+            thumbnail = url[0]
+        }
     }
 }

@@ -10,4 +10,8 @@ import Foundation
 struct ServiceError: Codable, Error {
     let message: String
     let status: Int
+    
+    static func MOCK() -> ServiceError {
+        ServiceError(message: "실패", status: 400)
+    }
 }

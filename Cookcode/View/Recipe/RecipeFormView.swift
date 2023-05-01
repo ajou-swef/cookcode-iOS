@@ -7,11 +7,12 @@
 
 import SwiftUI
 import PhotosUI
+import Kingfisher
 
 struct RecipeFormView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    @StateObject private var viewModel: RecipeFormViewModel = .init()
+    @StateObject private var viewModel: RecipeFormViewModel = .init(contentService: ContentSuccessService(), recipeService: RecipeSuccessService())
     @State private var step: StepForm?
     
     var body: some View {
@@ -102,28 +103,26 @@ struct RecipeFormView: View {
         Section {
             VStack(spacing: 5) {
                 PhotosPicker(selection: $viewModel.mainImageItem) {
-                    if let selectedData = viewModel.mainImageData, let uiImage = UIImage(data: selectedData) {
-                        Image(uiImage: uiImage)
+                    if viewModel.recipeMetadataHasThumbnail {
+                        KFImage(URL(string: viewModel.recipeMetadata.thumbnail))
                             .resizable()
                             .frame(maxWidth: 320, maxHeight: 200)
                             .scaledToFill()
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                        
                     } else {
                         Image(systemName: "photo.fill")
                             .resizable()
                             .foregroundColor(.gray_bcbcbc)
-                            .frame(maxWidth: 120, minHeight: 100)
-                            .padding(.horizontal, 100)
-                            .padding(.vertical, 50)
-                            .background {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(lineWidth: 3)
-                                    .foregroundColor(.gray_bcbcbc)
-                            }
+                            .frame(maxWidth: 320, minHeight: 200)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }
                 .padding(.bottom, 20)
+                .onChange(of: viewModel.mainImageData) { newValue in
+                    Task {
+                        await viewModel.postImage()
+                    }
+                }
             }
         } header: {
             HStack {

@@ -8,7 +8,10 @@
 import Foundation
 
 final class RecipeViewModel: ObservableObject {
+    
     private let recipeService: RecipeServiceProtocol
+    
+    
     @Published private(set) var recipeDetail: RecipeCell?
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var tabSelection: String = ""
@@ -17,7 +20,7 @@ final class RecipeViewModel: ObservableObject {
         recipeService = RecipeFailureService()
     }
     
-    init (recipeService: RecipeServiceProtocol, recipeID: Int) {
+    init (recipeService: RecipeServiceProtocol, contentService: ContentServiceProtocol, recipeID: Int) {
         self.recipeService = recipeService
         fetchRecipe(recipeID)
     }

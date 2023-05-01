@@ -83,6 +83,8 @@
 		15CFE66429FF587D00C16FF6 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE66329FF587D00C16FF6 /* PhotoResponse.swift */; };
 		15CFE66629FF590000C16FF6 /* VideoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE66529FF590000C16FF6 /* VideoResponse.swift */; };
 		15CFE66829FF593300C16FF6 /* ContentSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE66729FF593300C16FF6 /* ContentSuccessService.swift */; };
+		15CFE6A329FF5F0600C16FF6 /* ContentFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A229FF5F0600C16FF6 /* ContentFailureService.swift */; };
+		15CFE6A529FF69C800C16FF6 /* RecipeFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A429FF69C800C16FF6 /* RecipeFormTests.swift */; };
 		15DAE25829FE3CCA00A4B00A /* ObservedOptionalObject in Frameworks */ = {isa = PBXBuildFile; productRef = 15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */; };
 		15DAE25A29FE3F9D00A4B00A /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */; };
 		15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9B29FA94A40008DC7A /* AccountService.swift */; };
@@ -200,6 +202,8 @@
 		15CFE66329FF587D00C16FF6 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
 		15CFE66529FF590000C16FF6 /* VideoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponse.swift; sourceTree = "<group>"; };
 		15CFE66729FF593300C16FF6 /* ContentSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSuccessService.swift; sourceTree = "<group>"; };
+		15CFE6A229FF5F0600C16FF6 /* ContentFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFailureService.swift; sourceTree = "<group>"; };
+		15CFE6A429FF69C800C16FF6 /* RecipeFormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFormTests.swift; sourceTree = "<group>"; };
 		15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		15E43A9B29FA94A40008DC7A /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSuccessService.swift; sourceTree = "<group>"; };
@@ -485,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				1566058F29F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift */,
+				15CFE6A429FF69C800C16FF6 /* RecipeFormTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -578,6 +583,7 @@
 			children = (
 				15CFE66129FF56C700C16FF6 /* ContentServiceProtocol.swift */,
 				15CFE66729FF593300C16FF6 /* ContentSuccessService.swift */,
+				15CFE6A229FF5F0600C16FF6 /* ContentFailureService.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -789,6 +795,7 @@
 				15AA2F4B29F0D80E0069813F /* RecipePath.swift in Sources */,
 				150CD44329F397830001FFEB /* ContentType.swift in Sources */,
 				152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */,
+				15CFE6A329FF5F0600C16FF6 /* ContentFailureService.swift in Sources */,
 				153F127C29FE2359008BDB4E /* RecipeStep.swift in Sources */,
 				153B4DB329ED286300543730 /* View + Hidden.swift in Sources */,
 				159BE2A929FB6E7900DE7448 /* AccountFailureService.swift in Sources */,
@@ -822,6 +829,7 @@
 				159FA86C29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift in Sources */,
 				153B4DB929ED58B900543730 /* MembershipForm_Tests.swift in Sources */,
 				1503F94D29B4557A002F3D26 /* LoginViewModel_Tests.swift in Sources */,
+				15CFE6A529FF69C800C16FF6 /* RecipeFormTests.swift in Sources */,
 				1566059029F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift in Sources */,
 				1503F93429B45561002F3D26 /* CookcodeTests.swift in Sources */,
 			);

@@ -13,7 +13,7 @@ final class LoginViewModel_Tests: XCTestCase {
     var viewModel: LoginViewModel?
     
     override func setUpWithError() throws {
-        viewModel = LoginViewModel() 
+        viewModel = LoginViewModel(accountService: AccountSuccessService()) 
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 

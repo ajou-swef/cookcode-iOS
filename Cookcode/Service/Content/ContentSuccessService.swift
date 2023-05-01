@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ContentFinalService: ContentServiceProtocol {
+final class ContentSuccessService: ContentServiceProtocol {
     func postPhotos(_ data: [Data]) async -> Result<PhotoResponse, ServiceError> {
         .success(PhotoResponse(message: "post성공", status: 200, data: PhotoURL.MOCK_DATA()))
     }

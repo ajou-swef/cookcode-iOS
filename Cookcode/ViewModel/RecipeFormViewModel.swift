@@ -10,11 +10,15 @@ import PhotosUI
 
 class RecipeFormViewModel: ObservableObject {
     
+    private let recipeService: RecipeServiceProtocol
+    private let contentService: ContentServiceProtocol
+    
     @Published var recipeMetadata: RecipeForm = .init()
     @Published var mainImageItem: PhotosPickerItem?
     @Published var mainImageData: Data? 
     
     @Published var stepForms: [ContentWrappedStepForm] = .init()
+    @Published var serviceAlert: ServiceAlert = .init()
     
     // sheet, fullscreen 등의 navigate를 위한 프로퍼티
     @Published var stepFormTrigger: RecipePathWithIndex?
@@ -29,6 +33,10 @@ class RecipeFormViewModel: ObservableObject {
     // 부드러운 스텝 삭제 애니메이션을 위한 프로퍼티
     @Published var deletedStepIndex: Int?
     
+    var recipeMetadataHasThumbnail: Bool {
+        !recipeMetadata.thumbnailIsEmpty
+    }
+    
     var previewButtonIsAvailable: Bool {
         containsAnyStep && !recipeMetadata.titleIsEmpty && mainImageData != nil
     }
@@ -41,7 +49,11 @@ class RecipeFormViewModel: ObservableObject {
         stepForms.count >= 2
     }
     
-    init(_ preview: Bool = false) {
+    init(_ preview: Bool = false, contentService: ContentServiceProtocol, recipeService: RecipeServiceProtocol) {
+        
+        self.contentService = contentService
+        self.recipeService = recipeService
+        
         if preview {
             stepForms.append(ContentWrappedStepForm())
         }
@@ -140,5 +152,19 @@ class RecipeFormViewModel: ObservableObject {
     
     func onDisappearStep() {
         flushDeletedStepIndex()
+    }
+    
+    @MainActor
+    func postImage() async {
+        if let imageData = mainImageData {
+            let result = await contentService.postPhotos([imageData])
+            switch result {
+            case .success(let success):
+                recipeMetadata.updateThumbnail(url: success.url)
+                print("postImage :  \(recipeMetadata)")
+            case .failure(let failure):
+                serviceAlert.presentAlert(failure)
+            }
+        }
     }
 }

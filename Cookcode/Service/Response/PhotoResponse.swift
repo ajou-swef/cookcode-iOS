@@ -11,6 +11,10 @@ struct PhotoResponse: Codable {
     let message: String
     let status: Int
     let data: PhotoURL
+    
+    var url: [String] {
+        data.photoURL
+    }
 }
 
 // MARK: - DataClass
