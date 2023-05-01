@@ -86,6 +86,8 @@
 		15CFE6A329FF5F0600C16FF6 /* ContentFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A229FF5F0600C16FF6 /* ContentFailureService.swift */; };
 		15CFE6A529FF69C800C16FF6 /* RecipeFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A429FF69C800C16FF6 /* RecipeFormTests.swift */; };
 		15CFE6A829FF7B8500C16FF6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A729FF7B8500C16FF6 /* ProfileView.swift */; };
+		15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */; };
+		15CFE6AC29FF7F9100C16FF6 /* SearchTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6AB29FF7F9100C16FF6 /* SearchTypePicker.swift */; };
 		15DAE25829FE3CCA00A4B00A /* ObservedOptionalObject in Frameworks */ = {isa = PBXBuildFile; productRef = 15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */; };
 		15DAE25A29FE3F9D00A4B00A /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */; };
 		15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9B29FA94A40008DC7A /* AccountService.swift */; };
@@ -206,6 +208,8 @@
 		15CFE6A229FF5F0600C16FF6 /* ContentFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFailureService.swift; sourceTree = "<group>"; };
 		15CFE6A429FF69C800C16FF6 /* RecipeFormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFormTests.swift; sourceTree = "<group>"; };
 		15CFE6A729FF7B8500C16FF6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
+		15CFE6AB29FF7F9100C16FF6 /* SearchTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTypePicker.swift; sourceTree = "<group>"; };
 		15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		15E43A9B29FA94A40008DC7A /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSuccessService.swift; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 				15AA2F4129F0C9DC0069813F /* Form */,
 				153F127629FE2268008BDB4E /* DTO */,
 				159BE2A629FB6C1E00DE7448 /* ErrorAlert.swift */,
+				15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				15AA2F2729EFEBE00069813F /* CCDivider.swift */,
+				15CFE6AB29FF7F9100C16FF6 /* SearchTypePicker.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -781,6 +787,7 @@
 				15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */,
 				15F82A7529FA93E500DA9381 /* UserAccountResponse.swift in Sources */,
 				159BE2AF29FB875F00DE7448 /* RecipeCellView.swift in Sources */,
+				15CFE6AC29FF7F9100C16FF6 /* SearchTypePicker.swift in Sources */,
 				153F127E29FE23B3008BDB4E /* RecipeCell.swift in Sources */,
 				15F82A6D29FA901500DA9381 /* AccoutCheckResponse.swift in Sources */,
 				15AA2F4029F0C9110069813F /* StepForm.swift in Sources */,
@@ -795,6 +802,7 @@
 				15AA2F2229EFE8DE0069813F /* RecipeForm.swift in Sources */,
 				15B869B929EFDC3600A02872 /* HomeView.swift in Sources */,
 				15F82A7329FA92D500DA9381 /* SignInResponse.swift in Sources */,
+				15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */,
 				1566059229F93740008B9F9F /* HomeViewModel.swift in Sources */,
 				15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */,
 				1584033329B48E0F0092032A /* LoginView.swift in Sources */,

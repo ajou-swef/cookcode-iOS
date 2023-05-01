@@ -6,14 +6,22 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SearchRecipeViewModel: ObservableObject {
     
     @Published var text: String = ""
     @Published var recipeCellSearch: RecipeCellSearch = .init()
     @Published var serviceAlert: ServiceAlert = .init()
+    @Published var searchType: SearchType = .recipe
 
     let recipeService: RecipeServiceProtocol
+    let columns: [GridItem] = [
+        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20),
+    ]
+    let recipeCellHeight: CGFloat = 200
+    let offsetY: CGFloat = 20
     
     init (recipeService: RecipeServiceProtocol) {
         self.recipeService = recipeService
