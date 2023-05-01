@@ -32,19 +32,7 @@ struct RecipeFormView: View {
                     .padding(.top, 30)
                 }
                 
-                VStack {
-                    
-                    NavigationLink {
-                        RecipePreviewView(recipeFormViewModel: viewModel)
-                    } label: {
-                        Text("미리보기")
-                            .font(CustomFontFactory.INTER_BOLD_16)
-                            .foregroundColor(.white)
-                            .roundedRectangle(.GRAY_320_FILLED,
-                                              focused: !viewModel.previewButtonIsAvailable)
-                    }
-                    .disabled(!viewModel.previewButtonIsAvailable)
-                }
+                PresentPreviewButton()
             }
             .sheet(item: $viewModel.stepFormTrigger) { item in
                 StepFormView(viewModel: viewModel, stepIndex: item.index)
@@ -74,6 +62,22 @@ struct RecipeFormView: View {
                     }
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func PresentPreviewButton() -> some View {
+        VStack {
+            NavigationLink {
+                RecipeView(recipeFormViewModel: viewModel)
+            } label: {
+                Text("미리보기")
+                    .font(CustomFontFactory.INTER_BOLD_16)
+                    .foregroundColor(.white)
+                    .roundedRectangle(.GRAY_320_FILLED,
+                                      focused: !viewModel.previewButtonIsAvailable)
+            }
+            .disabled(!viewModel.previewButtonIsAvailable)
         }
     }
     

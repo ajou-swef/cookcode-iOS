@@ -8,7 +8,7 @@
 import SwiftUI
 import ObservedOptionalObject
 
-struct RecipePreviewView: View {
+struct RecipeView: View {
     
     @ObservedOptionalObject var recipeFormViewModel: RecipeFormViewModel?
     @StateObject var recipeViewModel: RecipeViewModel = .init()

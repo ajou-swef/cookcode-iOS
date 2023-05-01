@@ -11,11 +11,12 @@ import PhotosUI
 struct RecipeForm: Codable {
     var title: String = ""
     var description: String = ""
-    var mainIngredients: [String] = []
-    var optionalIngredients: [String] = []
     
-    var thumbnail: String = ""
-    var deletedThumbnails: [String] = []
+    private(set) var mainIngredients: [String] = []
+    private(set) var optionalIngredients: [String] = []
+    
+    private(set) var thumbnail: String = ""
+    private(set) var deletedThumbnails: [String] = []
     
     var steps: [ContentWrappedStepForm] = []
     
@@ -35,5 +36,21 @@ struct RecipeForm: Codable {
         if url.count >= 1 {
             thumbnail = url[0]
         }
+    }
+    
+    mutating func appendStep(_ step: ContentWrappedStepForm) {
+        steps.append(step)
+    }
+    
+    mutating func removeStepAt(_ at: Int) {
+        steps.remove(at: at)
+    }
+    
+    mutating func stepChangesContent(_ at: Int) {
+        steps[at].changeContent()
+    }
+    
+    mutating func stepAppendContentURL(_ at: Int, urls: [String]) {
+        steps[at].appendContetURLs(urls)
     }
 }

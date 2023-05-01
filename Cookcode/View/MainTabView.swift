@@ -63,7 +63,7 @@ struct MainTabView: View {
         NavigationStack(path: $navigateViewModel.homePath) {
             HomeView()
                 .navigationDestination(for: RecipeCell.self) { recipe in
-                    RecipePreviewView(recipeCell: recipe)
+                    RecipeView(recipeCell: recipe)
                 }
                 .navigationDestination(for: HomePath.self) { path in
                     switch path {

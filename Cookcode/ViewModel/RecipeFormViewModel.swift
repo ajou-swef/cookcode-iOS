@@ -58,12 +58,12 @@ class RecipeFormViewModel: ObservableObject {
         self.recipeService = recipeService
         
         if preview {
-            recipeForm.steps.append(ContentWrappedStepForm())
+            recipeForm.appendStep(ContentWrappedStepForm())
         }
     }
     
     fileprivate func appendStepForm() {
-        recipeForm.steps.append(ContentWrappedStepForm())
+        recipeForm.appendStep(ContentWrappedStepForm())
     }
     
     func stepFormContainsAllRequiredInformation(at: Int) -> Bool {
@@ -106,7 +106,7 @@ class RecipeFormViewModel: ObservableObject {
     
     func flushDeletedStepIndex() {
         if let i = deletedStepIndex {
-            recipeForm.steps.remove(at: i)
+            recipeForm.removeStepAt(i)
         }
         
         deletedStepIndex = nil
@@ -127,7 +127,7 @@ class RecipeFormViewModel: ObservableObject {
         if recipeForm.steps[i].containsAnyVideoURL {
             isPresentedContentDeleteAlert = true
         } else {
-            recipeForm.steps[i].changeContent()
+            recipeForm.stepChangesContent(i)
         }
     }
     
@@ -135,12 +135,12 @@ class RecipeFormViewModel: ObservableObject {
         if recipeForm.steps[i].containsAnyImage {
             isPresentedContentDeleteAlert = true
         } else {
-            recipeForm.steps[i].changeContent()
+            recipeForm.stepChangesContent(i)
         }
     }
     
     func deleteContentsButtonInAlertTapped(_ i: Int) {
-        recipeForm.steps[i].changeContent()
+        recipeForm.stepChangesContent(i)
     }
     
     func appendNewStepForm() {
@@ -189,7 +189,7 @@ class RecipeFormViewModel: ObservableObject {
             let result = await contentService.postVideos([])
             switch result {
             case .success(let success):
-                recipeForm.steps[at].appendContetURLs(success.data.photoURL)
+                recipeForm.stepAppendContentURL(at, urls: success.data.photoURL)
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }
@@ -204,7 +204,7 @@ class RecipeFormViewModel: ObservableObject {
             let result = await contentService.postPhotos(stepImageData)
             switch result {
             case .success(let success):
-                recipeForm.steps[at].appendContetURLs(success.data.photoURL)
+                recipeForm.stepAppendContentURL(at, urls: success.url)
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }
