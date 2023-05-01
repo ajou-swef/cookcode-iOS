@@ -8,7 +8,7 @@
 import Foundation
 import PhotosUI
 
-enum ContentType {
+enum ContentType: Codable {
     case video
     case image
     

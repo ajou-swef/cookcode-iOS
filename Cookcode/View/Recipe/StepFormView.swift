@@ -20,7 +20,7 @@ struct StepFormView: View {
     
     var body: some View {
         TabView(selection: $viewModel.stepTabSelection) {
-            ForEach(viewModel.stepForms.indices, id: \.self) {  i in
+            ForEach(viewModel.recipeForm.steps.indices, id: \.self) {  i in
                 VStack(spacing: 40) {
                     HStack {
                         Text("\(i+1)단계")
@@ -32,10 +32,10 @@ struct StepFormView: View {
                     }
                     .padding(.bottom, -20)
                     
-                    PhotosPicker(selection: $viewModel.stepItems, maxSelectionCount: viewModel.stepForms[i].maxSelection, matching: viewModel.stepForms[i].phpFilter) {
-                        if viewModel.stepForms[i].useImageType {
+                    PhotosPicker(selection: $viewModel.stepItems, maxSelectionCount: viewModel.recipeForm.steps[i].maxSelection, matching: viewModel.recipeForm.steps[i].phpFilter) {
+                        if viewModel.recipeForm.steps[i].useImageType {
                             SelectImageButton(i)
-                        } else if viewModel.stepForms[i].useVideoType {
+                        } else if viewModel.recipeForm.steps[i].useVideoType {
                             SelectVideoButton(i)
                         }
                     }
@@ -57,7 +57,7 @@ struct StepFormView: View {
                 }
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
-                .tag(viewModel.stepForms[i].id)
+                .tag(viewModel.recipeForm.steps[i].id)
                 .onDisappear {
                     viewModel.onDisappearStep()
                 }
@@ -70,8 +70,8 @@ struct StepFormView: View {
     @ViewBuilder
     private func SelectImageButton(_ i: Int) -> some View {
         ForEach(0..<3, id: \.self) { j in
-            if j < viewModel.stepForms[i].imageURLs.count {
-                KFImage(URL(string: viewModel.stepForms[i].imageURLs[j]))
+            if j < viewModel.recipeForm.steps[i].imageURLs.count {
+                KFImage(URL(string: viewModel.recipeForm.steps[i].imageURLs[j]))
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: 100)
                     .cornerRadius(15)
@@ -88,8 +88,8 @@ struct StepFormView: View {
     @ViewBuilder
     private func SelectVideoButton(_ i: Int) -> some View {
         ForEach(0..<2, id: \.self) { j in
-            if j < viewModel.stepForms[i].videoURLs.count {
-                if let url = URL(string: viewModel.stepForms[i].videoURLs[j]) {
+            if j < viewModel.recipeForm.steps[i].videoURLs.count {
+                if let url = URL(string: viewModel.recipeForm.steps[i].videoURLs[j]) {
                     
                     VideoPlayer(player: AVPlayer(url: url))
                         .frame(maxWidth: .infinity, maxHeight: 100)
@@ -118,7 +118,7 @@ struct StepFormView: View {
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
             }
             .padding(.leading, 10)
-            .foregroundColor(viewModel.stepForms[i].useImageType ?
+            .foregroundColor(viewModel.recipeForm.steps[i].useImageType ?
                 .white : .primary)
             
             Spacer()
@@ -131,7 +131,7 @@ struct StepFormView: View {
                 
             }
             .padding(.trailing, 10)
-            .foregroundColor(viewModel.stepForms[i].useVideoType ?
+            .foregroundColor(viewModel.recipeForm.steps[i].useVideoType ?
                 .white : .primary)
 
         }
@@ -148,7 +148,7 @@ struct StepFormView: View {
             
             HStack {
                 Spacer()
-                    .hidden(viewModel.stepForms[i].useImageType)
+                    .hidden(viewModel.recipeForm.steps[i].useImageType)
                 
                 RoundedRectangle(cornerRadius: 25)
                     .foregroundColor(.mainColor)
@@ -156,7 +156,7 @@ struct StepFormView: View {
                     .padding(5)
                 
                 Spacer()
-                    .hidden(viewModel.stepForms[i].useVideoType)
+                    .hidden(viewModel.recipeForm.steps[i].useVideoType)
             }
         )
         .background(
@@ -164,7 +164,7 @@ struct StepFormView: View {
                 .fill(Color.gray_bcbcbc)
         )
         .padding(.trailing, 10)
-        .animation(.spring(), value: viewModel.stepForms[i].contentType)
+        .animation(.spring(), value: viewModel.recipeForm.steps[i].contentType)
     }
     
     @ViewBuilder
@@ -196,7 +196,7 @@ struct StepFormView: View {
     private func DescriptionSection(_ index: Int) -> some View {
         Section {
             VStack {
-                TextField("입력해주세요", text: $viewModel.stepForms[index].stepForm.description)
+                TextField("입력해주세요", text: $viewModel.recipeForm.steps[index].description)
                     .font(CustomFontFactory.INTER_REGULAR_14)
             }
             .padding(.top, -30)
@@ -214,7 +214,7 @@ struct StepFormView: View {
     private func TitleSection(_ index: Int) -> some View {
         Section {
             VStack {
-                TextField("입력해주세요", text: $viewModel.stepForms[index].stepForm.title)
+                TextField("입력해주세요", text: $viewModel.recipeForm.steps[index].title)
                 
                 CCDivider()
             }

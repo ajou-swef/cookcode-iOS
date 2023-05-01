@@ -13,7 +13,7 @@ class RecipeFormViewModel: ObservableObject {
     private let recipeService: RecipeServiceProtocol
     private let contentService: ContentServiceProtocol
     
-    @Published var recipeMetadata: RecipeForm = .init()
+    @Published var recipeForm: RecipeForm = .init()
     
     @Published var mainImageItem: PhotosPickerItem?
     @Published var mainImageData: Data? 
@@ -21,8 +21,6 @@ class RecipeFormViewModel: ObservableObject {
     @Published var stepItems: [PhotosPickerItem] = .init()
     @Published var stepImageData: [Data] = .init()
     @Published var stepVideoURLs: [VideoURL] = .init()
-    
-    @Published var stepForms: [ContentWrappedStepForm] = .init()
     @Published var serviceAlert: ServiceAlert = .init()
     
     // sheet, fullscreen 등의 navigate를 위한 프로퍼티
@@ -39,19 +37,19 @@ class RecipeFormViewModel: ObservableObject {
     @Published var deletedStepIndex: Int?
     
     var recipeMetadataHasThumbnail: Bool {
-        !recipeMetadata.thumbnailIsEmpty
+        !recipeForm.thumbnailIsEmpty
     }
     
     var previewButtonIsAvailable: Bool {
-        containsAnyStep && !recipeMetadata.titleIsEmpty && mainImageData != nil
+        containsAnyStep && !recipeForm.titleIsEmpty && mainImageData != nil
     }
     
     var containsAnyStep: Bool {
-        stepForms.count >= 1 
+        recipeForm.steps.count >= 1 
     }
     
     var trashButtonIsShowing: Bool {
-        stepForms.count >= 2
+        recipeForm.steps.count >= 2
     }
     
     init(_ preview: Bool = false, contentService: ContentServiceProtocol, recipeService: RecipeServiceProtocol) {
@@ -60,55 +58,55 @@ class RecipeFormViewModel: ObservableObject {
         self.recipeService = recipeService
         
         if preview {
-            stepForms.append(ContentWrappedStepForm())
+            recipeForm.steps.append(ContentWrappedStepForm())
         }
     }
     
     fileprivate func appendStepForm() {
-        stepForms.append(ContentWrappedStepForm())
+        recipeForm.steps.append(ContentWrappedStepForm())
     }
     
     func stepFormContainsAllRequiredInformation(at: Int) -> Bool {
-        stepForms[at].containsAllRequiredInformation
+        recipeForm.steps[at].containsAllRequiredInformation
     }
     
     func stepFormTitle(at: Int) -> String {
-        stepForms[at].title
+        recipeForm.steps[at].title
     }
     
     func stepFormDescription(at: Int) -> String {
-        stepForms[at].description
+        recipeForm.steps[at].description
     }
     
     func stepFormContainsAnyContent(at: Int) -> Bool {
-        stepForms[at].containsAnyContent
+        recipeForm.steps[at].containsAnyContent
     }
     
     func stepFormContainsAnyImage(at: Int) -> Bool {
-        stepForms[at].containsAnyImage
+        recipeForm.steps[at].containsAnyImage
     }
     
     func stepFormContainsAnyVideoURL(at: Int) -> Bool {
-        stepForms[at].containsAnyVideoURL
+        recipeForm.steps[at].containsAnyVideoURL
     }
     
     func stepFormContentType(at :Int) -> ContentType {
-        stepForms[at].contentType
+        recipeForm.steps[at].contentType
     }
     
     func stepFormID(at: Int) -> String {
-        stepForms[at].id
+        recipeForm.steps[at].id
     }
     
     //  MARK: StepView 관련 기능들
     func presentStepFormView(_ i: Int) {
-        stepTabSelection = stepForms[i].id
+        stepTabSelection = recipeForm.steps[i].id
         stepFormTrigger = RecipePathWithIndex(path: .step, index: i)
     }
     
     func flushDeletedStepIndex() {
         if let i = deletedStepIndex {
-            stepForms.remove(at: i)
+            recipeForm.steps.remove(at: i)
         }
         
         deletedStepIndex = nil
@@ -120,35 +118,35 @@ class RecipeFormViewModel: ObservableObject {
     // 삭제될 stepIndex를 저장한 후에 view disappear 시점에서 삭제한다. 
     func removeThisStep(_ i: Int) {
         withAnimation {
-            stepTabSelection = stepForms[i-1].id
+            stepTabSelection = recipeForm.steps[i-1].id
             deletedStepIndex = i
         }
     }
     
     func changeToImageButtonTapped(_ i: Int) {
-        if stepForms[i].containsAnyVideoURL {
+        if recipeForm.steps[i].containsAnyVideoURL {
             isPresentedContentDeleteAlert = true
         } else {
-            stepForms[i].changeContent()
+            recipeForm.steps[i].changeContent()
         }
     }
     
     func changeContentTypeToVideo(_ i: Int) {
-        if stepForms[i].containsAnyImage {
+        if recipeForm.steps[i].containsAnyImage {
             isPresentedContentDeleteAlert = true
         } else {
-            stepForms[i].changeContent()
+            recipeForm.steps[i].changeContent()
         }
     }
     
     func deleteContentsButtonInAlertTapped(_ i: Int) {
-        stepForms[i].changeContent()
+        recipeForm.steps[i].changeContent()
     }
     
     func appendNewStepForm() {
         appendStepForm()
         withAnimation {
-            if let last = stepForms.last {
+            if let last = recipeForm.steps.last {
                 stepTabSelection = last.id
             }
         }
@@ -156,7 +154,7 @@ class RecipeFormViewModel: ObservableObject {
     
     func addFirstStepButtonTapped() {
         appendStepForm()
-        presentStepFormView(stepForms.count - 1)
+        presentStepFormView(recipeForm.steps.count - 1)
     }
     
     func onDisappearStep() {
@@ -169,7 +167,7 @@ class RecipeFormViewModel: ObservableObject {
             let result = await contentService.postPhotos([imageData])
             switch result {
             case .success(let success):
-                recipeMetadata.updateThumbnail(url: success.url)
+                recipeForm.updateThumbnail(url: success.url)
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }
@@ -191,7 +189,7 @@ class RecipeFormViewModel: ObservableObject {
             let result = await contentService.postVideos([])
             switch result {
             case .success(let success):
-                stepForms[at].appendContetURLs(success.data.photoURL)
+                recipeForm.steps[at].appendContetURLs(success.data.photoURL)
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }
@@ -206,13 +204,14 @@ class RecipeFormViewModel: ObservableObject {
             let result = await contentService.postPhotos(stepImageData)
             switch result {
             case .success(let success):
-                stepForms[at].appendContetURLs(success.data.photoURL)
+                recipeForm.steps[at].appendContetURLs(success.data.photoURL)
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }
         }
         
-        stepItems = .init()
-        stepImageData = .init()
+        stepItems.removeAll()
+        stepImageData.removeAll()
+        stepVideoURLs.removeAll()
     }
 }

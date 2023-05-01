@@ -30,9 +30,9 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         }
         
         //  When
-        vm.recipeMetadata.title = "Title"
+        vm.recipeForm.title = "Title"
         vm.mainImageData = Data()
-        vm.stepForms.append(ContentWrappedStepForm())
+        vm.recipeForm.steps.append(ContentWrappedStepForm())
         
         //  Then
         XCTAssertTrue(vm.previewButtonIsAvailable)
@@ -47,7 +47,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         
         //  When
         vm.mainImageData = Data()
-        vm.stepForms.append(ContentWrappedStepForm())
+        vm.recipeForm.steps.append(ContentWrappedStepForm())
         
         //  Then
         XCTAssertFalse(vm.previewButtonIsAvailable)
@@ -61,8 +61,8 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         }
         
         //  When
-        vm.recipeMetadata.title = "Title"
-        vm.stepForms.append(ContentWrappedStepForm())
+        vm.recipeForm.title = "Title"
+        vm.recipeForm.steps.append(ContentWrappedStepForm())
         
         //  Then
         XCTAssertFalse(vm.previewButtonIsAvailable)
@@ -76,7 +76,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         }
         
         //  When
-        vm.recipeMetadata.title = "Title"
+        vm.recipeForm.title = "Title"
         vm.mainImageData = Data() 
         
         //  Then

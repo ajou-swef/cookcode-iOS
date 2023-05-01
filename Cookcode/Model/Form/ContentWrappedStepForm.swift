@@ -8,9 +8,11 @@
 import SwiftUI
 import PhotosUI
 
-struct ContentWrappedStepForm: Identifiable {
+struct ContentWrappedStepForm: Identifiable, Codable {
     let id: String = UUID().uuidString
-    var stepForm: StepForm = .init()
+    
+    var title: String = ""
+    var description: String = ""
     private(set) var deletedVideos: [String] = []
     private(set) var deletedPhotos: [String] = []
     private var _contentType: ContentType = .image
@@ -25,14 +27,6 @@ struct ContentWrappedStepForm: Identifiable {
         set(value) {
            _contentType = value
         }
-    }
-    
-    var title: String {
-        stepForm.title
-    }
-    
-    var description: String {
-        stepForm.description
     }
     
     var phpFilter: PHPickerFilter {
@@ -64,7 +58,7 @@ struct ContentWrappedStepForm: Identifiable {
     }
     
     var containsAllRequiredInformation: Bool {
-        !stepForm.titleIsEmpty && !stepForm.descriptionIsEmpty &&
+        !title.isEmpty && !description.isEmpty &&
         containsAnyContent
     }
     

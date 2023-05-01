@@ -36,7 +36,7 @@ struct RecipePreviewView: View {
     
     var title: String {
         if let viewModel = recipeFormViewModel {
-            return viewModel.recipeMetadata.title
+            return viewModel.recipeForm.title
         } else {
             return "디테일 제목"
         }
@@ -44,7 +44,7 @@ struct RecipePreviewView: View {
     
     var description: String {
         if let viewModel = recipeFormViewModel {
-            return viewModel.recipeMetadata.description
+            return viewModel.recipeForm.description
         } else {
             return "디테일 설명"
         }
@@ -61,7 +61,7 @@ struct RecipePreviewView: View {
         guard let viewModel = recipeFormViewModel else {
             return recipeViewModel.recipeDetail?.steps.indices ?? 0..<0
         }
-        return viewModel.stepForms.indices
+        return viewModel.recipeForm.steps.indices
     }
     
     

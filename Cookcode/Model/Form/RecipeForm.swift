@@ -15,7 +15,9 @@ struct RecipeForm: Codable {
     var optionalIngredients: [String] = []
     
     var thumbnail: String = ""
-    var deletedThumbnails: [String] = .init()
+    var deletedThumbnails: [String] = []
+    
+    var steps: [ContentWrappedStepForm] = []
     
     var thumbnailIsEmpty: Bool {
         thumbnail.isEmpty

@@ -13,7 +13,6 @@ struct RecipeFormView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @StateObject private var viewModel: RecipeFormViewModel = .init(contentService: ContentSuccessService(), recipeService: RecipeSuccessService())
-    @State private var step: StepForm?
     
     var body: some View {
         NavigationStack(path: $navigateViewModel.recipePath) {
@@ -83,7 +82,7 @@ struct RecipeFormView: View {
         Section {
             VStack(spacing: 5) {
                 TextField("설명을 입력해주세요",
-                          text: $viewModel.recipeMetadata.description)
+                          text: $viewModel.recipeForm.description)
                     .font(CustomFontFactory.INTER_REGULAR_14)
                 
                 CCDivider()
@@ -104,7 +103,7 @@ struct RecipeFormView: View {
             VStack(spacing: 5) {
                 PhotosPicker(selection: $viewModel.mainImageItem) {
                     if viewModel.recipeMetadataHasThumbnail {
-                        KFImage(URL(string: viewModel.recipeMetadata.thumbnail))
+                        KFImage(URL(string: viewModel.recipeForm.thumbnail))
                             .resizable()
                             .frame(maxWidth: 320, maxHeight: 200)
                             .scaledToFill()
@@ -140,7 +139,7 @@ struct RecipeFormView: View {
             VStack(spacing: 5) {
                 HStack {
                     TextField("입력해주세요",
-                              text: $viewModel.recipeMetadata.title)
+                              text: $viewModel.recipeForm.title)
                     .font(CustomFontFactory.INTER_BOLD_30)
                     
                     Spacer()
@@ -222,7 +221,7 @@ struct RecipeFormView: View {
     private func Steps() -> some View {
         Section {
             VStack(spacing: 10) {
-                ForEach(viewModel.stepForms.indices, id: \.self) { i in
+                ForEach(viewModel.recipeForm.steps.indices, id: \.self) { i in
                     Button {
                         viewModel.presentStepFormView(i)
                     } label: {

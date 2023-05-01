@@ -72,7 +72,6 @@
 		15AA2F3829EFF5720069813F /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15AA2F2F29EFF5720069813F /* Inter-Regular.ttf */; };
 		15AA2F3929EFF5720069813F /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15AA2F3029EFF5720069813F /* Inter-SemiBold.ttf */; };
 		15AA2F3A29EFF5720069813F /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15AA2F3129EFF5720069813F /* Inter-Thin.ttf */; };
-		15AA2F4029F0C9110069813F /* StepForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F3F29F0C9110069813F /* StepForm.swift */; };
 		15AA2F4B29F0D80E0069813F /* RecipePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F4A29F0D80D0069813F /* RecipePath.swift */; };
 		15AA2F4D29F0D9400069813F /* StepFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F4C29F0D9400069813F /* StepFormView.swift */; };
 		15AA2F8829F102720069813F /* VideURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F8729F102720069813F /* VideURL.swift */; };
@@ -199,7 +198,6 @@
 		15AA2F2F29EFF5720069813F /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		15AA2F3029EFF5720069813F /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		15AA2F3129EFF5720069813F /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.ttf"; sourceTree = "<group>"; };
-		15AA2F3F29F0C9110069813F /* StepForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepForm.swift; sourceTree = "<group>"; };
 		15AA2F4A29F0D80D0069813F /* RecipePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePath.swift; sourceTree = "<group>"; };
 		15AA2F4C29F0D9400069813F /* StepFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFormView.swift; sourceTree = "<group>"; };
 		15AA2F8729F102720069813F /* VideURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideURL.swift; sourceTree = "<group>"; };
@@ -547,7 +545,6 @@
 		15AA2F4129F0C9DC0069813F /* Form */ = {
 			isa = PBXGroup;
 			children = (
-				15AA2F3F29F0C9110069813F /* StepForm.swift */,
 				15AA2F2129EFE8DE0069813F /* RecipeForm.swift */,
 				153B4DAC29ED179200543730 /* SignInForm.swift */,
 				153B4DAE29ED1AB400543730 /* MembershipForm.swift */,
@@ -814,7 +811,6 @@
 				15CFE6AC29FF7F9100C16FF6 /* SearchTypePicker.swift in Sources */,
 				153F127E29FE23B3008BDB4E /* RecipeCell.swift in Sources */,
 				15F82A6D29FA901500DA9381 /* AccoutCheckResponse.swift in Sources */,
-				15AA2F4029F0C9110069813F /* StepForm.swift in Sources */,
 				15CFE66229FF56C700C16FF6 /* ContentServiceProtocol.swift in Sources */,
 				153B4DAF29ED1AB400543730 /* MembershipForm.swift in Sources */,
 				15AA2F4D29F0D9400069813F /* StepFormView.swift in Sources */,

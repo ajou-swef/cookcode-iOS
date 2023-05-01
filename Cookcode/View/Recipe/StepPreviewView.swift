@@ -54,9 +54,9 @@ struct StepPreviewView: View {
             return step.contentURLs
         }
         
-        return viewModel.stepForms[stepSequence - 1].useImageType ?
-        viewModel.stepForms[stepSequence - 1].imageURLs :
-        viewModel.stepForms[stepSequence - 1].videoURLs
+        return viewModel.recipeForm.steps[stepSequence - 1].useImageType ?
+        viewModel.recipeForm.steps[stepSequence - 1].imageURLs :
+        viewModel.recipeForm.steps[stepSequence - 1].videoURLs
     }
     
     var body: some View {
@@ -86,14 +86,12 @@ struct StepPreviewView: View {
     
     @ViewBuilder
     private func StepView() -> some View {
-        VStack {
-            VStack {
-                Text("\(title)")
-                    .font(CustomFontFactory.INTER_SEMIBOLD_20)
-                
-                Text("\(description)")
-                    .font(CustomFontFactory.INTER_REGULAR_14)
-            }
+        VStack(alignment: .leading) {
+            Text("\(title)")
+                .font(CustomFontFactory.INTER_SEMIBOLD_20)
+            
+            Text("\(description)")
+                .font(CustomFontFactory.INTER_REGULAR_14)
         }
     }
     
