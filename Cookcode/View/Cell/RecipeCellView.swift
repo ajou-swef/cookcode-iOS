@@ -11,40 +11,52 @@ import Kingfisher
 struct RecipeCellView: View {
     
     let recipeCell: RecipeCell
+    let user: User
     let offsetY: CGFloat
     
     var body: some View {
-        
-        VStack(alignment: .center) {
-            KFImage(URL(string: recipeCell.thumbanil))
-                .resizable()
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .overlay(alignment: .bottom) {
-                    Text(recipeCell.title)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 5)
-                        .padding(.horizontal, 10)
+        HStack {
+            VStack {
+                HStack(spacing: 5) {
+                    Image(systemName: "pencil")
+                        .foregroundColor(.primary)
+                    
+                    Text("\(user.nickname)")
                         .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                        .background {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.white)
-                                .shadow(radius: 10)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(lineWidth: 1)
-                                        .foregroundColor(.gray_bcbcbc)
-                                }
-                                .padding(.horizontal, 10)
-                        }
-                        .offset(y: offsetY)
+                        .foregroundColor(.primary)
                 }
+            }
+            .padding(.trailing, 40)
+            
+            Rectangle()
+                .frame(width: 2)
+                .padding(.trailing, 10)
+                .foregroundColor(.primary)
+            
+            VStack(alignment: .center) {
+                KFImage(URL(string: recipeCell.thumbanil))
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .overlay(alignment: .bottomTrailing) {
+                        Text(recipeCell.title)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 10)
+                            .padding(.trailing, 10)
+                            .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                    }
+            }
+        }
+        .padding(10)
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(lineWidth: 2)
+                .foregroundColor(.primary)
         }
     }
 }
 
-//struct RecipeCellView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RecipeCellView(imageURL: "https://picsum.photos/seed/picsum/200/300")
-//    }
-//}
+struct RecipeCellView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
+}

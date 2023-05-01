@@ -17,11 +17,9 @@ class SearchRecipeViewModel: ObservableObject {
 
     let recipeService: RecipeServiceProtocol
     let columns: [GridItem] = [
-        GridItem(.flexible(), spacing: 20),
-        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible())
     ]
     let recipeCellHeight: CGFloat = 200
-    let offsetY: CGFloat = 20
     
     init (recipeService: RecipeServiceProtocol) {
         self.recipeService = recipeService

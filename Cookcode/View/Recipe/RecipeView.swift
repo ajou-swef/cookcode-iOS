@@ -92,11 +92,12 @@ struct RecipeView: View {
                 Color.white
             }
             .clipShape(RoundedRectangle(cornerRadius: 25))
-            .padding(.horizontal, 10)
-            .padding(.top, 30)
+            .padding(.horizontal, isPreview ? 10 : 0)
+            .padding(.top, isPreview ? 30 : 0)
         }
-        .navigationBarBackButtonHidden(isPreview)
         .statusBarHidden()
+        .navigationBarBackButtonHidden(isPreview)
+        .offset(y : isPreview ? 0 : -200)
     }
     
     func stepID(at: Int) -> String {

@@ -19,6 +19,7 @@
 		1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F95429B459DD002F3D26 /* LoginViewModel.swift */; };
 		150CD44329F397830001FFEB /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150CD44229F397830001FFEB /* ContentType.swift */; };
 		150CD44629F628CC0001FFEB /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150CD44529F628CC0001FFEB /* String + Extension.swift */; };
+		152251EC29FFD40F002C3A78 /* ProfilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152251EB29FFD40F002C3A78 /* ProfilePath.swift */; };
 		152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152389D329F69AD60090CA9B /* RecipeEntranceView.swift */; };
 		1538157A29FF8EB100C3BD11 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157929FF8EB100C3BD11 /* IngredientCell.swift */; };
 		1538157C29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */; };
@@ -138,6 +139,7 @@
 		1503F95429B459DD002F3D26 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		150CD44229F397830001FFEB /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		150CD44529F628CC0001FFEB /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		152251EB29FFD40F002C3A78 /* ProfilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePath.swift; sourceTree = "<group>"; };
 		152389D329F69AD60090CA9B /* RecipeEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeEntranceView.swift; sourceTree = "<group>"; };
 		1538157929FF8EB100C3BD11 /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorSuccessService.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 				15AA2F4A29F0D80D0069813F /* RecipePath.swift */,
 				159BE2B329FB8DB300DE7448 /* OuterPath.swift */,
 				153F127229FE18F9008BDB4E /* HomePath.swift */,
+				152251EB29FFD40F002C3A78 /* ProfilePath.swift */,
 			);
 			path = Path;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */,
 				15CFE66629FF590000C16FF6 /* VideoResponse.swift in Sources */,
 				15AA2F2429EFEA250069813F /* RecipeFormViewModel.swift in Sources */,
+				152251EC29FFD40F002C3A78 /* ProfilePath.swift in Sources */,
 				159BE2A729FB6C1E00DE7448 /* ErrorAlert.swift in Sources */,
 				15F82A6729FA8D3300DA9381 /* AccountServiceProtocol.swift in Sources */,
 				15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */,

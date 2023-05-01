@@ -15,6 +15,13 @@ struct ProfileView: View {
         NavigationStack(path: $navigateViewModel.profilePath) {
             VStack {
                 Text("프로필")
+                
+                Button {
+                    
+                } label: {
+                    Text("계정 삭제")
+                }
+
             }
             .navigationTitle("프로필")
             .toolbar {

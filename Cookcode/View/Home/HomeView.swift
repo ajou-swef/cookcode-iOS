@@ -14,8 +14,7 @@ struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     
     let columns: [GridItem] = [
-        GridItem(.flexible(), spacing: 20),
-        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible())
     ]
     
     let recipeCellHeight: CGFloat = 200
@@ -50,12 +49,12 @@ struct HomeView: View {
             .padding(.horizontal, 10)
             
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 20 + offsetY) {
+                LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(0..<10, id: \.self) { _ in
                         Button {
                             navigateViewModel.navigateWithHome(RecipeCell.MOCK_DATA)
                         } label: {
-                            RecipeCellView(recipeCell: RecipeCell.MOCK_DATA, offsetY: offsetY)
+                            RecipeCellView(recipeCell: RecipeCell.MOCK_DATA, user: User.MOCK_DATA, offsetY: offsetY)
                                 .frame(height: recipeCellHeight)
                                 .foregroundColor(.black)
                         }

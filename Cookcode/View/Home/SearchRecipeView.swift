@@ -24,14 +24,13 @@ struct SearchRecipeView: View {
                 }
                 .zIndex(1)
                 
-                LazyVGrid(columns: viewModel.columns, spacing: 20 + viewModel.offsetY) {
+                LazyVGrid(columns: viewModel.columns, spacing: 15) {
                     ForEach(viewModel.recipeCellSearch.recipeCells.indices, id: \.self) { i in
                         let recipeCell = viewModel.recipeCellSearch.recipeCells[i]
-                        
                         Button {
                             navigateViewModel.navigateWithHome(recipeCell)
                         } label: {
-                            RecipeCellView(recipeCell: recipeCell, offsetY: viewModel.offsetY)
+                            RecipeCellView(recipeCell: recipeCell, user: User.MOCK_DATA, offsetY: 0)
                                 .frame(height: viewModel.recipeCellHeight)
                         }
                     }
@@ -39,7 +38,6 @@ struct SearchRecipeView: View {
                 .zIndex(0)
             }
             .padding(.horizontal, 10)
-            .padding(.bottom, viewModel.offsetY)
         }
         .toolbar {
             ToolbarItem(placement: .principal) {

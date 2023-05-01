@@ -139,7 +139,6 @@ struct StepPreviewView: View {
                 ForEach(contentURL, id: \.self) { data in
                     KFImage(URL(string: data))
                         .resizable()
-                        .scaledToFill()
                         .frame(maxWidth: .infinity, maxHeight: 300)
                 }
             }
