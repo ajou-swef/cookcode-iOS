@@ -120,7 +120,7 @@ struct RecipeFormView: View {
                 .padding(.bottom, 20)
                 .onChange(of: viewModel.mainImageData) { newValue in
                     Task {
-                        await viewModel.postImage()
+                        await viewModel.postMainImage()
                     }
                 }
             }

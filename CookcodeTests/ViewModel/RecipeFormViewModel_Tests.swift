@@ -94,7 +94,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         
         //  When
         vm.mainImageData = Data()
-        await vm.postImage()
+        await vm.postMainImage()
         
         //  Then
         XCTAssertTrue(vm.recipeMetadataHasThumbnail)

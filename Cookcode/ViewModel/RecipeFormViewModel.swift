@@ -14,6 +14,7 @@ class RecipeFormViewModel: ObservableObject {
     private let contentService: ContentServiceProtocol
     
     @Published var recipeMetadata: RecipeForm = .init()
+    
     @Published var mainImageItem: PhotosPickerItem?
     @Published var mainImageData: Data? 
     
@@ -155,13 +156,12 @@ class RecipeFormViewModel: ObservableObject {
     }
     
     @MainActor
-    func postImage() async {
+    func postMainImage() async {
         if let imageData = mainImageData {
             let result = await contentService.postPhotos([imageData])
             switch result {
             case .success(let success):
                 recipeMetadata.updateThumbnail(url: success.url)
-                print("postImage :  \(recipeMetadata)")
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }
