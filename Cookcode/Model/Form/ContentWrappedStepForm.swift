@@ -11,21 +11,11 @@ import PhotosUI
 struct ContentWrappedStepForm: Identifiable {
     let id: String = UUID().uuidString
     var stepForm: StepForm = .init()
-    var photoPickerItems: [PhotosPickerItem] = .init()
-    
-    private(set) var deletedVideos: [String] = .init()
-    private(set) var deletedPhotos: [String] = .init()
-    private var _contentType: ContentType = .image {
-        willSet {
-            photoPickerItems.removeAll()
-            imageDatas.removeAll()
-            videoURLs.removeAll()
-        }
-    }
-    
-    var imageDatas: [Data] = .init()
-    var videoURLs: [VideoURL] = .init()
-    var imageURLs: [String] = .init()
+    private(set) var deletedVideos: [String] = []
+    private(set) var deletedPhotos: [String] = []
+    private var _contentType: ContentType = .image
+    private(set) var imageURLs: [String] = []
+    private(set) var videoURLs: [String] = []
     
     var contentType: ContentType {
         get {
@@ -66,7 +56,7 @@ struct ContentWrappedStepForm: Identifiable {
     }
     
     var containsAnyImage: Bool {
-        !imageDatas.isEmpty
+        !imageURLs.isEmpty
     }
     
     var containsAnyVideoURL: Bool {
@@ -78,31 +68,24 @@ struct ContentWrappedStepForm: Identifiable {
         containsAnyContent
     }
     
-    mutating func changeContent() {
-        if contentType == .image {
-            contentType = .video
-        } else {
-            contentType = .image
+    mutating func appendContetURLs(_ values: [String]) {
+        switch contentType {
+        case .video:
+            videoURLs.append(contentsOf: values)
+        case .image:
+            imageURLs.append(contentsOf: values)
         }
     }
     
-    mutating func load() async {
-        imageDatas.removeAll()
-        videoURLs.removeAll()
-        
-        switch contentType {
-        case .video:
-            for item in photoPickerItems {
-                if let video = try? await item.loadTransferable(type: VideoURL.self) {
-                    videoURLs.append(video)
-                }
-            }
-        case .image:
-            for item in photoPickerItems {
-                if let data = try? await item.loadTransferable(type: Data.self) {
-                    imageDatas.append(data)
-                }
-            }
+    mutating func changeContent() {
+        if contentType == .image {
+            contentType = .video
+            deletedPhotos.append(contentsOf: imageURLs)
+            imageURLs.removeAll()
+        } else {
+            contentType = .image
+            deletedVideos.append(contentsOf: videoURLs)
+            videoURLs.removeAll()
         }
     }
 }

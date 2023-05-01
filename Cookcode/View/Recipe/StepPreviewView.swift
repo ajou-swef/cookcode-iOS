@@ -50,10 +50,13 @@ struct StepPreviewView: View {
             guard let step = step else {
                 return []
             }
+            
             return step.contentURLs
         }
         
-        return ["https://picsum.photos/200", "https://picsum.photos/seed/picsum/200/300"]
+        return viewModel.stepForms[stepSequence - 1].useImageType ?
+        viewModel.stepForms[stepSequence - 1].imageURLs :
+        viewModel.stepForms[stepSequence - 1].videoURLs
     }
     
     var body: some View {

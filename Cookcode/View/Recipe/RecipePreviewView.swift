@@ -93,9 +93,8 @@ struct RecipePreviewView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 25))
             .padding(.horizontal, 10)
-            .padding(.top, isPreview ? 30 : 0)
+            .padding(.top, 30)
         }
-        .ignoresSafeArea(.all)
         .navigationBarBackButtonHidden(isPreview)
         .statusBarHidden()
     }

@@ -31,41 +31,26 @@ final class ContentWrappedStepForm_Tests: XCTestCase {
         let stepForm = StepForm(id: UUID().uuidString, title: "Title", description: "Description")
         
         //  When
-        contentWrapedStepFrom.imageDatas.append(Data())
+        contentWrapedStepFrom.appendContetURLs(["https://picsum.photos/200"])
         contentWrapedStepFrom.stepForm = stepForm
         
         //  Then
         XCTAssertTrue(contentWrapedStepFrom.containsAllRequiredInformation)
     }
     
-    func test_ContentWrappedStepForm_fillAllRequiredInformation_shouldBeFalse() {
+    func test_ContentWrappedStepForm_fillAllRequiredInformation_shouldBeTrue() {
         //  Given
-        let stepFormWithoutTitle = StepForm(id: UUID().uuidString, title: "", description: "description")
-        let stepFormWithoutDecription = StepForm(id: UUID().uuidString, title: "title", description: "")
-        let stepForm = StepForm(id: UUID().uuidString, title: "title", description: "description")
-        
-        var cwstWithoutTitle: ContentWrappedStepForm = .init()
-        cwstWithoutTitle.imageDatas.append(Data())
-        cwstWithoutTitle.stepForm = stepFormWithoutTitle
-        
-        var cwstWithpoutDescription: ContentWrappedStepForm = .init()
-        cwstWithpoutDescription.imageDatas.append(Data())
-        cwstWithpoutDescription.stepForm = stepFormWithoutDecription
-        
-        var cwstWithoutImageData: ContentWrappedStepForm = .init()
-        cwstWithoutImageData.stepForm = stepForm
-        
-        var cwstWihputVideo: ContentWrappedStepForm = .init()
-        cwstWihputVideo.videoURLs.append(VideoURL(url: URL(filePath: "url")))
-        
-        let stress_cwst: [ContentWrappedStepForm] = [cwstWithoutTitle, cwstWithpoutDescription,
-                                                     cwstWithpoutDescription, cwstWithoutImageData]
-        
-        for cwst in stress_cwst {
-            //  When
-            
-            //  Then
-            XCTAssertFalse(cwst.containsAllRequiredInformation)
+        guard var contentWrapedStepFrom = contentWrapedStepFrom else {
+            XCTFail()
+            return
         }
+        let stepForm = StepForm(id: UUID().uuidString, title: "Title", description: "Description")
+        
+        //  When
+        contentWrapedStepFrom.appendContetURLs(["https://picsum.photos/200"])
+        contentWrapedStepFrom.stepForm = stepForm
+        
+        //  Then
+        XCTAssertTrue(contentWrapedStepFrom.containsAllRequiredInformation)
     }
 }

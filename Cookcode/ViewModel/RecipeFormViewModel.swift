@@ -20,6 +20,7 @@ class RecipeFormViewModel: ObservableObject {
     
     @Published var stepItems: [PhotosPickerItem] = .init()
     @Published var stepImageData: [Data] = .init()
+    @Published var stepVideoURLs: [VideoURL] = .init()
     
     @Published var stepForms: [ContentWrappedStepForm] = .init()
     @Published var serviceAlert: ServiceAlert = .init()
@@ -181,7 +182,20 @@ class RecipeFormViewModel: ObservableObject {
         
         switch contentType {
         case .video:
-            break
+            for item in stepItems {
+                if let data = try? await item.loadTransferable(type: VideoURL.self) {
+                    stepVideoURLs.append(data)
+                }
+            }
+            
+            let result = await contentService.postVideos([])
+            switch result {
+            case .success(let success):
+                stepForms[at].appendContetURLs(success.data.photoURL)
+            case .failure(let failure):
+                serviceAlert.presentAlert(failure)
+            }
+            
         case .image:
             for item in stepItems {
                 if let data = try? await item.loadTransferable(type: Data.self) {
@@ -192,7 +206,7 @@ class RecipeFormViewModel: ObservableObject {
             let result = await contentService.postPhotos(stepImageData)
             switch result {
             case .success(let success):
-                stepForms[at].imageURLs = success.data.photoURL
+                stepForms[at].appendContetURLs(success.data.photoURL)
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }

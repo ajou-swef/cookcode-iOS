@@ -89,8 +89,11 @@ struct StepFormView: View {
     private func SelectVideoButton(_ i: Int) -> some View {
         ForEach(0..<2, id: \.self) { j in
             if j < viewModel.stepForms[i].videoURLs.count {
-                VideoPlayer(player: AVPlayer(url: viewModel.stepForms[i].videoURLs[j].url))
-                    .frame(maxWidth: .infinity, maxHeight: 100)
+                if let url = URL(string: viewModel.stepForms[i].videoURLs[j]) {
+                    
+                    VideoPlayer(player: AVPlayer(url: url))
+                        .frame(maxWidth: .infinity, maxHeight: 100)
+                }
             } else {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(maxWidth: .infinity, maxHeight: 100)
@@ -109,7 +112,7 @@ struct StepFormView: View {
     private func SelectContentTypeButton(_ i: Int) -> some View {
         HStack {
             Button {
-                viewModel.changeContentType(i)
+                viewModel.changeToImageButtonTapped(i)
             } label: {
                 Text("이미지")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
