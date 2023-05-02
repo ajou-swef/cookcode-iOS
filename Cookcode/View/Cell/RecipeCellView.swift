@@ -10,7 +10,7 @@ import Kingfisher
 
 struct RecipeCellView: View {
     
-    let recipeCell: RecipeCellDto
+    let cell: any Cell
     let user: User
     let offsetY: CGFloat
     
@@ -21,7 +21,7 @@ struct RecipeCellView: View {
                     Image(systemName: "pencil")
                         .foregroundColor(.primary)
                     
-                    Text("\(user.nickname)")
+                    Text("\(cell.userNmae)")
                         .font(CustomFontFactory.INTER_SEMIBOLD_14)
                         .foregroundColor(.primary)
                 }
@@ -34,11 +34,11 @@ struct RecipeCellView: View {
                 .foregroundColor(.primary)
             
             VStack(alignment: .center) {
-                KFImage(URL(string: recipeCell.thumbanil))
+                KFImage(URL(string: cell.thumbnail))
                     .resizable()
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .overlay(alignment: .bottomTrailing) {
-                        Text(recipeCell.title)
+                        Text(cell.title)
                             .foregroundColor(.white)
                             .padding(.vertical, 10)
                             .padding(.trailing, 10)

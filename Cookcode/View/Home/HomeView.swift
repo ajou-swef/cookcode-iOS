@@ -54,7 +54,7 @@ struct HomeView: View {
                         Button {
                             navigateViewModel.navigateWithHome(RecipeCellDto.MOCK_DATA)
                         } label: {
-                            RecipeCellView(recipeCell: RecipeCellDto.MOCK_DATA, user: User.MOCK_DATA, offsetY: offsetY)
+                            RecipeCellView(cell: RecipeCell.Mock(), user: User.MOCK_DATA, offsetY: offsetY)
                                 .frame(height: recipeCellHeight)
                                 .foregroundColor(.black)
                         }

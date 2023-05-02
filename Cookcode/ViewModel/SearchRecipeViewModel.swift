@@ -11,11 +11,12 @@ import SwiftUI
 class SearchRecipeViewModel: ObservableObject {
     
     @Published var text: String = ""
-    @Published var recipeCellSearch: RecipeCellSearch = .init()
+    @Published var cells: [any Cell] = []
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var searchType: SearchType = .recipe
 
     let recipeService: RecipeServiceProtocol
+    
     let columns: [GridItem] = [
         GridItem(.flexible())
     ]
@@ -25,12 +26,12 @@ class SearchRecipeViewModel: ObservableObject {
         self.recipeService = recipeService
     }
     
-    func searchRecipe() {
-        let result = recipeService.searchRecipeHomeCell(page: recipeCellSearch.pageNumber, size: recipeCellSearch.pageSize, sort: "createdAt", month: 1, cookcable: true)
+    func searchRecipe() async {
+        let result = await recipeService.fetchCell(page: 0, size: 0, sort: "sort", month: 0)
         
         switch result {
         case .success(let success):
-            recipeCellSearch.update(success.data)
+            cells.append(contentsOf: success)
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }

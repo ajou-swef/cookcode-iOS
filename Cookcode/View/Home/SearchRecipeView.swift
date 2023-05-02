@@ -25,12 +25,13 @@ struct SearchRecipeView: View {
                 .zIndex(1)
                 
                 LazyVGrid(columns: viewModel.columns, spacing: 15) {
-                    ForEach(viewModel.recipeCellSearch.recipeCells.indices, id: \.self) { i in
-                        let recipeCell = viewModel.recipeCellSearch.recipeCells[i]
+                    ForEach(viewModel.cells.indices, id: \.self) { i in
+                        let cell = viewModel.cells[i]
+                        
                         Button {
-                            navigateViewModel.navigateWithHome(recipeCell)
+//                            navigateViewModel.navigateWithHome(cell)
                         } label: {
-                            RecipeCellView(recipeCell: recipeCell, user: User.MOCK_DATA, offsetY: 0)
+                            RecipeCellView(cell: cell, user: User.MOCK_DATA, offsetY: 0)
                                 .frame(height: viewModel.recipeCellHeight)
                         }
                     }
@@ -44,7 +45,7 @@ struct SearchRecipeView: View {
                 TextField("레시피 검색", text: $viewModel.text)
                     .frame(maxWidth: .infinity)
                     .onSubmit {
-                        viewModel.searchRecipe()
+                        Task { await viewModel.searchRecipe() } 
                     }
             }
         }
