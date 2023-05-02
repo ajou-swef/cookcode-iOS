@@ -16,26 +16,8 @@ struct SearchCellView: View {
     var body: some View {
         ScrollView {
             VStack {
-                HStack {
-                    CellTypePicker(selection: $viewModel.searchType, activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
-                        .frame(width: 100)
-                    
-                    Spacer()
-                }
-                .zIndex(1)
-                
-                LazyVGrid(columns: viewModel.columns, spacing: 15) {
-                    ForEach(viewModel.cells.indices, id: \.self) { i in
-                        let cell = viewModel.cells[i]
-                        Button {
-//                            navigateViewModel.navigateWithHome(cell)
-                        } label: {
-                            CellView(cell: cell)
-                                .frame(height: viewModel.recipeCellHeight)
-                        }
-                    }
-                }
-                .zIndex(0)
+                cellTypePicker()
+                CellGrid()
             }
             .padding(.horizontal, 10)
         }
@@ -48,6 +30,33 @@ struct SearchCellView: View {
                     }
             }
         }
+    }
+    
+    @ViewBuilder
+    private func cellTypePicker() -> some View {
+        HStack {
+            CellTypePicker(selection: $viewModel.searchType, activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
+                .frame(width: 100)
+            
+            Spacer()
+        }
+        .zIndex(1)
+    }
+    
+    @ViewBuilder
+    private func CellGrid() -> some View {
+        LazyVGrid(columns: viewModel.columns, spacing: 15) {
+            ForEach(viewModel.cells.indices, id: \.self) { i in
+                let cell = viewModel.cells[i]
+                Button {
+//                            navigateViewModel.navigateWithHome(cell)
+                } label: {
+                    CellView(cell: cell)
+                        .frame(height: viewModel.recipeCellHeight)
+                }
+            }
+        }
+        .zIndex(0)
     }
 }
 
