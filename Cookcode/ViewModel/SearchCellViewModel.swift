@@ -8,14 +8,15 @@
 import Foundation
 import SwiftUI
 
-class SearchRecipeViewModel: ObservableObject {
+class SearchCellViewModel: ObservableObject {
     
     @Published var text: String = ""
     @Published var cells: [any Cell] = []
+    
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var searchType: SearchType = .recipe
 
-    var fetchCellService: FetchCellServiceProtocol
+    private var fetchCellService: FetchCellServiceProtocol
     
     let columns: [GridItem] = [
         GridItem(.flexible())
@@ -27,7 +28,7 @@ class SearchRecipeViewModel: ObservableObject {
     }
     
     @MainActor
-    func searchRecipe() async {
+    func fetchCell() async {
         let result = await fetchCellService.fetchCell(page: 0, size: 0, sort: "sort", month: 0)
         
         switch result {

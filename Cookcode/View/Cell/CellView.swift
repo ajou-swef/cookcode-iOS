@@ -8,11 +8,9 @@
 import SwiftUI
 import Kingfisher
 
-struct RecipeCellView: View {
+struct CellView: View {
     
     let cell: any Cell
-    let user: User
-    let offsetY: CGFloat
     
     var body: some View {
         HStack {

@@ -8,16 +8,16 @@
 import SwiftUI
 import Kingfisher
 
-struct SearchRecipeView: View {
+struct SearchCellView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    @StateObject private var viewModel: SearchRecipeViewModel = SearchRecipeViewModel(fetchCellService: RecipeSuccessService())
+    @StateObject private var viewModel: SearchCellViewModel = SearchCellViewModel(fetchCellService: RecipeSuccessService())
     
     var body: some View {
         ScrollView {
             VStack {
                 HStack {
-                    SearchTypePicker(selection: $viewModel.searchType, activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
+                    CellTypePicker(selection: $viewModel.searchType, activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
                         .frame(width: 100)
                     
                     Spacer()
@@ -27,11 +27,10 @@ struct SearchRecipeView: View {
                 LazyVGrid(columns: viewModel.columns, spacing: 15) {
                     ForEach(viewModel.cells.indices, id: \.self) { i in
                         let cell = viewModel.cells[i]
-                        
                         Button {
 //                            navigateViewModel.navigateWithHome(cell)
                         } label: {
-                            RecipeCellView(cell: cell, user: User.MOCK_DATA, offsetY: 0)
+                            CellView(cell: cell)
                                 .frame(height: viewModel.recipeCellHeight)
                         }
                     }
@@ -45,7 +44,7 @@ struct SearchRecipeView: View {
                 TextField("레시피 검색", text: $viewModel.text)
                     .frame(maxWidth: .infinity)
                     .onSubmit {
-                        Task { await viewModel.searchRecipe() }
+                        Task { await viewModel.fetchCell() }
                     }
             }
         }
@@ -54,6 +53,6 @@ struct SearchRecipeView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchRecipeView()
+        SearchCellView()
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchTypePicker: View {
+struct CellTypePicker: View {
     
     @State private var expandView: Bool = false
     @Binding var selection: SearchType
