@@ -8,6 +8,10 @@
 import Foundation
 
 final class RecipeSuccessService: RecipeServiceProtocol {
+    func fetchCell(page: Int, size: Int, sort: String, month: Int) async -> Result<[any Cell], ServiceError> {
+        .success(RecipeCell.Mocks(10))
+    }
+    
     func fetchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> {
         return .success(RecipeCellDto.MOCK_DATA)
     }

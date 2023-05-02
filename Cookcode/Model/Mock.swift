@@ -16,7 +16,7 @@ protocol Mock {
 
 extension Mock {
     static func Mocks(_ count: Int) -> [MockType] {
-        var mocks: [MockType]
+        var mocks: [MockType] = []
         for _ in 0..<count {
             mocks.append(Mock())
         }
