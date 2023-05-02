@@ -12,3 +12,4 @@ enum SearchType: String, CaseIterable {
     case cookie = "쿠키"
 //    case user = "사용자"
 }
+

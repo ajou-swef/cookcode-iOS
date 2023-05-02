@@ -26,7 +26,7 @@ struct SearchCellView: View {
                 TextField("레시피 검색", text: $viewModel.text)
                     .frame(maxWidth: .infinity)
                     .onSubmit {
-                        Task { await viewModel.fetchCell() }
+                        Task { await viewModel.searchCell() }
                     }
             }
         }

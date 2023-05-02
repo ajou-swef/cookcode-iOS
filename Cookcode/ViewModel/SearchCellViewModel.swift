@@ -16,7 +16,7 @@ class SearchCellViewModel: ObservableObject {
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var searchType: SearchType = .recipe
 
-    private var fetchCellService: SearchCellServiceProtocol
+    private var searchCellService: SearchCellServiceProtocol
     
     let columns: [GridItem] = [
         GridItem(.flexible())
@@ -24,12 +24,12 @@ class SearchCellViewModel: ObservableObject {
     let recipeCellHeight: CGFloat = 200
     
     init (fetchCellService: SearchCellServiceProtocol ) {
-        self.fetchCellService = fetchCellService
+        self.searchCellService = fetchCellService
     }
     
     @MainActor
-    func fetchCell() async {
-        let result = await fetchCellService.searchCell(page: 0, size: 0, sort: "sort", month: 0)
+    func searchCell() async {
+        let result = await searchCellService.searchCell(page: 0, size: 0, sort: "sort", month: 0)
         
         switch result {
         case .success(let success):

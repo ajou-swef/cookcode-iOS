@@ -11,5 +11,4 @@ protocol Cell: Mock, Identifiable, Hashable {
     var thumbnail: String { get set }
     var title: String { get set }
     var userNmae: String { get set }
-    var type: Self.Type { get }
 }
