@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol RecipeServiceProtocol: FetchCellServiceProtocol {
+protocol RecipeServiceProtocol: SearchCellServiceProtocol {
     func searchRecipeHomeCell(page: Int, size: Int, sort: String, month: Int, cookcable: Bool) -> Result<RecipeCellSeachResponse, ServiceError>
     
-    func fetchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> 
+    func searchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> 
 }

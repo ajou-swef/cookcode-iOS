@@ -12,7 +12,7 @@ final class RecipeSuccessService: RecipeServiceProtocol {
         .success(RecipeCell.Mocks(10))
     }
     
-    func fetchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> {
+    func searchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> {
         return .success(RecipeCellDto.MOCK_DATA)
     }
     

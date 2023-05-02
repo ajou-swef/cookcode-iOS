@@ -22,60 +22,73 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            HStack(spacing: 15) {
-                Text("cookcode logo")
-                    .font(CustomFontFactory.INTER_BOLD_16)
-                
-                Spacer()
-                
-                Button {
-                    navigateViewModel.navigateWithHome(HomePath.search)
-                } label: {
-                    Image(systemName: "magnifyingglass")
-                        .resizable()
-                        .foregroundColor(.black)
-                        .frame(width: 20, height: 20)
-                }
-                
-                Button {
-                    navigateViewModel.navigateToOuter(.profile)
-                } label: {
-                    Image(systemName: "person.fill")
-                        .resizable()
-                        .foregroundColor(.black)
-                        .frame(width: 20, height: 20)
+            header()
+            homeCell()
+        }
+        .overlay(alignment: .bottomTrailing) {
+           presentRecipeFormViewButton()
+        }
+    }
+    
+    @ViewBuilder
+    private func presentRecipeFormViewButton() -> some View {
+        Button {
+            navigateViewModel.navigateToOuter(.recipe)
+        } label: {
+            Image(systemName: "plus")
+                .foregroundColor(.white)
+                .roundedRectangle(.ORANGE_80_FILLE)
+                .padding(.bottom, 10)
+                .padding(.trailing, 15)
+        }
+    }
+    
+    @ViewBuilder
+    private func homeCell() -> some View {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 15) {
+                ForEach(0..<10, id: \.self) { _ in
+                    Button {
+                        navigateViewModel.navigateWithHome(RecipeCellDto.MOCK_DATA)
+                    } label: {
+                        CellView(cell: RecipeCell.Mock())
+                            .frame(height: recipeCellHeight)
+                            .foregroundColor(.black)
+                    }
                 }
             }
             .padding(.horizontal, 10)
-            
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 15) {
-                    ForEach(0..<10, id: \.self) { _ in
-                        Button {
-                            navigateViewModel.navigateWithHome(RecipeCellDto.MOCK_DATA)
-                        } label: {
-                            CellView(cell: RecipeCell.Mock())
-                                .frame(height: recipeCellHeight)
-                                .foregroundColor(.black)
-                        }
-                    }
-                }
-                .padding(.horizontal, 10)
-                .padding(.bottom, offsetY)
-            }
-            
+            .padding(.bottom, offsetY)
         }
-        .overlay(alignment: .bottomTrailing) {
+    }
+    
+    @ViewBuilder
+    private func header() -> some View {
+        HStack(spacing: 15) {
+            Text("cookcode logo")
+                .font(CustomFontFactory.INTER_BOLD_16)
+            
+            Spacer()
+            
             Button {
-                navigateViewModel.navigateToOuter(.recipe)
+                navigateViewModel.navigateWithHome(HomePath.search)
             } label: {
-                Image(systemName: "plus")
-                    .foregroundColor(.white)
-                    .roundedRectangle(.ORANGE_80_FILLE)
-                    .padding(.bottom, 10)
-                    .padding(.trailing, 15)
+                Image(systemName: "magnifyingglass")
+                    .resizable()
+                    .foregroundColor(.black)
+                    .frame(width: 20, height: 20)
+            }
+            
+            Button {
+                navigateViewModel.navigateToOuter(.profile)
+            } label: {
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .foregroundColor(.black)
+                    .frame(width: 20, height: 20)
             }
         }
+        .padding(.horizontal, 10)
     }
 }
 

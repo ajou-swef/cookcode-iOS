@@ -25,7 +25,7 @@ final class RecipeViewModel: ObservableObject {
     }
     
     func fetchRecipe(_ recipeID: Int) {
-        let result = recipeService.fetchRecipe(recipeID)
+        let result = recipeService.searchRecipe(recipeID)
         switch result {
         case .success(let success):
             recipeDetail = success
