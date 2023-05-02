@@ -8,15 +8,13 @@
 import Foundation
 
 protocol Mock {
-    associatedtype MockType
-    
-    static func Mock() -> MockType
-    static func Mocks(_ count: Int) -> [MockType]
+    static func Mock() -> Self
+    static func Mocks(_ count: Int) -> [Self]
 }
 
 extension Mock {
-    static func Mocks(_ count: Int) -> [MockType] {
-        var mocks: [MockType] = []
+    static func Mocks(_ count: Int) -> [Self] {
+        var mocks: [Self] = []
         for _ in 0..<count {
             mocks.append(Mock())
         }

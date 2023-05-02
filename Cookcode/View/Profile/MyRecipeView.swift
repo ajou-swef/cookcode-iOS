@@ -16,6 +16,9 @@ struct MyRecipeView: View {
         List {
             ForEach(mocks) { mock in
                 MyRecipeCell(recipeCell: mock)
+                    .onTapGesture {
+                        navigateViewModel.navigateWithProfile(RecipeCellDto.MOCK_DATA)
+                    }
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         Button {
                             
@@ -26,6 +29,7 @@ struct MyRecipeView: View {
                         
                         Button {
                             navigateViewModel.navigateToOuter(.recipe)
+                            navigateViewModel.profilePath = .init()
                         } label: {
                             Text("수정")
                         }

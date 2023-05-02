@@ -372,7 +372,6 @@
 		1503F95229B459C7002F3D26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */,
 				159BE2A629FB6C1E00DE7448 /* ErrorAlert.swift */,
 				150CD44229F397830001FFEB /* ContentType.swift */,
 				15AA2F8729F102720069813F /* VideURL.swift */,
@@ -593,6 +592,7 @@
 		15B6263C2A009CDC002E1F5F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */,
 				15B6263D2A009CE6002E1F5F /* Cell.swift */,
 				15B6263F2A009D09002E1F5F /* RecipeCell.swift */,
 			);

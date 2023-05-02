@@ -75,7 +75,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "-openURL"
-            value = "cookcode://outer=profile"
+            value = "cookcode://tab=home"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

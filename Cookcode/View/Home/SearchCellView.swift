@@ -17,7 +17,7 @@ struct SearchCellView: View {
         ScrollView {
             VStack {
                 cellTypePicker()
-                CellGrid()
+                recipeCellGrid()
             }
             .padding(.horizontal, 10)
         }
@@ -44,12 +44,13 @@ struct SearchCellView: View {
     }
     
     @ViewBuilder
-    private func CellGrid() -> some View {
+    private func recipeCellGrid() -> some View {
         LazyVGrid(columns: viewModel.columns, spacing: 15) {
             ForEach(viewModel.cells.indices, id: \.self) { i in
                 let cell = viewModel.cells[i]
+                let recipeCell = cell as! RecipeCell
                 Button {
-//                            navigateViewModel.navigateWithHome(cell)
+                    navigateViewModel.navigateWithHome(recipeCell)
                 } label: {
                     CellView(cell: cell)
                         .frame(height: viewModel.recipeCellHeight)

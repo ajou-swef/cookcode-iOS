@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct RecipeCell: Cell, Hashable {
+struct RecipeCell: Cell {
+    var type: RecipeCell.Type {
+        RecipeCell.self
+    }
+    
     let id: String = UUID().uuidString
     
     static func Mock() -> RecipeCell {

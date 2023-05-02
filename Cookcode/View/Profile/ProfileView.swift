@@ -39,6 +39,10 @@ struct ProfileView: View {
                         .foregroundColor(.red)
                 }
             }
+            .tint(.mainColor)
+            .navigationDestination(for: RecipeCellDto.self) { recipeCell in
+                RecipeView(recipeCell: recipeCell)
+            }
             .navigationDestination(for: ProfilePath.self) { path in
                 switch path {
                 case .myRecipe:

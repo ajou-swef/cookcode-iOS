@@ -62,6 +62,9 @@ struct MainTabView: View {
     func homeView() -> some View {
         NavigationStack(path: $navigateViewModel.homePath) {
             HomeView()
+                .navigationDestination(for: RecipeCell.self) { _ in
+                    RecipeView(recipeCell: RecipeCellDto.MOCK_DATA)
+                }
                 .navigationDestination(for: RecipeCellDto.self) { recipe in
                     RecipeView(recipeCell: recipe)
                 }
