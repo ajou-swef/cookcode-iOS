@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeCell: Cell {
+struct RecipeCell: Cell, Hashable {
     let id: String = UUID().uuidString
     
     static func Mock() -> RecipeCell {

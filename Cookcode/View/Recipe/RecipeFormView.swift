@@ -75,7 +75,7 @@ struct RecipeFormView: View {
                     .font(CustomFontFactory.INTER_BOLD_16)
                     .foregroundColor(.white)
                     .roundedRectangle(.GRAY_320_FILLED,
-                                      focused: !viewModel.previewButtonIsAvailable)
+                                      focused: viewModel.previewButtonIsAvailable)
             }
             .disabled(!viewModel.previewButtonIsAvailable)
         }

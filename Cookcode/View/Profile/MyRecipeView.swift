@@ -25,7 +25,7 @@ struct MyRecipeView: View {
                         .tint(.red)
                         
                         Button {
-                            
+                            navigateViewModel.navigateToOuter(.recipe)
                         } label: {
                             Text("수정")
                         }
