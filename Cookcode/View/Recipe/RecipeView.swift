@@ -18,7 +18,7 @@ struct RecipeView: View {
         self._recipeFormViewModel = ObservedOptionalObject(wrappedValue: recipeFormViewModel)
     }
     
-    init(recipeCell: RecipeCell) {
+    init(recipeCell: RecipeCellDto) {
         self._recipeViewModel = StateObject(wrappedValue: RecipeViewModel(recipeService: RecipeSuccessService(), contentService: ContentSuccessService(), recipeID: recipeCell.recipeID))
     }
     

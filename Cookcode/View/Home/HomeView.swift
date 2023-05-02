@@ -52,9 +52,9 @@ struct HomeView: View {
                 LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(0..<10, id: \.self) { _ in
                         Button {
-                            navigateViewModel.navigateWithHome(RecipeCell.MOCK_DATA)
+                            navigateViewModel.navigateWithHome(RecipeCellDto.MOCK_DATA)
                         } label: {
-                            RecipeCellView(recipeCell: RecipeCell.MOCK_DATA, user: User.MOCK_DATA, offsetY: offsetY)
+                            RecipeCellView(recipeCell: RecipeCellDto.MOCK_DATA, user: User.MOCK_DATA, offsetY: offsetY)
                                 .frame(height: recipeCellHeight)
                                 .foregroundColor(.black)
                         }

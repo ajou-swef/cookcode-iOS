@@ -11,7 +11,7 @@ final class RecipeViewModel: ObservableObject {
     
     private let recipeService: RecipeServiceProtocol
     
-    @Published private(set) var recipeDetail: RecipeCell?
+    @Published private(set) var recipeDetail: RecipeCellDto?
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var tabSelection: String = ""
     

@@ -10,7 +10,7 @@ import Kingfisher
 
 struct RecipeCellView: View {
     
-    let recipeCell: RecipeCell
+    let recipeCell: RecipeCellDto
     let user: User
     let offsetY: CGFloat
     

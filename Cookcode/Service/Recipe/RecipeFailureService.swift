@@ -8,7 +8,7 @@
 import Foundation
 
 final class RecipeFailureService: RecipeServiceProtocol {
-    func fetchRecipe(_ recipeID: Int) -> Result<RecipeCell, ServiceError> {
+    func fetchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> {
         return .failure(ServiceError(message: "조회 실패", status: 400))
     }
     

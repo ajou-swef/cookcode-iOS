@@ -8,8 +8,8 @@
 import Foundation
 
 final class RecipeSuccessService: RecipeServiceProtocol {
-    func fetchRecipe(_ recipeID: Int) -> Result<RecipeCell, ServiceError> {
-        return .success(RecipeCell.MOCK_DATA)
+    func fetchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> {
+        return .success(RecipeCellDto.MOCK_DATA)
     }
     
     func searchRecipeHomeCell(page: Int, size: Int, sort: String, month: Int, cookcable: Bool) -> Result<RecipeCellSeachResponse, ServiceError> {

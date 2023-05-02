@@ -8,11 +8,11 @@
 import Foundation
 
 struct RecipeCellSearch: Codable {
-    var recipeCells: [RecipeCell]
+    var recipeCells: [RecipeCellDto]
     var numberOfElements, offset, pageNumber, pageSize: Int
     var totalElements, totalPages: Int
     
-    static let MOCK_DATA: RecipeCellSearch = RecipeCellSearch(recipeCells: [RecipeCell.MOCK_DATA, RecipeCell.MOCK_DATA], numberOfElements: 0, offset: 0, pageNumber: 0, pageSize: 0, totalElements: 0, totalPages: 0)
+    static let MOCK_DATA: RecipeCellSearch = RecipeCellSearch(recipeCells: [RecipeCellDto.MOCK_DATA, RecipeCellDto.MOCK_DATA], numberOfElements: 0, offset: 0, pageNumber: 0, pageSize: 0, totalElements: 0, totalPages: 0)
     
     enum CodingKeys: String, CodingKey {
         case recipeCells = "content"
@@ -30,7 +30,7 @@ struct RecipeCellSearch: Codable {
         totalPages = 0
     }
     
-    init (recipeCells: [RecipeCell], numberOfElements: Int, offset: Int, pageNumber: Int, pageSize: Int, totalElements: Int, totalPages: Int) {
+    init (recipeCells: [RecipeCellDto], numberOfElements: Int, offset: Int, pageNumber: Int, pageSize: Int, totalElements: Int, totalPages: Int) {
         self.recipeCells = recipeCells
         self.numberOfElements = numberOfElements
         self.offset = offset

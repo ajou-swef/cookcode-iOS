@@ -62,7 +62,7 @@ struct MainTabView: View {
     func homeView() -> some View {
         NavigationStack(path: $navigateViewModel.homePath) {
             HomeView()
-                .navigationDestination(for: RecipeCell.self) { recipe in
+                .navigationDestination(for: RecipeCellDto.self) { recipe in
                     RecipeView(recipeCell: recipe)
                 }
                 .navigationDestination(for: HomePath.self) { path in
