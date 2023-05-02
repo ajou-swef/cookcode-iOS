@@ -8,6 +8,8 @@
 import Foundation
 
 struct RecipeCell: Cell {
+    let id: String = UUID().uuidString
+    
     static func Mock() -> RecipeCell {
         RecipeCell(thumbnail: "https://picsum.photos/200", title: "맛있는 요리", userNmae: "Page")
     }

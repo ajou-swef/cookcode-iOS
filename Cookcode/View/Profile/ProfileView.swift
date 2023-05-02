@@ -13,15 +13,37 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationStack(path: $navigateViewModel.profilePath) {
-            VStack {
-                Text("프로필")
+            List {
+                
+                Button {
+                    navigateViewModel.navigateWithProfile(ProfilePath.myRecipe)
+                } label: {
+                    Text("내 레시피")
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                        .foregroundColor(.primary)
+                }
+                
+                Button {
+                    
+                } label: {
+                    Text("로그아웃")
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                        .foregroundColor(.primary)
+                }
                 
                 Button {
                     
                 } label: {
                     Text("계정 삭제")
+                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                        .foregroundColor(.red)
                 }
-
+            }
+            .navigationDestination(for: ProfilePath.self) { path in
+                switch path {
+                case .myRecipe:
+                    MyRecipeView()
+                }
             }
             .navigationTitle("프로필")
             .toolbar {

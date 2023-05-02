@@ -57,7 +57,7 @@ extension View {
                 .frame(minWidth: 320, minHeight: 50, alignment: alignment)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(focused ? Color.gray808080 : .mainColor)
+                        .fill(focused ? Color.mainColor : Color.gray808080)
                 }
                 
         case .ORANGE_80_FILLE:

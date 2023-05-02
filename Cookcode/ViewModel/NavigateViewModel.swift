@@ -50,6 +50,10 @@ class NavigateViewModel: ObservableObject {
         self.tab = tab
     }
     
+    func navigateWithProfile(_ path: any Hashable) {
+        profilePath.append(path)
+    }
+    
     func navigateToOuter(_ path: OuterPath) {
         outerPath = path
     }

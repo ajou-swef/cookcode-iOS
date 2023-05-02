@@ -81,6 +81,8 @@
 		15B626402A009D09002E1F5F /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6263F2A009D09002E1F5F /* RecipeCell.swift */; };
 		15B626422A009D40002E1F5F /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B626412A009D40002E1F5F /* Mock.swift */; };
 		15B626452A00ABDD002E1F5F /* FetchCellServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B626442A00ABDD002E1F5F /* FetchCellServiceProtocol.swift */; };
+		15B626472A00B516002E1F5F /* MyRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B626462A00B516002E1F5F /* MyRecipeView.swift */; };
+		15B626492A00B59B002E1F5F /* MyRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B626482A00B59B002E1F5F /* MyRecipeCell.swift */; };
 		15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B129EFD9B900A02872 /* MainTabView.swift */; };
 		15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */; };
 		15B869B929EFDC3600A02872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B829EFDC3600A02872 /* HomeView.swift */; };
@@ -212,6 +214,8 @@
 		15B6263F2A009D09002E1F5F /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		15B626412A009D40002E1F5F /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		15B626442A00ABDD002E1F5F /* FetchCellServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCellServiceProtocol.swift; sourceTree = "<group>"; };
+		15B626462A00B516002E1F5F /* MyRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeView.swift; sourceTree = "<group>"; };
+		15B626482A00B59B002E1F5F /* MyRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeCell.swift; sourceTree = "<group>"; };
 		15B869B129EFD9B900A02872 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateViewModel.swift; sourceTree = "<group>"; };
 		15B869B829EFDC3600A02872 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -352,8 +356,8 @@
 		1503F95129B459C4002F3D26 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				15CFE6A629FF7B7000C16FF6 /* Profile */,
 				159BE2AD29FB875300DE7448 /* Cell */,
+				15CFE6A629FF7B7000C16FF6 /* Profile */,
 				15AA2F1E29EFE4750069813F /* Recipe */,
 				15B869B729EFDC2B00A02872 /* Refrigerator */,
 				15B869B629EFDC2900A02872 /* Cookie */,
@@ -530,6 +534,7 @@
 			isa = PBXGroup;
 			children = (
 				159BE2AE29FB875F00DE7448 /* CellView.swift */,
+				15B626482A00B59B002E1F5F /* MyRecipeCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -641,6 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				15CFE6A729FF7B8500C16FF6 /* ProfileView.swift */,
+				15B626462A00B516002E1F5F /* MyRecipeView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -865,6 +871,7 @@
 				153F128029FE2415008BDB4E /* User.swift in Sources */,
 				1566059429F937A3008B9F9F /* View + offset.swift in Sources */,
 				15AA2F4B29F0D80E0069813F /* RecipePath.swift in Sources */,
+				15B626472A00B516002E1F5F /* MyRecipeView.swift in Sources */,
 				150CD44329F397830001FFEB /* ContentType.swift in Sources */,
 				152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */,
 				15B626452A00ABDD002E1F5F /* FetchCellServiceProtocol.swift in Sources */,
@@ -879,6 +886,7 @@
 				15DAE25A29FE3F9D00A4B00A /* RecipeViewModel.swift in Sources */,
 				153F127529FE1B8A008BDB4E /* SearchCellView.swift in Sources */,
 				153F128229FE25AD008BDB4E /* RecipeCellSearch.swift in Sources */,
+				15B626492A00B59B002E1F5F /* MyRecipeCell.swift in Sources */,
 				1538157A29FF8EB100C3BD11 /* IngredientCell.swift in Sources */,
 				153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */,
 				153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */,

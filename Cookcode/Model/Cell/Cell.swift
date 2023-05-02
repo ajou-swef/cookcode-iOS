@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Cell: Mock {
+protocol Cell: Mock, Identifiable {
     var thumbnail: String { get set }
     var title: String { get set }
     var userNmae: String { get set }
