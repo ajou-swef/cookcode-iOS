@@ -15,19 +15,20 @@ class SearchRecipeViewModel: ObservableObject {
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var searchType: SearchType = .recipe
 
-    let recipeService: RecipeServiceProtocol
+    var fetchCellService: FetchCellServiceProtocol
     
     let columns: [GridItem] = [
         GridItem(.flexible())
     ]
     let recipeCellHeight: CGFloat = 200
     
-    init (recipeService: RecipeServiceProtocol) {
-        self.recipeService = recipeService
+    init (fetchCellService: FetchCellServiceProtocol ) {
+        self.fetchCellService = fetchCellService
     }
     
+    @MainActor
     func searchRecipe() async {
-        let result = await recipeService.fetchCell(page: 0, size: 0, sort: "sort", month: 0)
+        let result = await fetchCellService.fetchCell(page: 0, size: 0, sort: "sort", month: 0)
         
         switch result {
         case .success(let success):

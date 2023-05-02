@@ -11,7 +11,7 @@ import Kingfisher
 struct SearchRecipeView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    @StateObject private var viewModel: SearchRecipeViewModel = SearchRecipeViewModel(recipeService: RecipeSuccessService())
+    @StateObject private var viewModel: SearchRecipeViewModel = SearchRecipeViewModel(fetchCellService: RecipeSuccessService())
     
     var body: some View {
         ScrollView {
@@ -45,7 +45,7 @@ struct SearchRecipeView: View {
                 TextField("레시피 검색", text: $viewModel.text)
                     .frame(maxWidth: .infinity)
                     .onSubmit {
-                        Task { await viewModel.searchRecipe() } 
+                        Task { await viewModel.searchRecipe() }
                     }
             }
         }

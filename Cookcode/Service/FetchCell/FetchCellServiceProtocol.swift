@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol FetchCell {
+protocol FetchCellServiceProtocol {
     func fetchCell(page: Int, size: Int, sort: String, month: Int) async -> Result<[any Cell], ServiceError>
 }
