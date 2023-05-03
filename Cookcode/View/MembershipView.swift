@@ -120,7 +120,7 @@ struct MembershipView: View {
     @ViewBuilder
     private func SignUpComplteButton() -> some View {
         Button {
-            viewModel.signUp(dismiss: dismiss)
+            Task { await viewModel.signUp(dismiss: dismiss) }
         } label: {
             Text("완료")
                 .foregroundColor(.white)
@@ -132,7 +132,7 @@ struct MembershipView: View {
     @ViewBuilder
     private func CheckNicknameButton() -> some View {
         Button {
-            viewModel.checkNickname()
+            Task { await viewModel.checkNickname() } 
         } label: {
             Text("중복확인")
                 .font(CustomFontFactory.INTER_SEMIBOLD_14)

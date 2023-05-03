@@ -43,8 +43,8 @@ class MembershipViewModel: ObservableObject {
         self.accountService = accountService
     }
     
-    func checkNickname() {
-        let result = accountService.check(membershipForm.nickname)
+    func checkNickname() async {
+        let result = await accountService.check(membershipForm.nickname)
         
         switch result {
         case .success(let data):
@@ -58,8 +58,8 @@ class MembershipViewModel: ObservableObject {
         membershipForm.setNicknameCheckComplte(false)
     }
     
-    func signUp(dismiss: DismissAction) {
-        let result = accountService.signUp(membershipForm: membershipForm)
+    func signUp(dismiss: DismissAction) async {
+        let result = await accountService.signUp(membershipForm: membershipForm)
         
         switch result {
         case .success(_):
