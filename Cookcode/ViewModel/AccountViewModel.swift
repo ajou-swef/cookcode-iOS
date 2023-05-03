@@ -25,4 +25,10 @@ class AccountViewModel: ObservableObject {
     func login(_ value: Bool) {
         didSignIn = value
     }
+    
+    func logout() {
+        didSignIn = false
+        UserDefaults.standard.set(nil, forKey: ACCESS_TOKEN_KEY)
+        UserDefaults.standard.set(nil, forKey: REFRESH_TOKEN_KEY)
+    }
 }

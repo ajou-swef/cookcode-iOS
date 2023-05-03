@@ -43,6 +43,7 @@ class MembershipViewModel: ObservableObject {
         self.accountService = accountService
     }
     
+    @MainActor
     func checkNickname() async {
         let result = await accountService.check(membershipForm.nickname)
         

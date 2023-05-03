@@ -21,7 +21,7 @@ struct MembershipView: View {
     @FocusState private var focus: Field?
     
     init (accountService: AccountServiceProtocol) {
-        self._viewModel = StateObject(wrappedValue: MembershipViewModel(accountService: AccountFailureService()))
+        self._viewModel = StateObject(wrappedValue: MembershipViewModel(accountService: AccountService()))
         
     }
     

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @EnvironmentObject var accountViewModel: AccountViewModel
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     
     var body: some View {
@@ -24,7 +25,7 @@ struct ProfileView: View {
                 }
                 
                 Button {
-                    
+                    accountViewModel.logout()
                 } label: {
                     Text("로그아웃")
                         .font(CustomFontFactory.INTER_SEMIBOLD_14)
