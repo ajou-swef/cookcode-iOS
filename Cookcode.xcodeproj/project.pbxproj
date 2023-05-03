@@ -106,6 +106,7 @@
 		15F2CC0B2A0255590019FAB6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F2CC0A2A0255590019FAB6 /* API.swift */; };
 		15F2CC102A025D1D0019FAB6 /* AccountServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F2CC0F2A025D1D0019FAB6 /* AccountServiceTests.swift */; };
 		15F2CC122A0260D30019FAB6 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F2CC112A0260D30019FAB6 /* AccountViewModel.swift */; };
+		15F2CC142A02669C0019FAB6 /* MembershipFormViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F2CC132A02669C0019FAB6 /* MembershipFormViewModelTests.swift */; };
 		15F82A6729FA8D3300DA9381 /* AccountServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A6629FA8D3300DA9381 /* AccountServiceProtocol.swift */; };
 		15F82A6A29FA8D5F00DA9381 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15F82A6929FA8D5F00DA9381 /* Alamofire */; };
 		15F82A6D29FA901500DA9381 /* AccoutCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */; };
@@ -241,6 +242,7 @@
 		15F2CC0A2A0255590019FAB6 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		15F2CC0F2A025D1D0019FAB6 /* AccountServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountServiceTests.swift; sourceTree = "<group>"; };
 		15F2CC112A0260D30019FAB6 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		15F2CC132A02669C0019FAB6 /* MembershipFormViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipFormViewModelTests.swift; sourceTree = "<group>"; };
 		15F82A6629FA8D3300DA9381 /* AccountServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountServiceProtocol.swift; sourceTree = "<group>"; };
 		15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccoutCheckResponse.swift; sourceTree = "<group>"; };
 		15F82A6E29FA91CC00DA9381 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 			children = (
 				1503F94C29B4557A002F3D26 /* LoginViewModel_Tests.swift */,
 				159FA86B29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift */,
+				15F2CC132A02669C0019FAB6 /* MembershipFormViewModelTests.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -945,6 +948,7 @@
 				153B4DB929ED58B900543730 /* MembershipForm_Tests.swift in Sources */,
 				1503F94D29B4557A002F3D26 /* LoginViewModel_Tests.swift in Sources */,
 				15CFE6A529FF69C800C16FF6 /* RecipeFormTests.swift in Sources */,
+				15F2CC142A02669C0019FAB6 /* MembershipFormViewModelTests.swift in Sources */,
 				15F2CC102A025D1D0019FAB6 /* AccountServiceTests.swift in Sources */,
 				1566059029F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift in Sources */,
 				1503F93429B45561002F3D26 /* CookcodeTests.swift in Sources */,
