@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyRecipeCell: View {
+struct MyRecipeCellView: View {
     
     let recipeCell: RecipeCell
     
@@ -18,6 +18,6 @@ struct MyRecipeCell: View {
 
 struct MyRecipeCell_Previews: PreviewProvider {
     static var previews: some View {
-        MyRecipeCell(recipeCell: RecipeCell.Mock())
+        MyRecipeCellView(recipeCell: RecipeCell.Mock())
     }
 }

@@ -15,7 +15,7 @@ struct MyRecipeView: View {
     var body: some View {
         List {
             ForEach(mocks) { mock in
-                MyRecipeCell(recipeCell: mock)
+                MyRecipeCellView(recipeCell: mock)
                     .onTapGesture {
                         navigateViewModel.navigateWithProfile(RecipeCellDto.MOCK_DATA)
                     }
