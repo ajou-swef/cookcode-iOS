@@ -38,7 +38,7 @@ struct LoginView: View {
                             .fill(focused == .email ? Color.mainColor :  Color.gray808080)
                     }
                 
-                TextField("비밀번호", text: $viewModel.signInForm.password)
+                SecureField("비밀번호", text: $viewModel.signInForm.password)
                     .font(CustomFontFactory.INTER_BOLD_16)
                     .padding(10)
                     .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,

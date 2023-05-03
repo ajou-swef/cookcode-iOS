@@ -10,6 +10,14 @@ import Foundation
 class AccountViewModel: ObservableObject {
     @Published private(set) var didSignIn: Bool = false
     
+    init() {
+        let token = UserDefaults.standard.object(forKey: ACCESS_TOKEN_KEY)
+        if token != nil {
+            didSignIn = true
+        }
+    }
+    
+    
     var didNotSignIn: Bool {
         !didSignIn
     }
