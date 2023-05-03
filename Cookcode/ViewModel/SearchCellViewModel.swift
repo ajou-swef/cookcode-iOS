@@ -11,7 +11,7 @@ import SwiftUI
 class SearchCellViewModel: ObservableObject {
     
     @Published var text: String = ""
-    @Published var cells: [any Cell] = []
+    @Published var cells: [any SearchedCell] = []
     
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var searchType: SearchType = .recipe

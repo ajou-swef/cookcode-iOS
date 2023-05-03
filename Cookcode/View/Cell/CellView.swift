@@ -10,7 +10,7 @@ import Kingfisher
 
 struct CellView: View {
     
-    let cell: any Cell
+    let cell: any SearchedCell
     
     var body: some View {
         HStack {
@@ -19,7 +19,7 @@ struct CellView: View {
                     Image(systemName: "pencil")
                         .foregroundColor(.primary)
                     
-                    Text("\(cell.userNmae)")
+                    Text("\(cell.userName)")
                         .font(CustomFontFactory.INTER_SEMIBOLD_14)
                         .foregroundColor(.primary)
                 }

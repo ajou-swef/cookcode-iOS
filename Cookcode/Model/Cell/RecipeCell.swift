@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeCell: Cell {
+struct RecipeCell: SearchedCell {
     var type: RecipeCell.Type {
         RecipeCell.self
     }
@@ -15,7 +15,7 @@ struct RecipeCell: Cell {
     let id: String = UUID().uuidString
     
     static func Mock() -> RecipeCell {
-        RecipeCell(thumbnail: "https://picsum.photos/200", title: "맛있는 요리", userNmae: "Page")
+        RecipeCell(thumbnail: "https://picsum.photos/200", title: "맛있는 요리", userName: "Page")
     }
     
     
@@ -23,5 +23,5 @@ struct RecipeCell: Cell {
     
     var thumbnail: String
     var title: String
-    var userNmae: String
+    var userName: String
 }

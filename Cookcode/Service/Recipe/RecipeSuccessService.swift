@@ -8,7 +8,7 @@
 import Foundation
 
 final class RecipeSuccessService: RecipeServiceProtocol {
-    func searchCell(page: Int, size: Int, sort: String, month: Int) async -> Result<[any Cell], ServiceError> {
+    func searchCell(page: Int, size: Int, sort: String, month: Int) async -> Result<[any SearchedCell], ServiceError> {
         .success(RecipeCell.Mocks(10))
     }
     

@@ -10,9 +10,9 @@ import Foundation
 struct IngredientCellsResponse: Codable {
     let message: String
     let status: Int
-    let data: [IngredientCell]
+    let data: [IngredientCellDto]
     
     static func MOCK() -> IngredientCellsResponse {
-        IngredientCellsResponse(message: "조회 성공", status: 200, data: [IngredientCell.MOCK(), IngredientCell.MOCK(), IngredientCell.MOCK()])
+        IngredientCellsResponse(message: "조회 성공", status: 200, data: [IngredientCellDto.MOCK(), IngredientCellDto.MOCK(), IngredientCellDto.MOCK()])
     }
 }
