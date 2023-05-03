@@ -59,6 +59,7 @@ class MembershipViewModel: ObservableObject {
         membershipForm.setNicknameCheckComplte(false)
     }
     
+    @MainActor
     func signUp(dismiss: DismissAction) async {
         let result = await accountService.signUp(membershipForm: membershipForm)
         

@@ -12,15 +12,15 @@ struct SignUpResponse: Codable {
     let status: Int
     let data: Data
     
-    static let MOCK_DATA: Data = Data(userID: 123, nickname: "Page", email: "nou0jid@ajou.ac.kr")
+    static let MOCK_DATA: Data = Data(userID: 123, name: "Page", email: "nou0jid@ajou.ac.kr")
     
     struct Data: Codable {
         let userID: Int
-        let nickname, email: String
+        let name, email: String
 
         enum CodingKeys: String, CodingKey {
             case userID = "userId"
-            case nickname, email
+            case name, email
         }
     }
 

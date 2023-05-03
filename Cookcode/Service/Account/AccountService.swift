@@ -14,16 +14,29 @@ final class AccountService: AccountServiceProtocol {
         
         let response = await AF.request(url, method: .get).serializingDecodable(AccountCheckResponse.self).response
         
-        print("\(response.debugDescription)")
-        
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
             return serviceErorr ?? ServiceError.MOCK()
         }
     }
     
-    func signUp(membershipForm: MembershipForm) -> Result<SignUpResponse, ServiceError> {
-        .failure(ServiceError.MOCK())
+    func signUp(membershipForm: MembershipForm) async -> Result<SignUpResponse, ServiceError> {
+        
+        let url = "\(BASE_URL)/api/v1/account/signup"
+        let param = [
+            "email" : membershipForm.email,
+            "nickname" : membershipForm.nickname,
+            "password" : membershipForm.password
+        ]
+        
+        let response = await AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default).serializingDecodable(SignUpResponse.self).response
+        
+        print("\(response.debugDescription)")
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.MOCK()
+        }
     }
     
     func signIn(_ signInForm: SignInForm) async -> Result<SignInResponse, ServiceError> {
