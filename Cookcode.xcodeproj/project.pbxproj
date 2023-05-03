@@ -103,6 +103,7 @@
 		15DAE25A29FE3F9D00A4B00A /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */; };
 		15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9B29FA94A40008DC7A /* AccountService.swift */; };
 		15E43A9E29FA94DF0008DC7A /* AccountSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */; };
+		15F2CC0B2A0255590019FAB6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F2CC0A2A0255590019FAB6 /* API.swift */; };
 		15F82A6729FA8D3300DA9381 /* AccountServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A6629FA8D3300DA9381 /* AccountServiceProtocol.swift */; };
 		15F82A6A29FA8D5F00DA9381 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15F82A6929FA8D5F00DA9381 /* Alamofire */; };
 		15F82A6D29FA901500DA9381 /* AccoutCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */; };
@@ -235,6 +236,7 @@
 		15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		15E43A9B29FA94A40008DC7A /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSuccessService.swift; sourceTree = "<group>"; };
+		15F2CC0A2A0255590019FAB6 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		15F82A6629FA8D3300DA9381 /* AccountServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountServiceProtocol.swift; sourceTree = "<group>"; };
 		15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccoutCheckResponse.swift; sourceTree = "<group>"; };
 		15F82A6E29FA91CC00DA9381 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 		153B4D8A29ED050A00543730 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				15F2CC092A0255510019FAB6 /* Environment */,
 				150CD44429F628900001FFEB /* Swift Standar + Extension */,
 				15AA2F4829F0D4210069813F /* Binding + Extension */,
 				153B4DA929ED0F9500543730 /* View + Extension */,
@@ -661,6 +664,14 @@
 			path = Refrigerator;
 			sourceTree = "<group>";
 		};
+		15F2CC092A0255510019FAB6 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				15F2CC0A2A0255590019FAB6 /* API.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		15F82A6B29FA8F2700DA9381 /* Response */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +872,7 @@
 				15F82A7329FA92D500DA9381 /* SignInResponse.swift in Sources */,
 				15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */,
 				1566059229F93740008B9F9F /* HomeViewModel.swift in Sources */,
+				15F2CC0B2A0255590019FAB6 /* API.swift in Sources */,
 				15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */,
 				1584033329B48E0F0092032A /* LoginView.swift in Sources */,
 				1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */,
