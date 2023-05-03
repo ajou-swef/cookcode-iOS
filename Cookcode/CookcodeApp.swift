@@ -11,11 +11,13 @@ import SwiftUI
 struct CookcodeApp: App {
     
     @StateObject private var navigateViewModel: NavigateViewModel = .init()
+    @StateObject private var accountViewModel: AccountViewModel = .init()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(navigateViewModel)
+                .environmentObject(accountViewModel)
                 .onOpenURL {
                     navigateViewModel.separateURL($0.absoluteString)
                 }

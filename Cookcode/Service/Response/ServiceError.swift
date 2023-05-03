@@ -5,7 +5,13 @@
 //  Created by 노우영 on 2023/04/27.
 //
 
+import Alamofire
 import Foundation
+
+struct NetworkError: Error {
+    let alamofireError: AFError?
+    let serviceError: ServiceError? 
+}
 
 struct ServiceError: Codable, Error {
     let message: String

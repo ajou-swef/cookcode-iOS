@@ -14,8 +14,9 @@ struct LoginView: View {
         case password
     }
     
+    @EnvironmentObject var accountViewModel: AccountViewModel
     @State private var path: NavigationPath = NavigationPath()
-    @StateObject private var viewModel = LoginViewModel(accountService: AccountFailureService())
+    @StateObject private var viewModel = LoginViewModel(accountService: AccountService())
     @FocusState private var focused: Field?
     var body: some View {
         NavigationStack(path: $path) {
@@ -49,7 +50,10 @@ struct LoginView: View {
           
                 
                 Button {
-                    viewModel.signIn()
+                    Task {
+                        let loginDidSuccess = await viewModel.signIn()
+                        accountViewModel.login(loginDidSuccess)
+                    }
                 } label: {
                     Text("로그인")
                         .foregroundColor(.white)

@@ -20,7 +20,7 @@ final class AccountSuccessService: AccountServiceProtocol {
     
     func signIn(_ signInForm: SignInForm) -> Result<SignInResponse, ServiceError> {
         return .success(SignInResponse(message: "로그인 성공", status: 200,
-                                       data: SignInResponse.MOCK_DATA))
+                                       data: SignInResponse.MOCK()))
     }
     
     func getUserAccountByID(_ userID: Int) -> Result<UserAccountResponse, ServiceError> {

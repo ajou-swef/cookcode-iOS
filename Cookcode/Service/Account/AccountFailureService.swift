@@ -5,6 +5,7 @@
 //  Created by 노우영 on 2023/04/28.
 //
 
+import Alamofire
 import Foundation
 
 final class AccountFailureService: AccountServiceProtocol {
@@ -16,7 +17,7 @@ final class AccountFailureService: AccountServiceProtocol {
         return .failure(ServiceError(message: "에러 메시지", status: 400))
     }
     
-    func signIn(_ signInForm: SignInForm) -> Result<SignInResponse, ServiceError> {
+    func signIn(_ signInForm: SignInForm) async -> Result<SignInResponse, ServiceError> {
         return .failure(ServiceError(message: "에러 메시지", status: 400))
     }
     

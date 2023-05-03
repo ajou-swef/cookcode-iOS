@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var accountViewModel: AccountViewModel
+    
     var body: some View {
         Group {
-//            LoginView()
+            LoginView()
+                .hidden(accountViewModel.didSignIn)
+            
             MainTabView()
+                .hidden(accountViewModel.didNotSignIn)
         }
     }
 }

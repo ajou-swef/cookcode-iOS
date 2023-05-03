@@ -16,8 +16,20 @@ final class AccountService: AccountServiceProtocol {
         .failure(ServiceError.MOCK())
     }
     
-    func signIn(_ signInForm: SignInForm) -> Result<SignInResponse, ServiceError> {
+    func signIn(_ signInForm: SignInForm) async -> Result<SignInResponse, ServiceError> {
         
+        let url = "\(BASE_URL)/api/v1/account/signin"
+        let param = [
+            "email": signInForm.email,
+            "password": signInForm.password
+        ]
+        
+        let response = await AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default).serializingDecodable(SignInResponse.self).response
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.MOCK()
+        }
     }
     
     func getUserAccountByID(_ userID: Int) -> Result<UserAccountResponse, ServiceError> {

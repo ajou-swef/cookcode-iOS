@@ -17,14 +17,18 @@ class LoginViewModel: ObservableObject {
         self.accountService = accountService
     }
     
-    func signIn() {
-        let result = accountService.signIn(signInForm)
+    @MainActor
+    func signIn() async -> Bool {
+        let result = await accountService.signIn(signInForm)
         
         switch result {
-        case .success(_):
-            print("로그인 성공 ")
+        case .success(let success):
+            UserDefaults.standard.set(success.data.accessToken, forKey: ACCESS_TOKEN_KEY)
+            UserDefaults.standard.set(success.data.refreshToken, forKey: REFRESH_TOKEN_KEY)
+            return true
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
+            return false
         }
     }
 }

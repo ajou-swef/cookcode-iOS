@@ -51,7 +51,7 @@ struct RecipeView: View {
     }
     
     var imageURL: String {
-        guard let viewModel = recipeFormViewModel else {
+        guard recipeFormViewModel != nil else {
             return "https://picsum.photos/200"
         }
         return "https://picsum.photos/200"

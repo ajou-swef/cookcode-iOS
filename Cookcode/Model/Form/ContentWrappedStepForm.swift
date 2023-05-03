@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct ContentWrappedStepForm: Identifiable, Codable {
-    let id: String = UUID().uuidString
+    var id: String = UUID().uuidString
     
     var title: String = ""
     var description: String = ""

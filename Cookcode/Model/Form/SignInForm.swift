@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SignInForm {
+struct SignInForm: Encodable {
     var email: String = ""
     var password: String = "" 
 }

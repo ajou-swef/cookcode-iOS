@@ -12,15 +12,17 @@ struct SignInResponse: Codable {
     let status: Int
     let data: Data
     
-    static let MOCK_DATA: Data = Data(userID: 123, nickname: "page", email: "nou0jid@ajou.ac.kr")
+    static func MOCK() -> Data {
+        Data(userID: 1, accessToken: "accessToken", refreshToken: "refreshToken")
+    }
     
     struct Data: Codable {
         let userID: Int
-        let nickname, email: String
+        let accessToken, refreshToken: String
 
         enum CodingKeys: String, CodingKey {
             case userID = "userId"
-            case nickname, email
+            case accessToken, refreshToken
         }
     }
 }
