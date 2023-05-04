@@ -10,7 +10,7 @@ import PopupView
 
 struct RefrigeratorView: View {
     
-    @StateObject private var viewModel = RefrigeratorViewModel()
+    @StateObject private var viewModel = RefrigeratorViewModel(fridgeService: RefrigeratorSuccessService())
     let height = UIScreen.main.bounds.height
     
     var body: some View {
@@ -49,64 +49,72 @@ struct RefrigeratorView: View {
         .popover(isPresented: $viewModel.selectIngredientViewIsPresented) {
             SelectIngredientView(viewModel: viewModel)
                 .popup(isPresented: $viewModel.ingredientFormIsPresented) {
-                    VStack {
-                        TextField("용량", text: $viewModel.ingredientQuantity)
-                            .keyboardType(.numberPad)
-                        
-                        DatePicker("소비기한", selection: $viewModel.date, displayedComponents: .date)
-                        
-                        Spacer()
-                        
-                        HStack(spacing: 0) {
-                            Button {
-                                viewModel.ingredientFormIsPresented = false
-                            } label: {
-                                Text("취소")
-                                    .padding(.vertical, 10)
-                                    .frame(maxWidth: .infinity)
-                                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                                    .background(
-                                        Rectangle()
-                                            .stroke(lineWidth: 1)
-                                            .foregroundColor(.gray_bcbcbc)
-                                    )
-                            }
-                            
-                            Button {
-                                
-                            } label: {
-                                Text("추가")
-                                    .padding(.vertical, 10)
-                                    .foregroundColor(.blue)
-                                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                                    .frame(maxWidth: .infinity)
-                                    .background(
-                                        Rectangle()
-                                            .stroke(lineWidth: 1)
-                                            .foregroundColor(.gray_bcbcbc)
-                                    )
-                            }
-                        }
-                        .padding(.horizontal, -15)
-                    }
-                    .padding(.top, 20)
-                    .padding(.horizontal, 15)
-                    .frame(width: 300, height: 200)
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .padding(.horizontal, 10)
+                    ingredientForm()
                 } customize: {
                     $0
                         .type(.floater(verticalPadding: (height - 200) / 2,
                                        useSafeAreaInset: true))
                         .animation(.linear(duration: 0))
                         .position(.top)
-                        .closeOnTapOutside(true)
+                        .closeOnTapOutside(false)
                         .closeOnTap(false)
                         .backgroundColor(Color.black.opacity(0.5))
                 }
 
         }
+    }
+    
+    @ViewBuilder
+    private func ingredientForm() -> some View {
+        VStack {
+            TextField("용량", text: $viewModel.ingredientQuantity)
+                .keyboardType(.numberPad)
+            DatePicker("소비기한", selection: $viewModel.date, displayedComponents: .date)
+            
+            Spacer()
+            formButtomButton()
+        }
+        .padding(.top, 20)
+        .padding(.horizontal, 15)
+        .frame(width: 300, height: 200)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding(.horizontal, 10)
+    }
+    
+    @ViewBuilder
+    private func formButtomButton() -> some View {
+        HStack(spacing: 0) {
+            Button {
+                viewModel.ingredientFormIsPresented = false
+            } label: {
+                Text("취소")
+                    .padding(.vertical, 10)
+                    .frame(maxWidth: .infinity)
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                    .background(
+                        Rectangle()
+                            .stroke(lineWidth: 1)
+                            .foregroundColor(.gray_bcbcbc)
+                    )
+            }
+            
+            Button {
+                
+            } label: {
+                Text("추가")
+                    .padding(.vertical, 10)
+                    .foregroundColor(.blue)
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                    .frame(maxWidth: .infinity)
+                    .background(
+                        Rectangle()
+                            .stroke(lineWidth: 1)
+                            .foregroundColor(.gray_bcbcbc)
+                    )
+            }
+        }
+        .padding(.horizontal, -15)
     }
 }
 

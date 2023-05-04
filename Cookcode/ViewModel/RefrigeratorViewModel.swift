@@ -16,6 +16,25 @@ class RefrigeratorViewModel: SelectIngredientViewModel {
     @Published var ingredientFormIsPresented: Bool = false
     @Published var selectIngredientViewIsPresented: Bool = false
     
+    @Published private(set) var ingredientCell: [IngredientCell] = [] 
+    
+    private(set) var fridgeService: RefrigeratorServiceProtocol
+    
+    init (fridgeService: RefrigeratorServiceProtocol) {
+        self.fridgeService = fridgeService
+        
+    }
+    
+    func fetchIngredients() async {
+//        let result = fridgeService.getMyIngredientCells()
+//        switch result {
+//        case .success(let success):
+//            success.data
+//        case .failure(let failure):
+//            <#code#>
+//        }
+    }
+    
     func ingredientCellTapped(_ ingredientID: Int) {
         ingredientFormIsPresented = true 
     }

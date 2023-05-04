@@ -18,7 +18,6 @@ struct RecipeCell: SearchedCell {
         RecipeCell(thumbnail: "https://picsum.photos/200", title: "맛있는 요리", userName: "Page")
     }
     
-    
     typealias MockType = RecipeCell
     
     var thumbnail: String

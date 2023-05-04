@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - DataClass
 struct IngredientCellDto: Codable {
-    let ingredID: Int
-    let name, expiredAt, category, quantity: String
+    let ingredID, quantity: Int
+    let name, expiredAt, category: String
     
     static func MOCK() -> IngredientCellDto {
-        IngredientCellDto(ingredID: 1, name: "양배추", expiredAt: "2023-08-31", category: "채소", quantity: "3Kg")
+        IngredientCellDto(ingredID: 1, quantity: 10, name: "양배추", expiredAt: "2023-08-31", category: "채소", quantity
     }
 
     enum CodingKeys: String, CodingKey {
