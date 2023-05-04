@@ -42,14 +42,14 @@ struct SelectIngredientView<ViewModel>: View where ViewModel: SelectIngredientVi
                         
                         if let ingredient = ingredient {
                             Button {
-                                viewModel.ingredientCellTapped(ingredient)
+                                viewModel.ingredientCellTapped(id)
                             } label: {
                                 IngredientCellView(cell: ingredient)
                                     .overlay(alignment: .topTrailing) {
                                         Circle()
                                             .frame(width: 10, height: 10)
                                             .foregroundColor(.mainColor)
-                                            .hidden(viewModel.isNotSelected(ingredient))
+                                            .hidden(viewModel.isNotSelected(id))
                                     }
                             }
                         }

@@ -8,13 +8,15 @@
 import SwiftUI
 import PhotosUI
 
-class RecipeFormViewModel: ObservableObject {
+class RecipeFormViewModel: SelectIngredientViewModel {
+    @Published var searchText: String = ""
     
     private let recipeService: RecipeServiceProtocol
     private let contentService: ContentServiceProtocol
     
     @Published var recipeForm: RecipeForm = .init()
     
+    @Published var useMainIngredient: Bool = false
     @Published var mainIngredientIDs: [Int] = []
     @Published var optionalIngredientIDs: [Int] = []
     
@@ -30,6 +32,7 @@ class RecipeFormViewModel: ObservableObject {
     @Published var stepFormTrigger: RecipePathWithIndex?
     @Published var mainIngredientViewIsPresnted: Bool = false
     @Published var optioanlIngredientViewIsPresnted: Bool = false
+
     
     // step 작성 시의 tabSelection
     @Published var stepTabSelection: String = ""
@@ -67,6 +70,30 @@ class RecipeFormViewModel: ObservableObject {
         }
     }
     
+    func isNotSelected(_ ingredientID: Int) -> Bool {
+        if useMainIngredient {
+            return !mainIngredientIDs.contains { id in id == ingredientID }
+        } else {
+            return !optionalIngredientIDs.contains { id in id == ingredientID }
+        }
+    }
+    
+    func ingredientCellTapped(_ ingredientID: Int) {
+        if useMainIngredient {
+            if let index = mainIngredientIDs.firstIndex(of: ingredientID) {
+                mainIngredientIDs.remove(at: index)
+            } else {
+                mainIngredientIDs.append(ingredientID)
+            }
+        } else {
+            if let index = optionalIngredientIDs.firstIndex(of: ingredientID) {
+                mainIngredientIDs.remove(at: index)
+            } else {
+                optionalIngredientIDs.append(ingredientID)
+            }
+        }
+    }
+    
     fileprivate func appendStepForm() {
         recipeForm.appendStep(ContentWrappedStepForm())
     }
@@ -95,7 +122,7 @@ class RecipeFormViewModel: ObservableObject {
         recipeForm.steps[at].containsAnyVideoURL
     }
     
-    func stepFormContentType(at :Int) -> ContentType {
+    func stepFormContentType(at : Int) -> ContentType {
         recipeForm.steps[at].contentType
     }
     

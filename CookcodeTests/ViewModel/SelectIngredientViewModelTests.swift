@@ -17,38 +17,42 @@ final class SelectIngredientViewModelTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func test_SelectIngredientViewModel_ingredientCellTapped_appendCell() {
+    
+    func test_RecipeFormViewModel_ingredientCellTapped_appendID() {
         //  Given
-        let viewModel = SelectIngredientForRecipeViewModel()
-        let ingredientCell = 1
+        let viewModel = RecipeFormViewModel(contentService: ContentSuccessService(),
+                                            recipeService: RecipeSuccessService())
+        viewModel.useMainIngredient = true
+        let counts = Int.random(in: 1..<30)
         
-            
         //  When
-        viewModel.ingredientCellTapped(ingredientCell)
-        
-        //  Then
-        let actual = viewModel.selectedIngredientIDs.contains { cell in
-            cell == ingredientCell
+        for i in 1...counts {
+            viewModel.ingredientCellTapped(i)
         }
         
-        XCTAssertTrue(actual)
+        //  Then
+        let expected = counts
+        let actual = viewModel.mainIngredientIDs.count
+        XCTAssertEqual(expected, actual)
     }
     
-    func test_SelectIngredientViewModel_ingredientCellTapped_removeCell() {
+    func test_RecipeFormViewModel_ingredientCellTapped_doesNotAppendDuplicatedID() {
         //  Given
-        let viewModel = SelectIngredientForRecipeViewModel()
-        let ingredientCell = 1
-        viewModel.ingredientCellTapped(ingredientCell)
-            
+        let viewModel = RecipeFormViewModel(contentService: ContentSuccessService(),
+                                            recipeService: RecipeSuccessService())
+        viewModel.useMainIngredient = true
+        let id = Int.random(in: 1..<30)
+        let counts = Int.random(in: 1..<30)
+        
         //  When
-        viewModel.ingredientCellTapped(ingredientCell)
+        for _ in 1...counts {
+            viewModel.ingredientCellTapped(id)
+        }
         
         //  Then
-        let actual = viewModel.selectedIngredientIDs.contains { cell in
-            cell == ingredientCell
-        }
-        XCTAssertFalse(actual)
+        let expected = 1
+        let actual = viewModel.mainIngredientIDs.count
+        XCTAssertEqual(expected, actual)
     }
-
+    
 }
