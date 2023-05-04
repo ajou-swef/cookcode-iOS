@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct IngredientCell: Cell {
+struct IngredientCell: Cell, Equatable {
+    
     var id: String = UUID().uuidString
     
     var thumbnail: String

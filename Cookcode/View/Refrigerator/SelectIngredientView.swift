@@ -17,24 +17,30 @@ struct SelectIngredientView: View {
         GridItem(.flexible())
     ]
     
-    @State private var text: String = "123"
+    @StateObject private var viewModel: SelectIngredientViewModel = .init()
+    @Binding var selectedIngredientCells: [IngredientCell]
     
     var body: some View {
-//        ScrollView {
-//            LazyVGrid(columns: columns) {
-//                ForEach(0..<INGREDIENTS.count) { i in
-//                    let ingredient = INGREDIENTS[i+1]
-//                    if let ingredient = ingredient {
-//                        IngredientCellView(cell: ingredient)
-//                    }
-//                }
-//            }
-//        }
+        VStack {
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(0..<INGREDIENTS.count) { i in
+                        let ingredient = INGREDIENTS[i+1]
+                        if let ingredient = ingredient {
+                            IngredientCellView(cell: ingredient)
+                        }
+                    }
+                }
+            }
+        }
+        .onChange(of: viewModel.selectedIngredientIDs) { newValue in
+            selectedIngredientCells = newValue
+        }
     }
 }
 
 struct SelectIngredientView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectIngredientView()
+        SelectIngredientView(selectedIngredientCells: .constant([]))
     }
 }
