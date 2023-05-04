@@ -59,11 +59,6 @@ struct SelectIngredientView<ViewModel>: View where ViewModel: SelectIngredientVi
             }
         }
         .padding(.top, 20 )
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("재료 추가")
-            }
-        }
     }
 }
 

@@ -10,6 +10,8 @@ import Foundation
 class RefrigeratorViewModel: SelectIngredientViewModel {
     
     @Published var searchText: String = ""
+    @Published var ingredientQuantity: String = ""
+    @Published var date: Date = .now
     
     @Published var ingredientFormIsPresented: Bool = false
     @Published var selectIngredientViewIsPresented: Bool = false
