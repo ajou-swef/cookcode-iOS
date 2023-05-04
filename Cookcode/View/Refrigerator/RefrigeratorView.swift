@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RefrigeratorView: View {
+    
+    @StateObject private var viewModel = RefrigeratorViewModel()
+    
     var body: some View {
         VStack {
             Rectangle()
@@ -16,12 +19,29 @@ struct RefrigeratorView: View {
             
             HStack {
                 Spacer()
-                Button {
-                    
+                
+                NavigationLink {
+                    SelectIngredientView(viewModel: viewModel)
                 } label: {
                     Text("+ 추가")
                         .font(CustomFontFactory.INTER_SEMIBOLD_14)
                         .foregroundColor(.primary)
+                }
+
+//                Button {
+//                    viewModel.selectIngredientViewIsPresented = true
+//                } label: {
+//                    Text("+ 추가")
+//                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
+//                        .foregroundColor(.primary)
+//                }
+                .alert("재료 추가", isPresented: $viewModel.ingredientFormIsPresented) {
+                    Button("확인", role: .cancel) {
+                        
+                    }
+                }
+                .sheet(isPresented: $viewModel.selectIngredientViewIsPresented) {
+                    SelectIngredientView(viewModel: viewModel)
                 }
             }
 

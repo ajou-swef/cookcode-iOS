@@ -36,23 +36,23 @@ final class SelectIngredientViewModelTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
-    func test_RecipeFormViewModel_ingredientCellTapped_doesNotAppendDuplicatedID() {
+    func test_RecipeFormViewModel_ingredientCellTapped_removeID() {
         //  Given
         let viewModel = RecipeFormViewModel(contentService: ContentSuccessService(),
                                             recipeService: RecipeSuccessService())
         viewModel.useMainIngredient = true
         let id = Int.random(in: 1..<30)
-        let counts = Int.random(in: 1..<30)
+        
         
         //  When
-        for _ in 1...counts {
-            viewModel.ingredientCellTapped(id)
-        }
+        viewModel.ingredientCellTapped(id)
+        viewModel.ingredientCellTapped(id)
         
         //  Then
-        let expected = 1
-        let actual = viewModel.mainIngredientIDs.count
-        XCTAssertEqual(expected, actual)
+        let actual = viewModel.mainIngredientIDs.contains { id in
+            id == id
+        }
+        XCTAssertFalse(actual)
     }
     
 }

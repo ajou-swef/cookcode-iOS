@@ -52,12 +52,18 @@ struct SelectIngredientView<ViewModel>: View where ViewModel: SelectIngredientVi
                                             .hidden(viewModel.isNotSelected(id))
                                     }
                             }
+                            .hidden(!ingredient.title.contains(viewModel.searchText) && !viewModel.searchText.isEmpty)
                         }
                     }
                 }
             }
         }
         .padding(.top, 20 )
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("재료 추가")
+            }
+        }
     }
 }
 
