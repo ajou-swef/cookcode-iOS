@@ -21,37 +21,34 @@ final class SelectIngredientViewModelTests: XCTestCase {
     func test_SelectIngredientViewModel_ingredientCellTapped_appendCell() {
         //  Given
         let viewModel = SelectIngredientViewModel()
-        let ingredientCell = INGREDIENTS[1]
+        let ingredientCell = 1
         
-        if let ingredientCell = ingredientCell {
             
-            //  When
-            viewModel.ingredientCellTapped(ingredientCell)
-            
-            //  Then
-            let actual = viewModel.selectedIngredientIDs.contains { cell in
-                cell == ingredientCell
-            }
-            
-            XCTAssertTrue(actual)
+        //  When
+        viewModel.ingredientCellTapped(ingredientCell)
+        
+        //  Then
+        let actual = viewModel.selectedIngredientIDs.contains { cell in
+            cell == ingredientCell
         }
+        
+        XCTAssertTrue(actual)
     }
     
     func test_SelectIngredientViewModel_ingredientCellTapped_removeCell() {
         //  Given
         let viewModel = SelectIngredientViewModel()
-        let ingredientCell = INGREDIENTS[1]
-        if let ingredientCell = ingredientCell {
-            viewModel.ingredientCellTapped(ingredientCell)
+        let ingredientCell = 1
+        viewModel.ingredientCellTapped(ingredientCell)
             
-            // When
-            viewModel.ingredientCellTapped(ingredientCell)
-            let actual = viewModel.selectedIngredientIDs.contains { cell in
-                cell == ingredientCell
-            }
-            
-            XCTAssertFalse(actual)
+        //  When
+        viewModel.ingredientCellTapped(ingredientCell)
+        
+        //  Then
+        let actual = viewModel.selectedIngredientIDs.contains { cell in
+            cell == ingredientCell
         }
+        XCTAssertFalse(actual)
     }
 
 }

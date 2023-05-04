@@ -10,9 +10,9 @@ import Foundation
 class SelectIngredientViewModel: ObservableObject {
     
     @Published var searchText: String = ""
-    @Published private(set) var selectedIngredientIDs: [IngredientCell] = []
+    @Published private(set) var selectedIngredientIDs: [Int] = []
     
-    func ingredientCellTapped(_ ingredientCell: IngredientCell) {
+    func ingredientCellTapped(_ ingredientCell: Int) {
         
         for i in selectedIngredientIDs.indices {
             if selectedIngredientIDs[i] == ingredientCell {
@@ -22,5 +22,11 @@ class SelectIngredientViewModel: ObservableObject {
         }
         
         selectedIngredientIDs.append(ingredientCell)
+    }
+    
+    func ingredientCellIsNotContained(_ ingredientCell: Int) -> Bool {
+        !selectedIngredientIDs.contains { cell in
+            cell == ingredientCell
+        }
     }
 }
