@@ -63,6 +63,7 @@
 		159FA86E29F8C9B800ECB9E7 /* StepPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FA86D29F8C9B800ECB9E7 /* StepPreviewView.swift */; };
 		15A6AB552A03ACA700394490 /* SelectIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6AB542A03ACA700394490 /* SelectIngredientViewModel.swift */; };
 		15A6AB572A03B71700394490 /* RefrigeratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6AB562A03B71700394490 /* RefrigeratorViewModel.swift */; };
+		15A6AB5A2A03BE6400394490 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 15A6AB592A03BE6400394490 /* PopupView */; };
 		15AA2F2029EFE47C0069813F /* RecipeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F1F29EFE47C0069813F /* RecipeFormView.swift */; };
 		15AA2F2229EFE8DE0069813F /* RecipeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F2129EFE8DE0069813F /* RecipeForm.swift */; };
 		15AA2F2429EFEA250069813F /* RecipeFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F2329EFEA250069813F /* RecipeFormViewModel.swift */; };
@@ -276,6 +277,7 @@
 			files = (
 				159BE2B229FB87CD00DE7448 /* Kingfisher in Frameworks */,
 				15DAE25829FE3CCA00A4B00A /* ObservedOptionalObject in Frameworks */,
+				15A6AB5A2A03BE6400394490 /* PopupView in Frameworks */,
 				15F82A6A29FA8D5F00DA9381 /* Alamofire in Frameworks */,
 				159BE2AC29FB810200DE7448 /* Introspect in Frameworks */,
 			);
@@ -761,6 +763,7 @@
 				159BE2AB29FB810200DE7448 /* Introspect */,
 				159BE2B129FB87CD00DE7448 /* Kingfisher */,
 				15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */,
+				15A6AB592A03BE6400394490 /* PopupView */,
 			);
 			productName = Cookcode;
 			productReference = 1503F91F29B45560002F3D26 /* Cookcode.app */;
@@ -839,6 +842,7 @@
 				159BE2AA29FB810200DE7448 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				159BE2B029FB87CC00DE7448 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				15DAE25629FE3CCA00A4B00A /* XCRemoteSwiftPackageReference "observed-optional-object" */,
+				15A6AB582A03BE6400394490 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 1503F92029B45560002F3D26 /* Products */;
 			projectDirPath = "";
@@ -1333,6 +1337,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		15A6AB582A03BE6400394490 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		15DAE25629FE3CCA00A4B00A /* XCRemoteSwiftPackageReference "observed-optional-object" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fourplusone/observed-optional-object.git";
@@ -1361,6 +1373,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 159BE2B029FB87CC00DE7448 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		15A6AB592A03BE6400394490 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15A6AB582A03BE6400394490 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 		15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */ = {
 			isa = XCSwiftPackageProductDependency;
