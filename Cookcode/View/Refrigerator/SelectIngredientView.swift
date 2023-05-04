@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SelectIngredientView: View {
+struct SelectIngredientView<ViewModel>: View where ViewModel: SelectIngredientViewModel {
     
     let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: 60)),
@@ -17,14 +17,7 @@ struct SelectIngredientView: View {
         GridItem(.adaptive(minimum: 60, maximum: 60)),
     ]
     
-    @StateObject private var viewModel: SelectIngredientViewModel
-    @Binding var selectedIngredientCells: [Int]
-    
-    init (selectedIngredientCells: Binding<[Int]>) {
-        let values = selectedIngredientCells.wrappedValue
-        self._viewModel = StateObject(wrappedValue: SelectIngredientViewModel(selectedIngredientIDs: values))
-        self._selectedIngredientCells = selectedIngredientCells
-    }
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         VStack {
@@ -49,31 +42,27 @@ struct SelectIngredientView: View {
                         
                         if let ingredient = ingredient {
                             Button {
-                                viewModel.ingredientCellTapped(id)
+                                viewModel.ingredientCellTapped(ingredient)
                             } label: {
                                 IngredientCellView(cell: ingredient)
                                     .overlay(alignment: .topTrailing) {
                                         Circle()
                                             .frame(width: 10, height: 10)
                                             .foregroundColor(.mainColor)
-                                            .hidden(viewModel.ingredientCellIsNotContained(id))
+                                            .hidden(viewModel.isNotSelected(ingredient))
                                     }
                             }
-                            .hidden(!viewModel.searchText.isEmpty && !ingredient.title.contains(viewModel.searchText))
                         }
                     }
                 }
             }
         }
         .padding(.top, 20 )
-        .onDisappear {
-            selectedIngredientCells = viewModel.selectedIngredientIDs
-        }
     }
 }
 
-struct SelectIngredientView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectIngredientView(selectedIngredientCells: .constant([]))
-    }
-}
+//struct SelectIngredientView_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+//    }
+//}

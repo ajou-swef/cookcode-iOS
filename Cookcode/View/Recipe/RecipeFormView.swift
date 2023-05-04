@@ -207,9 +207,9 @@ struct RecipeFormView: View {
                     }
                     .foregroundColor(.primary)
                 }
-                .sheet(isPresented: $viewModel.mainIngredientViewIsPresnted) {
-                    SelectIngredientView(selectedIngredientCells: $viewModel.mainIngredientIDs)
-                }
+//                .sheet(isPresented: $viewModel.mainIngredientViewIsPresnted) {
+//                    SelectIngredientView(selectedIngredientCells: $viewModel.mainIngredientIDs)
+//                }
 
             }
         }
@@ -245,10 +245,9 @@ struct RecipeFormView: View {
                     }
                     .foregroundColor(.primary)
                 }
-                .sheet(isPresented: $viewModel.optioanlIngredientViewIsPresnted) {
-                    SelectIngredientView(selectedIngredientCells: $viewModel.optionalIngredientIDs)
-                }
-
+//                .sheet(isPresented: $viewModel.optioanlIngredientViewIsPresnted) {
+//                    SelectIngredientView(selectedIngredientCells: $viewModel.optionalIngredientIDs)
+//                }
             }
         }
     }

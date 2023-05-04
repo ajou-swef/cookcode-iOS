@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SelectIngredientViewModel: ObservableObject {
+class SelectIngredientForRecipeViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     @Published private(set) var selectedIngredientIDs: [Int] = []

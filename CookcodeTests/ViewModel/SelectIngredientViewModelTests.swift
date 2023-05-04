@@ -20,7 +20,7 @@ final class SelectIngredientViewModelTests: XCTestCase {
 
     func test_SelectIngredientViewModel_ingredientCellTapped_appendCell() {
         //  Given
-        let viewModel = SelectIngredientViewModel()
+        let viewModel = SelectIngredientForRecipeViewModel()
         let ingredientCell = 1
         
             
@@ -37,7 +37,7 @@ final class SelectIngredientViewModelTests: XCTestCase {
     
     func test_SelectIngredientViewModel_ingredientCellTapped_removeCell() {
         //  Given
-        let viewModel = SelectIngredientViewModel()
+        let viewModel = SelectIngredientForRecipeViewModel()
         let ingredientCell = 1
         viewModel.ingredientCellTapped(ingredientCell)
             
