@@ -67,8 +67,8 @@ struct SelectIngredientView: View {
             }
         }
         .padding(.top, 20 )
-        .onChange(of: viewModel.selectedIngredientIDs) { newValue in
-            selectedIngredientCells = newValue
+        .onDisappear {
+            selectedIngredientCells = viewModel.selectedIngredientIDs
         }
     }
 }
