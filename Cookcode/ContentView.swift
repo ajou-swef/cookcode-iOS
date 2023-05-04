@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @EnvironmentObject var navigateViewModel: NavigateViewModel
     @EnvironmentObject var accountViewModel: AccountViewModel
     
     var body: some View {

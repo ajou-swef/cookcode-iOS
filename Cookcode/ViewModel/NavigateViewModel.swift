@@ -23,6 +23,13 @@ class NavigateViewModel: ObservableObject {
         }
     }
     
+    func clear() {
+        self.recipePath = .init()
+        self.homePath = .init()
+        self.outerPath = nil
+        self.profilePath = .init()
+    }
+    
     func separateURL(_ url: String) {
         let removedPrefixURL: String = url.replacingOccurrences(of: "cookcode://", with: "")
         let components = removedPrefixURL.components(separatedBy: "?")

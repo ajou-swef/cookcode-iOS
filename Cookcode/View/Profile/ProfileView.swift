@@ -26,6 +26,7 @@ struct ProfileView: View {
                 
                 Button {
                     accountViewModel.logout()
+                    navigateViewModel.clear()
                 } label: {
                     Text("로그아웃")
                         .font(CustomFontFactory.INTER_SEMIBOLD_14)
