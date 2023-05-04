@@ -87,7 +87,7 @@ class RecipeFormViewModel: SelectIngredientViewModel {
             }
         } else {
             if let index = optionalIngredientIDs.firstIndex(of: ingredientID) {
-                mainIngredientIDs.remove(at: index)
+                optionalIngredientIDs.remove(at: index)
             } else {
                 optionalIngredientIDs.append(ingredientID)
             }
