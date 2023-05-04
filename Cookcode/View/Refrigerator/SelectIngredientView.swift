@@ -41,7 +41,6 @@ struct SelectIngredientView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .padding(.horizontal, 10)
-            
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(0..<INGREDIENTS_DICTIONARY.count, id: \.self) { i in

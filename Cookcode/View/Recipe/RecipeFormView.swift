@@ -181,7 +181,10 @@ struct RecipeFormView: View {
                     let id = viewModel.mainIngredientIDs[i]
                     let ingredient: IngredientCell? = INGREDIENTS_DICTIONARY[id]
                     if let ingredient = ingredient {
-                        IngredientCellView(cell: ingredient)
+                        VStack {
+                            IngredientCellView(cell: ingredient)
+                            Spacer()
+                        }
                     }
                 }
             }
