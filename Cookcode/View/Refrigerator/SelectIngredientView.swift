@@ -62,7 +62,6 @@ struct SelectIngredientView: View {
                             }
                             .hidden(!viewModel.searchText.isEmpty && !ingredient.title.contains(viewModel.searchText))
                         }
-                        
                     }
                 }
             }

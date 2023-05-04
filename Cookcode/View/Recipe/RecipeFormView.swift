@@ -11,6 +11,15 @@ import Kingfisher
 
 struct RecipeFormView: View {
     
+    
+    let columns: [GridItem] = [
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+    ]
+    
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @StateObject private var viewModel: RecipeFormViewModel = .init(contentService: ContentSuccessService(), recipeService: RecipeSuccessService())
     
@@ -30,6 +39,7 @@ struct RecipeFormView: View {
                     }
                     .padding(.horizontal, 10)
                     .padding(.top, 30)
+                    .padding(.bottom, 40)
                 }
                 
                 PresentPreviewButton()
@@ -166,7 +176,15 @@ struct RecipeFormView: View {
     @ViewBuilder
     private func MainIngredients() -> some View {
         Section {
-           
+            LazyVGrid(columns: columns) {
+                ForEach(viewModel.mainIngredientIDs.indices, id: \.self) { i in
+                    let id = viewModel.mainIngredientIDs[i]
+                    let ingredient: IngredientCell? = INGREDIENTS_DICTIONARY[id]
+                    if let ingredient = ingredient {
+                        IngredientCellView(cell: ingredient)
+                    }
+                }
+            }
         } header: {
             HStack {
                 Text("필수재료")
@@ -197,9 +215,14 @@ struct RecipeFormView: View {
     @ViewBuilder
     private func OptionalIngredients() -> some View {
         Section {
-            
-            CCDivider()
-                .padding(.bottom, 20)
+            LazyVGrid(columns: columns) {
+                ForEach(viewModel.optionalIngredientIDs, id: \.self) { id in
+                    let ingredient: IngredientCell? = INGREDIENTS_DICTIONARY[id]
+                    if let ingredient = ingredient {
+                        IngredientCellView(cell: ingredient)
+                    }
+                }
+            }
         } header: {
             HStack {
                 Text("보조재료")
