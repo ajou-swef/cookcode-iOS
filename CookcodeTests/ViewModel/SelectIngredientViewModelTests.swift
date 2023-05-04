@@ -18,7 +18,7 @@ final class SelectIngredientViewModelTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func test_SelectIngredientViewModel_ingredientCellTapped_appendID() {
+    func test_SelectIngredientViewModel_ingredientCellTapped_appendCell() {
         //  Given
         let viewModel = SelectIngredientViewModel()
         let ingredientCell = INGREDIENTS[1]
@@ -34,6 +34,23 @@ final class SelectIngredientViewModelTests: XCTestCase {
             }
             
             XCTAssertTrue(actual)
+        }
+    }
+    
+    func test_SelectIngredientViewModel_ingredientCellTapped_removeCell() {
+        //  Given
+        let viewModel = SelectIngredientViewModel()
+        let ingredientCell = INGREDIENTS[1]
+        if let ingredientCell = ingredientCell {
+            viewModel.ingredientCellTapped(ingredientCell)
+            
+            // When
+            viewModel.ingredientCellTapped(ingredientCell)
+            let actual = viewModel.selectedIngredientIDs.contains { cell in
+                cell == ingredientCell
+            }
+            
+            XCTAssertFalse(actual)
         }
     }
 

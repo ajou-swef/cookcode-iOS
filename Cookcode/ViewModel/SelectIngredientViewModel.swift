@@ -13,6 +13,14 @@ class SelectIngredientViewModel: ObservableObject {
     @Published private(set) var selectedIngredientIDs: [IngredientCell] = []
     
     func ingredientCellTapped(_ ingredientCell: IngredientCell) {
+        
+        for i in selectedIngredientIDs.indices {
+            if selectedIngredientIDs[i] == ingredientCell {
+                selectedIngredientIDs.remove(at: i)
+                return
+            }
+        }
+        
         selectedIngredientIDs.append(ingredientCell)
     }
 }
