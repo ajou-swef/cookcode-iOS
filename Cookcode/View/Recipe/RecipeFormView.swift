@@ -175,7 +175,7 @@ struct RecipeFormView: View {
                 Spacer()
                 
                 Button {
-                    
+                    viewModel.mainIngredientViewIsPresnted = true 
                 } label: {
                     HStack(spacing: 5) {
                         Image(systemName: "plus")
@@ -185,6 +185,9 @@ struct RecipeFormView: View {
                             .font(CustomFontFactory.INTER_REGULAR_14)
                     }
                     .foregroundColor(.primary)
+                }
+                .sheet(isPresented: $viewModel.mainIngredientViewIsPresnted) {
+                    SelectIngredientView(selectedIngredientCells: $viewModel.mainIngredientIDs)
                 }
 
             }
@@ -205,7 +208,7 @@ struct RecipeFormView: View {
                 Spacer()
                 
                 Button {
-                    
+                    viewModel.optioanlIngredientViewIsPresnted = true
                 } label: {
                     HStack(spacing: 5) {
                         Image(systemName: "plus")
@@ -215,6 +218,9 @@ struct RecipeFormView: View {
                             .font(CustomFontFactory.INTER_REGULAR_14)
                     }
                     .foregroundColor(.primary)
+                }
+                .sheet(isPresented: $viewModel.optioanlIngredientViewIsPresnted) {
+                    SelectIngredientView(selectedIngredientCells: $viewModel.optionalIngredientIDs)
                 }
 
             }

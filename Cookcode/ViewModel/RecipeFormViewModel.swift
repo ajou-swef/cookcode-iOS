@@ -15,6 +15,9 @@ class RecipeFormViewModel: ObservableObject {
     
     @Published var recipeForm: RecipeForm = .init()
     
+    @Published var mainIngredientIDs: [Int] = []
+    @Published var optionalIngredientIDs: [Int] = []
+    
     @Published var mainImageItem: PhotosPickerItem?
     @Published var mainImageData: Data? 
     
@@ -25,6 +28,8 @@ class RecipeFormViewModel: ObservableObject {
     
     // sheet, fullscreen 등의 navigate를 위한 프로퍼티
     @Published var stepFormTrigger: RecipePathWithIndex?
+    @Published var mainIngredientViewIsPresnted: Bool = false
+    @Published var optioanlIngredientViewIsPresnted: Bool = false
     
     // step 작성 시의 tabSelection
     @Published var stepTabSelection: String = ""

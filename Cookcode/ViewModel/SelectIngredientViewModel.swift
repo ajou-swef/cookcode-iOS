@@ -12,6 +12,10 @@ class SelectIngredientViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published private(set) var selectedIngredientIDs: [Int] = []
     
+    init (selectedIngredientIDs: [Int]) {
+        self.selectedIngredientIDs = selectedIngredientIDs
+    }
+    
     func ingredientCellTapped(_ ingredientCell: Int) {
         
         for i in selectedIngredientIDs.indices {

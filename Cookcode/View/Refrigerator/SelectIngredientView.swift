@@ -9,10 +9,6 @@ import SwiftUI
 
 struct SelectIngredientView: View {
     
-    enum Field {
-        case search
-    }
-    
     let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: 60)),
         GridItem(.adaptive(minimum: 60, maximum: 60)),
@@ -21,9 +17,14 @@ struct SelectIngredientView: View {
         GridItem(.adaptive(minimum: 60, maximum: 60)),
     ]
     
-    @StateObject private var viewModel: SelectIngredientViewModel = .init()
-    @FocusState private var focused: Field?
+    @StateObject private var viewModel: SelectIngredientViewModel
     @Binding var selectedIngredientCells: [Int]
+    
+    init (selectedIngredientCells: Binding<[Int]>) {
+        let values = selectedIngredientCells.wrappedValue
+        self._viewModel = StateObject(wrappedValue: SelectIngredientViewModel(selectedIngredientIDs: values))
+        self._selectedIngredientCells = selectedIngredientCells
+    }
     
     var body: some View {
         VStack {
@@ -66,6 +67,7 @@ struct SelectIngredientView: View {
                 }
             }
         }
+        .padding(.top, 20 )
         .onChange(of: viewModel.selectedIngredientIDs) { newValue in
             selectedIngredientCells = newValue
         }
