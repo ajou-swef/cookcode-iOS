@@ -35,12 +35,12 @@ struct IngredientCell: Cell, Equatable {
         self.thumbnail = INGREDIENTS_DICTIONARY[ingID]?.thumbnail ?? "apple"
         self.quantity = dto.quantity
         
-        if expriedDateIsComming(dto._expiredAt) {
+        if expiredDateIsComming(dto._expiredAt) {
             presentBadge = true
         }
     }
     
-    private func expriedDateIsComming(_ expiredAt: String) -> Bool {
+    private func expiredDateIsComming(_ expiredAt: String) -> Bool {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

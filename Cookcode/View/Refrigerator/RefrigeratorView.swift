@@ -47,12 +47,11 @@ struct RefrigeratorView: View {
                     ForEach(viewModel.ingredientCell.indices, id: \.self) { i in
                         let cell = viewModel.ingredientCell[i]
                         
-                        Button {
-                            
+                        NavigationLink {
+                            IngredientPatchView()
                         } label: {
                             IngredientCellView(cell: cell)
                         }
-
                     }
                 }
             }
