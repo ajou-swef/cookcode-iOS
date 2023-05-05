@@ -8,6 +8,7 @@
 import Foundation
 
 class IngredientPatchViewModel: PatchViewModel {
+    
     @Published var ingredientForm: IngredientForm
     @Published private(set) var ingredientCell: IngredientCell
     

@@ -10,12 +10,29 @@ import SwiftUI
 struct IngredientCellView: View {
     
     let cell: IngredientCell
+    let isVertical: Bool
+    
+    init (cell: IngredientCell, isVertical: Bool = true) {
+        self.cell = cell
+        self.isVertical = isVertical
+    }
+    
+    var layout: AnyLayout {
+        isVertical ? AnyLayout(VStackLayout()) : AnyLayout(HStackLayout())
+    }
     
     var body: some View {
-        VStack {
+        
+        layout {
             Image(cell.thumbnail)
                 .resizable()
                 .frame(width: 40, height: 40)
+                .overlay(alignment: .topTrailing) {
+                    Circle()
+                        .frame(width: 10, height: 10)
+                        .foregroundColor(.red)
+                        .hidden(!cell.presentBadge)
+                }
             
             Text(cell.title)
                 .foregroundColor(.primary)
@@ -25,12 +42,6 @@ struct IngredientCellView: View {
                 .foregroundColor(.primary)
                 .font(CustomFontFactory.INTER_REGULAR_14)
                 .hidden(cell.quantityIsNil)
-        }
-        .overlay(alignment: .topTrailing) {
-            Circle()
-                .frame(width: 10, height: 10)
-                .foregroundColor(.red)
-                .hidden(!cell.presentBadge)
         }
     }
 }

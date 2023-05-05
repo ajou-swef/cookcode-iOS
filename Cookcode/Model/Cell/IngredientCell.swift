@@ -31,7 +31,6 @@ struct IngredientCell: Cell, Equatable {
     init (dto: IngredientCellDto) {
         self.title = dto.name
         let ingID = dto.ingredId
-        self.id = String("\(ingID)")
         self.thumbnail = INGREDIENTS_DICTIONARY[ingID]?.thumbnail ?? "apple"
         self.quantity = dto.quantity
         

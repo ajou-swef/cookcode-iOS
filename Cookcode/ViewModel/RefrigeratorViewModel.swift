@@ -15,6 +15,7 @@ class RefrigeratorViewModel: SelectIngredientViewModel {
     
     @Published var ingredientFormIsPresented: Bool = false
     @Published var selectIngredientViewIsPresented: Bool = false
+    @Published var selectedIngredientId: IngredientCell?
     
     @Published private(set) var ingredientCell: [IngredientCell] = []
     @Published var serviceAlert: ServiceAlert = .init()

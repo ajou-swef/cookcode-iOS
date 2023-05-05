@@ -47,14 +47,17 @@ struct RefrigeratorView: View {
                     ForEach(viewModel.ingredientCell.indices, id: \.self) { i in
                         let cell = viewModel.ingredientCell[i]
                         
-                        NavigationLink {
-                            IngredientPatchView()
+                        Button {
+                            viewModel.selectedIngredientId = cell
                         } label: {
                             IngredientCellView(cell: cell)
                         }
                     }
                 }
             }
+        }
+        .sheet(item: $viewModel.selectedIngredientId) { cell in
+            IngredientPatchView()
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON

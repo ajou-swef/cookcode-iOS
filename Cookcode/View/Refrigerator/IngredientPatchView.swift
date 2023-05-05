@@ -21,7 +21,8 @@ struct IngredientPatchView: View {
                 
                 Spacer()
                 
-                IngredientCellView(cell: viewModel.ingredientCell)
+                IngredientCellView(cell: viewModel.ingredientCell,
+                                   isVertical: false)
             }
             
             CCDivider()
@@ -50,6 +51,7 @@ struct IngredientPatchView: View {
                 TextField("입력해주세요.", text: $viewModel.ingredientForm.quantity)
             }
         }
+        .padding(.top, 30)
         .padding(.horizontal, 20)
         .navigationTitle("식재료 수정")
     }
