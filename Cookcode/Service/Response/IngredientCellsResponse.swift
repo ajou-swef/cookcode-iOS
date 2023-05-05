@@ -13,6 +13,6 @@ struct IngredientCellsResponse: Codable {
     let data: [IngredientCellDto]
     
     static func MOCK() -> IngredientCellsResponse {
-        IngredientCellsResponse(message: "조회 성공", status: 200, data: [IngredientCellDto.MOCK(), IngredientCellDto.MOCK(), IngredientCellDto.MOCK()])
+        IngredientCellsResponse(message: "조회 성공", status: 200, data: [IngredientCellDto.Mock(), IngredientCellDto.Mock(), IngredientCellDto.Mock(), IngredientCellDto.Mock()])
     }
 }

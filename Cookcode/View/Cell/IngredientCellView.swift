@@ -20,6 +20,11 @@ struct IngredientCellView: View {
             Text(cell.title)
                 .foregroundColor(.primary)
                 .font(CustomFontFactory.INTER_SEMIBOLD_14)
+            
+            Text("\(cell.quantity ?? 0)")
+                .foregroundColor(.primary)
+                .font(CustomFontFactory.INTER_REGULAR_14)
+                .hidden(cell.quantityIsNil)
         }
     }
 }

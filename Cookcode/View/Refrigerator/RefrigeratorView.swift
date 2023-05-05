@@ -11,7 +11,16 @@ import PopupView
 struct RefrigeratorView: View {
     
     @StateObject private var viewModel = RefrigeratorViewModel(fridgeService: RefrigeratorSuccessService())
+    
     let height = UIScreen.main.bounds.height
+    let columns: [GridItem] = [
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+        GridItem(.adaptive(minimum: 60, maximum: 60)),
+    ]
+    
     
     var body: some View {
         VStack {
@@ -34,10 +43,22 @@ struct RefrigeratorView: View {
 
             
             ScrollView {
-                VStack {
-                    
+                LazyVGrid(columns: columns) {
+                    ForEach(viewModel.ingredientCell.indices, id: \.self) { i in
+                        let cell = viewModel.ingredientCell[i]
+                        
+                        Button {
+                            
+                        } label: {
+                            IngredientCellView(cell: cell)
+                        }
+
+                    }
                 }
             }
+        }
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+            ServiceAlert.CANCEL_BUTTON
         }
         .padding(.horizontal, 10)
         .toolbar {

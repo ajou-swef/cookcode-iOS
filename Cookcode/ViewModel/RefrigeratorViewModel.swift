@@ -16,23 +16,28 @@ class RefrigeratorViewModel: SelectIngredientViewModel {
     @Published var ingredientFormIsPresented: Bool = false
     @Published var selectIngredientViewIsPresented: Bool = false
     
-    @Published private(set) var ingredientCell: [IngredientCell] = [] 
+    @Published private(set) var ingredientCell: [IngredientCell] = []
+    @Published var serviceAlert: ServiceAlert = .init()
     
     private(set) var fridgeService: RefrigeratorServiceProtocol
     
     init (fridgeService: RefrigeratorServiceProtocol) {
         self.fridgeService = fridgeService
         
+        Task {
+            await fetchIngredients()
+        }
     }
     
+    @MainActor
     func fetchIngredients() async {
-//        let result = fridgeService.getMyIngredientCells()
-//        switch result {
-//        case .success(let success):
-//            success.data
-//        case .failure(let failure):
-//            <#code#>
-//        }
+        let result = await fridgeService.getMyIngredientCells()
+        switch result {
+        case .success(let success):
+            ingredientCell = success.data.map { IngredientCell(dto: $0) }
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
     }
     
     func ingredientCellTapped(_ ingredientID: Int) {

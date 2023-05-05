@@ -13,6 +13,10 @@ struct IngredientCell: Cell, Equatable {
     var title: String
     var quantity: Int?
     
+    var quantityIsNil: Bool {
+        quantity == nil 
+    }
+    
     static func Mock() -> IngredientCell {
         IngredientCell(thumbnail: "apple", title: "사과")
     }
@@ -24,7 +28,9 @@ struct IngredientCell: Cell, Equatable {
     
     init (dto: IngredientCellDto) {
         self.title = dto.name
-        let ingID = dto.ingredID
+        let ingID = dto.ingredId
+        
+        self.id = String("\(ingID)")
         self.thumbnail = INGREDIENTS_DICTIONARY[ingID]?.thumbnail ?? "apple"
         self.quantity = dto.quantity
     }
