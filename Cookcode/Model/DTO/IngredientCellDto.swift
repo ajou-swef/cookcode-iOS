@@ -12,14 +12,21 @@ struct IngredientCellDto: Codable, Mock {
     
     let fridgeIngredId, ingredId: Int
     let quantity: Int
-    let name, expiredAt, category: String
+    let name, category: String
+    
+    private(set) var _expiredAt: String
     
     static func Mock() -> IngredientCellDto {
-        return IngredientCellDto(fridgeIngredId: Int.random(in: 0..<1000), ingredId: 1, quantity: 10, name: "양배추", expiredAt: "2023-08-31", category: "채소")
+        return IngredientCellDto(fridgeIngredId: Int.random(in: 0..<1000), ingredId: 1, quantity: 10, name: "양배추", category: "채소", _expiredAt: "2023-05-05")
     }
 
     enum CodingKeys: String, CodingKey {
         case fridgeIngredId, ingredId
-        case name, expiredAt, category, quantity
+        case name, category, quantity
+        case _expiredAt = "expiredAt"
+    }
+    
+    mutating func expiredAt(_ expiredAt: String) {
+        self._expiredAt = expiredAt
     }
 }

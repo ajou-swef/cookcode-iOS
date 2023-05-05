@@ -26,6 +26,12 @@ struct IngredientCellView: View {
                 .font(CustomFontFactory.INTER_REGULAR_14)
                 .hidden(cell.quantityIsNil)
         }
+        .overlay(alignment: .topTrailing) {
+            Circle()
+                .frame(width: 10, height: 10)
+                .foregroundColor(.red)
+                .hidden(!cell.presentBadge)
+        }
     }
 }
 
