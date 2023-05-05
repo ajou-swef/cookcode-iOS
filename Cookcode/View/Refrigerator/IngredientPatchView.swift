@@ -9,16 +9,19 @@ import SwiftUI
 
 struct IngredientPatchView: View {
     
-    @StateObject private var viewModel = IngredientPatchViewModel()
+    @StateObject private var viewModel = IngredientPatchViewModel(ingredientId: 1)
     
     var body: some View {
         BasePatchView(viewModel: viewModel) {
+
             HStack {
                 Text("종류")
                     .foregroundColor(.gray808080)
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
                 
                 Spacer()
+                
+                IngredientCellView(cell: viewModel.ingredientCell)
             }
             
             CCDivider()
@@ -28,7 +31,11 @@ struct IngredientPatchView: View {
                     .foregroundColor(.gray808080)
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
                 
-                Spacer()
+                
+                DatePicker(selection: $viewModel.ingredientForm.date, displayedComponents: .date) {
+
+                }
+                .datePickerStyle(.compact)
             }
             
             CCDivider()
@@ -39,6 +46,8 @@ struct IngredientPatchView: View {
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
                 
                 Spacer()
+                
+                TextField("입력해주세요.", text: $viewModel.ingredientForm.quantity)
             }
         }
         .padding(.horizontal, 20)

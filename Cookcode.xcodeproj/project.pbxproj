@@ -58,6 +58,7 @@
 		158EFDDC2A04CE26003057A4 /* PatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDDB2A04CE25003057A4 /* PatchViewModel.swift */; };
 		158EFDDF2A04CED1003057A4 /* IngredientPatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDDE2A04CED1003057A4 /* IngredientPatchViewModel.swift */; };
 		158EFDE12A04D1D3003057A4 /* IngredientPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDE02A04D1D3003057A4 /* IngredientPatchView.swift */; };
+		158EFDE32A04D56A003057A4 /* IngredientForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDE22A04D56A003057A4 /* IngredientForm.swift */; };
 		1593D94229F689D1008AF49E /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1593D94129F689D1008AF49E /* RecipeView.swift */; };
 		159BE2A729FB6C1E00DE7448 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2A629FB6C1E00DE7448 /* ErrorAlert.swift */; };
 		159BE2A929FB6E7900DE7448 /* AccountFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */; };
@@ -205,6 +206,7 @@
 		158EFDDB2A04CE25003057A4 /* PatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchViewModel.swift; sourceTree = "<group>"; };
 		158EFDDE2A04CED1003057A4 /* IngredientPatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPatchViewModel.swift; sourceTree = "<group>"; };
 		158EFDE02A04D1D3003057A4 /* IngredientPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPatchView.swift; sourceTree = "<group>"; };
+		158EFDE22A04D56A003057A4 /* IngredientForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientForm.swift; sourceTree = "<group>"; };
 		1593D94129F689D1008AF49E /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		159BE2A629FB6C1E00DE7448 /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFailureService.swift; sourceTree = "<group>"; };
@@ -644,6 +646,7 @@
 				153B4DAC29ED179200543730 /* SignInForm.swift */,
 				153B4DAE29ED1AB400543730 /* MembershipForm.swift */,
 				15AA2F8929F10CA90069813F /* ContentWrappedStepForm.swift */,
+				158EFDE22A04D56A003057A4 /* IngredientForm.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -972,6 +975,7 @@
 				1584033329B48E0F0092032A /* LoginView.swift in Sources */,
 				1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */,
 				153B4DB529ED2B5600543730 /* Tab.swift in Sources */,
+				158EFDE32A04D56A003057A4 /* IngredientForm.swift in Sources */,
 				15F2CC1E2A0272330019FAB6 /* IngredientCellView.swift in Sources */,
 				15F82A7129FA920100DA9381 /* SignUpResponse.swift in Sources */,
 				1538157E29FF8EF300C3BD11 /* RefrigeratorFailureService.swift in Sources */,

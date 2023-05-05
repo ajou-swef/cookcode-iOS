@@ -8,6 +8,14 @@
 import Foundation
 
 class IngredientPatchViewModel: PatchViewModel {
+    @Published var ingredientForm: IngredientForm
+    @Published private(set) var ingredientCell: IngredientCell
+    
+    init(ingredientId: Int) {
+        ingredientForm = IngredientForm(id: ingredientId)
+        ingredientCell = INGREDIENTS_DICTIONARY[ingredientId] ?? IngredientCell.Mock()
+    }
+    
     func trashButtonTapped() {
         print("trashButtonTapped")
     }
