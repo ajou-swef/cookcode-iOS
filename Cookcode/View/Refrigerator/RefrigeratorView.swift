@@ -95,6 +95,7 @@ struct RefrigeratorView: View {
             DatePicker("소비기한", selection: $viewModel.date, displayedComponents: .date)
             
             Spacer()
+            
             formButtomButton()
         }
         .padding(.top, 20)
@@ -123,7 +124,7 @@ struct RefrigeratorView: View {
             }
             
             Button {
-                
+                viewModel.ingredientFormIsPresented = false
             } label: {
                 Text("추가")
                     .padding(.vertical, 10)
