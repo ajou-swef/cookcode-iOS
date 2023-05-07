@@ -13,7 +13,6 @@ struct IngredientPatchView: View {
     
     var body: some View {
         BasePatchView(viewModel: viewModel) {
-
             HStack {
                 Text("종류")
                     .foregroundColor(.gray808080)
@@ -33,7 +32,8 @@ struct IngredientPatchView: View {
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
                 
                 
-                DatePicker(selection: $viewModel.ingredientForm.date, displayedComponents: .date) {
+                DatePicker(selection: $viewModel.ingredientForm.date,
+                           displayedComponents: .date) {
 
                 }
                 .datePickerStyle(.compact)
@@ -49,11 +49,18 @@ struct IngredientPatchView: View {
                 Spacer()
                 
                 TextField("입력해주세요.", text: $viewModel.ingredientForm.quantity)
+                    .keyboardType(.numberPad)
+                    .toolbar {
+                        ToolbarItem(placement: .keyboard) {
+                            Text("테스트")
+                        }
+                    }
             }
         }
         .padding(.top, 30)
         .padding(.horizontal, 20)
         .navigationTitle("식재료 수정")
+        .ignoresSafeArea(.keyboard)
     }
 }
 

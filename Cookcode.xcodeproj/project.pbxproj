@@ -22,6 +22,8 @@
 		152251EC29FFD40F002C3A78 /* ProfilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152251EB29FFD40F002C3A78 /* ProfilePath.swift */; };
 		152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152389D329F69AD60090CA9B /* RecipeEntranceView.swift */; };
 		1525657A2A076DAE00471D52 /* AppendIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152565792A076DAE00471D52 /* AppendIngredientViewModel.swift */; };
+		1525657D2A077B4D00471D52 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525657C2A077B4D00471D52 /* Ingredient.swift */; };
+		1525657F2A077FD000471D52 /* ServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1525657E2A077FD000471D52 /* ServiceResponse.swift */; };
 		1538157A29FF8EB100C3BD11 /* IngredientCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157929FF8EB100C3BD11 /* IngredientCellDto.swift */; };
 		1538157C29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */; };
 		1538157E29FF8EF300C3BD11 /* RefrigeratorFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */; };
@@ -170,6 +172,8 @@
 		152251EB29FFD40F002C3A78 /* ProfilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePath.swift; sourceTree = "<group>"; };
 		152389D329F69AD60090CA9B /* RecipeEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeEntranceView.swift; sourceTree = "<group>"; };
 		152565792A076DAE00471D52 /* AppendIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendIngredientViewModel.swift; sourceTree = "<group>"; };
+		1525657C2A077B4D00471D52 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		1525657E2A077FD000471D52 /* ServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceResponse.swift; sourceTree = "<group>"; };
 		1538157929FF8EB100C3BD11 /* IngredientCellDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCellDto.swift; sourceTree = "<group>"; };
 		1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorSuccessService.swift; sourceTree = "<group>"; };
 		1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorFailureService.swift; sourceTree = "<group>"; };
@@ -423,11 +427,12 @@
 		1503F95229B459C7002F3D26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				15B626412A009D40002E1F5F /* Mock.swift */,
 				159BE2A629FB6C1E00DE7448 /* ErrorAlert.swift */,
+				15B6263C2A009CDC002E1F5F /* Cell */,
+				1525657B2A07794300471D52 /* Ingredient */,
 				150CD44229F397830001FFEB /* ContentType.swift */,
 				15AA2F8729F102720069813F /* VideURL.swift */,
-				15B626412A009D40002E1F5F /* Mock.swift */,
-				15B6263C2A009CDC002E1F5F /* Cell */,
 				15AA2F4929F0D8050069813F /* Path */,
 				15AA2F4129F0C9DC0069813F /* Form */,
 				153F127629FE2268008BDB4E /* DTO */,
@@ -464,6 +469,17 @@
 				152565792A076DAE00471D52 /* AppendIngredientViewModel.swift */,
 			);
 			path = Refrigerator;
+			sourceTree = "<group>";
+		};
+		1525657B2A07794300471D52 /* Ingredient */ = {
+			isa = PBXGroup;
+			children = (
+				1525657C2A077B4D00471D52 /* Ingredient.swift */,
+				158EFDE22A04D56A003057A4 /* IngredientForm.swift */,
+				1538157929FF8EB100C3BD11 /* IngredientCellDto.swift */,
+				15F2CC1B2A026E5E0019FAB6 /* IngredientCell.swift */,
+			);
+			path = Ingredient;
 			sourceTree = "<group>";
 		};
 		153B4D8A29ED050A00543730 /* Helper */ = {
@@ -556,7 +572,6 @@
 				153F127D29FE23B3008BDB4E /* RecipeCellDto.swift */,
 				153F127F29FE2415008BDB4E /* User.swift */,
 				153F128129FE25AD008BDB4E /* RecipeCellSearch.swift */,
-				1538157929FF8EB100C3BD11 /* IngredientCellDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -657,7 +672,6 @@
 				153B4DAC29ED179200543730 /* SignInForm.swift */,
 				153B4DAE29ED1AB400543730 /* MembershipForm.swift */,
 				15AA2F8929F10CA90069813F /* ContentWrappedStepForm.swift */,
-				158EFDE22A04D56A003057A4 /* IngredientForm.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -688,7 +702,6 @@
 				15B6263D2A009CE6002E1F5F /* SearchedCell.swift */,
 				15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */,
 				15B6263F2A009D09002E1F5F /* RecipeCell.swift */,
-				15F2CC1B2A026E5E0019FAB6 /* IngredientCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -777,6 +790,7 @@
 		15F82A6B29FA8F2700DA9381 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				1525657E2A077FD000471D52 /* ServiceResponse.swift */,
 				15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */,
 				15F82A6E29FA91CC00DA9381 /* ServiceError.swift */,
 				15F82A7029FA920100DA9381 /* SignUpResponse.swift */,
@@ -986,6 +1000,7 @@
 				15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */,
 				1584033329B48E0F0092032A /* LoginView.swift in Sources */,
 				1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */,
+				1525657D2A077B4D00471D52 /* Ingredient.swift in Sources */,
 				153B4DB529ED2B5600543730 /* Tab.swift in Sources */,
 				158EFDE32A04D56A003057A4 /* IngredientForm.swift in Sources */,
 				15F2CC1E2A0272330019FAB6 /* IngredientCellView.swift in Sources */,
@@ -1028,6 +1043,7 @@
 				15B626422A009D40002E1F5F /* Mock.swift in Sources */,
 				15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */,
 				153F127829FE2274008BDB4E /* ImageContent.swift in Sources */,
+				1525657F2A077FD000471D52 /* ServiceResponse.swift in Sources */,
 				15AA2F8A29F10CA90069813F /* ContentWrappedStepForm.swift in Sources */,
 				153B4DAD29ED179200543730 /* SignInForm.swift in Sources */,
 				153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */,
