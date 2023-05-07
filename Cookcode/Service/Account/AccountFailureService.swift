@@ -9,19 +9,19 @@ import Alamofire
 import Foundation
 
 final class AccountFailureService: AccountServiceProtocol {
+    func signIn(_ signInForm: SignInForm) async -> Result<ServiceResponse<SignInDto>, ServiceError> {
+        return .failure(ServiceError(message: "에러 메시지", status: 400))
+    }
+    
     func check(_ nickname: String) -> Result<AccountCheckResponse, ServiceError> {
         return .failure(ServiceError(message: "에러 메시지", status: 400))
     }
     
-    func signUp(membershipForm: MembershipForm) -> Result<SignUpResponse, ServiceError> {
+    func signUp(membershipForm: MembershipForm) async -> Result<ServiceResponse<SignUpDto>, ServiceError> {
         return .failure(ServiceError(message: "에러 메시지", status: 400))
     }
     
-    func signIn(_ signInForm: SignInForm) async -> Result<SignInResponse, ServiceError> {
-        return .failure(ServiceError(message: "에러 메시지", status: 400))
-    }
-    
-    func getUserAccountByID(_ userID: Int) -> Result<UserAccountResponse, ServiceError> {
+    func getUserAccountByID(_ userID: Int) -> Result<ServiceResponse<UserAccountDto>, ServiceError> {
         return .failure(ServiceError(message: "에러 메시지", status: 400))
     }
 }

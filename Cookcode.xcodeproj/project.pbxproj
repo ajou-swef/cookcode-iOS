@@ -130,8 +130,8 @@
 		15F82A6A29FA8D5F00DA9381 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15F82A6929FA8D5F00DA9381 /* Alamofire */; };
 		15F82A6D29FA901500DA9381 /* AccoutCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */; };
 		15F82A6F29FA91CC00DA9381 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A6E29FA91CC00DA9381 /* ServiceError.swift */; };
-		15F82A7129FA920100DA9381 /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7029FA920100DA9381 /* SignUpResponse.swift */; };
-		15F82A7329FA92D500DA9381 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7229FA92D500DA9381 /* SignInResponse.swift */; };
+		15F82A7129FA920100DA9381 /* SignUpDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7029FA920100DA9381 /* SignUpDto.swift */; };
+		15F82A7329FA92D500DA9381 /* SignInDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7229FA92D500DA9381 /* SignInDto.swift */; };
 		15F82A7529FA93E500DA9381 /* UserAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7429FA93E500DA9381 /* UserAccountResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -283,8 +283,8 @@
 		15F82A6629FA8D3300DA9381 /* AccountServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountServiceProtocol.swift; sourceTree = "<group>"; };
 		15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccoutCheckResponse.swift; sourceTree = "<group>"; };
 		15F82A6E29FA91CC00DA9381 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
-		15F82A7029FA920100DA9381 /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
-		15F82A7229FA92D500DA9381 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		15F82A7029FA920100DA9381 /* SignUpDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDto.swift; sourceTree = "<group>"; };
+		15F82A7229FA92D500DA9381 /* SignInDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDto.swift; sourceTree = "<group>"; };
 		15F82A7429FA93E500DA9381 /* UserAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -577,8 +577,8 @@
 		153F128529FE2608008BDB4E /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */,
 				15F82A6629FA8D3300DA9381 /* AccountServiceProtocol.swift */,
+				159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */,
 				15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */,
 				15E43A9B29FA94A40008DC7A /* AccountService.swift */,
 			);
@@ -789,10 +789,10 @@
 			isa = PBXGroup;
 			children = (
 				1525657E2A077FD000471D52 /* ServiceResponse.swift */,
-				15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */,
 				15F82A6E29FA91CC00DA9381 /* ServiceError.swift */,
-				15F82A7029FA920100DA9381 /* SignUpResponse.swift */,
-				15F82A7229FA92D500DA9381 /* SignInResponse.swift */,
+				15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */,
+				15F82A7229FA92D500DA9381 /* SignInDto.swift */,
+				15F82A7029FA920100DA9381 /* SignUpDto.swift */,
 				15F82A7429FA93E500DA9381 /* UserAccountResponse.swift */,
 				153F128329FE25D9008BDB4E /* RecipeCellSearchResponse.swift */,
 				15CFE66329FF587D00C16FF6 /* PhotoResponse.swift */,
@@ -990,7 +990,7 @@
 				153F127A29FE22EB008BDB4E /* VideoContent .swift in Sources */,
 				15AA2F2229EFE8DE0069813F /* RecipeForm.swift in Sources */,
 				15B869B929EFDC3600A02872 /* HomeView.swift in Sources */,
-				15F82A7329FA92D500DA9381 /* SignInResponse.swift in Sources */,
+				15F82A7329FA92D500DA9381 /* SignInDto.swift in Sources */,
 				15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */,
 				1566059229F93740008B9F9F /* HomeViewModel.swift in Sources */,
 				15F2CC0B2A0255590019FAB6 /* API.swift in Sources */,
@@ -1001,7 +1001,7 @@
 				153B4DB529ED2B5600543730 /* Tab.swift in Sources */,
 				158EFDE32A04D56A003057A4 /* IngredientForm.swift in Sources */,
 				15F2CC1E2A0272330019FAB6 /* IngredientCellView.swift in Sources */,
-				15F82A7129FA920100DA9381 /* SignUpResponse.swift in Sources */,
+				15F82A7129FA920100DA9381 /* SignUpDto.swift in Sources */,
 				1538157E29FF8EF300C3BD11 /* RefrigeratorFailureService.swift in Sources */,
 				153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */,
 				153F128029FE2415008BDB4E /* User.swift in Sources */,
