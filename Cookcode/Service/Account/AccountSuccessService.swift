@@ -12,9 +12,8 @@ final class AccountSuccessService: AccountServiceProtocol {
         .success(.mock())
     }
     
-    func check(_ nickname: String) -> Result<AccountCheckResponse, ServiceError> {
-        return .success(AccountCheckResponse(message: "중복 검사 성공", status: 200,
-                                             data: AccountCheckResponse.MOCK_DATA))
+    func check(_ nickname: String) -> Result<ServiceResponse<AccountCheckDto>, ServiceError> {
+        .success(.mock())
     }
     
     func signUp(membershipForm: MembershipForm) -> Result<ServiceResponse<SignUpDto>, ServiceError> {

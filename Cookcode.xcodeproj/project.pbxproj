@@ -132,7 +132,7 @@
 		15F82A6F29FA91CC00DA9381 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A6E29FA91CC00DA9381 /* ServiceError.swift */; };
 		15F82A7129FA920100DA9381 /* SignUpDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7029FA920100DA9381 /* SignUpDto.swift */; };
 		15F82A7329FA92D500DA9381 /* SignInDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7229FA92D500DA9381 /* SignInDto.swift */; };
-		15F82A7529FA93E500DA9381 /* UserAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7429FA93E500DA9381 /* UserAccountResponse.swift */; };
+		15F82A7529FA93E500DA9381 /* UserAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7429FA93E500DA9381 /* UserAccountDto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,7 +285,7 @@
 		15F82A6E29FA91CC00DA9381 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		15F82A7029FA920100DA9381 /* SignUpDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDto.swift; sourceTree = "<group>"; };
 		15F82A7229FA92D500DA9381 /* SignInDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDto.swift; sourceTree = "<group>"; };
-		15F82A7429FA93E500DA9381 /* UserAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountResponse.swift; sourceTree = "<group>"; };
+		15F82A7429FA93E500DA9381 /* UserAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountDto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -793,7 +793,7 @@
 				15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */,
 				15F82A7229FA92D500DA9381 /* SignInDto.swift */,
 				15F82A7029FA920100DA9381 /* SignUpDto.swift */,
-				15F82A7429FA93E500DA9381 /* UserAccountResponse.swift */,
+				15F82A7429FA93E500DA9381 /* UserAccountDto.swift */,
 				153F128329FE25D9008BDB4E /* RecipeCellSearchResponse.swift */,
 				15CFE66329FF587D00C16FF6 /* PhotoResponse.swift */,
 				15CFE66529FF590000C16FF6 /* VideoResponse.swift */,
@@ -972,7 +972,7 @@
 				15C805BA2A0344BC000A1A29 /* SelectIngredientForRecipeViewModel.swift in Sources */,
 				153F128829FE261F008BDB4E /* RecipeServiceProtocol.swift in Sources */,
 				15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */,
-				15F82A7529FA93E500DA9381 /* UserAccountResponse.swift in Sources */,
+				15F82A7529FA93E500DA9381 /* UserAccountDto.swift in Sources */,
 				159BE2AF29FB875F00DE7448 /* CellView.swift in Sources */,
 				15CFE6AC29FF7F9100C16FF6 /* CellTypePicker.swift in Sources */,
 				153F127E29FE23B3008BDB4E /* RecipeCellDto.swift in Sources */,

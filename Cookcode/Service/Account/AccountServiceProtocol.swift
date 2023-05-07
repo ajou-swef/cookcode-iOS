@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 protocol AccountServiceProtocol {
-    func check(_ nickname: String) async -> Result<AccountCheckResponse, ServiceError>
+    func check(_ nickname: String) async -> Result<ServiceResponse<AccountCheckDto>, ServiceError>
     func signUp(membershipForm: MembershipForm) async -> Result<ServiceResponse<SignUpDto>, ServiceError>
     func signIn(_ signInForm: SignInForm) async -> Result<ServiceResponse<SignInDto>, ServiceError>
     func getUserAccountByID(_ userID: Int) async -> Result<ServiceResponse<UserAccountDto>, ServiceError>

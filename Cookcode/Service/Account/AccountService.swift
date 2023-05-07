@@ -23,11 +23,11 @@ final class AccountService: AccountServiceProtocol {
         }
     }
     
-    func check(_ nickname: String) async -> Result<AccountCheckResponse, ServiceError> {
+    func check(_ nickname: String) async -> Result<ServiceResponse<AccountCheckDto>, ServiceError> {
         
         let url = "\(BASE_URL)/api/v1/account/check?nickname=\(nickname)"
         
-        let response = await AF.request(url, method: .get).serializingDecodable(AccountCheckResponse.self).response
+        let response = await AF.request(url, method: .get).serializingDecodable(ServiceResponse<AccountCheckDto>.self).response
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

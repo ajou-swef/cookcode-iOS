@@ -13,8 +13,8 @@ final class AccountFailureService: AccountServiceProtocol {
         return .failure(ServiceError(message: "에러 메시지", status: 400))
     }
     
-    func check(_ nickname: String) -> Result<AccountCheckResponse, ServiceError> {
-        return .failure(ServiceError(message: "에러 메시지", status: 400))
+    func check(_ nickname: String) -> Result<ServiceResponse<AccountCheckDto>, ServiceError> {
+        return .failure(.MOCK())
     }
     
     func signUp(membershipForm: MembershipForm) async -> Result<ServiceResponse<SignUpDto>, ServiceError> {

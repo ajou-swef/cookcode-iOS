@@ -13,8 +13,17 @@ struct MembershipForm {
     var password: String = ""
     var passwordCheck: String = ""
     
-    private(set) var nicknameIsUnique: Bool = false
+    private var _nicknameIsUnique: Bool = false
     private(set) var nicknameCheckComplete: Bool = false
+    
+    var nicknameIsUnique: Bool {
+        get { _nicknameIsUnique }
+        
+        set(newValue) {
+            nicknameCheckComplete = true
+            _nicknameIsUnique = newValue
+        }
+    }
     
     var passwordMatch: Bool {
         password == passwordCheck
@@ -56,11 +65,6 @@ struct MembershipForm {
     
     var passwordIsValid: Bool {
         passwordContainsNumber && passwordContainsAlphabet && passwordContainsSpecialCharacter && passwordIsEnoughLong
-    }
-    
-    mutating func setNicknameIsUnique(_ nicknameIsUnique: Bool) {
-        self.nicknameCheckComplete = true
-        self.nicknameIsUnique = nicknameIsUnique
     }
     
     mutating func setNicknameCheckComplte(_ nicknameCheckComplete: Bool) {

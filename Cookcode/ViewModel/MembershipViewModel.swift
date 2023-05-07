@@ -49,7 +49,7 @@ class MembershipViewModel: ObservableObject {
         
         switch result {
         case .success(let data):
-            membershipForm.setNicknameIsUnique(data.isUnique)
+            membershipForm.nicknameIsUnique = data.data.isUnique
         case .failure(let serviceError):
             serviceAlert.presentAlert(serviceError)
         }

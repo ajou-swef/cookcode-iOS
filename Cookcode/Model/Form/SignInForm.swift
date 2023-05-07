@@ -8,6 +8,16 @@
 import Foundation
 
 struct SignInForm: Encodable {
-    var email: String = ""
-    var password: String = "" 
+    private var _email: String = ""
+    private var _password: String = ""
+    
+    var email: String {
+        get { _email }
+        set(newValue) { _email = newValue }
+    }
+    
+    var password: String {
+        get { _password }
+        set(newValue) { _password = newValue }
+    }
 }
