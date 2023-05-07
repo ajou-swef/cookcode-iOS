@@ -9,6 +9,10 @@ import Foundation
 
 // MARK: - DataClass
 struct IngredientCellDto: Codable, Mock {
+    static func mock() -> IngredientCellDto {
+        return IngredientCellDto(fridgeIngredId: Int.random(in: 0..<1000), ingredId: 1, quantity: 10, name: "양배추", category: "채소", _expiredAt: "2023-05-05")
+    }
+    
     
     let fridgeIngredId, ingredId: Int
     let quantity: Int
@@ -16,9 +20,6 @@ struct IngredientCellDto: Codable, Mock {
     
     private(set) var _expiredAt: String
     
-    static func Mock() -> IngredientCellDto {
-        return IngredientCellDto(fridgeIngredId: Int.random(in: 0..<1000), ingredId: 1, quantity: 10, name: "양배추", category: "채소", _expiredAt: "2023-05-05")
-    }
 
     enum CodingKeys: String, CodingKey {
         case fridgeIngredId, ingredId
@@ -28,5 +29,11 @@ struct IngredientCellDto: Codable, Mock {
     
     mutating func expiredAt(_ expiredAt: String) {
         self._expiredAt = expiredAt
+    }
+}
+
+extension Array: Mock where Element == IngredientCellDto {
+    static func mock() -> Array<Element> {
+        Element.mocks(10)
     }
 }

@@ -8,15 +8,15 @@
 import Foundation
 
 protocol Mock {
-    static func Mock() -> Self
-    static func Mocks(_ count: Int) -> [Self]
+    static func mock() -> Self
+    static func mocks(_ count: Int) -> [Self]
 }
 
 extension Mock {
-    static func Mocks(_ count: Int) -> [Self] {
+    static func mocks(_ count: Int) -> [Self] {
         var mocks: [Self] = []
         for _ in 0..<count {
-            mocks.append(Mock())
+            mocks.append(mock())
         }
         return mocks
     }

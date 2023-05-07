@@ -10,7 +10,7 @@ import SwiftUI
 struct MyRecipeView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    let mocks = RecipeCell.Mocks(10)
+    let mocks = RecipeCell.mocks(10)
     
     var body: some View {
         List {

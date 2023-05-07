@@ -48,6 +48,6 @@ struct IngredientCellView: View {
 
 struct IngredientCellView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientCellView(cell: IngredientCell.Mock())
+        IngredientCellView(cell: IngredientCell.mock())
     }
 }

@@ -19,7 +19,7 @@ struct IngredientCell: Cell, Equatable {
         quantity == nil 
     }
     
-    static func Mock() -> IngredientCell {
+    static func mock() -> IngredientCell {
         IngredientCell(thumbnail: "apple", title: "사과")
     }
     

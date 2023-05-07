@@ -14,7 +14,7 @@ struct RecipeCell: SearchedCell {
     
     let id: String = UUID().uuidString
     
-    static func Mock() -> RecipeCell {
+    static func mock() -> RecipeCell {
         RecipeCell(thumbnail: "https://picsum.photos/200", title: "맛있는 요리", userName: "Page")
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 final class RefrigeratorSuccessService: RefrigeratorServiceProtocol {
-    func getMyIngredientCells() async -> Result<IngredientCellsResponse, ServiceError> {
-        .success(.MOCK())
+    func getMyIngredientCells() async -> Result<ServiceResponse<[IngredientCellDto]>, ServiceError> {
+        .success(ServiceResponse.mock())
     }
 }

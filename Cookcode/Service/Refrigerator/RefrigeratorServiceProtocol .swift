@@ -9,6 +9,6 @@ import Alamofire
 import Foundation
 
 protocol RefrigeratorServiceProtocol {
-    func getMyIngredientCells() async -> Result<IngredientCellsResponse, ServiceError> 
+    func getMyIngredientCells() async -> Result<ServiceResponse<[IngredientCellDto]>, ServiceError> 
 }
 
