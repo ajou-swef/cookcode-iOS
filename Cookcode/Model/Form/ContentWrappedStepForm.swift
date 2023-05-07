@@ -62,7 +62,7 @@ struct ContentWrappedStepForm: Identifiable, Codable {
         containsAnyContent
     }
     
-    mutating func appendContetURLs(_ values: [String]) {
+    mutating func resetContentURLto(_ values: [String]) {
         imageURLs.removeAll()
         videoURLs.removeAll()
         

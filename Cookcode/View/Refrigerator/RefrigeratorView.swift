@@ -11,6 +11,7 @@ import PopupView
 struct RefrigeratorView: View {
     
     @StateObject private var viewModel = RefrigeratorViewModel(fridgeService: RefrigeratorSuccessService())
+    @StateObject private var appendIngredientVM = AppendIngredientViewModel()
     
     let height = UIScreen.main.bounds.height
     let columns: [GridItem] = [
@@ -24,36 +25,11 @@ struct RefrigeratorView: View {
     
     var body: some View {
         VStack {
-            Rectangle()
-                .frame(maxWidth: .infinity, maxHeight: 2)
-                .foregroundColor(.mainColor)
-            
-            HStack {
-                Spacer()
-                
+            divider()
+            appendIngredientButton()
 
-                Button {
-                    viewModel.selectIngredientViewIsPresented = true
-                } label: {
-                    Text("+ 추가")
-                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                        .foregroundColor(.primary)
-                }
-            }
-
-            
             ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(viewModel.ingredientCell.indices, id: \.self) { i in
-                        let cell = viewModel.ingredientCell[i]
-                        
-                        Button {
-                            viewModel.selectedIngredientId = cell
-                        } label: {
-                            IngredientCellView(cell: cell)
-                        }
-                    }
-                }
+                ingredientGrid()
             }
         }
         .sheet(item: $viewModel.selectedIngredientId) { cell in
@@ -69,30 +45,72 @@ struct RefrigeratorView: View {
                     .font(CustomFontFactory.INTER_BOLD_30)
             }
         }
-        .popover(isPresented: $viewModel.selectIngredientViewIsPresented) {
-            SelectIngredientView(viewModel: viewModel)
-                .popup(isPresented: $viewModel.ingredientFormIsPresented) {
-                    ingredientForm()
-                } customize: {
-                    $0
-                        .type(.floater(verticalPadding: (height - 200) / 2,
-                                       useSafeAreaInset: true))
-                        .animation(.linear(duration: 0))
-                        .position(.top)
-                        .closeOnTapOutside(false)
-                        .closeOnTap(false)
-                        .backgroundColor(Color.black.opacity(0.5))
-                }
-
+        .popover(isPresented: $appendIngredientVM.selectIngredientFormIsPresneted) {
+            selectIngredientView()
         }
+    }
+    
+    
+    fileprivate func appendIngredientButton() -> some View {
+        return HStack {
+            Spacer()
+            
+            
+            Button {
+                appendIngredientVM.selectIngredientFormIsPresneted = true
+            } label: {
+                Text("+ 추가")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                    .foregroundColor(.primary)
+            }
+        }
+    }
+    
+    fileprivate func ingredientGrid() -> some View {
+        return LazyVGrid(columns: columns) {
+            ForEach(viewModel.ingredientCell.indices, id: \.self) { i in
+                let cell = viewModel.ingredientCell[i]
+                
+                Button {
+                    viewModel.selectedIngredientId = cell
+                } label: {
+                    IngredientCellView(cell: cell)
+                }
+            }
+        }
+    }
+    
+    fileprivate func selectIngredientView() -> some View {
+        return SelectIngredientView(viewModel: appendIngredientVM)
+            .popup(isPresented: $appendIngredientVM.ingredientFormIsPresented) {
+                ingredientForm()
+            } customize: {
+                $0
+                    .type(.floater(verticalPadding: (height - 200) / 2,
+                                   useSafeAreaInset: true))
+                    .animation(.linear(duration: 0))
+                    .position(.top)
+                    .closeOnTapOutside(false)
+                    .closeOnTap(false)
+                    .backgroundColor(Color.black.opacity(0.5))
+            }
+    }
+    
+    @ViewBuilder
+    private func divider() -> some View {
+        Rectangle()
+            .frame(maxWidth: .infinity, maxHeight: 2)
+            .foregroundColor(.mainColor)
     }
     
     @ViewBuilder
     private func ingredientForm() -> some View {
         VStack {
-            TextField("용량", text: $viewModel.ingredientQuantity)
+            TextField("용량", text: $appendIngredientVM.ingredientQuantity)
+                .buttonBorderShape(.roundedRectangle)
                 .keyboardType(.numberPad)
-            DatePicker("소비기한", selection: $viewModel.date, displayedComponents: .date)
+            
+            DatePicker("소비기한", selection: $appendIngredientVM.date, displayedComponents: .date)
             
             Spacer()
             

@@ -21,6 +21,7 @@
 		150CD44629F628CC0001FFEB /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150CD44529F628CC0001FFEB /* String + Extension.swift */; };
 		152251EC29FFD40F002C3A78 /* ProfilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152251EB29FFD40F002C3A78 /* ProfilePath.swift */; };
 		152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152389D329F69AD60090CA9B /* RecipeEntranceView.swift */; };
+		1525657A2A076DAE00471D52 /* AppendIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152565792A076DAE00471D52 /* AppendIngredientViewModel.swift */; };
 		1538157A29FF8EB100C3BD11 /* IngredientCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157929FF8EB100C3BD11 /* IngredientCellDto.swift */; };
 		1538157C29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */; };
 		1538157E29FF8EF300C3BD11 /* RefrigeratorFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */; };
@@ -168,6 +169,7 @@
 		150CD44529F628CC0001FFEB /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		152251EB29FFD40F002C3A78 /* ProfilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePath.swift; sourceTree = "<group>"; };
 		152389D329F69AD60090CA9B /* RecipeEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeEntranceView.swift; sourceTree = "<group>"; };
+		152565792A076DAE00471D52 /* AppendIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendIngredientViewModel.swift; sourceTree = "<group>"; };
 		1538157929FF8EB100C3BD11 /* IngredientCellDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCellDto.swift; sourceTree = "<group>"; };
 		1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorSuccessService.swift; sourceTree = "<group>"; };
 		1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorFailureService.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 			children = (
 				158EFDDD2A04CEA9003057A4 /* PatchViewModel */,
 				15A6AB532A03AC7A00394490 /* protocol */,
+				152565782A076D5D00471D52 /* Refrigerator */,
 				1503F95429B459DD002F3D26 /* LoginViewModel.swift */,
 				153B4DB029ED1B1300543730 /* MembershipViewModel.swift */,
 				15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */,
@@ -396,7 +399,6 @@
 				15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */,
 				15F2CC112A0260D30019FAB6 /* AccountViewModel.swift */,
 				15C805B92A0344BC000A1A29 /* SelectIngredientForRecipeViewModel.swift */,
-				15A6AB562A03B71700394490 /* RefrigeratorViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -453,6 +455,15 @@
 				150CD44529F628CC0001FFEB /* String + Extension.swift */,
 			);
 			path = "Swift Standar + Extension";
+			sourceTree = "<group>";
+		};
+		152565782A076D5D00471D52 /* Refrigerator */ = {
+			isa = PBXGroup;
+			children = (
+				15A6AB562A03B71700394490 /* RefrigeratorViewModel.swift */,
+				152565792A076DAE00471D52 /* AppendIngredientViewModel.swift */,
+			);
+			path = Refrigerator;
 			sourceTree = "<group>";
 		};
 		153B4D8A29ED050A00543730 /* Helper */ = {
@@ -937,6 +948,7 @@
 				150CD44629F628CC0001FFEB /* String + Extension.swift in Sources */,
 				153F127329FE18F9008BDB4E /* HomePath.swift in Sources */,
 				153B4DB129ED1B1300543730 /* MembershipViewModel.swift in Sources */,
+				1525657A2A076DAE00471D52 /* AppendIngredientViewModel.swift in Sources */,
 				15E43A9E29FA94DF0008DC7A /* AccountSuccessService.swift in Sources */,
 				15AA2F8829F102720069813F /* VideURL.swift in Sources */,
 				15AA2F2829EFEBE00069813F /* CCDivider.swift in Sources */,

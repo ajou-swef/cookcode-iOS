@@ -51,6 +51,6 @@ struct RecipeForm: Codable {
     }
     
     mutating func stepAppendContentURL(_ at: Int, urls: [String]) {
-        steps[at].appendContetURLs(urls)
+        steps[at].resetContentURLto(urls)
     }
 }
