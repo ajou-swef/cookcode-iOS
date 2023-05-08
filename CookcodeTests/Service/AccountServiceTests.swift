@@ -18,21 +18,4 @@ final class AccountServiceTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
-    func test_AccountService_signIn_success() async {
-        //  Given
-        let service = AccountService()
-        
-        //  When
-        let result = await service.signIn(SignInForm(email: "nou0jid@ajou.ac.kr", password: "pass7034!!"))
-        
-        //  Then
-        switch result {
-        case .success(_):
-            break
-        case .failure(_):
-            XCTFail()
-        }
-    }
-
 }

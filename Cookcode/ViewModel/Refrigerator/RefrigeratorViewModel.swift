@@ -36,16 +36,13 @@ class RefrigeratorViewModel: ObservableObject {
         let result = await fridgeService.getMyIngredientCells()
         switch result {
         case .success(let success):
-            let dtos = success.data
-            print("DTO: \(success.data)")
+            let dtos = success.data.ingreds
             for dto in dtos {
                 let type = IngredientType(rawValue: dto.category)
                 let cell = IngredientDetail(dto: dto)
-                print("detail: \(cell)")
+                
                 if let type = type {
                     refrigerator[type]?.append(cell)
-                } else {
-                    print("타입 변환 에러")
                 }
             }
             

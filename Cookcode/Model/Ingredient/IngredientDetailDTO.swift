@@ -8,6 +8,15 @@
 import Foundation
 
 // MARK: - DataClass
+
+struct IngredientDetailDTOs: Codable, Mock {
+    static func mock() -> IngredientDetailDTOs {
+        return IngredientDetailDTOs(ingreds: IngredientDetailDTO.mocks(10)) 
+    }
+    
+    let ingreds: [IngredientDetailDTO]
+}
+
 struct IngredientDetailDTO: Codable, Mock {
     static func mock() -> IngredientDetailDTO {
         return IngredientDetailDTO(fridgeIngredId: Int.random(in: 0..<1000), ingredId: 1, quantity: 10, name: "양배추", category: "vegetables", _expiredAt: "2023-05-05")

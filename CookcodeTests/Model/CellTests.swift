@@ -24,11 +24,12 @@ final class CellTests: XCTestCase {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDate = dateFormatter.string(from: .now)
         
-        var dto = IngredientDetailDTO.Mock()
+        var dto = IngredientDetailDTO.mock()
         dto.expiredAt(newDate)
+        let detail = IngredientDetail(dto: dto)
         
         //  When
-        let ingredientCell = IngredientCell(dto: dto)
+        let ingredientCell = IngredientCell(detail: detail)
         
         //  Then
         XCTAssertTrue(ingredientCell.presentBadge)

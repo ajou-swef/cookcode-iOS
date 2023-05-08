@@ -10,7 +10,7 @@ import PopupView
 
 struct RefrigeratorView: View {
     
-    @StateObject private var viewModel = RefrigeratorViewModel(fridgeService: RefrigeratorSuccessService())
+    @StateObject private var viewModel = RefrigeratorViewModel(fridgeService: RefridgeratorService())
     @StateObject private var appendIngredientVM = AppendIngredientViewModel()
     
     let height = UIScreen.main.bounds.height
@@ -44,8 +44,6 @@ struct RefrigeratorView: View {
 
                 }
             }
-            .listRowInsets(EdgeInsets())
-            .listStyle(.automatic)
         }
         .sheet(item: $viewModel.selectedIngredientDetail) { detail in
             IngredientPatchView(ingredientDetail: detail)
@@ -60,9 +58,6 @@ struct RefrigeratorView: View {
                     .font(CustomFontFactory.INTER_BOLD_30)
             }
         }
-        .popover(isPresented: $appendIngredientVM.selectIngredientFormIsPresneted) {
-            selectIngredientView()
-        }
     }
     
     
@@ -70,13 +65,15 @@ struct RefrigeratorView: View {
         return HStack {
             Spacer()
             
-            
             Button {
                 appendIngredientVM.selectIngredientFormIsPresneted = true
             } label: {
                 Text("+ 추가")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
                     .foregroundColor(.primary)
+            }
+            .popover(isPresented: $appendIngredientVM.selectIngredientFormIsPresneted) {
+                selectIngredientView()
             }
         }
     }
@@ -97,7 +94,7 @@ struct RefrigeratorView: View {
     
     fileprivate func selectIngredientView() -> some View {
         return SelectIngredientView(viewModel: appendIngredientVM)
-            .popup(isPresented: $appendIngredientVM.ingredientFormIsPresented) {
+            .popup(isPresented: $appendIngredientVM.selectIngredientFormIsPresneted) {
                 ingredientForm()
             } customize: {
                 $0

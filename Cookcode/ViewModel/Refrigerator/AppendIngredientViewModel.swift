@@ -9,6 +9,7 @@ import SwiftUI
 
 class AppendIngredientViewModel: SelectIngredientViewModel {
     
+    @Published var ingredientForm: IngredientForm?
     @Published var searchText: String = ""
     
     @Published private(set) var ingredinetId: Int?

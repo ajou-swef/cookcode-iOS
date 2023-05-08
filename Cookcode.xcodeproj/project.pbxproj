@@ -93,6 +93,7 @@
 		15B1F9E02A08D9B500B9CB24 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9DF2A08D9B500B9CB24 /* IngredientType.swift */; };
 		15B1F9E22A08FC8100B9CB24 /* IngredientDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E12A08FC8100B9CB24 /* IngredientDetail.swift */; };
 		15B1F9E42A08FD6500B9CB24 /* ServiceDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E32A08FD6500B9CB24 /* ServiceDateFormatter.swift */; };
+		15B1F9E62A09118900B9CB24 /* RefridgeratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E52A09118900B9CB24 /* RefridgeratorService.swift */; };
 		15B6263E2A009CE6002E1F5F /* SearchedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6263D2A009CE6002E1F5F /* SearchedCell.swift */; };
 		15B626402A009D09002E1F5F /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6263F2A009D09002E1F5F /* RecipeCell.swift */; };
 		15B626422A009D40002E1F5F /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B626412A009D40002E1F5F /* Mock.swift */; };
@@ -251,6 +252,7 @@
 		15B1F9DF2A08D9B500B9CB24 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		15B1F9E12A08FC8100B9CB24 /* IngredientDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetail.swift; sourceTree = "<group>"; };
 		15B1F9E32A08FD6500B9CB24 /* ServiceDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDateFormatter.swift; sourceTree = "<group>"; };
+		15B1F9E52A09118900B9CB24 /* RefridgeratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefridgeratorService.swift; sourceTree = "<group>"; };
 		15B6263D2A009CE6002E1F5F /* SearchedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedCell.swift; sourceTree = "<group>"; };
 		15B6263F2A009D09002E1F5F /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		15B626412A009D40002E1F5F /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
@@ -771,6 +773,7 @@
 			isa = PBXGroup;
 			children = (
 				15CFE6AE29FF8D7700C16FF6 /* RefrigeratorServiceProtocol .swift */,
+				15B1F9E52A09118900B9CB24 /* RefridgeratorService.swift */,
 				1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */,
 				1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */,
 			);
@@ -984,6 +987,7 @@
 				15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */,
 				15F82A7529FA93E500DA9381 /* UserAccountDto.swift in Sources */,
 				159BE2AF29FB875F00DE7448 /* CellView.swift in Sources */,
+				15B1F9E62A09118900B9CB24 /* RefridgeratorService.swift in Sources */,
 				15CFE6AC29FF7F9100C16FF6 /* CellTypePicker.swift in Sources */,
 				153F127E29FE23B3008BDB4E /* RecipeCellDto.swift in Sources */,
 				15F2CC1C2A026E5E0019FAB6 /* IngredientCell.swift in Sources */,
