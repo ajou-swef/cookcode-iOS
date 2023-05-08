@@ -11,7 +11,7 @@ import PopupView
 struct RefrigeratorView: View {
     
     @StateObject private var viewModel = RefrigeratorViewModel(fridgeService: RefridgeratorService())
-    @StateObject private var appendIngredientVM = AppendIngredientViewModel()
+    @StateObject private var appendIngredientVM = AppendIngredientViewModel(refridgeratorService: RefridgeratorService())
     
     let height = UIScreen.main.bounds.height
     let columns: [GridItem] = [

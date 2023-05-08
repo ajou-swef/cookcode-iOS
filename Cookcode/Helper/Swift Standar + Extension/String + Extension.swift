@@ -16,3 +16,9 @@ extension String {
         )
     }
 }
+
+extension String: Mock {
+    static func mock() -> String {
+        "mock string"
+    }
+}

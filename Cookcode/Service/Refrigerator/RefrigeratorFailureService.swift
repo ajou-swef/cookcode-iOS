@@ -8,6 +8,10 @@
 import Foundation
 
 final class RefrigeratorFailureServie: RefrigeratorServiceProtocol {
+    func postIngredient(dto: IngredientFormDTO) async -> Result<ServiceResponse<String>, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func getMyIngredientCells() async -> Result<ServiceResponse<IngredientDetailDTOs>, ServiceError> {
         .failure(.MOCK())
     }

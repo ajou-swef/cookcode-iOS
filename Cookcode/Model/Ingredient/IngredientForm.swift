@@ -8,7 +8,7 @@
 import Foundation
 
 struct IngredientForm {
-    private let _ingredId: Int
+    let ingredId: Int
     private var _expiredAt: Date = .now
     private var _quantity: String = ""
     
@@ -23,11 +23,11 @@ struct IngredientForm {
     }
     
     init(ingredId: Int) {
-        _ingredId = ingredId 
+        self.ingredId = ingredId 
     }
     
     init(detail: IngredientDetail) {
-        _ingredId = detail.ingredId
+        ingredId = detail.ingredId
         _expiredAt = detail.expiredAt
         _quantity = String(detail.quantity)
     }

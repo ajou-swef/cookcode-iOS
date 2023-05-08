@@ -94,6 +94,7 @@
 		15B1F9E22A08FC8100B9CB24 /* IngredientDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E12A08FC8100B9CB24 /* IngredientDetail.swift */; };
 		15B1F9E42A08FD6500B9CB24 /* ServiceDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E32A08FD6500B9CB24 /* ServiceDateFormatter.swift */; };
 		15B1F9E62A09118900B9CB24 /* RefridgeratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E52A09118900B9CB24 /* RefridgeratorService.swift */; };
+		15B1F9E92A0918ED00B9CB24 /* IngredientFormDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E82A0918ED00B9CB24 /* IngredientFormDTO.swift */; };
 		15B6263E2A009CE6002E1F5F /* SearchedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6263D2A009CE6002E1F5F /* SearchedCell.swift */; };
 		15B626402A009D09002E1F5F /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6263F2A009D09002E1F5F /* RecipeCell.swift */; };
 		15B626422A009D40002E1F5F /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B626412A009D40002E1F5F /* Mock.swift */; };
@@ -253,6 +254,7 @@
 		15B1F9E12A08FC8100B9CB24 /* IngredientDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetail.swift; sourceTree = "<group>"; };
 		15B1F9E32A08FD6500B9CB24 /* ServiceDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDateFormatter.swift; sourceTree = "<group>"; };
 		15B1F9E52A09118900B9CB24 /* RefridgeratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefridgeratorService.swift; sourceTree = "<group>"; };
+		15B1F9E82A0918ED00B9CB24 /* IngredientFormDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientFormDTO.swift; sourceTree = "<group>"; };
 		15B6263D2A009CE6002E1F5F /* SearchedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedCell.swift; sourceTree = "<group>"; };
 		15B6263F2A009D09002E1F5F /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		15B626412A009D40002E1F5F /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
@@ -433,15 +435,16 @@
 		1503F95229B459C7002F3D26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				15B1F9E72A09182200B9CB24 /* ResponseData */,
+				153F127629FE2268008BDB4E /* DTO */,
+				15AA2F4129F0C9DC0069813F /* Form */,
+				15AA2F4929F0D8050069813F /* Path */,
 				15B626412A009D40002E1F5F /* Mock.swift */,
 				159BE2A629FB6C1E00DE7448 /* ErrorAlert.swift */,
 				15B6263C2A009CDC002E1F5F /* Cell */,
 				1525657B2A07794300471D52 /* Ingredient */,
 				150CD44229F397830001FFEB /* ContentType.swift */,
 				15AA2F8729F102720069813F /* VideURL.swift */,
-				15AA2F4929F0D8050069813F /* Path */,
-				15AA2F4129F0C9DC0069813F /* Form */,
-				153F127629FE2268008BDB4E /* DTO */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				153F127D29FE23B3008BDB4E /* RecipeCellDto.swift */,
 				153F127F29FE2415008BDB4E /* User.swift */,
 				153F128129FE25AD008BDB4E /* RecipeCellSearch.swift */,
+				15B1F9E82A0918ED00B9CB24 /* IngredientFormDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -702,6 +706,13 @@
 				152251EB29FFD40F002C3A78 /* ProfilePath.swift */,
 			);
 			path = Path;
+			sourceTree = "<group>";
+		};
+		15B1F9E72A09182200B9CB24 /* ResponseData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ResponseData;
 			sourceTree = "<group>";
 		};
 		15B6263C2A009CDC002E1F5F /* Cell */ = {
@@ -974,6 +985,7 @@
 				1525657A2A076DAE00471D52 /* AppendIngredientViewModel.swift in Sources */,
 				15E43A9E29FA94DF0008DC7A /* AccountSuccessService.swift in Sources */,
 				15B1F9E42A08FD6500B9CB24 /* ServiceDateFormatter.swift in Sources */,
+				15B1F9E92A0918ED00B9CB24 /* IngredientFormDTO.swift in Sources */,
 				15AA2F8829F102720069813F /* VideURL.swift in Sources */,
 				15AA2F2829EFEBE00069813F /* CCDivider.swift in Sources */,
 				1503F92529B45560002F3D26 /* ContentView.swift in Sources */,
