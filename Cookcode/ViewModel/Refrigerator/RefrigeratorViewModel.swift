@@ -13,8 +13,7 @@ class RefrigeratorViewModel: ObservableObject {
     @Published var ingredientFormIsPresented: Bool = false
     @Published var selectedIngredientId: IngredientCell?
     
-    @Published private(set) var ingredientCell: [IngredientCell] = []
-    @Published private(set) var refrigerator: [IngredientType: [IngredientCell]] = [:]
+    @Published private(set) var refrigerator: [IngredientType: [IngredientDetail]] = [:]
     
     @Published var serviceAlert: ServiceAlert = .init()
     
@@ -38,9 +37,11 @@ class RefrigeratorViewModel: ObservableObject {
         switch result {
         case .success(let success):
             let dtos = success.data
+            print("DTO: \(success.data)")
             for dto in dtos {
                 let type = IngredientType(rawValue: dto.category)
-                let cell = IngredientCell(dto: dto)
+                let cell = IngredientDetail(dto: dto)
+                print("detail: \(cell)")
                 if let type = type {
                     refrigerator[type]?.append(cell)
                 } else {

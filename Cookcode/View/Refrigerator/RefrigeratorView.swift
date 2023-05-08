@@ -31,7 +31,11 @@ struct RefrigeratorView: View {
             List {
                 ForEach(IngredientType.allCases) { type in
                     Section {
-                        ingredientGrid(cells: viewModel.refrigerator[type])
+                        let details = viewModel.refrigerator[type]
+                        if let details = details {
+                            let cells = details.map { IngredientCell(detail: $0) }
+                            ingredientGrid(cells: cells)
+                        }
                     } header: {
                         Text("\(type.korean)")
                             .font(CustomFontFactory.INTER_SEMIBOLD_14)

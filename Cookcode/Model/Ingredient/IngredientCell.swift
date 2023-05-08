@@ -28,14 +28,13 @@ struct IngredientCell: Cell, Equatable {
         self.title = title
     }
     
-    init (dto: IngredientDetailDTO) {
-        self.title = dto.name
-        let ingID = dto.ingredId
-        self.thumbnail = INGREDIENTS_DICTIONARY[ingID]?.thumbnail ?? "apple"
-        self.quantity = dto.quantity
+    init (detail: IngredientDetail) {
+        let ingredientCell = INGREDIENTS_DICTIONARY[detail.ingredId] ?? IngredientCell.mock()
+        title = ingredientCell.title
+        thumbnail = ingredientCell.thumbnail
         
-        if expiredDateIsComming(dto._expiredAt) {
-            presentBadge = true
+        if expiredDateIsComming(ServiceDateFormatter.tranlsateToString(detail.expiredAt)) {
+            presentBadge = true 
         }
     }
     
