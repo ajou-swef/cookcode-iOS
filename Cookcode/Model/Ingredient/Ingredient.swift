@@ -13,6 +13,6 @@ struct IngredientFactory {
     }
     
     static func FORM(id: Int) -> IngredientForm {
-        IngredientForm(id: id)
+        IngredientForm(ingredId: id)
     }
 }

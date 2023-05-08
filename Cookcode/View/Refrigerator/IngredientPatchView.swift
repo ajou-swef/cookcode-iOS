@@ -9,7 +9,11 @@ import SwiftUI
 
 struct IngredientPatchView: View {
     
-    @StateObject private var viewModel = IngredientPatchViewModel(ingredientId: 1)
+    @StateObject private var viewModel: IngredientPatchViewModel
+    
+    init(ingredientDetail: IngredientDetail) {
+        self._viewModel = StateObject(wrappedValue: IngredientPatchViewModel(ingredientDetail: ingredientDetail))
+    }
     
     var body: some View {
         BasePatchView(viewModel: viewModel) {
@@ -32,7 +36,7 @@ struct IngredientPatchView: View {
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
                 
                 
-                DatePicker(selection: $viewModel.ingredientForm.date,
+                DatePicker(selection: $viewModel.ingredientForm.expiredAt,
                            displayedComponents: .date) {
 
                 }
@@ -64,8 +68,8 @@ struct IngredientPatchView: View {
     }
 }
 
-struct IngredientPatchView_Previews: PreviewProvider {
-    static var previews: some View {
-        IngredientPatchView()
-    }
-}
+//struct IngredientPatchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        IngredientPatchView(ingredientDetail: )
+//    }
+//}

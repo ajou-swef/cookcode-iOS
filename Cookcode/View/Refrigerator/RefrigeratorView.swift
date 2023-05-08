@@ -28,7 +28,7 @@ struct RefrigeratorView: View {
             divider()
             appendIngredientButton()
             
-            List {
+            ScrollView {
                 ForEach(IngredientType.allCases) { type in
                     Section {
                         let details = viewModel.refrigerator[type]
@@ -37,9 +37,9 @@ struct RefrigeratorView: View {
                             ingredientGrid(cells: cells)
                         }
                     } header: {
-                        Text("\(type.korean)")
-                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                            .foregroundColor(.primary)
+//                        Text("\(type.korean)")
+//                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
+//                            .foregroundColor(.primary)
                     }
 
                 }
@@ -47,8 +47,8 @@ struct RefrigeratorView: View {
             .listRowInsets(EdgeInsets())
             .listStyle(.automatic)
         }
-        .sheet(item: $viewModel.selectedIngredientId) { cell in
-            IngredientPatchView()
+        .sheet(item: $viewModel.selectedIngredientDetail) { detail in
+            IngredientPatchView(ingredientDetail: detail)
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
@@ -86,7 +86,7 @@ struct RefrigeratorView: View {
             if let cells = cells {
                 ForEach(cells) { cell in
                     Button {
-                        viewModel.selectedIngredientId = cell
+                        viewModel.ingredientCellTapped(cell)
                     } label: {
                         IngredientCellView(cell: cell)
                     }

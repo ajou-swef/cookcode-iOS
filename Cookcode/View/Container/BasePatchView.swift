@@ -47,10 +47,10 @@ struct BasePatchView<ViewModel, Content>: View where ViewModel: PatchViewModel, 
     }
 }
 
-struct BasePatchView_Previews: PreviewProvider {
-    static var previews: some View {
-        BasePatchView(viewModel: IngredientPatchViewModel(ingredientId: 1)) {
-            Text("BasePatchView")
-        }
-    }
-}
+//struct BasePatchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BasePatchView(viewModel: IngredientPatchViewModel(ingredientId: 1)) {
+//            Text("BasePatchView")
+//        }
+//    }
+//}

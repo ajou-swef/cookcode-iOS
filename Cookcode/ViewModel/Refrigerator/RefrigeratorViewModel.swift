@@ -11,8 +11,8 @@ class RefrigeratorViewModel: ObservableObject {
 
     
     @Published var ingredientFormIsPresented: Bool = false
-    @Published var selectedIngredientId: IngredientCell?
     
+    @Published var selectedIngredientDetail: IngredientDetail?
     @Published private(set) var refrigerator: [IngredientType: [IngredientDetail]] = [:]
     
     @Published var serviceAlert: ServiceAlert = .init()
@@ -52,5 +52,16 @@ class RefrigeratorViewModel: ObservableObject {
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }
-    }   
+    }
+    
+    func ingredientCellTapped(_ cell: IngredientCell) {
+        for (_, details) in refrigerator {
+            for detail in details {
+                if (String(detail.fridgeIngredId) == cell.id) {
+                    selectedIngredientDetail = detail
+                    return 
+                }
+            }
+        }
+    }
 }

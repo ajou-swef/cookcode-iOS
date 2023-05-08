@@ -12,9 +12,9 @@ class IngredientPatchViewModel: PatchViewModel {
     @Published var ingredientForm: IngredientForm
     @Published private(set) var ingredientCell: IngredientCell
     
-    init(ingredientId: Int) {
-        ingredientForm = IngredientForm(id: ingredientId)
-        ingredientCell = INGREDIENTS_DICTIONARY[ingredientId] ?? IngredientCell.mock()
+    init(ingredientDetail: IngredientDetail) {
+        ingredientCell = IngredientCell(detail: ingredientDetail)
+        ingredientForm = IngredientForm(detail: ingredientDetail)
     }
     
     func trashButtonTapped() {

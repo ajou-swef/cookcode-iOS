@@ -8,13 +8,13 @@
 import Foundation
 
 struct IngredientForm {
-    private let _id: Int
-    private var _date: Date = .now
+    private let _ingredId: Int
+    private var _expiredAt: Date = .now
     private var _quantity: String = ""
     
-    var date: Date {
-        get { _date }
-        set(newValue) { _date = newValue }
+    var expiredAt: Date {
+        get { _expiredAt }
+        set(newValue) { _expiredAt = newValue }
     }
     
     var quantity: String {
@@ -22,7 +22,13 @@ struct IngredientForm {
         set(newValue) { _quantity = newValue }
     }
     
-    init(id: Int) {
-        _id = id 
+    init(ingredId: Int) {
+        _ingredId = ingredId 
+    }
+    
+    init(detail: IngredientDetail) {
+        _ingredId = detail.ingredId
+        _expiredAt = detail.expiredAt
+        _quantity = String(detail.quantity)
     }
 }

@@ -32,6 +32,7 @@ struct IngredientCell: Cell, Equatable {
         let ingredientCell = INGREDIENTS_DICTIONARY[detail.ingredId] ?? IngredientCell.mock()
         title = ingredientCell.title
         thumbnail = ingredientCell.thumbnail
+        id = String(detail.fridgeIngredId) 
         
         if expiredDateIsComming(ServiceDateFormatter.tranlsateToString(detail.expiredAt)) {
             presentBadge = true 
