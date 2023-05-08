@@ -94,7 +94,7 @@ struct RefrigeratorView: View {
     
     fileprivate func selectIngredientView() -> some View {
         return SelectIngredientView(viewModel: appendIngredientVM)
-            .popup(isPresented: $appendIngredientVM.selectIngredientFormIsPresneted) {
+            .popup(isPresented: $appendIngredientVM.ingredientFormIsPresented) {
                 ingredientForm()
             } customize: {
                 $0
@@ -118,11 +118,11 @@ struct RefrigeratorView: View {
     @ViewBuilder
     private func ingredientForm() -> some View {
         VStack {
-            TextField("용량", text: $appendIngredientVM.ingredientQuantity)
+            TextField("용량", text: $appendIngredientVM.ingredientForm.quantity)
                 .buttonBorderShape(.roundedRectangle)
                 .keyboardType(.numberPad)
             
-            DatePicker("소비기한", selection: $appendIngredientVM.date, displayedComponents: .date)
+            DatePicker("소비기한", selection: $appendIngredientVM.ingredientForm.expiredAt, displayedComponents: .date)
             
             Spacer()
             
@@ -140,7 +140,7 @@ struct RefrigeratorView: View {
     private func formButtomButton() -> some View {
         HStack(spacing: 0) {
             Button {
-                viewModel.ingredientFormIsPresented = false
+                appendIngredientVM.cancelButtonTapped()
             } label: {
                 Text("취소")
                     .padding(.vertical, 10)
@@ -154,7 +154,7 @@ struct RefrigeratorView: View {
             }
             
             Button {
-                viewModel.ingredientFormIsPresented = false
+                appendIngredientVM.cancelButtonTapped()
             } label: {
                 Text("추가")
                     .padding(.vertical, 10)

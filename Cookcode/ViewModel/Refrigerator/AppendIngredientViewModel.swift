@@ -9,22 +9,28 @@ import SwiftUI
 
 class AppendIngredientViewModel: SelectIngredientViewModel {
     
-    @Published var ingredientForm: IngredientForm?
-    @Published var searchText: String = ""
+    let refridgeratorService: RefrigeratorServiceProtocol
     
-    @Published private(set) var ingredinetId: Int?
-    @Published var ingredientQuantity: String = ""
-    @Published var date: Date = .now
+    @Published var ingredientForm: IngredientForm = .init(ingredId: 1)
+    @Published var searchText: String = ""
     
     @Published var ingredientFormIsPresented: Bool = false
     @Published var selectIngredientFormIsPresneted: Bool = false
     
+    init (refridgeratorService: RefrigeratorServiceProtocol) {
+        self.refridgeratorService = refridgeratorService
+    }
+    
     func ingredientCellTapped(_ ingredientID: Int) {
-        self.ingredinetId = ingredientID
+        ingredientForm = IngredientForm(ingredId: ingredientID)
         ingredientFormIsPresented = true 
     }
     
     func isNotSelected(_ ingredientID: Int) -> Bool {
         true
+    }
+    
+    func cancelButtonTapped() {
+        ingredientFormIsPresented = false
     }
 }

@@ -9,9 +9,6 @@ import Foundation
 
 class RefrigeratorViewModel: ObservableObject {
 
-    
-    @Published var ingredientFormIsPresented: Bool = false
-    
     @Published var selectedIngredientDetail: IngredientDetail?
     @Published private(set) var refrigerator: [IngredientType: [IngredientDetail]] = [:]
     
