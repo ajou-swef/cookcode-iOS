@@ -8,9 +8,9 @@
 import Foundation
 
 // MARK: - DataClass
-struct IngredientCellDto: Codable, Mock {
-    static func mock() -> IngredientCellDto {
-        return IngredientCellDto(fridgeIngredId: Int.random(in: 0..<1000), ingredId: 1, quantity: 10, name: "양배추", category: "채소", _expiredAt: "2023-05-05")
+struct IngredientDetailDTO: Codable, Mock {
+    static func mock() -> IngredientDetailDTO {
+        return IngredientDetailDTO(fridgeIngredId: Int.random(in: 0..<1000), ingredId: 1, quantity: 10, name: "양배추", category: "vegetables", _expiredAt: "2023-05-05")
     }
     
     
@@ -32,7 +32,7 @@ struct IngredientCellDto: Codable, Mock {
     }
 }
 
-extension Array: Mock where Element == IngredientCellDto {
+extension Array: Mock where Element == IngredientDetailDTO {
     static func mock() -> Array<Element> {
         Element.mocks(10)
     }

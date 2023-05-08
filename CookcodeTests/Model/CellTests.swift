@@ -24,7 +24,7 @@ final class CellTests: XCTestCase {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let newDate = dateFormatter.string(from: .now)
         
-        var dto = IngredientCellDto.Mock()
+        var dto = IngredientDetailDTO.Mock()
         dto.expiredAt(newDate)
         
         //  When

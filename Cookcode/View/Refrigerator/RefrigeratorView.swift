@@ -27,10 +27,21 @@ struct RefrigeratorView: View {
         VStack {
             divider()
             appendIngredientButton()
+            
+            List {
+                ForEach(IngredientType.allCases) { type in
+                    Section {
+                        ingredientGrid(cells: viewModel.refrigerator[type])
+                    } header: {
+                        Text("\(type.korean)")
+                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                            .foregroundColor(.primary)
+                    }
 
-            ScrollView {
-                ingredientGrid()
+                }
             }
+            .listRowInsets(EdgeInsets())
+            .listStyle(.automatic)
         }
         .sheet(item: $viewModel.selectedIngredientId) { cell in
             IngredientPatchView()
@@ -66,15 +77,15 @@ struct RefrigeratorView: View {
         }
     }
     
-    fileprivate func ingredientGrid() -> some View {
+    fileprivate func ingredientGrid(cells: [IngredientCell]?) -> some View {
         return LazyVGrid(columns: columns) {
-            ForEach(viewModel.ingredientCell.indices, id: \.self) { i in
-                let cell = viewModel.ingredientCell[i]
-                
-                Button {
-                    viewModel.selectedIngredientId = cell
-                } label: {
-                    IngredientCellView(cell: cell)
+            if let cells = cells {
+                ForEach(cells) { cell in
+                    Button {
+                        viewModel.selectedIngredientId = cell
+                    } label: {
+                        IngredientCellView(cell: cell)
+                    }
                 }
             }
         }

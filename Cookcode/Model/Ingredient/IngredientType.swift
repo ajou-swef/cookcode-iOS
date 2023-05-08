@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum IngredientType: String, Identifiable {
+enum IngredientType: String, Identifiable, CaseIterable {
     
     case meat, seafood, vegetables, fruit, sauces
     case diaryProducts
