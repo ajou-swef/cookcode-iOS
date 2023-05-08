@@ -23,7 +23,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             header()
-            homeCell()
+            homeRows()
         }
         .overlay(alignment: .bottomTrailing) {
            presentRecipeFormViewButton()
@@ -44,22 +44,19 @@ struct HomeView: View {
     }
     
     @ViewBuilder
-    private func homeCell() -> some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 15) {
-                ForEach(0..<10, id: \.self) { _ in
-                    Button {
-                        navigateViewModel.navigateWithHome(RecipeCellDto.MOCK_DATA)
-                    } label: {
-                        CellView(cell: RecipeCell.mock())
-                            .frame(height: recipeCellHeight)
-                            .foregroundColor(.black)
-                    }
-                }
-            }
-            .padding(.horizontal, 10)
-            .padding(.bottom, offsetY)
+    private func homeRows() -> some View {
+        List {
+            ForEach(0..<10, id: \.self) {  _ in
+               Button {
+                   navigateViewModel.navigateWithHome(RecipeCellDto.MOCK_DATA)
+               } label: {
+                   CellView(cell: RecipeCell.mock())
+                       .frame(height: recipeCellHeight)
+                       .foregroundColor(.black)
+               }
+           }
         }
+        .listStyle(.plain)
     }
     
     @ViewBuilder

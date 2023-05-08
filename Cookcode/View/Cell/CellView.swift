@@ -34,6 +34,7 @@ struct CellView: View {
             VStack(alignment: .center) {
                 KFImage(URL(string: cell.thumbnail))
                     .resizable()
+                    .startLoadingBeforeViewAppear()
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .overlay(alignment: .bottomTrailing) {
                         Text(cell.title)

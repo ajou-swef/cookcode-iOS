@@ -8,6 +8,7 @@
 import Foundation
 
 protocol Cell: Identifiable, Hashable, Mock {
+    var id: String { get set }
     var thumbnail: String { get set }
     var title: String { get set }
 }
