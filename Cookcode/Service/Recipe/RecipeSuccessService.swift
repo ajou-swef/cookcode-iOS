@@ -8,7 +8,7 @@
 import Foundation
 
 final class RecipeSuccessService: RecipeServiceProtocol {
-    func postRecipe(_ form: RecipeFormDTO) async -> Result<ServiceResponse<String>, ServiceError> {
+    func postRecipe(_ form: RecipeFormDTO) async -> Result<ServiceResponse<PostRecipeResonse>, ServiceError> {
         .success(.mock())
     }
     

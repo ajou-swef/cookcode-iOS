@@ -9,7 +9,7 @@ import Foundation
 
 struct RecipeFormDTO: Encodable {
     let title, description, thumbnail: String
-    let ingrediednts, optionalIngredients: [Int]
+    let ingredients, optionalIngredients: [Int]
     var steps: [StepFormDTO]
     
     init (recipeForm: RecipeForm) {
@@ -17,7 +17,7 @@ struct RecipeFormDTO: Encodable {
         description = recipeForm.description
         thumbnail = recipeForm.thumbnail
         
-        ingrediednts = recipeForm.ingredients
+        ingredients = recipeForm.ingredients
         optionalIngredients = recipeForm.optionalIngredients
         
         steps = [] 

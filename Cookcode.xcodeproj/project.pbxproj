@@ -75,6 +75,7 @@
 		15A19D832A0B8D43008C71EA /* StepFormDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A19D822A0B8D43008C71EA /* StepFormDTO.swift */; };
 		15A19D852A0B8E03008C71EA /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A19D842A0B8E03008C71EA /* RecipeService.swift */; };
 		15A19D872A0B9F8E008C71EA /* DefaultResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A19D862A0B9F8E008C71EA /* DefaultResonse.swift */; };
+		15A19D892A0BB005008C71EA /* PostRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A19D882A0BB005008C71EA /* PostRecipeResponse.swift */; };
 		15A6AB552A03ACA700394490 /* SelectIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6AB542A03ACA700394490 /* SelectIngredientViewModel.swift */; };
 		15A6AB572A03B71700394490 /* RefrigeratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6AB562A03B71700394490 /* RefrigeratorViewModel.swift */; };
 		15A6AB5A2A03BE6400394490 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 15A6AB592A03BE6400394490 /* PopupView */; };
@@ -235,6 +236,7 @@
 		15A19D822A0B8D43008C71EA /* StepFormDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFormDTO.swift; sourceTree = "<group>"; };
 		15A19D842A0B8E03008C71EA /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
 		15A19D862A0B9F8E008C71EA /* DefaultResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResonse.swift; sourceTree = "<group>"; };
+		15A19D882A0BB005008C71EA /* PostRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeResponse.swift; sourceTree = "<group>"; };
 		15A6AB542A03ACA700394490 /* SelectIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIngredientViewModel.swift; sourceTree = "<group>"; };
 		15A6AB562A03B71700394490 /* RefrigeratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorViewModel.swift; sourceTree = "<group>"; };
 		15AA2F1629EFDD7E0069813F /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
@@ -833,6 +835,7 @@
 				153F128329FE25D9008BDB4E /* RecipeCellSearchResponse.swift */,
 				15CFE66329FF587D00C16FF6 /* PhotoResponse.swift */,
 				15CFE66529FF590000C16FF6 /* VideoResponse.swift */,
+				15A19D882A0BB005008C71EA /* PostRecipeResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 				153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */,
 				15F2CC182A026DDC0019FAB6 /* Cell.swift in Sources */,
 				15CFE66629FF590000C16FF6 /* VideoResponse.swift in Sources */,
+				15A19D892A0BB005008C71EA /* PostRecipeResponse.swift in Sources */,
 				15F2CC202A0272D30019FAB6 /* SelectIngredientView.swift in Sources */,
 				15B1F9E02A08D9B500B9CB24 /* IngredientType.swift in Sources */,
 				15AA2F2429EFEA250069813F /* RecipeFormViewModel.swift in Sources */,

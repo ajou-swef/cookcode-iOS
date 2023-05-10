@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-final class RecipeServie: RecipeServiceProtocol {
+final class RecipeService: RecipeServiceProtocol {
     func searchRecipeHomeCell(page: Int, size: Int, sort: String, month: Int, cookcable: Bool) -> Result<RecipeCellSeachResponse, ServiceError> {
         .success(.MOCK_DATA)
     }
@@ -17,14 +17,14 @@ final class RecipeServie: RecipeServiceProtocol {
         .success(.MOCK_DATA)
     }
     
-    func postRecipe(_ form: RecipeFormDTO) async -> Result<ServiceResponse<String>, ServiceError> {
+    func postRecipe(_ form: RecipeFormDTO) async -> Result<ServiceResponse<PostRecipeResonse>, ServiceError> {
         
         let url = "\(BASE_URL)/api/v1/recipe"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
-        let response = await AF.request(url, method: .post, parameters: form, encoder: JSONParameterEncoder.default, headers: headers).serializingDecodable(ServiceResponse<String>.self).response
+        let response = await AF.request(url, method: .post, parameters: form, encoder: JSONParameterEncoder.default, headers: headers).serializingDecodable(ServiceResponse<PostRecipeResonse>.self).response
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

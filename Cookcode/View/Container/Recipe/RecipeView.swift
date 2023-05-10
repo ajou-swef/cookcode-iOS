@@ -128,7 +128,12 @@ struct RecipeView: View {
             Spacer()
             
             Button {
-                navigateVM.dismissOuter()
+                if let viewModel = recipeFormViewModel {
+                    Task {
+                        await viewModel.uploadButtonTapped()
+                        navigateVM.dismissOuter()
+                    }
+                }
             } label: {
                 Image(systemName: "square.and.arrow.up.circle.fill")
                     .resizable()

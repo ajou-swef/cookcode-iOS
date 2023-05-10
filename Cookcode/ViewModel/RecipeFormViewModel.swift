@@ -272,4 +272,17 @@ class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
     func deleteOkButtonTapped(dismissAction: DismissAction) async {
         print("123")
     }
+    
+    func uploadButtonTapped() async {
+        let dto = RecipeFormDTO(recipeForm: recipeForm)
+        let result = await recipeService.postRecipe(dto)
+        
+        switch result {
+        case .success(let success):
+            print("성공~")
+        case .failure(let failure):
+            print("실패~")
+        }
+        
+    }
 }
