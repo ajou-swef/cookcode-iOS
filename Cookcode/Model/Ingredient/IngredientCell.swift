@@ -50,11 +50,12 @@ struct IngredientCell: Cell, Equatable {
         
         let today = Date.now
         let expriedDate = dateFormatter.date(from: expiredAt) ?? .now
-        let diffDay = Calendar.current.dateComponents([.day], from: expriedDate, to: today).day ?? 0
+        let diffDay = Calendar.current.dateComponents([.day], from: today, to: expriedDate).day ?? 0
         
         if diffDay <= 2 {
             return true
         }
+        
         return false
     }
 }

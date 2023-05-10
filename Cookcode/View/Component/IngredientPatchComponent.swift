@@ -9,7 +9,13 @@ import SwiftUI
 
 struct IngredientPatchComponent<ViewModel>: View where ViewModel: PatchIngredientViewModel{
     
+    enum Field {
+        case quantity
+        
+    }
+    
     @ObservedObject private var viewModel: ViewModel
+    @FocusState private var fouces: Field?
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -29,18 +35,9 @@ struct IngredientPatchComponent<ViewModel>: View where ViewModel: PatchIngredien
                 }
             
                 CCDivider()
-            
-                HStack {
+                
+                DatePicker(selection: $viewModel.ingredientForm.expiredAt, displayedComponents: .date) {
                     Text("소비기한")
-                        .foregroundColor(.gray808080)
-                        .font(CustomFontFactory.INTER_SEMIBOLD_20)
-                    
-                    
-                    DatePicker(selection: $viewModel.ingredientForm.expiredAt,
-                               displayedComponents: .date) {
-
-                    }
-                    .datePickerStyle(.compact)
                 }
             
                 CCDivider()
@@ -54,21 +51,24 @@ struct IngredientPatchComponent<ViewModel>: View where ViewModel: PatchIngredien
                     
                     TextField("입력해주세요.", text: $viewModel.ingredientForm.quantity)
                         .keyboardType(.numberPad)
-                        .toolbar {
-                            ToolbarItem(placement: .keyboard) {
-                                Text("테스트")
-                            }
-                        }
+                        .focused($fouces, equals: .quantity)
                 }
                 
                 Spacer()
                 
                 PatchComponent(viewModel: viewModel)
-        }
-        .padding(.top, 30)
-        .padding(.horizontal, 20)
-        .navigationTitle("식재료 수정")
-        .ignoresSafeArea(.keyboard)
+            }
+            .background {
+                Color.white
+            }
+            .padding(.top, 30)
+            .padding(.horizontal, 20)
+            .navigationTitle("식재료 수정")
+            .ignoresSafeArea(.keyboard)
+            .onTapGesture {
+                print("on Tap gesture")
+                fouces = nil
+            }
     }
 }
 

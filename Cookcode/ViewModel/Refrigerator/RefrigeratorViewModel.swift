@@ -18,11 +18,6 @@ class RefrigeratorViewModel: ObservableObject {
     
     init (fridgeService: RefrigeratorServiceProtocol) {
         self.fridgeService = fridgeService
-        
-        for type in IngredientType.allCases {
-            refrigerator[type] = [] 
-        }
-        
         Task {
             await fetchIngredients()
         }
@@ -30,17 +25,20 @@ class RefrigeratorViewModel: ObservableObject {
     
     @MainActor
     func fetchIngredients() async {
+        refrigerator.removeAll()
+        for type in IngredientType.allCases {
+            refrigerator[type] = []
+        }
         let result = await fridgeService.getMyIngredientCells()
+        
+        
         switch result {
         case .success(let success):
             let dtos = success.data.ingreds
             for dto in dtos {
-                let type = IngredientType(rawValue: dto.category)
+                let type = IngredientType(fromRawValue: dto.category)
                 let cell = IngredientDetail(dto: dto)
-                
-                if let type = type {
-                    refrigerator[type]?.append(cell)
-                }
+                refrigerator[type]?.append(cell)
             }
             
         case .failure(let failure):

@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 final class RefridgeratorService: RefrigeratorServiceProtocol {
-    func deleteIngredient(fridgeIngredId: Int) async -> Result<ServiceResponse<String>, ServiceError> {
+    func deleteIngredient(fridgeIngredId: Int) async -> Result<DefaultResponse, ServiceError> {
         
         let url = "\(BASE_URL)/api/v1/fridge/ingred/\(fridgeIngredId)"
         let headers: HTTPHeaders = [
@@ -18,7 +18,7 @@ final class RefridgeratorService: RefrigeratorServiceProtocol {
         
         let response = await AF.request(url, method: .delete,
                                         encoding: JSONEncoding.default, headers: headers)
-            .serializingDecodable(ServiceResponse<String>.self).response
+            .serializingDecodable(DefaultResponse.self).response
         
         
         return response.result.mapError { err in
@@ -27,7 +27,7 @@ final class RefridgeratorService: RefrigeratorServiceProtocol {
         }
     }
     
-    func patchIngredient(dto: IngredientFormDTO, fridgeIngredId: Int) async -> Result<ServiceResponse<String>, ServiceError> {
+    func patchIngredient(dto: IngredientFormDTO, fridgeIngredId: Int) async -> Result<DefaultResponse, ServiceError> {
         
         let url = "\(BASE_URL)/api/v1/fridge/ingred/\(fridgeIngredId)"
         let headers: HTTPHeaders = [
@@ -36,7 +36,9 @@ final class RefridgeratorService: RefrigeratorServiceProtocol {
         
         let response = await AF.request(url, method: .patch, parameters: dto,
                                         encoder: JSONParameterEncoder.default, headers: headers)
-            .serializingDecodable(ServiceResponse<String>.self).response
+            .serializingDecodable(DefaultResponse.self).response
+        
+        print("\(response.debugDescription)")
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
@@ -44,7 +46,7 @@ final class RefridgeratorService: RefrigeratorServiceProtocol {
         }
     }
     
-    func postIngredient(dto: IngredientFormDTO) async -> Result<ServiceResponse<String>, ServiceError> {
+    func postIngredient(dto: IngredientFormDTO) async -> Result<DefaultResponse, ServiceError> {
         let url = "\(BASE_URL)/api/v1/fridge/ingred"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
@@ -52,7 +54,7 @@ final class RefridgeratorService: RefrigeratorServiceProtocol {
         
         let response = await AF.request(url, method: .post, parameters: dto,
                                         encoder: JSONParameterEncoder.default, headers: headers)
-            .serializingDecodable(ServiceResponse<String>.self).response
+            .serializingDecodable(DefaultResponse.self).response
         
         
         return response.result.mapError { err in

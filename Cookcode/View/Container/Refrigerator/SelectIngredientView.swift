@@ -21,6 +21,7 @@ struct SelectIngredientView<ViewModel>: View where ViewModel: SelectIngredientVi
     
     var body: some View {
         VStack {
+            
             HStack(spacing: 5) {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.black)

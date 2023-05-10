@@ -20,6 +20,8 @@ class AppendIngredientViewModel: SelectIngredientViewModel {
         self.refridgeratorService = refridgeratorService
     }
     
+    
+    @MainActor
     func ingredientCellTapped(_ ingredientID: Int) {
         selectedIngredientCell = INGREDIENTS_DICTIONARY[ingredientID]
     }

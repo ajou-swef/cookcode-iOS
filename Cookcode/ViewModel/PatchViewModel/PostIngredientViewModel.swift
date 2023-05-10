@@ -31,10 +31,11 @@ class PostIngredientViewModel: PatchIngredientViewModel {
     func mainButtonTapped(dismissAction: DismissAction) async {
         let dto = IngredientFormDTO(form: ingredientForm)
         let result = await refridgeratorService.postIngredient(dto: dto)
+        
+        print("form: \(ingredientForm.expiredAt) dto: \(dto.expiredAt)")
 
         switch result {
         case .success(_):
-            print("??")
             dismissAction()
         case .failure(let failure):
             serviceAlert.presentAlert(failure)

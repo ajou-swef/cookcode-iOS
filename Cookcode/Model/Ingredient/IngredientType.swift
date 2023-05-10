@@ -12,6 +12,10 @@ enum IngredientType: String, Identifiable, CaseIterable {
     case meat, seafood, vegetables, fruit, sauces
     case diaryProducts
     
+    init (fromRawValue: String) {
+        self = IngredientType(rawValue: fromRawValue.lowercased()) ?? .seafood
+    }
+    
     var id: String {
         return self.rawValue
     }

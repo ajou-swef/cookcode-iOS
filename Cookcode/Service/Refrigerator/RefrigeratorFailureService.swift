@@ -8,15 +8,15 @@
 import Foundation
 
 final class RefrigeratorFailureServie: RefrigeratorServiceProtocol {
-    func deleteIngredient(fridgeIngredId: Int) async -> Result<ServiceResponse<String>, ServiceError> {
+    func deleteIngredient(fridgeIngredId: Int) async -> Result<DefaultResponse, ServiceError> {
         .failure(.MOCK())
     }
     
-    func patchIngredient(dto: IngredientFormDTO, fridgeIngredId: Int) async -> Result<ServiceResponse<String>, ServiceError> {
+    func patchIngredient(dto: IngredientFormDTO, fridgeIngredId: Int) async -> Result<DefaultResponse, ServiceError> {
         .failure(.MOCK())
     }
     
-    func postIngredient(dto: IngredientFormDTO) async -> Result<ServiceResponse<String>, ServiceError> {
+    func postIngredient(dto: IngredientFormDTO) async -> Result<DefaultResponse, ServiceError> {
         .failure(.MOCK())
     }
     

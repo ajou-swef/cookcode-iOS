@@ -50,6 +50,9 @@ struct RefrigeratorView: View {
         }
         .sheet(item: $viewModel.selectedIngredientDetail) { detail in
             IngredientPatchComponent(viewModel: ModifyIngredientViewModel(ingredientDetail: detail, refridgeratorService: RefridgeratorService()))
+                .onDisappear {
+                    Task { await viewModel.fetchIngredients() }
+                }
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
@@ -75,7 +78,7 @@ struct RefrigeratorView: View {
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
                     .foregroundColor(.primary)
             }
-            .popover(isPresented: $appendIngredientVM.selectIngredientFormIsPresneted) {
+            .sheet(isPresented: $appendIngredientVM.selectIngredientFormIsPresneted) {
                 selectIngredientView()
             }
         }
@@ -99,6 +102,9 @@ struct RefrigeratorView: View {
         return SelectIngredientView(viewModel: appendIngredientVM)
             .sheet(item: $appendIngredientVM.selectedIngredientCell) { cell in
                 IngredientPatchComponent(viewModel: PostIngredientViewModel(ingredientCell: cell, refridgeratorService: RefridgeratorService()))
+            }
+            .onDisappear {
+                Task { await viewModel.fetchIngredients() }
             }
     }
     
