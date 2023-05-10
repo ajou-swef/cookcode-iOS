@@ -8,14 +8,19 @@
 import Foundation
 
 class ModifyIngredientViewModel: PatchIngredientViewModel {
-    internal let useTrashButton: Bool
+    
+    
+    
+    internal let useTrashButton: Bool = true
     @Published var ingredientForm: IngredientForm
     @Published var ingredientCell: IngredientCell
     
-    init(ingredientDetail: IngredientDetail) {
+    internal let refridgeratorService: RefrigeratorServiceProtocol
+    
+    init(ingredientDetail: IngredientDetail, refridgeratorService: RefrigeratorServiceProtocol) {
         ingredientCell = IngredientCell(detail: ingredientDetail)
         ingredientForm = IngredientForm(detail: ingredientDetail)
-        useTrashButton = true
+        self.refridgeratorService = refridgeratorService
     }
     
     func trashButtonTapped() {

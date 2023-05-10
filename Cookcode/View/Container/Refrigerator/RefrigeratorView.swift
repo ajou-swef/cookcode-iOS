@@ -49,7 +49,7 @@ struct RefrigeratorView: View {
             refridgerator()
         }
         .sheet(item: $viewModel.selectedIngredientDetail) { detail in
-            IngredientPatchView(viewModel: ModifyIngredientViewModel(ingredientDetail: detail))
+            IngredientPatchView(viewModel: ModifyIngredientViewModel(ingredientDetail: detail, refridgeratorService: RefridgeratorService()))
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
@@ -98,7 +98,7 @@ struct RefrigeratorView: View {
     fileprivate func selectIngredientView() -> some View {
         return SelectIngredientView(viewModel: appendIngredientVM)
             .sheet(item: $appendIngredientVM.selectedIngredientCell) { cell in
-                IngredientPatchView(viewModel: PostIngredientViewModel(ingredientCell: cell))
+                IngredientPatchView(viewModel: PostIngredientViewModel(ingredientCell: cell, refridgeratorService: RefridgeratorService()))
             }
     }
     

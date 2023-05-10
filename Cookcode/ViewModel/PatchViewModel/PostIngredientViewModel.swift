@@ -8,15 +8,17 @@
 import SwiftUI
 
 class PostIngredientViewModel: PatchIngredientViewModel {
-    var ingredientForm: IngredientForm
     
-    var ingredientCell: IngredientCell
+    @Published var ingredientForm: IngredientForm
+    @Published var ingredientCell: IngredientCell
     
-    var useTrashButton: Bool = false
+    let useTrashButton: Bool = false
+    internal let refridgeratorService: RefrigeratorServiceProtocol
     
-    init (ingredientCell: IngredientCell) {
+    init (ingredientCell: IngredientCell, refridgeratorService: RefrigeratorServiceProtocol) {
         ingredientForm = IngredientForm(ingredId: ingredientCell.ingredId)
         self.ingredientCell = ingredientCell
+        self.refridgeratorService = refridgeratorService
     }
     
     func trashButtonTapped() {
