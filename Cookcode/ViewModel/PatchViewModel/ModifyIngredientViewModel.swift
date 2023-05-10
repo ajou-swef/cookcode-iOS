@@ -16,19 +16,29 @@ class ModifyIngredientViewModel: PatchIngredientViewModel {
     @Published var serviceAlert: ServiceAlert = .init()
     
     internal let refridgeratorService: RefrigeratorServiceProtocol
+    private let fridgeIngredId: Int
     
     init(ingredientDetail: IngredientDetail, refridgeratorService: RefrigeratorServiceProtocol) {
         ingredientCell = IngredientCell(detail: ingredientDetail)
         ingredientForm = IngredientForm(detail: ingredientDetail)
         self.refridgeratorService = refridgeratorService
+        fridgeIngredId = ingredientDetail.fridgeIngredId
     }
     
     func trashButtonTapped() {
         print("trashButtonTapped")
     }
     
-    func mainButtonTapped(dismissAction: DismissAction) {
-        print("mainButtonTapped")
-        dismissAction()
+    func mainButtonTapped(dismissAction: DismissAction) async {
+        let dto = IngredientFormDTO(form: ingredientForm)
+        let result = await refridgeratorService.patchIngredient(dto: dto, fridgeIngredId: fridgeIngredId)
+
+        switch result {
+        case .success(_):
+            print("??")
+            dismissAction()
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
     }
 }

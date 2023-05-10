@@ -11,5 +11,6 @@ import Foundation
 protocol RefrigeratorServiceProtocol {
     func getMyIngredientCells() async -> Result<ServiceResponse<IngredientDetailDTOs>, ServiceError>
     func postIngredient(dto: IngredientFormDTO) async -> Result<ServiceResponse<String>, ServiceError>
+    func patchIngredient(dto: IngredientFormDTO, fridgeIngredId: Int) async -> Result<ServiceResponse<String>, ServiceError>
 }
 

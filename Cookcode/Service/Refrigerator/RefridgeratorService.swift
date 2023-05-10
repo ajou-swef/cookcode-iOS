@@ -9,6 +9,30 @@ import Foundation
 import Alamofire
 
 final class RefridgeratorService: RefrigeratorServiceProtocol {
+    func patchIngredient(dto: IngredientFormDTO, fridgeIngredId: Int) async -> Result<ServiceResponse<String>, ServiceError> {
+        
+        let url = "\(BASE_URL)/api/v1/fridge/ingred/\(fridgeIngredId)"
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let param: [String: Any] = [
+            "ingredId" : dto.ingredId,
+            "expiredAt" : dto.expiredAt,
+            "quantity" : dto.quantity
+        ]
+        
+        let response = await AF.request(url, method: .patch, parameters: param,
+                                        encoding: JSONEncoding.default, headers: headers)
+            .serializingDecodable(ServiceResponse<String>.self).response
+        
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.MOCK()
+        }
+    }
+    
     func postIngredient(dto: IngredientFormDTO) async -> Result<ServiceResponse<String>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/fridge/ingred"
         let headers: HTTPHeaders = [
