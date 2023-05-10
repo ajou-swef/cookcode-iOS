@@ -8,6 +8,7 @@
 import Foundation
 
 protocol PatchViewModel: ObservableObject {
+    var useTrashButton: Bool { get }
     func trashButtonTapped()
     func mainButtonTapped() 
 }

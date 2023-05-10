@@ -23,30 +23,33 @@ struct RefrigeratorView: View {
     ]
     
     
+    fileprivate func refridgerator() -> ScrollView<ForEach<[IngredientType], String, Section<EmptyView, (some View)?, EmptyView>>> {
+        return ScrollView {
+            ForEach(IngredientType.allCases) { type in
+                Section {
+                    let details = viewModel.refrigerator[type]
+                    if let details = details {
+                        let cells = details.map { IngredientCell(detail: $0) }
+                        ingredientGrid(cells: cells)
+                    }
+                } header: {
+                    //                        Text("\(type.korean)")
+                    //                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                    //                            .foregroundColor(.primary)
+                }
+                
+            }
+        }
+    }
+    
     var body: some View {
         VStack {
             divider()
             appendIngredientButton()
-            
-            ScrollView {
-                ForEach(IngredientType.allCases) { type in
-                    Section {
-                        let details = viewModel.refrigerator[type]
-                        if let details = details {
-                            let cells = details.map { IngredientCell(detail: $0) }
-                            ingredientGrid(cells: cells)
-                        }
-                    } header: {
-//                        Text("\(type.korean)")
-//                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
-//                            .foregroundColor(.primary)
-                    }
-
-                }
-            }
+            refridgerator()
         }
         .sheet(item: $viewModel.selectedIngredientDetail) { detail in
-            IngredientPatchView(ingredientDetail: detail)
+            IngredientPatchView(viewModel: ModifyIngredientViewModel(ingredientDetail: detail))
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
@@ -94,17 +97,8 @@ struct RefrigeratorView: View {
     
     fileprivate func selectIngredientView() -> some View {
         return SelectIngredientView(viewModel: appendIngredientVM)
-            .popup(isPresented: $appendIngredientVM.ingredientFormIsPresented) {
-                ingredientForm()
-            } customize: {
-                $0
-                    .type(.floater(verticalPadding: (height - 200) / 2,
-                                   useSafeAreaInset: true))
-                    .animation(.linear(duration: 0))
-                    .position(.top)
-                    .closeOnTapOutside(false)
-                    .closeOnTap(false)
-                    .backgroundColor(Color.black.opacity(0.5))
+            .sheet(item: $appendIngredientVM.selectedIngredientCell) { cell in
+                IngredientPatchView(viewModel: PostIngredientViewModel(ingredientCell: cell))
             }
     }
     
@@ -115,27 +109,27 @@ struct RefrigeratorView: View {
             .foregroundColor(.mainColor)
     }
     
-    @ViewBuilder
-    private func ingredientForm() -> some View {
-        VStack {
-            TextField("용량", text: $appendIngredientVM.ingredientForm.quantity)
-                .buttonBorderShape(.roundedRectangle)
-                .keyboardType(.numberPad)
-            
-            DatePicker("소비기한", selection: $appendIngredientVM.ingredientForm.expiredAt, displayedComponents: .date)
-            
-            Spacer()
-            
-            formButtomButton()
-        }
-        .padding(.top, 20)
-        .padding(.horizontal, 15)
-        .frame(width: 300, height: 200)
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .padding(.horizontal, 10)
-    }
-    
+//    @ViewBuilder
+//    private func ingredientForm() -> some View {
+//        VStack {
+//            TextField("용량", text: $appendIngredientVM.ingredientForm.quantity)
+//                .buttonBorderShape(.roundedRectangle)
+//                .keyboardType(.numberPad)
+//            
+//            DatePicker("소비기한", selection: $appendIngredientVM.ingredientForm.expiredAt, displayedComponents: .date)
+//            
+//            Spacer()
+//            
+//            formButtomButton()
+//        }
+//        .padding(.top, 20)
+//        .padding(.horizontal, 15)
+//        .frame(width: 300, height: 200)
+//        .background(Color.white)
+//        .clipShape(RoundedRectangle(cornerRadius: 20))
+//        .padding(.horizontal, 10)
+//    }
+//    
     @ViewBuilder
     private func formButtomButton() -> some View {
         HStack(spacing: 0) {

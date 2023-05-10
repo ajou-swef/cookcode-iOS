@@ -11,10 +11,9 @@ class AppendIngredientViewModel: SelectIngredientViewModel {
     
     let refridgeratorService: RefrigeratorServiceProtocol
     
-    @Published var ingredientForm: IngredientForm = .init(ingredId: 1)
-    @Published var searchText: String = ""
+    @Published var selectedIngredientCell: IngredientCell?
     
-    @Published var ingredientFormIsPresented: Bool = false
+    @Published var searchText: String = ""
     @Published var selectIngredientFormIsPresneted: Bool = false
     
     init (refridgeratorService: RefrigeratorServiceProtocol) {
@@ -22,8 +21,7 @@ class AppendIngredientViewModel: SelectIngredientViewModel {
     }
     
     func ingredientCellTapped(_ ingredientID: Int) {
-        ingredientForm = IngredientForm(ingredId: ingredientID)
-        ingredientFormIsPresented = true 
+        selectedIngredientCell = INGREDIENTS_DICTIONARY[ingredientID]
     }
     
     func isNotSelected(_ ingredientID: Int) -> Bool {
@@ -31,6 +29,6 @@ class AppendIngredientViewModel: SelectIngredientViewModel {
     }
     
     func cancelButtonTapped() {
-        ingredientFormIsPresented = false
+        selectedIngredientCell = nil
     }
 }

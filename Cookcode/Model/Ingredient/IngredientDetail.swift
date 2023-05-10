@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct IngredientDetail: Identifiable {
+struct IngredientDetail: Identifiable, Mock {
+    static func mock() -> IngredientDetail {
+        IngredientDetail(dto: IngredientDetailDTO.mock())
+    }
+    
     let id: String = UUID().uuidString
     private let _fridgeIngredId, _ingredId: Int
     private var _expiredAt: Date

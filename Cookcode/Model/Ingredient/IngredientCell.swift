@@ -9,8 +9,10 @@ import Foundation
 
 struct IngredientCell: Cell, Equatable {
     var id: String = UUID().uuidString
+    
     var thumbnail: String
     var title: String
+    var ingredId: Int
     
     private(set) var quantity: Int?
     private(set) var presentBadge: Bool = false
@@ -20,19 +22,21 @@ struct IngredientCell: Cell, Equatable {
     }
     
     static func mock() -> IngredientCell {
-        IngredientCell(thumbnail: "apple", title: "사과")
+        IngredientCell(detail: IngredientDetail.mock())
     }
     
-    init(thumbnail: String, title: String) {
+    init (thumbnail: String, title: String, ingredId: Int) {
         self.thumbnail = thumbnail
         self.title = title
+        self.ingredId = ingredId
     }
     
     init (detail: IngredientDetail) {
         let ingredientCell = INGREDIENTS_DICTIONARY[detail.ingredId] ?? IngredientCell.mock()
         title = ingredientCell.title
         thumbnail = ingredientCell.thumbnail
-        id = String(detail.fridgeIngredId) 
+        id = String(detail.fridgeIngredId)
+        ingredId = detail.ingredId
         
         if expiredDateIsComming(ServiceDateFormatter.tranlsateToString(detail.expiredAt)) {
             presentBadge = true 

@@ -7,14 +7,15 @@
 
 import Foundation
 
-class IngredientPatchViewModel: PatchViewModel {
-    
+class ModifyIngredientViewModel: PatchIngredientViewModel {
+    internal let useTrashButton: Bool
     @Published var ingredientForm: IngredientForm
-    @Published private(set) var ingredientCell: IngredientCell
+    @Published var ingredientCell: IngredientCell
     
     init(ingredientDetail: IngredientDetail) {
         ingredientCell = IngredientCell(detail: ingredientDetail)
         ingredientForm = IngredientForm(detail: ingredientDetail)
+        useTrashButton = true
     }
     
     func trashButtonTapped() {
