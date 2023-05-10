@@ -9,7 +9,6 @@ import Foundation
 
 protocol SelectIngredientViewModel: ObservableObject {
     var searchText: String { get set }
-    
     func ingredientCellTapped(_ ingredientID: Int)
     func isNotSelected(_ ingredientID: Int) -> Bool
 }

@@ -9,44 +9,13 @@ import SwiftUI
 import PhotosUI
 
 class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
-    
-    var mainButtonText: String {
-        "스텝 추가하기"
-    }
-    
-    var useTrashButton: Bool {
-        recipeForm.steps.count >= 2
-    }
-    
-    var deleteAlertIsPresented: Bool = false 
-    
-    @MainActor
-    func mainButtonTapped(dismissAction: DismissAction) async {
-        appendNewStepForm()
-    }
-    
-    func trashButtonTapped() {
-        for i in recipeForm.steps.indices {
-            if recipeForm.steps[i].id == stepTabSelection {
-                removeThisStep(i)
-            }
-        }
-    }
-    
-    func deleteOkButtonTapped(dismissAction: DismissAction) async {
-        print("123")
-    }
-    
     @Published var searchText: String = ""
     
     private let recipeService: RecipeServiceProtocol
     private let contentService: ContentServiceProtocol
     
     @Published var recipeForm: RecipeForm = .init()
-    
     @Published var useMainIngredient: Bool = false
-    @Published var mainIngredientIDs: [Int] = []
-    @Published var optionalIngredientIDs: [Int] = []
     
     @Published var mainImageItem: PhotosPickerItem?
     @Published var mainImageData: Data? 
@@ -71,6 +40,16 @@ class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
     
     // 부드러운 스텝 삭제 애니메이션을 위한 프로퍼티
     @Published var deletedStepIndex: Int?
+    
+    var mainButtonText: String {
+        "스텝 추가하기"
+    }
+    
+    var useTrashButton: Bool {
+        recipeForm.steps.count >= 2
+    }
+    
+    var deleteAlertIsPresented: Bool = false
     
     var recipeMetadataHasThumbnail: Bool {
         !recipeForm.thumbnailIsEmpty
@@ -100,24 +79,24 @@ class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
     
     func isNotSelected(_ ingredientID: Int) -> Bool {
         if useMainIngredient {
-            return !mainIngredientIDs.contains { id in id == ingredientID }
+            return !recipeForm.ingredients.contains { id in id == ingredientID }
         } else {
-            return !optionalIngredientIDs.contains { id in id == ingredientID }
+            return !recipeForm.optionalIngredients.contains { id in id == ingredientID }
         }
     }
     
     func ingredientCellTapped(_ ingredientID: Int) {
         if useMainIngredient {
-            if let index = mainIngredientIDs.firstIndex(of: ingredientID) {
-                mainIngredientIDs.remove(at: index)
+            if let index = recipeForm.ingredients.firstIndex(of: ingredientID) {
+                recipeForm.ingredients.remove(at: index)
             } else {
-                mainIngredientIDs.append(ingredientID)
+                recipeForm.ingredients.append(ingredientID)
             }
         } else {
-            if let index = optionalIngredientIDs.firstIndex(of: ingredientID) {
-                optionalIngredientIDs.remove(at: index)
+            if let index = recipeForm.optionalIngredients.firstIndex(of: ingredientID) {
+                recipeForm.optionalIngredients.remove(at: index)
             } else {
-                optionalIngredientIDs.append(ingredientID)
+                recipeForm.optionalIngredients.append(ingredientID)
             }
         }
     }
@@ -275,5 +254,22 @@ class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
         stepItems.removeAll()
         stepImageData.removeAll()
         stepVideoURLs.removeAll()
+    }
+    
+    @MainActor
+    func mainButtonTapped(dismissAction: DismissAction) async {
+        appendNewStepForm()
+    }
+    
+    func trashButtonTapped() {
+        for i in recipeForm.steps.indices {
+            if recipeForm.steps[i].id == stepTabSelection {
+                removeThisStep(i)
+            }
+        }
+    }
+    
+    func deleteOkButtonTapped(dismissAction: DismissAction) async {
+        print("123")
     }
 }

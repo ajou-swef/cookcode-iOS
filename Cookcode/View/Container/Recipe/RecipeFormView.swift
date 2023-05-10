@@ -176,8 +176,8 @@ struct RecipeFormView: View {
     private func MainIngredients() -> some View {
         Section {
             LazyVGrid(columns: columns) {
-                ForEach(viewModel.mainIngredientIDs.indices, id: \.self) { i in
-                    let id = viewModel.mainIngredientIDs[i]
+                ForEach(viewModel.recipeForm.ingredients.indices, id: \.self) { i in
+                    let id = viewModel.recipeForm.ingredients[i]
                     let ingredient: IngredientCell? = INGREDIENTS_DICTIONARY[id]
                     if let ingredient = ingredient {
                         VStack {
@@ -219,7 +219,7 @@ struct RecipeFormView: View {
     private func OptionalIngredients() -> some View {
         Section {
             LazyVGrid(columns: columns) {
-                ForEach(viewModel.optionalIngredientIDs, id: \.self) { id in
+                ForEach(viewModel.recipeForm.optionalIngredients, id: \.self) { id in
                     let ingredient: IngredientCell? = INGREDIENTS_DICTIONARY[id]
                     if let ingredient = ingredient {
                         IngredientCellView(cell: ingredient)
