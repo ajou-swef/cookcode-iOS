@@ -8,13 +8,11 @@
 import Foundation
 
 final class ContentFailureService: ContentServiceProtocol {
+    func postVideos(_ videoURL: VideoURL) async -> Result<VideoResponse, ServiceError> {
+        .failure(ServiceError.MOCK())
+    }
+    
     func postPhotos(_ data: [Data]) async -> Result<PhotoResponse, ServiceError> {
         .failure(ServiceError.MOCK())
     }
-    
-    func postVideos(_ data: [Data]) async -> Result<VideoResponse, ServiceError> {
-        .failure(ServiceError.MOCK())
-    }
-    
-    
 }

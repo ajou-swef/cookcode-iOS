@@ -11,7 +11,7 @@ import SwiftUI
 
 struct VideoURL: Transferable, Hashable {
     let url: URL
-
+    
     static var transferRepresentation: some TransferRepresentation {
         FileRepresentation(contentType: .movie) { movie in
             return SentTransferredFile(movie.url)

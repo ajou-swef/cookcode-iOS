@@ -12,7 +12,7 @@ struct RecipeForm: Codable {
     var title: String = ""
     var description: String = ""
     
-    private(set) var mainIngredients: [String] = []
+    private(set) var ingredients: [String] = []
     private(set) var optionalIngredients: [String] = []
     
     private(set) var thumbnail: String = ""

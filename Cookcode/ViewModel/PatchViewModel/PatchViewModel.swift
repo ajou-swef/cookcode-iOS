@@ -12,6 +12,7 @@ protocol PatchViewModel: ObservableObject {
     var serviceAlert: ServiceAlert { get set }
     var useTrashButton: Bool { get }
     var deleteAlertIsPresented: Bool { get set }
+    var mainButtonText: String { get }
     
     func trashButtonTapped()
     func mainButtonTapped(dismissAction: DismissAction) async
@@ -19,6 +20,10 @@ protocol PatchViewModel: ObservableObject {
 }
 
 extension PatchViewModel {
+    var mainButtonText: String {
+        "저장하기"
+    }
+    
     func trashButtonTapped() {
         deleteAlertIsPresented = true 
     }

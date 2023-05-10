@@ -8,13 +8,11 @@
 import Foundation
 
 final class ContentSuccessService: ContentServiceProtocol {
-    func postPhotos(_ data: [Data]) async -> Result<PhotoResponse, ServiceError> {   
-        .success(PhotoResponse(message: "post성공", status: 200, data: PhotoURL.MOCK_DATA()))
-    }
-    
-    func postVideos(_ data: [Data]) async -> Result<VideoResponse, ServiceError> {
+    func postVideos(_ videoURL: VideoURL) async -> Result<VideoResponse, ServiceError> {
         .success(VideoResponse(message: "vide post 성공", status: 200, data: VideoDataURL.MOCK_DATA()))
     }
     
-    
+    func postPhotos(_ data: [Data]) async -> Result<PhotoResponse, ServiceError> {   
+        .success(PhotoResponse(message: "post성공", status: 200, data: PhotoURL.MOCK_DATA()))
+    }
 }

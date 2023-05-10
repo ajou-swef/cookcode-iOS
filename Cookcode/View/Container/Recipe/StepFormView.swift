@@ -13,6 +13,7 @@ import Kingfisher
 struct StepFormView: View {
     
     @ObservedObject var viewModel: RecipeFormViewModel
+    @Environment(\.dismiss) var dismiss
     
     init(viewModel: RecipeFormViewModel, stepIndex: Int) {
         self.viewModel = viewModel
@@ -169,27 +170,7 @@ struct StepFormView: View {
     
     @ViewBuilder
     private func BottomButton(_ i: Int) -> some View {
-        HStack {
-            Button {
-                viewModel.removeThisStep(i)
-            } label: {
-                Image(systemName: "trash.square")
-                    .resizable()
-                    .frame(maxWidth: 50, maxHeight: 50)
-                    .foregroundColor(.gray808080)
-            }
-            .hidden(!viewModel.trashButtonIsShowing)
-
-            
-            Button {
-                viewModel.appendNewStepForm()
-            } label: {
-                Text("스텝 추가")
-                    .foregroundColor(.white)
-                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                    .roundedRectangle(.ORANGE_280_FILLED)
-            }
-        }
+        PatchComponent(viewModel: viewModel)
     }
     
     @ViewBuilder

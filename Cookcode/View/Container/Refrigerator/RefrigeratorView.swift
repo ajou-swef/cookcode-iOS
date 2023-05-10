@@ -49,7 +49,7 @@ struct RefrigeratorView: View {
             refridgerator()
         }
         .sheet(item: $viewModel.selectedIngredientDetail) { detail in
-            IngredientPatchView(viewModel: ModifyIngredientViewModel(ingredientDetail: detail, refridgeratorService: RefridgeratorService()))
+            IngredientPatchComponent(viewModel: ModifyIngredientViewModel(ingredientDetail: detail, refridgeratorService: RefridgeratorService()))
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
@@ -98,7 +98,7 @@ struct RefrigeratorView: View {
     fileprivate func selectIngredientView() -> some View {
         return SelectIngredientView(viewModel: appendIngredientVM)
             .sheet(item: $appendIngredientVM.selectedIngredientCell) { cell in
-                IngredientPatchView(viewModel: PostIngredientViewModel(ingredientCell: cell, refridgeratorService: RefridgeratorService()))
+                IngredientPatchComponent(viewModel: PostIngredientViewModel(ingredientCell: cell, refridgeratorService: RefridgeratorService()))
             }
     }
     
@@ -108,28 +108,7 @@ struct RefrigeratorView: View {
             .frame(maxWidth: .infinity, maxHeight: 2)
             .foregroundColor(.mainColor)
     }
-    
-//    @ViewBuilder
-//    private func ingredientForm() -> some View {
-//        VStack {
-//            TextField("용량", text: $appendIngredientVM.ingredientForm.quantity)
-//                .buttonBorderShape(.roundedRectangle)
-//                .keyboardType(.numberPad)
-//            
-//            DatePicker("소비기한", selection: $appendIngredientVM.ingredientForm.expiredAt, displayedComponents: .date)
-//            
-//            Spacer()
-//            
-//            formButtomButton()
-//        }
-//        .padding(.top, 20)
-//        .padding(.horizontal, 15)
-//        .frame(width: 300, height: 200)
-//        .background(Color.white)
-//        .clipShape(RoundedRectangle(cornerRadius: 20))
-//        .padding(.horizontal, 10)
-//    }
-//    
+
     @ViewBuilder
     private func formButtomButton() -> some View {
         HStack(spacing: 0) {

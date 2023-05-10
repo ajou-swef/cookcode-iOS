@@ -8,6 +8,10 @@
 import Foundation
 
 final class RecipeFailureService: RecipeServiceProtocol {
+    func postRecipe(_ form: RecipeFormDTO) async -> Result<ServiceResponse<String>, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func searchCell(page: Int, size: Int, sort: String, month: Int) async -> Result<[any SearchedCell], ServiceError> {
         return .failure(ServiceError.MOCK())
     }

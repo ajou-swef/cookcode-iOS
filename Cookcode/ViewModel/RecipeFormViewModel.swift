@@ -8,7 +8,35 @@
 import SwiftUI
 import PhotosUI
 
-class RecipeFormViewModel: SelectIngredientViewModel {
+class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
+    
+    var mainButtonText: String {
+        "스텝 추가하기"
+    }
+    
+    var useTrashButton: Bool {
+        recipeForm.steps.count >= 2
+    }
+    
+    var deleteAlertIsPresented: Bool = false 
+    
+    @MainActor
+    func mainButtonTapped(dismissAction: DismissAction) async {
+        appendNewStepForm()
+    }
+    
+    func trashButtonTapped() {
+        for i in recipeForm.steps.indices {
+            if recipeForm.steps[i].id == stepTabSelection {
+                removeThisStep(i)
+            }
+        }
+    }
+    
+    func deleteOkButtonTapped(dismissAction: DismissAction) async {
+        print("123")
+    }
+    
     @Published var searchText: String = ""
     
     private let recipeService: RecipeServiceProtocol
@@ -218,12 +246,14 @@ class RecipeFormViewModel: SelectIngredientViewModel {
                 }
             }
             
-            let result = await contentService.postVideos([])
-            switch result {
-            case .success(let success):
-                recipeForm.stepAppendContentURL(at, urls: success.data.photoURL)
-            case .failure(let failure):
-                serviceAlert.presentAlert(failure)
+            for stepVideoURL in stepVideoURLs {
+                let result = await contentService.postVideos(stepVideoURL)
+                switch result {
+                case .success(let success):
+                    recipeForm.stepAppendContentURL(at, urls: success.data.photoURL)
+                case .failure(let failure):
+                    serviceAlert.presentAlert(failure)
+                }
             }
             
         case .image:

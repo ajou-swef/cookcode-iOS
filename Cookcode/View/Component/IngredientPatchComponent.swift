@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IngredientPatchView<ViewModel>: View where ViewModel: PatchIngredientViewModel{
+struct IngredientPatchComponent<ViewModel>: View where ViewModel: PatchIngredientViewModel{
     
     @ObservedObject private var viewModel: ViewModel
     

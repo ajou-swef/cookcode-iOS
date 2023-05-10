@@ -39,7 +39,7 @@ struct PatchComponent<ViewModel>: View where ViewModel: PatchViewModel {
         return Button {
             Task { await viewModel.mainButtonTapped(dismissAction: dismiss) } 
         } label: {
-            Text("저장")
+            Text(viewModel.mainButtonText)
                 .roundedRectangle(.ORANGE_280_FILLED)
                 .foregroundColor(.white)
                 .font(CustomFontFactory.INTER_BOLD_16)

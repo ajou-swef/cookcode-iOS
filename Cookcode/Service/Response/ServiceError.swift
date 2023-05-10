@@ -17,6 +17,10 @@ struct ServiceError: Codable, Error {
     let message: String
     let status: Int
     
+    static func encodeError() -> ServiceError {
+        ServiceError(message: "서버 인코딩 에러", status: 400)
+    }
+    
     static func MOCK() -> ServiceError {
         ServiceError(message: "실패", status: 400)
     }

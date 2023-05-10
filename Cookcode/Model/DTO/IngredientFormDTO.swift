@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IngredientFormDTO: Codable {
+struct IngredientFormDTO: Encodable {
     let ingredId: Int
     let expiredAt: String
     let quantity: Int

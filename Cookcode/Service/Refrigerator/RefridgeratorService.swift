@@ -34,16 +34,9 @@ final class RefridgeratorService: RefrigeratorServiceProtocol {
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
-        let param: [String: Any] = [
-            "ingredId" : dto.ingredId,
-            "expiredAt" : dto.expiredAt,
-            "quantity" : dto.quantity
-        ]
-        
-        let response = await AF.request(url, method: .patch, parameters: param,
-                                        encoding: JSONEncoding.default, headers: headers)
+        let response = await AF.request(url, method: .patch, parameters: dto,
+                                        encoder: JSONParameterEncoder.default, headers: headers)
             .serializingDecodable(ServiceResponse<String>.self).response
-        
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
@@ -57,14 +50,8 @@ final class RefridgeratorService: RefrigeratorServiceProtocol {
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
-        let param: [String: Any] = [
-            "ingredId" : dto.ingredId,
-            "expiredAt" : dto.expiredAt,
-            "quantity" : dto.quantity
-        ]
-        
-        let response = await AF.request(url, method: .post, parameters: param,
-                                        encoding: JSONEncoding.default, headers: headers)
+        let response = await AF.request(url, method: .post, parameters: dto,
+                                        encoder: JSONParameterEncoder.default, headers: headers)
             .serializingDecodable(ServiceResponse<String>.self).response
         
         
