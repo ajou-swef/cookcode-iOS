@@ -6,14 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ModifyIngredientViewModel: PatchIngredientViewModel {
-    
-    
-    
+
     internal let useTrashButton: Bool = true
     @Published var ingredientForm: IngredientForm
     @Published var ingredientCell: IngredientCell
+    @Published var serviceAlert: ServiceAlert = .init()
     
     internal let refridgeratorService: RefrigeratorServiceProtocol
     
@@ -27,7 +27,8 @@ class ModifyIngredientViewModel: PatchIngredientViewModel {
         print("trashButtonTapped")
     }
     
-    func mainButtonTapped() {
+    func mainButtonTapped(dismissAction: DismissAction) {
         print("mainButtonTapped")
+        dismissAction()
     }
 }

@@ -69,6 +69,9 @@ struct IngredientPatchView<ViewModel>: View where ViewModel: PatchIngredientView
         .padding(.horizontal, 20)
         .navigationTitle("식재료 수정")
         .ignoresSafeArea(.keyboard)
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+            ServiceAlert.CANCEL_BUTTON
+        }
     }
 }
 

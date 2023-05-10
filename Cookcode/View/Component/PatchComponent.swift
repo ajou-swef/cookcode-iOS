@@ -10,6 +10,7 @@ import SwiftUI
 struct PatchComponent<ViewModel>: View where ViewModel: PatchViewModel {
     
     @ObservedObject var viewModel: ViewModel
+    @Environment(\.dismiss) var dismiss
     
     init (viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -18,7 +19,7 @@ struct PatchComponent<ViewModel>: View where ViewModel: PatchViewModel {
     @ViewBuilder
     fileprivate func trashButton() -> some View {
         Button {
-            viewModel.trashButtonTapped()
+            Task { await viewModel.trashButtonTapped() }
         } label: {
             Image(systemName: "trash.square")
                 .resizable()
@@ -30,7 +31,7 @@ struct PatchComponent<ViewModel>: View where ViewModel: PatchViewModel {
     
     fileprivate func completeButton() -> Button<some View> {
         return Button {
-            viewModel.mainButtonTapped()
+            Task { await viewModel.mainButtonTapped(dismissAction: dismiss) } 
         } label: {
             Text("저장")
                 .roundedRectangle(.ORANGE_280_FILLED)

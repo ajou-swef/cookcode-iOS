@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol PatchViewModel: ObservableObject {
+    var serviceAlert: ServiceAlert { get set }
     var useTrashButton: Bool { get }
-    func trashButtonTapped()
-    func mainButtonTapped() 
+    func trashButtonTapped() async
+    func mainButtonTapped(dismissAction: DismissAction) async
 }

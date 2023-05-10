@@ -11,6 +11,7 @@ class PostIngredientViewModel: PatchIngredientViewModel {
     
     @Published var ingredientForm: IngredientForm
     @Published var ingredientCell: IngredientCell
+    @Published var serviceAlert: ServiceAlert = .init()
     
     let useTrashButton: Bool = false
     internal let refridgeratorService: RefrigeratorServiceProtocol
@@ -25,8 +26,18 @@ class PostIngredientViewModel: PatchIngredientViewModel {
         print("post trash button")
     }
     
-    func mainButtonTapped() {
-        print("post main button : \(ingredientForm)")
+    @MainActor
+    func mainButtonTapped(dismissAction: DismissAction) async {
+        let dto = IngredientFormDTO(form: ingredientForm)
+        let result = await refridgeratorService.postIngredient(dto: dto)
+
+        switch result {
+        case .success(let success):
+            print("??")
+            dismissAction()
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
     }
     
     
