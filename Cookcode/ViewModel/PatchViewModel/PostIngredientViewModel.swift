@@ -8,10 +8,10 @@
 import SwiftUI
 
 class PostIngredientViewModel: PatchIngredientViewModel {
-    
     @Published var ingredientForm: IngredientForm
     @Published var ingredientCell: IngredientCell
     @Published var serviceAlert: ServiceAlert = .init()
+    @Published var deleteAlertIsPresented: Bool = false
     
     let useTrashButton: Bool = false
     internal let refridgeratorService: RefrigeratorServiceProtocol
@@ -22,9 +22,10 @@ class PostIngredientViewModel: PatchIngredientViewModel {
         self.refridgeratorService = refridgeratorService
     }
     
-    func trashButtonTapped() {
-        print("post trash button")
+    func deleteOkButtonTapped(dismissAction: DismissAction) async {
+        // do nothing
     }
+    
     
     @MainActor
     func mainButtonTapped(dismissAction: DismissAction) async {
@@ -32,7 +33,7 @@ class PostIngredientViewModel: PatchIngredientViewModel {
         let result = await refridgeratorService.postIngredient(dto: dto)
 
         switch result {
-        case .success(let success):
+        case .success(_):
             print("??")
             dismissAction()
         case .failure(let failure):

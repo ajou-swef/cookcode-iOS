@@ -8,6 +8,10 @@
 import Foundation
 
 final class RefrigeratorSuccessService: RefrigeratorServiceProtocol {
+    func deleteIngredient(fridgeIngredId: Int) async -> Result<ServiceResponse<String>, ServiceError> {
+        .success(.mock())
+    }
+    
     func patchIngredient(dto: IngredientFormDTO, fridgeIngredId: Int) async -> Result<ServiceResponse<String>, ServiceError> {
         .success(.mock())
     }

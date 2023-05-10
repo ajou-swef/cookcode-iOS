@@ -11,6 +11,15 @@ import SwiftUI
 protocol PatchViewModel: ObservableObject {
     var serviceAlert: ServiceAlert { get set }
     var useTrashButton: Bool { get }
-    func trashButtonTapped() async
+    var deleteAlertIsPresented: Bool { get set }
+    
+    func trashButtonTapped()
     func mainButtonTapped(dismissAction: DismissAction) async
+    func deleteOkButtonTapped(dismissAction: DismissAction) async
+}
+
+extension PatchViewModel {
+    func trashButtonTapped() {
+        deleteAlertIsPresented = true 
+    }
 }

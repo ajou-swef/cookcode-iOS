@@ -19,7 +19,7 @@ struct PatchComponent<ViewModel>: View where ViewModel: PatchViewModel {
     @ViewBuilder
     fileprivate func trashButton() -> some View {
         Button {
-            Task { await viewModel.trashButtonTapped() }
+            viewModel.trashButtonTapped()
         } label: {
             Image(systemName: "trash.square")
                 .resizable()
@@ -27,6 +27,12 @@ struct PatchComponent<ViewModel>: View where ViewModel: PatchViewModel {
                 .foregroundColor(.gray_bcbcbc)
         }
         .hidden(!viewModel.useTrashButton)
+        .alert("삭제 하시겠습니까?", isPresented: $viewModel.deleteAlertIsPresented) {
+            Button("취소", role: .cancel) { }
+            Button("확인") {
+                Task { await viewModel.deleteOkButtonTapped(dismissAction: dismiss) }
+            }
+        }
     }
     
     fileprivate func completeButton() -> Button<some View> {
@@ -44,6 +50,9 @@ struct PatchComponent<ViewModel>: View where ViewModel: PatchViewModel {
         HStack {
             trashButton()
             completeButton()
+        }
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+            ServiceAlert.CANCEL_BUTTON
         }
     }
 }
