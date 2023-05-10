@@ -32,7 +32,7 @@ final class SelectIngredientViewModelTests: XCTestCase {
         
         //  Then
         let expected = counts
-        let actual = viewModel.mainIngredientIDs.count
+        let actual = viewModel.recipeForm.ingredients.count
         XCTAssertEqual(expected, actual)
     }
     
@@ -49,7 +49,7 @@ final class SelectIngredientViewModelTests: XCTestCase {
         viewModel.ingredientCellTapped(id)
         
         //  Then
-        let actual = viewModel.mainIngredientIDs.contains { id in
+        let actual = viewModel.recipeForm.ingredients.contains { id in
             id == id
         }
         XCTAssertFalse(actual)

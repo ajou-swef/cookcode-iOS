@@ -10,5 +10,19 @@ import Foundation
 struct RecipeFormDTO: Encodable {
     let title, description, thumbnail: String
     let ingrediednts, optionalIngredients: [Int]
-    let steps: [StepFormDTO]
+    var steps: [StepFormDTO]
+    
+    init (recipeForm: RecipeForm) {
+        title = recipeForm.title
+        description = recipeForm.description
+        thumbnail = recipeForm.thumbnail
+        
+        ingrediednts = recipeForm.ingredients
+        optionalIngredients = recipeForm.optionalIngredients
+        
+        steps = [] 
+        for i in recipeForm.steps.indices {
+            steps.append(StepFormDTO(form: recipeForm.steps[i], seq: i+1))
+        }
+    }
 }

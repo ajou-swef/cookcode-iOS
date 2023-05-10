@@ -13,6 +13,7 @@ struct RecipeView: View {
     @ObservedOptionalObject var recipeFormViewModel: RecipeFormViewModel?
     @StateObject var recipeViewModel: RecipeViewModel = .init()
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var navigateVM: NavigateViewModel
     
     init(recipeFormViewModel: RecipeFormViewModel) {
         self._recipeFormViewModel = ObservedOptionalObject(wrappedValue: recipeFormViewModel)
@@ -127,7 +128,7 @@ struct RecipeView: View {
             Spacer()
             
             Button {
-                
+                navigateVM.dismissOuter()
             } label: {
                 Image(systemName: "square.and.arrow.up.circle.fill")
                     .resizable()
