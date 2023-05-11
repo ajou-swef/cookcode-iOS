@@ -455,8 +455,6 @@
 				159BE2AD29FB875300DE7448 /* Cell */,
 				153B4D9029ED06A500543730 /* Component */,
 				158EFDD82A04CDD1003057A4 /* Container */,
-				1584033229B48E0F0092032A /* LoginView.swift */,
-				1584033429B48EAA0092032A /* MembershipView.swift */,
 				15B869B129EFD9B900A02872 /* MainTabView.swift */,
 			);
 			path = View;
@@ -547,6 +545,15 @@
 				151E1CA42A0CF0D100BC0DA5 /* PageState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		151E1CA62A0D141400BC0DA5 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				1584033429B48EAA0092032A /* MembershipView.swift */,
+				1584033229B48E0F0092032A /* LoginView.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		152565782A076D5D00471D52 /* Refrigerator */ = {
@@ -707,6 +714,7 @@
 		158EFDD82A04CDD1003057A4 /* Container */ = {
 			isa = PBXGroup;
 			children = (
+				151E1CA62A0D141400BC0DA5 /* Account */,
 				15B869B529EFDC2600A02872 /* Home */,
 				15B869B629EFDC2900A02872 /* Cookie */,
 				15B869B729EFDC2B00A02872 /* Refrigerator */,
