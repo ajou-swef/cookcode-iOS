@@ -78,7 +78,7 @@ struct RecipeFormView: View {
     private func PresentPreviewButton() -> some View {
         VStack {
             NavigationLink {
-                RecipeView(recipeFormViewModel: viewModel)
+                RecipePreviewView(viewModel: viewModel)
             } label: {
                 Text("미리보기")
                     .font(CustomFontFactory.INTER_BOLD_16)

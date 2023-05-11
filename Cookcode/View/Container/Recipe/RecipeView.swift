@@ -10,147 +10,45 @@ import ObservedOptionalObject
 
 struct RecipeView: View {
     
-    @ObservedOptionalObject var recipeFormViewModel: RecipeFormViewModel?
-    @StateObject var recipeViewModel: RecipeViewModel = .init()
+    @ObservedObject var recipeViewModel: RecipeViewModel
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var navigateVM: NavigateViewModel
     
     init(recipeFormViewModel: RecipeFormViewModel) {
-        self._recipeFormViewModel = ObservedOptionalObject(wrappedValue: recipeFormViewModel)
+        self.recipeViewModel = recipeFormViewModel
     }
     
     init(recipeCell: RecipeCell) {
-        self._recipeViewModel = StateObject(wrappedValue: RecipeViewModel(recipeService: RecipeService(), contentService: ContentSuccessService(), recipeID: recipeCell.recipeId))
+        self._recipeViewModel = ObservedObject(wrappedValue: RecipeViewModel(recipeService: RecipeService(), contentService: ContentSuccessService(), recipeID: recipeCell.recipeId))
     }
-    
-    var isPreview: Bool {
-        recipeFormViewModel != nil
-    }
-    
-    var selection: Binding<String>? {
-        if isPreview {
-            return $recipeFormViewModel.previewTabSelection
-        }
-        
-        return $recipeViewModel.tabSelection
-    }
-    
-    var title: String {
-        if let viewModel = recipeFormViewModel {
-            return viewModel.recipeForm.title
-        } else {
-            return recipeViewModel.recipeDetail?.title ?? "에러 타이틀"
-        }
-    }
-    
-    var description: String {
-        if let viewModel = recipeFormViewModel {
-            return viewModel.recipeForm.description
-        } else {
-            return recipeViewModel.recipeDetail?.description ?? "에러 설명"
-        }
-    }
-    
-    var imageURL: String {
-        guard recipeFormViewModel != nil else {
-            return "https://picsum.photos/200"
-        }
-        return "https://picsum.photos/200"
-    }
-    
-    var indicies: Range<Int> {
-        guard let viewModel = recipeFormViewModel else {
-            return recipeViewModel.recipeDetail?.steps.indices ?? 0..<0
-        }
-        return viewModel.recipeForm.steps.indices
-    }
-    
     
     var body: some View {
-        ZStack {
-            if isPreview {
-                Color.gray808080
-                    .ignoresSafeArea(.all)
-                    .overlay(alignment: .top) {
-                        TopButton()
-                    }
-            }
-        
-            TabView(selection: selection) {
+        TabView(selection: $recipeViewModel.tabSelection) {
                 GeometryReader { proxy in
-                    RecipeEntranceView(title: title, description: description, imageURL: imageURL, cgSize: proxy.size)
+                    RecipeEntranceView(title: recipeViewModel.recipeDetail.title, description: recipeViewModel.recipeDetail.description, imageURL: recipeViewModel.recipeDetail.thumbnail, cgSize: proxy.size)
                 }
                 .tag("main")
                 
-                ForEach(indicies, id: \.self) { i in
-                    StepPreviewView(stepSequence: i+1, viewModel: recipeFormViewModel, step: recipeViewModel.recipeDetail?.steps[i])
-                        .tag(stepID(at: i))
-                }
+            ForEach(recipeViewModel.recipeDetail.steps.indices, id: \.self) { i in
+                let cell = recipeViewModel.recipeDetail.steps[i]
+                StepCellView(cell: cell)
+                    .tag(cell.id)
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .frame(maxWidth: .infinity)
-            .background {
-                Color.white
-            }
-            .clipShape(RoundedRectangle(cornerRadius: 25))
-            .padding(.horizontal, isPreview ? 10 : 0)
-            .padding(.top, isPreview ? 30 : 0)
         }
-        .statusBarHidden()
-        .navigationBarBackButtonHidden(isPreview)
-        .offset(y : isPreview ? 0 : -200)
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(maxWidth: .infinity)
+        .background {
+            Color.white
+        }
     }
     
-    func stepID(at: Int) -> String {
-        guard let viewModel = recipeFormViewModel else {
-            return recipeViewModel.stepID(at: at)
-        }
-        return viewModel.stepFormID(at: at)
-    }
-    
-    @ViewBuilder
-    private func TopButton() -> some View {
-        HStack {
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "xmark.circle.fill")
-                    .resizable()
-                    .foregroundColor(.mainColor)
-                    .frame(maxWidth: 40, maxHeight: 40)
-                    .background(
-                        Circle()
-                            .fill(Color.white)
-                            .frame(maxWidth: 30, maxHeight: 30)
-                    )
-            }
-            
-            Spacer()
-            
-            Button {
-                if let viewModel = recipeFormViewModel {
-                    Task {
-                        await viewModel.uploadButtonTapped()
-                        navigateVM.dismissOuter()
-                    }
-                }
-            } label: {
-                Image(systemName: "square.and.arrow.up.circle.fill")
-                    .resizable()
-                    .foregroundColor(.mainColor)
-                    .frame(maxWidth: 40, maxHeight: 40)
-                    .background(
-                        Circle()
-                            .fill(Color.white)
-                            .frame(maxWidth: 30, maxHeight: 30)
-                    )
-            }
-
-        }
-        .padding(.top, 20)
-        .ignoresSafeArea()
-        .padding(.horizontal, 20)
-    }
+//    func stepID(at: Int) -> String {
+//        guard let viewModel = recipeFormViewModel else {
+//            return recipeViewModel.stepID(at: at)
+//        }
+//        return viewModel.stepFormID(at: at)
+//    }
+//    
 }
 
 //struct RecipePreviewView_Previews: PreviewProvider {

@@ -8,13 +8,16 @@
 import SwiftUI
 import PhotosUI
 
-class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
+class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchViewModel {
     @Published var searchText: String = ""
     
-    private let recipeService: RecipeServiceProtocol
     private let contentService: ContentServiceProtocol
     
-    @Published var recipeForm: RecipeForm = .init()
+    @Published var recipeForm: RecipeForm = .init() {
+        willSet(newVal) {
+            recipeDetail = RecipeDetail(form: newVal)
+        }
+    }
     @Published var useMainIngredient: Bool = false
     
     @Published var mainImageItem: PhotosPickerItem?
@@ -23,7 +26,6 @@ class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
     @Published var stepItems: [PhotosPickerItem] = .init()
     @Published var stepImageData: [Data] = .init()
     @Published var stepVideoURLs: [VideoURL] = .init()
-    @Published var serviceAlert: ServiceAlert = .init()
     
     // sheet, fullscreen 등의 navigate를 위한 프로퍼티
     @Published var stepFormTrigger: RecipePathWithIndex?
@@ -33,7 +35,6 @@ class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
     
     // step 작성 시의 tabSelection
     @Published var stepTabSelection: String = ""
-    @Published var previewTabSelection: String = "main" 
     
     // alert
     @Published var isPresentedContentDeleteAlert: Bool = false
@@ -68,9 +69,9 @@ class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
     }
     
     init(_ preview: Bool = false, contentService: ContentServiceProtocol, recipeService: RecipeServiceProtocol) {
-        
         self.contentService = contentService
-        self.recipeService = recipeService
+        super.init(recipeService: recipeService, contentService: contentService, recipeID: nil)
+        
         
         if preview {
             recipeForm.appendStep(ContentWrappedStepForm())
@@ -141,6 +142,15 @@ class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
     func presentStepFormView(_ i: Int) {
         stepTabSelection = recipeForm.steps[i].id
         stepFormTrigger = RecipePathWithIndex(path: .step, index: i)
+    }
+    
+    func presentStepFormView() {
+        guard let index = recipeDetail.steps.firstIndex(where: { $0.id == tabSelection }) else {
+            return
+        }
+        
+        stepTabSelection = recipeForm.steps[index].id
+        stepFormTrigger = RecipePathWithIndex(path: .step, index: index)
     }
     
     func flushDeletedStepIndex() {
@@ -278,9 +288,9 @@ class RecipeFormViewModel: SelectIngredientViewModel, PatchViewModel {
         let result = await recipeService.postRecipe(dto)
         
         switch result {
-        case .success(let success):
+        case .success(_):
             print("성공~")
-        case .failure(let failure):
+        case .failure(_):
             print("실패~")
         }
         

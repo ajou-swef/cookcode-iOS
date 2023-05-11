@@ -8,11 +8,12 @@
 import Foundation
 
 struct RecipeDetail: Codable {
-    let recipeID: Int
-    let user: UserDTO
-    let title, description, createdAt, updatedAt: String
+    let recipeID: Int?
+    let user: UserDTO?
+    let title, description: String
+    let createdAt, updatedAt: String?
     let thumbnail: String
-    let steps: [StepDTO]
+    var steps: [StepDTO]
     
 
     enum CodingKeys: String, CodingKey {
@@ -29,5 +30,18 @@ struct RecipeDetail: Codable {
         updatedAt = dto.updatedAt
         thumbnail = dto.thumbnail
         steps = dto.steps
+    }
+    
+    init (form: RecipeForm) {
+        title = form.title
+        description = form.description
+        thumbnail = form.thumbnail
+        
+        steps = []
+        steps = form.steps.map { StepDTO(form: $0) }
+        recipeID = nil
+        user = nil
+        createdAt = nil
+        updatedAt = nil 
     }
 }

@@ -7,11 +7,11 @@
 
 import Foundation
 
-final class RecipeViewModel: ObservableObject {
+class RecipeViewModel: ObservableObject {
     
-    private let recipeService: RecipeServiceProtocol
+    let recipeService: RecipeServiceProtocol
     
-    @Published private(set) var recipeDetail: RecipeDetail?
+    @Published var recipeDetail: RecipeDetail = .init(dto: .mock())
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var tabSelection: String = ""
     
@@ -19,11 +19,13 @@ final class RecipeViewModel: ObservableObject {
         recipeService = RecipeSuccessService()
     }
     
-    init (recipeService: RecipeServiceProtocol, contentService: ContentServiceProtocol, recipeID: Int) {
+    init (recipeService: RecipeServiceProtocol, contentService: ContentServiceProtocol, recipeID: Int?) {
         self.recipeService = recipeService
         
         Task {
-            await fetchRecipe(recipeID)
+            if let recipeID = recipeID {
+                await fetchRecipe(recipeID)
+            }
         }
     }
     
@@ -39,7 +41,7 @@ final class RecipeViewModel: ObservableObject {
         }
     }
     
-    func stepID(at :Int) -> String {
-        String(recipeDetail?.steps[at].seq ?? 1)
-    }
+//    func stepID(at :Int) -> String {
+//        String(recipeDetail?.steps[at].seq ?? 1)
+//    }
 }
