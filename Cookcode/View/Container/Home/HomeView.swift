@@ -58,8 +58,19 @@ struct HomeView: View {
                        .foregroundColor(.black)
                }
            }
+            
+            Color.white.opacity(1)
+                .offsetY {
+                    viewModel.pagenagationTriggerOffset = $0
+                    print("\($0)")
+                }
         }
         .listStyle(.plain)
+        .onChange(of: viewModel.pagenagationTriggerOffset) { newValue in
+            if newValue < UIScreen.main.bounds.maxY {
+                Task { await viewModel.fetchRecipeCell() }
+            }
+        }
     }
     
     @ViewBuilder

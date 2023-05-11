@@ -23,7 +23,7 @@ final class RecipeService: RecipeServiceProtocol {
         let response = await AF.request(encodedURL, method: .get, headers: headers)
             .serializingDecodable(RecipeCellSeachResponse.self).response
         
-        print("\(response.debugDescription)")
+//        print("\(response.debugDescription)")
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

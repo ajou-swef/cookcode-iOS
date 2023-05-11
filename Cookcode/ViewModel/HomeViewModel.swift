@@ -11,7 +11,9 @@ class HomeViewModel: ObservableObject {
     
     @Published private(set) var recipeCells: [RecipeCell] = []
     @Published var serviceAlert: ServiceAlert = .init()
+    @Published var pagenagationTriggerOffset: CGFloat = .zero
     
+    private(set) var pageState: PageState = .wait(0)
     private let recipeService: RecipeServiceProtocol
     
     
@@ -24,16 +26,24 @@ class HomeViewModel: ObservableObject {
     }
     
     @MainActor
-    private func fetchRecipeCell() async {
-        print("fetch")
-        let result = await recipeService.searchRecipeHomeCell(page: 0, size: 10, sort: nil, month: nil, cookcable: nil)
-        
-        switch result {
-        case .success(let success):
-            let newCells = success.data.recipeCells.map {  RecipeCell(dto: $0) }
-            recipeCells.append(contentsOf: newCells)
-        case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+    func fetchRecipeCell() async {
+        switch pageState {
+        case .loading(_):
+            break
+        case .wait(let page):
+            pageState = .loading(page)
+            let result = await recipeService.searchRecipeHomeCell(page: page, size: 10, sort: nil, month: nil, cookcable: nil)
+            
+            switch result {
+            case .success(let success):
+                print("new fetch start")
+                pageState = .wait(page + 1)
+                let newCells = success.data.recipeCells.map {  RecipeCell(dto: $0) }
+                recipeCells.append(contentsOf: newCells)
+            case .failure(let failure):
+                pageState = .wait(page)
+                serviceAlert.presentAlert(failure)
+            }
         }
     }
 }
