@@ -10,7 +10,7 @@ import Foundation
 struct RecipeCellSeachResponse: Codable {
     let message: String
     let status: Int
-    let data: RecipeCellSearch
+    let data: RecipeCellSearchDTO
     
-    static let MOCK_DATA: RecipeCellSeachResponse = RecipeCellSeachResponse(message: "검색성공", status: 200, data: RecipeCellSearch.MOCK_DATA)
+    static let MOCK_DATA: RecipeCellSeachResponse = RecipeCellSeachResponse(message: "검색성공", status: 200, data: RecipeCellSearchDTO.MOCK_DATA)
 }

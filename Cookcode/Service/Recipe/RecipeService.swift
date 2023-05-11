@@ -9,12 +9,43 @@ import Alamofire
 import Foundation
 
 final class RecipeService: RecipeServiceProtocol {
-    func searchRecipeHomeCell(page: Int, size: Int, sort: String, month: Int, cookcable: Bool) -> Result<RecipeCellSeachResponse, ServiceError> {
-        .success(.MOCK_DATA)
+    func searchRecipeHomeCell(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<RecipeCellSeachResponse, ServiceError> {
+        
+        
+        let url = "\(BASE_URL)/api/v1/recipe?page=\(page)&size=\(size)"
+        let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+        let encodedURL = URL(string: encoded)!
+        
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let response = await AF.request(encodedURL, method: .get, headers: headers)
+            .serializingDecodable(RecipeCellSeachResponse.self).response
+        
+        print("\(response.debugDescription)")
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.MOCK()
+        }
     }
     
-    func searchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> {
-        .success(.MOCK_DATA)
+    func searchRecipe(_ recipeID: Int) async -> Result<ServiceResponse<RecipeDetailDTO>, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/recipe/\(recipeID)"
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let response = await AF.request(url, method: .get, headers: headers)
+            .serializingDecodable(ServiceResponse<RecipeDetailDTO>.self).response
+        
+        print("\(response.debugDescription)")
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.MOCK()
+        }
     }
     
     func postRecipe(_ form: RecipeFormDTO) async -> Result<ServiceResponse<PostRecipeResonse>, ServiceError> {
@@ -32,7 +63,7 @@ final class RecipeService: RecipeServiceProtocol {
         }
     }
     
-    func searchCell(page: Int, size: Int, sort: String, month: Int) async -> Result<[any SearchedCell], ServiceError> {
+    func searchCell(page: Int, size: Int, sort: String?, month: Int?) async -> Result<[any SearchedCell], ServiceError> {
         .failure(.MOCK())
     }
 }

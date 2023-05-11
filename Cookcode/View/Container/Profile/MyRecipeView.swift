@@ -17,7 +17,7 @@ struct MyRecipeView: View {
             ForEach(mocks) { mock in
                 MyRecipeCellView(recipeCell: mock)
                     .onTapGesture {
-                        navigateViewModel.navigateWithProfile(RecipeCellDto.MOCK_DATA)
+                        navigateViewModel.navigateWithProfile(RecipeCellDto.mock())
                     }
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         Button {

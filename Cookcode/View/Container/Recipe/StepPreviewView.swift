@@ -15,7 +15,7 @@ struct StepPreviewView: View {
     let stepSequence: Int
     
     @ObservedOptionalObject var viewModel: RecipeFormViewModel?
-    let step: RecipeStep?
+    let step: StepDTO?
     
     var title: String {
         guard let viewModel = viewModel else {

@@ -11,30 +11,35 @@ final class RecipeViewModel: ObservableObject {
     
     private let recipeService: RecipeServiceProtocol
     
-    @Published private(set) var recipeDetail: RecipeCellDto?
+    @Published private(set) var recipeDetail: RecipeDetail?
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var tabSelection: String = ""
     
     init () {
-        recipeService = RecipeFailureService()
+        recipeService = RecipeSuccessService()
     }
     
     init (recipeService: RecipeServiceProtocol, contentService: ContentServiceProtocol, recipeID: Int) {
         self.recipeService = recipeService
-        fetchRecipe(recipeID)
+        
+        Task {
+            await fetchRecipe(recipeID)
+        }
     }
     
-    func fetchRecipe(_ recipeID: Int) {
-        let result = recipeService.searchRecipe(recipeID)
+    @MainActor
+    func fetchRecipe(_ recipeID: Int) async {
+        let result = await recipeService.searchRecipe(recipeID)
         switch result {
         case .success(let success):
-            recipeDetail = success
+            print("\(success.data)")
+            recipeDetail = RecipeDetail(dto: success.data)
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }
     }
     
     func stepID(at :Int) -> String {
-        String(recipeDetail?.steps[at].id ?? "id")
+        String(recipeDetail?.steps[at].seq ?? 1)
     }
 }

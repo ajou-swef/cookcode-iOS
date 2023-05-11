@@ -12,15 +12,15 @@ final class RecipeFailureService: RecipeServiceProtocol {
         .failure(.MOCK())
     }
     
-    func searchCell(page: Int, size: Int, sort: String, month: Int) async -> Result<[any SearchedCell], ServiceError> {
+    func searchCell(page: Int, size: Int, sort: String?, month: Int?) async -> Result<[any SearchedCell], ServiceError> {
         return .failure(ServiceError.MOCK())
     }
     
-    func searchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> {
+    func searchRecipe(_ recipeID: Int) async -> Result<ServiceResponse<RecipeDetailDTO>, ServiceError> {
         return .failure(ServiceError(message: "조회 실패", status: 400))
     }
     
-    func searchRecipeHomeCell(page: Int, size: Int, sort: String, month: Int, cookcable: Bool) -> Result<RecipeCellSeachResponse, ServiceError> {
+    func searchRecipeHomeCell(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<RecipeCellSeachResponse, ServiceError> {
         return .failure(ServiceError(message: "검색 실패", status: 400))
     }
 }

@@ -11,7 +11,7 @@ import Introspect
 struct HomeView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var viewModel = HomeViewModel(recipeService: RecipeService())
     
     let columns: [GridItem] = [
         GridItem(.flexible())
@@ -27,6 +27,9 @@ struct HomeView: View {
         }
         .overlay(alignment: .bottomTrailing) {
            presentRecipeFormViewButton()
+        }
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+            ServiceAlert.CANCEL_BUTTON
         }
     }
     
@@ -46,11 +49,11 @@ struct HomeView: View {
     @ViewBuilder
     private func homeRows() -> some View {
         List {
-            ForEach(0..<10, id: \.self) {  _ in
+            ForEach(viewModel.recipeCells) {  cell in
                Button {
-                   navigateViewModel.navigateWithHome(RecipeCellDto.MOCK_DATA)
+                   navigateViewModel.navigateWithHome(cell)
                } label: {
-                   CellView(cell: RecipeCell.mock())
+                   CellView(cell: cell)
                        .frame(height: recipeCellHeight)
                        .foregroundColor(.black)
                }

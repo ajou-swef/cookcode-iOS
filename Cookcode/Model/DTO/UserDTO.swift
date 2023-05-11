@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct User: Codable, Hashable {
+struct UserDTO: Codable, Hashable {
     let userID: Int
-    let profileImage, nickname: String
+    let profileImage: String?
+    let nickname: String
     
-    static let MOCK_DATA: User = User(userID: 1, profileImage: "https://picsum.photos/200/300/?blur", nickname: "Page")
+    static let MOCK_DATA: UserDTO = UserDTO(userID: 1, profileImage: "https://picsum.photos/200/300/?blur", nickname: "Page")
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"

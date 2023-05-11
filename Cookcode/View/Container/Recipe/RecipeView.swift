@@ -19,8 +19,8 @@ struct RecipeView: View {
         self._recipeFormViewModel = ObservedOptionalObject(wrappedValue: recipeFormViewModel)
     }
     
-    init(recipeCell: RecipeCellDto) {
-        self._recipeViewModel = StateObject(wrappedValue: RecipeViewModel(recipeService: RecipeSuccessService(), contentService: ContentSuccessService(), recipeID: recipeCell.recipeID))
+    init(recipeCell: RecipeCell) {
+        self._recipeViewModel = StateObject(wrappedValue: RecipeViewModel(recipeService: RecipeService(), contentService: ContentSuccessService(), recipeID: recipeCell.recipeId))
     }
     
     var isPreview: Bool {
@@ -39,7 +39,7 @@ struct RecipeView: View {
         if let viewModel = recipeFormViewModel {
             return viewModel.recipeForm.title
         } else {
-            return "디테일 제목"
+            return recipeViewModel.recipeDetail?.title ?? "에러 타이틀"
         }
     }
     
@@ -47,7 +47,7 @@ struct RecipeView: View {
         if let viewModel = recipeFormViewModel {
             return viewModel.recipeForm.description
         } else {
-            return "디테일 설명"
+            return recipeViewModel.recipeDetail?.description ?? "에러 설명"
         }
     }
     
