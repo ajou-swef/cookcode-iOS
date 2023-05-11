@@ -33,7 +33,7 @@ class HomeViewModel: ObservableObject {
             let newCells = success.data.recipeCells.map {  RecipeCell(dto: $0) }
             recipeCells.append(contentsOf: newCells)
         case .failure(let failure):
-            break
+            serviceAlert.presentAlert(failure)
         }
     }
 }
