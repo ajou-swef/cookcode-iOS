@@ -8,8 +8,8 @@
 import Foundation
 
 protocol RecipeServiceProtocol: SearchCellServiceProtocol {
-    func searchRecipeHomeCell(page: Int, size: Int, sort: String, month: Int, cookcable: Bool) -> Result<RecipeCellSeachResponse, ServiceError>
+    func searchRecipeHomeCell(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<RecipeCellSeachResponse, ServiceError>
     
-    func searchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError>
+    func searchRecipe(_ recipeID: Int) async -> Result<ServiceResponse<RecipeDetailDTO>, ServiceError>
     func postRecipe(_ form: RecipeFormDTO) async -> Result<ServiceResponse<PostRecipeResonse>, ServiceError>
 }

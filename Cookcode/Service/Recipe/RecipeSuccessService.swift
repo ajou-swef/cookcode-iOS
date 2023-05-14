@@ -12,15 +12,15 @@ final class RecipeSuccessService: RecipeServiceProtocol {
         .success(.mock())
     }
     
-    func searchCell(page: Int, size: Int, sort: String, month: Int) async -> Result<[any SearchedCell], ServiceError> {
+    func searchCell(page: Int, size: Int, sort: String?, month: Int?) async -> Result<[any SearchedCell], ServiceError> {
         .success(RecipeCell.mocks(10))
     }
     
-    func searchRecipe(_ recipeID: Int) -> Result<RecipeCellDto, ServiceError> {
-        return .success(RecipeCellDto.MOCK_DATA)
+    func searchRecipe(_ recipeID: Int) async -> Result<ServiceResponse<RecipeDetailDTO>, ServiceError> {
+        .success(.mock())
     }
     
-    func searchRecipeHomeCell(page: Int, size: Int, sort: String, month: Int, cookcable: Bool) -> Result<RecipeCellSeachResponse, ServiceError> {
+    func searchRecipeHomeCell(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<RecipeCellSeachResponse, ServiceError> {
         return .success(RecipeCellSeachResponse.MOCK_DATA)
     }
 }

@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct RecipeCellSearch: Codable {
+struct RecipeCellSearchDTO: Codable {
     var recipeCells: [RecipeCellDto]
     var numberOfElements, offset, pageNumber, pageSize: Int
-    var totalElements, totalPages: Int
+    var totalElements, totalPage: Int
     
-    static let MOCK_DATA: RecipeCellSearch = RecipeCellSearch(recipeCells: [RecipeCellDto.MOCK_DATA, RecipeCellDto.MOCK_DATA], numberOfElements: 0, offset: 0, pageNumber: 0, pageSize: 0, totalElements: 0, totalPages: 0)
+    static let MOCK_DATA: RecipeCellSearchDTO = RecipeCellSearchDTO(recipeCells: RecipeCellDto.mocks(1), numberOfElements: 0, offset: 0, pageNumber: 0, pageSize: 0, totalElements: 0, totalPages: 0)
     
     enum CodingKeys: String, CodingKey {
         case recipeCells = "content"
         case numberOfElements, offset, pageNumber, pageSize
-        case totalElements, totalPages
+        case totalElements, totalPage
     }
     
     init () {
@@ -27,7 +27,7 @@ struct RecipeCellSearch: Codable {
         pageNumber = 0
         pageSize = 0
         totalElements = 0
-        totalPages = 0
+        totalPage = 0
     }
     
     init (recipeCells: [RecipeCellDto], numberOfElements: Int, offset: Int, pageNumber: Int, pageSize: Int, totalElements: Int, totalPages: Int) {
@@ -37,16 +37,16 @@ struct RecipeCellSearch: Codable {
         self.pageNumber = pageNumber
         self.pageSize = pageSize
         self.totalElements = totalElements
-        self.totalPages = totalPages
+        self.totalPage = totalPages
     }
     
-    mutating func update(_ newSearchResult: RecipeCellSearch) {
+    mutating func update(_ newSearchResult: RecipeCellSearchDTO) {
         recipeCells.append(contentsOf: newSearchResult.recipeCells)
         numberOfElements = newSearchResult.numberOfElements
         offset = newSearchResult.offset
         pageNumber = newSearchResult.pageNumber
         pageSize = newSearchResult.pageSize
         totalElements = newSearchResult.totalElements
-        totalPages += newSearchResult.totalPages
+        totalPage += newSearchResult.totalPage
     }
 }
