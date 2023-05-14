@@ -37,5 +37,32 @@ final class RecipeFormTests: XCTestCase {
         let actual = recipeForm.deletedThumbnails.count
         XCTAssertEqual(expected, actual)
     }
+    
+    func test_When_AnyRequiredInformationIsEmpty_Expect_True() {
+        
+        //  Given
+        let titleIsEmpty = RecipeForm(title: "", description: "description", thumbnail: "thumbnail")
+        let descirptionIsEmpty = RecipeForm(title: "title", description: "", thumbnail: "thumbnail")
+        let thumbnailIsEmpty = RecipeForm(title: "title", description: "description", thumbnail: "")
+        
+        let forms: [RecipeForm] = [titleIsEmpty, descirptionIsEmpty, thumbnailIsEmpty]
+        
+        for form in forms {
+            //  Then
+            XCTAssertTrue(form.anyRequiredInformationIsEmpty)
+        }
+        
+    }
+    
+    
+    func test_When_FillAllRequiredInformation_Expect_False() {
+        
+        //  Given
+        let form = RecipeForm(title: "title", description: "description", thumbnail: "thumbnail")
+        
+        
+        //  Then
+        XCTAssertFalse(form.anyRequiredInformationIsEmpty)
+    }
 
 }

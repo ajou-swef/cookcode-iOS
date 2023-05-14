@@ -53,11 +53,11 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     var deleteAlertIsPresented: Bool = false
     
     var recipeMetadataHasThumbnail: Bool {
-        !recipeForm.thumbnailIsEmpty
+        !recipeForm.thumbnail.isEmpty
     }
     
-    var previewButtonIsAvailable: Bool {
-        containsAnyStep && !recipeForm.titleIsEmpty && mainImageData != nil
+    var previewButtonIsDisabled: Bool {
+        recipeForm.anyRequiredInformationIsEmpty
     }
     
     var containsAnyStep: Bool {

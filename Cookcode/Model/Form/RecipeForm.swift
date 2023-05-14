@@ -20,16 +20,12 @@ struct RecipeForm: Codable {
     
     var steps: [ContentWrappedStepForm] = []
     
-    var thumbnailIsEmpty: Bool {
-        thumbnail.isEmpty
-    }
-    
-    var titleIsEmpty: Bool {
-        title.isEmpty
+    var anyRequiredInformationIsEmpty: Bool {
+        title.isEmpty || description.isEmpty || thumbnail.isEmpty
     }
     
     mutating func updateThumbnail(url: [String]) {
-        if !thumbnailIsEmpty {
+        if !thumbnail.isEmpty {
             deletedThumbnails.append(thumbnail)
         }
         

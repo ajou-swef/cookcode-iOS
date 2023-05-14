@@ -740,8 +740,8 @@
 		159FA86929F8BD2200ECB9E7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				15DF8E902A11107A00B58784 /* Recipe */,
 				1503F94C29B4557A002F3D26 /* LoginViewModel_Tests.swift */,
-				159FA86B29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift */,
 				15F2CC132A02669C0019FAB6 /* MembershipFormViewModelTests.swift */,
 				15C805BB2A0345C6000A1A29 /* SelectIngredientViewModelTests.swift */,
 			);
@@ -891,6 +891,14 @@
 				15F2CC112A0260D30019FAB6 /* AccountViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		15DF8E902A11107A00B58784 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				159FA86B29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift */,
+			);
+			path = Recipe;
 			sourceTree = "<group>";
 		};
 		15F2CC092A0255510019FAB6 /* Environment */ = {
