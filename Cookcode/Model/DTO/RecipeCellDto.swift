@@ -7,20 +7,19 @@
 
 import Foundation
 
-struct RecipeCellDto: Codable, Hashable {
-    let recipeID: Int
-    let user: User
-    let title, description, createdAt, updatedAt: String
-    let isLiked: Bool
-    let likeCount, commentCount: Int
-    let isCookable: Bool
-    let thumbanil: String
-    let steps: [RecipeStep]
-    
-    static let MOCK_DATA: RecipeCellDto = RecipeCellDto(recipeID: 1, user: User.MOCK_DATA, title: "레시피 제목", description: "레시피 설명", createdAt: "3131", updatedAt: "213131", isLiked: false, likeCount: 10, commentCount: 30, isCookable: true, thumbanil: "https://picsum.photos/id/870/200/300?grayscale&blur=2", steps: [RecipeStep.MOCK_DATA, RecipeStep.MOCK_DATA2])
-
-    enum CodingKeys: String, CodingKey {
-        case recipeID = "recipeId"
-        case user, title, description, createdAt, updatedAt, isLiked, likeCount, commentCount, isCookable, thumbanil, steps
+struct RecipeCellDto: Codable, Hashable, Mock {
+    static func mock() -> RecipeCellDto {
+        RecipeCellDto(recipeID: 1, user: UserDTO.MOCK_DATA, title: "title", description: "description", ingredients: IngredientDTO.mocks(1), optionalIngredients: IngredientDTO.mocks(1), createdAt: "2023-12-12", updatedAt: "2023-12-14", thumbnail: "")
     }
+    
+    let recipeID: Int
+     let user: UserDTO
+     let title, description: String
+     let ingredients, optionalIngredients: [IngredientDTO]
+     let createdAt, updatedAt, thumbnail: String
+
+     enum CodingKeys: String, CodingKey {
+         case recipeID = "recipeId"
+         case user, title, description, ingredients, optionalIngredients, createdAt, updatedAt, thumbnail
+     }
 }

@@ -61,12 +61,13 @@ class NavigateViewModel: ObservableObject {
         profilePath.append(path)
     }
     
-    func navigateToOuter(_ path: OuterPath) {
-        outerPath = path
-    }
-    
     func navigateWithHome(_ path: any Hashable) {
         homePath.append(path)
+    }
+    
+    
+    func navigateToOuter(_ path: OuterPath) {
+        outerPath = path
     }
     
     func dismissOuter() {

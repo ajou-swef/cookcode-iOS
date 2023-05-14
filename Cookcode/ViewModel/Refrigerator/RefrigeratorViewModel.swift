@@ -18,9 +18,8 @@ class RefrigeratorViewModel: ObservableObject {
     
     init (fridgeService: RefrigeratorServiceProtocol) {
         self.fridgeService = fridgeService
-        Task {
-            await fetchIngredients()
-        }
+        
+        Task { await fetchIngredients() }
     }
     
     @MainActor

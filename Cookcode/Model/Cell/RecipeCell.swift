@@ -8,19 +8,28 @@
 import Foundation
 
 struct RecipeCell: SearchedCell {
+    
     var type: RecipeCell.Type {
         RecipeCell.self
     }
     
-    var id: String = UUID().uuidString
-    
-    static func mock() -> RecipeCell {
-        RecipeCell(thumbnail: "https://picsum.photos/200", title: "맛있는 요리", userName: "Page")
-    }
-    
     typealias MockType = RecipeCell
+    
+    var id: String = UUID().uuidString
+    var recipeId: Int
     
     var thumbnail: String
     var title: String
     var userName: String
+    
+    init(dto: RecipeCellDto) {
+        recipeId = dto.recipeID
+        thumbnail = "https://picsum.photos/200/300"
+        title = dto.title
+        userName = dto.user.nickname
+    }
+    
+    static func mock() -> RecipeCell {
+        RecipeCell(dto: RecipeCellDto.mock())
+    }
 }
