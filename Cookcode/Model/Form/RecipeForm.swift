@@ -15,22 +15,32 @@ struct RecipeForm: Codable {
     var ingredients: [Int] = []
     var optionalIngredients: [Int] = []
     
-    private(set) var thumbnail: String = ""
+    private(set) var _thumbnail: String = ""
     private(set) var deletedThumbnails: [String] = []
+    
+    
+    var thumbnail: String {
+        get { _thumbnail }
+        set(newValue) { _thumbnail = newValue }
+    }
     
     var steps: [ContentWrappedStepForm] = []
     
+    var anyStepLacksOfInformation: Bool {
+        steps.contains { $0.lacksOfInformation }
+    }
+    
     var anyRequiredInformationIsEmpty: Bool {
-        title.isEmpty || description.isEmpty || thumbnail.isEmpty
+        title.isEmpty || description.isEmpty || _thumbnail.isEmpty
     }
     
     mutating func updateThumbnail(url: [String]) {
-        if !thumbnail.isEmpty {
-            deletedThumbnails.append(thumbnail)
+        if !_thumbnail.isEmpty {
+            deletedThumbnails.append(_thumbnail)
         }
         
         if url.count >= 1 {
-            thumbnail = url[0]
+            _thumbnail = url[0]
         }
     }
     

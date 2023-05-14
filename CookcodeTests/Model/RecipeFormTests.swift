@@ -41,9 +41,9 @@ final class RecipeFormTests: XCTestCase {
     func test_When_AnyRequiredInformationIsEmpty_Expect_True() {
         
         //  Given
-        let titleIsEmpty = RecipeForm(title: "", description: "description", thumbnail: "thumbnail")
-        let descirptionIsEmpty = RecipeForm(title: "title", description: "", thumbnail: "thumbnail")
-        let thumbnailIsEmpty = RecipeForm(title: "title", description: "description", thumbnail: "")
+        let titleIsEmpty = RecipeForm(title: "", description: "description", _thumbnail: "thumbnail")
+        let descirptionIsEmpty = RecipeForm(title: "title", description: "", _thumbnail: "thumbnail")
+        let thumbnailIsEmpty = RecipeForm(title: "title", description: "description", _thumbnail: "")
         
         let forms: [RecipeForm] = [titleIsEmpty, descirptionIsEmpty, thumbnailIsEmpty]
         
@@ -58,11 +58,15 @@ final class RecipeFormTests: XCTestCase {
     func test_When_FillAllRequiredInformation_Expect_False() {
         
         //  Given
-        let form = RecipeForm(title: "title", description: "description", thumbnail: "thumbnail")
+        let form = RecipeForm(title: "title", description: "description", _thumbnail: "thumbnail")
         
         
         //  Then
         XCTAssertFalse(form.anyRequiredInformationIsEmpty)
+    }
+    
+    func test_When_AnyStepLacksOfInformation_Expect_True() {
+        
     }
 
 }
