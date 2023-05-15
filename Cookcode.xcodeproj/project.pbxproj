@@ -85,6 +85,8 @@
 		159BE2AF29FB875F00DE7448 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2AE29FB875F00DE7448 /* CellView.swift */; };
 		159BE2B229FB87CD00DE7448 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 159BE2B129FB87CD00DE7448 /* Kingfisher */; };
 		159BE2B429FB8DB300DE7448 /* OuterPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2B329FB8DB300DE7448 /* OuterPath.swift */; };
+		159C99D82A126DD30058B18E /* LegacyScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 159C99D72A126DD30058B18E /* LegacyScrollView */; };
+		159C99E12A127B450058B18E /* ScrollVelocityDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C99E02A127B450058B18E /* ScrollVelocityDetector.swift */; };
 		159FA86C29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159FA86B29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift */; };
 		15A19D812A0B8CF8008C71EA /* RecipeFormDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A19D802A0B8CF8008C71EA /* RecipeFormDTO.swift */; };
 		15A19D832A0B8D43008C71EA /* StepFormDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A19D822A0B8D43008C71EA /* StepFormDTO.swift */; };
@@ -261,6 +263,7 @@
 		159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFailureService.swift; sourceTree = "<group>"; };
 		159BE2AE29FB875F00DE7448 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		159BE2B329FB8DB300DE7448 /* OuterPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterPath.swift; sourceTree = "<group>"; };
+		159C99E02A127B450058B18E /* ScrollVelocityDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollVelocityDetector.swift; sourceTree = "<group>"; };
 		159FA86B29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFormViewModel_Tests.swift; sourceTree = "<group>"; };
 		15A19D802A0B8CF8008C71EA /* RecipeFormDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFormDTO.swift; sourceTree = "<group>"; };
 		15A19D822A0B8D43008C71EA /* StepFormDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFormDTO.swift; sourceTree = "<group>"; };
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				159BE2B229FB87CD00DE7448 /* Kingfisher in Frameworks */,
+				159C99D82A126DD30058B18E /* LegacyScrollView in Frameworks */,
 				15DAE25829FE3CCA00A4B00A /* ObservedOptionalObject in Frameworks */,
 				15A6AB5A2A03BE6400394490 /* PopupView in Frameworks */,
 				15F82A6A29FA8D5F00DA9381 /* Alamofire in Frameworks */,
@@ -604,6 +608,7 @@
 				153B4D9129ED081C00543730 /* Font */,
 				153B4D8B29ED051100543730 /* Color + Extension */,
 				15B1F9E32A08FD6500B9CB24 /* ServiceDateFormatter.swift */,
+				159C99E02A127B450058B18E /* ScrollVelocityDetector.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -995,6 +1000,7 @@
 				159BE2B129FB87CD00DE7448 /* Kingfisher */,
 				15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */,
 				15A6AB592A03BE6400394490 /* PopupView */,
+				159C99D72A126DD30058B18E /* LegacyScrollView */,
 			);
 			productName = Cookcode;
 			productReference = 1503F91F29B45560002F3D26 /* Cookcode.app */;
@@ -1074,6 +1080,7 @@
 				159BE2B029FB87CC00DE7448 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				15DAE25629FE3CCA00A4B00A /* XCRemoteSwiftPackageReference "observed-optional-object" */,
 				15A6AB582A03BE6400394490 /* XCRemoteSwiftPackageReference "PopupView" */,
+				159C99D62A126DD30058B18E /* XCRemoteSwiftPackageReference "LegacyScrollView" */,
 			);
 			productRefGroup = 1503F92029B45560002F3D26 /* Products */;
 			projectDirPath = "";
@@ -1175,6 +1182,7 @@
 				15B869B929EFDC3600A02872 /* HomeView.swift in Sources */,
 				15F82A7329FA92D500DA9381 /* SignInDto.swift in Sources */,
 				15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */,
+				159C99E12A127B450058B18E /* ScrollVelocityDetector.swift in Sources */,
 				1566059229F93740008B9F9F /* HomeViewModel.swift in Sources */,
 				15EFAD6C2A0B34690092B203 /* Int + Extension.swift in Sources */,
 				15F2CC0B2A0255590019FAB6 /* API.swift in Sources */,
@@ -1605,6 +1613,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		159C99D62A126DD30058B18E /* XCRemoteSwiftPackageReference "LegacyScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/perimeter-inc/LegacyScrollView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		15A6AB582A03BE6400394490 /* XCRemoteSwiftPackageReference "PopupView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/PopupView.git";
@@ -1641,6 +1657,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 159BE2B029FB87CC00DE7448 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		159C99D72A126DD30058B18E /* LegacyScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 159C99D62A126DD30058B18E /* XCRemoteSwiftPackageReference "LegacyScrollView" */;
+			productName = LegacyScrollView;
 		};
 		15A6AB592A03BE6400394490 /* PopupView */ = {
 			isa = XCSwiftPackageProductDependency;
