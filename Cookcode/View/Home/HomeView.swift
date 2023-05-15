@@ -7,11 +7,13 @@
 
 import SwiftUI
 import Introspect
+import LegacyScrollView
 
 struct HomeView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @StateObject private var viewModel = HomeViewModel(recipeService: RecipeService())
+    @State private var hidden: Bool = true
     
     let columns: [GridItem] = [
         GridItem(.flexible())
@@ -23,6 +25,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             header()
+                .zIndex(200)
             
             HStack {
                 RecipeFilterPicker(selection: $viewModel.filterType, activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
@@ -32,6 +35,9 @@ struct HomeView: View {
             }
             .zIndex(100)
             .padding(.leading)
+            .offset(y: viewModel.filterOffset)
+            .padding(.bottom, viewModel.filterOffset)
+            .opacity((20 + viewModel.filterOffset) * 0.2)
             
             homeRows()
         }
@@ -58,25 +64,35 @@ struct HomeView: View {
     
     @ViewBuilder
     private func homeRows() -> some View {
-        List {
-            ForEach(viewModel.recipeCells) {  cell in
-               Button {
-                   navigateViewModel.navigateWithHome(cell)
-               } label: {
-                   CellView(cell: cell)
-                       .frame(height: recipeCellHeight)
-                       .foregroundColor(.black)
-                       .zIndex(0)
+        ScrollView {
+            VStack(spacing: 20) {
+                ForEach(viewModel.recipeCells) {  cell in
+                   Button {
+                       navigateViewModel.navigateWithHome(cell)
+                   } label: {
+                       CellView(cell: cell)
+                           .frame(height: recipeCellHeight)
+                           .foregroundColor(.black)
+                           .zIndex(0)
+                   }
                }
-           }
+            }
+            .padding(.horizontal)
+            .background {
+                ScrollDetector { offset, velocity in
+                    withAnimation {
+                        viewModel.filterOffset = velocity
+                    }
+                }
+            }
             
             Color.white.opacity(1)
                 .offsetY { viewModel.fetchTriggerOffset = $0 }
         }
-        .listStyle(.plain)
         .onChange(of: viewModel.fetchTriggerOffset) { newValue in
             Task { await viewModel.fetchRecipeCell() }
         }
+        
     }
     
     @ViewBuilder
