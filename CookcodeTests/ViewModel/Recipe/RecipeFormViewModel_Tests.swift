@@ -35,10 +35,10 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         vm.recipeForm.steps.append(ContentWrappedStepForm())
         
         //  Then
-        XCTAssertTrue(vm.previewButtonIsAvailable)
+        XCTAssertTrue(vm.previewButtonIsDisabled)
     }
     
-    func test_RecipeFormViewModel_previewButtonIsAvailable_shouldBeFalse1() {
+    func test_When_TitleIsEmpty_Expect_PreviewButtonIsDisabled() {
         //  Given
         guard let vm = viewModel else {
             XCTFail()
@@ -46,14 +46,14 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         }
         
         //  When
-        vm.mainImageData = Data()
+        vm.recipeForm.description = "description"
         vm.recipeForm.steps.append(ContentWrappedStepForm())
         
         //  Then
-        XCTAssertFalse(vm.previewButtonIsAvailable)
+        XCTAssertTrue(vm.previewButtonIsDisabled)
     }
     
-    func test_RecipeFormViewModel_previewButtonIsAvailable_shouldBeFalse2() {
+    func test_When_DescriptionIsEmpty_Expect_PreviewButtonIsDisabled() {
         //  Given
         guard let vm = viewModel else {
             XCTFail()
@@ -62,10 +62,11 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         
         //  When
         vm.recipeForm.title = "Title"
+        vm.recipeForm.thumbnail = "thumbnail"
         vm.recipeForm.steps.append(ContentWrappedStepForm())
         
         //  Then
-        XCTAssertFalse(vm.previewButtonIsAvailable)
+        XCTAssertTrue(vm.previewButtonIsDisabled)
     }
     
     func test_RecipeFormViewModel_previewButtonIsAvailable_shouldBeFalse3() {
@@ -77,10 +78,11 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         
         //  When
         vm.recipeForm.title = "Title"
-        vm.mainImageData = Data() 
+        vm.recipeForm.thumbnail = "thumbnail"
+        vm.recipeForm.steps.append(ContentWrappedStepForm())
         
         //  Then
-        XCTAssertFalse(vm.previewButtonIsAvailable)
+        XCTAssertTrue(vm.previewButtonIsDisabled)
     }
     
     @MainActor

@@ -18,6 +18,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
             recipeDetail = RecipeDetail(form: newVal)
         }
     }
+    
     @Published var useMainIngredient: Bool = false
     
     @Published var mainImageItem: PhotosPickerItem?
@@ -53,11 +54,11 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     var deleteAlertIsPresented: Bool = false
     
     var recipeMetadataHasThumbnail: Bool {
-        !recipeForm.thumbnailIsEmpty
+        !recipeForm.thumbnail.isEmpty
     }
     
-    var previewButtonIsAvailable: Bool {
-        containsAnyStep && !recipeForm.titleIsEmpty && mainImageData != nil
+    var previewButtonIsDisabled: Bool {
+        recipeForm.anyRequiredInformationIsEmpty
     }
     
     var containsAnyStep: Bool {
@@ -86,19 +87,27 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
         }
     }
     
+    fileprivate func controllMainIngredient(_ ingredientID: Int) {
+        if let index = recipeForm.ingredients.firstIndex(of: ingredientID) {
+            recipeForm.ingredients.remove(at: index)
+        } else {
+            recipeForm.ingredients.append(ingredientID)
+        }
+    }
+    
+    fileprivate func controllOptionalIngredient(_ ingredientID: Int) {
+        if let index = recipeForm.optionalIngredients.firstIndex(of: ingredientID) {
+            recipeForm.optionalIngredients.remove(at: index)
+        } else {
+            recipeForm.optionalIngredients.append(ingredientID)
+        }
+    }
+    
     func ingredientCellTapped(_ ingredientID: Int) {
         if useMainIngredient {
-            if let index = recipeForm.ingredients.firstIndex(of: ingredientID) {
-                recipeForm.ingredients.remove(at: index)
-            } else {
-                recipeForm.ingredients.append(ingredientID)
-            }
+            controllMainIngredient(ingredientID)
         } else {
-            if let index = recipeForm.optionalIngredients.firstIndex(of: ingredientID) {
-                recipeForm.optionalIngredients.remove(at: index)
-            } else {
-                recipeForm.optionalIngredients.append(ingredientID)
-            }
+            controllOptionalIngredient(ingredientID)
         }
     }
     
@@ -293,6 +302,15 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
         case .failure(_):
             print("실패~")
         }
-        
+    }
+    
+    func appendMainIngredientButtonTapped() {
+        useMainIngredient = true
+        mainIngredientViewIsPresnted = true
+    }
+    
+    func appendOptionalIngredientButtonTapped() {
+        useMainIngredient = false
+        optioanlIngredientViewIsPresnted = true
     }
 }

@@ -84,9 +84,9 @@ struct RecipeFormView: View {
                     .font(CustomFontFactory.INTER_BOLD_16)
                     .foregroundColor(.white)
                     .roundedRectangle(.GRAY_320_FILLED,
-                                      focused: viewModel.previewButtonIsAvailable)
+                                      focused: !viewModel.previewButtonIsDisabled)
             }
-            .disabled(!viewModel.previewButtonIsAvailable)
+            .disabled(viewModel.previewButtonIsDisabled)
         }
     }
     
@@ -195,8 +195,7 @@ struct RecipeFormView: View {
                 Spacer()
                 
                 Button {
-                    viewModel.useMainIngredient = true
-                    viewModel.mainIngredientViewIsPresnted = true 
+                    viewModel.appendMainIngredientButtonTapped()
                 } label: {
                     HStack(spacing: 5) {
                         Image(systemName: "plus")
@@ -234,8 +233,7 @@ struct RecipeFormView: View {
                 Spacer()
                 
                 Button {
-                    viewModel.useMainIngredient = false
-                    viewModel.optioanlIngredientViewIsPresnted = true
+                    viewModel.appendOptionalIngredientButtonTapped()
                 } label: {
                     HStack(spacing: 5) {
                         Image(systemName: "plus")
