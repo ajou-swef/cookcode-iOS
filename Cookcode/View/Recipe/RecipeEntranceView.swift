@@ -16,20 +16,28 @@ struct RecipeEntranceView: View {
     let cgSize: CGSize
     
     var body: some View {
-        VStack(alignment: .leading) {
-            KFImage(URL(string: imageURL))
-                .resizable()
-                .frame(maxWidth:. infinity, maxHeight: 300)
-            
-            Group {
-                Text(title)
-                    .font(CustomFontFactory.INTER_BOLD_30)
+        ScrollView {
+            VStack(alignment: .leading) {
+                KFImage(URL(string: imageURL))
+                    .resizable()
+                    .aspectRatio(CGSize(width: 4, height: 3), contentMode: .fill)
+                    .frame(maxWidth:. infinity, maxHeight: 300)
                 
-                Text(description)
-                    .font(CustomFontFactory.INTER_REGULAR_14)
+                Group {
+                    Text(title)
+                        .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                        .padding(.bottom, 10)
+                    
+                    Section {
+                        Text(description)
+                            .font(CustomFontFactory.INTER_REGULAR_14)
+                    } header: {
+                        Text("설명")
+                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                    }
+                }
+                .padding(.leading, 10)
             }
-            .padding(.leading, 10)
-            
         }
     }
 }
