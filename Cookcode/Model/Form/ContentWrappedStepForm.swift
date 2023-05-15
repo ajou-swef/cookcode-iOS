@@ -91,3 +91,12 @@ struct ContentWrappedStepForm: Identifiable, Codable {
         }
     }
 }
+
+extension ContentWrappedStepForm {
+    init(stepDetailDTO: StepDTO) {
+        title = stepDetailDTO.title
+        description = stepDetailDTO.description
+        imageURLs = stepDetailDTO.photos.map { $0.photoURL }
+        videoURLs = stepDetailDTO.videos.map { $0.videoURL }
+    }
+}

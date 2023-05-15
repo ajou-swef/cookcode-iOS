@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension Int: Mock {
+    static func mock() -> Int {
+        1
+    }
+}

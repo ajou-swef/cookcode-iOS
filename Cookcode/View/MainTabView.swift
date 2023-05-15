@@ -18,9 +18,9 @@ struct MainTabView: View {
         
         Group {
             if let path = navigateViewModel.outerPath {
-                switch path {
+                switch path.path {
                 case .recipe:
-                    RecipeFormView()
+                    RecipeFormView(recipeId: path.id)
                         .transition(.move(edge: .trailing))
                 case .profile:
                     ProfileView()
@@ -63,7 +63,7 @@ struct MainTabView: View {
         NavigationStack(path: $navigateViewModel.homePath) {
             HomeView()
                 .navigationDestination(for: RecipeCell.self) { cell in
-                    RecipeView(recipeCell: cell)
+                    RecipeDetailView(recipeCell: cell)
                 }
                 .navigationDestination(for: HomePath.self) { path in
                     switch path {
@@ -72,7 +72,7 @@ struct MainTabView: View {
                     }
                 }
         }
-        .tint(.mainColor)
+        .tint(.primary)
         .tag(Tab.home)
         .tabItem {
             Tab.home.selectImage(navigateViewModel.tab)

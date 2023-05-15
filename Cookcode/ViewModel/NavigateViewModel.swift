@@ -14,7 +14,7 @@ class NavigateViewModel: ObservableObject {
     @Published var recipePath: NavigationPath = .init()
     @Published var homePath: NavigationPath = .init()
     
-    @Published var outerPath: OuterPath?
+    @Published var outerPath: OuterIdPath?
     @Published var profilePath: NavigationPath = .init()
     
     init() {
@@ -47,7 +47,8 @@ class NavigateViewModel: ObservableObject {
                 let rawValue = component.replacingOccurrences(of: "outer=", with: "")
                 let outerPath = OuterPath(rawValue: rawValue)
                 if let outerPath = outerPath {
-                    navigateToOuter(outerPath)
+                    let outerIdPath = OuterIdPath(path: outerPath, id: nil)
+                    navigateToOuter(outerIdPath)
                 }
             }
         }
@@ -66,7 +67,7 @@ class NavigateViewModel: ObservableObject {
     }
     
     
-    func navigateToOuter(_ path: OuterPath) {
+    func navigateToOuter(_ path: OuterIdPath) {
         outerPath = path
     }
     

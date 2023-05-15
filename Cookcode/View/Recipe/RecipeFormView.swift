@@ -21,7 +21,11 @@ struct RecipeFormView: View {
     ]
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    @StateObject private var viewModel: RecipeFormViewModel = .init(contentService: ContentSuccessService(), recipeService: RecipeService())
+    @StateObject private var viewModel: RecipeFormViewModel 
+    
+    init(recipeId: Int?) {
+        self._viewModel = StateObject(wrappedValue: RecipeFormViewModel(contentService: ContentSuccessService(), recipeService: RecipeService(), recipeId: recipeId))
+    }
     
     var body: some View {
         NavigationStack(path: $navigateViewModel.recipePath) {
@@ -297,6 +301,6 @@ struct RecipeFormView: View {
 
 struct RecipeFormView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeFormView()
+        RecipeFormView(recipeId: nil)
     }
 }

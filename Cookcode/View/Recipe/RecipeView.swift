@@ -18,8 +18,8 @@ struct RecipeView: View {
         self.recipeViewModel = recipeFormViewModel
     }
     
-    init(recipeCell: RecipeCell) {
-        self._recipeViewModel = ObservedObject(wrappedValue: RecipeViewModel(recipeService: RecipeService(), contentService: ContentSuccessService(), recipeID: recipeCell.recipeId))
+    init(viewModel: RecipeViewModel) {
+        recipeViewModel = viewModel
     }
     
     var body: some View {

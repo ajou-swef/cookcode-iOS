@@ -42,9 +42,9 @@ struct ProfileView: View {
                 }
             }
             .tint(.mainColor)
-            .navigationDestination(for: RecipeCell.self) { recipeCell in
-                RecipeView(recipeCell: recipeCell)
-            }
+//            .navigationDestination(for: RecipeCell.self) { recipeCell in
+////                RecipeView(recipeCell: recipeCell)
+//            }
             .navigationDestination(for: ProfilePath.self) { path in
                 switch path {
                 case .myRecipe:

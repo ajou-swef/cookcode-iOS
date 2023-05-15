@@ -9,11 +9,19 @@ import SwiftUI
 import PhotosUI
 
 class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchViewModel {
+    
+    
+    private var recipeId: Int?
+    
+    var usePost: Bool {
+        recipeId == nil
+    }
+    
     @Published var searchText: String = ""
     
     private let contentService: ContentServiceProtocol
     
-    @Published var recipeForm: RecipeForm = .init() {
+    @Published var recipeForm: RecipeForm = RecipeForm() {
         willSet(newVal) {
             recipeDetail = RecipeDetail(form: newVal)
         }
@@ -69,13 +77,32 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
         recipeForm.steps.count >= 2
     }
     
-    init(_ preview: Bool = false, contentService: ContentServiceProtocol, recipeService: RecipeServiceProtocol) {
+    
+    init(_ preview: Bool = false, contentService: ContentServiceProtocol, recipeService: RecipeServiceProtocol, recipeId: Int?) {
         self.contentService = contentService
         super.init(recipeService: recipeService, contentService: contentService, recipeID: nil)
         
         
         if preview {
             recipeForm.appendStep(ContentWrappedStepForm())
+        }
+        
+        if let recipeId = recipeId {
+            self.recipeId = recipeId
+            Task {
+                await fetchForm(recipeId: recipeId)
+            }
+        }
+    }
+    
+    @MainActor
+    private func fetchForm(recipeId: Int) async {
+        let result = await recipeService.searchRecipe(recipeId)
+        switch result {
+        case .success(let success):
+            recipeForm = RecipeForm(recipeDetailDTO: success.data)
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
         }
     }
     
@@ -300,14 +327,27 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
             return
         }
         
-        let dto = RecipeFormDTO(recipeForm: recipeForm)
-        let result = await recipeService.postRecipe(dto)
-        
-        switch result {
-        case .success(_):
-            completion() 
-        case .failure(let error):
-            serviceAlert.presentAlert(error)
+        if usePost {
+            let dto = RecipeFormDTO(recipeForm: recipeForm)
+            let result = await recipeService.postRecipe(dto)
+            
+            switch result {
+            case .success(_):
+                completion()
+            case .failure(let error):
+                serviceAlert.presentAlert(error)
+            }
+        } else {
+            let dto = RecipeFormDTO(recipeForm: recipeForm)
+            guard let recipeId = recipeId else { return }
+            let result = await recipeService.patchRecipe(formDTO: dto, recipeId: recipeId)
+            
+            switch result {
+            case .success(_):
+                completion()
+            case .failure(let error):
+                serviceAlert.presentAlert(error)
+            }
         }
     }
     
