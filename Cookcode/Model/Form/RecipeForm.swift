@@ -31,7 +31,7 @@ struct RecipeForm: Codable {
     }
     
     var anyRequiredInformationIsEmpty: Bool {
-        title.isEmpty || description.isEmpty || _thumbnail.isEmpty
+        title.isEmpty || description.isEmpty || _thumbnail.isEmpty || steps.isEmpty
     }
     
     mutating func updateThumbnail(url: [String]) {

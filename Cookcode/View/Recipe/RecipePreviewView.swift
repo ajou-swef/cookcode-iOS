@@ -43,6 +43,9 @@ struct RecipePreviewView: View {
         }
         .navigationBarBackButtonHidden()
         .statusBarHidden()
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+            ServiceAlert.CANCEL_BUTTON
+        }
     }
     
     @ViewBuilder
@@ -66,8 +69,7 @@ struct RecipePreviewView: View {
    
                Button {
                    Task {
-                       await viewModel.uploadButtonTapped()
-                       navigateVM.dismissOuter()
+                       await viewModel.uploadButtonTapped(completion: navigateVM.dismissOuter)
                    }
                } label: {
                    Image(systemName: "square.and.arrow.up.circle.fill")

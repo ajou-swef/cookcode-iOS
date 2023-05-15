@@ -292,15 +292,16 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
         print("123")
     }
     
-    func uploadButtonTapped() async {
+    @MainActor
+    func uploadButtonTapped(completion: () -> ()) async {
         let dto = RecipeFormDTO(recipeForm: recipeForm)
         let result = await recipeService.postRecipe(dto)
         
         switch result {
         case .success(_):
-            print("성공~")
-        case .failure(_):
-            print("실패~")
+            completion() 
+        case .failure(let error):
+            serviceAlert.presentAlert(error)
         }
     }
     
