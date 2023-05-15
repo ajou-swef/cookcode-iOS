@@ -23,6 +23,16 @@ struct HomeView: View {
     var body: some View {
         VStack {
             header()
+            
+            HStack {
+                RecipeFilterPicker(selection: $viewModel.filterType, activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
+                    .frame(maxWidth: 130)
+                
+                Spacer()
+            }
+            .zIndex(100)
+            .padding(.leading)
+            
             homeRows()
         }
         .overlay(alignment: .bottomTrailing) {
@@ -56,6 +66,7 @@ struct HomeView: View {
                    CellView(cell: cell)
                        .frame(height: recipeCellHeight)
                        .foregroundColor(.black)
+                       .zIndex(0)
                }
            }
             
