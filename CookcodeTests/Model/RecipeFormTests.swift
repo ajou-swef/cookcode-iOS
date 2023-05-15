@@ -58,15 +58,11 @@ final class RecipeFormTests: XCTestCase {
     func test_When_FillAllRequiredInformation_Expect_False() {
         
         //  Given
-        let form = RecipeForm(title: "title", description: "description", _thumbnail: "thumbnail")
+        var form = RecipeForm(title: "title", description: "description", _thumbnail: "thumbnail")
+        form.steps.append(ContentWrappedStepForm())
         
         
         //  Then
         XCTAssertFalse(form.anyRequiredInformationIsEmpty)
     }
-    
-    func test_When_AnyStepLacksOfInformation_Expect_True() {
-        
-    }
-
 }

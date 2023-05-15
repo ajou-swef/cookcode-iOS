@@ -17,14 +17,12 @@ struct RecipeForm: Codable {
     
     private(set) var _thumbnail: String = ""
     private(set) var deletedThumbnails: [String] = []
-    
+    var steps: [ContentWrappedStepForm] = []
     
     var thumbnail: String {
         get { _thumbnail }
-        set(newValue) { _thumbnail = newValue }
+        set { _thumbnail = newValue }
     }
-    
-    var steps: [ContentWrappedStepForm] = []
     
     var anyStepLacksOfInformation: Bool {
         steps.contains { $0.lacksOfInformation }
@@ -58,5 +56,16 @@ struct RecipeForm: Codable {
     
     mutating func stepAppendContentURL(_ at: Int, urls: [String]) {
         steps[at].resetContentURLto(urls)
+    }
+}
+
+extension RecipeForm {
+    init(recipeDetailDTO: RecipeDetailDTO) {
+        title = recipeDetailDTO.title
+        description = recipeDetailDTO.description
+        ingredients = recipeDetailDTO.ingredients.map { $0.ingredientID }
+        optionalIngredients = recipeDetailDTO.optionalIngredients.map { $0.ingredientID }
+        thumbnail = recipeDetailDTO.thumbnail
+        steps = recipeDetailDTO.steps.map { ContentWrappedStepForm(stepDetailDTO: $0) }
     }
 }

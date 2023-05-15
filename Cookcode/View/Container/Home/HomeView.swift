@@ -36,7 +36,7 @@ struct HomeView: View {
     @ViewBuilder
     private func presentRecipeFormViewButton() -> some View {
         Button {
-            navigateViewModel.navigateToOuter(.recipe)
+            navigateViewModel.navigateToOuter(OuterIdPath(path: .recipe, id: nil))
         } label: {
             Image(systemName: "plus")
                 .foregroundColor(.white)
@@ -86,7 +86,7 @@ struct HomeView: View {
             }
             
             Button {
-                navigateViewModel.navigateToOuter(.profile)
+                navigateViewModel.navigateToOuter(OuterIdPath(path: .profile, id: nil))
             } label: {
                 Image(systemName: "person.fill")
                     .resizable()

@@ -11,3 +11,8 @@ enum OuterPath: String {
     case recipe
     case profile
 }
+
+struct OuterIdPath: Equatable {
+    let path: OuterPath
+    let id: Int?
+}

@@ -27,13 +27,13 @@ struct MyRecipeView: View {
                         }
                         .tint(.red)
                         
-                        Button {
-                            navigateViewModel.navigateToOuter(.recipe)
-                            navigateViewModel.profilePath = .init()
-                        } label: {
-                            Text("수정")
-                        }
-                        .tint(.blue)
+//                        Button {
+//                            navigateViewModel.navigateToOuter(.recipe)
+//                            navigateViewModel.profilePath = .init()
+//                        } label: {
+//                            Text("수정")
+//                        }
+//                        .tint(.blue)
                     }
             }
         }
