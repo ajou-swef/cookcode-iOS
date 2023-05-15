@@ -294,6 +294,12 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     
     @MainActor
     func uploadButtonTapped(completion: () -> ()) async {
+        
+        guard !recipeForm.anyStepLacksOfInformation else {
+            serviceAlert.presentAlert(title: "정보가 부족한 스텝이 있습니다.")
+            return
+        }
+        
         let dto = RecipeFormDTO(recipeForm: recipeForm)
         let result = await recipeService.postRecipe(dto)
         

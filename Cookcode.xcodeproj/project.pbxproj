@@ -74,7 +74,7 @@
 		158EFDE12A04D1D3003057A4 /* IngredientPatchComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDE02A04D1D3003057A4 /* IngredientPatchComponent.swift */; };
 		158EFDE32A04D56A003057A4 /* IngredientForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDE22A04D56A003057A4 /* IngredientForm.swift */; };
 		1593D94229F689D1008AF49E /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1593D94129F689D1008AF49E /* RecipeView.swift */; };
-		159BE2A729FB6C1E00DE7448 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2A629FB6C1E00DE7448 /* ErrorAlert.swift */; };
+		159BE2A729FB6C1E00DE7448 /* ServiceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2A629FB6C1E00DE7448 /* ServiceAlert.swift */; };
 		159BE2A929FB6E7900DE7448 /* AccountFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */; };
 		159BE2AC29FB810200DE7448 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 159BE2AB29FB810200DE7448 /* Introspect */; };
 		159BE2AF29FB875F00DE7448 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2AE29FB875F00DE7448 /* CellView.swift */; };
@@ -247,7 +247,7 @@
 		158EFDE02A04D1D3003057A4 /* IngredientPatchComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPatchComponent.swift; sourceTree = "<group>"; };
 		158EFDE22A04D56A003057A4 /* IngredientForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientForm.swift; sourceTree = "<group>"; };
 		1593D94129F689D1008AF49E /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
-		159BE2A629FB6C1E00DE7448 /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		159BE2A629FB6C1E00DE7448 /* ServiceAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAlert.swift; sourceTree = "<group>"; };
 		159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFailureService.swift; sourceTree = "<group>"; };
 		159BE2AE29FB875F00DE7448 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		159BE2B329FB8DB300DE7448 /* OuterPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterPath.swift; sourceTree = "<group>"; };
@@ -464,12 +464,12 @@
 		1503F95229B459C7002F3D26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				158A21CA2A11D46D007F5FA7 /* Alert */,
 				151E1CA32A0CF0CB00BC0DA5 /* State */,
 				153F127629FE2268008BDB4E /* DTO */,
 				15AA2F4129F0C9DC0069813F /* Form */,
 				15AA2F4929F0D8050069813F /* Path */,
 				15B626412A009D40002E1F5F /* Mock.swift */,
-				159BE2A629FB6C1E00DE7448 /* ErrorAlert.swift */,
 				1515F31A2A0C7BC30003A4BB /* Type */,
 				15B6263C2A009CDC002E1F5F /* Cell */,
 				151E1CA22A0CEF0200BC0DA5 /* Detail */,
@@ -701,6 +701,14 @@
 				158EFDD62A04C58F003057A4 /* CellTests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		158A21CA2A11D46D007F5FA7 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				159BE2A629FB6C1E00DE7448 /* ServiceAlert.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		158EFDD82A04CDD1003057A4 /* Container */ = {
@@ -1185,7 +1193,7 @@
 				15AA2F2429EFEA250069813F /* RecipeFormViewModel.swift in Sources */,
 				15B6263E2A009CE6002E1F5F /* SearchedCell.swift in Sources */,
 				152251EC29FFD40F002C3A78 /* ProfilePath.swift in Sources */,
-				159BE2A729FB6C1E00DE7448 /* ErrorAlert.swift in Sources */,
+				159BE2A729FB6C1E00DE7448 /* ServiceAlert.swift in Sources */,
 				15A19D852A0B8E03008C71EA /* RecipeService.swift in Sources */,
 				15F82A6729FA8D3300DA9381 /* AccountServiceProtocol.swift in Sources */,
 				15A19D832A0B8D43008C71EA /* StepFormDTO.swift in Sources */,

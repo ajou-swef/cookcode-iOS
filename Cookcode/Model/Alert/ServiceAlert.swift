@@ -21,4 +21,9 @@ struct ServiceAlert {
         isPresented = true
         title = error.message
     }
+    
+    mutating func presentAlert(title: String) {
+        isPresented = true
+        self.title = title
+    }
 }
