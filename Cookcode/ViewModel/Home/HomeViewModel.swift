@@ -13,6 +13,16 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var recipeCells: [RecipeCell] = []
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var fetchTriggerOffset: CGFloat = .zero
+    @Published var filterType: RecipeFilterType = .all {
+        didSet {
+            Task {
+                await resetRecipeCell()
+            }
+        }
+    }
+    
+    @Published var offset: CGFloat = .zero
+    @Published var hidden: Bool = false
     
     private let recipeService: RecipeServiceProtocol
     private let fetchSize: Int = 10
@@ -29,6 +39,30 @@ class HomeViewModel: ObservableObject {
     }
     
     @MainActor
+    func resetRecipeCell() async {
+        print("Reset recipe cell: \(filterType.rawValue)")
+        pageState = .wait(0)
+        
+        guard pageState.page == 0 || searchTriggerIsInScreen else { return }
+        guard pageState.isWaitingState else { return }
+        
+        let curPage = pageState.page
+        pageState = .loading(curPage)
+        print("page(\(curPage)) loading start")
+        
+        let result = await recipeService.searchRecipeHomeCell(page: curPage, size: fetchSize, sort: nil, month: nil, cookcable: filterType.cookable)
+        
+        switch result {
+        case .success(let success):
+            recipeCells = success.data.recipeCells.map { RecipeCell(dto: $0)}
+            plueOneAt(curPage)
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+            pageBackTo(curPage)
+        }
+    }
+    
+    @MainActor
     func fetchRecipeCell() async {
         
         guard searchTriggerIsInScreen else { return }
@@ -38,7 +72,7 @@ class HomeViewModel: ObservableObject {
         pageState = .loading(curPage)
         print("page(\(curPage)) loading start")
         
-        let result = await recipeService.searchRecipeHomeCell(page: curPage, size: fetchSize, sort: nil, month: nil, cookcable: nil)
+        let result = await recipeService.searchRecipeHomeCell(page: curPage, size: fetchSize, sort: nil, month: nil, cookcable: filterType.cookable)
         
         switch result {
         case .success(let success):

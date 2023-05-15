@@ -51,6 +51,7 @@ struct IngredientPatchComponent<ViewModel>: View where ViewModel: PatchIngredien
                     
                     TextField("입력해주세요.", text: $viewModel.ingredientForm.quantity)
                         .keyboardType(.numberPad)
+                        .frame(alignment: .trailing)
                         .focused($fouces, equals: .quantity)
                 }
                 
