@@ -11,8 +11,22 @@ import Kingfisher
 struct RecipeEntranceView: View {
     
     @State private var offset: CGFloat = .zero
+    
     let recipeDetail: RecipeDetail
     let cgSize: CGSize
+    private let defaultHeight: CGFloat = 300
+    
+    var height: CGFloat {
+        return offset > 0 ? min(offset * 4 + defaultHeight, 600) : defaultHeight
+    }
+    
+    var imageOffset: CGFloat {
+        offset > 0 ? -offset : 0
+    }
+    
+    var titleOpacity: CGFloat {
+        offset > 0 ? (20 - offset) * 0.05 : 1
+    }
     
     var body: some View {
         ScrollView {
@@ -20,13 +34,22 @@ struct RecipeEntranceView: View {
                 KFImage(URL(string: recipeDetail.thumbnail))
                     .resizable()
                     .aspectRatio(CGSize(width: 4, height: 3), contentMode: .fill)
-                    .frame(maxWidth:. infinity, maxHeight: 300 + offset)
+                    .frame(maxWidth:. infinity, minHeight: height)
+                    .offset(y: imageOffset)
+                    .offsetY(coordinateSpace: .named("entranceView")) {
+                        offset = $0
+                    }
+                    .overlay(alignment: .bottomTrailing) {
+                        Text(recipeDetail.title)
+                            .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                            .foregroundColor(.white)
+                            .padding(.bottom, 10)
+                            .multilineTextAlignment(.trailing)
+                            .padding(.trailing)
+                            .opacity(titleOpacity)
+                    }
                   
                 Group {
-                    Text(recipeDetail.title)
-                        .font(CustomFontFactory.INTER_SEMIBOLD_20)
-                        .padding(.bottom, 10)
-                    
                     Section {
                         Text(recipeDetail.description)
                             .font(CustomFontFactory.INTER_REGULAR_14)
@@ -51,6 +74,7 @@ struct RecipeEntranceView: View {
                 .padding(.horizontal, 10)
             }
         }
+        .coordinateSpace(name: "entranceView")
     }
 }
 

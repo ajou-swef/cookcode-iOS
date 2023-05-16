@@ -19,11 +19,11 @@ struct OffsetY: PreferenceKey {
 
 extension View {
     @ViewBuilder
-    func offsetY(completion: @escaping (CGFloat) -> ()) -> some View {
+    func offsetY(coordinateSpace: CoordinateSpace = .global, completion: @escaping (CGFloat) -> ()) -> some View {
         self
             .overlay {
                 GeometryReader { proxy in
-                    let minY = proxy.frame(in: .global).minY
+                    let minY = proxy.frame(in: coordinateSpace).minY
                     
                     Color.clear
                         .preference(key: OffsetY.self, value: minY)
