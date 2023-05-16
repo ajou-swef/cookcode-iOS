@@ -1,0 +1,16 @@
+name: develop_pull_request_rule 
+
+on:
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: | 
+        xcodebuild clean test -project Cookcode.xcodeproj -scheme Cookcode -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2'
