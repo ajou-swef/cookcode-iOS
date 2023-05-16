@@ -43,14 +43,13 @@ extension RecipeDetail {
         description = form.description
         thumbnail = form.thumbnail
         
-        steps = []
         steps = form.steps.map { StepDTO(form: $0) }
         recipeID = nil
         user = nil
         createdAt = nil
         updatedAt = nil
         
-        ingredientCells = []
-        optionalIngredientCells = []
+        ingredientCells = form.ingredients.map { IngredientCell(ingredientId: $0) }
+        optionalIngredientCells = form.optionalIngredients.map { IngredientCell(ingredientId: $0) }
     }
 }

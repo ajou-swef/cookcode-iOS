@@ -10,6 +10,7 @@ import Kingfisher
 
 struct RecipeEntranceView: View {
     
+    @State private var offset: CGFloat = .zero
     let recipeDetail: RecipeDetail
     let cgSize: CGSize
     
@@ -19,8 +20,8 @@ struct RecipeEntranceView: View {
                 KFImage(URL(string: recipeDetail.thumbnail))
                     .resizable()
                     .aspectRatio(CGSize(width: 4, height: 3), contentMode: .fill)
-                    .frame(maxWidth:. infinity, maxHeight: 300)
-                
+                    .frame(maxWidth:. infinity, maxHeight: 300 + offset)
+                  
                 Group {
                     Text(recipeDetail.title)
                         .font(CustomFontFactory.INTER_SEMIBOLD_20)
