@@ -1,11 +1,10 @@
 # This workflow will build a Swift project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
 
-name: recipe_push
+name: push_rule
 
 on:
   push:
-    branches: [ "feature/recipe" ]
 
 jobs:
   build:
