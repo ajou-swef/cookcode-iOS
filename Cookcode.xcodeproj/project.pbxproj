@@ -404,6 +404,8 @@
 			isa = PBXGroup;
 			children = (
 				153B4DA429ED085E00543730 /* Info.plist */,
+				15508CB12A134DE600004A1C /* API.swift */,
+				15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */,
 				153B4D8A29ED050A00543730 /* Helper */,
 				1503F95329B459CA002F3D26 /* Service */,
 				1503F95229B459C7002F3D26 /* Model */,
@@ -951,8 +953,6 @@
 		15F2CC092A0255510019FAB6 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				15508CB12A134DE600004A1C /* API.swift */,
-				15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
