@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import UIKit
 
 final class ContentService: ContentServiceProtocol {
     
@@ -14,14 +15,21 @@ final class ContentService: ContentServiceProtocol {
         let url = "\(BASE_URL)/api/v1/recipe/photos"
         
         let headers: HTTPHeaders = [
-            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? "",
-            "Content-type": "multipart/form-data; boundary=<calculated when request is sent>"
+            ACCESS_TOKEN_KEY : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
+        var imageDatas: [Data] = []
+        for data in data {
+            imageDatas.append(data)
+        }
         
         let response = await AF.upload(multipartFormData: { multipart in
-            multipart.append(data[0], withName: "image")
-        }, to: url, method: .post, headers: headers).serializingDecodable(ServiceResponse<ContentDTO>.self).response
+            for imageData in imageDatas {
+                multipart.append(imageData, withName: "stepImages", fileName: UUID().uuidString, mimeType: "image/jpeg")
+            }
+        }, to: url, usingThreshold: UInt64.init(), method: .post, headers: headers).serializingDecodable(ServiceResponse<ContentDTO>.self).response
+        
+        print("\(response.debugDescription)")
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
@@ -35,7 +43,7 @@ final class ContentService: ContentServiceProtocol {
         
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? "",
-            "Content-type": "multipart/form-data; boundary=<calculated when request is sent>"
+            "Content-type": "multipart/form-data"
         ]
         
         let response = await AF.upload(multipartFormData: { multipart in
