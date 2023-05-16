@@ -18,11 +18,15 @@ final class ContentService: ContentServiceProtocol {
             ACCESS_TOKEN_KEY : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
-        let data = UIImage(data: data[0])?.jpegData(compressionQuality: 0.1)
-        guard let data = data else { return .failure(.MOCK())}
+        var imageDatas: [Data] = []
+        for data in data {
+            imageDatas.append(data)
+        }
         
         let response = await AF.upload(multipartFormData: { multipart in
-            multipart.append(data, withName: "stepImages", fileName: UUID().uuidString, mimeType: "image/jpeg")
+            for imageData in imageDatas {
+                multipart.append(imageData, withName: "stepImages", fileName: UUID().uuidString, mimeType: "image/jpeg")
+            }
         }, to: url, usingThreshold: UInt64.init(), method: .post, headers: headers).serializingDecodable(ServiceResponse<ContentDTO>.self).response
         
         print("\(response.debugDescription)")
