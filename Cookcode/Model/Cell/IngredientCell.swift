@@ -67,4 +67,11 @@ extension IngredientCell {
             presentBadge = true
         }
     }
+    
+    init (ingredientId: Int) {
+        let ingredientCell = INGREDIENTS_DICTIONARY[ingredientId] ?? IngredientCell.mock()
+        title = ingredientCell.title
+        thumbnail = ingredientCell.thumbnail
+        ingredId = ingredientId
+    }
 }
