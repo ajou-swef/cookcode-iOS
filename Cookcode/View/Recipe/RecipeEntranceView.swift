@@ -28,6 +28,7 @@ struct RecipeEntranceView: View {
         offset > 0 ? (20 - offset) * 0.05 : 1
     }
     
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
