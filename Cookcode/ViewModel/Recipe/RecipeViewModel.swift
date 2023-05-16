@@ -34,8 +34,8 @@ class RecipeViewModel: ObservableObject {
         let result = await recipeService.searchRecipe(recipeID)
         switch result {
         case .success(let success):
-            print("\(success.data)")
             recipeDetail = RecipeDetail(dto: success.data)
+            print("recipeDetail: \(recipeDetail)")
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }

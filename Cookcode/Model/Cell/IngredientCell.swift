@@ -31,18 +31,6 @@ struct IngredientCell: Cell, Equatable {
         self.ingredId = ingredId
     }
     
-    init (detail: IngredientDetail) {
-        let ingredientCell = INGREDIENTS_DICTIONARY[detail.ingredId] ?? IngredientCell.mock()
-        title = ingredientCell.title
-        thumbnail = ingredientCell.thumbnail
-        id = String(detail.fridgeIngredId)
-        ingredId = detail.ingredId
-        
-        if expiredDateIsComming(ServiceDateFormatter.tranlsateToString(detail.expiredAt)) {
-            presentBadge = true 
-        }
-    }
-    
     private func expiredDateIsComming(_ expiredAt: String) -> Bool {
         
         let dateFormatter = DateFormatter()
@@ -57,5 +45,26 @@ struct IngredientCell: Cell, Equatable {
         }
         
         return false
+    }
+}
+
+extension IngredientCell {
+    init (ingredientDTO: IngredientDTO) {
+        let ingredientCell = INGREDIENTS_DICTIONARY[ingredientDTO.ingredientID] ?? IngredientCell.mock()
+        title = ingredientCell.title
+        thumbnail = ingredientCell.thumbnail
+        ingredId = ingredientDTO.ingredientID
+    }
+    
+    init (detail: IngredientDetail) {
+        let ingredientCell = INGREDIENTS_DICTIONARY[detail.ingredId] ?? IngredientCell.mock()
+        title = ingredientCell.title
+        thumbnail = ingredientCell.thumbnail
+        id = String(detail.fridgeIngredId)
+        ingredId = detail.ingredId
+        
+        if expiredDateIsComming(ServiceDateFormatter.tranlsateToString(detail.expiredAt)) {
+            presentBadge = true
+        }
     }
 }
