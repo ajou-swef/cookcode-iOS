@@ -404,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				153B4DA429ED085E00543730 /* Info.plist */,
+				15F2CC092A0255510019FAB6 /* Environment */,
 				153B4D8A29ED050A00543730 /* Helper */,
 				1503F95329B459CA002F3D26 /* Service */,
 				1503F95229B459C7002F3D26 /* Model */,
@@ -602,7 +603,6 @@
 		153B4D8A29ED050A00543730 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				15F2CC092A0255510019FAB6 /* Environment */,
 				150CD44429F628900001FFEB /* Swift Standar + Extension */,
 				15AA2F4829F0D4210069813F /* Binding + Extension */,
 				153B4DA929ED0F9500543730 /* View + Extension */,
