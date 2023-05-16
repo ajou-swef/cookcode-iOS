@@ -60,6 +60,8 @@ struct HomeView: View {
                 .padding(.bottom, 10)
                 .padding(.trailing, 15)
         }
+        .offset(y: -viewModel.filterOffset)
+        .opacity((20 + viewModel.filterOffset) * 0.2)
     }
     
     @ViewBuilder
