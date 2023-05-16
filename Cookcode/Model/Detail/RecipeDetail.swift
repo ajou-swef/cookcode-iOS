@@ -7,20 +7,24 @@
 
 import Foundation
 
-struct RecipeDetail: Codable {
+struct RecipeDetail {
     let recipeID: Int?
     let user: UserDTO?
     let title, description: String
     let createdAt, updatedAt: String?
     let thumbnail: String
     var steps: [StepDTO]
+    var ingredientCells: [IngredientCell]
+    var optionalIngredientCells: [IngredientCell]
     
 
     enum CodingKeys: String, CodingKey {
         case recipeID = "recipeId"
         case user, title, description, createdAt, updatedAt, thumbnail, steps
     }
-    
+}
+
+extension RecipeDetail {
     init (dto: RecipeDetailDTO) {
         recipeID = dto.recipeID
         user = dto.user
@@ -30,6 +34,8 @@ struct RecipeDetail: Codable {
         updatedAt = dto.updatedAt
         thumbnail = dto.thumbnail
         steps = dto.steps
+        ingredientCells = dto.ingredients.map { IngredientCell(ingredientDTO: $0) }
+        optionalIngredientCells = dto.optionalIngredients.map { IngredientCell(ingredientDTO: $0) }
     }
     
     init (form: RecipeForm) {
@@ -42,6 +48,9 @@ struct RecipeDetail: Codable {
         recipeID = nil
         user = nil
         createdAt = nil
-        updatedAt = nil 
+        updatedAt = nil
+        
+        ingredientCells = []
+        optionalIngredientCells = []
     }
 }

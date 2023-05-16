@@ -25,7 +25,7 @@ struct RecipeView: View {
     var body: some View {
         TabView(selection: $recipeViewModel.tabSelection) {
                 GeometryReader { proxy in
-                    RecipeEntranceView(title: recipeViewModel.recipeDetail.title, description: recipeViewModel.recipeDetail.description, imageURL: recipeViewModel.recipeDetail.thumbnail, cgSize: proxy.size)
+                    RecipeEntranceView(recipeDetail: recipeViewModel.recipeDetail, cgSize: proxy.size)
                 }
                 .tag("main")
                 
@@ -41,14 +41,6 @@ struct RecipeView: View {
             Color.white
         }
     }
-    
-//    func stepID(at: Int) -> String {
-//        guard let viewModel = recipeFormViewModel else {
-//            return recipeViewModel.stepID(at: at)
-//        }
-//        return viewModel.stepFormID(at: at)
-//    }
-//    
 }
 
 //struct RecipePreviewView_Previews: PreviewProvider {
