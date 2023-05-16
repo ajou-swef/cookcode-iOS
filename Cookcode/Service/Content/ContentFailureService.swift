@@ -12,7 +12,7 @@ final class ContentFailureService: ContentServiceProtocol {
         .failure(ServiceError.MOCK())
     }
     
-    func postPhotos(_ data: [Data]) async -> Result<PhotoResponse, ServiceError> {
+    func postPhotos(_ data: [Data]) async -> Result<ServiceResponse<ContentDTO>, ServiceError> {
         .failure(ServiceError.MOCK())
     }
 }

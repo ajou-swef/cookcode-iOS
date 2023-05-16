@@ -24,7 +24,7 @@ struct RecipeFormView: View {
     @StateObject private var viewModel: RecipeFormViewModel 
     
     init(recipeId: Int?) {
-        self._viewModel = StateObject(wrappedValue: RecipeFormViewModel(contentService: ContentSuccessService(), recipeService: RecipeService(), recipeId: recipeId))
+        self._viewModel = StateObject(wrappedValue: RecipeFormViewModel(contentService: ContentService(), recipeService: RecipeService(), recipeId: recipeId))
     }
     
     var body: some View {
