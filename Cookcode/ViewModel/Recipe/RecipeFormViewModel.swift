@@ -253,6 +253,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
             switch result {
             case .success(let success):
                 recipeForm.updateThumbnail(url: success.data.urls)
+                print("success: \(success)")
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }
