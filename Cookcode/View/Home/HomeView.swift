@@ -66,35 +66,42 @@ struct HomeView: View {
     
     @ViewBuilder
     private func homeRows() -> some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                ForEach(viewModel.recipeCells) {  cell in
-                   Button {
-                       navigateViewModel.navigateWithHome(cell)
-                   } label: {
-                       CellView(cell: cell)
-                           .frame(height: recipeCellHeight)
-                           .foregroundColor(.black)
-                           .zIndex(0)
+        ScrollViewReader { proxy in
+            ScrollView {
+                VStack(spacing: 20) {
+                    ForEach(viewModel.recipeCells) {  cell in
+                       Button {
+                           navigateViewModel.navigateWithHome(cell)
+                       } label: {
+                           CellView(cell: cell)
+                               .frame(height: recipeCellHeight)
+                               .foregroundColor(.black)
+                               .zIndex(0)
+                       }
+                       .id(cell.id)
                    }
-               }
-            }
-            .padding(.horizontal)
-            .background {
-                ScrollDetector { offset, velocity in
-                    withAnimation {
-                        viewModel.filterOffset = velocity
+                }
+                .padding(.horizontal)
+                .background {
+                    ScrollDetector { offset, velocity in
+                        withAnimation {
+                            viewModel.filterOffset = velocity
+                        }
                     }
                 }
+                
+                Color.white.opacity(1)
+                    .offsetY { viewModel.fetchTriggerOffset = $0 }
             }
-            
-            Color.white.opacity(1)
-                .offsetY { viewModel.fetchTriggerOffset = $0 }
+            .onChange(of: viewModel.fetchTriggerOffset) { newValue in
+                Task { await viewModel.fetchRecipeCell() }
+            }
+            .onChange(of: viewModel.filterType) { newValue in
+                withAnimation {
+                    proxy.scrollTo(viewModel.recipeCells[0].id)
+                }
+            }
         }
-        .onChange(of: viewModel.fetchTriggerOffset) { newValue in
-            Task { await viewModel.fetchRecipeCell() }
-        }
-        
     }
     
     @ViewBuilder

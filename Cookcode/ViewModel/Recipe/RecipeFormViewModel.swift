@@ -252,7 +252,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
             let result = await contentService.postPhotos([imageData])
             switch result {
             case .success(let success):
-                recipeForm.updateThumbnail(url: success.url)
+                recipeForm.updateThumbnail(url: success.data.urls)
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }
@@ -291,7 +291,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
             let result = await contentService.postPhotos(stepImageData)
             switch result {
             case .success(let success):
-                recipeForm.stepAppendContentURL(at, urls: success.url)
+                recipeForm.stepAppendContentURL(at, urls: success.data.urls)
             case .failure(let failure):
                 serviceAlert.presentAlert(failure)
             }

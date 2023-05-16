@@ -82,6 +82,7 @@
 		158EFDE12A04D1D3003057A4 /* IngredientPatchComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDE02A04D1D3003057A4 /* IngredientPatchComponent.swift */; };
 		158EFDE32A04D56A003057A4 /* IngredientForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDE22A04D56A003057A4 /* IngredientForm.swift */; };
 		1593D94229F689D1008AF49E /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1593D94129F689D1008AF49E /* RecipeView.swift */; };
+		1599E94E2A13719D00ED1B60 /* ContentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599E94D2A13719D00ED1B60 /* ContentDTO.swift */; };
 		159BE2A729FB6C1E00DE7448 /* ServiceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2A629FB6C1E00DE7448 /* ServiceAlert.swift */; };
 		159BE2A929FB6E7900DE7448 /* AccountFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */; };
 		159BE2AC29FB810200DE7448 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 159BE2AB29FB810200DE7448 /* Introspect */; };
@@ -263,6 +264,7 @@
 		158EFDE02A04D1D3003057A4 /* IngredientPatchComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientPatchComponent.swift; sourceTree = "<group>"; };
 		158EFDE22A04D56A003057A4 /* IngredientForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientForm.swift; sourceTree = "<group>"; };
 		1593D94129F689D1008AF49E /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		1599E94D2A13719D00ED1B60 /* ContentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDTO.swift; sourceTree = "<group>"; };
 		159BE2A629FB6C1E00DE7448 /* ServiceAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAlert.swift; sourceTree = "<group>"; };
 		159BE2A829FB6E7900DE7448 /* AccountFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFailureService.swift; sourceTree = "<group>"; };
 		159BE2AE29FB875F00DE7448 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
@@ -705,6 +707,7 @@
 				1515F3132A0C77B20003A4BB /* PhotoDTO.swift */,
 				1515F3172A0C77E10003A4BB /* IngredientDTO.swift */,
 				1515F3152A0C77D70003A4BB /* VideoDTO.swift */,
+				1599E94D2A13719D00ED1B60 /* ContentDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1233,6 +1236,7 @@
 				15F2CC182A026DDC0019FAB6 /* Cell.swift in Sources */,
 				15CFE66629FF590000C16FF6 /* VideoResponse.swift in Sources */,
 				15508CB22A134DE600004A1C /* API.swift in Sources */,
+				1599E94E2A13719D00ED1B60 /* ContentDTO.swift in Sources */,
 				15A19D892A0BB005008C71EA /* PostRecipeResponse.swift in Sources */,
 				15F2CC202A0272D30019FAB6 /* SelectIngredientView.swift in Sources */,
 				15B1F9E02A08D9B500B9CB24 /* IngredientType.swift in Sources */,
