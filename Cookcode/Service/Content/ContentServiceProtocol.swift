@@ -10,5 +10,5 @@ import Foundation
 
 protocol ContentServiceProtocol {
     func postPhotos(_ data: [Data]) async -> Result<ServiceResponse<ContentDTO>, ServiceError>
-    func postVideos(_ videoURL: VideoURL) async -> Result<VideoResponse, ServiceError>
+    func postVideos(_ videoURLs: [VideoURL]) async -> Result<ServiceResponse<ContentDTO>, ServiceError>
 }

@@ -23,6 +23,7 @@ class NavigateViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func clear() {
         self.recipePath = .init()
         self.homePath = .init()

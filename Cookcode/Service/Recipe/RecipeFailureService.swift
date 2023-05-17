@@ -8,6 +8,10 @@
 import Foundation
 
 final class RecipeFailureService: RecipeServiceProtocol {
+    func deleteRecipe(recipeId: Int) async -> Result<DefaultResponse, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func patchRecipe(formDTO: RecipeFormDTO, recipeId: Int) async -> Result<DefaultResponse, ServiceError> {
         .failure(.MOCK())
     }

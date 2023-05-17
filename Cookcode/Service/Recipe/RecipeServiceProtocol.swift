@@ -16,4 +16,6 @@ protocol RecipeServiceProtocol: SearchCellServiceProtocol {
     
     
     func patchRecipe(formDTO: RecipeFormDTO, recipeId: Int) async -> Result<DefaultResponse, ServiceError>
+    
+    func deleteRecipe(recipeId: Int) async -> Result<DefaultResponse, ServiceError>
 }

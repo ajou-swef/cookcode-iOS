@@ -272,14 +272,12 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
                 }
             }
             
-            for stepVideoURL in stepVideoURLs {
-                let result = await contentService.postVideos(stepVideoURL)
-                switch result {
-                case .success(let success):
-                    recipeForm.stepAppendContentURL(at, urls: success.data.photoURL)
-                case .failure(let failure):
-                    serviceAlert.presentAlert(failure)
-                }
+            let result = await contentService.postVideos(stepVideoURLs)
+            switch result {
+            case .success(let success):
+                recipeForm.stepAppendContentURL(at, urls: success.data.urls)
+            case .failure(let failure):
+                serviceAlert.presentAlert(failure)
             }
             
         case .image:

@@ -25,6 +25,7 @@ class LoginViewModel: ObservableObject {
         case .success(let success):
             UserDefaults.standard.set(success.data.accessToken, forKey: ACCESS_TOKEN_KEY)
             UserDefaults.standard.set(success.data.refreshToken, forKey: REFRESH_TOKEN_KEY)
+            UserDefaults.standard.set(success.data.userID, forKey: USER_ID)
             return true
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
