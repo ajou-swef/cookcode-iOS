@@ -49,7 +49,7 @@ struct RefrigeratorView: View {
     
     @ViewBuilder
     fileprivate func refridgerator() -> some View {
-        ScrollView {
+        ScrollView(showsIndicators: false ){
             ForEach(IngredientType.allCases) { type in
                 Section {
                     if let details = viewModel.refrigerator[type] {
