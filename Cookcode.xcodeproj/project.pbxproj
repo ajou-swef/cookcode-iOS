@@ -479,6 +479,7 @@
 				15DF8E8C2A10FB0700B58784 /* Login */,
 				15AA2F1E29EFE4750069813F /* Recipe */,
 				15B869B529EFDC2600A02872 /* Home */,
+				15CFE6A629FF7B7000C16FF6 /* Profile */,
 				15B869B129EFD9B900A02872 /* MainTabView.swift */,
 			);
 			path = View;
@@ -759,7 +760,6 @@
 			children = (
 				15B869B629EFDC2900A02872 /* Cookie */,
 				15B869B729EFDC2B00A02872 /* Refrigerator */,
-				15CFE6A629FF7B7000C16FF6 /* Profile */,
 			);
 			path = Container;
 			sourceTree = "<group>";

@@ -13,6 +13,10 @@ final class AccountFailureService: AccountServiceProtocol {
         return .failure(ServiceError(message: "에러 메시지", status: 400))
     }
     
+    func deleteAccount() async -> Result<DefaultResponse, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func check(_ nickname: String) -> Result<ServiceResponse<AccountCheckDto>, ServiceError> {
         return .failure(.MOCK())
     }

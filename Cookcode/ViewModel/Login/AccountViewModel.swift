@@ -8,9 +8,15 @@
 import Foundation
 
 class AccountViewModel: ObservableObject {
-    @Published private(set) var didSignIn: Bool = false
     
-    init() {
+    @Published private(set) var didSignIn: Bool = false
+    @Published var deleteAccountAlertIsPresented: Bool = false
+    
+    private let accountService: AccountServiceProtocol
+    
+    init(accountService: AccountServiceProtocol) {
+        self.accountService = accountService
+        
         let token = UserDefaults.standard.object(forKey: ACCESS_TOKEN_KEY)
         if token != nil {
             didSignIn = true
@@ -30,5 +36,10 @@ class AccountViewModel: ObservableObject {
         didSignIn = false
         UserDefaults.standard.set(nil, forKey: ACCESS_TOKEN_KEY)
         UserDefaults.standard.set(nil, forKey: REFRESH_TOKEN_KEY)
+        UserDefaults.standard.set(nil, forKey: USER_ID)
+    }
+    
+    func alertOkBottonTapped() async {
+        let result = await accountService.deleteAccount()
     }
 }
