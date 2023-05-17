@@ -24,7 +24,7 @@ struct RecipeCell: SearchedCell {
     
     init(dto: RecipeCellDto) {
         recipeId = dto.recipeID
-        thumbnail = "https://picsum.photos/200/300"
+        thumbnail = dto.thumbnail
         title = dto.title
         userName = dto.user.nickname
     }

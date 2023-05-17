@@ -87,6 +87,9 @@ class HomeViewModel: ObservableObject {
         
         switch result {
         case .success(let success):
+            for cell in success.data.recipeCells {
+                print("\(cell.thumbnail)")
+            }
             appendRecipeCell(success)
             waitWithPage(curPage + 1)
         case .failure(let failure):
