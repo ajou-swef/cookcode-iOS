@@ -13,6 +13,7 @@ struct IngredientCell: Cell, Equatable {
     var thumbnail: String
     var title: String
     var ingredId: Int
+    var ingredientType: IngredientType
     
     private(set) var quantity: Int?
     private(set) var presentBadge: Bool = false
@@ -25,10 +26,11 @@ struct IngredientCell: Cell, Equatable {
         IngredientCell(detail: IngredientDetail.mock())
     }
     
-    init (thumbnail: String, title: String, ingredId: Int) {
+    init (thumbnail: String, title: String, ingredId: Int, ingredientType: IngredientType) {
         self.thumbnail = thumbnail
         self.title = title
         self.ingredId = ingredId
+        self.ingredientType = ingredientType
     }
     
     private func expiredDateIsComming(_ expiredAt: String) -> Bool {
@@ -51,17 +53,13 @@ struct IngredientCell: Cell, Equatable {
 extension IngredientCell {
     init (ingredientDTO: IngredientDTO) {
         let ingredientCell = INGREDIENTS_DICTIONARY[ingredientDTO.ingredientID] ?? IngredientCell.mock()
-        title = ingredientCell.title
-        thumbnail = ingredientCell.thumbnail
-        ingredId = ingredientDTO.ingredientID
+        self = ingredientCell
     }
     
     init (detail: IngredientDetail) {
         let ingredientCell = INGREDIENTS_DICTIONARY[detail.ingredId] ?? IngredientCell.mock()
-        title = ingredientCell.title
-        thumbnail = ingredientCell.thumbnail
+        self = ingredientCell
         id = String(detail.fridgeIngredId)
-        ingredId = detail.ingredId
         
         if expiredDateIsComming(ServiceDateFormatter.tranlsateToString(detail.expiredAt)) {
             presentBadge = true
@@ -70,8 +68,6 @@ extension IngredientCell {
     
     init (ingredientId: Int) {
         let ingredientCell = INGREDIENTS_DICTIONARY[ingredientId] ?? IngredientCell.mock()
-        title = ingredientCell.title
-        thumbnail = ingredientCell.thumbnail
-        ingredId = ingredientId
+        self = ingredientCell
     }
 }
