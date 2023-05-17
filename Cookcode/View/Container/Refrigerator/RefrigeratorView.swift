@@ -22,26 +22,6 @@ struct RefrigeratorView: View {
         GridItem(.adaptive(minimum: 60, maximum: 60)),
     ]
     
-    
-    fileprivate func refridgerator() -> ScrollView<ForEach<[IngredientType], String, Section<EmptyView, (some View)?, EmptyView>>> {
-        return ScrollView {
-            ForEach(IngredientType.allCases) { type in
-                Section {
-                    let details = viewModel.refrigerator[type]
-                    if let details = details {
-                        let cells = details.map { IngredientCell(detail: $0) }
-                        ingredientGrid(cells: cells)
-                    }
-                } header: {
-                    //                        Text("\(type.korean)")
-                    //                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                    //                            .foregroundColor(.primary)
-                }
-                
-            }
-        }
-    }
-    
     var body: some View {
         VStack {
             divider()
@@ -67,6 +47,45 @@ struct RefrigeratorView: View {
     }
     
     
+    @ViewBuilder
+    fileprivate func refridgerator() -> some View {
+        ScrollView(showsIndicators: false ){
+            ForEach(IngredientType.allCases) { type in
+                Section {
+                    if let details = viewModel.refrigerator[type] {
+                        let cells = details.map { IngredientCell(detail: $0) }
+                        ingredientGrid(cells: cells)
+                            .hidden(viewModel.ingredientTypeisHidden(type))
+                    }
+                } header: {
+                    HStack {
+                        Text("\(type.korean)")
+                            .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                            .foregroundColor(.primary)
+                        
+                        Spacer()
+                        
+                        Button {
+                            viewModel.ingredientTypeButtonTapped(type)
+                        } label: {
+                            presentTypeButton(type: type)
+                        }
+
+                    }
+                }
+            }
+            .animation(.spring(), value: viewModel.presentedIngredientTypes)
+        }
+    }
+    
+    @ViewBuilder
+    private func presentTypeButton(type: IngredientType) -> some View {
+        Image(systemName: "chevron.right")
+            .rotationEffect(viewModel.ingredientTypeisHidden(type) ? .zero : .degrees(90))
+        
+    }
+    
+    
     fileprivate func appendIngredientButton() -> some View {
         return HStack {
             Spacer()
@@ -80,6 +99,9 @@ struct RefrigeratorView: View {
             }
             .sheet(isPresented: $appendIngredientVM.selectIngredientFormIsPresneted) {
                 selectIngredientView()
+                    .onDisappear {
+                        appendIngredientVM.searchText = ""
+                    }
             }
         }
     }
@@ -104,7 +126,9 @@ struct RefrigeratorView: View {
                 IngredientPatchComponent(viewModel: PostIngredientViewModel(ingredientCell: cell, refridgeratorService: RefridgeratorService()))
             }
             .onDisappear {
-                Task { await viewModel.fetchIngredients() }
+                Task {
+                    await viewModel.fetchIngredients()
+                }
             }
     }
     

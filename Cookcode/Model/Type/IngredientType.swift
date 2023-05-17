@@ -10,7 +10,8 @@ import Foundation
 enum IngredientType: String, Identifiable, CaseIterable {
     
     case meat, seafood, vegetables, fruit, sauces
-    case diaryProducts
+    case diaryProducts, rice
+    
     
     init (fromRawValue: String) {
         self = IngredientType(rawValue: fromRawValue.lowercased()) ?? .seafood
@@ -34,7 +35,9 @@ enum IngredientType: String, Identifiable, CaseIterable {
         case .sauces:
             return "소스"
         case .diaryProducts:
-            return "유제픔"
+            return "유제품"
+        case .rice:
+            return "곡류"
         }
     }
 }
