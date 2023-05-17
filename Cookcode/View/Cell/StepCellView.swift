@@ -74,9 +74,17 @@ struct StepCellView: View {
     
     @ViewBuilder
     private func stepInformation() -> some View {
-        VStack {
-            Text("\(cell.title)")
+        VStack(alignment: .leading) {
+            Text("\(cell.seq)단계 : \(cell.title)")
                 .font(CustomFontFactory.INTER_SEMIBOLD_20)
+            
+            CCDivider()
+                .padding(.top, -10 )
+            
+            Text("설명")
+                .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                .foregroundColor(.mainColor)
+                .padding(.bottom, 5)
             
             Text("\(cell.description)")
                 .font(CustomFontFactory.INTER_REGULAR_14)

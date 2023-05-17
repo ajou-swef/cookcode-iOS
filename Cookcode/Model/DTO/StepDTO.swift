@@ -48,9 +48,9 @@ struct StepDTO: Codable, Mock, Hashable, Identifiable {
         self.videos = videos
     }
     
-    init (form: ContentWrappedStepForm) {
-        self.stepID = 1
-        self.seq = 1
+    init (form: ContentWrappedStepForm, seq: Int) {
+        self.stepID = seq
+        self.seq = seq
         self.title = form.title
         self.description = form.description
         self.photos = []

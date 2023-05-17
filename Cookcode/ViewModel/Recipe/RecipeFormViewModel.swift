@@ -309,7 +309,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     func trashButtonTapped() {
         for i in recipeForm.steps.indices {
             if recipeForm.steps[i].id == stepTabSelection {
-                removeThisStep(i)
+                removeThisStep(max(1, i))
             }
         }
     }
