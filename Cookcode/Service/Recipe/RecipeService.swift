@@ -30,7 +30,15 @@ final class RecipeService: RecipeServiceProtocol {
     func searchRecipeHomeCell(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<RecipeCellSeachResponse, ServiceError> {
         
         
-        let url = "\(BASE_URL)/api/v1/recipe?page=\(page)&size=\(size)"
+        var url = "\(BASE_URL)/api/v1/recipe?page=\(page)&size=\(size)"
+        
+        if let cookcable = cookcable {
+            let value: Int = cookcable ? 1 : 0
+            url.append("&cookcable=\(value)")
+        }
+        
+        print("\(url)")
+        
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let encodedURL = URL(string: encoded)!
         
