@@ -34,11 +34,21 @@ struct ProfileView: View {
                 }
                 
                 Button {
-                    
+                    accountViewModel.deleteAccountAlertIsPresented = true
                 } label: {
                     Text("계정 삭제")
                         .font(CustomFontFactory.INTER_SEMIBOLD_14)
                         .foregroundColor(.red)
+                }
+                .alert("계정을 삭제하시겠습니까?", isPresented: $accountViewModel.deleteAccountAlertIsPresented) {
+                    Button("취소", role: .cancel) { }
+                    Button("확인") {
+                        Task {
+                            await accountViewModel.alertOkBottonTapped() 
+                            accountViewModel.logout()
+                            navigateViewModel.clear()
+                        }
+                    }
                 }
             }
             .tint(.mainColor)

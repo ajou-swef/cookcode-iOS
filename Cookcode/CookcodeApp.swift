@@ -11,7 +11,7 @@ import SwiftUI
 struct CookcodeApp: App {
     
     @StateObject private var navigateViewModel: NavigateViewModel = .init()
-    @StateObject private var accountViewModel: AccountViewModel = .init()
+    @StateObject private var accountViewModel: AccountViewModel = .init(accountService: AccountService())
     
     var body: some Scene {
         WindowGroup {

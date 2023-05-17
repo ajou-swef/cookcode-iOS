@@ -8,6 +8,10 @@
 import Foundation
 
 final class AccountSuccessService: AccountServiceProtocol {
+    func deleteAccount() async -> Result<DefaultResponse, ServiceError> {
+        .success(.mock())
+    }
+    
     func signIn(_ signInForm: SignInForm) async -> Result<ServiceResponse<SignInDto>, ServiceError> {
         .success(.mock())
     }

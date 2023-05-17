@@ -10,7 +10,12 @@ import Foundation
 
 protocol AccountServiceProtocol {
     func check(_ nickname: String) async -> Result<ServiceResponse<AccountCheckDto>, ServiceError>
+    
+    func deleteAccount() async -> Result<DefaultResponse, ServiceError> 
+    
     func signUp(membershipForm: MembershipForm) async -> Result<ServiceResponse<SignUpDto>, ServiceError>
+    
     func signIn(_ signInForm: SignInForm) async -> Result<ServiceResponse<SignInDto>, ServiceError>
+    
     func getUserAccountByID(_ userID: Int) async -> Result<ServiceResponse<UserAccountDto>, ServiceError>
 }
