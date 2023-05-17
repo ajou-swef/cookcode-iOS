@@ -9,6 +9,25 @@ import Alamofire
 import Foundation
 
 final class RecipeService: RecipeServiceProtocol {
+    func deleteRecipe(recipeId: Int) async -> Result<DefaultResponse, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/recipe/\(recipeId)"
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        
+        let response = await AF.request(url, method: .delete, headers: headers).serializingDecodable(DefaultResponse.self).response
+        
+        if response.error != nil {
+            print("\(response.debugDescription)")
+        }
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.MOCK()
+        }
+    }
+    
     func patchRecipe(formDTO: RecipeFormDTO, recipeId: Int) async -> Result<DefaultResponse, ServiceError> {
         let url = "\(BASE_URL)/api/v1/recipe/\(recipeId)"
         let headers: HTTPHeaders = [
@@ -34,7 +53,7 @@ final class RecipeService: RecipeServiceProtocol {
         
         if let cookcable = cookcable {
             let value: Int = cookcable ? 1 : 0
-            url.append("&cookcable=\(value)")
+            url.append("&cookable=\(value)")
         }
         
         print("\(url)")

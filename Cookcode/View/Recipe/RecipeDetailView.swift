@@ -18,13 +18,36 @@ struct RecipeDetailView: View {
     
     var body: some View {
         RecipeView(viewModel: viewModel)
+            .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+                Button {
+                    Task { navigateVM.clear() }
+                } label: {
+                    Text("확인")
+                }
+
+            }
+            .confirmationDialog("수정", isPresented: $viewModel.showDialog, actions: {
+                Button {
+                    navigateVM.navigateToOuter(OuterIdPath(path: .recipe, id: viewModel.recipeDetail.recipeID))
+                } label: {
+                    Text("수정")
+                }
+                
+                Button {
+                    Task { await viewModel.deleteButtonTapepd(dismiss: navigateVM.clear) }
+                } label: {
+                    Text("삭제")
+                        .foregroundColor(.red)
+                }
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        navigateVM.navigateToOuter(OuterIdPath(path: .recipe, id: viewModel.recipeDetail.recipeID))
+                        viewModel.showDialog = true
                     } label: {
-                        Text("수정")
+                        Image(systemName: "gear")
                     }
+                    .hidden(!viewModel.myRecipe)
                 }
                 
                 ToolbarItem(placement: .principal) {
