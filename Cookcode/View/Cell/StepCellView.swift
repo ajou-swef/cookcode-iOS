@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import AVKit
 
 struct StepCellView: View {
     
@@ -38,6 +39,8 @@ struct StepCellView: View {
                         .aspectRatio(CGSize(width: 4, height: 3), contentMode: .fill)
                         .frame(maxWidth: .infinity)
                 }
+                
+        
             }
             .frame(maxWidth: .infinity, maxHeight: 300)
             .tabViewStyle(.page(indexDisplayMode: .always))

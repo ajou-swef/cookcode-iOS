@@ -17,7 +17,7 @@ final class RecipeService: RecipeServiceProtocol {
         
         let response = await AF.request(url, method: .patch, parameters: formDTO, encoder: JSONParameterEncoder.default, headers: headers).serializingDecodable(DefaultResponse.self).response
         
-        if let error = response.error {
+        if response.error != nil {
             print("\(response.debugDescription)")
         }
         
@@ -58,7 +58,9 @@ final class RecipeService: RecipeServiceProtocol {
         let response = await AF.request(url, method: .get, headers: headers)
             .serializingDecodable(ServiceResponse<RecipeDetailDTO>.self).response
         
-        print("\(response.debugDescription)")
+        if response.error != nil {
+            print("\(response.debugDescription)")
+        }
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

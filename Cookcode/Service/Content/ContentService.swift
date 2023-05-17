@@ -38,7 +38,7 @@ final class ContentService: ContentServiceProtocol {
     
     }
     
-    func postVideos(_ videoURL: VideoURL) async -> Result<VideoResponse, ServiceError> {
+    func postVideos(_ videoURLs: [VideoURL]) async -> Result<ServiceResponse<ContentDTO>, ServiceError> {
         let url = "\(BASE_URL)"
         
         let headers: HTTPHeaders = [
@@ -46,8 +46,10 @@ final class ContentService: ContentServiceProtocol {
         ]
         
         let response = await AF.upload(multipartFormData: { multipart in
-            multipart.append(videoURL.url, withName: "name")
-        }, to: url, method: .post, headers: headers).serializingDecodable(VideoResponse.self).response
+            for videoURL in videoURLs {
+                multipart.append(videoURL.url, withName: "stepFiles", fileName: UUID().uuidString, mimeType: "video/mp4")
+            }
+        }, to: url, method: .post, headers: headers).serializingDecodable(ServiceResponse<ContentDTO>.self).response
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
