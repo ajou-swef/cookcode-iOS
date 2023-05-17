@@ -212,6 +212,9 @@ struct RecipeFormView: View {
                 }
                 .sheet(isPresented: $viewModel.mainIngredientViewIsPresnted) {
                     SelectIngredientView(viewModel: viewModel)
+                        .onDisappear {
+                            viewModel.searchText = "" 
+                        }
                 }
 
             }
@@ -250,6 +253,9 @@ struct RecipeFormView: View {
                 }
                 .sheet(isPresented: $viewModel.optioanlIngredientViewIsPresnted) {
                     SelectIngredientView(viewModel: viewModel)
+                        .onDisappear {
+                            viewModel.searchText = ""
+                        }
                 }
             }
         }
