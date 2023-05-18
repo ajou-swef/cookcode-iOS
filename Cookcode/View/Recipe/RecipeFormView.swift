@@ -12,6 +12,7 @@ import Kingfisher
 struct RecipeFormView: View {
     
     
+    
     let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: 60)),
         GridItem(.adaptive(minimum: 60, maximum: 60)),
@@ -20,8 +21,14 @@ struct RecipeFormView: View {
         GridItem(.adaptive(minimum: 60, maximum: 60)),
     ]
     
+    enum Field {
+        case title
+        case description
+    }
+    
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    @StateObject private var viewModel: RecipeFormViewModel 
+    @StateObject private var viewModel: RecipeFormViewModel
+    @FocusState private var isFocused: Field?
     
     init(recipeId: Int?) {
         self._viewModel = StateObject(wrappedValue: RecipeFormViewModel(contentService: ContentService(), recipeService: RecipeService(), recipeId: recipeId))
@@ -47,11 +54,11 @@ struct RecipeFormView: View {
                 }
                 
                 PresentPreviewButton()
+                    .hidden(isFocused != nil)
             }
-            .sheet(item: $viewModel.stepFormTrigger) { item in
-                StepFormView(viewModel: viewModel, stepIndex: item.index)
+            .onTapGesture {
+                isFocused = nil
             }
-            .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -98,12 +105,33 @@ struct RecipeFormView: View {
     private func DescriptionSection() -> some View {
         Section {
             VStack(spacing: 5) {
-                TextField("설명을 입력해주세요",
-                          text: $viewModel.recipeForm.description)
+                TextEditor(text: $viewModel.recipeForm.description)
                     .font(CustomFontFactory.INTER_REGULAR_14)
+                    .border(.gray)
+                    .focused($isFocused, equals: .description)
+                    .toolbar {
+                        ToolbarItem(placement: .keyboard) {
+                            Button {
+                                isFocused = nil
+                            } label: {
+                                Text("완료")
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                            }
+                        }
+                    }
                 
                 CCDivider()
                     .padding(.bottom, 20)
+            }
+            .onTapGesture {
+                if viewModel.recipeForm.description == "설명을 입력해주세요." {
+                    viewModel.recipeForm.description = ""
+                }
+            }
+            .onAppear {
+                if viewModel.recipeForm.description.isEmpty{
+                    viewModel.recipeForm.description = "설명을 입력해주세요."
+                }
             }
         } header: {
             HStack {
@@ -158,6 +186,7 @@ struct RecipeFormView: View {
                     TextField("입력해주세요",
                               text: $viewModel.recipeForm.title)
                     .font(CustomFontFactory.INTER_BOLD_30)
+                    .focused($isFocused, equals: .title)
                     
                     Spacer()
                 }
@@ -213,7 +242,7 @@ struct RecipeFormView: View {
                 .sheet(isPresented: $viewModel.mainIngredientViewIsPresnted) {
                     SelectIngredientView(viewModel: viewModel)
                         .onDisappear {
-                            viewModel.searchText = "" 
+                            viewModel.searchText = ""
                         }
                 }
 
@@ -299,8 +328,15 @@ struct RecipeFormView: View {
                     }
                     .foregroundColor(.primary)
                 }
+                .onAppear {
+                    print("trigger to nil")
+                    viewModel.stepFormTrigger = nil
+                }
 
             }
+        }
+        .sheet(item: $viewModel.stepFormTrigger) { item in
+            StepFormView(viewModel: viewModel, stepIndex: item.index)
         }
     }
 }

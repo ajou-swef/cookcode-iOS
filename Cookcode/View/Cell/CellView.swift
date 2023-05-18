@@ -13,49 +13,53 @@ struct CellView: View {
     let cell: any SearchedCell
     
     var body: some View {
-        HStack {
-            VStack {
-                HStack(spacing: 5) {
-                    Image(systemName: "pencil")
-                        .foregroundColor(.primary)
-                    
-                    Text("\(cell.userName)")
-                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                        .foregroundColor(.primary)
+        VStack(alignment: .center) {
+            KFImage(URL(string: cell.thumbnail))
+                .resizable()
+                .startLoadingBeforeViewAppear()
+                .aspectRatio(CGSize(width: 4, height: 2.5), contentMode: .fit)
+                .frame(maxWidth: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay(alignment: .bottomTrailing) {
+                    Text(cell.title)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.trailing, 10)
+                        .font(CustomFontFactory.INTER_SEMIBOLD_20)
                 }
-            }
-            .padding(.trailing, 40)
             
-            Rectangle()
-                .frame(width: 2)
-                .padding(.trailing, 10)
-                .foregroundColor(.primary)
-            
-            VStack(alignment: .center) {
-                KFImage(URL(string: cell.thumbnail))
+            HStack(spacing: 5) {
+                Image(systemName: "person.crop.circle")
                     .resizable()
-                    .startLoadingBeforeViewAppear()
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .overlay(alignment: .bottomTrailing) {
-                        Text(cell.title)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 10)
-                            .padding(.trailing, 10)
-                            .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.primary)
+                
+                VStack(alignment: .leading) {
+                    Text("\(cell.title)")
+                        .lineLimit(1)
+                        .font(CustomFontFactory.INTER_BOLD_16)
+                    
+                    HStack {
+                        Text("\(cell.userName)")
+                            .lineLimit(1)
+                            .font(CustomFontFactory.INTER_REGULAR_14)
+                            .foregroundColor(.primary)
+                        
+                        Text("\(cell.createdAt)")
+                            .lineLimit(1)
+                            .font(CustomFontFactory.INTER_REGULAR_14)
+                            .foregroundColor(.primary)
                     }
+                }
+                
+                Spacer()
             }
-        }
-        .padding(10)
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 2)
-                .foregroundColor(.primary)
         }
     }
 }
 
 struct RecipeCellView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        CellView(cell: RecipeCell.mock())
     }
 }

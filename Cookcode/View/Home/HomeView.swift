@@ -24,12 +24,18 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
+            
             header()
                 .zIndex(200)
+                .overlay {
+                    ProgressView()
+                        .hidden(!viewModel.isLoadingState)
+                }
             
             HStack {
                 RecipeFilterPicker(selection: $viewModel.filterType, activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
                     .frame(maxWidth: 130)
+                
                 
                 Spacer()
             }
@@ -69,12 +75,21 @@ struct HomeView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack(spacing: 20) {
+                    
+                    Color.white.opacity(1)
+                        .offsetY(coordinateSpace: .named("homeScroll")) {
+                            viewModel.resetTrigeerOffset = $0
+                            if $0 > 100 {
+                                Task { await viewModel.resetRecipeCell() }
+                            }
+                        }
+                        .padding(.vertical, -10)
+                    
                     ForEach(viewModel.recipeCells) {  cell in
                        Button {
                            navigateViewModel.navigateWithHome(cell)
                        } label: {
                            CellView(cell: cell)
-                               .frame(height: recipeCellHeight)
                                .foregroundColor(.black)
                                .zIndex(0)
                        }
@@ -93,12 +108,14 @@ struct HomeView: View {
                 Color.white.opacity(1)
                     .offsetY { viewModel.fetchTriggerOffset = $0 }
             }
+            .coordinateSpace(name: "homeScroll")
             .onChange(of: viewModel.fetchTriggerOffset) { newValue in
                 Task { await viewModel.fetchRecipeCell() }
             }
             .onChange(of: viewModel.filterType) { newValue in
                 withAnimation {
-                    proxy.scrollTo(viewModel.recipeCells[0].id)
+                    if !viewModel.recipeCells.isEmpty {                        proxy.scrollTo(viewModel.recipeCells[0].id)
+                    }
                 }
             }
         }
@@ -107,8 +124,9 @@ struct HomeView: View {
     @ViewBuilder
     private func header() -> some View {
         HStack(spacing: 15) {
-            Text("cookcode logo")
-                .font(CustomFontFactory.INTER_BOLD_16)
+            Image("cookcode.logo")
+                .resizable()
+                .frame(width: 40, height: 40)
             
             Spacer()
             

@@ -72,7 +72,7 @@ let INGREDIENTS_DICTIONARY: [Int: IngredientCell] = [
     55 : IngredientCell(thumbnail: "sauces", title: "설탕", ingredId: 55, ingredientType: .sauces),
     56 : IngredientCell(thumbnail: "sauces", title: "토마토 소스", ingredId: 56, ingredientType: .sauces),
     57 : IngredientCell(thumbnail: "sauces", title: "식초", ingredId: 57, ingredientType: .sauces),
-    58 : IngredientCell(thumbnail: "sauces", title: "참기름", ingredId: 59, ingredientType: .sauces),
+    58 : IngredientCell(thumbnail: "sauces", title: "참기름", ingredId: 58, ingredientType: .sauces),
     59 : IngredientCell(thumbnail: "sauces", title: "들기름", ingredId: 59, ingredientType: .sauces),
     60 : IngredientCell(thumbnail: "sauces", title: "초고추장", ingredId: 60, ingredientType: .sauces),
     61 : IngredientCell(thumbnail: "sauces", title: "물엿", ingredId: 61, ingredientType: .sauces),

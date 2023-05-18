@@ -9,7 +9,7 @@ import Foundation
 
 enum RecipeFilterType: String, CaseIterable {
     case all = "전체 보기"
-    case cookable = "cookable"
+    case cookable = "요리하자"
     
     var cookable: Bool {
         switch self {

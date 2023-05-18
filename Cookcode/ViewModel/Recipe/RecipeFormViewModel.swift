@@ -38,6 +38,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     
     // sheet, fullscreen 등의 navigate를 위한 프로퍼티
     @Published var stepFormTrigger: RecipePathWithIndex?
+    @Published var previewStepFormTrigger: RecipePathWithIndex?
     @Published var mainIngredientViewIsPresnted: Bool = false
     @Published var optioanlIngredientViewIsPresnted: Bool = false
 
@@ -176,17 +177,19 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     
     //  MARK: StepView 관련 기능들
     func presentStepFormView(_ i: Int) {
+        print("main presentStepFormView")
         stepTabSelection = recipeForm.steps[i].id
         stepFormTrigger = RecipePathWithIndex(path: .step, index: i)
     }
     
     func presentStepFormView() {
+        print("preview presentStepFormView")
         guard let index = recipeDetail.steps.firstIndex(where: { $0.id == tabSelection }) else {
             return
         }
         
         stepTabSelection = recipeForm.steps[index].id
-        stepFormTrigger = RecipePathWithIndex(path: .step, index: index)
+        previewStepFormTrigger = RecipePathWithIndex(path: .step, index: index)
     }
     
     func flushDeletedStepIndex() {
@@ -262,37 +265,43 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     
     @MainActor
     func loadItemAt(_ at: Int) async {
-        let contentType = stepFormContentType(at: at)
-        
-        switch contentType {
-        case .video:
-            for item in stepItems {
-                if let data = try? await item.loadTransferable(type: VideoURL.self) {
-                    stepVideoURLs.append(data)
+        if let index = recipeForm.steps.firstIndex(where: {  $0.id == stepTabSelection }) {
+            let contentType = stepFormContentType(at: index)
+            
+            print("\(index+1) 번째 이미지 변경")
+            
+            switch contentType {
+            case .video:
+                for item in stepItems {
+                    if let data = try? await item.loadTransferable(type: VideoURL.self) {
+                        stepVideoURLs.append(data)
+                    }
                 }
-            }
-            
-            let result = await contentService.postVideos(stepVideoURLs)
-            switch result {
-            case .success(let success):
-                recipeForm.stepAppendContentURL(at, urls: success.data.urls)
-            case .failure(let failure):
-                serviceAlert.presentAlert(failure)
-            }
-            
-        case .image:
-            for item in stepItems {
-                if let data = try? await item.loadTransferable(type: Data.self) {
-                    stepImageData.append(data)
+                
+                stepItems.removeAll()
+                
+                let result = await contentService.postVideos(stepVideoURLs)
+                switch result {
+                case .success(let success):
+                    recipeForm.stepAppendContentURL(index, urls: success.data.urls)
+                case .failure(let failure):
+                    serviceAlert.presentAlert(failure)
                 }
-            }
-            
-            let result = await contentService.postPhotos(stepImageData)
-            switch result {
-            case .success(let success):
-                recipeForm.stepAppendContentURL(at, urls: success.data.urls)
-            case .failure(let failure):
-                serviceAlert.presentAlert(failure)
+                
+            case .image:
+                for item in stepItems {
+                    if let data = try? await item.loadTransferable(type: Data.self) {
+                        stepImageData.append(data)
+                    }
+                }
+                
+                let result = await contentService.postPhotos(stepImageData)
+                switch result {
+                case .success(let success):
+                    recipeForm.steps[index].imageURLs = success.data.urls
+                case .failure(let failure):
+                    serviceAlert.presentAlert(failure)
+                }
             }
         }
         
@@ -309,7 +318,9 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     func trashButtonTapped() {
         for i in recipeForm.steps.indices {
             if recipeForm.steps[i].id == stepTabSelection {
-                removeThisStep(max(1, i))
+                if i != 0 {
+                    removeThisStep(i)
+                }
             }
         }
     }

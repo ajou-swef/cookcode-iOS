@@ -60,7 +60,7 @@ struct RefrigeratorView: View {
                 } header: {
                     HStack {
                         Text("\(type.korean)")
-                            .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                            .font(CustomFontFactory.INTER_BOLD_16)
                             .foregroundColor(.primary)
                         
                         Spacer()
@@ -69,6 +69,7 @@ struct RefrigeratorView: View {
                             viewModel.ingredientTypeButtonTapped(type)
                         } label: {
                             presentTypeButton(type: type)
+                                .foregroundColor(.primary)
                         }
 
                     }
