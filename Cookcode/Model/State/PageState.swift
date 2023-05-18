@@ -10,13 +10,24 @@ import Foundation
 enum PageState {
     case loading(Int)
     case wait(Int)
+    case noRemain
+    
+    var isLoadingState: Bool {
+        switch self {
+        case .loading(_):
+            return true
+        default:
+            return false
+        }
+    }
     
     var isWaitingState: Bool {
         switch self {
-        case .loading(_):
-            return false
         case .wait(_):
             return true
+        default:
+            return false
+            
         }
     }
     
@@ -26,6 +37,8 @@ enum PageState {
             return int
         case .wait(let int):
             return int
+        case .noRemain:
+            return -1 
         }
     }
 }

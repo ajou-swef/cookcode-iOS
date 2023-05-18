@@ -26,20 +26,19 @@ struct RecipePreviewView: View {
                 .padding(.top, 40)
                 .padding(.horizontal, 20)
                 .overlay(alignment: .bottom) {
-                    Button {
-                        viewModel.presentStepFormView()
-                    } label: {
-                        Text("수정")
-                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                            .foregroundColor(.white)
-                            .roundedRectangle(.ORANGE_280_FILLED, focused: true)
-                            .padding(.bottom, 10)
+                        Button {
+                            viewModel.presentStepFormView()
+                        } label: {
+                            Text("수정")
+                                .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                                .foregroundColor(.white)
+                                .roundedRectangle(.ORANGE_280_FILLED, focused: true)
+                                .padding(.bottom, 10)
+                        }
+                    .sheet(item: $viewModel.previewStepFormTrigger) { item  in
+                        StepFormView(viewModel: viewModel, stepIndex: item.index)
                     }
                 }
-            
-        }
-        .sheet(item: $viewModel.stepFormTrigger) { item  in
-            StepFormView(viewModel: viewModel, stepIndex: item.index)
         }
         .navigationBarBackButtonHidden()
         .statusBarHidden()

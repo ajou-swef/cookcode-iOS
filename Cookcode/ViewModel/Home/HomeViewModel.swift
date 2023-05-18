@@ -13,8 +13,27 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var recipeCells: [RecipeCell] = []
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var fetchTriggerOffset: CGFloat = .zero
+    @Published var resetTrigeerOffset: CGFloat = .zero
+    
     @Published private var _filterOffset: CGFloat = .zero
     @Published var scrollOffset: CGFloat = .zero
+    
+    @Published var pageState: PageState = .wait(0)
+    @Published var filterType: RecipeFilterType = .all {
+        didSet {
+            Task {
+                await resetRecipeCell()
+            }
+        }
+    }
+    
+    var isLoadingState: Bool{
+        pageState.isLoadingState
+    }
+    
+    var isWaitingState: Bool {
+        pageState.isWaitingState
+    }
     
     var filterOffset: CGFloat {
         get { _filterOffset }
@@ -27,17 +46,8 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    @Published var filterType: RecipeFilterType = .all {
-        didSet {
-            Task {
-                await resetRecipeCell()
-            }
-        }
-    }
-    
     private let recipeService: RecipeServiceProtocol
     private let fetchSize: Int = 10
-    private var pageState: PageState = .wait(0)
     
     
     var searchTriggerIsInScreen: Bool {
@@ -66,16 +76,20 @@ class HomeViewModel: ObservableObject {
         switch result {
         case .success(let success):
             recipeCells = success.data.recipeCells.map { RecipeCell(dto: $0)}
-            waitWithPage(curPage + 1)
+            print("셀 개수: \(success.data.recipeCells.count)")
+            if success.data.recipeCells.isEmpty {
+                pageState = .noRemain
+            } else {
+                waitInPage(curPage + 1)
+            }
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
-            waitWithPage(curPage)
+            waitInPage(curPage)
         }
     }
     
     @MainActor
     func fetchRecipeCell() async {
-        
         guard searchTriggerIsInScreen else { return }
         guard pageState.isWaitingState else { return }
         
@@ -87,22 +101,24 @@ class HomeViewModel: ObservableObject {
         
         switch result {
         case .success(let success):
-            for cell in success.data.recipeCells {
-                print("\(cell.thumbnail)")
-            }
             appendRecipeCell(success)
-            waitWithPage(curPage + 1)
+            if success.data.recipeCells.isEmpty {
+                pageState = .noRemain
+            } else {
+                waitInPage(curPage + 1)
+            }
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
-            waitWithPage(curPage)
+            waitInPage(curPage)
         }
     }
     
-    private func waitWithPage(_ page: Int) {
+    private func waitInPage(_ page: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             let curPage = self.pageState.page
             self.pageState = .wait(page)
             print("page(\(curPage)) loading success.")
+            print("isWaitingState? : \(self.isWaitingState)")
         }
     }
     

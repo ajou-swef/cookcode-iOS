@@ -27,7 +27,14 @@ final class AccountService: AccountServiceProtocol {
         
         let url = "\(BASE_URL)/api/v1/account/check?nickname=\(nickname)"
         
-        let response = await AF.request(url, method: .get).serializingDecodable(ServiceResponse<AccountCheckDto>.self).response
+        let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+        let encodedURL = URL(string: encoded)!
+        
+        let response = await AF.request(encodedURL, method: .get).serializingDecodable(ServiceResponse<AccountCheckDto>.self).response
+        
+        if response.error != nil {
+            print("\(response.debugDescription)")
+        }
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
