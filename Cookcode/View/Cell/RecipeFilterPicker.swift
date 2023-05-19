@@ -11,6 +11,7 @@ struct RecipeFilterPicker: View {
     
     @State private var expandView: Bool = false
     @Binding var selection: RecipeFilterType
+    @Binding var filterOffset: CGFloat
     
     var content: [RecipeFilterType] = RecipeFilterType.allCases
     var activeTint: Color
@@ -62,6 +63,14 @@ struct RecipeFilterPicker: View {
                 .frame(height: contentHeight)
                 .offset(y: maskOffsetY)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+        .onChange(of: filterOffset) { newValue in
+            if newValue < 0 {
+                expandView = false
+            }
+        }
+        .onDisappear {
+            expandView = false
         }
     }
     
