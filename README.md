@@ -1,5 +1,9 @@
 # Cookcode 
 
+
+https://github.com/ajou-swef/cookcode-iOS/assets/83946805/6119b9af-0c37-4d8a-b7aa-b502d9d8416b
+
+
 ## 2023-1학기 SW 캡스톤디자인
 
 ### Member 👨🏼‍🤝‍👨🏼
