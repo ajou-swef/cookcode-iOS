@@ -29,7 +29,10 @@ final class ContentService: ContentServiceProtocol {
             }
         }, to: url, usingThreshold: UInt64.init(), method: .post, headers: headers).serializingDecodable(ServiceResponse<ContentDTO>.self).response
         
-        print("\(response.debugDescription)")
+        if
+            response.error != nil {
+            print("\(response.debugDescription)")
+        }
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
@@ -39,7 +42,7 @@ final class ContentService: ContentServiceProtocol {
     }
     
     func postVideos(_ videoURLs: [VideoURL]) async -> Result<ServiceResponse<ContentDTO>, ServiceError> {
-        let url = "\(BASE_URL)"
+        let url = "\(BASE_URL)/api/v1/recipe/files"
         
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? "",
@@ -50,6 +53,10 @@ final class ContentService: ContentServiceProtocol {
                 multipart.append(videoURL.url, withName: "stepFiles", fileName: UUID().uuidString, mimeType: "video/mp4")
             }
         }, to: url, method: .post, headers: headers).serializingDecodable(ServiceResponse<ContentDTO>.self).response
+        
+        if response.error != nil {
+            print("\(response.debugDescription)")
+        }
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

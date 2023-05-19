@@ -40,6 +40,6 @@ class AccountViewModel: ObservableObject {
     }
     
     func alertOkBottonTapped() async {
-        let result = await accountService.deleteAccount()
+        _ = await accountService.deleteAccount()
     }
 }

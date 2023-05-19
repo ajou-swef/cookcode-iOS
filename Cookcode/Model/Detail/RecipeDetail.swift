@@ -43,7 +43,10 @@ extension RecipeDetail {
         description = form.description
         thumbnail = form.thumbnail
         
-        steps = form.steps.map { StepDTO(form: $0) }
+        steps = []
+        for (index, value) in form.steps.enumerated() {
+            steps.append(StepDTO(form: value, seq: index + 1))
+        }
         recipeID = nil
         user = nil
         createdAt = nil

@@ -9,7 +9,7 @@ import Foundation
 
 struct RecipeCellDto: Codable, Hashable, Mock {
     static func mock() -> RecipeCellDto {
-        RecipeCellDto(recipeID: 1, user: UserDTO.MOCK_DATA, title: "title", description: "description", ingredients: IngredientDTO.mocks(1), optionalIngredients: IngredientDTO.mocks(1), createdAt: "2023-12-12", updatedAt: "2023-12-14", thumbnail: "")
+        RecipeCellDto(recipeID: 1, user: UserDTO.MOCK_DATA, title: "title", description: "description", ingredients: IngredientDTO.mocks(1), optionalIngredients: IngredientDTO.mocks(1), createdAt: "2023-12-12", updatedAt: "2023-12-14", thumbnail: "https://picsum.photos/800/200")
     }
     
     let recipeID: Int

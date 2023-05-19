@@ -29,7 +29,7 @@ struct RecipeEntranceView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(alignment: .leading) {
                 KFImage(URL(string: recipeDetail.thumbnail))
                     .resizable()
@@ -56,18 +56,23 @@ struct RecipeEntranceView: View {
                     } header: {
                         Text("설명")
                             .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                            .padding(.bottom, 10)
+                            .padding(.bottom, 5)
+                            .foregroundColor(.mainColor)
                     }
                     
                     Text("주 재료")
                         .font(CustomFontFactory.INTER_SEMIBOLD_14)
                         .padding(.top, 15)
+                        .foregroundColor(.mainColor)
+                        .hidden(recipeDetail.ingredientCells.isEmpty)
                     
                     IngredientCellsView(ingredientCells: recipeDetail.ingredientCells)
                     
                     Text("추가 재료")
                         .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                        .foregroundColor(.mainColor)
                         .padding(.top, 15)
+                        .hidden(recipeDetail.optionalIngredientCells.isEmpty)
                     
                     IngredientCellsView(ingredientCells: recipeDetail.optionalIngredientCells)
                 }

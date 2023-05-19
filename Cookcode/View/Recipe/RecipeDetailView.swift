@@ -45,7 +45,7 @@ struct RecipeDetailView: View {
                     Button {
                         viewModel.showDialog = true
                     } label: {
-                        Image(systemName: "gear")
+                        Image(systemName: "gearshape.fill")
                     }
                     .hidden(!viewModel.myRecipe)
                 }

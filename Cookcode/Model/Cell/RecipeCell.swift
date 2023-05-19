@@ -8,6 +8,8 @@
 import Foundation
 
 struct RecipeCell: SearchedCell {
+    var createdAt: String
+    
     
     var type: RecipeCell.Type {
         RecipeCell.self
@@ -27,6 +29,7 @@ struct RecipeCell: SearchedCell {
         thumbnail = dto.thumbnail
         title = dto.title
         userName = dto.user.nickname
+        createdAt = dto.createdAt.substring(from: 0, to: 9)
     }
     
     static func mock() -> RecipeCell {

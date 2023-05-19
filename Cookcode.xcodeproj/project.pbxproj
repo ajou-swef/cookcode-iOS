@@ -633,6 +633,7 @@
 		153B4D9029ED06A500543730 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				15F2CC1F2A0272D30019FAB6 /* SelectIngredientView.swift */,
 				158EFDD92A04CDF1003057A4 /* PatchComponent.swift */,
 				158EFDE02A04D1D3003057A4 /* IngredientPatchComponent.swift */,
 				15CFE6AB29FF7F9100C16FF6 /* CellTypePicker.swift */,
@@ -902,7 +903,6 @@
 			isa = PBXGroup;
 			children = (
 				15B869BC29EFDC5000A02872 /* RefrigeratorView.swift */,
-				15F2CC1F2A0272D30019FAB6 /* SelectIngredientView.swift */,
 			);
 			path = Refrigerator;
 			sourceTree = "<group>";

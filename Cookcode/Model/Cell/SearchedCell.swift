@@ -9,4 +9,5 @@ import Foundation
 
 protocol SearchedCell: Cell {
     var userName: String { get set }
+    var createdAt: String { get set }
 }

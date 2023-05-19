@@ -16,7 +16,7 @@ struct StepDTO: Codable, Mock, Hashable, Identifiable {
     let stepID, seq: Int
     let title, description: String
     var photos: [PhotoDTO]
-    let videos: [VideoDTO]
+    var videos: [VideoDTO]
     
     var containsAllRequiredInformation: Bool {
         !title.isEmpty && !description.isEmpty && !contentURLs.isEmpty
@@ -48,9 +48,9 @@ struct StepDTO: Codable, Mock, Hashable, Identifiable {
         self.videos = videos
     }
     
-    init (form: ContentWrappedStepForm) {
-        self.stepID = 1
-        self.seq = 1
+    init (form: ContentWrappedStepForm, seq: Int) {
+        self.stepID = seq
+        self.seq = seq
         self.title = form.title
         self.description = form.description
         self.photos = []
@@ -60,5 +60,10 @@ struct StepDTO: Codable, Mock, Hashable, Identifiable {
         }
         
         self.videos = []
+        for i in form.videoURLs.indices {
+            videos.append(VideoDTO(stepVideoID: i, videoURL: form.videoURLs[i]))
+        }
+        
+        print("Vide url: \(videos), containAll? :\(containsAllRequiredInformation)")
     }
 }

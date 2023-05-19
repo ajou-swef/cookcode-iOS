@@ -12,8 +12,10 @@ import Kingfisher
 
 struct StepFormView: View {
     
+    
     @ObservedObject var viewModel: RecipeFormViewModel
     @Environment(\.dismiss) var dismiss
+    @FocusState var filed: Int?
     
     init(viewModel: RecipeFormViewModel, stepIndex: Int) {
         self.viewModel = viewModel
@@ -40,13 +42,6 @@ struct StepFormView: View {
                             SelectVideoButton(i)
                         }
                     }
-                    .onChange(of: viewModel.stepItems) { newValue in
-                        if !newValue.isEmpty {
-                            Task {
-                                await viewModel.loadItemAt(i)
-                            }
-                        }
-                   }
                     
                     TitleSection(i)
                     DescriptionSection(i)
@@ -62,10 +57,21 @@ struct StepFormView: View {
                 .onDisappear {
                     viewModel.onDisappearStep()
                 }
+                
             }
+        }
+        .onTapGesture {
+            filed = nil
         }
         .ignoresSafeArea(.keyboard)
         .tabViewStyle(.page(indexDisplayMode: .never))
+        .onChange(of: viewModel.stepItems) { newValue in
+            if !newValue.isEmpty {
+                Task {
+                    await viewModel.loadItemAt(0)
+                }
+            }
+       }
     }
     
     @ViewBuilder
@@ -177,8 +183,10 @@ struct StepFormView: View {
     private func DescriptionSection(_ index: Int) -> some View {
         Section {
             VStack {
-                TextField("입력해주세요", text: $viewModel.recipeForm.steps[index].description)
+                TextEditor(text: $viewModel.recipeForm.steps[index].description)
                     .font(CustomFontFactory.INTER_REGULAR_14)
+                    .border(.gray)
+                    .focused($filed, equals: index)
             }
             .padding(.top, -30)
         } header: {
@@ -195,7 +203,8 @@ struct StepFormView: View {
     private func TitleSection(_ index: Int) -> some View {
         Section {
             VStack {
-                TextField("입력해주세요", text: $viewModel.recipeForm.steps[index].title)
+                TextField("입력해주세요",
+                          text: $viewModel.recipeForm.steps[index].title)
                 
                 CCDivider()
             }

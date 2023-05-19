@@ -17,7 +17,7 @@ struct ContentWrappedStepForm: Identifiable, Codable {
     private(set) var deletedVideos: [String] = []
     private(set) var deletedPhotos: [String] = []
     private var _contentType: ContentType = .image
-    private(set) var imageURLs: [String] = []
+    var imageURLs: [String] = [] 
     private(set) var videoURLs: [String] = []
     
     var contentType: ContentType {

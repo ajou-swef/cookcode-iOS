@@ -30,7 +30,7 @@ struct StepCellView: View {
                                 .foregroundColor(.white)
                         }
                 }
-                .hidden(!cell.photosIsEmpty)
+                .hidden(cell.containsAllRequiredInformation)
             
             TabView {
                 ForEach(cell.photos, id: \.self) { data in
@@ -40,11 +40,19 @@ struct StepCellView: View {
                         .frame(maxWidth: .infinity)
                 }
                 
+                ForEach(cell.videos, id: \.self) { data in
+                    if let url = URL(string: data.videoURL) {
+                        VideoPlayer(player: AVPlayer(url: url))
+                            .aspectRatio(CGSize(width: 4, height: 3), contentMode: .fill)
+                            .frame(maxWidth: .infinity)
+                    }
+                }
         
             }
             .frame(maxWidth: .infinity, maxHeight: 300)
             .tabViewStyle(.page(indexDisplayMode: .always))
-            .hidden(cell.photosIsEmpty)
+            .hidden(!cell.containsAllRequiredInformation)
+            .padding(.bottom, 10)
             
             Group {
                 lackOfInformation()
@@ -74,9 +82,17 @@ struct StepCellView: View {
     
     @ViewBuilder
     private func stepInformation() -> some View {
-        VStack {
-            Text("\(cell.title)")
+        VStack(alignment: .leading) {
+            Text("\(cell.seq)단계 : \(cell.title)")
                 .font(CustomFontFactory.INTER_SEMIBOLD_20)
+            
+            CCDivider()
+                .padding(.top, -10 )
+            
+            Text("설명")
+                .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                .foregroundColor(.mainColor)
+                .padding(.bottom, 5)
             
             Text("\(cell.description)")
                 .font(CustomFontFactory.INTER_REGULAR_14)
