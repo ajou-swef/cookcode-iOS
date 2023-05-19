@@ -13,27 +13,15 @@ struct HomeView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @StateObject private var viewModel = HomeViewModel(recipeService: RecipeService())
-    @State private var hidden: Bool = true
-    
-    let columns: [GridItem] = [
-        GridItem(.flexible())
-    ]
-    
-    let recipeCellHeight: CGFloat = 200
-    let offsetY: CGFloat = 20
     
     var body: some View {
         VStack {
-            
             header()
                 .zIndex(200)
-                .overlay {
-                    ProgressView()
-                        .hidden(!viewModel.isLoadingState)
-                }
             
             HStack {
-                RecipeFilterPicker(selection: $viewModel.filterType, activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
+                RecipeFilterPicker(selection: $viewModel.filterType, filterOffset: $viewModel.filterOffset, activeTint: .mainColor,
+                                   inActiveTint: .gray_bcbcbc, dynamic: false)
                     .frame(maxWidth: 130)
                 
                 
@@ -75,15 +63,11 @@ struct HomeView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack(spacing: 20) {
-                    
                     Color.white.opacity(1)
                         .offsetY(coordinateSpace: .named("homeScroll")) {
-                            viewModel.resetTrigeerOffset = $0
-                            if $0 > 100 {
-                                Task { await viewModel.resetRecipeCell() }
-                            }
+                            viewModel.resetTriggerOffset = $0
                         }
-                        .padding(.vertical, -10)
+                        .padding(.vertical, -20)
                     
                     ForEach(viewModel.recipeCells) {  cell in
                        Button {
@@ -95,6 +79,10 @@ struct HomeView: View {
                        }
                        .id(cell.id)
                    }
+                    
+                    
+                    ProgressView()
+                        .hidden(!viewModel.isLoadingState)
                 }
                 .padding(.horizontal)
                 .background {
@@ -117,6 +105,11 @@ struct HomeView: View {
                     if !viewModel.recipeCells.isEmpty {                        proxy.scrollTo(viewModel.recipeCells[0].id)
                     }
                 }
+            }
+            .overlay(alignment: .top) {
+                Image(systemName: "arrow.clockwise")
+                    .rotationEffect(.degrees(viewModel.resetArrowDegree))
+                    .opacity(viewModel.resetArrowOpacity)
             }
         }
     }
