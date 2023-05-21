@@ -9,6 +9,10 @@ import Alamofire
 import Foundation
 
 final class AccountFailureService: AccountServiceProtocol {
+    func getUserDetailById(_ userId: Int) async -> Result<ServiceResponse<UserDetailDTO>, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func signIn(_ signInForm: SignInForm) async -> Result<ServiceResponse<SignInDto>, ServiceError> {
         return .failure(ServiceError(message: "에러 메시지", status: 400))
     }

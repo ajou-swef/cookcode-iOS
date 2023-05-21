@@ -8,6 +8,10 @@
 import Foundation
 
 final class AccountSuccessService: AccountServiceProtocol {
+    func getUserDetailById(_ userId: Int) async -> Result<ServiceResponse<UserDetailDTO>, ServiceError> {
+        .success(.mock())
+    }
+    
     func deleteAccount() async -> Result<DefaultResponse, ServiceError> {
         .success(.mock())
     }

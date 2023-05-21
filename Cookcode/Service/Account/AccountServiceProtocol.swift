@@ -17,5 +17,5 @@ protocol AccountServiceProtocol {
     
     func signIn(_ signInForm: SignInForm) async -> Result<ServiceResponse<SignInDto>, ServiceError>
     
-    func getUserAccountByID(_ userID: Int) async -> Result<ServiceResponse<UserAccountDto>, ServiceError>
+    func getUserDetailById(_ userId: Int) async -> Result<ServiceResponse<UserDetailDTO>, ServiceError>
 }

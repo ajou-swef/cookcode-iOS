@@ -56,7 +56,6 @@ final class RecipeService: RecipeServiceProtocol {
             url.append("&cookable=\(value)")
         }
         
-        print("\(url)")
         
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let encodedURL = URL(string: encoded)!
