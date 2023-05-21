@@ -8,6 +8,20 @@ import Alamofire
 import Foundation
 
 final class AccountService: AccountServiceProtocol {
+    func getUserDetailById(_ userId: Int) async -> Result<ServiceResponse<UserDetailDTO>, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/account/\(userId)"
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let response = await AF.request(url, method: .get, headers: headers).serializingDecodable(ServiceResponse<UserDetailDTO>.self).response
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? .decodeError()
+        }
+    }
+    
     func signIn(_ signInForm: SignInForm) async -> Result<ServiceResponse<SignInDto>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/account/signin"
         let param = [

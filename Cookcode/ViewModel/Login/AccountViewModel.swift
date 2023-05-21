@@ -11,8 +11,15 @@ class AccountViewModel: ObservableObject {
     
     @Published private(set) var didSignIn: Bool = false
     @Published var deleteAccountAlertIsPresented: Bool = false
+    @Published private(set) var user: UserDetail?
+    @Published private var _serviceAlert: ServiceAlert = .init()
     
     private let accountService: AccountServiceProtocol
+    
+    var serviceAlert: ServiceAlert {
+        get { _serviceAlert }
+        set { _serviceAlert = newValue }
+    }
     
     init(accountService: AccountServiceProtocol) {
         self.accountService = accountService
@@ -21,11 +28,34 @@ class AccountViewModel: ObservableObject {
         if token != nil {
             didSignIn = true
         }
+        
+        Task {
+            await getUser() 
+        }
     }
     
     
     var didNotSignIn: Bool {
         !didSignIn
+    }
+    
+    @MainActor
+    func getUser() async {
+        guard let userID = UserDefaults.standard.object(forKey: USER_ID) as? Int else {
+            print("로그인 실패")
+            logout()
+            return
+        }
+        
+        print("getUser")
+        
+        switch await accountService.getUserDetailById(userID) {
+        case .success(let response):
+            user = UserDetail(dto: response.data)
+        case .failure(_):
+            break
+        }
+        
     }
     
     func login(_ value: Bool) {

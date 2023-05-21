@@ -15,6 +15,21 @@ struct ProfileView: View {
     var body: some View {
         NavigationStack(path: $navigateViewModel.profilePath) {
             List {
+                HStack {
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .padding(.all, 6)
+                        .background(Circle().stroke(lineWidth: 2))
+                    
+                    VStack(alignment: .leading) {
+                        Text(accountViewModel.user?.nickname ?? "")
+                            .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                        
+                        Text(accountViewModel.user?.email ?? "")
+                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                    }
+                }
                 
                 Button {
                     navigateViewModel.navigateWithProfile(ProfilePath.myRecipe)
@@ -51,10 +66,10 @@ struct ProfileView: View {
                     }
                 }
             }
+            .alert(accountViewModel.serviceAlert.title, isPresented: $accountViewModel.serviceAlert.isPresented) {
+                ServiceAlert.CANCEL_BUTTON
+            }
             .tint(.mainColor)
-//            .navigationDestination(for: RecipeCell.self) { recipeCell in
-////                RecipeView(recipeCell: recipeCell)
-//            }
             .navigationDestination(for: ProfilePath.self) { path in
                 switch path {
                 case .myRecipe:
