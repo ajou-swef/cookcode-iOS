@@ -70,6 +70,7 @@
 		15508CB22A134DE600004A1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15508CB12A134DE600004A1C /* API.swift */; };
 		15508CB42A134DFD00004A1C /* Ingredient Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */; };
 		155A50762A0B5A9500EBD894 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A50752A0B5A9500EBD894 /* ContentService.swift */; };
+		15634B6B2A1B7C3C00FEABB8 /* CookieFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */; };
 		1566059029F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566058F29F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift */; };
 		1566059229F93740008B9F9F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566059129F93740008B9F9F /* HomeViewModel.swift */; };
 		1566059429F937A3008B9F9F /* View + offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566059329F937A3008B9F9F /* View + offset.swift */; };
@@ -258,6 +259,7 @@
 		15508CB12A134DE600004A1C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient Dictionary.swift"; sourceTree = "<group>"; };
 		155A50752A0B5A9500EBD894 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
+		15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieFormView.swift; sourceTree = "<group>"; };
 		1566058F29F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWrappedStepForm_Tests.swift; sourceTree = "<group>"; };
 		1566059129F93740008B9F9F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1566059329F937A3008B9F9F /* View + offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + offset.swift"; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 		1503F95129B459C4002F3D26 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				15634B692A1B7C3200FEABB8 /* Cookie */,
 				159BE2AD29FB875300DE7448 /* Cell */,
 				153B4D9029ED06A500543730 /* Component */,
 				158EFDD82A04CDD1003057A4 /* Container */,
@@ -739,6 +742,14 @@
 				15A19D842A0B8E03008C71EA /* RecipeService.swift */,
 			);
 			path = Recipe;
+			sourceTree = "<group>";
+		};
+		15634B692A1B7C3200FEABB8 /* Cookie */ = {
+			isa = PBXGroup;
+			children = (
+				15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */,
+			);
+			path = Cookie;
 			sourceTree = "<group>";
 		};
 		1566058E29F914C8008B9F9F /* Model */ = {
@@ -1186,6 +1197,7 @@
 				1515FB2A2A12095C00119519 /* RecipeDetailViewModel.swift in Sources */,
 				15B1F9E92A0918ED00B9CB24 /* IngredientFormDTO.swift in Sources */,
 				15AA2F8829F102720069813F /* VideURL.swift in Sources */,
+				15634B6B2A1B7C3C00FEABB8 /* CookieFormView.swift in Sources */,
 				15921B842A1A152500BA636D /* UserDetail.swift in Sources */,
 				15AA2F2829EFEBE00069813F /* CCDivider.swift in Sources */,
 				1503F92529B45560002F3D26 /* ContentView.swift in Sources */,

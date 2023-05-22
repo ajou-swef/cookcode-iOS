@@ -25,6 +25,9 @@ struct MainTabView: View {
                 case .profile:
                     ProfileView()
                         .transition(.move(edge: .trailing))
+                case .cookie:
+                    CookieFormView()
+                        .transition(.move(edge: .trailing))
                 }
             } else {
                 TabView(selection: $navigateViewModel.tab) {
@@ -32,7 +35,7 @@ struct MainTabView: View {
                     homeView()
                     refrigeratorView()
                 }
-                .transition(.move(edge: .leading))
+                .transition(.move(edge: .trailing))
                 .introspectTabBarController {
                     let appearance: UITabBarAppearance = UITabBarAppearance()
                     appearance.configureWithOpaqueBackground()

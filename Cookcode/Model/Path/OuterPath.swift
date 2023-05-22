@@ -10,6 +10,7 @@ import Foundation
 enum OuterPath: String {
     case recipe
     case profile
+    case cookie
 }
 
 struct OuterIdPath: Equatable {
