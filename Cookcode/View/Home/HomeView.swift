@@ -11,8 +11,9 @@ import LegacyScrollView
 
 struct HomeView: View {
     
-    @EnvironmentObject var navigateViewModel: NavigateViewModel
     @StateObject private var viewModel = HomeViewModel(recipeService: RecipeService())
+    @EnvironmentObject var navigateViewModel: NavigateViewModel
+    @EnvironmentObject var updateCellVM: UpdateCellViewModel
     
     var body: some View {
         VStack {
@@ -40,6 +41,11 @@ struct HomeView: View {
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
+        }
+        .onAppear {
+            print("HomeView onAppear")
+            viewModel.updateCell(updateCellVM.updateCellDict)
+            updateCellVM.updateCellDict[.recipe] = nil 
         }
     }
     

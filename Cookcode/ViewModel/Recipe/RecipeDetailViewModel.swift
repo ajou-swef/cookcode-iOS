@@ -39,7 +39,6 @@ class RecipeDetailViewModel: RecipeViewModel {
         case .success(let success):
             recipeDetail = RecipeDetail(dto: success.data)
             setMyRecipe(recipeDetail.user?.userID ?? -1)
-            print("recipeDetail: \(recipeDetail)")
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }

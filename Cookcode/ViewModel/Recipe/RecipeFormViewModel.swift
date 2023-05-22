@@ -11,7 +11,7 @@ import PhotosUI
 class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchViewModel {
     
     
-    private var recipeId: Int?
+    private(set) var recipeId: Int?
     
     var usePost: Bool {
         recipeId == nil
