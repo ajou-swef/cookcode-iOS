@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct CookcodeApp: App {
     
+    @StateObject private var updateCellViewModel: UpdateCellViewModel = .init()
     @StateObject private var navigateViewModel: NavigateViewModel = .init()
     @StateObject private var accountViewModel: AccountViewModel = .init(accountService: AccountService())
     
@@ -18,6 +19,7 @@ struct CookcodeApp: App {
             ContentView()
                 .environmentObject(navigateViewModel)
                 .environmentObject(accountViewModel)
+                .environmentObject(updateCellViewModel)
                 .onOpenURL {
                     navigateViewModel.separateURL($0.absoluteString)
                 }

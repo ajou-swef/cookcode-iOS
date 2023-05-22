@@ -11,6 +11,7 @@ struct RecipeDetailView: View {
     
     @StateObject private var viewModel: RecipeDetailViewModel
     @EnvironmentObject var navigateVM: NavigateViewModel
+    @EnvironmentObject var updateCellVM: UpdateCellViewModel
     
     init(recipeCell: RecipeCell) {
         self._viewModel = StateObject(wrappedValue: RecipeDetailViewModel(recipeCell: recipeCell))
@@ -34,7 +35,10 @@ struct RecipeDetailView: View {
                 }
                 
                 Button {
-                    Task { await viewModel.deleteButtonTapepd(dismiss: navigateVM.clear) }
+                    Task {
+                        updateCellVM.updateCellDict[.recipe] = CellUpdateInfo(updateType: .delete, cellId: viewModel.recipeDetail.recipeID ?? -1 )
+                        await viewModel.deleteButtonTapepd(dismiss: navigateVM.clear)
+                    }
                 } label: {
                     Text("삭제")
                         .foregroundColor(.red)

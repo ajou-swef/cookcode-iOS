@@ -11,6 +11,7 @@ struct RecipePreviewView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var navigateVM: NavigateViewModel
+    @EnvironmentObject var updateCellVM: UpdateCellViewModel
     @ObservedObject var viewModel: RecipeFormViewModel
     
     var body: some View {
@@ -68,7 +69,12 @@ struct RecipePreviewView: View {
    
                Button {
                    Task {
-                       await viewModel.uploadButtonTapped(completion: navigateVM.dismissOuter)
+                       if !viewModel.usePost {
+                           print("셀 업데이트 정보 저장")
+                           updateCellVM.updateCellDict[.recipe] = CellUpdateInfo(updateType: .patch, cellId: viewModel.recipeId ?? -1)
+                       }
+                       
+                       await viewModel.uploadButtonTapped { navigateVM.dismissOuter() }
                    }
                } label: {
                    Image(systemName: "square.and.arrow.up.circle.fill")

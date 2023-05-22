@@ -60,7 +60,7 @@ class HomeViewModel: ObservableObject {
     }
     
     private let recipeService: RecipeServiceProtocol
-    private let fetchSize: Int = 10
+    private let pageSize: Int = 10
     
     
     var searchTriggerIsInScreen: Bool {
@@ -89,7 +89,7 @@ class HomeViewModel: ObservableObject {
         pageState = .loading(curPage)
         print("page(\(curPage)) loading start")
         
-        let result = await recipeService.searchRecipeHomeCell(page: curPage, size: fetchSize, sort: nil, month: nil, cookcable: filterType.cookable)
+        let result = await recipeService.searchRecipeHomeCell(page: curPage, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
         
         switch result {
         case .success(let success):
@@ -117,5 +117,43 @@ class HomeViewModel: ObservableObject {
     private func appendRecipeCell(_ success: (RecipeCellSeachResponse)) {
         let newCells = success.data.recipeCells.map {  RecipeCell(dto: $0) }
         recipeCells.append(contentsOf: newCells)
+    }
+    
+    @MainActor
+    func updateCell(_ info: [CellType: CellUpdateInfo]) {
+        guard let info = info[.recipe] else { return }
+        
+        print("updateCell called")
+        
+        switch info.updateType {
+        case .delete:
+            deleteCell(info.cellId)
+        case .patch:
+            Task { await patchCell(info.cellId) } 
+        }
+    }
+    
+    @MainActor
+    private func deleteCell(_ cellId: Int) {
+        guard let index = recipeCells.firstIndex(where: { $0.recipeId == cellId }) else { return }
+        recipeCells.remove(at: index)
+        print("\(index+1)번째 레시피 삭제")
+    }
+    
+    @MainActor
+    private func patchCell(_ cellId: Int) async {
+        guard let index = recipeCells.firstIndex(where: { $0.recipeId == cellId }) else { return }
+        print("\(index+1)번째 레시피 업데이트")
+        let page = index / 10
+        let result = await recipeService.searchRecipeHomeCell(page: page, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
+        
+        switch result {
+        case .success(let success):
+            let firstIndex = success.data.recipeCells.firstIndex { $0.recipeID == cellId }
+            guard let matchIndex = firstIndex else { return }
+            recipeCells[index] = RecipeCell(dto: success.data.recipeCells[matchIndex])
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
     }
 }
