@@ -121,6 +121,10 @@
 		15AA2F4D29F0D9400069813F /* StepFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F4C29F0D9400069813F /* StepFormView.swift */; };
 		15AA2F8829F102720069813F /* VideURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F8729F102720069813F /* VideURL.swift */; };
 		15AA2F8A29F10CA90069813F /* ContentWrappedStepForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F8929F10CA90069813F /* ContentWrappedStepForm.swift */; };
+		15B04C532A1C6B4300B988BF /* CookieFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C522A1C6B4300B988BF /* CookieFormViewModel.swift */; };
+		15B04C572A1C6BBD00B988BF /* VideoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C562A1C6BBD00B988BF /* VideoThumbnail.swift */; };
+		15B04C592A1C76FF00B988BF /* VideLoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C582A1C76FF00B988BF /* VideLoadState.swift */; };
+		15B04C5B2A1C77A400B988BF /* VideoLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C5A2A1C77A400B988BF /* VideoLoadView.swift */; };
 		15B1F9E02A08D9B500B9CB24 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9DF2A08D9B500B9CB24 /* IngredientType.swift */; };
 		15B1F9E22A08FC8100B9CB24 /* IngredientDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E12A08FC8100B9CB24 /* IngredientDetail.swift */; };
 		15B1F9E42A08FD6500B9CB24 /* ServiceDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E32A08FD6500B9CB24 /* ServiceDateFormatter.swift */; };
@@ -314,6 +318,10 @@
 		15AA2F4C29F0D9400069813F /* StepFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFormView.swift; sourceTree = "<group>"; };
 		15AA2F8729F102720069813F /* VideURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideURL.swift; sourceTree = "<group>"; };
 		15AA2F8929F10CA90069813F /* ContentWrappedStepForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWrappedStepForm.swift; sourceTree = "<group>"; };
+		15B04C522A1C6B4300B988BF /* CookieFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieFormViewModel.swift; sourceTree = "<group>"; };
+		15B04C562A1C6BBD00B988BF /* VideoThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoThumbnail.swift; sourceTree = "<group>"; };
+		15B04C582A1C76FF00B988BF /* VideLoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideLoadState.swift; sourceTree = "<group>"; };
+		15B04C5A2A1C77A400B988BF /* VideoLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLoadView.swift; sourceTree = "<group>"; };
 		15B1F9DF2A08D9B500B9CB24 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		15B1F9E12A08FC8100B9CB24 /* IngredientDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetail.swift; sourceTree = "<group>"; };
 		15B1F9E32A08FD6500B9CB24 /* ServiceDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDateFormatter.swift; sourceTree = "<group>"; };
@@ -475,6 +483,7 @@
 				158EFDDD2A04CEA9003057A4 /* PatchViewModel */,
 				152565782A076D5D00471D52 /* Refrigerator */,
 				1515FB312A123E5D00119519 /* Home */,
+				15B04C502A1C6B0300B988BF /* Cookie */,
 				153B4DB029ED1B1300543730 /* MembershipViewModel.swift */,
 				153F128D29FE2B37008BDB4E /* SearchCellViewModel.swift */,
 				15C805B92A0344BC000A1A29 /* SelectIngredientForRecipeViewModel.swift */,
@@ -506,8 +515,8 @@
 				15AA2F4929F0D8050069813F /* Path */,
 				1515F31A2A0C7BC30003A4BB /* Type */,
 				153F127629FE2268008BDB4E /* DTO */,
-				15AA2F4129F0C9DC0069813F /* Form */,
 				15B626412A009D40002E1F5F /* Mock.swift */,
+				15AA2F4129F0C9DC0069813F /* Form */,
 				15B6263C2A009CDC002E1F5F /* Cell */,
 				151E1CA22A0CEF0200BC0DA5 /* Detail */,
 				15AA2F8729F102720069813F /* VideURL.swift */,
@@ -592,6 +601,7 @@
 			isa = PBXGroup;
 			children = (
 				151E1CA42A0CF0D100BC0DA5 /* PageState.swift */,
+				15B04C582A1C76FF00B988BF /* VideLoadState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -818,6 +828,7 @@
 				15508CAF2A1329DD00004A1C /* IngredientCellsView.swift */,
 				15193E412A0C9A3800615BE1 /* StepCellView.swift */,
 				1515FB2D2A123C0E00119519 /* RecipeFilterPicker.swift */,
+				15B04C5A2A1C77A400B988BF /* VideoLoadView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -864,6 +875,7 @@
 				153B4DAC29ED179200543730 /* SignInForm.swift */,
 				153B4DAE29ED1AB400543730 /* MembershipForm.swift */,
 				15AA2F8929F10CA90069813F /* ContentWrappedStepForm.swift */,
+				15B04C562A1C6BBD00B988BF /* VideoThumbnail.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -886,6 +898,14 @@
 				1515FB262A12005C00119519 /* DetailPath.swift */,
 			);
 			path = Path;
+			sourceTree = "<group>";
+		};
+		15B04C502A1C6B0300B988BF /* Cookie */ = {
+			isa = PBXGroup;
+			children = (
+				15B04C522A1C6B4300B988BF /* CookieFormViewModel.swift */,
+			);
+			path = Cookie;
 			sourceTree = "<group>";
 		};
 		15B6263C2A009CDC002E1F5F /* Cell */ = {
@@ -1201,6 +1221,7 @@
 				15921B842A1A152500BA636D /* UserDetail.swift in Sources */,
 				15AA2F2829EFEBE00069813F /* CCDivider.swift in Sources */,
 				1503F92529B45560002F3D26 /* ContentView.swift in Sources */,
+				15B04C5B2A1C77A400B988BF /* VideoLoadView.swift in Sources */,
 				15CFE66429FF587D00C16FF6 /* PhotoResponse.swift in Sources */,
 				15CFE6A829FF7B8500C16FF6 /* ProfileView.swift in Sources */,
 				15CFE66829FF593300C16FF6 /* ContentSuccessService.swift in Sources */,
@@ -1213,6 +1234,7 @@
 				15F82A7529FA93E500DA9381 /* UserAccountDto.swift in Sources */,
 				15EFAD6E2A0B3ACB0092B203 /* PatchIngredientViewModel.swift in Sources */,
 				15921B812A1A135100BA636D /* UserDetailDTO.swift in Sources */,
+				15B04C532A1C6B4300B988BF /* CookieFormViewModel.swift in Sources */,
 				15508CB42A134DFD00004A1C /* Ingredient Dictionary.swift in Sources */,
 				159BE2AF29FB875F00DE7448 /* CellView.swift in Sources */,
 				15B1F9E62A09118900B9CB24 /* RefridgeratorService.swift in Sources */,
@@ -1240,6 +1262,7 @@
 				15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */,
 				159C99E12A127B450058B18E /* ScrollVelocityDetector.swift in Sources */,
 				1566059229F93740008B9F9F /* HomeViewModel.swift in Sources */,
+				15B04C572A1C6BBD00B988BF /* VideoThumbnail.swift in Sources */,
 				15EFAD6C2A0B34690092B203 /* Int + Extension.swift in Sources */,
 				15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */,
 				1584033329B48E0F0092032A /* LoginView.swift in Sources */,
@@ -1303,6 +1326,7 @@
 				15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */,
 				153F127829FE2274008BDB4E /* ImageContent.swift in Sources */,
 				1525657F2A077FD000471D52 /* ServiceResponse.swift in Sources */,
+				15B04C592A1C76FF00B988BF /* VideLoadState.swift in Sources */,
 				15AA2F8A29F10CA90069813F /* ContentWrappedStepForm.swift in Sources */,
 				153B4DAD29ED179200543730 /* SignInForm.swift in Sources */,
 				15508CB02A1329DD00004A1C /* IngredientCellsView.swift in Sources */,

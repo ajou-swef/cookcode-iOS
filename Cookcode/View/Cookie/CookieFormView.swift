@@ -11,142 +11,228 @@ import AVKit
 
 struct CookieFormView: View {
     
+    @StateObject private var viewModel = CookieFormViewModel(contentService: ContentService())
     @EnvironmentObject var navigateVM: NavigateViewModel
     
-    @State private var photosPickerItem: [PhotosPickerItem] = []
-    @State private var isMerging: Bool = false
-    @State private var avPlayer: AVPlayer?
+    @State private var title: String = ""
+    @State private var description: String = ""
+    
     
     let service = ContentService()
     
     var body: some View {
         NavigationStack {
-            VStack {
-                
-                if isMerging {
-                    ProgressView()
-                } else {
-                    if let avPlayer {
-                        VideoPlayer(player: avPlayer)
-                            .frame(maxWidth: 300, maxHeight: 300)
-                    } else {
-                        Image(systemName: "video.square")
-                            .resizable()
-                            .frame(maxWidth: 300, maxHeight: 300)
-                    }
-                }
-                
-                PhotosPicker(selection: $photosPickerItem, maxSelectionCount: 8, matching: .videos) {
-                    Text("비디오 선택")
-                }
-                .onChange(of: photosPickerItem) { newValue in
-                    Task {
-                        print("Merge start")
-                        isMerging = true
-                        var videoURL: [VideoURL] = []
-                        
-                        for item in photosPickerItem {
-                            if let movie = try await item.loadTransferable(type: VideoURL.self) {
-                                videoURL.append(movie)
-                            } else {
-                                print("Load fail")
+            ScrollView {
+                VStack(spacing: 30) {
+                    cookieThumbnail()
+                        .opacity(viewModel.isMerging ? 0.3 : 1)
+                        .disabled(viewModel.isMerging)
+                        .overlay {
+                            ProgressView()
+                                .tint(.mainColor)
+                                .hidden(!viewModel.isMerging)
+                        }
+
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            ForEach(viewModel.selectedVideoThumbnails.indices, id: \.self) { index in
+                                
+                                let thumbnail = viewModel.selectedVideoThumbnails[index]
+                                
+                                Button {
+                                    Task { await viewModel.thumbnailTapped(at: index) }
+                                } label: {
+                                    VideoLoadView(state: thumbnail.loadState)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                        .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                                        .frame(width: 100, alignment: .top)
+                                }
                             }
+                            
+                            
+                            ProgressView()
+                                .hidden(!viewModel.isMerging)
+                                .frame(width: 100, height: 100)
+                                .tint(.mainColor)
+                            
+                            selectVideoButton()
+                            
                         }
-                        
-                        do {
-                            try await mergeVideo(videoURL)
-                        } catch {
-                            print("merge fail")
-                        }
+                        .offset(x: 20)
+                        .padding(.trailing, 40)
                     }
+                    
+//                    titleSection()
+//                    descriptionSection()
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        Task { await export() }
-                    } label: {
-                        Text("완료")
-                            .foregroundColor(.mainColor)
-                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                dismissButton()
+                completeButton()
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func cookieThumbnail() -> some View {
+        if let thumbnail = viewModel.mergedVideoThumbnail {
+            Button {
+                viewModel.videoIsPresented = true
+            } label: {
+                Image(uiImage: thumbnail)
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .aspectRatio(CGSize(width: 2, height: 3), contentMode: .fit)
+                    .frame(maxWidth: 200)
+            }
+            .sheet(isPresented: $viewModel.videoIsPresented) {
+                VideoPlayer(player: viewModel.mergedAVPlayer)
+                    .ignoresSafeArea()
+                    .scaledToFill()
+                    .onAppear {
+                        viewModel.mergedAVPlayer?.play()
                     }
+            }
+                
+        } else {
+            Image(systemName: "questionmark.video")
+                .resizable()
+                .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                .frame(maxWidth: 200)
+        }
+    }
+    
+    
+    @ViewBuilder
+    private func titleSection() -> some View {
+        TextField("쿠키 제목을 입력해주세요", text: $title)
+            .padding(.horizontal, 5)
+            .padding(.vertical)
+            .overlay {
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(lineWidth: 4)
+                    .foregroundColor(.mainColor)
+            }
+            .padding(.horizontal, 20)
+    }
+    
+    @ViewBuilder
+    private func descriptionSection() -> some View {
+        Section {
+            VStack(spacing: 5) {
+                HStack {
+                    TextEditor(text: $description)
+                        .font(CustomFontFactory.INTER_REGULAR_14)
+                        .border(Color.gray_bcbcbc)
+                    
+                    Spacer()
                 }
+                
+                CCDivider()
+                    .padding(.bottom, 20)
+            }
+        } header: {
+            HStack {
+                Text("쿠키 설명")
+                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                    .frame(alignment: .leading)
+                
+                Spacer()
             }
         }
     }
     
-    func mergeVideo(_ urls: [VideoURL]) async throws {
-        let movie = AVMutableComposition()
-        let videoTrack = movie.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid)
-        let audioTrack = movie.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
-        
-        for url in urls {
-            let movie = AVURLAsset(url: url.url)
-            guard let loadedVideoTrack = try await movie.loadTracks(withMediaType: .video).first else { return }
-            
-            let duration = try await movie.load(.duration)
-            let range = CMTimeRangeMake(start: CMTime.zero, duration: duration)
-            guard let mergedDuration = try await videoTrack?.asset?.load(.duration) else { break }
-            
-            try videoTrack?.insertTimeRange(range, of: loadedVideoTrack, at: mergedDuration)
-            
-            if let loadedAudioTack = try await movie.loadTracks(withMediaType: .audio).first {
-                try audioTrack?.insertTimeRange(range, of: loadedAudioTack, at: mergedDuration)
+    
+    
+    fileprivate func completeButton() -> ToolbarItem<(), Button<Text>> {
+        return ToolbarItem(placement: .navigationBarTrailing) {
+            Button {
+//                Task { await export() }
+            } label: {
+                Text("완료")
+                    .foregroundColor(.mainColor)
+                    .font(CustomFontFactory.INTER_SEMIBOLD_20)
             }
         }
-        
-        let item = AVPlayerItem(asset: movie)
-        avPlayer = AVPlayer(playerItem: item)
-        isMerging = false
     }
     
-    func export(withPreset preset: String = AVAssetExportPresetHighestQuality,
-                toFileType outputFileType: AVFileType = .mov) async {
-        
-        // Check the compatibility of the preset to export the video to the output file type.
-        
-        guard let video = avPlayer?.currentItem?.asset else { return }
-        
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                               in: .userDomainMask).first else { return }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .short
-        let date = dateFormatter.string(from: Date())
-        let url = documentDirectory.appendingPathComponent("mergeVideo-\(date).movie.mp4")
+    
+    fileprivate func dismissButton() -> ToolbarItem<(), Button<some View>> {
+        return ToolbarItem(placement: .navigationBarLeading) {
+            Button {
+                navigateVM.dismissOuter()
+            } label: {
+                Image(systemName: "xmark")
+                    .foregroundColor(.mainColor)
+            }
+            
+        }
+    }
+    
+    @ViewBuilder
+    private func selectVideoButton() -> some View {
+        PhotosPicker(selection: $viewModel.photosPickerItem, matching: .videos) {
+            Image(systemName: "plus.square")
+                .resizable()
+                .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                .frame(width: 100)
+                .foregroundColor(.mainColor)
+        }
+        .onChange(of: viewModel.photosPickerItem) { newValue in
+            Task { await viewModel.loadURL() } 
+        }
+    }
+   
+    
+//    func export(withPreset preset: String = AVAssetExportPresetHighestQuality,
+//                toFileType outputFileType: AVFileType = .mov) async {
 //
-        guard await AVAssetExportSession.compatibility(ofExportPreset: preset,
-                                                       with: video,
-                                                       outputFileType: .mov) else {
-            print("The preset can't export the video to the output file type.")
-            return
-        }
-
-        // Create and configure the export session.
-        guard let exportSession = AVAssetExportSession(asset: video,
-                                                       presetName: preset) else {
-            print("Failed to create export session.")
-            return
-        }
-        exportSession.outputFileType = outputFileType
-        exportSession.outputURL = url
-        
-        // Convert the video to the output file type and export it to the output URL.
-        await exportSession.export()
-        
-        print("Success to export sesion")
-        print("movieURL: \(url)")
-        
-        let result = await service.postVideos([VideoURL(url: url)])
-        
-        switch result {
-        case .success(let success):
-            print("업로드 성공: \(success.data.urls)")
-        case .failure(let failure):
-            print("업로드 실패")
-        }
-    }
+//        // Check the compatibility of the preset to export the video to the output file type.
+//
+//        guard let video = avPlayer?.currentItem?.asset else { return }
+//
+//        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory,
+//                                                               in: .userDomainMask).first else { return }
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .long
+//        dateFormatter.timeStyle = .short
+//        let date = dateFormatter.string(from: Date())
+//        let url = documentDirectory.appendingPathComponent("mergeVideo-\(date).movie.mp4")
+////
+//        guard await AVAssetExportSession.compatibility(ofExportPreset: preset,
+//                                                       with: video,
+//                                                       outputFileType: .mov) else {
+//            print("The preset can't export the video to the output file type.")
+//            return
+//        }
+//
+//        // Create and configure the export session.
+//        guard let exportSession = AVAssetExportSession(asset: video,
+//                                                       presetName: preset) else {
+//            print("Failed to create export session.")
+//            return
+//        }
+//
+//        exportSession.outputFileType = outputFileType
+//        exportSession.outputURL = url
+//
+//        // Convert the video to the output file type and export it to the output URL.
+//        await exportSession.export()
+//
+//        print("Success to export sesion")
+//        print("movieURL: \(url)")
+//
+////        let result = await service.postVideos([VideoURL(url: url)])
+//
+////        switch result {
+////        case .success(let success):
+////            print("업로드 성공: \(success.data.urls)")
+////        case .failure(let failure):
+////            print("업로드 실패")
+////        }
+//    }
 }
 
 struct CookieFormView_Previews: PreviewProvider {
