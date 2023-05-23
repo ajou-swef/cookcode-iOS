@@ -75,7 +75,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "-openURL"
-            value = "cookcode://outer=cookie"
+            value = "cookcode://tab=cookie"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

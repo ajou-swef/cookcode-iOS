@@ -125,6 +125,12 @@
 		15B04C572A1C6BBD00B988BF /* VideoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C562A1C6BBD00B988BF /* VideoThumbnail.swift */; };
 		15B04C592A1C76FF00B988BF /* VideLoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C582A1C76FF00B988BF /* VideLoadState.swift */; };
 		15B04C5B2A1C77A400B988BF /* VideoLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C5A2A1C77A400B988BF /* VideoLoadView.swift */; };
+		15B04C5F2A1C7DEF00B988BF /* CookieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C5E2A1C7DEF00B988BF /* CookieListView.swift */; };
+		15B04C612A1C7E1800B988BF /* CookieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C602A1C7E1800B988BF /* CookieListViewModel.swift */; };
+		15B04C632A1C7F1300B988BF /* CookieCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C622A1C7F1300B988BF /* CookieCellView.swift */; };
+		15B04C652A1C7F6A00B988BF /* CookieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C642A1C7F6A00B988BF /* CookieCell.swift */; };
+		15B04C682A1C907100B988BF /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C672A1C907100B988BF /* PlayerView.swift */; };
+		15B04C6B2A1C94FD00B988BF /* VTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 15B04C6A2A1C94FD00B988BF /* VTabView */; };
 		15B1F9E02A08D9B500B9CB24 /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9DF2A08D9B500B9CB24 /* IngredientType.swift */; };
 		15B1F9E22A08FC8100B9CB24 /* IngredientDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E12A08FC8100B9CB24 /* IngredientDetail.swift */; };
 		15B1F9E42A08FD6500B9CB24 /* ServiceDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E32A08FD6500B9CB24 /* ServiceDateFormatter.swift */; };
@@ -139,7 +145,6 @@
 		15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B129EFD9B900A02872 /* MainTabView.swift */; };
 		15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */; };
 		15B869B929EFDC3600A02872 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B829EFDC3600A02872 /* HomeView.swift */; };
-		15B869BB29EFDC4600A02872 /* CookieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869BA29EFDC4600A02872 /* CookieView.swift */; };
 		15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869BC29EFDC5000A02872 /* RefrigeratorView.swift */; };
 		15C112DB2A1B11F9009B87E1 /* UpdateCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C112DA2A1B11F9009B87E1 /* UpdateCellViewModel.swift */; };
 		15C112DE2A1B1225009B87E1 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C112DD2A1B1225009B87E1 /* CellType.swift */; };
@@ -322,6 +327,11 @@
 		15B04C562A1C6BBD00B988BF /* VideoThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoThumbnail.swift; sourceTree = "<group>"; };
 		15B04C582A1C76FF00B988BF /* VideLoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideLoadState.swift; sourceTree = "<group>"; };
 		15B04C5A2A1C77A400B988BF /* VideoLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLoadView.swift; sourceTree = "<group>"; };
+		15B04C5E2A1C7DEF00B988BF /* CookieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieListView.swift; sourceTree = "<group>"; };
+		15B04C602A1C7E1800B988BF /* CookieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieListViewModel.swift; sourceTree = "<group>"; };
+		15B04C622A1C7F1300B988BF /* CookieCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieCellView.swift; sourceTree = "<group>"; };
+		15B04C642A1C7F6A00B988BF /* CookieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieCell.swift; sourceTree = "<group>"; };
+		15B04C672A1C907100B988BF /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		15B1F9DF2A08D9B500B9CB24 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		15B1F9E12A08FC8100B9CB24 /* IngredientDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetail.swift; sourceTree = "<group>"; };
 		15B1F9E32A08FD6500B9CB24 /* ServiceDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDateFormatter.swift; sourceTree = "<group>"; };
@@ -336,7 +346,6 @@
 		15B869B129EFD9B900A02872 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateViewModel.swift; sourceTree = "<group>"; };
 		15B869B829EFDC3600A02872 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		15B869BA29EFDC4600A02872 /* CookieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieView.swift; sourceTree = "<group>"; };
 		15B869BC29EFDC5000A02872 /* RefrigeratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorView.swift; sourceTree = "<group>"; };
 		15C112DA2A1B11F9009B87E1 /* UpdateCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCellViewModel.swift; sourceTree = "<group>"; };
 		15C112DD2A1B1225009B87E1 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
@@ -384,6 +393,7 @@
 				15A6AB5A2A03BE6400394490 /* PopupView in Frameworks */,
 				15F82A6A29FA8D5F00DA9381 /* Alamofire in Frameworks */,
 				159BE2AC29FB810200DE7448 /* Introspect in Frameworks */,
+				15B04C6B2A1C94FD00B988BF /* VTabView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,15 +504,16 @@
 		1503F95129B459C4002F3D26 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				15634B692A1B7C3200FEABB8 /* Cookie */,
 				159BE2AD29FB875300DE7448 /* Cell */,
 				153B4D9029ED06A500543730 /* Component */,
 				158EFDD82A04CDD1003057A4 /* Container */,
 				15DF8E8C2A10FB0700B58784 /* Login */,
 				15AA2F1E29EFE4750069813F /* Recipe */,
 				15B869B529EFDC2600A02872 /* Home */,
+				15634B692A1B7C3200FEABB8 /* Cookie */,
 				15CFE6A629FF7B7000C16FF6 /* Profile */,
 				15B869B129EFD9B900A02872 /* MainTabView.swift */,
+				15B04C672A1C907100B988BF /* PlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -758,6 +769,7 @@
 			isa = PBXGroup;
 			children = (
 				15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */,
+				15B04C5E2A1C7DEF00B988BF /* CookieListView.swift */,
 			);
 			path = Cookie;
 			sourceTree = "<group>";
@@ -783,7 +795,6 @@
 		158EFDD82A04CDD1003057A4 /* Container */ = {
 			isa = PBXGroup;
 			children = (
-				15B869B629EFDC2900A02872 /* Cookie */,
 				15B869B729EFDC2B00A02872 /* Refrigerator */,
 			);
 			path = Container;
@@ -829,6 +840,7 @@
 				15193E412A0C9A3800615BE1 /* StepCellView.swift */,
 				1515FB2D2A123C0E00119519 /* RecipeFilterPicker.swift */,
 				15B04C5A2A1C77A400B988BF /* VideoLoadView.swift */,
+				15B04C622A1C7F1300B988BF /* CookieCellView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -904,6 +916,7 @@
 			isa = PBXGroup;
 			children = (
 				15B04C522A1C6B4300B988BF /* CookieFormViewModel.swift */,
+				15B04C602A1C7E1800B988BF /* CookieListViewModel.swift */,
 			);
 			path = Cookie;
 			sourceTree = "<group>";
@@ -915,6 +928,7 @@
 				15F2CC1B2A026E5E0019FAB6 /* IngredientCell.swift */,
 				15F2CC172A026DDC0019FAB6 /* Cell.swift */,
 				15B6263D2A009CE6002E1F5F /* SearchedCell.swift */,
+				15B04C642A1C7F6A00B988BF /* CookieCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -934,14 +948,6 @@
 				153F127429FE1B8A008BDB4E /* SearchCellView.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		15B869B629EFDC2900A02872 /* Cookie */ = {
-			isa = PBXGroup;
-			children = (
-				15B869BA29EFDC4600A02872 /* CookieView.swift */,
-			);
-			path = Cookie;
 			sourceTree = "<group>";
 		};
 		15B869B729EFDC2B00A02872 /* Refrigerator */ = {
@@ -1072,6 +1078,7 @@
 				15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */,
 				15A6AB592A03BE6400394490 /* PopupView */,
 				159C99D72A126DD30058B18E /* LegacyScrollView */,
+				15B04C6A2A1C94FD00B988BF /* VTabView */,
 			);
 			productName = Cookcode;
 			productReference = 1503F91F29B45560002F3D26 /* Cookcode.app */;
@@ -1152,6 +1159,7 @@
 				15DAE25629FE3CCA00A4B00A /* XCRemoteSwiftPackageReference "observed-optional-object" */,
 				15A6AB582A03BE6400394490 /* XCRemoteSwiftPackageReference "PopupView" */,
 				159C99D62A126DD30058B18E /* XCRemoteSwiftPackageReference "LegacyScrollView" */,
+				15B04C692A1C94FD00B988BF /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */,
 			);
 			productRefGroup = 1503F92029B45560002F3D26 /* Products */;
 			projectDirPath = "";
@@ -1205,7 +1213,7 @@
 			files = (
 				15AA2F2029EFE47C0069813F /* RecipeFormView.swift in Sources */,
 				1515F31D2A0C7BE90003A4BB /* RecipeDetail.swift in Sources */,
-				15B869BB29EFDC4600A02872 /* CookieView.swift in Sources */,
+				15B04C5F2A1C7DEF00B988BF /* CookieListView.swift in Sources */,
 				1515F3102A0C77220003A4BB /* RecipeDetailDTO.swift in Sources */,
 				15CFE6AF29FF8D7700C16FF6 /* RefrigeratorServiceProtocol .swift in Sources */,
 				150CD44629F628CC0001FFEB /* String + Extension.swift in Sources */,
@@ -1238,6 +1246,8 @@
 				15508CB42A134DFD00004A1C /* Ingredient Dictionary.swift in Sources */,
 				159BE2AF29FB875F00DE7448 /* CellView.swift in Sources */,
 				15B1F9E62A09118900B9CB24 /* RefridgeratorService.swift in Sources */,
+				15B04C612A1C7E1800B988BF /* CookieListViewModel.swift in Sources */,
+				15B04C632A1C7F1300B988BF /* CookieCellView.swift in Sources */,
 				15CFE6AC29FF7F9100C16FF6 /* CellTypePicker.swift in Sources */,
 				1515F3122A0C77AD0003A4BB /* StepDTO.swift in Sources */,
 				153F127E29FE23B3008BDB4E /* RecipeCellDto.swift in Sources */,
@@ -1256,6 +1266,7 @@
 				1503F92329B45560002F3D26 /* CookcodeApp.swift in Sources */,
 				1593D94229F689D1008AF49E /* RecipeView.swift in Sources */,
 				153F127A29FE22EB008BDB4E /* VideoContent .swift in Sources */,
+				15B04C652A1C7F6A00B988BF /* CookieCell.swift in Sources */,
 				15AA2F2229EFE8DE0069813F /* RecipeForm.swift in Sources */,
 				15B869B929EFDC3600A02872 /* HomeView.swift in Sources */,
 				15F82A7329FA92D500DA9381 /* SignInDto.swift in Sources */,
@@ -1309,6 +1320,7 @@
 				15F2CC182A026DDC0019FAB6 /* Cell.swift in Sources */,
 				15CFE66629FF590000C16FF6 /* VideoResponse.swift in Sources */,
 				15508CB22A134DE600004A1C /* API.swift in Sources */,
+				15B04C682A1C907100B988BF /* PlayerView.swift in Sources */,
 				1599E94E2A13719D00ED1B60 /* ContentDTO.swift in Sources */,
 				15A19D892A0BB005008C71EA /* PostRecipeResponse.swift in Sources */,
 				15F2CC202A0272D30019FAB6 /* SelectIngredientView.swift in Sources */,
@@ -1713,6 +1725,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		15B04C692A1C94FD00B988BF /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-vertical-tab-view.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		15DAE25629FE3CCA00A4B00A /* XCRemoteSwiftPackageReference "observed-optional-object" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fourplusone/observed-optional-object.git";
@@ -1751,6 +1771,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 15A6AB582A03BE6400394490 /* XCRemoteSwiftPackageReference "PopupView" */;
 			productName = PopupView;
+		};
+		15B04C6A2A1C94FD00B988BF /* VTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15B04C692A1C94FD00B988BF /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */;
+			productName = VTabView;
 		};
 		15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */ = {
 			isa = XCSwiftPackageProductDependency;

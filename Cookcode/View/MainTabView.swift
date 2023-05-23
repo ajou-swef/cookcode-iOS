@@ -35,6 +35,7 @@ struct MainTabView: View {
                     homeView()
                     refrigeratorView()
                 }
+                .preferredColorScheme(navigateViewModel.tab == .cookie ? .dark : .light)
                 .transition(.move(edge: .trailing))
                 .introspectTabBarController {
                     let appearance: UITabBarAppearance = UITabBarAppearance()
@@ -50,7 +51,7 @@ struct MainTabView: View {
     @ViewBuilder
     func cookieView() -> some View {
         NavigationStack {
-            CookieView()
+            CookieListView() 
         }
         .tint(.mainColor)
         .tag(Tab.cookie)
