@@ -21,8 +21,8 @@ struct HomeView: View {
                 .zIndex(200)
             
             HStack {
-                RecipeFilterPicker(selection: $viewModel.filterType, filterOffset: $viewModel.filterOffset, activeTint: .mainColor,
-                                   inActiveTint: .gray_bcbcbc, dynamic: false)
+                RecipeFilterPicker(selection: $viewModel.filterType, filterOffset: $viewModel.dragVelocity,
+                                   activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
                     .frame(maxWidth: 130)
                 
                 
@@ -32,7 +32,7 @@ struct HomeView: View {
             .padding(.leading)
             .offset(y: viewModel.filterOffset)
             .padding(.bottom, viewModel.filterOffset)
-            .opacity((20 + viewModel.filterOffset) * 0.2)
+            .opacity(viewModel.filterOpacity)
             
             homeRows()
         }
@@ -98,8 +98,8 @@ struct HomeView: View {
                 .padding(.bottom, 10)
                 .padding(.trailing, 15)
         }
-        .offset(y: -viewModel.filterOffset)
-        .opacity((20 + viewModel.filterOffset) * 0.2)
+        .offset(y: -viewModel.dragVelocity)
+        .opacity((20 + viewModel.dragVelocity) * 0.2)
     }
     
     @ViewBuilder
@@ -113,8 +113,8 @@ struct HomeView: View {
                 .padding(.bottom, 10)
                 .padding(.trailing, 15)
         }
-        .offset(y: -viewModel.filterOffset)
-        .opacity((20 + viewModel.filterOffset) * 0.2)
+        .offset(y: -viewModel.dragVelocity)
+        .opacity((20 + viewModel.dragVelocity) * 0.2)
     }
     
     @ViewBuilder
@@ -147,7 +147,7 @@ struct HomeView: View {
                 .background {
                     ScrollDetector { offset, velocity in
                         withAnimation {
-                            viewModel.filterOffset = velocity
+                            viewModel.dragVelocity = velocity
                         }
                     }
                 }
