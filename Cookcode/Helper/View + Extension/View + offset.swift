@@ -9,7 +9,15 @@ import Foundation
 import SwiftUI
 
 
-struct OffsetY: PreferenceKey {
+struct OffsetKey: PreferenceKey {
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
+    }
+    
+    static var defaultValue: CGRect = .zero
+}
+
+struct OffsetYKey: PreferenceKey {
     static var defaultValue: CGFloat = .zero
     
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
@@ -26,10 +34,28 @@ extension View {
                     let minY = proxy.frame(in: coordinateSpace).minY
                     
                     Color.clear
-                        .preference(key: OffsetY.self, value: minY)
-                        .onPreferenceChange(OffsetY.self, perform: completion)
+                        .preference(key: OffsetYKey.self, value: minY)
+                        .onPreferenceChange(OffsetYKey.self, perform: completion)
                 }
             }
     }
-    }
     
+    @ViewBuilder
+    func offsetX(_ addObserver: Bool, completion: @escaping (CGRect) -> Void) -> some View {
+        self
+            .frame(maxWidth: .infinity)
+            .overlay {
+                if addObserver {
+                    GeometryReader {
+                        let rect = $0.frame(in: .global)
+                        Color.clear
+                            .preference(key: OffsetKey.self, value: rect)
+                            .onPreferenceChange(OffsetKey.self, perform: completion )
+                    }
+                }
+            }
+    }
+}
+
+
+
