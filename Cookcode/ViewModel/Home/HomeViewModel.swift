@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
     @Published var fetchTriggerOffset: CGFloat = .zero
     @Published var resetTriggerOffset: CGFloat = .zero
     
-    @Published var pageState: PageState = .wait(0)
+    @Published private var pageState: PageState = .wait(0)
     @Published var filterType: RecipeFilterType = .all {
         didSet {
             Task {
@@ -29,6 +29,19 @@ class HomeViewModel: ObservableObject {
     
     @Published private var _filterOffset: CGFloat = .zero
     @Published private(set) var contentTypeButtonIsShowing: Bool = false
+    
+    private let recipeService: RecipeServiceProtocol
+    private let pageSize: Int = 10
+    
+    init(recipeService: RecipeServiceProtocol) {
+        self.recipeService = recipeService
+        Task { await fetchRecipeCell() }
+    }
+    
+    
+    private var searchTriggerIsInScreen: Bool {
+        fetchTriggerOffset <= UIScreen.main.bounds.maxY
+    }
     
     var isLoadingState: Bool{
         pageState.isLoadingState
@@ -46,7 +59,7 @@ class HomeViewModel: ObservableObject {
         Double(resetTriggerOffset) * 4
     }
     
-    var filterOffset: CGFloat {
+    var dragVelocity: CGFloat {
         get { _filterOffset }
         set {
             if newValue <= 0 && resetTriggerOffset >= resetThreshold {
@@ -61,17 +74,12 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    private let recipeService: RecipeServiceProtocol
-    private let pageSize: Int = 10
-    
-    
-    private var searchTriggerIsInScreen: Bool {
-        fetchTriggerOffset <= UIScreen.main.bounds.maxY
+    var filterOffset: CGFloat {
+        _filterOffset
     }
     
-    init(recipeService: RecipeServiceProtocol) {
-        self.recipeService = recipeService
-        Task { await fetchRecipeCell() }
+    var filterOpacity: CGFloat {
+        (20 + _filterOffset) * 2
     }
     
     @MainActor
@@ -96,14 +104,18 @@ class HomeViewModel: ObservableObject {
         switch result {
         case .success(let success):
             appendRecipeCell(success)
-            if success.data.recipeCells.isEmpty {
-                pageState = .noRemain
-            } else {
-                waitInPage(curPage + 1)
-            }
+            controllPageState(success, curPage)
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
             waitInPage(curPage)
+        }
+    }
+    
+    private func controllPageState(_ response: RecipeCellSeachResponse, _ curPage: Int) {
+        if response.data.recipeCells.isEmpty {
+            pageState = .noRemain
+        } else {
+            waitInPage(curPage + 1)
         }
     }
     
