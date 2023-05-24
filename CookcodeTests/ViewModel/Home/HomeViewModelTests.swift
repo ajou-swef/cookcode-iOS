@@ -34,4 +34,27 @@ final class HomeViewModelTests: XCTestCase {
         let actual = viewModel.recipeCells.contains { $0.recipeId == recipeCell.recipeId }
         XCTAssertFalse(actual)
     }
+    
+    func test_When_createContentButtonFirstTapped_Then_showContentType() async {
+        //  Given
+        let viewModel = HomeViewModel(recipeService: RecipeSuccessService())
+        
+        //  When
+        await viewModel.createContentButtonTapped()
+        
+        //  Then
+        XCTAssertTrue(viewModel.contentTypeButtonIsShowing)
+    }
+    
+    func test_When_createContentButtonAlreadyTapped_Then_hideContentType() async {
+        //  Given
+        let viewModel = HomeViewModel(recipeService: RecipeSuccessService())
+        await viewModel.createContentButtonTapped()
+        
+        //  When
+        await viewModel.createContentButtonTapped()
+        
+        //  Then
+        XCTAssertFalse(viewModel.contentTypeButtonIsShowing)
+    }
 }
