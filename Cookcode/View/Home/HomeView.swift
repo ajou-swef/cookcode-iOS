@@ -36,17 +36,70 @@ struct HomeView: View {
             
             homeRows()
         }
+        .disabled(viewModel.contentTypeButtonIsShowing)
+        .overlay {
+            Color.gray_bcbcbc.opacity(0.5)
+                .ignoresSafeArea(.all)
+                .hidden(!viewModel.contentTypeButtonIsShowing)
+        }
         .overlay(alignment: .bottomTrailing) {
-           presentRecipeFormViewButton()
+            VStack(alignment: .trailing, spacing: 0) {
+                Group {
+                    presentRecipeFormViewButton()
+                    presentCookieViewButton()
+                }
+                .hidden(!viewModel.contentTypeButtonIsShowing)
+                
+                createContentButton()
+            }
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
         }
         .onAppear {
-            print("HomeView onAppear")
             viewModel.updateCell(updateCellVM.updateCellDict)
             updateCellVM.updateCellDict[.recipe] = nil 
         }
+    }
+    
+    @ViewBuilder
+    private func createContentButton() -> some View {
+        Button {
+            viewModel.createContentButtonTapped()
+        } label: {
+            Group {
+                if viewModel.contentTypeButtonIsShowing {
+                    Image(systemName: "xmark")
+                        .frame(width: 40, height: 40)
+                        .background {
+                            Circle().foregroundColor(.mainColor)
+                        }
+                } else {
+                    Image(systemName: "plus")
+                        .roundedRectangle(.ORANGE_80_FILLE)
+                }
+            }
+            .foregroundColor(.white)
+            .animation(.spring(), value: viewModel.contentTypeButtonIsShowing)
+            .padding(.bottom, 10)
+            .padding(.trailing, 15)
+        }
+
+    }
+    
+    @ViewBuilder
+    private func presentCookieViewButton() -> some View {
+        Button {
+            navigateViewModel.navigateToOuter(OuterIdPath(path: .cookie, id: nil))
+        } label: {
+            Text("쿠키")
+                .foregroundColor(.white)
+                .roundedRectangle(.ORANGE_80_FILLE)
+                .padding(.bottom, 10)
+                .padding(.trailing, 15)
+        }
+        .offset(y: -viewModel.filterOffset)
+        .opacity((20 + viewModel.filterOffset) * 0.2)
     }
     
     @ViewBuilder
@@ -54,7 +107,7 @@ struct HomeView: View {
         Button {
             navigateViewModel.navigateToOuter(OuterIdPath(path: .recipe, id: nil))
         } label: {
-            Image(systemName: "plus")
+            Text("레시피")
                 .foregroundColor(.white)
                 .roundedRectangle(.ORANGE_80_FILLE)
                 .padding(.bottom, 10)

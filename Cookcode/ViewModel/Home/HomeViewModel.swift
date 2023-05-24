@@ -26,7 +26,9 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
+    
     @Published private var _filterOffset: CGFloat = .zero
+    @Published private(set) var contentTypeButtonIsShowing: Bool = false
     
     var isLoadingState: Bool{
         pageState.isLoadingState
@@ -63,7 +65,7 @@ class HomeViewModel: ObservableObject {
     private let pageSize: Int = 10
     
     
-    var searchTriggerIsInScreen: Bool {
+    private var searchTriggerIsInScreen: Bool {
         fetchTriggerOffset <= UIScreen.main.bounds.maxY
     }
     
@@ -155,5 +157,10 @@ class HomeViewModel: ObservableObject {
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }
+    }
+    
+    @MainActor
+    func createContentButtonTapped() {
+        contentTypeButtonIsShowing.toggle()
     }
 }
