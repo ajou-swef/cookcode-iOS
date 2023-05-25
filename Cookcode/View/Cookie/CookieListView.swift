@@ -11,7 +11,7 @@ import VTabView
 
 struct CookieListView: View {
     
-    @StateObject private var viewModel = CookieListViewModel()
+    @StateObject private var viewModel = CookieListViewModel(cookieService: CookieService())
     
     init() {
         let av = AVPlayerViewController()
@@ -45,6 +45,7 @@ struct CookieListView: View {
                             .tag(viewModel.cookies[i].id)
                     } else {
                         Rectangle()
+                            .foregroundColor(.black)
                             .tag(viewModel.cookies[i].id)
                             .overlay(alignment: .bottomLeading) {
                                 bottomItem(i)
@@ -71,10 +72,10 @@ struct CookieListView: View {
     @ViewBuilder
     private func bottomItem(_ index: Int) -> some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("\(index)번째 유저이름")
+            Text("\(viewModel.cookies[index].title)")
                 .font(CustomFontFactory.INTER_BOLD_16)
 
-            Text("2023-05-23")
+            Text("\(viewModel.cookies[index].description)")
                 .font(CustomFontFactory.INTER_SEMIBOLD_14)
         }
         .foregroundColor(.white)

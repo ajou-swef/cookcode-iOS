@@ -42,6 +42,7 @@ struct MainTabView: View {
                     $0.tabBar.scrollEdgeAppearance = appearance
                     $0.tabBar.standardAppearance = appearance
                 }
+                .preferredColorScheme(navigateViewModel.tab == .cookie ? .dark : .light)
             }
         }
         .animation(.easeIn(duration: 0.2), value: navigateViewModel.outerPath)
