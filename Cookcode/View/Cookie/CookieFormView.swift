@@ -11,7 +11,7 @@ import AVKit
 
 struct CookieFormView: View {
     
-    @StateObject private var viewModel = CookieFormViewModel(contentService: ContentService())
+    @StateObject private var viewModel = CookieFormViewModel(cookieService: CookieService())
     @EnvironmentObject var navigateVM: NavigateViewModel
     
     @State private var title: String = ""
@@ -63,14 +63,18 @@ struct CookieFormView: View {
                         .padding(.trailing, 40)
                     }
                     
-//                    titleSection()
-//                    descriptionSection()
+                    titleSection()
+                    descriptionSection()
                 }
             }
             .toolbar {
                 dismissButton()
                 completeButton()
             }
+            .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+                ServiceAlert.CANCEL_BUTTON
+            }
+            .disableWhenUploading(viewModel.isUploading)
         }
     }
     
@@ -106,41 +110,26 @@ struct CookieFormView: View {
     
     @ViewBuilder
     private func titleSection() -> some View {
-        TextField("쿠키 제목을 입력해주세요", text: $title)
-            .padding(.horizontal, 5)
-            .padding(.vertical)
-            .overlay {
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(lineWidth: 4)
-                    .foregroundColor(.mainColor)
-            }
-            .padding(.horizontal, 20)
+        VStack(alignment: .leading) {
+            Text("쿠키 이름")
+                .font(CustomFontFactory.INTER_BOLD_16)
+            
+            TextField("쿠키 제목을 입력해주세요", text: $title)
+                .font(CustomFontFactory.INTER_SEMIBOLD_14)
+        }
+        .padding(.leading)
     }
     
     @ViewBuilder
     private func descriptionSection() -> some View {
-        Section {
-            VStack(spacing: 5) {
-                HStack {
-                    TextEditor(text: $description)
-                        .font(CustomFontFactory.INTER_REGULAR_14)
-                        .border(Color.gray_bcbcbc)
-                    
-                    Spacer()
-                }
-                
-                CCDivider()
-                    .padding(.bottom, 20)
-            }
-        } header: {
-            HStack {
-                Text("쿠키 설명")
-                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                    .frame(alignment: .leading)
-                
-                Spacer()
-            }
+        VStack(alignment: .leading) {
+            Text("쿠키 설명")
+                .font(CustomFontFactory.INTER_BOLD_16)
+            
+            TextField("입력해주세요", text: $description)
+                .font(CustomFontFactory.INTER_SEMIBOLD_14)
         }
+        .padding(.leading)
     }
     
     
@@ -148,7 +137,7 @@ struct CookieFormView: View {
     fileprivate func completeButton() -> ToolbarItem<(), Button<Text>> {
         return ToolbarItem(placement: .navigationBarTrailing) {
             Button {
-//                Task { await export() }
+                Task { await viewModel.export() }
             } label: {
                 Text("완료")
                     .foregroundColor(.mainColor)

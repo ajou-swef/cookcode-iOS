@@ -10,16 +10,56 @@ import PhotosUI
 
 final class CookieFormViewModel: ObservableObject {
     
+    enum ViewState {
+        case none
+        case videoMerging
+        case cookieUploading
+        
+        var isMerging: Bool {
+            switch self {
+            case .videoMerging:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        var isUploading: Bool {
+            switch self {
+            case .cookieUploading:
+                return true
+            default:
+                return false
+            }
+        }
+    }
+    
     @Published private(set) var selectedVideoThumbnails: [VideoThumbnail] = []
     @Published private var _photosPickerItem: PhotosPickerItem?
-    @Published var isMerging: Bool = false
     @Published private(set) var mergedAVPlayer: AVPlayer?
     @Published private var _videoIsPresented: Bool = false
+    @Published private(set) var viewState: ViewState = .none
     
-    private let contentService: ContentServiceProtocol
+    @Published private var _cookieForm: CookieForm = .init()
+    @Published var serviceAlert: ServiceAlert = .init()
     
-    init(contentService: ContentServiceProtocol) {
-        self.contentService = contentService
+    var isMerging: Bool {
+        viewState.isMerging
+    }
+    
+    var isUploading: Bool {
+        viewState.isUploading
+    }
+    
+    var cookieForm: CookieForm {
+        get { _cookieForm }
+        set { _cookieForm = newValue }
+    }
+    
+    private let cookieService: CookieServiceProtocol
+    
+    init(cookieService: CookieServiceProtocol) {
+        self.cookieService = cookieService
     }
     
     var videoIsPresented: Bool {
@@ -47,7 +87,7 @@ final class CookieFormViewModel: ObservableObject {
     func loadURL() async {
         
         guard let photosPickerItem else { return }
-        isMerging = true
+        viewState = .videoMerging
         
         do {
             guard let videoURL = try await photosPickerItem.loadTransferable(type: VideoURL.self) else { return }
@@ -57,7 +97,7 @@ final class CookieFormViewModel: ObservableObject {
             print("\(error.localizedDescription)")
         }
         
-        isMerging = false
+        viewState = .none
     }
     
     @MainActor
@@ -103,11 +143,67 @@ final class CookieFormViewModel: ObservableObject {
                 try audioTrack?.insertTimeRange(range, of: loadedAudioTack, at: mergedDuration)
             }
         }
-                
+        
+
         let item = AVPlayerItem(asset: movie)
         mergedAVPlayer = AVPlayer(playerItem: item)
         print("merge end")
         
-        isMerging = false
+        viewState = .none
+    }
+    
+    @MainActor
+    fileprivate func postCookie(_ url: URL) async {
+        cookieForm.videoURL = url
+        viewState = .cookieUploading
+        let result = await cookieService.postCookie(cookie: cookieForm)
+        
+        switch result {
+        case .success(let success):
+            print("업로드 성공")
+        case .failure(let failure):
+            print("업로드 실패")
+        }
+        
+        viewState = .none
+    }
+    
+    func export(ithPreset preset: String = AVAssetExportPresetHighestQuality,
+                    toFileType outputFileType: AVFileType = .mov) async {
+    
+        guard let video = mergedAVPlayer?.currentItem?.asset else { return }
+        guard let documentDirectory = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
+        let date = dateFormatter.string(from: Date())
+        let url = documentDirectory.appendingPathComponent("mergeVideo-\(date).movie.mp4")
+//
+        guard await AVAssetExportSession.compatibility(ofExportPreset: preset,
+                                                       with: video,
+                                                       outputFileType: .mov) else {
+            print("The preset can't export the video to the output file type.")
+            return
+        }
+
+        // Create and configure the export session.
+        guard let exportSession = AVAssetExportSession(asset: video,
+                                                       presetName: preset) else {
+            print("Failed to create export session.")
+            return
+        }
+
+        exportSession.outputFileType = outputFileType
+        exportSession.outputURL = url
+
+        // Convert the video to the output file type and export it to the output URL.
+        await exportSession.export()
+
+        print("Success to export sesion")
+        print("movieURL: \(url)")
+    
+        await postCookie(url)
     }
 }
