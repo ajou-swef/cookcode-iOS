@@ -26,40 +26,9 @@ struct LoginView: View {
                     .padding(.bottom, 10)
                 
                 
-                TextField("이메일", text: $viewModel.signInForm.email)
-                    .font(CustomFontFactory.INTER_BOLD_16)
-                    .padding(10)
-                    .focused($focused, equals: .email)
-                    .frame(maxWidth: 320, maxHeight: 50, alignment: .leading)
-                    .foregroundColor(focused == .email ? .mainColor : .gray808080)
-                    .background {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(lineWidth: 2)
-                            .fill(focused == .email ? Color.mainColor :  Color.gray808080)
-                    }
-                
-                SecureField("비밀번호", text: $viewModel.signInForm.password)
-                    .font(CustomFontFactory.INTER_BOLD_16)
-                    .padding(10)
-                    .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
-                                      focused: focused == .password)
-                    .focused($focused, equals: .password)
-                    .onChange(of: focused) { newValue in
-                        focused = newValue
-                    }
-          
-                
-                Button {
-                    Task {
-                        let loginDidSuccess = await viewModel.signIn()
-                        accountViewModel.login(loginDidSuccess)
-                    }
-                } label: {
-                    Text("로그인")
-                        .foregroundColor(.white)
-                        .font(CustomFontFactory.INTER_BOLD_16)
-                        .roundedRectangle(.ORANGE_320_FILLED, focused: true)
-                }
+                emailField()
+                passwordField()
+                loginButton()
                 
                 VStack(alignment: .trailing, spacing: 5) {
                     navigateCredentialButton()
@@ -78,6 +47,49 @@ struct LoginView: View {
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
         }
+    }
+    
+    @ViewBuilder
+    private func emailField() -> some View {
+        TextField("이메일", text: $viewModel.signInForm.email)
+            .font(CustomFontFactory.INTER_BOLD_16)
+            .padding(10)
+            .focused($focused, equals: .email)
+            .frame(maxWidth: 320, maxHeight: 50, alignment: .leading)
+            .foregroundColor(focused == .email ? .mainColor : .gray808080)
+            .background {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 2)
+                    .fill(focused == .email ? Color.mainColor :  Color.gray808080)
+            }
+    }
+    
+    @ViewBuilder
+    private func loginButton() -> some View {
+        Button {
+            Task {
+                let loginDidSuccess = await viewModel.signIn()
+                accountViewModel.login(loginDidSuccess)
+            }
+        } label: {
+            Text("로그인")
+                .foregroundColor(.white)
+                .font(CustomFontFactory.INTER_BOLD_16)
+                .roundedRectangle(.ORANGE_320_FILLED, focused: true)
+        }
+    }
+    
+    @ViewBuilder
+    private func passwordField() -> some View {
+        SecureField("비밀번호", text: $viewModel.signInForm.password)
+            .font(CustomFontFactory.INTER_BOLD_16)
+            .padding(10)
+            .roundedRectangle(.GRAY_320_STROKE, alignment: .leading,
+                              focused: focused == .password)
+            .focused($focused, equals: .password)
+            .onChange(of: focused) { newValue in
+                focused = newValue
+            }
     }
     
     @ViewBuilder

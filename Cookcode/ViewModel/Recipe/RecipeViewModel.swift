@@ -15,14 +15,8 @@ class RecipeViewModel: ObservableObject {
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var tabSelection: String = ""
     
-    init () {
-        recipeService = RecipeSuccessService()
-    }
-    
     init (recipeService: RecipeServiceProtocol, contentService: ContentServiceProtocol, recipeID: Int?) {
         self.recipeService = recipeService
-        
-      
     }
 //    func stepID(at :Int) -> String {
 //        String(recipeDetail?.steps[at].seq ?? 1)
