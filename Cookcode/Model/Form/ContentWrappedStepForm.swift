@@ -11,7 +11,6 @@ import PhotosUI
 struct ContentWrappedStepForm: Identifiable, Codable {
     var id: String = UUID().uuidString
     
-    var title: String = ""
     var description: String = ""
     
     private(set) var deletedVideos: [String] = []
@@ -31,7 +30,7 @@ struct ContentWrappedStepForm: Identifiable, Codable {
     }
     
     var lacksOfInformation: Bool {
-        title.isEmpty || description.isEmpty || !containsAnyContent
+        description.isEmpty || !containsAnyContent
     }
     
     var phpFilter: PHPickerFilter {
@@ -63,7 +62,7 @@ struct ContentWrappedStepForm: Identifiable, Codable {
     }
     
     var containsAllRequiredInformation: Bool {
-        !title.isEmpty && !description.isEmpty &&
+        !description.isEmpty &&
         containsAnyContent
     }
     
@@ -94,7 +93,6 @@ struct ContentWrappedStepForm: Identifiable, Codable {
 
 extension ContentWrappedStepForm {
     init(stepDetailDTO: StepDTO) {
-        title = stepDetailDTO.title
         description = stepDetailDTO.description
         imageURLs = stepDetailDTO.photos.map { $0.photoURL }
         videoURLs = stepDetailDTO.videos.map { $0.videoURL }

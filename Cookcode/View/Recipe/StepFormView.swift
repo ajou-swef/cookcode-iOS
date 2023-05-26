@@ -43,10 +43,8 @@ struct StepFormView: View {
                         }
                     }
                     
-                    TitleSection(i)
                     DescriptionSection(i)
 
-                    
                     Spacer()
                     
                     BottomButton(i)
@@ -192,27 +190,6 @@ struct StepFormView: View {
         } header: {
             HStack {
                 Text("자세한 설명")
-                    .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                
-                Spacer()
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private func TitleSection(_ index: Int) -> some View {
-        Section {
-            VStack {
-                TextField("입력해주세요",
-                          text: $viewModel.recipeForm.steps[index].title)
-                
-                CCDivider()
-            }
-            .padding(.top, -30)
-            
-        } header: {
-            HStack {
-                Text("스텝 제목")
                     .font(CustomFontFactory.INTER_SEMIBOLD_14)
                 
                 Spacer()

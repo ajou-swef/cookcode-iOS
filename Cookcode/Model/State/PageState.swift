@@ -12,6 +12,15 @@ enum PageState {
     case wait(Int)
     case noRemain
     
+    var isNoRemain: Bool {
+        switch self {
+        case .noRemain:
+            return true
+        default:
+            return false 
+        }
+    }
+    
     var isLoadingState: Bool {
         switch self {
         case .loading(_):

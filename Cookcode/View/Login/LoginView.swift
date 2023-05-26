@@ -69,6 +69,9 @@ struct LoginView: View {
                 
                
             }
+            .onDisappear {
+                viewModel.clear()
+            }
             .frame(maxWidth: .infinity)
             .accessibilityIdentifier("LoginView")
         }

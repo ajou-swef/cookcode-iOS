@@ -147,10 +147,6 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
         recipeForm.steps[at].containsAllRequiredInformation
     }
     
-    func stepFormTitle(at: Int) -> String {
-        recipeForm.steps[at].title
-    }
-    
     func stepFormDescription(at: Int) -> String {
         recipeForm.steps[at].description
     }
@@ -177,13 +173,11 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     
     //  MARK: StepView 관련 기능들
     func presentStepFormView(_ i: Int) {
-        print("main presentStepFormView")
         stepTabSelection = recipeForm.steps[i].id
         stepFormTrigger = RecipePathWithIndex(path: .step, index: i)
     }
     
     func presentStepFormView() {
-        print("preview presentStepFormView")
         guard let index = recipeDetail.steps.firstIndex(where: { $0.id == tabSelection }) else {
             return
         }

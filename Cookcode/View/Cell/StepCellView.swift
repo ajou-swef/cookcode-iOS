@@ -74,7 +74,7 @@ struct StepCellView: View {
                 .font(CustomFontFactory.INTER_SEMIBOLD_20)
                 .foregroundColor(.mainColor)
             
-            Text("제목, 내용, 컨텐츠를 모두 입력해주세요.")
+            Text("내용, 컨텐츠를 모두 입력해주세요.")
                 .font(CustomFontFactory.INTER_REGULAR_14)
                 .foregroundColor(.mainColor)
         }
@@ -83,7 +83,7 @@ struct StepCellView: View {
     @ViewBuilder
     private func stepInformation() -> some View {
         VStack(alignment: .leading) {
-            Text("\(cell.seq)단계 : \(cell.title)")
+            Text("\(cell.seq)단계")
                 .font(CustomFontFactory.INTER_SEMIBOLD_20)
             
             CCDivider()
