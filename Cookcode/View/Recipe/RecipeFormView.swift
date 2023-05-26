@@ -119,9 +119,6 @@ struct RecipeFormView: View {
                             }
                         }
                     }
-                
-                CCDivider()
-                    .padding(.bottom, 20)
             }
             .onTapGesture {
                 if viewModel.recipeForm.description == "설명을 입력해주세요." {

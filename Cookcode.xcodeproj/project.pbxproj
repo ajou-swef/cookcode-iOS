@@ -170,6 +170,7 @@
 		15DAE25A29FE3F9D00A4B00A /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */; };
 		15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9B29FA94A40008DC7A /* AccountService.swift */; };
 		15E43A9E29FA94DF0008DC7A /* AccountSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */; };
+		15E6AC7A2A2081F400838210 /* View + PresentIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E6AC792A2081F400838210 /* View + PresentIf.swift */; };
 		15EFAD6C2A0B34690092B203 /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFAD6B2A0B34690092B203 /* Int + Extension.swift */; };
 		15EFAD6E2A0B3ACB0092B203 /* PatchIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFAD6D2A0B3ACB0092B203 /* PatchIngredientViewModel.swift */; };
 		15EFAD702A0B3CCA0092B203 /* PostIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFAD6F2A0B3CCA0092B203 /* PostIngredientViewModel.swift */; };
@@ -376,6 +377,7 @@
 		15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		15E43A9B29FA94A40008DC7A /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSuccessService.swift; sourceTree = "<group>"; };
+		15E6AC792A2081F400838210 /* View + PresentIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + PresentIf.swift"; sourceTree = "<group>"; };
 		15EFAD6B2A0B34690092B203 /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
 		15EFAD6D2A0B3ACB0092B203 /* PatchIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchIngredientViewModel.swift; sourceTree = "<group>"; };
 		15EFAD6F2A0B3CCA0092B203 /* PostIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostIngredientViewModel.swift; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 				1566059329F937A3008B9F9F /* View + offset.swift */,
 				158EFDD22A04BBC0003057A4 /* View + Alert.swift */,
 				158AF5E42A1F6E5A00FF815A /* View + DisableWhenUploading.swift */,
+				15E6AC792A2081F400838210 /* View + PresentIf.swift */,
 			);
 			path = "View + Extension";
 			sourceTree = "<group>";
@@ -1273,6 +1276,7 @@
 				153F128829FE261F008BDB4E /* RecipeServiceProtocol.swift in Sources */,
 				15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */,
 				155A50762A0B5A9500EBD894 /* ContentService.swift in Sources */,
+				15E6AC7A2A2081F400838210 /* View + PresentIf.swift in Sources */,
 				15F82A7529FA93E500DA9381 /* UserAccountDto.swift in Sources */,
 				15EFAD6E2A0B3ACB0092B203 /* PatchIngredientViewModel.swift in Sources */,
 				15921B812A1A135100BA636D /* UserDetailDTO.swift in Sources */,

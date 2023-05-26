@@ -12,7 +12,7 @@ import UIKit
 final class ContentService: ContentServiceProtocol {
     
     func postPhotos(_ data: [Data]) async -> Result<ServiceResponse<ContentDTO>, ServiceError> {
-        let url = "\(BASE_URL)/api/v1/recipe/files"
+        let url = "\(BASE_URL)/api/v1/recipe/files/recipe"
         
         let headers: HTTPHeaders = [
             ACCESS_TOKEN_KEY : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
@@ -42,7 +42,7 @@ final class ContentService: ContentServiceProtocol {
     }
     
     func postVideos(_ videoURLs: [VideoURL]) async -> Result<ServiceResponse<ContentDTO>, ServiceError> {
-        let url = "\(BASE_URL)/api/v1/recipe/files"
+        let url = "\(BASE_URL)/api/v1/recipe/files/recipe"
         
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? "",

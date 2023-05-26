@@ -20,4 +20,9 @@ struct SignInForm: Encodable {
         get { _password }
         set(newValue) { _password = newValue }
     }
+    
+    mutating func clear() {
+        email = ""
+        password = "" 
+    }
 }

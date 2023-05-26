@@ -19,13 +19,8 @@ class HomeViewModel: ObservableObject {
     @Published var resetTriggerOffset: CGFloat = .zero
     
     @Published private var pageState: PageState = .wait(0)
-    @Published var filterType: RecipeFilterType = .all {
-        didSet {
-            Task {
-                await resetRecipeCell()
-            }
-        }
-    }
+    
+    @Published var filterType: RecipeFilterType = .all
     
     @Published private var _filterOffset: CGFloat = .zero
     @Published private(set) var contentTypeButtonIsShowing: Bool = false
@@ -41,6 +36,15 @@ class HomeViewModel: ObservableObject {
     
     private var searchTriggerIsInScreen: Bool {
         fetchTriggerOffset <= UIScreen.main.bounds.maxY
+    }
+    
+    var firstCellID: String {
+        guard let firstCell = recipeCells.first else { return "" }
+        return firstCell.id
+    }
+    
+    var hasNoCookcableRecipe: Bool {
+        pageState.isNoRemain && recipeCells.isEmpty
     }
     
     var isLoadingState: Bool{

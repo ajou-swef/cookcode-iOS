@@ -9,17 +9,17 @@ import Foundation
 
 struct StepDTO: Codable, Mock, Hashable, Identifiable {
     static func mock() -> StepDTO {
-        StepDTO(stepID: 1, seq: 1, title: "title", description: "description", photos: PhotoDTO.mocks(1), videos: VideoDTO.mocks(1))
+        StepDTO(stepID: 1, seq: 1, description: "description", photos: PhotoDTO.mocks(1), videos: VideoDTO.mocks(1))
     }
     
     let id: String = UUID().uuidString
     let stepID, seq: Int
-    let title, description: String
+    let description: String
     var photos: [PhotoDTO]
     var videos: [VideoDTO]
     
     var containsAllRequiredInformation: Bool {
-        !title.isEmpty && !description.isEmpty && !contentURLs.isEmpty
+        !description.isEmpty && !contentURLs.isEmpty
     }
     
     var photosIsEmpty: Bool {
@@ -36,13 +36,12 @@ struct StepDTO: Codable, Mock, Hashable, Identifiable {
 
     enum CodingKeys: String, CodingKey {
         case stepID = "stepId"
-        case seq, title, description, photos, videos
+        case seq, description, photos, videos
     }
     
-    init (stepID: Int, seq: Int, title: String, description: String, photos: [PhotoDTO], videos: [VideoDTO]) {
+    init (stepID: Int, seq: Int, description: String, photos: [PhotoDTO], videos: [VideoDTO]) {
         self.stepID = stepID
         self.seq = seq
-        self.title = title
         self.description = description
         self.photos = photos
         self.videos = videos
@@ -51,7 +50,6 @@ struct StepDTO: Codable, Mock, Hashable, Identifiable {
     init (form: ContentWrappedStepForm, seq: Int) {
         self.stepID = seq
         self.seq = seq
-        self.title = form.title
         self.description = form.description
         self.photos = []
         
@@ -63,7 +61,5 @@ struct StepDTO: Codable, Mock, Hashable, Identifiable {
         for i in form.videoURLs.indices {
             videos.append(VideoDTO(stepVideoID: i, videoURL: form.videoURLs[i]))
         }
-        
-        print("Vide url: \(videos), containAll? :\(containsAllRequiredInformation)")
     }
 }

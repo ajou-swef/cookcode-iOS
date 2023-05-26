@@ -32,4 +32,9 @@ class LoginViewModel: ObservableObject {
             return false
         }
     }
+    
+    @MainActor
+    func clear() {
+        signInForm.clear()
+    }
 }

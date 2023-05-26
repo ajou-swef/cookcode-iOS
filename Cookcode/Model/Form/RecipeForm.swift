@@ -11,12 +11,11 @@ import PhotosUI
 struct RecipeForm: Codable {
     var title: String = ""
     var description: String = ""
-    
     var ingredients: [Int] = []
     var optionalIngredients: [Int] = []
-    
     private(set) var _thumbnail: String = ""
     private(set) var deletedThumbnails: [String] = []
+    
     var steps: [ContentWrappedStepForm] = []
     
     var thumbnail: String {

@@ -16,42 +16,42 @@ struct HomeView: View {
     @EnvironmentObject var updateCellVM: UpdateCellViewModel
     
     var body: some View {
-        VStack {
-            header()
-                .zIndex(200)
-            
-            HStack {
-                RecipeFilterPicker(selection: $viewModel.filterType, filterOffset: $viewModel.dragVelocity,
-                                   activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
-                    .frame(maxWidth: 130)
+        ScrollViewReader { proxy in
+            VStack {
+                header()
+                    .zIndex(200)
                 
+                HStack {
+                    RecipeFilterPicker(selection: $viewModel.filterType, filterOffset: $viewModel.dragVelocity,
+                                       activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
+                        .frame(maxWidth: 130)
+                        .onChange(of: viewModel.filterType) { _ in
+                            Task {
+                                proxy.scrollTo(viewModel.firstCellID)
+                                await viewModel.resetRecipeCell()
+                            }
+                        }
+                    
+                    Spacer()
+                }
+                .zIndex(100)
+                .padding(.leading)
+                .offset(y: viewModel.filterOffset)
+                .padding(.bottom, viewModel.filterOffset)
+                .opacity(viewModel.filterOpacity)
                 
-                Spacer()
+                homeRows()
+                
             }
-            .zIndex(100)
-            .padding(.leading)
-            .offset(y: viewModel.filterOffset)
-            .padding(.bottom, viewModel.filterOffset)
-            .opacity(viewModel.filterOpacity)
-            
-            homeRows()
         }
         .disabled(viewModel.contentTypeButtonIsShowing)
         .overlay {
             Color.gray_bcbcbc.opacity(0.5)
                 .ignoresSafeArea(.all)
-                .hidden(!viewModel.contentTypeButtonIsShowing)
+                .presentIf(viewModel.contentTypeButtonIsShowing)
         }
         .overlay(alignment: .bottomTrailing) {
-            VStack(alignment: .trailing, spacing: 0) {
-                Group {
-                    presentRecipeFormViewButton()
-                    presentCookieViewButton()
-                }
-                .hidden(!viewModel.contentTypeButtonIsShowing)
-                
-                createContentButton()
-            }
+           bottomButton()
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
@@ -59,6 +59,20 @@ struct HomeView: View {
         .onAppear {
             viewModel.updateCell(updateCellVM.updateCellDict)
             updateCellVM.updateCellDict[.recipe] = nil 
+        }
+    }
+    
+    
+    @ViewBuilder
+    private func bottomButton() -> some View {
+        VStack(alignment: .trailing, spacing: 0) {
+            Group {
+                presentRecipeFormViewButton()
+                presentCookieViewButton()
+            }
+            .presentIf(viewModel.contentTypeButtonIsShowing)
+            
+            createContentButton()
         }
     }
     
@@ -118,58 +132,69 @@ struct HomeView: View {
     }
     
     @ViewBuilder
+    private func lackOfIngredientText() -> some View {
+        Group {
+            Image(systemName: "flag.slash")
+                .resizable()
+                .frame(width: 100, height: 100)
+                .foregroundColor(.mainColor)
+            
+            Text("만들 수 있는 요리가 없어요.\n냉장고를 채워주세요.")
+                .foregroundColor(.mainColor)
+                .opacity(0.8)
+                .font(CustomFontFactory.INTER_BOLD_16)
+        }
+    }
+    
+    @ViewBuilder
     private func homeRows() -> some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                VStack(spacing: 20) {
-                    Color.white.opacity(1)
-                        .offsetY(coordinateSpace: .named("homeScroll")) {
-                            viewModel.resetTriggerOffset = $0
-                        }
-                        .padding(.vertical, -20)
-                    
-                    ForEach(viewModel.recipeCells) {  cell in
-                       Button {
-                           navigateViewModel.navigateWithHome(cell)
-                       } label: {
-                           CellView(cell: cell)
-                               .foregroundColor(.black)
-                               .zIndex(0)
-                       }
-                       .id(cell.id)
-                   }
-                    
-                    
-                    ProgressView()
-                        .hidden(!viewModel.isLoadingState)
-                }
-                .padding(.horizontal)
-                .background {
-                    ScrollDetector { offset, velocity in
-                        withAnimation {
-                            viewModel.dragVelocity = velocity
-                        }
-                    }
-                }
-                
+        ScrollView {
+            VStack(spacing: 20) {
                 Color.white.opacity(1)
-                    .offsetY { viewModel.fetchTriggerOffset = $0 }
+                    .offsetY(coordinateSpace: .named("homeScroll")) {
+                        viewModel.resetTriggerOffset = $0
+                    }
+                    .padding(.vertical, -20)
+                
+                lackOfIngredientText()
+                    .presentIf(viewModel.hasNoCookcableRecipe)
+                
+                ForEach(viewModel.recipeCells) {  cell in
+                   Button {
+                       navigateViewModel.navigateWithHome(cell)
+                   } label: {
+                       CellView(cell: cell)
+                           .foregroundColor(.black)
+                           .zIndex(0)
+                   }
+                   .id(cell.id)
+               }
+                
+                
+                ProgressView()
+                    .presentIf(viewModel.isLoadingState)
+                
             }
-            .coordinateSpace(name: "homeScroll")
-            .onChange(of: viewModel.fetchTriggerOffset) { newValue in
-                Task { await viewModel.fetchRecipeCell() }
-            }
-            .onChange(of: viewModel.filterType) { newValue in
-                withAnimation {
-                    if !viewModel.recipeCells.isEmpty {                        proxy.scrollTo(viewModel.recipeCells[0].id)
+            .padding(.horizontal)
+            .background {
+                ScrollDetector { offset, velocity in
+                    withAnimation {
+                        viewModel.dragVelocity = velocity
                     }
                 }
             }
-            .overlay(alignment: .top) {
-                Image(systemName: "arrow.clockwise")
-                    .rotationEffect(.degrees(viewModel.resetArrowDegree))
-                    .opacity(viewModel.resetArrowOpacity)
-            }
+            
+            Color.white.opacity(1)
+                .offsetY { viewModel.fetchTriggerOffset = $0 }
+        }
+        .coordinateSpace(name: "homeScroll")
+        .onChange(of: viewModel.fetchTriggerOffset) { newValue in
+            Task { await viewModel.fetchRecipeCell() }
+        }
+        .overlay(alignment: .top) {
+            Image(systemName: "arrow.clockwise")
+                .rotationEffect(.degrees(viewModel.resetArrowDegree))
+                .opacity(viewModel.resetArrowOpacity)
         }
     }
     
