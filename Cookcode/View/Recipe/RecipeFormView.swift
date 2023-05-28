@@ -134,7 +134,7 @@ struct RecipeFormView: View {
     private func ImageSection() -> some View {
         Section {
             VStack(spacing: 5) {
-                PhotosPicker(selection: $viewModel.mainImageItem) {
+                PhotosPicker(selection: $viewModel.recipeForm.photosPickerItem) {
                     if viewModel.recipeMetadataHasThumbnail {
                         KFImage(URL(string: viewModel.recipeForm.thumbnail))
                             .resizable()

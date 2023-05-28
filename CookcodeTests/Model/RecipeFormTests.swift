@@ -21,7 +21,7 @@ final class RecipeFormTests: XCTestCase {
 
     func test_RecipeForm_update_hasDeletedThunbmails() {
         //  Given
-        let newURL = ["https://picsum.photos/200", "https://picsum.photos/200"]
+        let newURL = "https://picsum.photos/200"
         var recipeForm = RecipeForm()
         var expected: Int = 0
         let random = Int.random(in: 1..<100)
