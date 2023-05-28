@@ -11,8 +11,6 @@ import Kingfisher
 
 struct RecipeFormView: View {
     
-    
-    
     let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 60, maximum: 60)),
         GridItem(.adaptive(minimum: 60, maximum: 60)),
@@ -73,13 +71,6 @@ struct RecipeFormView: View {
                 ToolbarItem(placement: .principal) {
                     Text("새 레시피")
                         .font(CustomFontFactory.INTER_BOLD_16)
-                }
-            }
-            .onChange(of: viewModel.mainImageItem) { newItem in
-                Task {
-                    if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                        viewModel.mainImageData = data
-                    }
                 }
             }
         }
@@ -159,7 +150,7 @@ struct RecipeFormView: View {
                     }
                 }
                 .padding(.bottom, 20)
-                .onChange(of: viewModel.mainImageData) { newValue in
+                .onChange(of: viewModel.recipeForm.photosPickerItem) { _ in
                     Task {
                         await viewModel.postMainImage()
                     }

@@ -245,16 +245,19 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     
     @MainActor
     func postMainImage() async {
-        if let imageData = mainImageData {
-            let result = await contentService.postPhotos([imageData])
-            switch result {
-            case .success(let success):
-                recipeForm.updateThumbnail(url: success.data.urls)
-                print("success: \(success)")
-            case .failure(let failure):
-                serviceAlert.presentAlert(failure)
-            }
+    
+        guard let imageData = try? await recipeForm.photosPickerItem?.loadTransferable(type: Data.self) else { return }
+        
+        let result = await contentService.postPhotos([imageData])
+        switch result {
+        case .success(let success):
+            guard let firstURL = success.data.urls.first else { return }
+            recipeForm.updateThumbnail(url: firstURL)
+            print("success: \(success)")
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
         }
+        
     }
     
     @MainActor

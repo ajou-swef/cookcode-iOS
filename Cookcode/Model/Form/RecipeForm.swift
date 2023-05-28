@@ -6,13 +6,14 @@
 //
 
 import Foundation
-import PhotosUI
+import _PhotosUI_SwiftUI
 
-struct RecipeForm: Codable {
+struct RecipeForm {
     var title: String = ""
     var description: String = ""
     var ingredients: [Int] = []
     var optionalIngredients: [Int] = []
+    var photosPickerItem: PhotosPickerItem?
     private(set) var _thumbnail: String = ""
     private(set) var deletedThumbnails: [String] = []
     
@@ -31,14 +32,12 @@ struct RecipeForm: Codable {
         title.isEmpty || description.isEmpty || _thumbnail.isEmpty || steps.isEmpty
     }
     
-    mutating func updateThumbnail(url: [String]) {
+    mutating func updateThumbnail(url: String) {
         if !_thumbnail.isEmpty {
             deletedThumbnails.append(_thumbnail)
         }
         
-        if url.count >= 1 {
-            _thumbnail = url[0]
-        }
+        _thumbnail = url
     }
     
     mutating func appendStep(_ step: ContentWrappedStepForm) {
