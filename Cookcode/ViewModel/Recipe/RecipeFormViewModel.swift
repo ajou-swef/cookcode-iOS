@@ -28,10 +28,6 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     }
     
     @Published var useMainIngredient: Bool = false
-    
-    @Published var mainImageItem: PhotosPickerItem?
-    @Published var mainImageData: Data? 
-    
     @Published var stepItems: [PhotosPickerItem] = .init()
     @Published var stepImageData: [Data] = .init()
     @Published var stepVideoURLs: [VideoURL] = .init()
@@ -243,18 +239,24 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
         flushDeletedStepIndex()
     }
     
-    @MainActor
     func postMainImage() async {
-        if let imageData = mainImageData {
-            let result = await contentService.postPhotos([imageData])
-            switch result {
-            case .success(let success):
-                recipeForm.updateThumbnail(url: success.data.urls)
-                print("success: \(success)")
-            case .failure(let failure):
-                serviceAlert.presentAlert(failure)
-            }
+        guard let imageData = try? await recipeForm.photosPickerItem?.loadTransferable(type: Data.self) else { return }
+        
+        let result = await contentService.postPhotos([imageData])
+        
+        switch result {
+        case .success(let response):
+            await updateMainImage(response)
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
         }
+        
+    }
+    
+    @MainActor
+    func updateMainImage(_ response: ServiceResponse<ContentDTO>) {
+        guard let firstURL = response.data.urls.first else { return }
+        recipeForm.updateThumbnail(url: firstURL)
     }
     
     @MainActor

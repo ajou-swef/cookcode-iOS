@@ -125,10 +125,7 @@ class HomeViewModel: ObservableObject {
     
     private func waitInPage(_ page: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let curPage = self.pageState.page
             self.pageState = .wait(page)
-            print("page(\(curPage)) loading success.")
-            print("isWaitingState? : \(self.isWaitingState)")
         }
     }
     

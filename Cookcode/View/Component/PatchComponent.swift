@@ -26,7 +26,7 @@ struct PatchComponent<ViewModel>: View where ViewModel: PatchViewModel {
                 .frame(width: 50, height: 50)
                 .foregroundColor(.gray_bcbcbc)
         }
-        .hidden(!viewModel.useTrashButton)
+        .presentIf(viewModel.useTrashButton)
         .alert("삭제 하시겠습니까?", isPresented: $viewModel.deleteAlertIsPresented) {
             Button("취소", role: .cancel) { }
             Button("확인") {

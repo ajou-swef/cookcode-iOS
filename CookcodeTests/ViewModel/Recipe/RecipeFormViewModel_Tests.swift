@@ -31,7 +31,6 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         
         //  When
         vm.recipeForm.title = "Title"
-        vm.mainImageData = Data()
         vm.recipeForm.steps.append(ContentWrappedStepForm())
         
         //  Then
@@ -86,17 +85,17 @@ final class RecipeFormViewModel_Tests: XCTestCase {
     }
     
     @MainActor
-    func test_RecipeFormViewModel_postImage_returnsOneURL() async {
+    func test_When__returnsOneURL() async {
         //  Given
         guard let vm = viewModel else {
             XCTFail()
             return
         }
-
+        
+        let response: ServiceResponse<ContentDTO> = ServiceResponse(message: "message", status: 200, data: .mock())
         
         //  When
-        vm.mainImageData = Data()
-        await vm.postMainImage()
+        await vm.updateMainImage(response)
         
         //  Then
         XCTAssertTrue(vm.recipeMetadataHasThumbnail)

@@ -27,15 +27,7 @@ struct RecipePreviewView: View {
                 .padding(.top, 40)
                 .padding(.horizontal, 20)
                 .overlay(alignment: .bottom) {
-                        Button {
-                            viewModel.presentStepFormView()
-                        } label: {
-                            Text("수정")
-                                .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                                .foregroundColor(.white)
-                                .roundedRectangle(.ORANGE_280_FILLED, focused: true)
-                                .padding(.bottom, 10)
-                        }
+                        stepModifyButton()
                     .sheet(item: $viewModel.previewStepFormTrigger) { item  in
                         StepFormView(viewModel: viewModel, stepIndex: item.index)
                     }
@@ -45,6 +37,19 @@ struct RecipePreviewView: View {
         .statusBarHidden()
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
             ServiceAlert.CANCEL_BUTTON
+        }
+    }
+    
+    @ViewBuilder
+    private func stepModifyButton() -> some View {
+        Button {
+            viewModel.presentStepFormView()
+        } label: {
+            Text("수정")
+                .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                .foregroundColor(.white)
+                .roundedRectangle(.ORANGE_280_FILLED, focused: true)
+                .padding(.bottom, 10)
         }
     }
     

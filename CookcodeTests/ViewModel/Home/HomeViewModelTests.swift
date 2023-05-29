@@ -35,6 +35,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertFalse(actual)
     }
     
+    
     func test_When_createContentButtonFirstTapped_Then_showContentType() async {
         //  Given
         let viewModel = HomeViewModel(recipeService: RecipeSuccessService())
