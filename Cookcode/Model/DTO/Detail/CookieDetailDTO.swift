@@ -28,9 +28,5 @@ struct CookieDetailDTO: Codable, Mock {
     }
 }
 
-extension Array: Mock where Element == CookieDetailDTO {
-    static func mock() -> Array<Element> {
-        Element.mocks(10)
-    }
-}
+
 

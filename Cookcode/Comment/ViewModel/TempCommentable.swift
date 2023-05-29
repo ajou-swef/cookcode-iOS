@@ -8,6 +8,7 @@
 import SwiftUI
 
 final class TempCommentable: Commentable {
+    @Published var comments: [Comment] = .init()
     @Published var commentText: String = "" 
     @Published var pageState: PageState = .wait(0)
     
@@ -19,11 +20,19 @@ final class TempCommentable: Commentable {
     let spaceName: String = "commentScroll"
     let refreshThreshold: CGFloat = .zero
     
+    init() {
+        comments.append(contentsOf: Comment.mocks(10))
+    }
+    
     func onRefresh() async {
         
     }
     
     func onFetch() async {
+        
+    }
+    
+    func commentUploadButtonTapped() {
         
     }
 }

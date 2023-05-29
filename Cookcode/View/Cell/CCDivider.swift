@@ -10,7 +10,7 @@ import SwiftUI
 struct CCDivider: View {
     var body: some View {
         Rectangle()
-            .frame(maxHeight: 2)
+            .frame(maxHeight: 1)
             .foregroundColor(.gray_bcbcbc)
     }
 }

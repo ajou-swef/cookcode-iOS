@@ -9,4 +9,6 @@ import Foundation
 
 protocol Commentable: Pagenable {
     var commentText: String { get set }
+    var comments: [Comment] { get set }
+    func commentUploadButtonTapped()
 }

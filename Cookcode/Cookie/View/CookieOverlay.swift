@@ -12,6 +12,7 @@ struct CookieDetailOverlay: View {
     
     let cookieDetail: CookieDetail
     @State private var likes: Bool = false
+    @State private var isPresented: Bool = false
     
     
     var body: some View {
@@ -43,7 +44,7 @@ struct CookieDetailOverlay: View {
         VStack(alignment: .center) {
             
             Button {
-                
+                isPresented = true
             } label: {
                 Image(systemName: "ellipsis.bubble.fill")
                     .resizable()
@@ -53,6 +54,9 @@ struct CookieDetailOverlay: View {
                     .foregroundColor(.white)
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                     .offset(x: -30)
+            }
+            .sheet(isPresented: $isPresented) {
+                CommentComponent()
             }
             
             Text("\(cookieDetail.commentsCount)")

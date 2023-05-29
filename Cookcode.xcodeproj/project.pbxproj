@@ -153,6 +153,11 @@
 		15B4CC3D2A24D82300DC226E /* CommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC3C2A24D82300DC226E /* CommentComponent.swift */; };
 		15B4CC3F2A24D89700DC226E /* Commentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC3E2A24D89700DC226E /* Commentable.swift */; };
 		15B4CC412A24D8F100DC226E /* TempCommentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC402A24D8F100DC226E /* TempCommentable.swift */; };
+		15B4CC432A24DF1C00DC226E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC422A24DF1C00DC226E /* Comment.swift */; };
+		15B4CC462A24DFA400DC226E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC452A24DFA400DC226E /* UserCell.swift */; };
+		15B4CC482A24E1A900DC226E /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC472A24E1A900DC226E /* CommentCell.swift */; };
+		15B4CC4A2A24E6C300DC226E /* CommentServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC492A24E6C300DC226E /* CommentServiceProtocol.swift */; };
+		15B4CC502A24E90B00DC226E /* Array + Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC4F2A24E90B00DC226E /* Array + Mock.swift */; };
 		15B6263E2A009CE6002E1F5F /* SearchedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6263D2A009CE6002E1F5F /* SearchedCell.swift */; };
 		15B626402A009D09002E1F5F /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B6263F2A009D09002E1F5F /* RecipeCell.swift */; };
 		15B626422A009D40002E1F5F /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B626412A009D40002E1F5F /* Mock.swift */; };
@@ -372,6 +377,11 @@
 		15B4CC3C2A24D82300DC226E /* CommentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentComponent.swift; sourceTree = "<group>"; };
 		15B4CC3E2A24D89700DC226E /* Commentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commentable.swift; sourceTree = "<group>"; };
 		15B4CC402A24D8F100DC226E /* TempCommentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempCommentable.swift; sourceTree = "<group>"; };
+		15B4CC422A24DF1C00DC226E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		15B4CC452A24DFA400DC226E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		15B4CC472A24E1A900DC226E /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		15B4CC492A24E6C300DC226E /* CommentServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentServiceProtocol.swift; sourceTree = "<group>"; };
+		15B4CC4F2A24E90B00DC226E /* Array + Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Mock.swift"; sourceTree = "<group>"; };
 		15B6263D2A009CE6002E1F5F /* SearchedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedCell.swift; sourceTree = "<group>"; };
 		15B6263F2A009D09002E1F5F /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		15B626412A009D40002E1F5F /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
@@ -479,6 +489,7 @@
 				15B4CC202A24B54600DC226E /* Components */,
 				153B4D8A29ED050A00543730 /* Helper */,
 				1503F95329B459CA002F3D26 /* Service */,
+				15B4CC3B2A24D7FF00DC226E /* Comment */,
 				15B4CC172A24B1A400DC226E /* Cookie */,
 				1503F95229B459C7002F3D26 /* Model */,
 				1503F95029B459BD002F3D26 /* ViewModel */,
@@ -595,6 +606,7 @@
 				153B4DBC29ED599C00543730 /* Character + Extension.swift */,
 				150CD44529F628CC0001FFEB /* String + Extension.swift */,
 				15EFAD6B2A0B34690092B203 /* Int + Extension.swift */,
+				15B4CC4F2A24E90B00DC226E /* Array + Mock.swift */,
 			);
 			path = "Swift Standar + Extension";
 			sourceTree = "<group>";
@@ -1010,7 +1022,6 @@
 		15B4CC202A24B54600DC226E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				15B4CC3B2A24D7FF00DC226E /* Comment */,
 				15B4CC362A24D75500DC226E /* Pagenable */,
 				15B4CC232A24C6C200DC226E /* Refresh */,
 				15B4CC212A24B55200DC226E /* LikeButton.swift */,
@@ -1040,21 +1051,57 @@
 		15B4CC3B2A24D7FF00DC226E /* Comment */ = {
 			isa = PBXGroup;
 			children = (
-				15B4CC402A24D8F100DC226E /* TempCommentable.swift */,
-				15B4CC3E2A24D89700DC226E /* Commentable.swift */,
-				15B4CC3C2A24D82300DC226E /* CommentComponent.swift */,
+				15B4CC4D2A24E6DF00DC226E /* Model */,
+				15B4CC4C2A24E6CD00DC226E /* ViewModel */,
+				15B4CC4E2A24E6E500DC226E /* View */,
+				15B4CC4B2A24E6C800DC226E /* Service */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		15B4CC4B2A24E6C800DC226E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				15B4CC492A24E6C300DC226E /* CommentServiceProtocol.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		15B4CC4C2A24E6CD00DC226E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15B4CC402A24D8F100DC226E /* TempCommentable.swift */,
+				15B4CC3E2A24D89700DC226E /* Commentable.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		15B4CC4D2A24E6DF00DC226E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				15B4CC422A24DF1C00DC226E /* Comment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		15B4CC4E2A24E6E500DC226E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15B4CC472A24E1A900DC226E /* CommentCell.swift */,
+				15B4CC3C2A24D82300DC226E /* CommentComponent.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		15B6263C2A009CDC002E1F5F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				15F2CC172A026DDC0019FAB6 /* Cell.swift */,
 				15B6263F2A009D09002E1F5F /* RecipeCell.swift */,
 				15F2CC1B2A026E5E0019FAB6 /* IngredientCell.swift */,
-				15F2CC172A026DDC0019FAB6 /* Cell.swift */,
 				15B6263D2A009CE6002E1F5F /* SearchedCell.swift */,
 				15B04C642A1C7F6A00B988BF /* CookieCell.swift */,
+				15B4CC452A24DFA400DC226E /* UserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1361,6 +1408,7 @@
 				15CFE6A829FF7B8500C16FF6 /* ProfileView.swift in Sources */,
 				15CFE66829FF593300C16FF6 /* ContentSuccessService.swift in Sources */,
 				153F128C29FE28D3008BDB4E /* RecipeFailureService.swift in Sources */,
+				15B4CC432A24DF1C00DC226E /* Comment.swift in Sources */,
 				15F2CC122A0260D30019FAB6 /* AccountViewModel.swift in Sources */,
 				15C805BA2A0344BC000A1A29 /* SelectIngredientForRecipeViewModel.swift in Sources */,
 				153F128829FE261F008BDB4E /* RecipeServiceProtocol.swift in Sources */,
@@ -1377,6 +1425,7 @@
 				158AF5EA2A1F71F300FF815A /* CookieDetailResponseDTO.swift in Sources */,
 				15B04C612A1C7E1800B988BF /* CookieListViewModel.swift in Sources */,
 				15581B5E2A2100DC002E0AFB /* UpdateRecipeViewModel .swift in Sources */,
+				15B4CC4A2A24E6C300DC226E /* CommentServiceProtocol.swift in Sources */,
 				15B04C632A1C7F1300B988BF /* CookieCellView.swift in Sources */,
 				15CFE6AC29FF7F9100C16FF6 /* CellTypePicker.swift in Sources */,
 				1515F3122A0C77AD0003A4BB /* StepDTO.swift in Sources */,
@@ -1422,6 +1471,7 @@
 				1538157E29FF8EF300C3BD11 /* RefrigeratorFailureService.swift in Sources */,
 				153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */,
 				1515FB2C2A12099E00119519 /* RecipeDetailView.swift in Sources */,
+				15B4CC462A24DFA400DC226E /* UserCell.swift in Sources */,
 				1515FB2E2A123C0E00119519 /* RecipeFilterPicker.swift in Sources */,
 				153F128029FE2415008BDB4E /* UserDTO.swift in Sources */,
 				1566059429F937A3008B9F9F /* View + offset.swift in Sources */,
@@ -1468,6 +1518,7 @@
 				15B1F9E02A08D9B500B9CB24 /* IngredientType.swift in Sources */,
 				15AA2F2429EFEA250069813F /* RecipeFormViewModel.swift in Sources */,
 				15B6263E2A009CE6002E1F5F /* SearchedCell.swift in Sources */,
+				15B4CC502A24E90B00DC226E /* Array + Mock.swift in Sources */,
 				152251EC29FFD40F002C3A78 /* ProfilePath.swift in Sources */,
 				159BE2A729FB6C1E00DE7448 /* ServiceAlert.swift in Sources */,
 				15A19D852A0B8E03008C71EA /* RecipeService.swift in Sources */,
@@ -1490,6 +1541,7 @@
 				153F128A29FE269A008BDB4E /* RecipeSuccessService.swift in Sources */,
 				158EFDDC2A04CE26003057A4 /* PatchViewModel.swift in Sources */,
 				158AF5E02A1F683200FF815A /* CookieForm.swift in Sources */,
+				15B4CC482A24E1A900DC226E /* CommentCell.swift in Sources */,
 				1515F3182A0C77E10003A4BB /* IngredientDTO.swift in Sources */,
 				153F128429FE25D9008BDB4E /* RecipeCellSearchResponse.swift in Sources */,
 				158AF5E72A1F71AD00FF815A /* CookieDetailDTO.swift in Sources */,
