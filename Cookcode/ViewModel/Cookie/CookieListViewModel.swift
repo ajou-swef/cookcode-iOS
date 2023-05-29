@@ -8,37 +8,9 @@
 import SwiftUI
 import AVFoundation
 
-struct Cookie: Identifiable {
-    let id: String = UUID().uuidString
-    var url: String
-    var title: String
-    var cookieId: Int
-    var description: String
-    
-    mutating func update(cookie: Cookie) {
-        url = cookie.url
-        title = cookie.title
-        cookieId = cookie.cookieId
-        description = cookie.description
-    }
-    
-    static func mock() -> Cookie {
-        Cookie(dto: .mock())
-    }
-}
-
-extension Cookie {
-    init(dto: CookieDetailDTO) {
-        url = dto.videoURL
-        title = dto.title
-        cookieId = dto.id
-        description = dto.desc
-    }
-}
-
 final class CookieListViewModel: ObservableObject {
     
-    @Published var cookies: [Cookie] = []
+    @Published var cookies: [CookieDetail] = []
     @Published var cookieSelection: String = ""
     @Published var drag: CGFloat = .zero
     @Published var serviceAlert: ServiceAlert = .init()
@@ -60,12 +32,12 @@ final class CookieListViewModel: ObservableObject {
         
         switch result {
         case .success(let success):
-            guard let dto = success.data.content.first else { return }
-            let cookie1 = Cookie(dto: dto)
-            let cookie2 = Cookie(dto: dto)
-            let cookie3 = Cookie(dto: dto)
-            let cookie4 = Cookie(dto: dto)
-            let mock = Cookie(dto: dto)
+            guard let dto = success.data.first else { return }
+            let cookie1 = CookieDetail(dto: dto)
+            let cookie2 = CookieDetail(dto: dto)
+            let cookie3 = CookieDetail(dto: dto)
+            let cookie4 = CookieDetail(dto: dto)
+            let mock = CookieDetail(dto: dto)
             
             cookies.append(cookie1)
             cookies.append(cookie2)
@@ -78,13 +50,13 @@ final class CookieListViewModel: ObservableObject {
     }
     
     
-    private func getCookie() async -> Cookie? {
+    private func getCookie() async -> CookieDetail? {
         let result = await cookieService.getCookie()
         
         switch result {
         case .success(let success):
-            guard let dto = success.data.content.first else { return nil }
-            return Cookie(dto: dto)
+            guard let dto = success.data.first else { return nil }
+            return CookieDetail(dto: dto)
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
             return nil

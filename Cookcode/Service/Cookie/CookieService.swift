@@ -9,14 +9,14 @@ import Alamofire
 import Foundation
 
 final class CookieService: CookieServiceProtocol {
-    func getCookie() async -> Result<ServiceResponse<CookieDetailResponseDTO>, ServiceError> {
+    func getCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
         let response = await AF.request(url, method: .get, headers: headers)
-            .serializingDecodable(ServiceResponse<CookieDetailResponseDTO>.self).response
+            .serializingDecodable(ServiceResponse<[CookieDetailDTO]>.self).response
         
         if response.error != nil {
             print("\(response.debugDescription)")

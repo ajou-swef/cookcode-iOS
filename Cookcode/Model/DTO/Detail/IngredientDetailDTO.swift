@@ -41,8 +41,9 @@ struct IngredientDetailDTO: Codable, Mock {
     }
 }
 
-extension Array: Mock where Element == IngredientDetailDTO {
-    static func mock() -> Array<Element> {
-        Element.mocks(10)
-    }
-}
+//
+//extension Array: Mock where Element == IngredientDetailDTO {
+//    static func mock() -> Array<Element> {
+//        Element.mocks(10)
+//    }
+//}
