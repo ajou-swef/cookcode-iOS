@@ -20,9 +20,9 @@ final class CookieCommentViewModel: Commentable {
     let spaceName: String = "commentScroll"
     let refreshThreshold: CGFloat = .zero
     
-    init(conentsId: Int) {
+    init(conentsId: Int, commentService: CommentServiceProtocol) {
         self.contentId = conentsId
-        commentService = CookieService()
+        self.commentService = commentService
         Task { await onFetch() }
     }
 

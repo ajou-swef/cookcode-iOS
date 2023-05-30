@@ -46,12 +46,21 @@ struct RecipeDetailView: View {
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        viewModel.showDialog = true
-                    } label: {
-                        Image(systemName: "gearshape.fill")
+                    HStack {
+                        Button {
+                            
+                        } label: {
+                            
+                        }
+
+                        
+                        Button {
+                            viewModel.showDialog = true
+                        } label: {
+                            Image(systemName: "gearshape.fill")
+                        }
+                        .hidden(!viewModel.myRecipe)
                     }
-                    .hidden(!viewModel.myRecipe)
                 }
                 
                 ToolbarItem(placement: .principal) {

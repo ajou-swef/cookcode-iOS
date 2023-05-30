@@ -56,7 +56,7 @@ struct CookieDetailOverlay: View {
                     .offset(x: -30)
             }
             .sheet(isPresented: $isPresented) {
-                CommentComponent(viewModel: CookieCommentViewModel(conentsId: cookieDetail.cookieId))
+                CommentComponent(viewModel: CookieCommentViewModel(conentsId: cookieDetail.cookieId, commentService: CookieService()))
             }
             
             Text("\(cookieDetail.commentsCount)")

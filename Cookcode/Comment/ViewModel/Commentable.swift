@@ -17,15 +17,13 @@ protocol Commentable: ObservableObject {
 }
 
 extension Commentable {
+
     @MainActor
     func onFetch() async {
-        print("onFetch")
         let result = await commentService.fetchCommentsById(contentId)
         switch result {
         case .success(let success):
-            print("fetch success")
             self.comments = success.data.map { Comment(dto: $0) }
-            print("comments: \(comments)")
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }

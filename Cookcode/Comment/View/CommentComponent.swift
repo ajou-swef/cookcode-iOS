@@ -71,6 +71,6 @@ struct CommentComponent<ViewModel: Commentable>: View {
 
 struct CommentComponent_Previews: PreviewProvider {
     static var previews: some View {
-        CommentComponent(viewModel: CookieCommentViewModel(conentsId: 1))
+        CommentComponent(viewModel: CookieCommentViewModel(conentsId: 1, commentService: RecipeSuccessService()))
     }
 }
