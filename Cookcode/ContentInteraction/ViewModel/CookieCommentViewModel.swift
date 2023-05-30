@@ -12,9 +12,13 @@ final class CookieCommentViewModel: Commentable {
     internal let contentId: Int 
     internal let commentService: CommentServiceProtocol
     
+    @Published var selectedComment: Comment?
     @Published var comments: [Comment] = .init()
     @Published var commentText: String = ""
     @Published var serviceAlert: ServiceAlert = .init()
+    
+    @Published var deleteAlertIsPresented: Bool = false
+    @Published var deleteCommentAlertIsPresented: Comment?
     
     init(conentsId: Int, commentService: CommentServiceProtocol) {
         self.contentId = conentsId
@@ -32,5 +36,11 @@ final class CookieCommentViewModel: Commentable {
         case .failure(let failure):
             print("\(failure.localizedDescription)")
         }
+    }
+    
+    @MainActor
+    func commentButtonTapped(_ comment: Comment) {
+        deleteAlertIsPresented = true
+        selectedComment = comment
     }
 }

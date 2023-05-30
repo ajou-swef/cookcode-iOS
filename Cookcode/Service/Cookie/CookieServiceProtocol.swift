@@ -10,7 +10,7 @@ import Foundation
 
 protocol CookieServiceProtocol: CommentServiceProtocol {
     func postCookie(cookie: CookieForm) async -> Result<DefaultResponse, ServiceError>
-    func getCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> 
+    func fetchCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> 
 }
 
 

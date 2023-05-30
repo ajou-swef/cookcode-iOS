@@ -8,7 +8,11 @@
 import Foundation
 
 final class RecipeSuccessService: RecipeServiceProtocol {
-    func fetchCommentsById(_ id: Int) async -> Result<ServiceResponse<[CommentDTO]>, ServiceError> {
+    func fetchCommentsById(_ id: Int) async -> Result<ServiceResponse<PageResponse<CommentDTO>>, ServiceError> {
+        .success(.mock())
+    }
+    
+    func deleteCommentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
         .success(.mock())
     }
     

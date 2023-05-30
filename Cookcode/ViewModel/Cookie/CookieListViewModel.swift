@@ -28,7 +28,7 @@ final class CookieListViewModel: ObservableObject {
     
     @MainActor
     private func initCookie() async {
-        let result = await cookieService.getCookie()
+        let result = await cookieService.fetchCookie()
         
         switch result {
         case .success(let success):
@@ -51,7 +51,7 @@ final class CookieListViewModel: ObservableObject {
     
     
     private func getCookie() async -> CookieDetail? {
-        let result = await cookieService.getCookie()
+        let result = await cookieService.fetchCookie()
         
         switch result {
         case .success(let success):

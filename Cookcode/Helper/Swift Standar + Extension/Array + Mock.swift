@@ -7,8 +7,9 @@
 
 import Foundation
 
+
 extension Array: Mock where Element: Mock {
     static func mock() -> Array<Element> {
-        Element.mocks(10)
+        Element.mocks(5)
     }
 }
