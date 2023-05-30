@@ -35,6 +35,8 @@
 		15193E462A0C9B7C00615BE1 /* RecipePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15193E452A0C9B7C00615BE1 /* RecipePreviewView.swift */; };
 		151E1C9F2A0CD12A00BC0DA5 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E1C9E2A0CD12A00BC0DA5 /* Proxy.swift */; };
 		151E1CA52A0CF0D100BC0DA5 /* PageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E1CA42A0CF0D100BC0DA5 /* PageState.swift */; };
+		152181D52A25DD0500F5B3B0 /* LikeServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152181D42A25DD0500F5B3B0 /* LikeServiceProtocol.swift */; };
+		152181D92A25DD9800F5B3B0 /* LikeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152181D82A25DD9800F5B3B0 /* LikeComponent.swift */; };
 		152251EC29FFD40F002C3A78 /* ProfilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152251EB29FFD40F002C3A78 /* ProfilePath.swift */; };
 		152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152389D329F69AD60090CA9B /* RecipeEntranceView.swift */; };
 		1525657A2A076DAE00471D52 /* AppendIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152565792A076DAE00471D52 /* AppendIngredientViewModel.swift */; };
@@ -255,6 +257,8 @@
 		15193E452A0C9B7C00615BE1 /* RecipePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePreviewView.swift; sourceTree = "<group>"; };
 		151E1C9E2A0CD12A00BC0DA5 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
 		151E1CA42A0CF0D100BC0DA5 /* PageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageState.swift; sourceTree = "<group>"; };
+		152181D42A25DD0500F5B3B0 /* LikeServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeServiceProtocol.swift; sourceTree = "<group>"; };
+		152181D82A25DD9800F5B3B0 /* LikeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeComponent.swift; sourceTree = "<group>"; };
 		152251EB29FFD40F002C3A78 /* ProfilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePath.swift; sourceTree = "<group>"; };
 		152389D329F69AD60090CA9B /* RecipeEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeEntranceView.swift; sourceTree = "<group>"; };
 		152565792A076DAE00471D52 /* AppendIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendIngredientViewModel.swift; sourceTree = "<group>"; };
@@ -1063,6 +1067,7 @@
 			isa = PBXGroup;
 			children = (
 				15B4CC492A24E6C300DC226E /* CommentServiceProtocol.swift */,
+				152181D42A25DD0500F5B3B0 /* LikeServiceProtocol.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1089,6 +1094,7 @@
 			children = (
 				15B4CC472A24E1A900DC226E /* CommentCell.swift */,
 				15B4CC3C2A24D82300DC226E /* CommentComponent.swift */,
+				152181D82A25DD9800F5B3B0 /* LikeComponent.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1519,6 +1525,7 @@
 				15AA2F2429EFEA250069813F /* RecipeFormViewModel.swift in Sources */,
 				15B6263E2A009CE6002E1F5F /* SearchedCell.swift in Sources */,
 				15B4CC502A24E90B00DC226E /* Array + Mock.swift in Sources */,
+				152181D92A25DD9800F5B3B0 /* LikeComponent.swift in Sources */,
 				152251EC29FFD40F002C3A78 /* ProfilePath.swift in Sources */,
 				159BE2A729FB6C1E00DE7448 /* ServiceAlert.swift in Sources */,
 				15A19D852A0B8E03008C71EA /* RecipeService.swift in Sources */,
@@ -1528,6 +1535,7 @@
 				15B626422A009D40002E1F5F /* Mock.swift in Sources */,
 				1515FB302A123CC100119519 /* RecipeFilterType.swift in Sources */,
 				15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */,
+				152181D52A25DD0500F5B3B0 /* LikeServiceProtocol.swift in Sources */,
 				153F127829FE2274008BDB4E /* ImageContent.swift in Sources */,
 				1525657F2A077FD000471D52 /* ServiceResponse.swift in Sources */,
 				15B04C592A1C76FF00B988BF /* VideLoadState.swift in Sources */,
