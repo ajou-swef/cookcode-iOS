@@ -489,7 +489,7 @@
 				15B4CC202A24B54600DC226E /* Components */,
 				153B4D8A29ED050A00543730 /* Helper */,
 				1503F95329B459CA002F3D26 /* Service */,
-				15B4CC3B2A24D7FF00DC226E /* Comment */,
+				15B4CC3B2A24D7FF00DC226E /* ContentInteraction */,
 				15B4CC172A24B1A400DC226E /* Cookie */,
 				1503F95229B459C7002F3D26 /* Model */,
 				1503F95029B459BD002F3D26 /* ViewModel */,
@@ -1048,7 +1048,7 @@
 			path = Pagenable;
 			sourceTree = "<group>";
 		};
-		15B4CC3B2A24D7FF00DC226E /* Comment */ = {
+		15B4CC3B2A24D7FF00DC226E /* ContentInteraction */ = {
 			isa = PBXGroup;
 			children = (
 				15B4CC4D2A24E6DF00DC226E /* Model */,
@@ -1056,7 +1056,7 @@
 				15B4CC4E2A24E6E500DC226E /* View */,
 				15B4CC4B2A24E6C800DC226E /* Service */,
 			);
-			path = Comment;
+			path = ContentInteraction;
 			sourceTree = "<group>";
 		};
 		15B4CC4B2A24E6C800DC226E /* Service */ = {

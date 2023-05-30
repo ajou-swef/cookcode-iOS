@@ -50,10 +50,8 @@ struct CookieDetailOverlay: View {
                     .resizable()
                     .aspectRatio(CGSize(width: 4, height: 3.5), contentMode: .fit)
                     .frame(width: 30)
-                    .padding(.trailing, 20)
                     .foregroundColor(.white)
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    .offset(x: -30)
             }
             .sheet(isPresented: $isPresented) {
                 CommentComponent(viewModel: CookieCommentViewModel(conentsId: cookieDetail.cookieId, commentService: CookieService()))
@@ -75,7 +73,6 @@ struct CookieDetailOverlay: View {
                     .resizable()
                     .aspectRatio(CGSize(width: 4, height: 3.5), contentMode: .fit)
                     .frame(width: 30)
-                    .padding(.trailing, 20)
                     .foregroundColor(.white)
             }
             

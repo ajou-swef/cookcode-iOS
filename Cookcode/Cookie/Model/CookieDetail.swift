@@ -25,6 +25,8 @@ struct CookieDetail: Identifiable {
         title = cookie.title
         cookieId = cookie.cookieId
         description = cookie.description
+        likesCount = cookie.likesCount
+        commentsCount = cookie.commentsCount
     }
     
     static func mock() -> CookieDetail {
@@ -38,8 +40,8 @@ extension CookieDetail {
         title = dto.title
         cookieId = dto.id
         description = dto.desc
-        likesCount = 125
-        commentsCount = 592
-        didLikes = false
+        likesCount = dto.likeCount
+        commentsCount = dto.commentCount
+        didLikes = dto.isLiked == 0 ? false : true
     }
 }

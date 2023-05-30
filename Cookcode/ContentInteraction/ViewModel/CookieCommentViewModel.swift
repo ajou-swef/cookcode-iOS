@@ -15,20 +15,17 @@ final class CookieCommentViewModel: Commentable {
     @Published var comments: [Comment] = .init()
     @Published var commentText: String = ""
     @Published var serviceAlert: ServiceAlert = .init()
- 
-    
-    let spaceName: String = "commentScroll"
-    let refreshThreshold: CGFloat = .zero
     
     init(conentsId: Int, commentService: CommentServiceProtocol) {
         self.contentId = conentsId
         self.commentService = commentService
         Task { await onFetch() }
     }
-
+    
+    @MainActor
     func commentUploadButtonTapped() async {
         let result = await commentService.postCommentWithId(commentText, id: contentId)
-        
+        commentText = ""
         switch result {
         case .success(_):
             await onFetch()
