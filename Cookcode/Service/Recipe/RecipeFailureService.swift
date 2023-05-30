@@ -8,6 +8,10 @@
 import Foundation
 
 final class RecipeFailureService: RecipeServiceProtocol {
+    func deleteCommentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
+        .failure(.decodeError())
+    }
+    
     func fetchCommentsById(_ id: Int) async -> Result<ServiceResponse<[CommentDTO]>, ServiceError> {
         .failure(.decodeError())
     }

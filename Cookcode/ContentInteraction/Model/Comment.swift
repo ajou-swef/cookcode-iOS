@@ -10,18 +10,24 @@ import SwiftUI
 struct Comment: Identifiable, Mock {
     
     static func mock() -> Comment {
-        Comment(user: .mock(), comment: "댓글")
+        Comment(commentId: 1, user: .mock(), comment: "댓글", isMyComment: true)
     }
     
     let id: String = UUID().uuidString
+    let commentId: Int
     let user: UserCell
     let comment: String
+    let isMyComment: Bool
 }
 
 extension Comment {
     init(dto: CommentDTO) {
         user = UserCell(dto: dto.user)
         comment = dto.comment
+        commentId = dto.id
+        
+        let id = UserDefaults.standard.integer(forKey: USER_ID)
+        isMyComment = (id == dto.user.userID)
     }
 }
 

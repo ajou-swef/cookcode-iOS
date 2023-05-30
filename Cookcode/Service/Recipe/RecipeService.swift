@@ -9,6 +9,10 @@ import Alamofire
 import Foundation
 
 final class RecipeService: RecipeServiceProtocol {
+    func deleteCommentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
+        .failure(.decodeError())
+    }
+    
     func postCommentWithId(_ comments: String, id: Int) async -> Result<DefaultResponse, ServiceError> {
         let url = "\(BASE_URL)/api/v1/recipe/\(id)/comments"
         let headers: HTTPHeaders = [

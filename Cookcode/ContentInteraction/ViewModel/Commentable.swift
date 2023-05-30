@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-protocol Commentable: ObservableObject {
+protocol Commentable: ObservableObject, CommentCellInteractable {
     var contentId: Int { get }
     var serviceAlert: ServiceAlert { get set }
     var commentService: CommentServiceProtocol { get }
     var commentText: String { get set }
     var comments: [Comment] { get set }
+    var deleteAlertIsPresented: Bool { get set } 
     func commentUploadButtonTapped() async
 }
 
@@ -27,5 +28,22 @@ extension Commentable {
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }
+    }
+    
+    
+    @MainActor
+    func deleteButtonTapped() async {
+        guard let comment = selectedComment else { return }
+        
+        let result = await commentService.deleteCommentById(comment.commentId)
+        
+        switch result {
+        case .success(_):
+            await onFetch()
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
+        
+        selectedComment = nil
     }
 }

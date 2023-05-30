@@ -74,7 +74,7 @@ struct RecipeDetailView: View {
             Image(systemName: "ellipsis.bubble.fill")
         }
         .sheet(isPresented: $viewModel.commentsComponentIsPresented) {
-            CommentComponent(viewModel:
+            CommentList(viewModel:
                                 CookieCommentViewModel(conentsId: viewModel.recipeId, commentService: RecipeService()))
         }
     }
