@@ -7,10 +7,15 @@
 
 import SwiftUI
 
-final class TempCommentable: Commentable {
+final class CookieCommentViewModel: Commentable {
+    
+    
+    internal let commentService: CommentServiceProtocol
+    
     @Published var comments: [Comment] = .init()
     @Published var commentText: String = "" 
     @Published var pageState: PageState = .wait(0)
+    @Published var serviceAlert: ServiceAlert = .init()
     
     @Published var fetchTriggerOffset: CGFloat = .zero
     
@@ -21,6 +26,7 @@ final class TempCommentable: Commentable {
     let refreshThreshold: CGFloat = .zero
     
     init() {
+        commentService = CookieService()
         comments.append(contentsOf: Comment.mocks(10))
     }
     
@@ -32,7 +38,14 @@ final class TempCommentable: Commentable {
         
     }
     
-    func commentUploadButtonTapped() {
+    func commentUploadButtonTapped() async {
+        let result = await commentService.postCommentWithId(commentText, id: 7)
         
+        switch result {
+        case .success(let success):
+            print("댓글 생성 성공")
+        case .failure(let failure):
+            print("\(failure.localizedDescription)")
+        }
     }
 }

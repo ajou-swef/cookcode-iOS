@@ -152,7 +152,7 @@
 		15B4CC3A2A24D77000DC226E /* PagenableComponet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC392A24D77000DC226E /* PagenableComponet.swift */; };
 		15B4CC3D2A24D82300DC226E /* CommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC3C2A24D82300DC226E /* CommentComponent.swift */; };
 		15B4CC3F2A24D89700DC226E /* Commentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC3E2A24D89700DC226E /* Commentable.swift */; };
-		15B4CC412A24D8F100DC226E /* TempCommentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC402A24D8F100DC226E /* TempCommentable.swift */; };
+		15B4CC412A24D8F100DC226E /* CookieCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC402A24D8F100DC226E /* CookieCommentViewModel.swift */; };
 		15B4CC432A24DF1C00DC226E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC422A24DF1C00DC226E /* Comment.swift */; };
 		15B4CC462A24DFA400DC226E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC452A24DFA400DC226E /* UserCell.swift */; };
 		15B4CC482A24E1A900DC226E /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC472A24E1A900DC226E /* CommentCell.swift */; };
@@ -376,7 +376,7 @@
 		15B4CC392A24D77000DC226E /* PagenableComponet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagenableComponet.swift; sourceTree = "<group>"; };
 		15B4CC3C2A24D82300DC226E /* CommentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentComponent.swift; sourceTree = "<group>"; };
 		15B4CC3E2A24D89700DC226E /* Commentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commentable.swift; sourceTree = "<group>"; };
-		15B4CC402A24D8F100DC226E /* TempCommentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempCommentable.swift; sourceTree = "<group>"; };
+		15B4CC402A24D8F100DC226E /* CookieCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieCommentViewModel.swift; sourceTree = "<group>"; };
 		15B4CC422A24DF1C00DC226E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		15B4CC452A24DFA400DC226E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		15B4CC472A24E1A900DC226E /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -1070,7 +1070,7 @@
 		15B4CC4C2A24E6CD00DC226E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				15B4CC402A24D8F100DC226E /* TempCommentable.swift */,
+				15B4CC402A24D8F100DC226E /* CookieCommentViewModel.swift */,
 				15B4CC3E2A24D89700DC226E /* Commentable.swift */,
 			);
 			path = ViewModel;
@@ -1431,7 +1431,7 @@
 				1515F3122A0C77AD0003A4BB /* StepDTO.swift in Sources */,
 				153F127E29FE23B3008BDB4E /* RecipeCellDto.swift in Sources */,
 				15F2CC1C2A026E5E0019FAB6 /* IngredientCell.swift in Sources */,
-				15B4CC412A24D8F100DC226E /* TempCommentable.swift in Sources */,
+				15B4CC412A24D8F100DC226E /* CookieCommentViewModel.swift in Sources */,
 				15193E3E2A0C939400615BE1 /* RecipeFormRefactorViewModel.swift in Sources */,
 				15F82A6D29FA901500DA9381 /* AccoutCheckResponse.swift in Sources */,
 				15CFE66229FF56C700C16FF6 /* ContentServiceProtocol.swift in Sources */,

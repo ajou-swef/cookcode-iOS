@@ -15,12 +15,17 @@ final class CookieService: CookieServiceProtocol {
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
+        let parameter: [String: Any] = [
+            "" : comments
+        ]
         
-        let response = await AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: headers).serializingDecodable(`Response`.self).response
+        let response = await AF.request(url, method: .post, parameters: parameter,
+                                        encoding: JSONEncoding.default, headers: headers)
+            .serializingDecodable(DefaultResponse.self).response
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.decodeError()
         }
     }
     

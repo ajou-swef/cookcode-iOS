@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CommentComponent: View {
     
-    @ObservedObject var viewModel = TempCommentable()
+    @ObservedObject var viewModel = CookieCommentViewModel()
     
     var body: some View {
         PagenableComponent(viewModel: viewModel) {
@@ -44,7 +44,11 @@ struct CommentComponent: View {
                 
                 TextField("댓글 추가", text: $viewModel.commentText)
                 
-                Image(systemName: "arrowshape.turn.up.right.fill")
+                Button {
+                    Task { await viewModel.commentUploadButtonTapped() }
+                } label: {
+                    Image(systemName: "arrowshape.turn.up.right.fill")
+                }
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 10)
