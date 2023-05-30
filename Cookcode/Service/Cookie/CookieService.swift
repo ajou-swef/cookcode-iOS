@@ -95,8 +95,8 @@ final class CookieService: CookieServiceProtocol {
             multipart.append(videoURL, withName: "multipartFile",
                              fileName: UUID().uuidString, mimeType: "video/mp4")
             
-            multipart.append(Data(cookie.title.utf8), withName: "title")
-            multipart.append(Data(cookie.description.utf8), withName: "description")
+            multipart.append(cookie.title.data(using: .utf8)!, withName: "title")
+            multipart.append(cookie.description.data(using: .utf8)!, withName: "desc")
         }, to: url, method: .post, headers: headers)
             .serializingDecodable(DefaultResponse.self).response
         
