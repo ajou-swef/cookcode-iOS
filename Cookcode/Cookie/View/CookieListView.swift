@@ -21,36 +21,11 @@ struct CookieListView: View {
     var body: some View {
         GeometryReader { proxy in
             VTabView(selection: $viewModel.cookieSelection) {
-                ForEach(viewModel.cookies.indices, id: \.self) { i in
-                    if viewModel.cookies[i].id == viewModel.cookieSelection {
-                        let url = URL(string: viewModel.cookies[i].url)!
-                        let avPlayer = AVPlayer(url: url)
-
-                        VideoPlayer(player: avPlayer)
-                            .foregroundColor(.blue)
-                            .scaledToFill()
-                            .frame(width: proxy.size.width, height: proxy.size.height)
-                            .overlay(alignment: .bottomTrailing) {
-                                Image(systemName: "heart.fill")
-                                    .resizable()
-                                    .aspectRatio(CGSize(width: 4, height: 3.5), contentMode: .fit)
-                                    .frame(width: 30)
-                                    .padding(.trailing, 20)
-                                    .padding(.bottom, 30)
-                                    .foregroundColor(.white)
-                            }
-                            .overlay(alignment: .bottomLeading) {
-                                bottomItem(i)
-                            }
-                            .tag(viewModel.cookies[i].id)
-                    } else {
-                        Rectangle()
-                            .foregroundColor(.black)
-                            .tag(viewModel.cookies[i].id)
-                            .overlay(alignment: .bottomLeading) {
-                                bottomItem(i)
-                            }
-                    }
+                ForEach(viewModel.cookies) { cookie in
+                    cookieVideo(cookie, proxy: proxy)
+                        .overlay(alignment: .bottom) {
+                            CookieDetailOverlay(cookieDetail: cookie)
+                        }
                 }
             }
             .simultaneousGesture(
@@ -81,6 +56,23 @@ struct CookieListView: View {
         .foregroundColor(.white)
         .padding(.leading, 20)
         .padding(.bottom, 30)
+    }
+    
+    @ViewBuilder
+    private func cookieVideo(_ cookie: CookieDetail, proxy: GeometryProxy) -> some View {
+        if cookie.id == viewModel.cookieSelection {
+            let url = URL(string: cookie.url)!
+            let avPlayer = AVPlayer(url: url)
+            VideoPlayer(player: avPlayer)
+                .foregroundColor(.blue)
+                .scaledToFill()
+                .frame(width: proxy.size.width, height: proxy.size.height)
+                .tag(cookie.id)
+        } else {
+            Rectangle()
+                .foregroundColor(.black)
+                .tag(cookie.id)
+        }
     }
 }
 

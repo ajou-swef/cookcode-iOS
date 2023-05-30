@@ -111,7 +111,7 @@ class HomeViewModel: ObservableObject {
             controllPageState(success, curPage)
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
-            waitInPage(curPage)
+            pageState = .noRemain
         }
     }
     

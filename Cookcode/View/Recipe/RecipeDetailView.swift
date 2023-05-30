@@ -46,18 +46,37 @@ struct RecipeDetailView: View {
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        viewModel.showDialog = true
-                    } label: {
-                        Image(systemName: "gearshape.fill")
+                    HStack {
+                        presentCommentComponentButton()
+
+                        
+                        Button {
+                            viewModel.showDialog = true
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                .rotationEffect(.degrees(90))
+                        }
+                        .hidden(!viewModel.myRecipe)
                     }
-                    .hidden(!viewModel.myRecipe)
                 }
                 
                 ToolbarItem(placement: .principal) {
                     Text("레시피")
                 }
             }
+    }
+    
+    @ViewBuilder
+    private func presentCommentComponentButton() -> some View {
+        Button {
+            viewModel.commentsComponentIsPresented = true
+        } label: {
+            Image(systemName: "ellipsis.bubble.fill")
+        }
+        .sheet(isPresented: $viewModel.commentsComponentIsPresented) {
+            CommentComponent(viewModel:
+                                CookieCommentViewModel(conentsId: viewModel.recipeId, commentService: RecipeService()))
+        }
     }
 }
 

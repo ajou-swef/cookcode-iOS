@@ -12,5 +12,5 @@ struct RecipeCellSeachResponse: Codable {
     let status: Int
     let data: RecipeCellSearchDTO
     
-    static let MOCK_DATA: RecipeCellSeachResponse = RecipeCellSeachResponse(message: "검색성공", status: 200, data: RecipeCellSearchDTO.MOCK_DATA)
+    static let MOCK_DATA: RecipeCellSeachResponse = RecipeCellSeachResponse(message: "검색성공", status: 200, data: .mock())
 }

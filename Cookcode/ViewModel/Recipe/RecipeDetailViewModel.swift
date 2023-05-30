@@ -10,11 +10,14 @@ import SwiftUI
 class RecipeDetailViewModel: RecipeViewModel {
     
     @Published var showDialog: Bool = false
+    @Published var commentsComponentIsPresented: Bool = false
     
     var myRecipe: Bool = false
-    
+    let recipeId: Int
     init(recipeCell: RecipeCell) {
-        super.init(recipeService: RecipeService(), contentService: ContentSuccessService(), recipeID: recipeCell.recipeId)
+        recipeId = recipeCell.recipeId
+        
+        super.init(recipeService: RecipeService(), contentService: ContentSuccessService(), recipeID: recipeId)
         
         Task {
             await fetchRecipe(recipeCell.recipeId)

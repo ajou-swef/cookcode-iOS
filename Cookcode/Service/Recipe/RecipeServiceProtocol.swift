@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RecipeServiceProtocol: SearchCellServiceProtocol {
+protocol RecipeServiceProtocol: SearchCellServiceProtocol, CommentServiceProtocol {
     func searchRecipeHomeCell(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<RecipeCellSeachResponse, ServiceError>
     
     func searchRecipe(_ recipeID: Int) async -> Result<ServiceResponse<RecipeDetailDTO>, ServiceError>

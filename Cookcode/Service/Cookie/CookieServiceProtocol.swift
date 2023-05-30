@@ -8,9 +8,9 @@
 import Alamofire
 import Foundation
 
-protocol CookieServiceProtocol {
+protocol CookieServiceProtocol: CommentServiceProtocol {
     func postCookie(cookie: CookieForm) async -> Result<DefaultResponse, ServiceError>
-    func getCookie() async -> Result<ServiceResponse<CookieDetailResponseDTO>, ServiceError> 
+    func getCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> 
 }
 
 
