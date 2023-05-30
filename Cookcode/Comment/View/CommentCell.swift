@@ -30,16 +30,16 @@ struct CommentCell: View {
     
     @ViewBuilder
     private func userImage() -> some View {
-        if comment.user.imageURL.isEmpty {
-            Image(systemName: "person.fill")
-                .resizable()
-                .frame(width: 30, height: 30)
-        } else {
-            let url = URL(string: comment.user.imageURL)
+        if let url = comment.user.imageURL {
+            let url = URL(string: url)
             KFImage(url)
                 .resizable()
                 .frame(width: 30, height: 30)
                 .clipShape(Circle())
+        } else {
+            Image(systemName: "person.fill")
+                .resizable()
+                .frame(width: 30, height: 30)
         }
     }
 }

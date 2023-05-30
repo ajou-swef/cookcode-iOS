@@ -18,6 +18,13 @@ struct Comment: Identifiable, Mock {
     let comment: String
 }
 
+extension Comment {
+    init(dto: CommentDTO) {
+        user = UserCell(dto: dto.user)
+        comment = dto.comment
+    }
+}
+
 struct CommentDTO: Codable, Mock {
     static func mock() -> CommentDTO {
         CommentDTO(id: 1, user: .MOCK_DATA, comment: "댓글")

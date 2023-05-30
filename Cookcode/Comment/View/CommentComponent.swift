@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct CommentComponent: View {
+struct CommentComponent<ViewModel: Commentable>: View {
     
-    @ObservedObject var viewModel = CookieCommentViewModel()
+    @ObservedObject var viewModel: ViewModel
+    
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
-        PagenableComponent(viewModel: viewModel) {
+        ScrollView {
             VStack(alignment: .leading) {
                 Text("댓글")
                     .font(.custom(CustomFont.interBold.rawValue, size: 25))
@@ -59,11 +63,14 @@ struct CommentComponent: View {
             }
             .background(Color(UIColor.systemBackground))
         }
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+            ServiceAlert.CANCEL_BUTTON
+        }
     }
 }
 
 struct CommentComponent_Previews: PreviewProvider {
     static var previews: some View {
-        CommentComponent()
+        CommentComponent(viewModel: CookieCommentViewModel(conentsId: 1))
     }
 }

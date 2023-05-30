@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol Commentable: Pagenable {
+protocol Commentable: ObservableObject {
     var contentId: Int { get }
     var serviceAlert: ServiceAlert { get set }
     var commentService: CommentServiceProtocol { get }
@@ -17,14 +17,17 @@ protocol Commentable: Pagenable {
 }
 
 extension Commentable {
-//    @MainActor
-//    func onFetch() async {
-//        let result = await commentService.fetchCommentsById(contentId)
-//        switch result {
-//        case .success(let success):
-//            comments = success.data.map { Comment( }
-//        case .failure(let failure):
-//            serviceAlert.presentAlert(failure)
-//        }
-//    }
+    @MainActor
+    func onFetch() async {
+        print("onFetch")
+        let result = await commentService.fetchCommentsById(contentId)
+        switch result {
+        case .success(let success):
+            print("fetch success")
+            self.comments = success.data.map { Comment(dto: $0) }
+            print("comments: \(comments)")
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
+    }
 }
