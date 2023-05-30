@@ -24,7 +24,7 @@ extension Comment {
     init(dto: CommentDTO) {
         user = UserCell(dto: dto.user)
         comment = dto.comment
-        commentId = dto.id
+        commentId = dto.commentId
         
         let id = UserDefaults.standard.integer(forKey: USER_ID)
         isMyComment = (id == dto.user.userID)
@@ -33,10 +33,10 @@ extension Comment {
 
 struct CommentDTO: Codable, Mock {
     static func mock() -> CommentDTO {
-        CommentDTO(id: 1, user: .MOCK_DATA, comment: "댓글")
+        CommentDTO(commentId: 1, user: .MOCK_DATA, comment: "댓글")
     }
     
-    let id: Int
+    let commentId: Int
     let user: UserDTO
     let comment: String
 }

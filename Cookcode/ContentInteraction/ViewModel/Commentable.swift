@@ -22,9 +22,12 @@ extension Commentable {
     @MainActor
     func onFetch() async {
         let result = await commentService.fetchCommentsById(contentId)
+        
+        
         switch result {
         case .success(let success):
-            self.comments = success.data.map { Comment(dto: $0) }
+            
+            self.comments = success.data.content.map({  Comment(dto: $0) })
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }

@@ -78,6 +78,7 @@
 		1566059229F93740008B9F9F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566059129F93740008B9F9F /* HomeViewModel.swift */; };
 		1566059429F937A3008B9F9F /* View + offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566059329F937A3008B9F9F /* View + offset.swift */; };
 		1570194D2A25EED900790E34 /* CommentCellInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570194C2A25EED900790E34 /* CommentCellInteractable.swift */; };
+		1570194F2A26018500790E34 /* PageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570194E2A26018500790E34 /* PageResponse.swift */; };
 		1584033329B48E0F0092032A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033229B48E0F0092032A /* LoginView.swift */; };
 		1584033529B48EAA0092032A /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033429B48EAA0092032A /* MembershipView.swift */; };
 		158AF5DD2A1F66FD00FF815A /* CookieServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AF5DC2A1F66FD00FF815A /* CookieServiceProtocol.swift */; };
@@ -302,6 +303,7 @@
 		1566059129F93740008B9F9F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1566059329F937A3008B9F9F /* View + offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + offset.swift"; sourceTree = "<group>"; };
 		1570194C2A25EED900790E34 /* CommentCellInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellInteractable.swift; sourceTree = "<group>"; };
+		1570194E2A26018500790E34 /* PageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageResponse.swift; sourceTree = "<group>"; };
 		1584033229B48E0F0092032A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1584033429B48EAA0092032A /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
 		158AF5DC2A1F66FD00FF815A /* CookieServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieServiceProtocol.swift; sourceTree = "<group>"; };
@@ -1226,6 +1228,7 @@
 			children = (
 				15A19D862A0B9F8E008C71EA /* DefaultResonse.swift */,
 				1525657E2A077FD000471D52 /* ServiceResponse.swift */,
+				1570194E2A26018500790E34 /* PageResponse.swift */,
 				15F82A6E29FA91CC00DA9381 /* ServiceError.swift */,
 				15F82A6C29FA901500DA9381 /* AccoutCheckResponse.swift */,
 				15F82A7429FA93E500DA9381 /* UserAccountDto.swift */,
@@ -1454,6 +1457,7 @@
 				15193E422A0C9A3800615BE1 /* StepCellView.swift in Sources */,
 				15B4CC252A24C6E200DC226E /* Refreshable.swift in Sources */,
 				15A6AB572A03B71700394490 /* RefrigeratorViewModel.swift in Sources */,
+				1570194F2A26018500790E34 /* PageResponse.swift in Sources */,
 				15C112DE2A1B1225009B87E1 /* CellType.swift in Sources */,
 				1503F92329B45560002F3D26 /* CookcodeApp.swift in Sources */,
 				1593D94229F689D1008AF49E /* RecipeView.swift in Sources */,

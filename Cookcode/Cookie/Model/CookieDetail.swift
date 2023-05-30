@@ -38,7 +38,7 @@ extension CookieDetail {
     init(dto: CookieDetailDTO) {
         url = dto.videoURL
         title = dto.title
-        cookieId = dto.id
+        cookieId = dto.cookieId
         description = dto.desc
         likesCount = dto.likeCount
         commentsCount = dto.commentCount
