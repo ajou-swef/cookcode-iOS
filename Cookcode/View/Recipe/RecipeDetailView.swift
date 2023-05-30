@@ -47,17 +47,14 @@ struct RecipeDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
-                        Button {
-                            
-                        } label: {
-                            
-                        }
+                        presentCommentComponentButton()
 
                         
                         Button {
                             viewModel.showDialog = true
                         } label: {
-                            Image(systemName: "gearshape.fill")
+                            Image(systemName: "ellipsis")
+                                .rotationEffect(.degrees(90))
                         }
                         .hidden(!viewModel.myRecipe)
                     }
@@ -67,6 +64,19 @@ struct RecipeDetailView: View {
                     Text("레시피")
                 }
             }
+    }
+    
+    @ViewBuilder
+    private func presentCommentComponentButton() -> some View {
+        Button {
+            viewModel.commentsComponentIsPresented = true
+        } label: {
+            Image(systemName: "ellipsis.bubble.fill")
+        }
+        .sheet(isPresented: $viewModel.commentsComponentIsPresented) {
+            CommentComponent(viewModel:
+                                CookieCommentViewModel(conentsId: viewModel.recipeId, commentService: RecipeService()))
+        }
     }
 }
 
