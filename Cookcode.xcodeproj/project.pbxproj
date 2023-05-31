@@ -550,7 +550,6 @@
 				158EFDDD2A04CEA9003057A4 /* PatchViewModel */,
 				152565782A076D5D00471D52 /* Refrigerator */,
 				1515FB312A123E5D00119519 /* Home */,
-				15B04C502A1C6B0300B988BF /* Cookie */,
 				153B4DB029ED1B1300543730 /* MembershipViewModel.swift */,
 				153F128D29FE2B37008BDB4E /* SearchCellViewModel.swift */,
 				15C805B92A0344BC000A1A29 /* SelectIngredientForRecipeViewModel.swift */,
@@ -992,18 +991,19 @@
 			path = Path;
 			sourceTree = "<group>";
 		};
-		15B04C502A1C6B0300B988BF /* Cookie */ = {
+		15B04C502A1C6B0300B988BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				15B04C522A1C6B4300B988BF /* CookieFormViewModel.swift */,
 				15B04C602A1C7E1800B988BF /* CookieListViewModel.swift */,
 			);
-			path = Cookie;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		15B4CC172A24B1A400DC226E /* Cookie */ = {
 			isa = PBXGroup;
 			children = (
+				15B04C502A1C6B0300B988BF /* ViewModel */,
 				15B4CC182A24B1AA00DC226E /* Model */,
 				15B4CC1C2A24B2CF00DC226E /* View */,
 			);

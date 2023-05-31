@@ -13,11 +13,8 @@ struct CookieFormView: View {
     
     @StateObject private var viewModel = CookieFormViewModel(cookieService: CookieService())
     @EnvironmentObject var navigateVM: NavigateViewModel
-    
-    @State private var title: String = ""
-    @State private var description: String = ""
-    
-    
+    @Environment(\.dismiss) var dismiss
+
     let service = ContentService()
     
     var body: some View {
@@ -114,7 +111,7 @@ struct CookieFormView: View {
             Text("쿠키 이름")
                 .font(CustomFontFactory.INTER_BOLD_16)
             
-            TextField("쿠키 제목을 입력해주세요", text: $title)
+            TextField("쿠키 제목을 입력해주세요", text: $viewModel.cookieForm.title)
                 .font(CustomFontFactory.INTER_SEMIBOLD_14)
         }
         .padding(.leading)
@@ -126,7 +123,7 @@ struct CookieFormView: View {
             Text("쿠키 설명")
                 .font(CustomFontFactory.INTER_BOLD_16)
             
-            TextField("입력해주세요", text: $description)
+            TextField("입력해주세요", text: $viewModel.cookieForm.description)
                 .font(CustomFontFactory.INTER_SEMIBOLD_14)
         }
         .padding(.leading)
@@ -137,7 +134,7 @@ struct CookieFormView: View {
     fileprivate func completeButton() -> ToolbarItem<(), Button<Text>> {
         return ToolbarItem(placement: .navigationBarTrailing) {
             Button {
-                Task { await viewModel.export() }
+                Task { await viewModel.export(dismiss: dismiss) }
             } label: {
                 Text("완료")
                     .foregroundColor(.mainColor)

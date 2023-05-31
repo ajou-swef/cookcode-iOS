@@ -7,7 +7,7 @@
 
 import Foundation
 
-let BASE_URL = "http://43.201.28.241:8080"
+let BASE_URL = "http://52.79.250.237:8080"
 let ACCESS_TOKEN_KEY = "accessToken"
 let REFRESH_TOKEN_KEY = "refreshToken"
 let USER_ID = "userId"
