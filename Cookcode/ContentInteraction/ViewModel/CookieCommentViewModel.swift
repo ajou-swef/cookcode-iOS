@@ -29,7 +29,9 @@ final class CookieCommentViewModel: Commentable {
     @MainActor
     func commentUploadButtonTapped() async {
         let result = await commentService.postCommentWithId(commentText, id: contentId)
+        
         commentText = ""
+        
         switch result {
         case .success(_):
             await onFetch()

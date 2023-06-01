@@ -24,7 +24,7 @@ struct CommentComponent<ViewModel: CommentCellInteractable>: View {
             
             VStack(alignment: .leading) {
                 Text(comment.user.userName)
-                    .font(CustomFontFactory.INTER_REGULAR_14)
+                    .font(.custom(CustomFont.interRegular.rawValue, size: 11))
                     .foregroundColor(.gray808080)
                 
                 Text(comment.comment)
@@ -51,18 +51,18 @@ struct CommentComponent<ViewModel: CommentCellInteractable>: View {
             let url = URL(string: url)
             KFImage(url)
                 .resizable()
-                .frame(width: 30, height: 30)
+                .frame(width: 40, height: 40)
                 .clipShape(Circle())
         } else {
             Image(systemName: "person.fill")
                 .resizable()
-                .frame(width: 30, height: 30)
+                .frame(width: 40, height: 40)
         }
     }
 }
 
-//struct CommentCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CommentComponent(comment: .mock(), deleteCommentId: .constant(nil))
-//    }
-//}
+struct CommentCell_Previews: PreviewProvider {
+    static var previews: some View {
+        CommentList(viewModel: CookieCommentViewModel(conentsId: 1, commentService: RecipeSuccessService()))
+    }
+}

@@ -74,6 +74,7 @@
 		15581B5E2A2100DC002E0AFB /* UpdateRecipeViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 15581B5D2A2100DC002E0AFB /* UpdateRecipeViewModel .swift */; };
 		155A50762A0B5A9500EBD894 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A50752A0B5A9500EBD894 /* ContentService.swift */; };
 		15634B6B2A1B7C3C00FEABB8 /* CookieFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */; };
+		15637AAF2A28A0C9007BFF8E /* CookieCommentViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15637AAE2A28A0C9007BFF8E /* CookieCommentViewModelTests.swift */; };
 		1566059029F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566058F29F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift */; };
 		1566059229F93740008B9F9F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566059129F93740008B9F9F /* HomeViewModel.swift */; };
 		1566059429F937A3008B9F9F /* View + offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566059329F937A3008B9F9F /* View + offset.swift */; };
@@ -299,6 +300,7 @@
 		15581B5D2A2100DC002E0AFB /* UpdateRecipeViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateRecipeViewModel .swift"; sourceTree = "<group>"; };
 		155A50752A0B5A9500EBD894 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
 		15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieFormView.swift; sourceTree = "<group>"; };
+		15637AAE2A28A0C9007BFF8E /* CookieCommentViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieCommentViewModelTests.swift; sourceTree = "<group>"; };
 		1566058F29F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWrappedStepForm_Tests.swift; sourceTree = "<group>"; };
 		1566059129F93740008B9F9F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1566059329F937A3008B9F9F /* View + offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + offset.swift"; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 		1503F93229B45561002F3D26 /* CookcodeTests */ = {
 			isa = PBXGroup;
 			children = (
+				15637AAD2A28A0A6007BFF8E /* ContentInteraction */,
 				15F2CC0C2A025CFE0019FAB6 /* Service */,
 				1566058E29F914C8008B9F9F /* Model */,
 				159FA86929F8BD2200ECB9E7 /* ViewModel */,
@@ -832,6 +835,14 @@
 				15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */,
 			);
 			path = Cookie;
+			sourceTree = "<group>";
+		};
+		15637AAD2A28A0A6007BFF8E /* ContentInteraction */ = {
+			isa = PBXGroup;
+			children = (
+				15637AAE2A28A0C9007BFF8E /* CookieCommentViewModelTests.swift */,
+			);
+			path = ContentInteraction;
 			sourceTree = "<group>";
 		};
 		1566058E29F914C8008B9F9F /* Model */ = {
@@ -1578,6 +1589,7 @@
 				158F674C2A148A7B00E6D646 /* RefridgeratorViewModelTests.swift in Sources */,
 				15CFE6A529FF69C800C16FF6 /* RecipeFormTests.swift in Sources */,
 				158EFDD72A04C58F003057A4 /* CellTests.swift in Sources */,
+				15637AAF2A28A0C9007BFF8E /* CookieCommentViewModelTests.swift in Sources */,
 				15F2CC142A02669C0019FAB6 /* MembershipFormViewModelTests.swift in Sources */,
 				15C805BC2A0345C6000A1A29 /* SelectIngredientViewModelTests.swift in Sources */,
 				15F2CC102A025D1D0019FAB6 /* AccountServiceTests.swift in Sources */,
@@ -1733,7 +1745,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Cookcode/Preview Content\"";
 				DEVELOPMENT_TEAM = MAU8HFALP8;
 				ENABLE_PREVIEWS = YES;
@@ -1763,7 +1775,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Cookcode/Preview Content\"";
 				DEVELOPMENT_TEAM = MAU8HFALP8;
 				ENABLE_PREVIEWS = YES;
@@ -1793,7 +1805,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = MAU8HFALP8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -1813,7 +1825,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = MAU8HFALP8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -1832,7 +1844,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = MAU8HFALP8;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1850,7 +1862,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = MAU8HFALP8;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;

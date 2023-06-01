@@ -26,6 +26,7 @@ struct CommentList<ViewModel: Commentable>: View {
                     .frame(height: 1)
                     .foregroundColor(.gray808080)
                     .padding(.horizontal, -15)
+                    .padding(.bottom, 10)
                 
                 Text("아직 댓글이 없습니다.")
                     .font(.custom(CustomFont.interSemiBold.rawValue, size: 18))
