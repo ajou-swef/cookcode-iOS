@@ -6,6 +6,9 @@
   - [팀원](#팀원)
   - [프로젝트에 대하여](#프로젝트에-대하여)
   - [실행 영상](#실행-영상)
+    - [드래그로 재검색](#드래그로-재검색)
+    - [무한스크롤](#무한스크롤)
+    - [레시피 보기](#레시피-보기)
 
 ## 팀원 
 
@@ -27,6 +30,18 @@
 
 유튜브 쇼츠처럼 짧은 영상을 만들어 제공하는 `쿠키` 기능을 제공합니다. 
 
+[이곳](https://www.youtube.com/playlist?list=PLow6eB4W8f0fgjKj2_k8eavCbxeajqtBL)에서 모든 프로젝트 영상을 확인할 수 있습니다. 아래에는 일부 영상을 게시했습니다. 
+
 ## 실행 영상 
 
-[이곳](https://www.youtube.com/playlist?list=PLow6eB4W8f0fgjKj2_k8eavCbxeajqtBL)에서 프로젝트 영상을 확인할 수 있습니다. 
+### 드래그로 재검색 
+https://github.com/ajou-swef/cookcode-iOS/assets/83946805/3c6d3fed-13e2-49fb-8c92-1972a6376d71
+
+### 무한스크롤 
+
+https://github.com/ajou-swef/cookcode-iOS/assets/83946805/8fa10af1-e62a-4e61-a7b0-68e5ce01366a
+
+### 레시피 보기 
+
+https://github.com/ajou-swef/cookcode-iOS/assets/83946805/d951301f-8b20-4184-8a71-cf7c2fb587b5
+
