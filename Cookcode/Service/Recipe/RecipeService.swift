@@ -11,7 +11,20 @@ import Foundation
 final class RecipeService: RecipeServiceProtocol {
     
     func deleteCommentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
-        .failure(.decodeError())
+        let url = "\(BASE_URL)/api/v1/recipe/comments/\(id)"
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let response = await AF.request(url, method: .delete, headers: headers)
+            .serializingDecodable(DefaultResponse.self).response
+        
+        print("\(response.debugDescription)")
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.decodeError()
+        }
     }
     
     func deleteRecipe(recipeId: Int) async -> Result<DefaultResponse, ServiceError> {
@@ -124,13 +137,13 @@ final class RecipeService: RecipeServiceProtocol {
 extension RecipeService: CommentServiceProtocol {
     func postCommentWithId(_ comments: String, id: Int) async -> Result<DefaultResponse, ServiceError> {
         
-        let url = "\(BASE_URL)/api/v1/recipe/comment/\(id)"
+        let url = "\(BASE_URL)/api/v1/recipe/\(id)/comments"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
         let parameter: [String: Any] = [
-            "" : comments
+            "comment" : comments
         ]
         
         let response = await AF.request(url, method: .post, parameters: parameter,
@@ -140,7 +153,6 @@ extension RecipeService: CommentServiceProtocol {
         if response.error != nil {
             print("\(response.debugDescription)")
         }
-        print("\(response.debugDescription)")
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
@@ -161,7 +173,6 @@ extension RecipeService: CommentServiceProtocol {
         if response.error != nil {
             print("\(response.debugDescription)")
         }
-        print("\(response.debugDescription)")
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

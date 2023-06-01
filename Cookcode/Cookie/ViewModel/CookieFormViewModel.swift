@@ -153,7 +153,7 @@ final class CookieFormViewModel: ObservableObject {
     }
     
     @MainActor
-    fileprivate func postCookie(_ url: URL) async {
+    fileprivate func postCookie(_ url: URL, dismiss: DismissAction) async {
         cookieForm.videoURL = url
         viewState = .cookieUploading
         let result = await cookieService.postCookie(cookie: cookieForm)
@@ -161,6 +161,7 @@ final class CookieFormViewModel: ObservableObject {
         switch result {
         case .success(let success):
             print("업로드 성공")
+            dismiss()
         case .failure(let failure):
             print("업로드 실패")
         }
@@ -169,7 +170,7 @@ final class CookieFormViewModel: ObservableObject {
     }
     
     func export(ithPreset preset: String = AVAssetExportPresetHighestQuality,
-                    toFileType outputFileType: AVFileType = .mov) async {
+                toFileType outputFileType: AVFileType = .mov, dismiss: DismissAction) async {
     
         guard let video = mergedAVPlayer?.currentItem?.asset else { return }
         guard let documentDirectory = FileManager.default
@@ -204,6 +205,6 @@ final class CookieFormViewModel: ObservableObject {
         print("Success to export sesion")
         print("movieURL: \(url)")
     
-        await postCookie(url)
+        await postCookie(url, dismiss: dismiss)
     }
 }

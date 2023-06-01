@@ -39,6 +39,10 @@ final class CookieService: CookieServiceProtocol {
         let response = await AF.request(url, method: .delete, headers: headers)
             .serializingDecodable(DefaultResponse.self).response
         
+        if response.error != nil {
+            print("\(response.debugDescription)")
+        }
+        
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
             return serviceErorr ?? ServiceError.decodeError()
@@ -52,9 +56,8 @@ final class CookieService: CookieServiceProtocol {
         ]
         
         let parameter: [String: Any] = [
-            "" : comments
+            "comment" : comments
         ]
-        
         let response = await AF.request(url, method: .post, parameters: parameter,
                                         encoding: JSONEncoding.default, headers: headers)
             .serializingDecodable(DefaultResponse.self).response
@@ -91,13 +94,21 @@ final class CookieService: CookieServiceProtocol {
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
+        let parameters: [String : Any] = [
+            "title": cookie.title,
+            "desc": cookie.description
+        ]
+        
         let response = await AF.upload(multipartFormData: { multipart in
             guard let videoURL = cookie.videoURL else { return }
+            
+            for (key, value) in parameters {
+                multipart.append("\(value)".data(using: .utf8)!, withName: key)
+            }
+            
             multipart.append(videoURL, withName: "multipartFile",
                              fileName: UUID().uuidString, mimeType: "video/mp4")
-            
-            multipart.append(cookie.title.data(using: .utf8)!, withName: "title")
-            multipart.append(cookie.description.data(using: .utf8)!, withName: "desc")
+ 
         }, to: url, method: .post, headers: headers)
             .serializingDecodable(DefaultResponse.self).response
         
