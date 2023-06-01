@@ -57,8 +57,11 @@ struct CommentList<ViewModel: Commentable>: View {
                 Button {
                     Task { await viewModel.commentUploadButtonTapped() }
                 } label: {
-                    Image(systemName: "arrowshape.turn.up.right.fill")
+                    Image(systemName: viewModel.uploadgButtonIamge)
                 }
+                .disabled(viewModel.commentDisable)
+                
+                
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 10)

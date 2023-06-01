@@ -18,6 +18,14 @@ protocol Commentable: ObservableObject, CommentCellInteractable {
 }
 
 extension Commentable {
+    
+    var commentDisable: Bool {
+        commentText.isEmpty
+    }
+    
+    var uploadgButtonIamge: String {
+        commentDisable ? "arrowshape.turn.up.right" : "arrowshape.turn.up.right.fill"
+    }
 
     @MainActor
     func onFetch() async {

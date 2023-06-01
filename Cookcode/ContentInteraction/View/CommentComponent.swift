@@ -22,7 +22,7 @@ struct CommentComponent<ViewModel: CommentCellInteractable>: View {
         HStack {
             userImage()
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(comment.user.userName)
                     .font(.custom(CustomFont.interRegular.rawValue, size: 11))
                     .foregroundColor(.gray808080)
@@ -38,8 +38,9 @@ struct CommentComponent<ViewModel: CommentCellInteractable>: View {
             } label: {
                 Image(systemName: "trash")
                     .resizable()
-                    .frame(width: 30, height: 20)
+                    .frame(width: 15, height: 15)
                     .presentIf(comment.isMyComment)
+                    .foregroundColor(.primary)
             }
         }
         .padding(.bottom, 15)
@@ -51,18 +52,18 @@ struct CommentComponent<ViewModel: CommentCellInteractable>: View {
             let url = URL(string: url)
             KFImage(url)
                 .resizable()
-                .frame(width: 40, height: 40)
+                .frame(width: 30, height: 30)
                 .clipShape(Circle())
         } else {
-            Image(systemName: "person.fill")
+            Image(systemName: "person.circle")
                 .resizable()
-                .frame(width: 40, height: 40)
+                .frame(width: 30, height: 30)
         }
     }
 }
 
 struct CommentCell_Previews: PreviewProvider {
     static var previews: some View {
-        CommentList(viewModel: CookieCommentViewModel(conentsId: 1, commentService: RecipeSuccessService()))
+        CommentComponent(comment: .mock(), viewModel: CookieCommentViewModel(conentsId: 1, commentService: RecipeSuccessService()))
     }
 }
