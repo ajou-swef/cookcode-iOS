@@ -9,7 +9,6 @@ import Foundation
 
 enum SearchType: String, CaseIterable {
     case recipe = "레시피"
-    case cookie = "쿠키"
-//    case user = "사용자"
+    case user = "사용자"
 }
 
