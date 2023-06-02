@@ -44,6 +44,7 @@ struct HomeView: View {
                 
             }
         }
+        .navigationTitle("")
         .disabled(viewModel.contentTypeButtonIsShowing)
         .overlay {
             Color.gray_bcbcbc.opacity(0.5)
@@ -217,7 +218,7 @@ struct HomeView: View {
             }
             
             Button {
-                navigateViewModel.navigateToOuter(OuterIdPath(path: .profile, id: nil))
+                navigateViewModel.navigateWithHome(HomePath.profile)
             } label: {
                 Image(systemName: "person.fill")
                     .resizable()

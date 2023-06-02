@@ -8,5 +8,6 @@
 import SwiftUI
 
 enum HomePath: String, Hashable {
-    case search 
+    case search
+    case profile
 }
