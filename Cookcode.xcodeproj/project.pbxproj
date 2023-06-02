@@ -145,7 +145,6 @@
 		15B04C5B2A1C77A400B988BF /* VideoLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C5A2A1C77A400B988BF /* VideoLoadView.swift */; };
 		15B04C5F2A1C7DEF00B988BF /* CookieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C5E2A1C7DEF00B988BF /* CookieListView.swift */; };
 		15B04C612A1C7E1800B988BF /* CookieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C602A1C7E1800B988BF /* CookieListViewModel.swift */; };
-		15B04C632A1C7F1300B988BF /* CookieCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C622A1C7F1300B988BF /* CookieCellView.swift */; };
 		15B04C652A1C7F6A00B988BF /* CookieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C642A1C7F6A00B988BF /* CookieCell.swift */; };
 		15B04C682A1C907100B988BF /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C672A1C907100B988BF /* PlayerView.swift */; };
 		15B04C6B2A1C94FD00B988BF /* VTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 15B04C6A2A1C94FD00B988BF /* VTabView */; };
@@ -381,7 +380,6 @@
 		15B04C5A2A1C77A400B988BF /* VideoLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLoadView.swift; sourceTree = "<group>"; };
 		15B04C5E2A1C7DEF00B988BF /* CookieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieListView.swift; sourceTree = "<group>"; };
 		15B04C602A1C7E1800B988BF /* CookieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieListViewModel.swift; sourceTree = "<group>"; };
-		15B04C622A1C7F1300B988BF /* CookieCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieCellView.swift; sourceTree = "<group>"; };
 		15B04C642A1C7F6A00B988BF /* CookieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieCell.swift; sourceTree = "<group>"; };
 		15B04C672A1C907100B988BF /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		15B1F9DF2A08D9B500B9CB24 /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
@@ -509,11 +507,11 @@
 				15508CB12A134DE600004A1C /* API.swift */,
 				15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */,
 				1594F4932A29BDA7004A68D6 /* Profile */,
-				15B4CC362A24D75500DC226E /* Pagenable */,
 				15B4CC172A24B1A400DC226E /* Cookie */,
 				15637AB32A28BD5E007BFF8E /* Recipe */,
 				15637AB02A28B821007BFF8E /* Search */,
 				15B4CC3B2A24D7FF00DC226E /* ContentInteraction */,
+				15B4CC362A24D75500DC226E /* Pagenable */,
 				15B4CC202A24B54600DC226E /* Components */,
 				153B4D8A29ED050A00543730 /* Helper */,
 				1503F95329B459CA002F3D26 /* Service */,
@@ -1051,7 +1049,6 @@
 				15193E412A0C9A3800615BE1 /* StepCellView.swift */,
 				1515FB2D2A123C0E00119519 /* RecipeFilterPicker.swift */,
 				15B04C5A2A1C77A400B988BF /* VideoLoadView.swift */,
-				15B04C622A1C7F1300B988BF /* CookieCellView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1565,7 +1562,6 @@
 				15B04C612A1C7E1800B988BF /* CookieListViewModel.swift in Sources */,
 				15581B5E2A2100DC002E0AFB /* UpdateRecipeViewModel .swift in Sources */,
 				15B4CC4A2A24E6C300DC226E /* CommentServiceProtocol.swift in Sources */,
-				15B04C632A1C7F1300B988BF /* CookieCellView.swift in Sources */,
 				15CFE6AC29FF7F9100C16FF6 /* CellTypePicker.swift in Sources */,
 				1515F3122A0C77AD0003A4BB /* StepDTO.swift in Sources */,
 				153F127E29FE23B3008BDB4E /* RecipeCellDto.swift in Sources */,
