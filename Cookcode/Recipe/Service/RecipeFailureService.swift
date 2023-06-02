@@ -1,5 +1,5 @@
 //
-//  RecipeSuccessService.swift
+//  RecipeFailureService.swift
 //  Cookcode
 //
 //  Created by 노우영 on 2023/04/30.
@@ -7,40 +7,44 @@
 
 import Foundation
 
-final class RecipeSuccessService: RecipeServiceProtocol {
+final class RecipeFailureService: RecipeServiceProtocol {
+    func fetchRecipeCells(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
+        .failure(.MOCK())
+    }
+    
+    func searchRecipeCells(query: String, coockable: Bool, page: Int, size: Int) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func fetchCommentsById(_ id: Int) async -> Result<ServiceResponse<PageResponse<CommentDTO>>, ServiceError> {
-        .success(.mock())
+        .failure(.decodeError())
     }
     
     func deleteCommentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
-        .success(.mock())
+        .failure(.decodeError())
     }
     
     func postCommentWithId(_ comments: String, id: Int) async -> Result<DefaultResponse, ServiceError> {
-        .success(.mock())
+        .failure(.decodeError())
     }
     
     func deleteRecipe(recipeId: Int) async -> Result<DefaultResponse, ServiceError> {
-        .success(.mock())
+        .failure(.MOCK())
     }
     
     func patchRecipe(formDTO: RecipeFormDTO, recipeId: Int) async -> Result<DefaultResponse, ServiceError> {
-        .success(.mock())
+        .failure(.MOCK())
     }
     
     func postRecipe(_ form: RecipeFormDTO) async -> Result<ServiceResponse<PostRecipeResonse>, ServiceError> {
-        .success(.mock())
+        .failure(.MOCK())
     }
     
     func searchCell(page: Int, size: Int, sort: String?, month: Int?) async -> Result<[any SearchedCell], ServiceError> {
-        .success(RecipeCell.mocks(10))
+        return .failure(ServiceError.MOCK())
     }
     
     func searchRecipe(_ recipeID: Int) async -> Result<ServiceResponse<RecipeDetailDTO>, ServiceError> {
-        .success(.mock())
-    }
-    
-    func searchRecipeHomeCell(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<RecipeCellSeachResponse, ServiceError> {
-        return .success(RecipeCellSeachResponse.MOCK_DATA)
+        return .failure(ServiceError(message: "조회 실패", status: 400))
     }
 }

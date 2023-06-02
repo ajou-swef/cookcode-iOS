@@ -22,7 +22,7 @@ extension RecipePagenable {
         pageState = .loading(curPage)
         print("page(\(curPage)) loading start")
         
-        let result = await recipeService.searchRecipeHomeCell(page: curPage, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
+        let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
         
         switch result {
         case .success(let success):
@@ -34,8 +34,8 @@ extension RecipePagenable {
         }
     }
     
-    func controllPageState(_ response: RecipeCellSeachResponse, _ curPage: Int) {
-        if response.data.recipeCells.isEmpty {
+    func controllPageState(_ response: ServiceResponse<PageResponse<RecipeCellDto>>, _ curPage: Int) {
+        if response.data.content.isEmpty {
             pageState = .noRemain
         } else {
             waitInPage(curPage + 1)
@@ -48,8 +48,8 @@ extension RecipePagenable {
         }
     }
     
-    func appendRecipeCell(_ success: (RecipeCellSeachResponse)) {
-        let newCells = success.data.recipeCells.map {  RecipeCell(dto: $0) }
+    func appendRecipeCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
+        let newCells = success.data.content.map {  RecipeCell(dto: $0) }
         recipeCells.append(contentsOf: newCells)
     }
     

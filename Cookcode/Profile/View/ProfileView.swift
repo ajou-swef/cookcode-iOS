@@ -22,7 +22,7 @@ struct ProfileView: View {
             VStack(alignment: .center, spacing: 10) {
                 userProfile()
                 subscribeButton()
-//                logoutButton()
+                logoutButton()
                 contentSelectButton()
                 contentView()
             }
@@ -117,7 +117,7 @@ struct ProfileView: View {
         } label: {
             Text("로그아웃")
         }
-        .presentIf(viewModel.userDetail.isMyProfile)
+//        .presentIf(viewModel.userDetail.isMyProfile)
 
     }
 }

@@ -9,6 +9,29 @@ import Alamofire
 import Foundation
 
 final class RecipeService: RecipeServiceProtocol {
+    func searchRecipeCells(query: String, coockable: Bool, page: Int, size: Int) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
+        let cookableValue = coockable ? 1 : 0
+        let url = "\(BASE_URL)/api/v1/recipe/search?query=\(query)&cookable=\(cookableValue)&page=\(page)&size=\(size)"
+        let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+        let encodedURL = URL(string: encoded)!
+        
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let response = await AF.request(encodedURL, method: .get, headers: headers)
+            .serializingDecodable(ServiceResponse<PageResponse<RecipeCellDto>>.self).response
+        
+        if response.error != nil {
+            print("\(response.debugDescription)")
+        }
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.MOCK()
+        }
+    }
+    
     
     func deleteCommentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
         let url = "\(BASE_URL)/api/v1/recipe/comments/\(id)"
@@ -64,7 +87,7 @@ final class RecipeService: RecipeServiceProtocol {
         }
     }
     
-    func searchRecipeHomeCell(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<RecipeCellSeachResponse, ServiceError> {
+    func fetchRecipeCells(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
         
         
         var url = "\(BASE_URL)/api/v1/recipe?page=\(page)&size=\(size)"
@@ -83,7 +106,7 @@ final class RecipeService: RecipeServiceProtocol {
         ]
         
         let response = await AF.request(encodedURL, method: .get, headers: headers)
-            .serializingDecodable(RecipeCellSeachResponse.self).response
+            .serializingDecodable(ServiceResponse<PageResponse<RecipeCellDto>>.self).response
         
         if response.error != nil {
             print("\(response.debugDescription)")

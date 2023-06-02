@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol SearchCellServiceProtocol {
+protocol FecthCellServiceProtocol {
     func searchCell(page: Int, size: Int, sort: String?, month: Int?) async -> Result<[any SearchedCell], ServiceError>
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SearchTypeSelectable {
+protocol SearchTypeSelectable: ObservableObject {
     var seachType: SearchType { get set }
     func searchTypeTapped(_ searchType: SearchType) 
 }
