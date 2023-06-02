@@ -496,6 +496,7 @@
 				153B4DA429ED085E00543730 /* Info.plist */,
 				15508CB12A134DE600004A1C /* API.swift */,
 				15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */,
+				1594F4932A29BDA7004A68D6 /* Profile */,
 				15B4CC362A24D75500DC226E /* Pagenable */,
 				15637AB32A28BD5E007BFF8E /* Recipe */,
 				15637AB02A28B821007BFF8E /* Search */,
@@ -665,7 +666,6 @@
 			children = (
 				1515F31C2A0C7BE90003A4BB /* RecipeDetail.swift */,
 				15B1F9E12A08FC8100B9CB24 /* IngredientDetail.swift */,
-				15921B832A1A152500BA636D /* UserDetail.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -791,7 +791,6 @@
 				15F82A7229FA92D500DA9381 /* SignInDto.swift */,
 				153F127729FE2274008BDB4E /* ImageContent.swift */,
 				153F127929FE22EB008BDB4E /* VideoContent .swift */,
-				153F127F29FE2415008BDB4E /* UserDTO.swift */,
 				15B1F9E82A0918ED00B9CB24 /* IngredientFormDTO.swift */,
 				15A19D822A0B8D43008C71EA /* StepFormDTO.swift */,
 				1515F3112A0C77AD0003A4BB /* StepDTO.swift */,
@@ -973,10 +972,46 @@
 			children = (
 				1538157929FF8EB100C3BD11 /* IngredientDetailDTO.swift */,
 				1515F30F2A0C77220003A4BB /* RecipeDetailDTO.swift */,
-				15921B802A1A135100BA636D /* UserDetailDTO.swift */,
 				158AF5E62A1F71AD00FF815A /* CookieDetailDTO.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		1594F4932A29BDA7004A68D6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1594F4962A29BE3F004A68D6 /* ViewModel */,
+				1594F4952A29BE3E004A68D6 /* View */,
+				1594F4942A29BE3B004A68D6 /* Model */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		1594F4942A29BE3B004A68D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				15921B832A1A152500BA636D /* UserDetail.swift */,
+				15B4CC452A24DFA400DC226E /* UserCell.swift */,
+				153F127F29FE2415008BDB4E /* UserDTO.swift */,
+				15921B802A1A135100BA636D /* UserDetailDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1594F4952A29BE3E004A68D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15CFE6A729FF7B8500C16FF6 /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1594F4962A29BE3F004A68D6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15F2CC112A0260D30019FAB6 /* AccountViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		159BE2AD29FB875300DE7448 /* Cell */ = {
@@ -1181,7 +1216,6 @@
 				15F2CC1B2A026E5E0019FAB6 /* IngredientCell.swift */,
 				15B6263D2A009CE6002E1F5F /* SearchedCell.swift */,
 				15B04C642A1C7F6A00B988BF /* CookieCell.swift */,
-				15B4CC452A24DFA400DC226E /* UserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1232,7 +1266,6 @@
 		15CFE6A629FF7B7000C16FF6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				15CFE6A729FF7B8500C16FF6 /* ProfileView.swift */,
 				15B626462A00B516002E1F5F /* MyRecipeView.swift */,
 			);
 			path = Profile;
@@ -1262,7 +1295,6 @@
 			isa = PBXGroup;
 			children = (
 				1503F95429B459DD002F3D26 /* LoginViewModel.swift */,
-				15F2CC112A0260D30019FAB6 /* AccountViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
