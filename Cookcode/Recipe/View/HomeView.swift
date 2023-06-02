@@ -44,6 +44,7 @@ struct HomeView: View {
                 
             }
         }
+        .navigationTitle("")
         .disabled(viewModel.contentTypeButtonIsShowing)
         .overlay {
             Color.gray_bcbcbc.opacity(0.5)

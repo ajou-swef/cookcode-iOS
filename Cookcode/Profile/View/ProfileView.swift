@@ -22,7 +22,7 @@ struct ProfileView: View {
             VStack(alignment: .center, spacing: 10) {
                 userProfile()
                 subscribeButton()
-                logoutButton()
+//                logoutButton()
                 contentSelectButton()
                 contentView()
             }
@@ -35,9 +35,12 @@ struct ProfileView: View {
         switch viewModel.seachType {
         case .recipe:
             RecipePagenableView()
+                .padding(.horizontal)
         case .user:
             EmptyView()
         case .cookie:
+            EmptyView()
+        case .follower:
             EmptyView()
         }
     }
