@@ -7,10 +7,20 @@
 
 import Foundation
 
-struct UserDetail {
+struct UserDetail: Mock {
+    static func mock() -> UserDetail {
+        UserDetail(userId: -1, thumbnail: "", nickname: "", email: "", isMyProfile: false)
+    }
+    
+    let userId: Int
     let thumbnail: String?
     let nickname: String
     let email: String
+    let isMyProfile: Bool
+    
+    var isNotMyProfile: Bool {
+        !isMyProfile
+    }
 }
 
 extension UserDetail {
@@ -18,5 +28,8 @@ extension UserDetail {
         thumbnail = dto.profileImage
         nickname = dto.nickname
         email = dto.email
+        let myId = UserDefaults.standard.integer(forKey: USER_ID)
+        userId = dto.userID
+        isMyProfile = (myId == dto.userID)
     }
 }

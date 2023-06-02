@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-protocol Pagenable: Refreshable {
+protocol Pagenable: ObservableObject {
     var pageState: PageState { get set }
     var fetchTriggerOffset: CGFloat { get set }
+    var pageSize: Int { get } 
     func onFetch() async
 }
 

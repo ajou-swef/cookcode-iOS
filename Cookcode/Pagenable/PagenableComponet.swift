@@ -13,23 +13,21 @@ struct PagenableComponent<ViewModel: Pagenable, Content: View>: View {
     @ViewBuilder let view: Content
     
     var body: some View {
-        RefreshComponent(viewModel: viewModel) {
-            Group {
-                view
-                
-                ProgressView()
-                    .presentIf(viewModel.isLoadingState)
-                
-                
-                Color.clear
-                    .frame(height: 1)
-                    .offsetY {
-                        viewModel.fetchTriggerOffset = $0
-                    }
-                    .onChange(of: viewModel.fetchTriggerOffset) { newValue in
-                        Task { await viewModel.fetchNextPage() }
-                    }
-            }
+        Group {
+            view
+            
+            ProgressView()
+                .presentIf(viewModel.isLoadingState)
+            
+            
+            Color.clear
+                .frame(height: 1)
+                .offsetY {
+                    viewModel.fetchTriggerOffset = $0
+                }
+                .onChange(of: viewModel.fetchTriggerOffset) { newValue in
+                    Task { await viewModel.fetchNextPage() }
+                }
         }
     }
 }

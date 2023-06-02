@@ -8,6 +8,10 @@
 import Foundation
 
 final class AccountSuccessService: AccountServiceProtocol {
+    func subscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
+        .success(.mock())
+    }
+    
     func getUserDetailById(_ userId: Int) async -> Result<ServiceResponse<UserDetailDTO>, ServiceError> {
         .success(.mock())
     }

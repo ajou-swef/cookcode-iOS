@@ -217,7 +217,7 @@ struct HomeView: View {
             }
             
             Button {
-                navigateViewModel.navigateToOuter(OuterIdPath(path: .profile, id: nil))
+                navigateViewModel.navigateWithHome(HomePath.profile)
             } label: {
                 Image(systemName: "person.fill")
                     .resizable()

@@ -6,94 +6,121 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProfileView: View {
     
-    @EnvironmentObject var accountViewModel: AccountViewModel
-    @EnvironmentObject var navigateViewModel: NavigateViewModel
+    @StateObject private var viewModel: ProfileViewModel
+    @EnvironmentObject var accountVM: AccountViewModel
+    
+    init(accountService: AccountServiceProtocol = AccountService()) {
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(accoutnService: accountService))
+    }
     
     var body: some View {
-        NavigationStack(path: $navigateViewModel.profilePath) {
-            List {
-                HStack {
-                    Image(systemName: "person.fill")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .padding(.all, 6)
-                        .background(Circle().stroke(lineWidth: 2))
-                    
-                    VStack(alignment: .leading) {
-                        Text(accountViewModel.user?.nickname ?? "")
-                            .font(CustomFontFactory.INTER_SEMIBOLD_20)
-                        
-                        Text(accountViewModel.user?.email ?? "")
-                            .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                    }
-                }
-                
-                Button {
-                    navigateViewModel.navigateWithProfile(ProfilePath.myRecipe)
-                } label: {
-                    Text("내 레시피")
-                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                        .foregroundColor(.primary)
-                }
-                
-                Button {
-                    accountViewModel.logout()
-                    navigateViewModel.clear()
-                } label: {
-                    Text("로그아웃")
-                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                        .foregroundColor(.primary)
-                }
-                
-                Button {
-                    accountViewModel.deleteAccountAlertIsPresented = true
-                } label: {
-                    Text("계정 삭제")
-                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                        .foregroundColor(.red)
-                }
-                .alert("계정을 삭제하시겠습니까?", isPresented: $accountViewModel.deleteAccountAlertIsPresented) {
-                    Button("취소", role: .cancel) { }
-                    Button("확인") {
-                        Task {
-                            await accountViewModel.alertOkBottonTapped() 
-                            accountViewModel.logout()
-                            navigateViewModel.clear()
-                        }
-                    }
-                }
-            }
-            .alert(accountViewModel.serviceAlert.title, isPresented: $accountViewModel.serviceAlert.isPresented) {
-                ServiceAlert.CANCEL_BUTTON
-            }
-            .tint(.mainColor)
-            .navigationDestination(for: ProfilePath.self) { path in
-                switch path {
-                case .myRecipe:
-                    MyRecipeView()
-                }
-            }
-            .navigationTitle("프로필")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        navigateViewModel.dismissOuter()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.black)
-                    }
-
-                }
+        ScrollView {
+            VStack(alignment: .center, spacing: 10) {
+                userProfile()
+                subscribeButton()
+                logoutButton()
+                contentSelectButton()
+                contentView()
             }
         }
+        .navigationTitle(viewModel.userDetail.nickname)
+    }
+    
+    @ViewBuilder
+    private func contentView() -> some View {
+        switch viewModel.seachType {
+        case .recipe:
+            RecipePagenableView()
+        case .user:
+            EmptyView()
+        case .cookie:
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    private func contentSelectButton() -> some View {
+        HStack {
+            ForEach(SearchType.profileSearchType(), id: \.rawValue) { type in
+                SearchTypeComponent(searchType: type, viewModel: viewModel)
+                    .font(.custom(CustomFont.interSemiBold.rawValue, size: 16))
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(viewModel.seachType == type ? .mainColor : .primary)
+                    .padding(.bottom, 5)
+                    .overlay(alignment: .bottom) {
+                        Rectangle()
+                            .frame(height: 2)
+                            .foregroundColor(.mainColor)
+                            .presentIf(viewModel.seachType == type)
+                    }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func userProfile() -> some View {
+        if let imageURL = viewModel.userDetail.thumbnail {
+            if let url = URL(string: imageURL) {
+                KFImage(url)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .clipShape(Circle())
+            }
+        } else {
+            Image(systemName: "person.fill")
+        }
+        
+        Text(viewModel.userDetail.nickname)
+            .font(.custom(CustomFont.interBold.rawValue, size: 20))
+            .padding(.bottom, -5)
+            .offset(y: -10)
+    }
+    
+    @ViewBuilder
+    private func subscribeButton() -> some View {
+        Button {
+            Task { await viewModel.subscribeButtonTapped() }
+        } label: {
+            HStack {
+                Image(systemName: "bell")
+                    .resizable()
+                    .fontWeight(.bold)
+                    .frame(width: 20, height: 20)
+                
+                Text("구독하기")
+                    .font(.custom(CustomFont.interBold.rawValue, size: 15))
+            }
+            .foregroundColor(.primary)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                    .padding(.horizontal, 20)
+                    .foregroundColor(.gray_bcbcbc)
+            )
+        }
+        .presentIf(viewModel.userDetail.isNotMyProfile)
+        .padding(.bottom, 5)
+    }
+    
+    @ViewBuilder
+    private func logoutButton() -> some View {
+        Button {
+            accountVM.logout()
+        } label: {
+            Text("로그아웃")
+        }
+        .presentIf(viewModel.userDetail.isMyProfile)
+
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(accountService: AccountSuccessService())
     }
 }

@@ -9,6 +9,8 @@ import Alamofire
 import Foundation
 
 protocol AccountServiceProtocol {
+    func subscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> 
+    
     func check(_ nickname: String) async -> Result<ServiceResponse<AccountCheckDto>, ServiceError>
     
     func deleteAccount() async -> Result<DefaultResponse, ServiceError> 

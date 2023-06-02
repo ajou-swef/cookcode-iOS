@@ -9,6 +9,10 @@ import Alamofire
 import Foundation
 
 final class AccountFailureService: AccountServiceProtocol {
+    func subscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func getUserDetailById(_ userId: Int) async -> Result<ServiceResponse<UserDetailDTO>, ServiceError> {
         .failure(.MOCK())
     }

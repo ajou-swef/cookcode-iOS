@@ -73,6 +73,8 @@ struct MainTabView: View {
                     switch path {
                     case .search:
                         SearchCellView()
+                    case .profile:
+                        ProfileView()
                     }
                 }
         }
