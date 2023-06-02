@@ -510,13 +510,13 @@
 				15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */,
 				1594F4932A29BDA7004A68D6 /* Profile */,
 				15B4CC362A24D75500DC226E /* Pagenable */,
+				15B4CC172A24B1A400DC226E /* Cookie */,
 				15637AB32A28BD5E007BFF8E /* Recipe */,
 				15637AB02A28B821007BFF8E /* Search */,
 				15B4CC3B2A24D7FF00DC226E /* ContentInteraction */,
 				15B4CC202A24B54600DC226E /* Components */,
 				153B4D8A29ED050A00543730 /* Helper */,
 				1503F95329B459CA002F3D26 /* Service */,
-				15B4CC172A24B1A400DC226E /* Cookie */,
 				1503F95229B459C7002F3D26 /* Model */,
 				1503F95029B459BD002F3D26 /* ViewModel */,
 				1503F95129B459C4002F3D26 /* View */,
@@ -1135,8 +1135,8 @@
 		15B4CC172A24B1A400DC226E /* Cookie */ = {
 			isa = PBXGroup;
 			children = (
-				15B04C502A1C6B0300B988BF /* ViewModel */,
 				15B4CC182A24B1AA00DC226E /* Model */,
+				15B04C502A1C6B0300B988BF /* ViewModel */,
 				15B4CC1C2A24B2CF00DC226E /* View */,
 			);
 			path = Cookie;
@@ -1146,6 +1146,7 @@
 			isa = PBXGroup;
 			children = (
 				15B4CC1A2A24B23300DC226E /* CookieDetail.swift */,
+				15B04C642A1C7F6A00B988BF /* CookieCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1241,7 +1242,6 @@
 				15F2CC172A026DDC0019FAB6 /* Cell.swift */,
 				15F2CC1B2A026E5E0019FAB6 /* IngredientCell.swift */,
 				15B6263D2A009CE6002E1F5F /* SearchedCell.swift */,
-				15B04C642A1C7F6A00B988BF /* CookieCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
