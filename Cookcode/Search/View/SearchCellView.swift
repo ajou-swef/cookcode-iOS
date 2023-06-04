@@ -20,7 +20,6 @@ struct SearchCellView: View {
     
     var body: some View {
         VStack {
-            
             TextField("검색해 주세요.", text: $viewModel.text)
                 .frame(maxWidth: .infinity)
                 .focused($field, equals: .search)
@@ -31,7 +30,9 @@ struct SearchCellView: View {
                 .padding(.bottom, -33)
                 .padding(.leading, 50)
                 .onAppear {
-                    field = .search
+                    if viewModel.text.isEmpty {
+                        field = .search
+                    }
                 }
             
             Group {
@@ -52,9 +53,8 @@ struct SearchCellView: View {
 
             
             Spacer()
-            
-            
         }
+        .navigationTitle("")
     }
 }
 

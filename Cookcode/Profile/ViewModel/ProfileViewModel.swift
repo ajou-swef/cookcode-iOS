@@ -14,8 +14,10 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
     @Published var seachType: SearchType = .recipe
     
     private let accountService: AccountServiceProtocol
+    private let userId: Int
     
-    init(accoutnService: AccountServiceProtocol) {
+    init(accoutnService: AccountServiceProtocol, userId: Int) {
+        self.userId = userId
         self.accountService = accoutnService
         
         Task {
@@ -43,9 +45,7 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
     
     @MainActor
     private func fetchUserDetail() async {
-        let myId = UserDefaults.standard.integer(forKey: USER_ID)
-        
-        let result = await accountService.getUserDetailById(myId)
+        let result = await accountService.getUserDetailById(userId)
         
         switch result {
         case .success(let success):

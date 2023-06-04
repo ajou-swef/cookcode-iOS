@@ -10,6 +10,7 @@ import SwiftUI
 struct UserSearchView: View {
     
     @StateObject private var viewModel: UserSearchViewModel
+    @EnvironmentObject var navigateViewModel: NavigateViewModel
     
     init(accountService: AccountServiceProtocol = AccountService(),
          query: String) {
@@ -20,7 +21,12 @@ struct UserSearchView: View {
         RefreshComponent(viewModel: viewModel, spacing: 0) {
             PagenableComponent(viewModel: viewModel) {
                 ForEach(viewModel.contents) { userCell in
-                    UserCellView(userCell: userCell)
+                    Button {
+                        let homeIdPath = HomeIdPath(path: .profile, id: userCell.userId)
+                        navigateViewModel.navigateWithHome(homeIdPath)
+                    } label: {
+                        UserCellView(userCell: userCell)
+                    }
                 }
             }
         }

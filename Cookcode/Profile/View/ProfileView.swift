@@ -13,8 +13,9 @@ struct ProfileView: View {
     @StateObject private var viewModel: ProfileViewModel
     @EnvironmentObject var accountVM: AccountViewModel
     
-    init(accountService: AccountServiceProtocol = AccountService()) {
-        self._viewModel = StateObject(wrappedValue: ProfileViewModel(accoutnService: accountService))
+    init(accountService: AccountServiceProtocol = AccountService(), userId: Int) {
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(accoutnService: accountService,
+                                                                     userId: userId))
     }
     
     var body: some View {
@@ -117,13 +118,13 @@ struct ProfileView: View {
         } label: {
             Text("로그아웃")
         }
-//        .presentIf(viewModel.userDetail.isMyProfile)
+        .presentIf(viewModel.userDetail.isMyProfile)
 
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(accountService: AccountSuccessService())
+        ProfileView(accountService: AccountSuccessService(), userId: 1)
     }
 }

@@ -22,9 +22,6 @@ struct MainTabView: View {
                 case .recipe:
                     RecipeFormView(recipeId: path.id)
                         .transition(.move(edge: .trailing))
-                case .profile:
-                    ProfileView()
-                        .transition(.move(edge: .trailing))
                 case .cookie:
                     CookieFormView()
                         .transition(.move(edge: .trailing))
@@ -69,7 +66,7 @@ struct MainTabView: View {
                 .navigationDestination(for: HomeIdPath.self) { path in
                     switch path.path {
                     case .profile:
-                        ProfileView()
+                        ProfileView(userId: path.id ?? -1)
                     case .search:
                         SearchCellView()
                     case .recipe:
