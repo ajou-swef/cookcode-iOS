@@ -55,6 +55,16 @@ struct SearchCellView: View {
             Spacer()
         }
         .navigationTitle("")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Button {
+                    field = .search
+                } label: {
+                    Color.clear
+                        .frame(width: 500)
+                }
+            }
+        }
     }
 }
 
