@@ -45,6 +45,7 @@ struct SearchCellView: View {
                     EmptyView()
                 }
             }
+            .padding(.horizontal)
             .presentIf(field == nil && !viewModel.text.isEmpty)
 
             
