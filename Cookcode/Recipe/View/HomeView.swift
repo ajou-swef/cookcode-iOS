@@ -162,7 +162,8 @@ struct HomeView: View {
                 
                 ForEach(viewModel.recipeCells) {  cell in
                    Button {
-                       navigateViewModel.navigateWithHome(cell)
+                       let homeIdPath = HomeIdPath(path: .recipe, id: cell.recipeId)
+                       navigateViewModel.navigateWithHome(homeIdPath)
                    } label: {
                        CellView(cell: cell)
                            .foregroundColor(.black)
@@ -209,7 +210,8 @@ struct HomeView: View {
             Spacer()
             
             Button {
-                navigateViewModel.navigateWithHome(HomePath.search)
+                let homeIdPath = HomeIdPath(path: .search, id: nil)
+                navigateViewModel.navigateWithHome(homeIdPath)
             } label: {
                 Image(systemName: "magnifyingglass")
                     .resizable()
@@ -218,7 +220,8 @@ struct HomeView: View {
             }
             
             Button {
-                navigateViewModel.navigateWithHome(HomePath.profile)
+                let homeIdPath = HomeIdPath(path: .profile, id: UserDefaults.standard.integer(forKey: USER_ID))
+                navigateViewModel.navigateWithHome(homeIdPath)
             } label: {
                 Image(systemName: "person.fill")
                     .resizable()

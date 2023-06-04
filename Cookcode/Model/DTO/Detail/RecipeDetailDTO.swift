@@ -9,11 +9,11 @@ import Foundation
 
 struct RecipeDetailDTO: Codable, Mock {
     static func mock() -> RecipeDetailDTO {
-        RecipeDetailDTO(recipeID: 1, user: UserDTO.MOCK_DATA, title: "title", description: "description", ingredients: IngredientDTO.mocks(5), optionalIngredients: IngredientDTO.mocks(2), steps: StepDTO.mocks(1), createdAt: "2023-03-03", updatedAt: "2023-03-03", thumbnail: "")
+        RecipeDetailDTO(recipeID: 1, user: UserCellDto.MOCK_DATA, title: "title", description: "description", ingredients: IngredientDTO.mocks(5), optionalIngredients: IngredientDTO.mocks(2), steps: StepDTO.mocks(1), createdAt: "2023-03-03", updatedAt: "2023-03-03", thumbnail: "")
     }
     
     let recipeID: Int
-    let user: UserDTO
+    let user: UserCellDto
     let title, description: String
     let ingredients: [IngredientDTO]
     let optionalIngredients: [IngredientDTO]

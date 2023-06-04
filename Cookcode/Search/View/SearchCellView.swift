@@ -11,58 +11,56 @@ import Kingfisher
 struct SearchCellView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
-    @StateObject private var viewModel: SearchCellViewModel = SearchCellViewModel(fetchCellService: RecipeSuccessService())
+    @StateObject private var viewModel: SearchCellViewModel = SearchCellViewModel()
+    @FocusState private var field: Field?
     
-    var body: some View {
-        ScrollView {
-            VStack {
-                cellTypePicker()
-                recipeCellGrid()
-            }
-            .padding(.horizontal, 10)
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                TextField("레시피 검색", text: $viewModel.text)
-                    .frame(maxWidth: .infinity)
-                    .onSubmit {
-                        Task { await viewModel.searchCell() }
-                    }
-            }
-        }
+    enum Field: Hashable {
+        case search
     }
     
-    @ViewBuilder
-    private func cellTypePicker() -> some View {
-        HStack {
-            CellTypePicker(selection: $viewModel.searchType, activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
-                .frame(width: 100)
+    var body: some View {
+        VStack {
+            TextField("검색해 주세요.", text: $viewModel.text)
+                .frame(maxWidth: .infinity)
+                .focused($field, equals: .search)
+                .onTapGesture {
+                    field = .search
+                }
+                .offset(y: -33)
+                .padding(.bottom, -33)
+                .padding(.leading, 50)
+                .onAppear {
+                    if viewModel.text.isEmpty {
+                        field = .search
+                    }
+                }
+            
+            Group {
+                
+                SearchTypeList(searchTypes: SearchType.searchType(), viewModel: viewModel)
+                    .padding(.horizontal)
+                
+                switch viewModel.seachType {
+                case .recipe:
+                    TempRecipeView(query: viewModel.text)
+                case .user:
+                    UserSearchView(query: viewModel.text)
+                default:
+                    EmptyView()
+                }
+            }
+            .presentIf(field == nil && !viewModel.text.isEmpty)
+
             
             Spacer()
         }
-        .zIndex(1)
-    }
-    
-    @ViewBuilder
-    private func recipeCellGrid() -> some View {
-        LazyVGrid(columns: viewModel.columns, spacing: 15) {
-            ForEach(viewModel.cells.indices, id: \.self) { i in
-                let cell = viewModel.cells[i]
-                let recipeCell = cell as! RecipeCell
-                Button {
-                    navigateViewModel.navigateWithHome(recipeCell)
-                } label: {
-                    CellView(cell: cell)
-                        .frame(height: viewModel.recipeCellHeight)
-                }
-            }
-        }
-        .zIndex(0)
+        .navigationTitle("")
     }
 }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchCellView()
+            .environmentObject(NavigateViewModel())
     }
 }

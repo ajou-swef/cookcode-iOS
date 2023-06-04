@@ -13,8 +13,9 @@ struct ProfileView: View {
     @StateObject private var viewModel: ProfileViewModel
     @EnvironmentObject var accountVM: AccountViewModel
     
-    init(accountService: AccountServiceProtocol = AccountService()) {
-        self._viewModel = StateObject(wrappedValue: ProfileViewModel(accoutnService: accountService))
+    init(accountService: AccountServiceProtocol = AccountService(), userId: Int) {
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(accoutnService: accountService,
+                                                                     userId: userId))
     }
     
     var body: some View {
@@ -22,7 +23,7 @@ struct ProfileView: View {
             VStack(alignment: .center, spacing: 10) {
                 userProfile()
                 subscribeButton()
-//                logoutButton()
+                logoutButton()
                 contentSelectButton()
                 contentView()
             }
@@ -124,6 +125,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(accountService: AccountSuccessService())
+        ProfileView(accountService: AccountSuccessService(), userId: 1)
     }
 }

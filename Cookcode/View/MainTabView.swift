@@ -22,9 +22,6 @@ struct MainTabView: View {
                 case .recipe:
                     RecipeFormView(recipeId: path.id)
                         .transition(.move(edge: .trailing))
-                case .profile:
-                    ProfileView()
-                        .transition(.move(edge: .trailing))
                 case .cookie:
                     CookieFormView()
                         .transition(.move(edge: .trailing))
@@ -66,15 +63,14 @@ struct MainTabView: View {
     func homeView() -> some View {
         NavigationStack(path: $navigateViewModel.homePath) {
             HomeView()
-                .navigationDestination(for: RecipeCell.self) { cell in
-                    RecipeDetailView(recipeCell: cell)
-                }
-                .navigationDestination(for: HomePath.self) { path in
-                    switch path {
+                .navigationDestination(for: HomeIdPath.self) { path in
+                    switch path.path {
+                    case .profile:
+                        ProfileView(userId: path.id ?? -1)
                     case .search:
                         SearchCellView()
-                    case .profile:
-                        ProfileView()
+                    case .recipe:
+                        RecipeDetailView(recipeId: path.id ?? -1)
                     }
                 }
         }

@@ -10,4 +10,5 @@ import SwiftUI
 enum HomePath: String, Hashable {
     case search
     case profile
+    case recipe
 }

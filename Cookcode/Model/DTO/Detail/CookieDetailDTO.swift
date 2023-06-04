@@ -17,7 +17,7 @@ struct CookieDetailDTO: Codable, Mock {
     let videoURL: String
     let recipeID: Int?
     let createdAt: String
-    let user: UserDTO
+    let user: UserCellDto
     let isLiked, likeCount, commentCount: Int
 
     enum CodingKeys: String, CodingKey {

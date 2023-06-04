@@ -11,12 +11,23 @@ struct RefreshComponent<ViewModel: Refreshable, Content: View>: View {
     
     @ObservedObject var viewModel: ViewModel
     @ViewBuilder let view: Content
+    let spacing: CGFloat 
     
-    
+    init(viewModel: ViewModel, spacing: CGFloat = 10, view: () -> Content) {
+        self.viewModel = viewModel
+        self.spacing = spacing
+        self.view = view()
+    }
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: spacing) {
+                Color.clear
+                    .frame(height: 1)
+                    .offsetY(coordinateSpace: .named(viewModel.spaceName)) {
+                        viewModel.scrollOffset = $0
+                    }
+                
                 view
             }
             .frame(maxWidth: .infinity)
@@ -25,13 +36,7 @@ struct RefreshComponent<ViewModel: Refreshable, Content: View>: View {
                     viewModel.dragVelocity = velocity
                 }
             }
-            .overlay {
-                Color.clear.offsetY(coordinateSpace: .named(viewModel.spaceName)) {
-                    viewModel.scrollOffset = $0
-                }
-            }
         }
-        .coordinateSpace(name: viewModel.spaceName)
         .overlay(alignment: .top) {
             Image(systemName: "arrow.clockwise")
                 .rotationEffect(.degrees(viewModel.rotatingDegree))
@@ -40,6 +45,7 @@ struct RefreshComponent<ViewModel: Refreshable, Content: View>: View {
                     Task { await viewModel.refreshIfPossible() }
                 }
         }
+        .coordinateSpace(name: viewModel.spaceName)
     }
 }
 

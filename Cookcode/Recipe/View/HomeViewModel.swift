@@ -103,7 +103,7 @@ class HomeViewModel: ObservableObject {
         pageState = .loading(curPage)
         print("page(\(curPage)) loading start")
         
-        let result = await recipeService.searchRecipeHomeCell(page: curPage, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
+        let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
         
         switch result {
         case .success(let success):
@@ -115,8 +115,8 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    private func controllPageState(_ response: RecipeCellSeachResponse, _ curPage: Int) {
-        if response.data.recipeCells.isEmpty {
+    private func controllPageState(_ response: ServiceResponse<PageResponse<RecipeCellDto>>, _ curPage: Int) {
+        if response.data.content.isEmpty {
             pageState = .noRemain
         } else {
             waitInPage(curPage + 1)
@@ -129,8 +129,8 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    private func appendRecipeCell(_ success: (RecipeCellSeachResponse)) {
-        let newCells = success.data.recipeCells.map {  RecipeCell(dto: $0) }
+    private func appendRecipeCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
+        let newCells = success.data.content.map {  RecipeCell(dto: $0) }
         recipeCells.append(contentsOf: newCells)
     }
     
@@ -160,13 +160,13 @@ class HomeViewModel: ObservableObject {
         guard let index = recipeCells.firstIndex(where: { $0.recipeId == cellId }) else { return }
         print("\(index+1)번째 레시피 업데이트")
         let page = index / 10
-        let result = await recipeService.searchRecipeHomeCell(page: page, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
+        let result = await recipeService.fetchRecipeCells(page: page, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
         
         switch result {
         case .success(let success):
-            let firstIndex = success.data.recipeCells.firstIndex { $0.recipeID == cellId }
+            let firstIndex = success.data.content.firstIndex { $0.recipeID == cellId }
             guard let matchIndex = firstIndex else { return }
-            recipeCells[index] = RecipeCell(dto: success.data.recipeCells[matchIndex])
+            recipeCells[index] = RecipeCell(dto: success.data.content[matchIndex])
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }

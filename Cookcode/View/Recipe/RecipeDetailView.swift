@@ -13,8 +13,8 @@ struct RecipeDetailView: View {
     @EnvironmentObject var navigateVM: NavigateViewModel
     @EnvironmentObject var updateCellVM: UpdateCellViewModel
     
-    init(recipeCell: RecipeCell) {
-        self._viewModel = StateObject(wrappedValue: RecipeDetailViewModel(recipeCell: recipeCell))
+    init(recipeId: Int) {
+        self._viewModel = StateObject(wrappedValue: RecipeDetailViewModel(recipeId: recipeId))
     }
     
     var body: some View {

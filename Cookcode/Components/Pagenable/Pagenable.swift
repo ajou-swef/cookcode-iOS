@@ -8,10 +8,15 @@
 import SwiftUI
 
 protocol Pagenable: ObservableObject {
+    associatedtype Dto: Mock, Codable
+    associatedtype T
+    
+    var contents: [T] { get set }
     var pageState: PageState { get set }
     var fetchTriggerOffset: CGFloat { get set }
     var pageSize: Int { get } 
     func onFetch() async
+    func appendCell(_ success: ServiceResponse<PageResponse<Dto>>)
 }
 
 extension Pagenable {
@@ -36,6 +41,21 @@ extension Pagenable {
     func waitIn(_ curPage: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.pageState = .wait(curPage + 1)
+        }
+    }
+    
+    func controllPageState(_ response: ServiceResponse<PageResponse<Dto>>, _ curPage: Int) {
+        if response.data.hasNext {
+            waitInPage(curPage + 1)
+        } else {
+            pageState = .noRemain
+        }
+    }
+    
+    
+    func waitInPage(_ page: Int) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.pageState = .wait(page)
         }
     }
 }
