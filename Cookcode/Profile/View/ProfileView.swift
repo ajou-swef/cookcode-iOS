@@ -23,7 +23,7 @@ struct ProfileView: View {
             VStack(alignment: .center, spacing: 10) {
                 userProfile()
                 subscribeButton()
-                logoutButton()
+                unsubscribeButton()
                 contentSelectButton()
                 contentView()
             }
@@ -35,14 +35,15 @@ struct ProfileView: View {
     private func contentView() -> some View {
         switch viewModel.seachType {
         case .recipe:
-            RecipePagenableView()
+            RecipeUserView(userId: viewModel.userId)
                 .padding(.horizontal)
         case .user:
             EmptyView()
         case .cookie:
-            EmptyView()
-        case .follower:
-            EmptyView()
+            CookieUserView(userId: viewModel.userId)
+                .padding(.horizontal)
+        case .publisher:
+            MyPublishersView()
         }
     }
     
@@ -73,9 +74,17 @@ struct ProfileView: View {
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
+            } else {
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .clipShape(Circle())
             }
         } else {
             Image(systemName: "person.fill")
+                .resizable()
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
         }
         
         Text(viewModel.userDetail.nickname)
@@ -107,19 +116,35 @@ struct ProfileView: View {
                     .foregroundColor(.gray_bcbcbc)
             )
         }
-        .presentIf(viewModel.userDetail.isNotMyProfile)
+        .presentIf(viewModel.subscribeButtonIsPresented)
         .padding(.bottom, 5)
     }
     
     @ViewBuilder
-    private func logoutButton() -> some View {
+    private func unsubscribeButton() -> some View {
         Button {
-            accountVM.logout()
+            Task { await viewModel.unsubscribeButtonTapped() }
         } label: {
-            Text("로그아웃")
+            HStack {
+                Image(systemName: "bell.slash")
+                    .resizable()
+                    .fontWeight(.bold)
+                    .frame(width: 20, height: 20)
+                
+                Text("구독 취소")
+                    .font(.custom(CustomFont.interBold.rawValue, size: 15))
+            }
+            .foregroundColor(.primary)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                    .padding(.horizontal, 20)
+                    .foregroundColor(.gray_bcbcbc)
+            )
         }
-        .presentIf(viewModel.userDetail.isMyProfile)
-
+        .presentIf(viewModel.unsubscribeButtonIsPresented)
+        .padding(.bottom, 5)
     }
 }
 

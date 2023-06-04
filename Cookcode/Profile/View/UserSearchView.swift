@@ -14,7 +14,7 @@ struct UserSearchView: View {
     
     init(accountService: AccountServiceProtocol = AccountService(),
          query: String) {
-        self._viewModel = StateObject(wrappedValue: UserSearchViewModel(accountService: AccountSuccessService(), query: query))
+        self._viewModel = StateObject(wrappedValue: UserSearchViewModel(accountService: AccountService(), query: query))
     }
     
     var body: some View {

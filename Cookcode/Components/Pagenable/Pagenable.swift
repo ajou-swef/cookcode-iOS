@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol Pagenable: ObservableObject {
-    associatedtype Dto: Mock, Codable
+    associatedtype Dto: Mock, Decodable
     associatedtype T
     
     var contents: [T] { get set }
@@ -20,6 +20,7 @@ protocol Pagenable: ObservableObject {
 }
 
 extension Pagenable {
+    
     var searchTriggerInScreen: Bool {
         fetchTriggerOffset <= UIScreen.main.bounds.maxY
     }

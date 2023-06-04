@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct UserCellDto: Codable, Hashable, Mock {
+struct UserCellDto: Decodable, Hashable, Mock {
     static func mock() -> UserCellDto {
         UserCellDto(userID: 1, profileImage: "https://picsum.photos/200/300/?blur", nickname: "닉네임")
     }
-    
+
     let userID: Int
     let profileImage: String?
     let nickname: String
-    
+
     static let MOCK_DATA: UserCellDto = UserCellDto(userID: 1, profileImage: "https://picsum.photos/200/300/?blur", nickname: "Page")
 
     enum CodingKeys: String, CodingKey {

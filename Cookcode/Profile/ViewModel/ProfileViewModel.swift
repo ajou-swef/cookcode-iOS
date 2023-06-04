@@ -14,7 +14,15 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
     @Published var seachType: SearchType = .recipe
     
     private let accountService: AccountServiceProtocol
-    private let userId: Int
+    let userId: Int
+    
+    var subscribeButtonIsPresented: Bool {
+        userDetail.notSubscribed
+    }
+    
+    var unsubscribeButtonIsPresented: Bool {
+        userDetail.subscribed
+    }
     
     init(accoutnService: AccountServiceProtocol, userId: Int) {
         self.userId = userId
@@ -33,12 +41,30 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
     func subscribeButtonTapped() async {
         guard userDetail.isNotMyProfile else { return }
         
+        userDetail.isSubscribed = true
         let result = await accountService.subscribeUserById(userDetail.userId)
         
         switch result {
-        case .success(let success):
-            break
+        case .success(_):
+            print("구독 성공")
         case .failure(let failure):
+            print("구독 실패")
+            serviceAlert.presentAlert(failure)
+        }
+    }
+    
+    @MainActor
+    func unsubscribeButtonTapped() async {
+        guard userDetail.isNotMyProfile else { return }
+        
+        userDetail.isSubscribed = false
+        let result = await accountService.unsubscribeUserById(userDetail.userId)
+        
+        switch result {
+        case .success(_):
+            print("구독취소 성공")
+        case .failure(let failure):
+            print("구독취소 실패")
             serviceAlert.presentAlert(failure)
         }
     }

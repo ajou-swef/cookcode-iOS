@@ -9,9 +9,12 @@ import Alamofire
 import Foundation
 
 protocol AccountServiceProtocol {
-    func searchUser(query: String) async -> Result<ServiceResponse<PageResponse<UserCellDto>>, ServiceError>
+    func fetchMyPublisher() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> 
     
-    func subscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> 
+    func searchUser(query: String) async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError>
+    
+    func subscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError>
+    func unsubscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> 
     
     func check(_ nickname: String) async -> Result<ServiceResponse<AccountCheckDto>, ServiceError>
     

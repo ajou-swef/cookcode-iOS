@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PageResponse<T: Codable & Mock>: Codable, Mock {
+struct PageResponse<T: Decodable & Mock>: Decodable, Mock {
     static func mock() -> PageResponse<T> {
         PageResponse(content: .mock(), numberOfElements: 1, hasNext: false)
     }

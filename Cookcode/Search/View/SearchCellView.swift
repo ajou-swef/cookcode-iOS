@@ -42,7 +42,7 @@ struct SearchCellView: View {
                 
                 switch viewModel.seachType {
                 case .recipe:
-                    TempRecipeView(query: viewModel.text)
+                    RecipeSearchView(query: viewModel.text)
                 case .user:
                     UserSearchView(query: viewModel.text)
                 default:
@@ -55,6 +55,16 @@ struct SearchCellView: View {
             Spacer()
         }
         .navigationTitle("")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Button {
+                    field = .search
+                } label: {
+                    Color.clear
+                        .frame(width: 500)
+                }
+            }
+        }
     }
 }
 

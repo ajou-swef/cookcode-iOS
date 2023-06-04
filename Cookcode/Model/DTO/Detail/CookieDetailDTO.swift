@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct CookieDetailDTO: Codable, Mock {
+struct CookieDetailDTO: Decodable, Mock {
     static func mock() -> CookieDetailDTO {
-        CookieDetailDTO(cookieId: 1, title: "쿠키제목", desc: "쿠키 설명", videoURL: "", recipeID: nil, createdAt: "2020-01-01", user: .MOCK_DATA, isLiked: 0, likeCount: 10, commentCount: 10)
+        CookieDetailDTO(cookieId: 1, title: "쿠키제목", desc: "쿠키 설명", videoURL: "", recipeID: nil, createdAt: "2020-01-01", user: .mock(), isLiked: 0, likeCount: 10, commentCount: 10)
     }
     
     let cookieId: Int

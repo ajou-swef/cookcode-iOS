@@ -8,6 +8,10 @@
 import Foundation
 
 final class RecipeFailureService: RecipeServiceProtocol {
+    func fetchRecipeCellsByUserId(_ id: Int) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func fetchRecipeCells(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
         .failure(.MOCK())
     }
