@@ -35,10 +35,10 @@ extension RecipePagenable {
     }
     
     func controllPageState(_ response: ServiceResponse<PageResponse<RecipeCellDto>>, _ curPage: Int) {
-        if response.data.content.isEmpty {
-            pageState = .noRemain
-        } else {
+        if response.data.hasNext {
             waitInPage(curPage + 1)
+        } else {
+            pageState = .noRemain
         }
     }
     

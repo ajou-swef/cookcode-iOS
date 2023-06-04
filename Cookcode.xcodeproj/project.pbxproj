@@ -515,7 +515,6 @@
 				15637AB32A28BD5E007BFF8E /* Recipe */,
 				15637AB02A28B821007BFF8E /* Search */,
 				15B4CC3B2A24D7FF00DC226E /* ContentInteraction */,
-				15B4CC362A24D75500DC226E /* Pagenable */,
 				15B4CC202A24B54600DC226E /* Components */,
 				153B4D8A29ED050A00543730 /* Helper */,
 				1503F95329B459CA002F3D26 /* Service */,
@@ -1168,19 +1167,20 @@
 		15B4CC202A24B54600DC226E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				15B4CC232A24C6C200DC226E /* Refresh */,
+				15B4CC362A24D75500DC226E /* Pagenable */,
+				15B4CC232A24C6C200DC226E /* Refreshable */,
 				15B4CC212A24B55200DC226E /* LikeButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		15B4CC232A24C6C200DC226E /* Refresh */ = {
+		15B4CC232A24C6C200DC226E /* Refreshable */ = {
 			isa = PBXGroup;
 			children = (
 				15B4CC242A24C6E200DC226E /* Refreshable.swift */,
 				15B4CC262A24C71000DC226E /* RefreshComponent.swift */,
 			);
-			path = Refresh;
+			path = Refreshable;
 			sourceTree = "<group>";
 		};
 		15B4CC362A24D75500DC226E /* Pagenable */ = {
