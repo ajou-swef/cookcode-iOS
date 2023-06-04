@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct RecipePagenableView: View {
+struct RecipeUserView: View {
     
-    @StateObject private var viewModel: RecipePagenableViewModel
+    @StateObject private var viewModel: RecipeUserViewModel
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     
-    init(recipeService: RecipeServiceProtocol = RecipeService()) {
-        self._viewModel = StateObject(wrappedValue: RecipePagenableViewModel(recipeService: recipeService))
+    init(recipeService: RecipeServiceProtocol = RecipeService(), userId: Int) {
+        self._viewModel = StateObject(wrappedValue: RecipeUserViewModel(recipeService: recipeService, userId: userId))
     }
     
     var body: some View {
@@ -35,6 +35,6 @@ struct RecipePagenableView: View {
 
 struct RecipePagenableView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipePagenableView(recipeService: RecipeSuccessService())
+        RecipeUserView(recipeService: RecipeSuccessService(), userId: 1)
     }
 }

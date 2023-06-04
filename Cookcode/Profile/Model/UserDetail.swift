@@ -9,7 +9,7 @@ import Foundation
 
 struct UserDetail: Mock {
     static func mock() -> UserDetail {
-        UserDetail(userId: -1, thumbnail: "", nickname: "", email: "", isMyProfile: false)
+        UserDetail(userId: -1, thumbnail: "", nickname: "", email: "", isMyProfile: false, isSubscribed: false)
     }
     
     let userId: Int
@@ -17,9 +17,18 @@ struct UserDetail: Mock {
     let nickname: String
     let email: String
     let isMyProfile: Bool
+    var isSubscribed: Bool
     
     var isNotMyProfile: Bool {
         !isMyProfile
+    }
+    
+    var notSubscribed: Bool {
+        isNotMyProfile && !isSubscribed
+    }
+    
+    var subscribed: Bool {
+        isNotMyProfile && isSubscribed
     }
 }
 
@@ -31,5 +40,6 @@ extension UserDetail {
         let myId = UserDefaults.standard.integer(forKey: USER_ID)
         userId = dto.userID
         isMyProfile = (myId == dto.userID)
+        isSubscribed = false 
     }
 }

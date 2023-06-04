@@ -23,6 +23,7 @@ struct ProfileView: View {
             VStack(alignment: .center, spacing: 10) {
                 userProfile()
                 subscribeButton()
+                unsubscribeButton()
                 logoutButton()
                 contentSelectButton()
                 contentView()
@@ -35,7 +36,7 @@ struct ProfileView: View {
     private func contentView() -> some View {
         switch viewModel.seachType {
         case .recipe:
-            RecipePagenableView()
+            RecipeUserView(userId: viewModel.userId)
                 .padding(.horizontal)
         case .user:
             EmptyView()
@@ -107,7 +108,34 @@ struct ProfileView: View {
                     .foregroundColor(.gray_bcbcbc)
             )
         }
-        .presentIf(viewModel.userDetail.isNotMyProfile)
+        .presentIf(viewModel.subscribeButtonIsPresented)
+        .padding(.bottom, 5)
+    }
+    
+    @ViewBuilder
+    private func unsubscribeButton() -> some View {
+        Button {
+            Task { await viewModel.unsubscribeButtonTapped() }
+        } label: {
+            HStack {
+                Image(systemName: "bell.slash")
+                    .resizable()
+                    .fontWeight(.bold)
+                    .frame(width: 20, height: 20)
+                
+                Text("구독 취소")
+                    .font(.custom(CustomFont.interBold.rawValue, size: 15))
+            }
+            .foregroundColor(.primary)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                    .padding(.horizontal, 20)
+                    .foregroundColor(.gray_bcbcbc)
+            )
+        }
+        .presentIf(viewModel.unsubscribeButtonIsPresented)
         .padding(.bottom, 5)
     }
     

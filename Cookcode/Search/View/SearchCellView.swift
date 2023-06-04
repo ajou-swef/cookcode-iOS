@@ -42,7 +42,7 @@ struct SearchCellView: View {
                 
                 switch viewModel.seachType {
                 case .recipe:
-                    TempRecipeView(query: viewModel.text)
+                    RecipeSearchView(query: viewModel.text)
                 case .user:
                     UserSearchView(query: viewModel.text)
                 default:

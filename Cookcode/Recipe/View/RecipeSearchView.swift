@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TempRecipeView: View {
+struct RecipeSearchView: View {
     
     @StateObject private var viewModel = RecipeSearchViewModel(recipeService: RecipeService(), query: "")
     @EnvironmentObject var navigateViewModel: NavigateViewModel
@@ -39,6 +39,6 @@ struct TempRecipeView: View {
 
 struct TempRecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        TempRecipeView(query: "recipe")
+        RecipeSearchView(query: "recipe")
     }
 }
