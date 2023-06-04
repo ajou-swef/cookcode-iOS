@@ -31,7 +31,7 @@ extension Comment {
     }
 }
 
-struct CommentDTO: Codable, Mock {
+struct CommentDTO: Decodable, Mock {
     static func mock() -> CommentDTO {
         CommentDTO(commentId: 1, user: .mock(), comment: "댓글")
     }

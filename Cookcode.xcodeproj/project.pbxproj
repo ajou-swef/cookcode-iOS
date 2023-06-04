@@ -102,6 +102,8 @@
 		158D7A872A2C69C200DFFB82 /* CookieSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A862A2C69C200DFFB82 /* CookieSuccessService.swift */; };
 		158D7A892A2C6CB300DFFB82 /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A882A2C6CB300DFFB82 /* UserFetcher.swift */; };
 		158D7A8B2A2C6DA200DFFB82 /* MyPublisherViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A8A2A2C6DA200DFFB82 /* MyPublisherViewModel .swift */; };
+		158D7A8D2A2C70C300DFFB82 /* UserProfileCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A8C2A2C70C300DFFB82 /* UserProfileCellDto.swift */; };
+		158D7A8F2A2C70FB00DFFB82 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A8E2A2C70FB00DFFB82 /* UserProfileCell.swift */; };
 		158EFDD32A04BBC0003057A4 /* View + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDD22A04BBC0003057A4 /* View + Alert.swift */; };
 		158EFDD72A04C58F003057A4 /* CellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDD62A04C58F003057A4 /* CellTests.swift */; };
 		158EFDDA2A04CDF1003057A4 /* PatchComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDD92A04CDF1003057A4 /* PatchComponent.swift */; };
@@ -347,6 +349,8 @@
 		158D7A862A2C69C200DFFB82 /* CookieSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieSuccessService.swift; sourceTree = "<group>"; };
 		158D7A882A2C6CB300DFFB82 /* UserFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFetcher.swift; sourceTree = "<group>"; };
 		158D7A8A2A2C6DA200DFFB82 /* MyPublisherViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyPublisherViewModel .swift"; sourceTree = "<group>"; };
+		158D7A8C2A2C70C300DFFB82 /* UserProfileCellDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCellDto.swift; sourceTree = "<group>"; };
+		158D7A8E2A2C70FB00DFFB82 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		158EFDD22A04BBC0003057A4 /* View + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Alert.swift"; sourceTree = "<group>"; };
 		158EFDD62A04C58F003057A4 /* CellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTests.swift; sourceTree = "<group>"; };
 		158EFDD92A04CDF1003057A4 /* PatchComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchComponent.swift; sourceTree = "<group>"; };
@@ -1045,10 +1049,12 @@
 		1594F4942A29BE3B004A68D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				15921B832A1A152500BA636D /* UserDetail.swift */,
 				15B4CC452A24DFA400DC226E /* UserCell.swift */,
 				153F127F29FE2415008BDB4E /* UserCellDto.swift */,
+				15921B832A1A152500BA636D /* UserDetail.swift */,
 				15921B802A1A135100BA636D /* UserDetailDTO.swift */,
+				158D7A8E2A2C70FB00DFFB82 /* UserProfileCell.swift */,
+				158D7A8C2A2C70C300DFFB82 /* UserProfileCellDto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1622,6 +1628,7 @@
 				158EFDDF2A04CED1003057A4 /* ModifyIngredientViewModel.swift in Sources */,
 				15AA2F4D29F0D9400069813F /* StepFormView.swift in Sources */,
 				1584033529B48EAA0092032A /* MembershipView.swift in Sources */,
+				158D7A8D2A2C70C300DFFB82 /* UserProfileCellDto.swift in Sources */,
 				1594F49F2A29CE7D004A68D6 /* SearchTypeSelectable.swift in Sources */,
 				15A19D812A0B8CF8008C71EA /* RecipeFormDTO.swift in Sources */,
 				15193E422A0C9A3800615BE1 /* StepCellView.swift in Sources */,
@@ -1695,6 +1702,7 @@
 				153F127529FE1B8A008BDB4E /* SearchCellView.swift in Sources */,
 				158D7A6F2A2C428600DFFB82 /* UserSearchViewModel.swift in Sources */,
 				15B626492A00B59B002E1F5F /* MyRecipeCellView.swift in Sources */,
+				158D7A8F2A2C70FB00DFFB82 /* UserProfileCell.swift in Sources */,
 				1538157A29FF8EB100C3BD11 /* IngredientDetailDTO.swift in Sources */,
 				153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */,
 				153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */,

@@ -9,14 +9,14 @@ import SwiftUI
 
 final class UserSearchViewModel: Pagenable, Refreshable, Searchable {
     
-    typealias Dto = UserCellDto
-    typealias T = UserCell
+    typealias Dto = UserProfileCellDto
+    typealias T = UserProfileCell
     
     @Published var pageState: PageState = .wait(0)
     @Published var fetchTriggerOffset: CGFloat = .zero
     @Published var dragVelocity: CGFloat = .zero
     @Published var scrollOffset: CGFloat = .zero
-    @Published var contents: [UserCell] = []
+    @Published var contents: [UserProfileCell] = []
     @Published var serviceAlert: ServiceAlert = .init()
     
     private let accountService: AccountServiceProtocol
@@ -60,8 +60,8 @@ final class UserSearchViewModel: Pagenable, Refreshable, Searchable {
     }
     
     @MainActor
-    func appendCell(_ success: ServiceResponse<PageResponse<UserCellDto>>) {
-        let newCells = success.data.content.map { UserCell(dto: $0) }
+    func appendCell(_ success: ServiceResponse<PageResponse<UserProfileCellDto>>) {
+        let newCells = success.data.content.map { UserProfileCell(dto: $0) }
         contents.append(contentsOf: newCells)
     }
 }

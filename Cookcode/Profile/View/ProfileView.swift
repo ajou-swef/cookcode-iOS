@@ -75,9 +75,17 @@ struct ProfileView: View {
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
+            } else {
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .clipShape(Circle())
             }
         } else {
             Image(systemName: "person.fill")
+                .resizable()
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
         }
         
         Text(viewModel.userDetail.nickname)

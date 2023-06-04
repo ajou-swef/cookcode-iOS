@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CookieDetailResponseDTO: Codable, Mock {
+struct CookieDetailResponseDTO: Decodable, Mock {
     static func mock() -> CookieDetailResponseDTO {
         CookieDetailResponseDTO(content: CookieDetailDTO.mocks(3),
                                 numberOfElements: 0, hasNext: false)

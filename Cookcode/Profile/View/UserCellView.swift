@@ -10,7 +10,7 @@ import Kingfisher
 
 struct UserCellView: View {
     
-    let userCell: UserCell
+    let userCell: UserProfileCell
     
     var body: some View {
         HStack {
@@ -19,6 +19,11 @@ struct UserCellView: View {
                     .resizable()
                     .frame(width: 80, height: 80)
                     .clipShape(Circle())
+                    .padding(.horizontal, 60)
+            } else {
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .frame(width: 80, height: 80)
                     .padding(.horizontal, 60)
             }
             

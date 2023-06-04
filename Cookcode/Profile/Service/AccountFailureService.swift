@@ -13,7 +13,7 @@ final class AccountFailureService: AccountServiceProtocol {
         .failure(.MOCK())
     }
     
-    func searchUser(query: String) async -> Result<ServiceResponse<PageResponse<UserCellDto>>, ServiceError> {
+    func searchUser(query: String) async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
         .failure(.MOCK())
     }
     
