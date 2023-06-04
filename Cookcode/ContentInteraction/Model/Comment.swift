@@ -37,7 +37,7 @@ struct CommentDTO: Codable, Mock {
     }
     
     let commentId: Int
-    let user: UserDTO
+    let user: UserCellDto
     let comment: String
 }
 

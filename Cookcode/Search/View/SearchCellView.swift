@@ -37,15 +37,17 @@ struct SearchCellView: View {
             Group {
                 
                 SearchTypeList(searchTypes: SearchType.searchType(), viewModel: viewModel)
+                    .padding(.horizontal)
                 
                 switch viewModel.seachType {
                 case .recipe:
                     TempRecipeView(query: viewModel.text)
+                case .user:
+                    UserSearchView(query: viewModel.text)
                 default:
                     EmptyView()
                 }
             }
-            .padding(.horizontal)
             .presentIf(field == nil && !viewModel.text.isEmpty)
 
             

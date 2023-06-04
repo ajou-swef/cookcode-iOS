@@ -18,15 +18,15 @@ struct RecipePagenableView: View {
     
     var body: some View {
         PagenableComponent(viewModel: viewModel) {
-            ForEach(viewModel.recipeCells) {  cell in
+            ForEach(viewModel.contents) { recipeCell in
                Button {
-                   navigateViewModel.navigateWithHome(cell)
+                   navigateViewModel.navigateWithHome(recipeCell)
                } label: {
-                   CellView(cell: cell)
+                   CellView(cell: recipeCell)
                        .foregroundColor(.black)
                        .zIndex(0)
                }
-               .id(cell.id)
+               .id(recipeCell.id)
            }
         }
     }

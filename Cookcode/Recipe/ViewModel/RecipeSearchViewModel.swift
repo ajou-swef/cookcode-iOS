@@ -8,12 +8,15 @@
 import Foundation
 
 final class RecipeSearchViewModel: RecipePagenable, Refreshable {
+    typealias Dto = RecipeCellDto
+    typealias T = RecipeCell
+    
     let refreshThreshold: CGFloat = 40
-    let spaceName: String = "tempRecipeViewModel"
+    let spaceName: String = "recipeSearchViewModel"
     
     @Published var dragVelocity: CGFloat = .zero
     @Published var scrollOffset: CGFloat = .zero
-    @Published var recipeCells: [RecipeCell] = .init()
+    @Published var contents: [RecipeCell] = .init()
     @Published var filterType: RecipeFilterType = .all
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var pageState: PageState = .wait(0)
@@ -28,7 +31,6 @@ final class RecipeSearchViewModel: RecipePagenable, Refreshable {
         self.query = query
         
         Task {
-            print("onFetch")
             await onFetch()
         }
     }
@@ -43,7 +45,7 @@ final class RecipeSearchViewModel: RecipePagenable, Refreshable {
         
         switch result {
         case .success(let success):
-            appendRecipeCell(success)
+            appendCell(success)
             controllPageState(success, curPage)
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
@@ -53,7 +55,14 @@ final class RecipeSearchViewModel: RecipePagenable, Refreshable {
     
     @MainActor
     func onRefresh() async {
-        waitInPage(0)
-        recipeCells.removeAll()
+        pageState = .wait(0)
+        contents.removeAll()
+        await onFetch()
+    }
+    
+    @MainActor
+    func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
+        let newCells = success.data.content.map { RecipeCell(dto: $0) }
+        contents.append(contentsOf: newCells)
     }
 }

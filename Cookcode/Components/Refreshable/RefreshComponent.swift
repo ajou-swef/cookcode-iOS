@@ -11,10 +11,17 @@ struct RefreshComponent<ViewModel: Refreshable, Content: View>: View {
     
     @ObservedObject var viewModel: ViewModel
     @ViewBuilder let view: Content
+    let spacing: CGFloat 
+    
+    init(viewModel: ViewModel, spacing: CGFloat = 10, view: () -> Content) {
+        self.viewModel = viewModel
+        self.spacing = spacing
+        self.view = view()
+    }
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: spacing) {
                 Color.clear
                     .frame(height: 1)
                     .offsetY(coordinateSpace: .named(viewModel.spaceName)) {

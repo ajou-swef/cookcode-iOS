@@ -9,7 +9,7 @@ import Foundation
 
 struct RecipeDetail {
     let recipeID: Int?
-    let user: UserDTO?
+    let user: UserCellDto?
     let title, description: String
     let createdAt, updatedAt: String?
     let thumbnail: String

@@ -20,17 +20,18 @@ struct TempRecipeView: View {
     var body: some View {
         RefreshComponent(viewModel: viewModel) {
             PagenableComponent(viewModel: viewModel) {
-                ForEach(viewModel.recipeCells) {  cell in
+                ForEach(viewModel.contents) { recipeCell in
                    Button {
-                       navigateViewModel.navigateWithHome(cell)
+                       navigateViewModel.navigateWithHome(recipeCell)
                    } label: {
-                       CellView(cell: cell)
+                       CellView(cell: recipeCell)
                            .foregroundColor(.black)
                            .zIndex(0)
                    }
-                   .id(cell.id)
+                   .id(recipeCell.id)
                }
             }
+            .padding(.horizontal)
         }
     }
 }
