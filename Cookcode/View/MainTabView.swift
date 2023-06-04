@@ -66,15 +66,14 @@ struct MainTabView: View {
     func homeView() -> some View {
         NavigationStack(path: $navigateViewModel.homePath) {
             HomeView()
-                .navigationDestination(for: RecipeCell.self) { cell in
-                    RecipeDetailView(recipeCell: cell)
-                }
-                .navigationDestination(for: HomePath.self) { path in
-                    switch path {
-                    case .search:
-                        SearchCellView()
+                .navigationDestination(for: HomeIdPath.self) { path in
+                    switch path.path {
                     case .profile:
                         ProfileView()
+                    case .search:
+                        SearchCellView()
+                    case .recipe:
+                        RecipeDetailView(recipeId: path.id ?? -1)
                     }
                 }
         }

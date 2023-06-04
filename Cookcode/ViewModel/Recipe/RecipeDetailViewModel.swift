@@ -14,13 +14,12 @@ class RecipeDetailViewModel: RecipeViewModel {
     
     var myRecipe: Bool = false
     let recipeId: Int
-    init(recipeCell: RecipeCell) {
-        recipeId = recipeCell.recipeId
-        
+    init(recipeId: Int) {
+        self.recipeId = recipeId
         super.init(recipeService: RecipeService(), contentService: ContentSuccessService(), recipeID: recipeId)
         
         Task {
-            await fetchRecipe(recipeCell.recipeId)
+            await fetchRecipe(recipeId)
         }
     }
     

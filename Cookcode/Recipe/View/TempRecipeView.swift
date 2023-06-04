@@ -22,7 +22,8 @@ struct TempRecipeView: View {
             PagenableComponent(viewModel: viewModel) {
                 ForEach(viewModel.contents) { recipeCell in
                    Button {
-                       navigateViewModel.navigateWithHome(recipeCell)
+                       let homeIdPath = HomeIdPath(path: .recipe, id: recipeCell.recipeId)
+                       navigateViewModel.navigateWithHome(homeIdPath)
                    } label: {
                        CellView(cell: recipeCell)
                            .foregroundColor(.black)

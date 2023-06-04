@@ -93,6 +93,7 @@
 		158D7A6F2A2C428600DFFB82 /* UserSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A6E2A2C428600DFFB82 /* UserSearchViewModel.swift */; };
 		158D7A712A2C44BA00DFFB82 /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A702A2C44BA00DFFB82 /* Searchable.swift */; };
 		158D7A732A2C48BA00DFFB82 /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A722A2C48BA00DFFB82 /* UserSearchView.swift */; };
+		158D7A782A2C51D900DFFB82 /* HomeIdPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A772A2C51D900DFFB82 /* HomeIdPath.swift */; };
 		158EFDD32A04BBC0003057A4 /* View + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDD22A04BBC0003057A4 /* View + Alert.swift */; };
 		158EFDD72A04C58F003057A4 /* CellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDD62A04C58F003057A4 /* CellTests.swift */; };
 		158EFDDA2A04CDF1003057A4 /* PatchComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDD92A04CDF1003057A4 /* PatchComponent.swift */; };
@@ -329,6 +330,7 @@
 		158D7A6E2A2C428600DFFB82 /* UserSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchViewModel.swift; sourceTree = "<group>"; };
 		158D7A702A2C44BA00DFFB82 /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
 		158D7A722A2C48BA00DFFB82 /* UserSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
+		158D7A772A2C51D900DFFB82 /* HomeIdPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeIdPath.swift; sourceTree = "<group>"; };
 		158EFDD22A04BBC0003057A4 /* View + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Alert.swift"; sourceTree = "<group>"; };
 		158EFDD62A04C58F003057A4 /* CellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTests.swift; sourceTree = "<group>"; };
 		158EFDD92A04CDF1003057A4 /* PatchComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchComponent.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				153B4DA429ED085E00543730 /* Info.plist */,
 				15508CB12A134DE600004A1C /* API.swift */,
 				15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */,
+				158D7A742A2C519A00DFFB82 /* Navigate */,
 				1594F4932A29BDA7004A68D6 /* Profile */,
 				15B4CC172A24B1A400DC226E /* Cookie */,
 				15637AB32A28BD5E007BFF8E /* Recipe */,
@@ -575,7 +578,6 @@
 				15193E3C2A0C937400615BE1 /* Recipe */,
 				158EFDDD2A04CEA9003057A4 /* PatchViewModel */,
 				152565782A076D5D00471D52 /* Refrigerator */,
-				1515FB312A123E5D00119519 /* Home */,
 				153B4DB029ED1B1300543730 /* MembershipViewModel.swift */,
 				15C805B92A0344BC000A1A29 /* SelectIngredientForRecipeViewModel.swift */,
 			);
@@ -604,7 +606,6 @@
 			children = (
 				158A21CA2A11D46D007F5FA7 /* Alert */,
 				151E1CA32A0CF0CB00BC0DA5 /* State */,
-				15AA2F4929F0D8050069813F /* Path */,
 				1515F31A2A0C7BC30003A4BB /* Type */,
 				153F127629FE2268008BDB4E /* DTO */,
 				15B626412A009D40002E1F5F /* Mock.swift */,
@@ -650,13 +651,6 @@
 				1515FB2F2A123CC100119519 /* RecipeFilterType.swift */,
 			);
 			path = Type;
-			sourceTree = "<group>";
-		};
-		1515FB312A123E5D00119519 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		15193E3C2A0C937400615BE1 /* Recipe */ = {
@@ -954,6 +948,37 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		158D7A742A2C519A00DFFB82 /* Navigate */ = {
+			isa = PBXGroup;
+			children = (
+				158D7A762A2C51BB00DFFB82 /* ViewModel */,
+				158D7A752A2C51A300DFFB82 /* Model */,
+			);
+			path = Navigate;
+			sourceTree = "<group>";
+		};
+		158D7A752A2C51A300DFFB82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				153B4DB429ED2B5600543730 /* Tab.swift */,
+				15AA2F4A29F0D80D0069813F /* RecipePath.swift */,
+				159BE2B329FB8DB300DE7448 /* OuterPath.swift */,
+				153F127229FE18F9008BDB4E /* HomePath.swift */,
+				152251EB29FFD40F002C3A78 /* ProfilePath.swift */,
+				1515FB262A12005C00119519 /* DetailPath.swift */,
+				158D7A772A2C51D900DFFB82 /* HomeIdPath.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		158D7A762A2C51BB00DFFB82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		158EFDD82A04CDD1003057A4 /* Container */ = {
 			isa = PBXGroup;
 			children = (
@@ -1123,19 +1148,6 @@
 			path = "Binding + Extension";
 			sourceTree = "<group>";
 		};
-		15AA2F4929F0D8050069813F /* Path */ = {
-			isa = PBXGroup;
-			children = (
-				153B4DB429ED2B5600543730 /* Tab.swift */,
-				15AA2F4A29F0D80D0069813F /* RecipePath.swift */,
-				159BE2B329FB8DB300DE7448 /* OuterPath.swift */,
-				153F127229FE18F9008BDB4E /* HomePath.swift */,
-				152251EB29FFD40F002C3A78 /* ProfilePath.swift */,
-				1515FB262A12005C00119519 /* DetailPath.swift */,
-			);
-			path = Path;
-			sourceTree = "<group>";
-		};
 		15B04C502A1C6B0300B988BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1285,7 +1297,6 @@
 		15C112D92A1B11E1009B87E1 /* Environmnet */ = {
 			isa = PBXGroup;
 			children = (
-				15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */,
 				15C112DA2A1B11F9009B87E1 /* UpdateCellViewModel.swift */,
 			);
 			path = Environmnet;
@@ -1687,6 +1698,7 @@
 				15A19D852A0B8E03008C71EA /* RecipeService.swift in Sources */,
 				15F82A6729FA8D3300DA9381 /* AccountServiceProtocol.swift in Sources */,
 				15A19D832A0B8D43008C71EA /* StepFormDTO.swift in Sources */,
+				158D7A782A2C51D900DFFB82 /* HomeIdPath.swift in Sources */,
 				15A6AB552A03ACA700394490 /* SelectIngredientViewModel.swift in Sources */,
 				15B626422A009D40002E1F5F /* Mock.swift in Sources */,
 				1515FB302A123CC100119519 /* RecipeFilterType.swift in Sources */,

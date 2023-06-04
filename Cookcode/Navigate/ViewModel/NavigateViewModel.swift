@@ -63,7 +63,7 @@ class NavigateViewModel: ObservableObject {
         profilePath.append(path)
     }
     
-    func navigateWithHome(_ path: any Hashable) {
+    func navigateWithHome(_ path: HomeIdPath) {
         homePath.append(path)
     }
     
