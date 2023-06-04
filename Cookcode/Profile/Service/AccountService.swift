@@ -24,7 +24,7 @@ final class AccountService: AccountServiceProtocol {
     }
     
     func searchUser(query: String) async -> Result<ServiceResponse<PageResponse<UserCellDto>>, ServiceError> {
-        let url = "\(BASE_URL)/api/v1/search?query=\(query)"
+        let url = "\(BASE_URL)/api/v1/search?nickname=\(query)"
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let encodedURL = URL(string: encoded)!
         let headers: HTTPHeaders = [

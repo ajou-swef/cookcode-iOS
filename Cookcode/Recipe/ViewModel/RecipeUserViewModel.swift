@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class RecipeUserViewModel: RecipePagenable {
+final class RecipeUserViewModel: RecipeFetcher {
     typealias Dto = RecipeCellDto
     typealias T = RecipeCell
     

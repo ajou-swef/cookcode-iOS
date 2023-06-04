@@ -41,7 +41,8 @@ struct ProfileView: View {
         case .user:
             EmptyView()
         case .cookie:
-            EmptyView()
+            CookieUserView(userId: viewModel.userId)
+                .padding(.horizontal)
         case .follower:
             EmptyView()
         }

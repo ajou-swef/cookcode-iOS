@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-protocol RecipePagenable: Pagenable {
+protocol RecipeFetcher: Pagenable {
     var recipeService: RecipeServiceProtocol { get }
     var filterType: RecipeFilterType { get set }
     var serviceAlert: ServiceAlert { get set }
 }
 
-extension RecipePagenable {
+extension RecipeFetcher {
     func controllPageState(_ response: ServiceResponse<PageResponse<RecipeCellDto>>, _ curPage: Int) {
         if response.data.hasNext {
             waitInPage(curPage + 1)

@@ -33,7 +33,7 @@ extension Comment {
 
 struct CommentDTO: Codable, Mock {
     static func mock() -> CommentDTO {
-        CommentDTO(commentId: 1, user: .MOCK_DATA, comment: "댓글")
+        CommentDTO(commentId: 1, user: .mock(), comment: "댓글")
     }
     
     let commentId: Int

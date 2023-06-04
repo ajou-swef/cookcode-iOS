@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ServiceResponse<T: Codable & Mock>: Codable  {
+struct ServiceResponse<T: Decodable & Mock>: Decodable  {
     
     let message: String
     let status: Int

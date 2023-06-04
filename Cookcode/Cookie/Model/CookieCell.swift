@@ -16,3 +16,10 @@ struct CookieCell: Identifiable, Mock {
         CookieCell(thumbnail: "https://picsum.photos/200/300", cookieId: Int.random(in: 0..<1000))
     }
 }
+
+extension CookieCell {
+    init (dto: CookieCellDto) {
+        thumbnail = "https://picsum.photos/200/300"
+        cookieId = dto.cookieId
+    }
+}

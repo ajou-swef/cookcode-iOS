@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RecipeSearchViewModel: RecipePagenable, Refreshable {
+final class RecipeSearchViewModel: RecipeFetcher, Refreshable {
     typealias Dto = RecipeCellDto
     typealias T = RecipeCell
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol Pagenable: ObservableObject {
-    associatedtype Dto: Mock, Codable
+    associatedtype Dto: Mock, Decodable
     associatedtype T
     
     var contents: [T] { get set }
