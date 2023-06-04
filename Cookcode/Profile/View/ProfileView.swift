@@ -24,7 +24,6 @@ struct ProfileView: View {
                 userProfile()
                 subscribeButton()
                 unsubscribeButton()
-                logoutButton()
                 contentSelectButton()
                 contentView()
             }
@@ -43,8 +42,8 @@ struct ProfileView: View {
         case .cookie:
             CookieUserView(userId: viewModel.userId)
                 .padding(.horizontal)
-        case .follower:
-            EmptyView()
+        case .publisher:
+            MyPublishersView()
         }
     }
     
@@ -146,17 +145,6 @@ struct ProfileView: View {
         }
         .presentIf(viewModel.unsubscribeButtonIsPresented)
         .padding(.bottom, 5)
-    }
-    
-    @ViewBuilder
-    private func logoutButton() -> some View {
-        Button {
-            accountVM.logout()
-        } label: {
-            Text("로그아웃")
-        }
-        .presentIf(viewModel.userDetail.isMyProfile)
-
     }
 }
 

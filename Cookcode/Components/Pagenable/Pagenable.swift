@@ -20,6 +20,7 @@ protocol Pagenable: ObservableObject {
 }
 
 extension Pagenable {
+    
     var searchTriggerInScreen: Bool {
         fetchTriggerOffset <= UIScreen.main.bounds.maxY
     }

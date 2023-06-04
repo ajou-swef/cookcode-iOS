@@ -220,13 +220,17 @@ struct HomeView: View {
             }
             
             Button {
-                let homeIdPath = HomeIdPath(path: .profile, id: UserDefaults.standard.integer(forKey: USER_ID))
-                navigateViewModel.navigateWithHome(homeIdPath)
+                viewModel.myAccountViewIsPresented = true 
+//                let homeIdPath = HomeIdPath(path: .profile, id: UserDefaults.standard.integer(forKey: USER_ID))
+//                navigateViewModel.navigateWithHome(homeIdPath)
             } label: {
                 Image(systemName: "person.fill")
                     .resizable()
                     .foregroundColor(.black)
                     .frame(width: 20, height: 20)
+            }
+            .fullScreenCover(isPresented: $viewModel.myAccountViewIsPresented) {
+                MyAccountView()
             }
         }
         .padding(.horizontal, 10)

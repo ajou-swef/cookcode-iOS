@@ -9,6 +9,8 @@ import Alamofire
 import Foundation
 
 protocol AccountServiceProtocol {
+    func fetchMyPublisher() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> 
+    
     func searchUser(query: String) async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError>
     
     func subscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError>

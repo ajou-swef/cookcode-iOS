@@ -230,6 +230,8 @@
 		15F82A7129FA920100DA9381 /* SignUpDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7029FA920100DA9381 /* SignUpDto.swift */; };
 		15F82A7329FA92D500DA9381 /* SignInDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7229FA92D500DA9381 /* SignInDto.swift */; };
 		15F82A7529FA93E500DA9381 /* UserAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F82A7429FA93E500DA9381 /* UserAccountDto.swift */; };
+		15FD58A32A2C847600295B8B /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FD58A22A2C847600295B8B /* MyAccountView.swift */; };
+		15FD58A52A2C8CC500295B8B /* MyPublishersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FD58A42A2C8CC500295B8B /* MyPublishersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -478,6 +480,8 @@
 		15F82A7029FA920100DA9381 /* SignUpDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDto.swift; sourceTree = "<group>"; };
 		15F82A7229FA92D500DA9381 /* SignInDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDto.swift; sourceTree = "<group>"; };
 		15F82A7429FA93E500DA9381 /* UserAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountDto.swift; sourceTree = "<group>"; };
+		15FD58A22A2C847600295B8B /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
+		15FD58A42A2C8CC500295B8B /* MyPublishersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPublishersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -885,8 +889,8 @@
 			isa = PBXGroup;
 			children = (
 				1537B1D22A2A09A700869718 /* Service */,
-				1594F4A12A29D403004A68D6 /* ViewModel */,
 				15637AB42A28BD79007BFF8E /* Model */,
+				1594F4A12A29D403004A68D6 /* ViewModel */,
 				15637AB52A28BE0D007BFF8E /* View */,
 			);
 			path = Recipe;
@@ -907,7 +911,6 @@
 		15637AB52A28BE0D007BFF8E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1566059129F93740008B9F9F /* HomeViewModel.swift */,
 				15B869B829EFDC3600A02872 /* HomeView.swift */,
 				1594F4A62A29D622004A68D6 /* RecipePagenableView.swift */,
 				1537B1CE2A29F37200869718 /* RecipeSearchView.swift */,
@@ -1065,6 +1068,8 @@
 				15CFE6A729FF7B8500C16FF6 /* ProfileView.swift */,
 				1537B1D02A2A070C00869718 /* UserCellView.swift */,
 				158D7A722A2C48BA00DFFB82 /* UserSearchView.swift */,
+				15FD58A22A2C847600295B8B /* MyAccountView.swift */,
+				15FD58A42A2C8CC500295B8B /* MyPublishersView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1072,10 +1077,10 @@
 		1594F4962A29BE3F004A68D6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				158D7A882A2C6CB300DFFB82 /* UserFetcher.swift */,
 				15F2CC112A0260D30019FAB6 /* AccountViewModel.swift */,
 				1594F4992A29BFC4004A68D6 /* ProfileViewModel.swift */,
 				158D7A6E2A2C428600DFFB82 /* UserSearchViewModel.swift */,
-				158D7A882A2C6CB300DFFB82 /* UserFetcher.swift */,
 				158D7A8A2A2C6DA200DFFB82 /* MyPublisherViewModel .swift */,
 			);
 			path = ViewModel;
@@ -1095,6 +1100,7 @@
 		1594F4A12A29D403004A68D6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1566059129F93740008B9F9F /* HomeViewModel.swift */,
 				1594F4A22A29D40C004A68D6 /* RecipeFetcher.swift */,
 				1594F4A42A29D525004A68D6 /* RecipePagenableViewModel.swift */,
 				1537B1CC2A29F30D00869718 /* RecipeSearchViewModel.swift */,
@@ -1603,6 +1609,7 @@
 				15F82A7529FA93E500DA9381 /* UserAccountDto.swift in Sources */,
 				15EFAD6E2A0B3ACB0092B203 /* PatchIngredientViewModel.swift in Sources */,
 				15921B812A1A135100BA636D /* UserDetailDTO.swift in Sources */,
+				15FD58A32A2C847600295B8B /* MyAccountView.swift in Sources */,
 				15B04C532A1C6B4300B988BF /* CookieFormViewModel.swift in Sources */,
 				15508CB42A134DFD00004A1C /* Ingredient Dictionary.swift in Sources */,
 				159BE2AF29FB875F00DE7448 /* CellView.swift in Sources */,
@@ -1616,6 +1623,7 @@
 				1515F3122A0C77AD0003A4BB /* StepDTO.swift in Sources */,
 				1537B1CD2A29F30D00869718 /* RecipeSearchViewModel.swift in Sources */,
 				153F127E29FE23B3008BDB4E /* RecipeCellDto.swift in Sources */,
+				15FD58A52A2C8CC500295B8B /* MyPublishersView.swift in Sources */,
 				158D7A8B2A2C6DA200DFFB82 /* MyPublisherViewModel .swift in Sources */,
 				15F2CC1C2A026E5E0019FAB6 /* IngredientCell.swift in Sources */,
 				15B4CC412A24D8F100DC226E /* CookieCommentViewModel.swift in Sources */,

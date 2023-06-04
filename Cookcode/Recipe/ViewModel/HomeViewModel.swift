@@ -24,6 +24,7 @@ class HomeViewModel: ObservableObject {
     
     @Published private var _filterOffset: CGFloat = .zero
     @Published private(set) var contentTypeButtonIsShowing: Bool = false
+    @Published var myAccountViewIsPresented: Bool = false
     
     private let recipeService: RecipeServiceProtocol
     private let pageSize: Int = 10

@@ -11,10 +11,10 @@ enum SearchType: String, CaseIterable {
     case recipe = "레시피"
     case user = "유저"
     case cookie = "쿠키"
-    case follower = "구독자"
+    case publisher = "구독 목록"
     
     static func profileSearchType() -> [SearchType] {
-        return [.recipe, .cookie, .follower]
+        return [.recipe, .cookie, .publisher]
     }
     
     static func searchType() -> [SearchType] {

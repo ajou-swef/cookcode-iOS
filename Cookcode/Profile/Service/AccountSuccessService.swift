@@ -8,6 +8,10 @@
 import Foundation
 
 final class AccountSuccessService: AccountServiceProtocol {
+    func fetchMyPublisher() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
+        .success(.mock())
+    }
+    
     func unsubscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
         .success(.mock())
     }
