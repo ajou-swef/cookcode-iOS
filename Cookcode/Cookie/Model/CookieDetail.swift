@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVKit
 
 
 struct CookieDetail: Identifiable {
@@ -18,6 +19,18 @@ struct CookieDetail: Identifiable {
     var likesCount: Int
     var commentsCount: Int
     var didLikes: Bool = false
+    var avPlayer: AVPlayer?
+    
+    mutating func onAppear() {
+        guard let url = URL(string: url) else { return }
+        avPlayer = AVPlayer(url: url)
+        avPlayer?.play()
+    }
+    
+    mutating func onDisapper() {
+        avPlayer = nil
+    }
+    
     
     mutating func update(cookie: CookieDetail) {
         url = cookie.url

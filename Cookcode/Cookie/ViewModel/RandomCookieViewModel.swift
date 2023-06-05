@@ -33,11 +33,13 @@ final class RandomCookieViewModel: ObservableObject {
         switch result {
         case .success(let success):
             guard let dto = success.data.first else { return }
+            
             let cookie1 = CookieDetail(dto: dto)
             let cookie2 = CookieDetail(dto: dto)
             let cookie3 = CookieDetail(dto: dto)
             let cookie4 = CookieDetail(dto: dto)
             let mock = CookieDetail(dto: dto)
+            cookieSelection = cookie1.id
             
             cookies.append(cookie1)
             cookies.append(cookie2)
@@ -86,7 +88,7 @@ final class RandomCookieViewModel: ObservableObject {
         
         guard checkArrayBound() else { return }
         
-        
+        avControll(currentIndex)
         let updatedIndex = (currentIndex + 2) % 4
         
         
@@ -96,6 +98,17 @@ final class RandomCookieViewModel: ObservableObject {
         
         if updatedIndex == 0 {
             cookies[cookies.count - 1].update(cookie: newCookie)
+        }
+    }
+    
+    @MainActor
+    func avControll(_ curIndex: Int) {
+        for i in cookies.indices {
+            if i == curIndex {
+                cookies[i].onAppear()
+            } else {
+                cookies[i].onDisapper()
+            }
         }
     }
     

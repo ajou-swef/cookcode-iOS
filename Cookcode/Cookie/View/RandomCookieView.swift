@@ -23,10 +23,20 @@ struct RandomCookieView: View {
         GeometryReader { proxy in
             VTabView(selection: $viewModel.cookieSelection) {
                 ForEach(viewModel.cookies) { cookie in
-                    cookieVideo(cookie, proxy: proxy)
-                        .overlay(alignment: .bottom) {
-                            CookieDetailOverlay(cookieDetail: cookie)
-                        }
+                    if cookie.id == viewModel.cookieSelection {
+                        VideoPlayer(player: cookie.avPlayer)
+                            .foregroundColor(.blue)
+                            .scaledToFill()
+                            .frame(width: proxy.size.width, height: proxy.size.height)
+                            .tag(cookie.id)
+                            .overlay(alignment: .bottom) {
+                                CookieDetailOverlay(cookieDetail: cookie)
+                            }
+                    } else {
+                        Rectangle()
+                            .foregroundColor(.black)
+                            .tag(cookie.id)
+                    }
                 }
             }
             .simultaneousGesture(
@@ -63,23 +73,6 @@ struct RandomCookieView: View {
         .foregroundColor(.white)
         .padding(.leading, 20)
         .padding(.bottom, 30)
-    }
-    
-    @ViewBuilder
-    private func cookieVideo(_ cookie: CookieDetail, proxy: GeometryProxy) -> some View {
-        if cookie.id == viewModel.cookieSelection {
-            let url = URL(string: cookie.url)!
-            let avPlayer = AVPlayer(url: url)
-            VideoPlayer(player: avPlayer)
-                .foregroundColor(.blue)
-                .scaledToFill()
-                .frame(width: proxy.size.width, height: proxy.size.height)
-                .tag(cookie.id)
-        } else {
-            Rectangle()
-                .foregroundColor(.black)
-                .tag(cookie.id)
-        }
     }
 }
 
