@@ -19,7 +19,7 @@ struct CookieCell: Identifiable, Mock {
 
 extension CookieCell {
     init (dto: CookieCellDto) {
-        thumbnail = "https://picsum.photos/200/300"
-        cookieId = dto.cookieId
+        thumbnail = dto.thumbnailURL
+        cookieId = dto.cookieID
     }
 }

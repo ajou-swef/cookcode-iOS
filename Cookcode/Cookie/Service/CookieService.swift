@@ -22,6 +22,8 @@ final class CookieService: CookieServiceProtocol {
             print("\(response.debugDescription)")
         }
         
+        print("\(response.debugDescription)")
+        
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
             return serviceErorr ?? ServiceError.decodeError()
