@@ -75,7 +75,7 @@ struct RecipeDetailView: View {
         }
         .sheet(isPresented: $viewModel.commentsComponentIsPresented) {
             CommentList(viewModel:
-                                CookieCommentViewModel(conentsId: viewModel.recipeId, commentService: RecipeService()))
+                            CookieCommentViewModel(conentsId: viewModel.recipeId, commentService: viewModel.recipeService))
         }
     }
 }

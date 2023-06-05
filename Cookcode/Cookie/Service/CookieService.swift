@@ -9,6 +9,21 @@ import Alamofire
 import Foundation
 
 final class CookieService: CookieServiceProtocol {
+    func likesCookie(_ cookie: CookieDetail) async -> Result<DefaultResponse, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/cookie/\(cookie.contentId)/likes"
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let response = await AF.request(url, method: .post, headers: headers)
+            .serializingDecodable(DefaultResponse.self).response
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.decodeError()
+        }
+    }
+    
     func searchCookieCellsBy(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie/search?query=\(query)"
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!

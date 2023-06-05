@@ -8,17 +8,23 @@
 import SwiftUI
 import AVFoundation
 
-final class RandomCookieViewModel: ObservableObject {
+final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, PresentCommentSheet {
+     
+    
+
     
     @Published var cookies: [CookieDetail] = []
     @Published var cookieSelection: String = ""
     @Published var drag: CGFloat = .zero
     @Published var serviceAlert: ServiceAlert = .init()
+    @Published var commentSheetIsPresent: Bool = false
     
     private let cookieService: CookieServiceProtocol
+    var commentService: CommentServiceProtocol
     
     init(cookieService: CookieServiceProtocol) {
         self.cookieService = cookieService
+        commentService = cookieService
         
         Task {
             await initCookie()
@@ -51,7 +57,7 @@ final class RandomCookieViewModel: ObservableObject {
         }
     }
     
-    
+    @MainActor
     private func getCookie() async -> CookieDetail? {
         let result = await cookieService.fetchCookie()
         
@@ -115,5 +121,13 @@ final class RandomCookieViewModel: ObservableObject {
     private func checkArrayBound() -> Bool {
         let indices = cookies.indices
         return indices.contains(0) && indices.contains(cookies.count - 1)
+    }
+    
+    @MainActor
+    func likeButtonTapped(_ uuid: String) async {
+        guard let index = cookies.firstIndex(where: { $0.id == uuid }) else { return }
+        cookies[index].likeInteract()
+        
+        let _ = await cookieService.likesCookie(cookies[index])
     }
 }

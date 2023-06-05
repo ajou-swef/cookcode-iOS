@@ -11,7 +11,7 @@ import VTabView
 
 struct RandomCookieView: View {
     
-    @StateObject private var viewModel = RandomCookieViewModel(cookieService: CookieService())
+    @StateObject private var viewModel = RandomCookieViewModel(cookieService: CookieSuccessService())
     @EnvironmentObject var updateViewModel: UpdateCellViewModel
     
     init() {
@@ -29,8 +29,22 @@ struct RandomCookieView: View {
                             .scaledToFill()
                             .frame(width: proxy.size.width, height: proxy.size.height)
                             .tag(cookie.id)
-                            .overlay(alignment: .bottom) {
-                                CookieDetailOverlay(cookieDetail: cookie)
+                            .overlay(alignment: .bottomTrailing) {
+                                VStack {
+                                    PresentCommentButton(viewModel: viewModel, info: cookie)
+                                    LikeButton(viewModel: viewModel, like: cookie)
+                                }
+                                .padding()
+                            }
+                            .overlay(alignment: .bottomLeading) {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text("\(cookie.title)")
+                                        .font(CustomFontFactory.INTER_BOLD_16)
+
+                                    Text("\(cookie.description)")
+                                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
+                                }
+                                .padding()
                             }
                     } else {
                         Rectangle()

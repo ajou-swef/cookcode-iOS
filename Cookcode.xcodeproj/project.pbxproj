@@ -35,7 +35,6 @@
 		15193E462A0C9B7C00615BE1 /* RecipePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15193E452A0C9B7C00615BE1 /* RecipePreviewView.swift */; };
 		151E1C9F2A0CD12A00BC0DA5 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E1C9E2A0CD12A00BC0DA5 /* Proxy.swift */; };
 		151E1CA52A0CF0D100BC0DA5 /* PageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151E1CA42A0CF0D100BC0DA5 /* PageState.swift */; };
-		152181D52A25DD0500F5B3B0 /* LikeServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152181D42A25DD0500F5B3B0 /* LikeServiceProtocol.swift */; };
 		152181D92A25DD9800F5B3B0 /* LikeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152181D82A25DD9800F5B3B0 /* LikeComponent.swift */; };
 		152251EC29FFD40F002C3A78 /* ProfilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152251EB29FFD40F002C3A78 /* ProfilePath.swift */; };
 		152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152389D329F69AD60090CA9B /* RecipeEntranceView.swift */; };
@@ -82,6 +81,10 @@
 		1566059429F937A3008B9F9F /* View + offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1566059329F937A3008B9F9F /* View + offset.swift */; };
 		1570194D2A25EED900790E34 /* CommentCellInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570194C2A25EED900790E34 /* CommentCellInteractable.swift */; };
 		1570194F2A26018500790E34 /* PageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570194E2A26018500790E34 /* PageResponse.swift */; };
+		157D5CA72A2E0BB0003AE2C3 /* LikeServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D5CA62A2E0BB0003AE2C3 /* LikeServiceProtocol.swift */; };
+		157D5CAB2A2E0E19003AE2C3 /* PresentCommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D5CAA2A2E0E19003AE2C3 /* PresentCommentButton.swift */; };
+		157D5CAD2A2E0E2C003AE2C3 /* PresentCommentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D5CAC2A2E0E2C003AE2C3 /* PresentCommentSheet.swift */; };
+		157D5CAF2A2E0F6B003AE2C3 /* CommentButtonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D5CAE2A2E0F6B003AE2C3 /* CommentButtonInfo.swift */; };
 		1584033329B48E0F0092032A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033229B48E0F0092032A /* LoginView.swift */; };
 		1584033529B48EAA0092032A /* MembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584033429B48EAA0092032A /* MembershipView.swift */; };
 		158AF5DD2A1F66FD00FF815A /* CookieServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AF5DC2A1F66FD00FF815A /* CookieServiceProtocol.swift */; };
@@ -155,6 +158,8 @@
 		15AA2F4D29F0D9400069813F /* StepFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F4C29F0D9400069813F /* StepFormView.swift */; };
 		15AA2F8829F102720069813F /* VideURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F8729F102720069813F /* VideURL.swift */; };
 		15AA2F8A29F10CA90069813F /* ContentWrappedStepForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AA2F8929F10CA90069813F /* ContentWrappedStepForm.swift */; };
+		15AE41812A2DC5A4004DDD0E /* LikeButtonInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE41802A2DC5A4004DDD0E /* LikeButtonInteractable.swift */; };
+		15AE41832A2DC7F4004DDD0E /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE41822A2DC7F4004DDD0E /* Like.swift */; };
 		15B04C532A1C6B4300B988BF /* CookieFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C522A1C6B4300B988BF /* CookieFormViewModel.swift */; };
 		15B04C572A1C6BBD00B988BF /* VideoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C562A1C6BBD00B988BF /* VideoThumbnail.swift */; };
 		15B04C592A1C76FF00B988BF /* VideLoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B04C582A1C76FF00B988BF /* VideLoadState.swift */; };
@@ -171,7 +176,6 @@
 		15B1F9E92A0918ED00B9CB24 /* IngredientFormDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1F9E82A0918ED00B9CB24 /* IngredientFormDTO.swift */; };
 		15B4CC1B2A24B23300DC226E /* CookieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC1A2A24B23300DC226E /* CookieDetail.swift */; };
 		15B4CC1F2A24B30900DC226E /* CookieOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC1E2A24B30900DC226E /* CookieOverlay.swift */; };
-		15B4CC222A24B55200DC226E /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC212A24B55200DC226E /* LikeButton.swift */; };
 		15B4CC252A24C6E200DC226E /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC242A24C6E200DC226E /* Refreshable.swift */; };
 		15B4CC272A24C71000DC226E /* RefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC262A24C71000DC226E /* RefreshComponent.swift */; };
 		15B4CC382A24D76900DC226E /* Pagenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4CC372A24D76900DC226E /* Pagenable.swift */; };
@@ -287,7 +291,6 @@
 		15193E452A0C9B7C00615BE1 /* RecipePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePreviewView.swift; sourceTree = "<group>"; };
 		151E1C9E2A0CD12A00BC0DA5 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
 		151E1CA42A0CF0D100BC0DA5 /* PageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageState.swift; sourceTree = "<group>"; };
-		152181D42A25DD0500F5B3B0 /* LikeServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeServiceProtocol.swift; sourceTree = "<group>"; };
 		152181D82A25DD9800F5B3B0 /* LikeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeComponent.swift; sourceTree = "<group>"; };
 		152251EB29FFD40F002C3A78 /* ProfilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePath.swift; sourceTree = "<group>"; };
 		152389D329F69AD60090CA9B /* RecipeEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeEntranceView.swift; sourceTree = "<group>"; };
@@ -335,6 +338,10 @@
 		1566059329F937A3008B9F9F /* View + offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + offset.swift"; sourceTree = "<group>"; };
 		1570194C2A25EED900790E34 /* CommentCellInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellInteractable.swift; sourceTree = "<group>"; };
 		1570194E2A26018500790E34 /* PageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageResponse.swift; sourceTree = "<group>"; };
+		157D5CA62A2E0BB0003AE2C3 /* LikeServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeServiceProtocol.swift; sourceTree = "<group>"; };
+		157D5CAA2A2E0E19003AE2C3 /* PresentCommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCommentButton.swift; sourceTree = "<group>"; };
+		157D5CAC2A2E0E2C003AE2C3 /* PresentCommentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCommentSheet.swift; sourceTree = "<group>"; };
+		157D5CAE2A2E0F6B003AE2C3 /* CommentButtonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentButtonInfo.swift; sourceTree = "<group>"; };
 		1584033229B48E0F0092032A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1584033429B48EAA0092032A /* MembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipView.swift; sourceTree = "<group>"; };
 		158AF5DC2A1F66FD00FF815A /* CookieServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieServiceProtocol.swift; sourceTree = "<group>"; };
@@ -412,6 +419,8 @@
 		15AA2F4C29F0D9400069813F /* StepFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFormView.swift; sourceTree = "<group>"; };
 		15AA2F8729F102720069813F /* VideURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideURL.swift; sourceTree = "<group>"; };
 		15AA2F8929F10CA90069813F /* ContentWrappedStepForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWrappedStepForm.swift; sourceTree = "<group>"; };
+		15AE41802A2DC5A4004DDD0E /* LikeButtonInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonInteractable.swift; sourceTree = "<group>"; };
+		15AE41822A2DC7F4004DDD0E /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		15B04C522A1C6B4300B988BF /* CookieFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieFormViewModel.swift; sourceTree = "<group>"; };
 		15B04C562A1C6BBD00B988BF /* VideoThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoThumbnail.swift; sourceTree = "<group>"; };
 		15B04C582A1C76FF00B988BF /* VideLoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideLoadState.swift; sourceTree = "<group>"; };
@@ -427,7 +436,6 @@
 		15B1F9E82A0918ED00B9CB24 /* IngredientFormDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientFormDTO.swift; sourceTree = "<group>"; };
 		15B4CC1A2A24B23300DC226E /* CookieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieDetail.swift; sourceTree = "<group>"; };
 		15B4CC1E2A24B30900DC226E /* CookieOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieOverlay.swift; sourceTree = "<group>"; };
-		15B4CC212A24B55200DC226E /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		15B4CC242A24C6E200DC226E /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		15B4CC262A24C71000DC226E /* RefreshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshComponent.swift; sourceTree = "<group>"; };
 		15B4CC372A24D76900DC226E /* Pagenable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagenable.swift; sourceTree = "<group>"; };
@@ -1235,7 +1243,6 @@
 			children = (
 				15B4CC362A24D75500DC226E /* Pagenable */,
 				15B4CC232A24C6C200DC226E /* Refreshable */,
-				15B4CC212A24B55200DC226E /* LikeButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1274,7 +1281,7 @@
 			isa = PBXGroup;
 			children = (
 				15B4CC492A24E6C300DC226E /* CommentServiceProtocol.swift */,
-				152181D42A25DD0500F5B3B0 /* LikeServiceProtocol.swift */,
+				157D5CA62A2E0BB0003AE2C3 /* LikeServiceProtocol.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1285,6 +1292,8 @@
 				15B4CC402A24D8F100DC226E /* CookieCommentViewModel.swift */,
 				15B4CC3E2A24D89700DC226E /* Commentable.swift */,
 				1570194C2A25EED900790E34 /* CommentCellInteractable.swift */,
+				15AE41802A2DC5A4004DDD0E /* LikeButtonInteractable.swift */,
+				157D5CAC2A2E0E2C003AE2C3 /* PresentCommentSheet.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1293,6 +1302,8 @@
 			isa = PBXGroup;
 			children = (
 				15B4CC422A24DF1C00DC226E /* Comment.swift */,
+				15AE41822A2DC7F4004DDD0E /* Like.swift */,
+				157D5CAE2A2E0F6B003AE2C3 /* CommentButtonInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1303,6 +1314,7 @@
 				15B4CC472A24E1A900DC226E /* CommentComponent.swift */,
 				15B4CC3C2A24D82300DC226E /* CommentList.swift */,
 				152181D82A25DD9800F5B3B0 /* LikeComponent.swift */,
+				157D5CAA2A2E0E19003AE2C3 /* PresentCommentButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1652,9 +1664,11 @@
 				15CFE66229FF56C700C16FF6 /* ContentServiceProtocol.swift in Sources */,
 				153B4DAF29ED1AB400543730 /* MembershipForm.swift in Sources */,
 				15B4CC3F2A24D89700DC226E /* Commentable.swift in Sources */,
+				15AE41812A2DC5A4004DDD0E /* LikeButtonInteractable.swift in Sources */,
 				1537B1CF2A29F37200869718 /* RecipeSearchView.swift in Sources */,
 				158EFDDF2A04CED1003057A4 /* ModifyIngredientViewModel.swift in Sources */,
 				15AA2F4D29F0D9400069813F /* StepFormView.swift in Sources */,
+				157D5CA72A2E0BB0003AE2C3 /* LikeServiceProtocol.swift in Sources */,
 				1584033529B48EAA0092032A /* MembershipView.swift in Sources */,
 				15D69CDD2A2D82C900A63B8C /* CookieSearchView.swift in Sources */,
 				158D7A8D2A2C70C300DFFB82 /* UserProfileCellDto.swift in Sources */,
@@ -1667,6 +1681,7 @@
 				15C112DE2A1B1225009B87E1 /* CellType.swift in Sources */,
 				1503F92329B45560002F3D26 /* CookcodeApp.swift in Sources */,
 				1594F49A2A29BFC4004A68D6 /* ProfileViewModel.swift in Sources */,
+				157D5CAF2A2E0F6B003AE2C3 /* CommentButtonInfo.swift in Sources */,
 				1593D94229F689D1008AF49E /* RecipeView.swift in Sources */,
 				153F127A29FE22EB008BDB4E /* VideoContent .swift in Sources */,
 				15B4CC3A2A24D77000DC226E /* PagenableComponet.swift in Sources */,
@@ -1682,6 +1697,7 @@
 				15B04C572A1C6BBD00B988BF /* VideoThumbnail.swift in Sources */,
 				15EFAD6C2A0B34690092B203 /* Int + Extension.swift in Sources */,
 				15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */,
+				15AE41832A2DC7F4004DDD0E /* Like.swift in Sources */,
 				1584033329B48E0F0092032A /* LoginView.swift in Sources */,
 				1515F3162A0C77D70003A4BB /* VideoDTO.swift in Sources */,
 				15C112DB2A1B11F9009B87E1 /* UpdateCellViewModel.swift in Sources */,
@@ -1721,10 +1737,10 @@
 				158D7A7F2A2C66D100DFFB82 /* CookieFetcher.swift in Sources */,
 				159BE2A929FB6E7900DE7448 /* AccountFailureService.swift in Sources */,
 				15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */,
-				15B4CC222A24B55200DC226E /* LikeButton.swift in Sources */,
 				15B1F9E22A08FC8100B9CB24 /* IngredientDetail.swift in Sources */,
 				159BE2B429FB8DB300DE7448 /* OuterPath.swift in Sources */,
 				153F128E29FE2B37008BDB4E /* SearchCellViewModel.swift in Sources */,
+				157D5CAD2A2E0E2C003AE2C3 /* PresentCommentSheet.swift in Sources */,
 				158D7A892A2C6CB300DFFB82 /* UserFetcher.swift in Sources */,
 				15D40C402A2DA25200B82113 /* CookieVideoListViewModel.swift in Sources */,
 				15DAE25A29FE3F9D00A4B00A /* RecipeViewModel.swift in Sources */,
@@ -1737,6 +1753,7 @@
 				153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */,
 				153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */,
 				1515F3142A0C77B20003A4BB /* PhotoDTO.swift in Sources */,
+				157D5CAB2A2E0E19003AE2C3 /* PresentCommentButton.swift in Sources */,
 				158AF5E32A1F687100FF815A /* CookieService.swift in Sources */,
 				15F2CC182A026DDC0019FAB6 /* Cell.swift in Sources */,
 				15CFE66629FF590000C16FF6 /* VideoResponse.swift in Sources */,
@@ -1766,7 +1783,6 @@
 				1515FB302A123CC100119519 /* RecipeFilterType.swift in Sources */,
 				15D40C3E2A2D9FFA00B82113 /* CookieVideoList.swift in Sources */,
 				15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */,
-				152181D52A25DD0500F5B3B0 /* LikeServiceProtocol.swift in Sources */,
 				153F127829FE2274008BDB4E /* ImageContent.swift in Sources */,
 				158D7A852A2C698100DFFB82 /* CookieUserView.swift in Sources */,
 				1525657F2A077FD000471D52 /* ServiceResponse.swift in Sources */,
