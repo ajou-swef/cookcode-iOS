@@ -8,7 +8,8 @@
 import Foundation
 
 enum CellType: CaseIterable {
-    case recipe 
+    case recipe
+    case cookie 
 }
 
 enum UpdateType {

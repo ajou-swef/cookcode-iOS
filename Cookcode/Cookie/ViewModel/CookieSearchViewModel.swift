@@ -8,13 +8,13 @@
 import SwiftUI
 
 final class CookieSearchViewModel: CookieFetcher, Searchable, Refreshable {
-    typealias Dto = CookieCellDto
-    typealias T = CookieCell
+    typealias Dto = CookieDetailDTO
+    typealias T = CookieDetail
     
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var pageState: PageState = .wait(0)
     @Published var fetchTriggerOffset: CGFloat = .zero
-    @Published var contents: [CookieCell] = .init()
+    @Published var contents: [CookieDetail] = .init()
     @Published var dragVelocity: CGFloat = .zero
     
     @Published var scrollOffset: CGFloat = .zero
@@ -34,8 +34,8 @@ final class CookieSearchViewModel: CookieFetcher, Searchable, Refreshable {
     }
     
     @MainActor
-    func appendCell(_ success: ServiceResponse<PageResponse<CookieCellDto>>) {
-        let newCells = success.data.content.map { CookieCell(dto: $0) }
+    func appendCell(_ success: ServiceResponse<PageResponse<CookieDetailDTO>>) {
+        let newCells = success.data.content.map { CookieDetail(dto: $0) }
         contents.append(contentsOf: newCells)
     }
     

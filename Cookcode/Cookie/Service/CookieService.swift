@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 final class CookieService: CookieServiceProtocol {
-    func searchCookieCellsBy(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieCellDto>>, ServiceError> {
+    func searchCookieCellsBy(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie/search?query=\(query)"
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let encodedURL = URL(string: encoded)!
@@ -19,8 +19,7 @@ final class CookieService: CookieServiceProtocol {
         ]
         
         let response = await AF.request(encodedURL, method: .get, headers: headers)
-            .serializingDecodable(ServiceResponse<PageResponse<CookieCellDto>>.self).response
-        print("\(response.debugDescription)")
+            .serializingDecodable(ServiceResponse<PageResponse<CookieDetailDTO>>.self).response
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
@@ -28,14 +27,14 @@ final class CookieService: CookieServiceProtocol {
         }
     }
     
-    func fetchCookieCellByUserId(_ id: Int) async -> Result<ServiceResponse<PageResponse<CookieCellDto>>, ServiceError> {
+    func fetchCookieCellByUserId(_ id: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie/user/\(id)"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
         let response = await AF.request(url, method: .get, headers: headers)
-            .serializingDecodable(ServiceResponse<PageResponse<CookieCellDto>>.self).response
+            .serializingDecodable(ServiceResponse<PageResponse<CookieDetailDTO>>.self).response
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

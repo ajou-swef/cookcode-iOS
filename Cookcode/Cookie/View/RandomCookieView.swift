@@ -9,9 +9,10 @@ import SwiftUI
 import AVKit
 import VTabView
 
-struct CookieListView: View {
+struct RandomCookieView: View {
     
-    @StateObject private var viewModel = CookieListViewModel(cookieService: CookieService())
+    @StateObject private var viewModel = RandomCookieViewModel(cookieService: CookieService())
+    @EnvironmentObject var updateViewModel: UpdateCellViewModel
     
     init() {
         let av = AVPlayerViewController()
@@ -40,6 +41,12 @@ struct CookieListView: View {
             }
             .onChange(of: viewModel.drag) { newValue in
                 viewModel.rotateTab()
+            }
+            .onAppear {
+                updateViewModel.scheme = .dark
+            }
+            .onDisappear {
+                updateViewModel.scheme = .light
             }
         }
     }
@@ -78,6 +85,6 @@ struct CookieListView: View {
 
 struct CookieListView_Previews: PreviewProvider {
     static var previews: some View {
-        CookieListView()
+        RandomCookieView()
     }
 }

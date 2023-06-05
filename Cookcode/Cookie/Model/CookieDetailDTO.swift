@@ -9,19 +9,21 @@ import Foundation
 
 struct CookieDetailDTO: Decodable, Mock {
     static func mock() -> CookieDetailDTO {
-        CookieDetailDTO(cookieId: 1, title: "쿠키제목", desc: "쿠키 설명", videoURL: "", recipeID: nil, createdAt: "2020-01-01", user: .mock(), isLiked: 0, likeCount: 10, commentCount: 10)
+        CookieDetailDTO(cookieID: 1, title: "쿠키제목", desc: "쿠키 설명", thumbnailURL: "https://picsum.photos/200/300", videoURL: "", recipeID: nil, createdAt: "2020-01-01", user: .mock(), isLiked: 0, likeCount: 10, commentCount: 10)
     }
     
-    let cookieId: Int
+    let cookieID: Int
     let title, desc: String
-    let videoURL: String
+    let thumbnailURL, videoURL: String
     let recipeID: Int?
     let createdAt: String
     let user: UserCellDto
     let isLiked, likeCount, commentCount: Int
 
     enum CodingKeys: String, CodingKey {
-        case cookieId, title, desc
+        case cookieID = "cookieId"
+        case title, desc
+        case thumbnailURL = "thumbnailUrl"
         case videoURL = "videoUrl"
         case recipeID = "recipeId"
         case createdAt, user, isLiked, likeCount, commentCount
