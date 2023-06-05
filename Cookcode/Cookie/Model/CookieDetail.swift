@@ -10,14 +10,13 @@ import Foundation
 
 struct CookieDetail: Identifiable {
     let id: String = UUID().uuidString
-    
     var url: String
     var title: String
     var cookieId: Int
+    var thumbnail: String
     var description: String
     var likesCount: Int
     var commentsCount: Int
-    
     var didLikes: Bool = false
     
     mutating func update(cookie: CookieDetail) {
@@ -38,7 +37,8 @@ extension CookieDetail {
     init(dto: CookieDetailDTO) {
         url = dto.videoURL
         title = dto.title
-        cookieId = dto.cookieId
+        cookieId = dto.cookieID
+        thumbnail = dto.thumbnailURL
         description = dto.desc
         likesCount = dto.likeCount
         commentsCount = dto.commentCount

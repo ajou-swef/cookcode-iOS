@@ -11,20 +11,37 @@ import Kingfisher
 struct CookieUserView: View {
     
     @StateObject private var viewModel: CookieUserViewModel
+    @EnvironmentObject var navigateViewModel: NavigateViewModel
+    @EnvironmentObject var updateViewModel: UpdateCellViewModel
     
-    init(cookieService: CookieServiceProtocol = CookieSuccessService(), userId: Int) {
+    init(cookieService: CookieServiceProtocol = CookieService(), userId: Int) {
         self._viewModel = StateObject(wrappedValue: CookieUserViewModel(cookieService: cookieService,
                                                                         userId: userId))
     }
     
     var body: some View {
-        LazyVGrid(columns: viewModel.columns) {
-            ForEach(viewModel.contents) { cookieCell in
-                let url = URL(string: cookieCell.thumbnail)
-                KFImage(url)
-                    .resizable()
-                    .aspectRatio(CGSize(width: 2, height: 3), contentMode: .fill)
+        PagenableComponent(viewModel: viewModel) {
+            LazyVGrid(columns: viewModel.columns) {
+                ForEach(viewModel.contents) { cookieCell in
+                    NavigationLink {
+                        CookieVideoList(cookieDetails: viewModel.contents,
+                                        selectedCookieId: cookieCell.cookieId)
+                    } label: {
+                        if cookieCell.thumbnail.isEmpty {
+                            Rectangle()
+                                .aspectRatio(CGSize(width: 2, height: 3), contentMode: .fill)
+                        } else {
+                            let url = URL(string: cookieCell.thumbnail)
+                            KFImage(url)
+                                .resizable()
+                                .aspectRatio(CGSize(width: 2, height: 3), contentMode: .fill)
+                        }
+                    }
+                }
             }
+        }
+        .onAppear {
+            updateViewModel.scheme = .light
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 import AVFoundation
 
-final class CookieListViewModel: ObservableObject {
+final class RandomCookieViewModel: ObservableObject {
     
     @Published var cookies: [CookieDetail] = []
     @Published var cookieSelection: String = ""

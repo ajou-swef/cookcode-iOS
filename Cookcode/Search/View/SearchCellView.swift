@@ -45,10 +45,13 @@ struct SearchCellView: View {
                     RecipeSearchView(query: viewModel.text)
                 case .user:
                     UserSearchView(query: viewModel.text)
+                case .cookie:
+                    CookieSearchView(query: viewModel.text)
+                        .padding(.horizontal)
                 default:
                     EmptyView()
                 }
-            }
+            }	
             .presentIf(field == nil && !viewModel.text.isEmpty)
 
             

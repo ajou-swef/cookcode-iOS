@@ -11,6 +11,7 @@ import Introspect
 struct MainTabView: View {
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
+    @EnvironmentObject var updateViewModel: UpdateCellViewModel
     let tabItemImageWidth: CGFloat = 35
     let tabItemImageHeight: CGFloat = 35
     
@@ -39,7 +40,7 @@ struct MainTabView: View {
                     $0.tabBar.scrollEdgeAppearance = appearance
                     $0.tabBar.standardAppearance = appearance
                 }
-                .preferredColorScheme(navigateViewModel.tab == .cookie ? .dark : .light)
+                .preferredColorScheme(updateViewModel.scheme)
             }
         }
         .animation(.easeIn(duration: 0.2), value: navigateViewModel.outerPath)
@@ -48,7 +49,7 @@ struct MainTabView: View {
     @ViewBuilder
     func cookieView() -> some View {
         NavigationStack {
-            CookieListView() 
+            RandomCookieView() 
         }
         .tint(.mainColor)
         .tag(Tab.cookie)
