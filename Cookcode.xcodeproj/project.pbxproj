@@ -208,6 +208,8 @@
 		15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */; };
 		15CFE6AC29FF7F9100C16FF6 /* CellTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6AB29FF7F9100C16FF6 /* CellTypePicker.swift */; };
 		15CFE6AF29FF8D7700C16FF6 /* RefrigeratorServiceProtocol .swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6AE29FF8D7700C16FF6 /* RefrigeratorServiceProtocol .swift */; };
+		15D69CDB2A2D7FE500A63B8C /* CookieSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D69CDA2A2D7FE500A63B8C /* CookieSearchViewModel.swift */; };
+		15D69CDD2A2D82C900A63B8C /* CookieSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D69CDC2A2D82C900A63B8C /* CookieSearchView.swift */; };
 		15DAE25829FE3CCA00A4B00A /* ObservedOptionalObject in Frameworks */ = {isa = PBXBuildFile; productRef = 15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */; };
 		15DAE25A29FE3F9D00A4B00A /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */; };
 		15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9B29FA94A40008DC7A /* AccountService.swift */; };
@@ -460,6 +462,8 @@
 		15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
 		15CFE6AB29FF7F9100C16FF6 /* CellTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTypePicker.swift; sourceTree = "<group>"; };
 		15CFE6AE29FF8D7700C16FF6 /* RefrigeratorServiceProtocol .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RefrigeratorServiceProtocol .swift"; sourceTree = "<group>"; };
+		15D69CDA2A2D7FE500A63B8C /* CookieSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieSearchViewModel.swift; sourceTree = "<group>"; };
+		15D69CDC2A2D82C900A63B8C /* CookieSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieSearchView.swift; sourceTree = "<group>"; };
 		15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		15E43A9B29FA94A40008DC7A /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSuccessService.swift; sourceTree = "<group>"; };
@@ -1185,6 +1189,7 @@
 				15B04C602A1C7E1800B988BF /* CookieListViewModel.swift */,
 				158D7A7E2A2C66D100DFFB82 /* CookieFetcher.swift */,
 				158D7A802A2C675D00DFFB82 /* CookieUserViewModel.swift */,
+				15D69CDA2A2D7FE500A63B8C /* CookieSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1216,6 +1221,7 @@
 				15B04C5E2A1C7DEF00B988BF /* CookieListView.swift */,
 				15B4CC1E2A24B30900DC226E /* CookieOverlay.swift */,
 				158D7A842A2C698100DFFB82 /* CookieUserView.swift */,
+				15D69CDC2A2D82C900A63B8C /* CookieSearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1636,6 +1642,7 @@
 				158EFDDF2A04CED1003057A4 /* ModifyIngredientViewModel.swift in Sources */,
 				15AA2F4D29F0D9400069813F /* StepFormView.swift in Sources */,
 				1584033529B48EAA0092032A /* MembershipView.swift in Sources */,
+				15D69CDD2A2D82C900A63B8C /* CookieSearchView.swift in Sources */,
 				158D7A8D2A2C70C300DFFB82 /* UserProfileCellDto.swift in Sources */,
 				1594F49F2A29CE7D004A68D6 /* SearchTypeSelectable.swift in Sources */,
 				15A19D812A0B8CF8008C71EA /* RecipeFormDTO.swift in Sources */,
@@ -1736,6 +1743,7 @@
 				159BE2A729FB6C1E00DE7448 /* ServiceAlert.swift in Sources */,
 				15A19D852A0B8E03008C71EA /* RecipeService.swift in Sources */,
 				15F82A6729FA8D3300DA9381 /* AccountServiceProtocol.swift in Sources */,
+				15D69CDB2A2D7FE500A63B8C /* CookieSearchViewModel.swift in Sources */,
 				15A19D832A0B8D43008C71EA /* StepFormDTO.swift in Sources */,
 				158D7A782A2C51D900DFFB82 /* HomeIdPath.swift in Sources */,
 				15A6AB552A03ACA700394490 /* SelectIngredientViewModel.swift in Sources */,
