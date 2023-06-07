@@ -27,6 +27,8 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
                                .foregroundColor(.black)
                        }
                        .id(recipeCell.id)
+                       .padding(.bottom, 15)
+                        
                    }
                     .padding(.horizontal)
                 }

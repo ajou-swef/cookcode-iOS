@@ -28,6 +28,7 @@ struct RecipeUserView: View {
                        .zIndex(0)
                }
                .id(recipeCell.id)
+               .padding(.bottom, 15)
            }
         }
     }

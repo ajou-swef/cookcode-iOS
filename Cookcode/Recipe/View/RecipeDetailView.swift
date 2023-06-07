@@ -91,7 +91,7 @@ struct RecipeDetailView: View {
         Button {
             viewModel.commentsComponentIsPresented = true
         } label: {
-            Image(systemName: "ellipsis.bubble.fill")
+            Image(systemName: "bubble.right")
         }
         .sheet(isPresented: $viewModel.commentsComponentIsPresented) {
             CommentList(viewModel:
