@@ -35,7 +35,6 @@ struct HomeView: View {
                     Spacer()
                 }
                 .zIndex(100)
-                .padding(.leading)
                 .offset(y: viewModel.filterOffset)
                 .padding(.bottom, viewModel.filterOffset)
                 .opacity(viewModel.filterOpacity)
@@ -43,6 +42,7 @@ struct HomeView: View {
                 homeRows()
                 
             }
+            .padding(.horizontal)
         }
         .navigationTitle("")
         .disabled(viewModel.contentTypeButtonIsShowing)
@@ -177,7 +177,6 @@ struct HomeView: View {
                     .presentIf(viewModel.isLoadingState)
                 
             }
-            .padding(.horizontal)
             .background {
                 ScrollDetector { offset, velocity in
                     withAnimation {
