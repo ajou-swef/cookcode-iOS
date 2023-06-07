@@ -56,7 +56,7 @@ struct MainTabView: View {
         .tabItem {
             Tab.cookie.selectImage(navigateViewModel.tab)
                 .resizable()
-                .frame(width: 10, height: 10)
+                .frame(width: tabItemImageWidth, height: tabItemImageHeight)
         }
     }
     

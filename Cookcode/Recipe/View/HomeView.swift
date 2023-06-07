@@ -20,6 +20,7 @@ struct HomeView: View {
             VStack {
                 header()
                     .zIndex(200)
+                    .padding(.horizontal)
                 
                 HStack {
                     RecipeFilterPicker(selection: $viewModel.filterType, filterOffset: $viewModel.dragVelocity,
@@ -38,11 +39,11 @@ struct HomeView: View {
                 .offset(y: viewModel.filterOffset)
                 .padding(.bottom, viewModel.filterOffset)
                 .opacity(viewModel.filterOpacity)
+                .padding(.horizontal)
                 
                 homeRows()
                 
             }
-            .padding(.horizontal)
         }
         .navigationTitle("")
         .disabled(viewModel.contentTypeButtonIsShowing)
@@ -171,6 +172,7 @@ struct HomeView: View {
                    }
                    .id(cell.id)
                }
+                .padding(.horizontal)
                 
                 
                 ProgressView()
