@@ -7,10 +7,7 @@
 
 import Foundation
 
-final class RecipeSearchViewModel: RecipeFetcher, Refreshable {
-    typealias Dto = RecipeCellDto
-    typealias T = RecipeCell
-    
+final class RecipeSearchViewModel: RefreshableRecipeFetcher {
     let refreshThreshold: CGFloat = 40
     let spaceName: String = "recipeSearchViewModel"
     
@@ -20,6 +17,8 @@ final class RecipeSearchViewModel: RecipeFetcher, Refreshable {
     @Published var filterType: RecipeFilterType = .all
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var pageState: PageState = .wait(0)
+    @Published var presentOnlyCookable: Bool = false
+    @Published var topOffset: CGFloat = .zero
     
     internal let recipeService: RecipeServiceProtocol
     @Published var fetchTriggerOffset: CGFloat = .zero
@@ -35,13 +34,17 @@ final class RecipeSearchViewModel: RecipeFetcher, Refreshable {
         }
     }
     
+    var topOpacity: CGFloat {
+        (10 + topOffset) * 2
+    }
+    
     @MainActor
     func onFetch() async {
         let curPage = pageState.page
         pageState = .loading(curPage)
         print("page(\(curPage)) loading start")
         
-        let result = await recipeService.searchRecipeCells(query: query, coockable: false, page: curPage, size: pageSize)
+        let result = await recipeService.searchRecipeCells(query: query, coockable: presentOnlyCookable, page: curPage, size: pageSize)
         
         switch result {
         case .success(let success):

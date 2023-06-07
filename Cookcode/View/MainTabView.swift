@@ -63,7 +63,7 @@ struct MainTabView: View {
     @ViewBuilder
     func homeView() -> some View {
         NavigationStack(path: $navigateViewModel.homePath) {
-            HomeView()
+            HomeRecipeView()
                 .navigationDestination(for: HomeIdPath.self) { path in
                     switch path.path {
                     case .profile:

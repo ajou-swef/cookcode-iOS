@@ -9,7 +9,6 @@ import SwiftUI
 
 protocol RecipeFetcher: Pagenable {
     var recipeService: RecipeServiceProtocol { get }
-    var filterType: RecipeFilterType { get set }
     var serviceAlert: ServiceAlert { get set }
 }
 

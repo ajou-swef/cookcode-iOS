@@ -18,22 +18,7 @@ struct RecipeSearchView: View {
     }
     
     var body: some View {
-        RefreshComponent(viewModel: viewModel) {
-            PagenableComponent(viewModel: viewModel) {
-                ForEach(viewModel.contents) { recipeCell in
-                   Button {
-                       let homeIdPath = HomeIdPath(path: .recipe, id: recipeCell.recipeId)
-                       navigateViewModel.navigateWithHome(homeIdPath)
-                   } label: {
-                       CellView(cell: recipeCell)
-                           .foregroundColor(.black)
-                           .zIndex(0)
-                   }
-                   .id(recipeCell.id)
-               }
-            }
-            .padding(.horizontal)
-        }
+        RefreshableRecipeFetchView(viewModel: viewModel)
     }
 }
 
