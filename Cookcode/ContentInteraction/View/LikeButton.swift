@@ -11,6 +11,19 @@ struct LikeButton<ViewModel: likeButtonInteractable>: View {
     
     @ObservedObject var viewModel: ViewModel
     let like: any Like
+    let color: Color
+    let showCounts: Bool
+    let width: CGFloat
+    
+    init(viewModel: ViewModel, like: any Like, color: Color = .white,
+         showCounts: Bool = true, width: CGFloat = 30) {
+        
+        self.viewModel = viewModel
+        self.like = like
+        self.color = color
+        self.showCounts = showCounts
+        self.width = width
+    }
     
     var body: some View {
         Button {
@@ -20,12 +33,13 @@ struct LikeButton<ViewModel: likeButtonInteractable>: View {
                 Image(systemName: like.isLiked ? "heart.fill" : "heart")
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
-                    .frame(width: 30)
-                    .foregroundColor(.white)
+                    .frame(width: width)
+                    .foregroundColor(color)
                 
                 Text("\(like.likesCount)")
                     .font(CustomFontFactory.INTER_BOLD_16)
-                    .foregroundColor(.white)
+                    .foregroundColor(color)
+                    .presentIf(showCounts)
             }
         }
     }
@@ -33,7 +47,7 @@ struct LikeButton<ViewModel: likeButtonInteractable>: View {
 
 struct LikeComponent_Previews: PreviewProvider {
     static var previews: some View {
-        LikeButton(viewModel: RandomCookieViewModel(cookieService: CookieSuccessService()), like: CookieDetail.mock())
+        LikeButton(viewModel: RandomCookieViewModel(cookieService: CookieSuccessService()), like: CookieDetail.mock(), color: .white)
             .preferredColorScheme(.dark)
             
     }

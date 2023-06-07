@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RecipeServiceProtocol: FecthCellServiceProtocol, CommentServiceProtocol {
+protocol RecipeServiceProtocol: FecthCellServiceProtocol, CommentServiceProtocol, LikeServiceProtocol {
     func fetchRecipeCellsByUserId(_ id: Int) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> 
     
     func searchRecipeCells(query: String, coockable: Bool, page: Int, size: Int) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError>

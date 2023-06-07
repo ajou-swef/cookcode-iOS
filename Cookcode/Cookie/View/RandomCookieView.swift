@@ -32,7 +32,7 @@ struct RandomCookieView: View {
                             .overlay(alignment: .bottomTrailing) {
                                 VStack {
                                     PresentCommentButton(viewModel: viewModel, info: cookie)
-                                    LikeButton(viewModel: viewModel, like: cookie)
+                                    LikeButton(viewModel: viewModel, like: cookie, color: .white)
                                 }
                                 .padding()
                             }
