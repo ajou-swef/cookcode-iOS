@@ -558,7 +558,7 @@
 				153B4DA429ED085E00543730 /* Info.plist */,
 				15508CB12A134DE600004A1C /* API.swift */,
 				15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */,
-				158D7A742A2C519A00DFFB82 /* Environment */,
+				15676CEE2A302D72002A142E /* EnvironmentObject */,
 				1594F4932A29BDA7004A68D6 /* Profile */,
 				15B4CC172A24B1A400DC226E /* Cookie */,
 				15637AB32A28BD5E007BFF8E /* Recipe */,
@@ -955,6 +955,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		15676CEE2A302D72002A142E /* EnvironmentObject */ = {
+			isa = PBXGroup;
+			children = (
+				15D69CDF2A2D85A600A63B8C /* Update */,
+				15D69CDE2A2D859D00A63B8C /* Navigate */,
+			);
+			path = EnvironmentObject;
+			sourceTree = "<group>";
+		};
 		158A21CA2A11D46D007F5FA7 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,15 +978,6 @@
 				158AF5E92A1F71F300FF815A /* CookieDetailResponseDTO.swift */,
 			);
 			path = Response;
-			sourceTree = "<group>";
-		};
-		158D7A742A2C519A00DFFB82 /* Environment */ = {
-			isa = PBXGroup;
-			children = (
-				15D69CDF2A2D85A600A63B8C /* Update */,
-				15D69CDE2A2D859D00A63B8C /* Navigate */,
-			);
-			path = Environment;
 			sourceTree = "<group>";
 		};
 		158D7A752A2C51A300DFFB82 /* Model */ = {
