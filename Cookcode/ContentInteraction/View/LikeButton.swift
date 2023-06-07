@@ -34,7 +34,7 @@ struct LikeButton<ViewModel: likeButtonInteractable>: View {
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
                     .frame(width: width)
-                    .foregroundColor(color)
+                    .foregroundColor(.red)
                 
                 Text("\(like.likesCount)")
                     .font(CustomFontFactory.INTER_BOLD_16)

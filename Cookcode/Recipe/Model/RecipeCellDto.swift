@@ -9,7 +9,7 @@ import Foundation
 
 struct RecipeCellDto: Decodable, Hashable, Mock {
     static func mock() -> RecipeCellDto {
-        RecipeCellDto(recipeID: Int.random(in: 0...10000), user: UserCellDto.mock(), title: "title", description: "description", ingredients: IngredientDTO.mocks(1), optionalIngredients: IngredientDTO.mocks(1), createdAt: "2023-12-12", updatedAt: "2023-12-14", thumbnail: "https://picsum.photos/800/200")
+        RecipeCellDto(recipeID: Int.random(in: 0...10000), user: UserCellDto.mock(), title: "title", description: "description", ingredients: IngredientDTO.mocks(1), optionalIngredients: IngredientDTO.mocks(1), createdAt: "2023-12-12", updatedAt: "2023-12-14", thumbnail: "https://picsum.photos/800/200", likeCount: 1)
     }
     
     let recipeID: Int
@@ -17,9 +17,11 @@ struct RecipeCellDto: Decodable, Hashable, Mock {
      let title, description: String
      let ingredients, optionalIngredients: [IngredientDTO]
      let createdAt, updatedAt, thumbnail: String
+    let likeCount: Int
 
      enum CodingKeys: String, CodingKey {
          case recipeID = "recipeId"
          case user, title, description, ingredients, optionalIngredients, createdAt, updatedAt, thumbnail
+         case likeCount
      }
 }

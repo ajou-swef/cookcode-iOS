@@ -21,6 +21,10 @@ struct LoginView: View {
     var body: some View {
         NavigationStack(path: $path) {
             VStack(spacing: 10) {
+                Image("cookcode.logo")
+                    .resizable()
+                    .frame(width: 150, height: 150)
+                
                 Text("로그인")
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
                     .padding(.bottom, 10)

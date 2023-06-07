@@ -29,27 +29,43 @@ struct CellView: View {
                 }
             
             HStack(spacing: 5) {
-                Image(systemName: "person.crop.circle")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.primary)
+                if let imageURL = cell.userProfile {
+                    KFImage(URL(string: imageURL)!)
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                } else {
+                    Image(systemName: "person.crop.circle")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.primary)
+                }
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 0) {
                     Text("\(cell.title)")
                         .lineLimit(1)
                         .font(CustomFontFactory.INTER_BOLD_16)
                     
                     HStack {
-                        Text("\(cell.userName)")
+                        Text(cell.userName)
                             .lineLimit(1)
                             .font(CustomFontFactory.INTER_REGULAR_14)
-                            .foregroundColor(.primary)
+                             
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 4, height: 4)
+                        
+                        Text("좋아요 \(cell.likesCount)")
+                            .font(CustomFontFactory.INTER_REGULAR_14)
+                        
+                        
+                        Spacer()
                         
                         Text("\(cell.createdAt)")
                             .lineLimit(1)
                             .font(CustomFontFactory.INTER_REGULAR_14)
-                            .foregroundColor(.primary)
                     }
+                    .foregroundColor(.gray808080)
                 }
                 
                 Spacer()
