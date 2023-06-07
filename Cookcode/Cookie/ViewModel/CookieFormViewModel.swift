@@ -120,7 +120,9 @@ final class CookieFormViewModel: ObservableObject {
         if let cgImage = try? imageGenerator.copyCGImage(at: .zero, actualTime: nil) {
             let uiImage = UIImage(cgImage: cgImage)
             selectedVideoThumbnails.append(VideoThumbnail(url: url.url, loadState: .loaded(uiImage)))
-            cookieForm.thumbnailData = uiImage.pngData()
+            if selectedVideoThumbnails.count == 1 {
+                cookieForm.thumbnailData = uiImage.pngData()
+            }
         }
     }
     
@@ -155,7 +157,7 @@ final class CookieFormViewModel: ObservableObject {
     }
     
     @MainActor
-    fileprivate func postCookie(_ url: URL, dismiss: DismissAction) async {
+    fileprivate func postCookie(_ url: URL, dismiss: () -> ()) async {
         cookieForm.videoURL = url
         viewState = .cookieUploading
         let result = await cookieService.postCookie(cookie: cookieForm)
@@ -171,9 +173,11 @@ final class CookieFormViewModel: ObservableObject {
         viewState = .none
     }
     
+    @MainActor
     func export(ithPreset preset: String = AVAssetExportPresetHighestQuality,
-                toFileType outputFileType: AVFileType = .mov, dismiss: DismissAction) async {
-    
+                toFileType outputFileType: AVFileType = .mov, dismiss: () -> ()) async {
+        
+        
         guard let video = mergedAVPlayer?.currentItem?.asset else { return }
         guard let documentDirectory = FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask).first else { return }
@@ -206,7 +210,7 @@ final class CookieFormViewModel: ObservableObject {
 
         print("Success to export sesion")
         print("movieURL: \(url)")
-    
+
         await postCookie(url, dismiss: dismiss)
     }
 }

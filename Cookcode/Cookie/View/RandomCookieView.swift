@@ -8,6 +8,7 @@
 import SwiftUI
 import AVKit
 import VTabView
+import Kingfisher
 
 struct RandomCookieView: View {
     
@@ -47,9 +48,9 @@ struct RandomCookieView: View {
                                 .padding()
                             }
                     } else {
-                        Rectangle()
-                            .foregroundColor(.black)
-                            .tag(cookie.id)
+                        let url = URL(string: cookie.thumbnail)
+                        KFImage(url)
+                            .resizable()
                     }
                 }
             }
