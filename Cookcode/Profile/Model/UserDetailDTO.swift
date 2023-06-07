@@ -9,16 +9,18 @@ import Alamofire
 
 struct UserDetailDTO: Codable, Mock {
     static func mock() -> UserDetailDTO {
-        UserDetailDTO(userID: 13, email: "nou0ggid2@gmail.com", nickname: "page", profileImage: "https://picsum.photos/200/300", status: "VALID", authority: "USER")
+        UserDetailDTO(userID: 13, email: "nou0ggid2@gmail.com", nickname: "page", profileImage: "https://picsum.photos/200/300", status: "VALID", authority: "USER", isSubscribed: false)
     }
     
     let userID: Int
     let email, nickname: String
     let profileImage: String?
     let status, authority: String
+    let isSubscribed: Bool
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
         case email, nickname, profileImage, status, authority
+        case isSubscribed
     }
 }

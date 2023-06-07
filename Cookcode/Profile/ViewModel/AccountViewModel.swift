@@ -47,13 +47,12 @@ class AccountViewModel: ObservableObject {
             return
         }
         
-        print("getUser")
         
         switch await accountService.getUserDetailById(userID) {
         case .success(let response):
             user = UserDetail(dto: response.data)
         case .failure(_):
-            break
+            logout()
         }
         
     }

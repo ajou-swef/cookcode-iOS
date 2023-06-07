@@ -8,6 +8,10 @@
 import Foundation
 
 final class AccountSuccessService: AccountServiceProtocol {
+    func fetchMySubscriber() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
+        .success(.mock())
+    }
+    
     func updateProfile(_ profileForm: ProfileForm) async -> Result<DefaultResponse, ServiceError> {
         .success(.mock())
     }
@@ -24,7 +28,7 @@ final class AccountSuccessService: AccountServiceProtocol {
         .success(.mock())
     }
     
-    func subscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
+    func toggleUserSubscribeById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
         .success(.mock())
     }
     

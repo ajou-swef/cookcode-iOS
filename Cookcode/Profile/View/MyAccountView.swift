@@ -34,6 +34,27 @@ struct MyAccountView: View {
                             .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
                     }
                     
+                    
+                    Button {
+                        dismiss()
+                        let homeIdPath = HomeIdPath(path: .publisher, id: nil)
+                        navigateViewModel.navigateWithHome(homeIdPath)
+                    } label: {
+                        Text("구독 목록")
+                            .foregroundColor(.primary)
+                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                    }
+                    
+                    Button {
+                        dismiss()
+                        let homeIdPath = HomeIdPath(path: .subscriber, id: nil)
+                        navigateViewModel.navigateWithHome(homeIdPath)
+                    } label: {
+                        Text("내 구독자들")
+                            .foregroundColor(.primary)
+                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                    }
+                    
                     Button {
                         navigateViewModel.clear()
                         accountViewModel.logout()
@@ -42,11 +63,31 @@ struct MyAccountView: View {
                             .foregroundColor(.primary)
                             .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
                     }
-
+                    
+                    Button {
+                        userFormViewModel.deleteAccountAlertIsPresented = true 
+                    } label: {
+                        Text("계정삭제")
+                            .foregroundColor(.red)
+                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                    }
 
                 }
             }
-            .background(Color.gray_bcbcbc.opacity(0.5))
+            .alert("계정을 삭제하시겠습니까?", isPresented: $userFormViewModel.deleteAccountAlertIsPresented, actions: {
+                Button("취소", role: .cancel) { }
+                Button {
+                    Task {
+                        await userFormViewModel.alertOkBottonTapped()
+                        navigateViewModel.clear()
+                        accountViewModel.logout()
+                    }
+                } label: {
+                    Text("삭제")
+                        .foregroundColor(.red)
+                }
+
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
@@ -106,7 +147,7 @@ struct MyAccountView: View {
     private func modifyImageButton() -> some View {
         PhotosPicker(selection: $userFormViewModel.profileForm.photosPickerItem) {
             Circle()
-                .foregroundColor(.white)
+                .foregroundColor(Color.gray_bcbcbc)
                 .frame(width: 30, height: 30)
                 .overlay {
                     Image(systemName: "camera.fill")
@@ -117,6 +158,7 @@ struct MyAccountView: View {
                 .onChange(of: userFormViewModel.profileForm.photosPickerItem) { newValue in
                     Task { await userFormViewModel.postProfileImage() }
                 }
+                .offset(x: 10, y: 10)
         }
     }
 }

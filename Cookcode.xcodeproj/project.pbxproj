@@ -59,6 +59,8 @@
 		153B4DBD29ED599C00543730 /* Character + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DBC29ED599C00543730 /* Character + Extension.swift */; };
 		153C1DBD2A309192001DC06B /* UserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153C1DBC2A309192001DC06B /* UserForm.swift */; };
 		153C1DBF2A3092A5001DC06B /* UserFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153C1DBE2A3092A5001DC06B /* UserFormViewModel.swift */; };
+		153C1DC12A30B25A001DC06B /* MySubscriberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153C1DC02A30B25A001DC06B /* MySubscriberViewModel.swift */; };
+		153C1DC32A30B279001DC06B /* MySubscriberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153C1DC22A30B279001DC06B /* MySubscriberView.swift */; };
 		153F127329FE18F9008BDB4E /* HomePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F127229FE18F9008BDB4E /* HomePath.swift */; };
 		153F127529FE1B8A008BDB4E /* SearchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F127429FE1B8A008BDB4E /* SearchCellView.swift */; };
 		153F127829FE2274008BDB4E /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F127729FE2274008BDB4E /* ImageContent.swift */; };
@@ -318,6 +320,8 @@
 		153B4DBC29ED599C00543730 /* Character + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character + Extension.swift"; sourceTree = "<group>"; };
 		153C1DBC2A309192001DC06B /* UserForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserForm.swift; sourceTree = "<group>"; };
 		153C1DBE2A3092A5001DC06B /* UserFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFormViewModel.swift; sourceTree = "<group>"; };
+		153C1DC02A30B25A001DC06B /* MySubscriberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySubscriberViewModel.swift; sourceTree = "<group>"; };
+		153C1DC22A30B279001DC06B /* MySubscriberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySubscriberView.swift; sourceTree = "<group>"; };
 		153F127229FE18F9008BDB4E /* HomePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePath.swift; sourceTree = "<group>"; };
 		153F127429FE1B8A008BDB4E /* SearchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellView.swift; sourceTree = "<group>"; };
 		153F127729FE2274008BDB4E /* ImageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContent.swift; sourceTree = "<group>"; };
@@ -1078,6 +1082,7 @@
 				158D7A722A2C48BA00DFFB82 /* UserSearchView.swift */,
 				15FD58A22A2C847600295B8B /* MyAccountView.swift */,
 				15FD58A42A2C8CC500295B8B /* MyPublishersView.swift */,
+				153C1DC22A30B279001DC06B /* MySubscriberView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1090,6 +1095,7 @@
 				1594F4992A29BFC4004A68D6 /* ProfileViewModel.swift */,
 				158D7A6E2A2C428600DFFB82 /* UserSearchViewModel.swift */,
 				158D7A8A2A2C6DA200DFFB82 /* MyPublisherViewModel .swift */,
+				153C1DC02A30B25A001DC06B /* MySubscriberViewModel.swift */,
 				153C1DBE2A3092A5001DC06B /* UserFormViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1676,6 +1682,7 @@
 				159C99E12A127B450058B18E /* ScrollVelocityDetector.swift in Sources */,
 				15B04C572A1C6BBD00B988BF /* VideoThumbnail.swift in Sources */,
 				15EFAD6C2A0B34690092B203 /* Int + Extension.swift in Sources */,
+				153C1DC32A30B279001DC06B /* MySubscriberView.swift in Sources */,
 				15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */,
 				15AE41832A2DC7F4004DDD0E /* Like.swift in Sources */,
 				1584033329B48E0F0092032A /* LoginView.swift in Sources */,
@@ -1758,6 +1765,7 @@
 				159BE2A729FB6C1E00DE7448 /* ServiceAlert.swift in Sources */,
 				15A19D852A0B8E03008C71EA /* RecipeService.swift in Sources */,
 				15F82A6729FA8D3300DA9381 /* AccountServiceProtocol.swift in Sources */,
+				153C1DC12A30B25A001DC06B /* MySubscriberViewModel.swift in Sources */,
 				15D69CDB2A2D7FE500A63B8C /* CookieSearchViewModel.swift in Sources */,
 				15A19D832A0B8D43008C71EA /* StepFormDTO.swift in Sources */,
 				158D7A782A2C51D900DFFB82 /* HomeIdPath.swift in Sources */,

@@ -72,6 +72,10 @@ struct MainTabView: View {
                         SearchCellView()
                     case .recipe:
                         RecipeDetailView(recipeId: path.id ?? -1)
+                    case .publisher:
+                        MyPublishersView()
+                    case .subscriber:
+                        MySubscriberView() 
                     }
                 }
         }

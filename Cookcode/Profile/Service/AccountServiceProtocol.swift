@@ -11,12 +11,12 @@ import Foundation
 protocol AccountServiceProtocol {
     func updateProfile(_ profileForm: ProfileForm) async -> Result<DefaultResponse, ServiceError>
     
-    func fetchMyPublisher() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> 
+    func fetchMyPublisher() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError>
+    func fetchMySubscriber() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> 
     
     func searchUser(query: String) async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError>
     
-    func subscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError>
-    func unsubscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> 
+    func toggleUserSubscribeById(_ id: Int) async -> Result<DefaultResponse, ServiceError>
     
     func check(_ nickname: String) async -> Result<ServiceResponse<AccountCheckDto>, ServiceError>
     

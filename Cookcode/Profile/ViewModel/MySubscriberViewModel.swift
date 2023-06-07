@@ -1,13 +1,13 @@
 //
-//  MyPublisherViewModel .swift
+//  MySubscriberViewModel.swift
 //  Cookcode
 //
-//  Created by 노우영 on 2023/06/04.
+//  Created by 노우영 on 2023/06/07.
 //
 
-import SwiftUI
+import Foundation
 
-final class MyPublisherViewModel: UserFetcher {
+final class MySubscriberViewModel: UserFetcher {
     
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var pageState: PageState = .wait(0)
@@ -28,7 +28,7 @@ final class MyPublisherViewModel: UserFetcher {
         let curPage = pageState.page
         pageState = .loading(curPage)
         
-        let result = await accountService.fetchMyPublisher()
+        let result = await accountService.fetchMySubscriber()
         
         switch result {
         case .success(let success):
