@@ -92,6 +92,12 @@ struct RecipeDetailView: View {
             viewModel.commentsComponentIsPresented = true
         } label: {
             Image(systemName: "bubble.right")
+                .overlay {
+                    Text("\(viewModel.recipeDetail.commentsCount)")
+                        .font(.custom(CustomFont.interBold.rawValue, size: 11))
+                        .foregroundColor(.primary)
+                        .padding(.bottom, 5)
+                }
         }
         .sheet(isPresented: $viewModel.commentsComponentIsPresented) {
             CommentList(viewModel:

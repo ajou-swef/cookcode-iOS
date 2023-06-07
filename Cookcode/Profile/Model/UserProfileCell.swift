@@ -25,7 +25,7 @@ extension UserProfileCell {
         userName = dto.nickname
         imageURL = dto.profileImage
         userId = dto.userID
-        subscriberCount = 132
+        subscriberCount = dto.subscriberCount
         email = dto.email
     }
 }

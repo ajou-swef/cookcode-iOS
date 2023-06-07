@@ -15,6 +15,7 @@ struct RecipeDetail: Like {
     let user: UserCellDto?
     let title, description: String
     let createdAt, updatedAt: String?
+    var commentsCount: Int
     let thumbnail: String
     var steps: [StepDTO]
     var ingredientCells: [IngredientCell]
@@ -35,6 +36,7 @@ extension RecipeDetail {
         optionalIngredientCells = dto.optionalIngredients.map { IngredientCell(ingredientDTO: $0) }
         isLiked = dto.isLiked
         likesCount = dto.likeCount
+        commentsCount = dto.commentCount
     }
     
     init (form: RecipeForm) {
@@ -55,5 +57,6 @@ extension RecipeDetail {
         optionalIngredientCells = form.optionalIngredients.map { IngredientCell(ingredientId: $0) }
         isLiked = false
         likesCount = 0
+        commentsCount = 0
     }
 }
