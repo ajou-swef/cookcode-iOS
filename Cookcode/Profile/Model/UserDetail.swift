@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import _PhotosUI_SwiftUI
 
 struct UserDetail: Mock {
     static func mock() -> UserDetail {

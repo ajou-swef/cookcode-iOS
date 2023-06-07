@@ -8,6 +8,10 @@
 import Foundation
 
 final class AccountSuccessService: AccountServiceProtocol {
+    func updateProfile(_ profileForm: ProfileForm) async -> Result<DefaultResponse, ServiceError> {
+        .success(.mock())
+    }
+ 
     func fetchMyPublisher() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
         .success(.mock())
     }

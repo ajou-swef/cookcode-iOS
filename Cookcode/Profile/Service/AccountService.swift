@@ -8,6 +8,32 @@ import Alamofire
 import Foundation
 
 final class AccountService: AccountServiceProtocol {
+    func updateProfile(_ profileForm: ProfileForm) async -> Result<DefaultResponse, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/account/profileImage"
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        guard let imageData = profileForm.data else { return .failure(.MOCK()) }
+        
+        let response = await AF.upload(multipartFormData: { multipart in
+            
+            multipart.append("\(profileForm.thumbnail ?? "")".data(using: .utf8)!, withName: "oldProfileImage")
+            multipart.append(imageData, withName: "profileImage", fileName: UUID().uuidString, mimeType: "video/mp4")
+ 
+        }, to: url, method: .patch, headers: headers)
+            .serializingDecodable(DefaultResponse.self).response
+        
+        if response.error != nil {
+            print("\(response.debugDescription)")
+        }
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.MOCK()
+        }
+    }
+    
     func fetchMyPublisher() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/account/subscribe/publishers"
         let headers: HTTPHeaders = [
