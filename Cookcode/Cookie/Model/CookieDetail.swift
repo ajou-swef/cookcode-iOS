@@ -39,6 +39,7 @@ struct CookieDetail: Like, CommentButtonInfo {
         description = cookie.description
         likesCount = cookie.likesCount
         commentsCount = cookie.commentsCount
+        isLiked = cookie.isLiked
     }
     
     static func mock() -> CookieDetail {

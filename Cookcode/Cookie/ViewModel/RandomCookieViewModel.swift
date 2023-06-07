@@ -71,15 +71,19 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
         }
     }
     
-    @MainActor
-    func rotateTab() {
-        guard checkArrayBound() else { return }
-        
+    fileprivate func extractedFunc() {
         if cookieSelection == cookies[0].id && drag < 0 {
             guard let last = cookies.last else { return }
             cookieSelection = last.id
             print("up carousel!")
         }
+    }
+    
+    @MainActor
+    func rotateTab() {
+        guard checkArrayBound() else { return }
+        
+        extractedFunc()
 
         if cookieSelection == cookies[cookies.count - 1].id && drag > 0 {
             cookieSelection = cookies[0].id

@@ -11,7 +11,7 @@ import VTabView
 
 struct RandomCookieView: View {
     
-    @StateObject private var viewModel = RandomCookieViewModel(cookieService: CookieSuccessService())
+    @StateObject private var viewModel = RandomCookieViewModel(cookieService: CookieService())
     @EnvironmentObject var updateViewModel: UpdateCellViewModel
     
     init() {
