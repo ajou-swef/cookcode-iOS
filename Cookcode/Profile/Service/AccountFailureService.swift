@@ -9,6 +9,10 @@ import Alamofire
 import Foundation
 
 final class AccountFailureService: AccountServiceProtocol {
+    func fetchMySubscriber() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func updateProfile(_ profileForm: ProfileForm) async -> Result<DefaultResponse, ServiceError> {
         .failure(.MOCK())
     }
@@ -25,7 +29,7 @@ final class AccountFailureService: AccountServiceProtocol {
         .failure(.MOCK())
     }
     
-    func subscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
+    func toggleUserSubscribeById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
         .failure(.MOCK())
     }
     

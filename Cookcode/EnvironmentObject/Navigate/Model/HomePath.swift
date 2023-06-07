@@ -11,4 +11,6 @@ enum HomePath: String, Hashable {
     case search
     case profile
     case recipe
+    case publisher
+    case subscriber
 }

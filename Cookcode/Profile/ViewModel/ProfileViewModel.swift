@@ -42,7 +42,7 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
         guard userDetail.isNotMyProfile else { return }
         
         userDetail.isSubscribed = true
-        let result = await accountService.subscribeUserById(userDetail.userId)
+        let result = await accountService.toggleUserSubscribeById(userDetail.userId)
         
         switch result {
         case .success(_):
@@ -58,7 +58,7 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
         guard userDetail.isNotMyProfile else { return }
         
         userDetail.isSubscribed = false
-        let result = await accountService.unsubscribeUserById(userDetail.userId)
+        let result = await accountService.toggleUserSubscribeById(userDetail.userId)
         
         switch result {
         case .success(_):

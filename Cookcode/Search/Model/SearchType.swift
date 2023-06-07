@@ -14,7 +14,7 @@ enum SearchType: String, CaseIterable {
     case publisher = "구독 목록"
     
     static func profileSearchType() -> [SearchType] {
-        return [.recipe, .cookie, .publisher]
+        return [.recipe, .cookie]
     }
     
     static func searchType() -> [SearchType] {

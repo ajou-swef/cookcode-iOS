@@ -41,6 +41,6 @@ extension UserDetail {
         let myId = UserDefaults.standard.integer(forKey: USER_ID)
         userId = dto.userID
         isMyProfile = (myId == dto.userID)
-        isSubscribed = false 
+        isSubscribed = dto.isSubscribed
     }
 }

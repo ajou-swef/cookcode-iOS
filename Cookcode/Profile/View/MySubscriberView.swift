@@ -1,19 +1,19 @@
 //
-//  MyPublishersView.swift
+//  MySubscriberView.swift
 //  Cookcode
 //
-//  Created by 노우영 on 2023/06/04.
+//  Created by 노우영 on 2023/06/07.
 //
 
 import SwiftUI
 
-struct MyPublishersView: View {
+struct MySubscriberView: View {
     
-    @StateObject private var viewModel: MyPublisherViewModel
+    @StateObject private var viewModel: MySubscriberViewModel
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     
     init(accountService: AccountServiceProtocol = AccountService()) {
-        self._viewModel = StateObject(wrappedValue: MyPublisherViewModel(accountSerivce: accountService))
+        self._viewModel = StateObject(wrappedValue: MySubscriberViewModel(accountSerivce: accountService))
     }
     
     var body: some View {
@@ -37,8 +37,8 @@ struct MyPublishersView: View {
     }
 }
 
-struct MyPublishersView_Previews: PreviewProvider {
+struct MySubscriberView_Previews: PreviewProvider {
     static var previews: some View {
-        MyPublishersView(accountService: AccountSuccessService())
+        MySubscriberView(accountService: AccountSuccessService())
     }
 }
