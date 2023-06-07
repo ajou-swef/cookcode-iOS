@@ -11,7 +11,7 @@ class AccountViewModel: ObservableObject {
     
     @Published private(set) var didSignIn: Bool = false
     @Published var deleteAccountAlertIsPresented: Bool = false
-    @Published private(set) var user: UserDetail?
+    @Published var user: UserDetail = .mock()
     @Published private var _serviceAlert: ServiceAlert = .init()
     
     private let accountService: AccountServiceProtocol

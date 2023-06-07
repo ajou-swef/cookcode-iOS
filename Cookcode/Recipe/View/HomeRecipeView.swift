@@ -20,6 +20,11 @@ struct HomeRecipeView: View {
         VStack {
             header()
                 .padding(.horizontal)
+                .offset(y: viewModel.topOffset)
+                .padding(.bottom, viewModel.topOffset)
+                .opacity(viewModel.topOpacity)
+                .animation(.spring(), value: viewModel.topOpacity)
+                .animation(.spring(), value: viewModel.topOffset)
             
             RefreshableRecipeFetchView(viewModel: viewModel)
         }
@@ -117,6 +122,10 @@ struct HomeRecipeView: View {
                 .resizable()
                 .frame(width: 40, height: 40)
             
+            Text("cookcode")
+                .font(.custom(CustomFont.interBold.rawValue, size: 16))
+                .foregroundColor(.mainColor)
+            
             Spacer()
             
             Button {
@@ -126,7 +135,7 @@ struct HomeRecipeView: View {
                 Image(systemName: "magnifyingglass")
                     .resizable()
                     .foregroundColor(.black)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 22, height: 22)
             }
             
             Button {
@@ -135,7 +144,7 @@ struct HomeRecipeView: View {
                 Image(systemName: "person.fill")
                     .resizable()
                     .foregroundColor(.black)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 22, height: 22)
             }
             .fullScreenCover(isPresented: $viewModel.myAccountViewIsPresented) {
                 MyAccountView()
@@ -147,6 +156,8 @@ struct HomeRecipeView: View {
 
 struct HomeRecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeRecipeView()
+        HomeRecipeView(recipeService: RecipeSuccessService())
+            .environmentObject(NavigateViewModel())
+            .environmentObject(UpdateCellViewModel())
     }
 }

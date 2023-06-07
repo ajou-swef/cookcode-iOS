@@ -68,29 +68,31 @@ struct ProfileView: View {
     
     @ViewBuilder
     private func userProfile() -> some View {
-        if let imageURL = viewModel.userDetail.thumbnail {
-            if let url = URL(string: imageURL) {
-                KFImage(url)
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .clipShape(Circle())
+        Group {
+            if let imageURL = viewModel.userDetail.thumbnail {
+                if let url = URL(string: imageURL) {
+                    KFImage(url)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                } else {
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                }
             } else {
                 Image(systemName: "person.fill")
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
             }
-        } else {
-            Image(systemName: "person.fill")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .clipShape(Circle())
+            
+            Text(viewModel.userDetail.nickname)
+                .font(.custom(CustomFont.interBold.rawValue, size: 20))
+                .padding(.bottom, -5)
+                .offset(y: -10)
         }
-        
-        Text(viewModel.userDetail.nickname)
-            .font(.custom(CustomFont.interBold.rawValue, size: 20))
-            .padding(.bottom, -5)
-            .offset(y: -10)
     }
     
     @ViewBuilder
