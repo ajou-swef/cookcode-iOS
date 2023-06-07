@@ -7,37 +7,34 @@
 
 import SwiftUI
 
-struct LikeComponent: View {
+struct LikeButton<ViewModel: likeButtonInteractable>: View {
     
-    @State private var likes: Bool = false
-    private let likeService: LikeServiceProtocol
-    let contentId: Int
-    
-    init(likes: Bool, likeService: LikeServiceProtocol, contentId: Int) {
-        self.likeService = likeService
-        self.contentId = contentId
-        self.likes = likes
-    }
+    @ObservedObject var viewModel: ViewModel
+    let like: any Like
     
     var body: some View {
         Button {
-            likes.toggle()
+            Task { await viewModel.likeButtonTapped(like.id) } 
         } label: {
-            Image(systemName: likes ? "heart.fill" : "heart")
-                .resizable()
-                .aspectRatio(CGSize(width: 4, height: 3.5), contentMode: .fit)
-                .frame(width: 30)
-                .foregroundColor(.white)
+            VStack {
+                Image(systemName: like.isLiked ? "heart.fill" : "heart")
+                    .resizable()
+                    .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                    .frame(width: 30)
+                    .foregroundColor(.white)
+                
+                Text("\(like.likesCount)")
+                    .font(CustomFontFactory.INTER_BOLD_16)
+                    .foregroundColor(.white)
+            }
         }
-    }
-    
-    func likeButtonTapped() async {
-        let _ = await likeService.likesContentById(contentId)
     }
 }
 
-//struct LikeComponent_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LikeComponent()
-//    }
-//}
+struct LikeComponent_Previews: PreviewProvider {
+    static var previews: some View {
+        LikeButton(viewModel: RandomCookieViewModel(cookieService: CookieSuccessService()), like: CookieDetail.mock())
+            .preferredColorScheme(.dark)
+            
+    }
+}

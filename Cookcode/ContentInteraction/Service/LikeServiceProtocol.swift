@@ -2,11 +2,11 @@
 //  LikeServiceProtocol.swift
 //  Cookcode
 //
-//  Created by 노우영 on 2023/05/30.
+//  Created by 노우영 on 2023/06/05.
 //
 
-import SwiftUI
+import Foundation
 
 protocol LikeServiceProtocol {
-    func likesContentById(_ contentId: Int) async -> Result<DefaultResponse, ServiceError> 
+    func likesContentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> 
 }

@@ -12,7 +12,7 @@ class HomeViewModel: ObservableObject {
     
     private let resetThreshold: CGFloat = 50
     
-    @Published private(set) var recipeCells: [RecipeCell] = []
+    @Published var recipeCells: [RecipeCell] = []
     @Published var serviceAlert: ServiceAlert = .init()
     
     @Published var fetchTriggerOffset: CGFloat = .zero
@@ -102,7 +102,6 @@ class HomeViewModel: ObservableObject {
         
         let curPage = pageState.page
         pageState = .loading(curPage)
-        print("page(\(curPage)) loading start")
         
         let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
         
@@ -133,6 +132,7 @@ class HomeViewModel: ObservableObject {
     private func appendRecipeCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
         let newCells = success.data.content.map {  RecipeCell(dto: $0) }
         recipeCells.append(contentsOf: newCells)
+        print("appendCells: \(recipeCells)")
     }
     
     @MainActor

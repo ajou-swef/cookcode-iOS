@@ -54,7 +54,7 @@ struct CookieDetailOverlay: View {
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
             }
             .sheet(isPresented: $isPresented) {
-                CommentList(viewModel: CookieCommentViewModel(conentsId: cookieDetail.cookieId, commentService: CookieService()))
+                CommentList(viewModel: CookieCommentViewModel(conentsId: cookieDetail.contentId, commentService: CookieService()))
             }
             
             Text("\(cookieDetail.commentsCount)")

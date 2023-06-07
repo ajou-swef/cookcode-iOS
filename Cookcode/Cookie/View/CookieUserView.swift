@@ -25,7 +25,7 @@ struct CookieUserView: View {
                 ForEach(viewModel.contents) { cookieCell in
                     NavigationLink {
                         CookieVideoList(cookieDetails: viewModel.contents,
-                                        selectedCookieId: cookieCell.cookieId)
+                                        selectedCookieId: cookieCell.contentId)
                     } label: {
                         if cookieCell.thumbnail.isEmpty {
                             Rectangle()

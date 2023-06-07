@@ -14,7 +14,7 @@ final class CookieVideoListViewModel: ObservableObject {
     init(cookies: [CookieDetail], selectedCookieId: Int) {
         self.cookies = cookies
         print("\(cookies)")
-        guard let firstCookie = cookies.first(where: { $0.cookieId == selectedCookieId }) else { return }
+        guard let firstCookie = cookies.first(where: { $0.contentId == selectedCookieId }) else { return }
         tabSelection = firstCookie.id
     }
 }

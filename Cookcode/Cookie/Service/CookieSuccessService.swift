@@ -8,6 +8,10 @@
 import Foundation
 
 final class CookieSuccessService: CookieServiceProtocol {
+    func likesCookie(_ cookie: CookieDetail) async -> Result<DefaultResponse, ServiceError> {
+        .success(.mock())
+    }
+    
     func searchCookieCellsBy(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         .success(.mock())
     }
