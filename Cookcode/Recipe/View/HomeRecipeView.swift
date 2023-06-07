@@ -1,50 +1,28 @@
 //
-//  HomeView.swift
+//  HomeRecipeView.swift
 //  Cookcode
 //
-//  Created by 노우영 on 2023/04/19.
+//  Created by 노우영 on 2023/06/07.
 //
 
 import SwiftUI
-import Introspect
-import LegacyScrollView
 
-struct HomeView: View {
+struct HomeRecipeView: View {
     
-    @StateObject private var viewModel = HomeViewModel(recipeService: RecipeService())
+    @StateObject private var viewModel: HomeReicpeViewModel
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @EnvironmentObject var updateCellVM: UpdateCellViewModel
     
+    init(recipeService: RecipeServiceProtocol = RecipeService()) {
+        self._viewModel = StateObject(wrappedValue: HomeReicpeViewModel(recipeService: recipeService))
+    }
     var body: some View {
-        ScrollViewReader { proxy in
-            VStack {
-                header()
-                    .zIndex(200)
-                
-                HStack {
-                    RecipeFilterPicker(selection: $viewModel.filterType, filterOffset: $viewModel.dragVelocity,
-                                       activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
-                        .frame(maxWidth: 130)
-                        .onChange(of: viewModel.filterType) { _ in
-                            Task {
-                                proxy.scrollTo(viewModel.firstCellID)
-                                await viewModel.resetRecipeCell()
-                            }
-                        }
-                    
-                    Spacer()
-                }
-                .zIndex(100)
-                .padding(.leading)
-                .offset(y: viewModel.filterOffset)
-                .padding(.bottom, viewModel.filterOffset)
-                .opacity(viewModel.filterOpacity)
-                
-                homeRows()
-                
-            }
+        VStack {
+            header()
+                .padding(.horizontal)
+            
+            RefreshableRecipeFetchView(viewModel: viewModel)
         }
-        .navigationTitle("")
         .disabled(viewModel.contentTypeButtonIsShowing)
         .overlay {
             Color.gray_bcbcbc.opacity(0.5)
@@ -59,7 +37,7 @@ struct HomeView: View {
         }
         .onAppear {
             viewModel.updateCell(updateCellVM.updateCellDict)
-            updateCellVM.updateCellDict[.recipe] = nil 
+            updateCellVM.updateCellDict[.recipe] = nil
         }
     }
     
@@ -133,74 +111,6 @@ struct HomeView: View {
     }
     
     @ViewBuilder
-    private func lackOfIngredientText() -> some View {
-        Group {
-            Image(systemName: "flag.slash")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .foregroundColor(.mainColor)
-            
-            Text("만들 수 있는 요리가 없어요.\n냉장고를 채워주세요.")
-                .foregroundColor(.mainColor)
-                .opacity(0.8)
-                .font(CustomFontFactory.INTER_BOLD_16)
-        }
-    }
-    
-    @ViewBuilder
-    private func homeRows() -> some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                Color.white.opacity(1)
-                    .offsetY(coordinateSpace: .named("homeScroll")) {
-                        viewModel.resetTriggerOffset = $0
-                    }
-                    .padding(.vertical, -20)
-                
-                lackOfIngredientText()
-                    .presentIf(viewModel.hasNoCookcableRecipe)
-                
-                ForEach(viewModel.recipeCells) {  cell in
-                   Button {
-                       let homeIdPath = HomeIdPath(path: .recipe, id: cell.recipeId)
-                       navigateViewModel.navigateWithHome(homeIdPath)
-                   } label: {
-                       CellView(cell: cell)
-                           .foregroundColor(.black)
-                           .zIndex(0)
-                   }
-                   .id(cell.id)
-               }
-                
-                
-                ProgressView()
-                    .presentIf(viewModel.isLoadingState)
-                
-            }
-            .padding(.horizontal)
-            .background {
-                ScrollDetector { offset, velocity in
-                    withAnimation {
-                        viewModel.dragVelocity = velocity
-                    }
-                }
-            }
-            
-            Color.white.opacity(1)
-                .offsetY { viewModel.fetchTriggerOffset = $0 }
-        }
-        .coordinateSpace(name: "homeScroll")
-        .onChange(of: viewModel.fetchTriggerOffset) { newValue in
-            Task { await viewModel.fetchRecipeCell() }
-        }
-        .overlay(alignment: .top) {
-            Image(systemName: "arrow.clockwise")
-                .rotationEffect(.degrees(viewModel.resetArrowDegree))
-                .opacity(viewModel.resetArrowOpacity)
-        }
-    }
-    
-    @ViewBuilder
     private func header() -> some View {
         HStack(spacing: 15) {
             Image("cookcode.logo")
@@ -220,9 +130,7 @@ struct HomeView: View {
             }
             
             Button {
-                viewModel.myAccountViewIsPresented = true 
-//                let homeIdPath = HomeIdPath(path: .profile, id: UserDefaults.standard.integer(forKey: USER_ID))
-//                navigateViewModel.navigateWithHome(homeIdPath)
+                viewModel.myAccountViewIsPresented = true
             } label: {
                 Image(systemName: "person.fill")
                     .resizable()
@@ -237,8 +145,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct HomeRecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeRecipeView()
     }
 }
