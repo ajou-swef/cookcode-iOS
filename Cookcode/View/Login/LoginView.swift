@@ -26,7 +26,10 @@ struct LoginView: View {
                 Image("cookcode.logo")
                     .resizable()
                     .frame(width: 200, height: 200)
-                    .padding(.bottom, 40)
+                
+                Text("cookcode")
+                    .font(.custom(CustomFont.interBold.rawValue, size: 30))
+                    .padding(.bottom, 30)
                 
                 emailField()
                 passwordField()

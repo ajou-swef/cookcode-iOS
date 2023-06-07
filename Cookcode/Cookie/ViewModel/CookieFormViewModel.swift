@@ -118,7 +118,9 @@ final class CookieFormViewModel: ObservableObject {
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         
         if let cgImage = try? imageGenerator.copyCGImage(at: .zero, actualTime: nil) {
-            selectedVideoThumbnails.append(VideoThumbnail(url: url.url, loadState: .loaded(UIImage(cgImage: cgImage))))
+            let uiImage = UIImage(cgImage: cgImage)
+            selectedVideoThumbnails.append(VideoThumbnail(url: url.url, loadState: .loaded(uiImage)))
+            cookieForm.thumbnailData = uiImage.pngData()
         }
     }
     
@@ -159,10 +161,10 @@ final class CookieFormViewModel: ObservableObject {
         let result = await cookieService.postCookie(cookie: cookieForm)
         
         switch result {
-        case .success(let success):
+        case .success(_):
             print("업로드 성공")
             dismiss()
-        case .failure(let failure):
+        case .failure(_):
             print("업로드 실패")
         }
         

@@ -154,15 +154,22 @@ final class CookieService: CookieServiceProtocol {
                 multipart.append("\(value)".data(using: .utf8)!, withName: key)
             }
             
-            multipart.append(videoURL, withName: "multipartFile",
+            multipart.append(videoURL, withName: "cookieVideo",
                              fileName: UUID().uuidString, mimeType: "video/mp4")
+            
+            if let data = cookie.thumbnailData {
+                multipart.append(data, withName: "thumbnail", fileName: UUID().uuidString, mimeType: "image/jpeg")
+            }
+            
  
         }, to: url, method: .post, headers: headers)
             .serializingDecodable(DefaultResponse.self).response
+//
+//        if response.error != nil {
+//            print("\(response.debugDescription)")
+//        }
         
-        if response.error != nil {
-            print("\(response.debugDescription)")
-        }
+        print("\(response.debugDescription)")
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

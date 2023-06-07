@@ -32,7 +32,7 @@ struct CookieFormView: View {
 
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
+                        HStack {
                             ForEach(viewModel.selectedVideoThumbnails.indices, id: \.self) { index in
                                 
                                 let thumbnail = viewModel.selectedVideoThumbnails[index]
@@ -64,6 +64,8 @@ struct CookieFormView: View {
                     descriptionSection()
                 }
             }
+            .navigationTitle("쿠키 생성")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 dismissButton()
                 completeButton()
@@ -95,12 +97,6 @@ struct CookieFormView: View {
                         viewModel.mergedAVPlayer?.play()
                     }
             }
-                
-        } else {
-            Image(systemName: "questionmark.video")
-                .resizable()
-                .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
-                .frame(maxWidth: 200)
         }
     }
     
@@ -137,8 +133,8 @@ struct CookieFormView: View {
                 Task { await viewModel.export(dismiss: dismiss) }
             } label: {
                 Text("완료")
-                    .foregroundColor(.mainColor)
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                    .foregroundColor(.black)
             }
         }
     }
@@ -150,7 +146,7 @@ struct CookieFormView: View {
                 navigateVM.dismissOuter()
             } label: {
                 Image(systemName: "xmark")
-                    .foregroundColor(.mainColor)
+                    .foregroundColor(.black)
             }
             
         }
@@ -162,8 +158,8 @@ struct CookieFormView: View {
             Image(systemName: "plus.square")
                 .resizable()
                 .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
-                .frame(width: 100)
-                .foregroundColor(.mainColor)
+                .frame(width: viewModel.mergedVideoThumbnail == nil ? 250 : 100)
+                .foregroundColor(.primary)
         }
         .onChange(of: viewModel.photosPickerItem) { newValue in
             Task { await viewModel.loadURL() } 
