@@ -139,8 +139,6 @@ class HomeViewModel: ObservableObject {
     func updateCell(_ info: [CellType: CellUpdateInfo]) {
         guard let info = info[.recipe] else { return }
         
-        print("updateCell called")
-        
         switch info.updateType {
         case .delete:
             deleteCell(info.cellId)
@@ -153,13 +151,12 @@ class HomeViewModel: ObservableObject {
     private func deleteCell(_ cellId: Int) {
         guard let index = recipeCells.firstIndex(where: { $0.recipeId == cellId }) else { return }
         recipeCells.remove(at: index)
-        print("\(index+1)번째 레시피 삭제")
     }
     
     @MainActor
     private func patchCell(_ cellId: Int) async {
         guard let index = recipeCells.firstIndex(where: { $0.recipeId == cellId }) else { return }
-        print("\(index+1)번째 레시피 업데이트")
+
         let page = index / 10
         let result = await recipeService.fetchRecipeCells(page: page, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
         
