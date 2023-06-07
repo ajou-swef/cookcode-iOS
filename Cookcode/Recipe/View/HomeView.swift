@@ -15,6 +15,10 @@ struct HomeView: View {
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @EnvironmentObject var updateCellVM: UpdateCellViewModel
     
+    init(recipeService: RecipeServiceProtocol = RecipeService()) {
+        self._viewModel = StateObject(wrappedValue: HomeViewModel(recipeService: recipeService))
+    }
+    
     var body: some View {
         ScrollViewReader { proxy in
             VStack {
@@ -23,18 +27,27 @@ struct HomeView: View {
                     .padding(.horizontal)
                 
                 HStack {
-                    RecipeFilterPicker(selection: $viewModel.filterType, filterOffset: $viewModel.dragVelocity,
-                                       activeTint: .mainColor, inActiveTint: .gray_bcbcbc, dynamic: false)
-                        .frame(maxWidth: 130)
-                        .onChange(of: viewModel.filterType) { _ in
-                            Task {
-                                proxy.scrollTo(viewModel.firstCellID)
-                                await viewModel.resetRecipeCell()
-                            }
-                        }
-                    
                     Spacer()
+                    
+                    Button {
+                        viewModel.presentOnlyCookcable.toggle()
+                    } label: {
+                        Image(systemName: viewModel.presentOnlyCookcable ? "checkmark.square" : "square")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .fontWeight(.bold)
+                    }
+                    .onChange(of: viewModel.presentOnlyCookcable) { newValue in
+                        Task {
+                            proxy.scrollTo(viewModel.firstCellID)
+                            await viewModel.resetRecipeCell()
+                        }
+                    }
+                    
+                    Text("요리하자")
+                        .font(.custom(CustomFont.interBold.rawValue, size: 18))
                 }
+                .foregroundColor(.mainColor)
                 .zIndex(100)
                 .offset(y: viewModel.filterOffset)
                 .padding(.bottom, viewModel.filterOffset)
@@ -221,9 +234,7 @@ struct HomeView: View {
             }
             
             Button {
-                viewModel.myAccountViewIsPresented = true 
-//                let homeIdPath = HomeIdPath(path: .profile, id: UserDefaults.standard.integer(forKey: USER_ID))
-//                navigateViewModel.navigateWithHome(homeIdPath)
+                viewModel.myAccountViewIsPresented = true
             } label: {
                 Image(systemName: "person.fill")
                     .resizable()
@@ -240,6 +251,8 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(recipeService: RecipeSuccessService())
+            .environmentObject(NavigateViewModel())
+            .environmentObject(UpdateCellViewModel())
     }
 }

@@ -19,6 +19,7 @@ class HomeViewModel: ObservableObject {
     @Published var resetTriggerOffset: CGFloat = .zero
     
     @Published private var pageState: PageState = .wait(0)
+    @Published var presentOnlyCookcable: Bool = false
     
     @Published var filterType: RecipeFilterType = .all
     
@@ -103,7 +104,7 @@ class HomeViewModel: ObservableObject {
         let curPage = pageState.page
         pageState = .loading(curPage)
         
-        let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, sort: nil, month: nil, cookcable: filterType.cookable)
+        let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, sort: nil, month: nil, cookcable: presentOnlyCookcable)
         
         switch result {
         case .success(let success):
