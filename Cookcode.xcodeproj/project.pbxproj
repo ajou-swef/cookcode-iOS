@@ -661,7 +661,6 @@
 				15B626432A009DFB002E1F5F /* FetchCell */,
 				15CFE6AD29FF8D6700C16FF6 /* Refrigerator */,
 				15CFE66029FF56BF00C16FF6 /* Content */,
-				158AF5DB2A1F66EB00FF815A /* Cookie */,
 				15F82A6B29FA8F2700DA9381 /* Response */,
 			);
 			path = Service;
@@ -962,13 +961,6 @@
 				159BE2A629FB6C1E00DE7448 /* ServiceAlert.swift */,
 			);
 			path = Alert;
-			sourceTree = "<group>";
-		};
-		158AF5DB2A1F66EB00FF815A /* Cookie */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cookie;
 			sourceTree = "<group>";
 		};
 		158AF5E82A1F71E500FF815A /* Response */ = {

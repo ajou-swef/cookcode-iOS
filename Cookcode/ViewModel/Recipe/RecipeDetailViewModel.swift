@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-class RecipeDetailViewModel: RecipeViewModel {
-    
+class RecipeDetailViewModel: RecipeViewModel, likeButtonInteractable {
     @Published var showDialog: Bool = false
     @Published var commentsComponentIsPresented: Bool = false
+    @Published var isLoading: Bool = true
     
     var myRecipe: Bool = false
     let recipeId: Int
+    
     init(recipeId: Int) {
         self.recipeId = recipeId
         super.init(recipeService: RecipeService(), contentService: ContentSuccessService(), recipeID: recipeId)
@@ -39,6 +40,7 @@ class RecipeDetailViewModel: RecipeViewModel {
         let result = await recipeService.searchRecipe(recipeID)
         switch result {
         case .success(let success):
+            isLoading = false
             recipeDetail = RecipeDetail(dto: success.data)
             setMyRecipe(recipeDetail.user?.userID ?? -1)
         case .failure(let failure):
@@ -51,5 +53,11 @@ class RecipeDetailViewModel: RecipeViewModel {
         if id == storedId {
             myRecipe = true
         }
+    }
+    
+    @MainActor
+    func likeButtonTapped(_ uuid: String) async {
+        recipeDetail.likeInteract()
+        let _ = await recipeService.likesContentById(recipeDetail.recipeID ?? -1)
     }
 }

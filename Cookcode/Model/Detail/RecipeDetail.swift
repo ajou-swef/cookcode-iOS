@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct RecipeDetail {
+struct RecipeDetail: Like {
+    var id: String = UUID().uuidString
+    var isLiked: Bool
+    var likesCount: Int
     let recipeID: Int?
     let user: UserCellDto?
     let title, description: String
@@ -16,12 +19,6 @@ struct RecipeDetail {
     var steps: [StepDTO]
     var ingredientCells: [IngredientCell]
     var optionalIngredientCells: [IngredientCell]
-    
-
-    enum CodingKeys: String, CodingKey {
-        case recipeID = "recipeId"
-        case user, title, description, createdAt, updatedAt, thumbnail, steps
-    }
 }
 
 extension RecipeDetail {
@@ -36,6 +33,8 @@ extension RecipeDetail {
         steps = dto.steps
         ingredientCells = dto.ingredients.map { IngredientCell(ingredientDTO: $0) }
         optionalIngredientCells = dto.optionalIngredients.map { IngredientCell(ingredientDTO: $0) }
+        isLiked = dto.isLiked
+        likesCount = dto.likeCount
     }
     
     init (form: RecipeForm) {
@@ -54,5 +53,7 @@ extension RecipeDetail {
         
         ingredientCells = form.ingredients.map { IngredientCell(ingredientId: $0) }
         optionalIngredientCells = form.optionalIngredients.map { IngredientCell(ingredientId: $0) }
+        isLiked = false
+        likesCount = 0
     }
 }

@@ -18,52 +18,72 @@ struct RecipeDetailView: View {
     }
     
     var body: some View {
-        RecipeView(viewModel: viewModel)
-            .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-                Button {
-                    Task { navigateVM.clear() }
-                } label: {
-                    Text("확인")
-                }
-
-            }
-            .confirmationDialog("수정", isPresented: $viewModel.showDialog, actions: {
-                Button {
-                    navigateVM.navigateToOuter(OuterIdPath(path: .recipe, id: viewModel.recipeDetail.recipeID))
-                } label: {
-                    Text("수정")
-                }
-                
-                Button {
-                    Task {
-                        updateCellVM.updateCellDict[.recipe] = CellUpdateInfo(updateType: .delete, cellId: viewModel.recipeDetail.recipeID ?? -1 )
-                        await viewModel.deleteButtonTapepd(dismiss: navigateVM.clear)
-                    }
-                } label: {
-                    Text("삭제")
-                        .foregroundColor(.red)
-                }
-            })
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack {
-                        presentCommentComponentButton()
-
-                        
-                        Button {
-                            viewModel.showDialog = true
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .rotationEffect(.degrees(90))
-                        }
-                        .hidden(!viewModel.myRecipe)
+        Group {
+            ProgressView()
+                .presentIf(viewModel.isLoading)
+            
+            
+            RecipeView(viewModel: viewModel)
+                .confirmationDialog("수정", isPresented: $viewModel.showDialog, actions: {
+                    dialogButtons()
+                })
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                      recipeToolbar()
                     }
                 }
-                
-                ToolbarItem(placement: .principal) {
-                    Text("레시피")
-                }
+                .presentIf(!viewModel.isLoading)
+        }
+        .navigationTitle("레시피")
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
+            Button {
+                Task { navigateVM.clear() }
+            } label: {
+                Text("확인")
             }
+
+        }
+    }
+    
+    @ViewBuilder
+    private func dialogButtons() -> some View {
+        Group {
+            Button {
+                navigateVM.navigateToOuter(OuterIdPath(path: .recipe, id: viewModel.recipeDetail.recipeID))
+            } label: {
+                Text("수정")
+            }
+            
+            Button {
+                Task {
+                    updateCellVM.updateCellDict[.recipe] = CellUpdateInfo(updateType: .delete, cellId: viewModel.recipeDetail.recipeID ?? -1 )
+                    await viewModel.deleteButtonTapepd(dismiss: navigateVM.clear)
+                }
+            } label: {
+                Text("삭제")
+                    .foregroundColor(.red)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func recipeToolbar() -> some View {
+        HStack {
+            presentCommentComponentButton()
+
+            
+            Button {
+                viewModel.showDialog = true
+            } label: {
+                Image(systemName: "ellipsis")
+                    .rotationEffect(.degrees(90))
+            }
+            .presentIf(viewModel.myRecipe)
+            
+            LikeButton(viewModel: viewModel, like: viewModel.recipeDetail, color: .black,
+                       showCounts: false, width: 20)
+                .presentIf(!viewModel.myRecipe)
+        }
     }
     
     @ViewBuilder
