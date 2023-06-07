@@ -21,14 +21,15 @@ struct LoginView: View {
     var body: some View {
         NavigationStack(path: $path) {
             VStack(spacing: 10) {
+                Spacer()
+                
                 Image("cookcode.logo")
                     .resizable()
-                    .frame(width: 150, height: 150)
+                    .frame(width: 200, height: 200)
                 
-                Text("로그인")
-                    .font(CustomFontFactory.INTER_SEMIBOLD_20)
-                    .padding(.bottom, 10)
-                
+                Text("cookcode")
+                    .font(.custom(CustomFont.interBold.rawValue, size: 30))
+                    .padding(.bottom, 30)
                 
                 emailField()
                 passwordField()
@@ -40,6 +41,7 @@ struct LoginView: View {
                 }
                 .frame(maxWidth: 320, alignment: .trailing)
                 
+                Spacer()
                
             }
             .onDisappear {

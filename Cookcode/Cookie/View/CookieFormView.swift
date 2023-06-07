@@ -32,7 +32,7 @@ struct CookieFormView: View {
 
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
+                        HStack {
                             ForEach(viewModel.selectedVideoThumbnails.indices, id: \.self) { index in
                                 
                                 let thumbnail = viewModel.selectedVideoThumbnails[index]
@@ -64,6 +64,8 @@ struct CookieFormView: View {
                     descriptionSection()
                 }
             }
+            .navigationTitle("쿠키 생성")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 dismissButton()
                 completeButton()
@@ -95,12 +97,6 @@ struct CookieFormView: View {
                         viewModel.mergedAVPlayer?.play()
                     }
             }
-                
-        } else {
-            Image(systemName: "questionmark.video")
-                .resizable()
-                .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
-                .frame(maxWidth: 200)
         }
     }
     
@@ -134,11 +130,11 @@ struct CookieFormView: View {
     fileprivate func completeButton() -> ToolbarItem<(), Button<Text>> {
         return ToolbarItem(placement: .navigationBarTrailing) {
             Button {
-                Task { await viewModel.export(dismiss: dismiss) }
+                Task { await viewModel.export(dismiss: navigateVM.dismissOuter) }
             } label: {
                 Text("완료")
-                    .foregroundColor(.mainColor)
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                    .foregroundColor(.black)
             }
         }
     }
@@ -150,7 +146,7 @@ struct CookieFormView: View {
                 navigateVM.dismissOuter()
             } label: {
                 Image(systemName: "xmark")
-                    .foregroundColor(.mainColor)
+                    .foregroundColor(.black)
             }
             
         }
@@ -162,63 +158,13 @@ struct CookieFormView: View {
             Image(systemName: "plus.square")
                 .resizable()
                 .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
-                .frame(width: 100)
-                .foregroundColor(.mainColor)
+                .frame(width: viewModel.mergedVideoThumbnail == nil ? 250 : 100)
+                .foregroundColor(.primary)
         }
         .onChange(of: viewModel.photosPickerItem) { newValue in
             Task { await viewModel.loadURL() } 
         }
     }
-   
-    
-//    func export(withPreset preset: String = AVAssetExportPresetHighestQuality,
-//                toFileType outputFileType: AVFileType = .mov) async {
-//
-//        // Check the compatibility of the preset to export the video to the output file type.
-//
-//        guard let video = avPlayer?.currentItem?.asset else { return }
-//
-//        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory,
-//                                                               in: .userDomainMask).first else { return }
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = .long
-//        dateFormatter.timeStyle = .short
-//        let date = dateFormatter.string(from: Date())
-//        let url = documentDirectory.appendingPathComponent("mergeVideo-\(date).movie.mp4")
-////
-//        guard await AVAssetExportSession.compatibility(ofExportPreset: preset,
-//                                                       with: video,
-//                                                       outputFileType: .mov) else {
-//            print("The preset can't export the video to the output file type.")
-//            return
-//        }
-//
-//        // Create and configure the export session.
-//        guard let exportSession = AVAssetExportSession(asset: video,
-//                                                       presetName: preset) else {
-//            print("Failed to create export session.")
-//            return
-//        }
-//
-//        exportSession.outputFileType = outputFileType
-//        exportSession.outputURL = url
-//
-//        // Convert the video to the output file type and export it to the output URL.
-//        await exportSession.export()
-//
-//        print("Success to export sesion")
-//        print("movieURL: \(url)")
-//
-////        let result = await service.postVideos([VideoURL(url: url)])
-//
-////        switch result {
-////        case .success(let success):
-////            print("업로드 성공: \(success.data.urls)")
-////        case .failure(let failure):
-////            print("업로드 실패")
-////        }
-//    }
 }
 
 struct CookieFormView_Previews: PreviewProvider {

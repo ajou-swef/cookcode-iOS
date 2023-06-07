@@ -118,7 +118,11 @@ final class CookieFormViewModel: ObservableObject {
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         
         if let cgImage = try? imageGenerator.copyCGImage(at: .zero, actualTime: nil) {
-            selectedVideoThumbnails.append(VideoThumbnail(url: url.url, loadState: .loaded(UIImage(cgImage: cgImage))))
+            let uiImage = UIImage(cgImage: cgImage)
+            selectedVideoThumbnails.append(VideoThumbnail(url: url.url, loadState: .loaded(uiImage)))
+            if selectedVideoThumbnails.count == 1 {
+                cookieForm.thumbnailData = uiImage.pngData()
+            }
         }
     }
     
@@ -153,25 +157,27 @@ final class CookieFormViewModel: ObservableObject {
     }
     
     @MainActor
-    fileprivate func postCookie(_ url: URL, dismiss: DismissAction) async {
+    fileprivate func postCookie(_ url: URL, dismiss: () -> ()) async {
         cookieForm.videoURL = url
         viewState = .cookieUploading
         let result = await cookieService.postCookie(cookie: cookieForm)
         
         switch result {
-        case .success(let success):
+        case .success(_):
             print("업로드 성공")
             dismiss()
-        case .failure(let failure):
+        case .failure(_):
             print("업로드 실패")
         }
         
         viewState = .none
     }
     
+    @MainActor
     func export(ithPreset preset: String = AVAssetExportPresetHighestQuality,
-                toFileType outputFileType: AVFileType = .mov, dismiss: DismissAction) async {
-    
+                toFileType outputFileType: AVFileType = .mov, dismiss: () -> ()) async {
+        
+        
         guard let video = mergedAVPlayer?.currentItem?.asset else { return }
         guard let documentDirectory = FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask).first else { return }
@@ -204,7 +210,7 @@ final class CookieFormViewModel: ObservableObject {
 
         print("Success to export sesion")
         print("movieURL: \(url)")
-    
+
         await postCookie(url, dismiss: dismiss)
     }
 }

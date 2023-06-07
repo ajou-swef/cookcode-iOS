@@ -638,7 +638,6 @@
 				153B4D9029ED06A500543730 /* Component */,
 				158EFDD82A04CDD1003057A4 /* Container */,
 				15DF8E8C2A10FB0700B58784 /* Login */,
-				15634B692A1B7C3200FEABB8 /* Cookie */,
 				15CFE6A629FF7B7000C16FF6 /* Profile */,
 				15B869B129EFD9B900A02872 /* MainTabView.swift */,
 				15B04C672A1C907100B988BF /* PlayerView.swift */,
@@ -849,14 +848,6 @@
 				1599E94D2A13719D00ED1B60 /* ContentDTO.swift */,
 			);
 			path = DTO;
-			sourceTree = "<group>";
-		};
-		15634B692A1B7C3200FEABB8 /* Cookie */ = {
-			isa = PBXGroup;
-			children = (
-				15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */,
-			);
-			path = Cookie;
 			sourceTree = "<group>";
 		};
 		15637AAD2A28A0A6007BFF8E /* ContentInteraction */ = {
@@ -1217,6 +1208,7 @@
 		15B4CC1C2A24B2CF00DC226E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */,
 				15B04C5E2A1C7DEF00B988BF /* RandomCookieView.swift */,
 				15B4CC1E2A24B30900DC226E /* CookieOverlay.swift */,
 				158D7A842A2C698100DFFB82 /* CookieUserView.swift */,

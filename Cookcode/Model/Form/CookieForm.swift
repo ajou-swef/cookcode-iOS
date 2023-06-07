@@ -10,5 +10,6 @@ import Foundation
 struct CookieForm {
     var videoURL: URL?
     var description: String = ""
-    var title: String = "" 
+    var title: String = ""
+    var thumbnailData: Data? 
 }
