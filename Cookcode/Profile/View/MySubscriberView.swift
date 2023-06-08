@@ -33,7 +33,7 @@ struct MySubscriberView: View {
                 ServiceAlert.CANCEL_BUTTON
             }
         }
-        .navigationTitle("구독 목록")
+        .navigationTitle("내 구독자")
     }
 }
 

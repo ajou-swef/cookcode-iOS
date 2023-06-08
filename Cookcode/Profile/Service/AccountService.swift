@@ -9,7 +9,7 @@ import Foundation
 
 final class AccountService: AccountServiceProtocol {
     func fetchMySubscriber() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
-        let url = "\(BASE_URL)/api/v1/account/subscribe/publishers"
+        let url = "\(BASE_URL)/api/v1/account/subscribe/subscribers"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
