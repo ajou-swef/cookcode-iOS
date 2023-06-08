@@ -47,8 +47,7 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
             } label: {
                 Image(systemName: viewModel.presentOnlyCookable ? "checkmark.square" : "square")
                     .resizable()
-                    .frame(width: 20, height: 20)
-                    .fontWeight(.bold)
+                    .frame(width: 16, height: 16)
             }
             .onChange(of: viewModel.dragVelocity, perform: { newValue in
                 if newValue >= 0 {
@@ -65,7 +64,7 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
             }
             
             Text("요리하자")
-                .font(.custom(CustomFont.interBold.rawValue, size: 18))
+                .font(.custom(CustomFont.interRegular.rawValue, size: 16))
         }
         .foregroundColor(.mainColor)
         .zIndex(100)
