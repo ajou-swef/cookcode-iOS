@@ -25,7 +25,7 @@ struct HomeRecipeView: View {
                 .opacity(viewModel.topOpacity)
                 .animation(.spring(), value: viewModel.topOpacity)
                 .animation(.spring(), value: viewModel.topOffset)
-            
+       
             RefreshableRecipeFetchView(viewModel: viewModel)
         }
         .disabled(viewModel.contentTypeButtonIsShowing)
@@ -120,10 +120,10 @@ struct HomeRecipeView: View {
         HStack(spacing: 15) {
             Image("cookcode.logo")
                 .resizable()
-                .frame(width: 40, height: 40)
+                .frame(width: 25, height: 25)
             
             Text("cookcode")
-                .font(.custom(CustomFont.interBold.rawValue, size: 16))
+                .font(.custom(CustomFont.interBold.rawValue, size: 18))
                 .foregroundColor(.mainColor)
             
             Spacer()
