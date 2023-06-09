@@ -18,13 +18,14 @@ final class CookieVideoListViewModel: ObservableObject, PresentCommentSheet, lik
     @Published var commentSheetIsPresent: Bool = false
     @Published var cookies: [CookieDetail]
     @Published var tabSelection: String = ""
+    @Published var selectedDetail: CookieDetail?
+    
     
     var cookieService: CookieService = .init()
     var commentService: CommentServiceProtocol = CookieService()
     
     init(cookies: [CookieDetail], selectedCookieId: Int) {
         self.cookies = cookies
-        print("\(cookies)")
         guard let firstCookie = cookies.first(where: { $0.contentId == selectedCookieId }) else { return }
         tabSelection = firstCookie.id
     }

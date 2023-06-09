@@ -12,6 +12,7 @@ struct HomeRecipeView: View {
     @StateObject private var viewModel: HomeReicpeViewModel
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @EnvironmentObject var updateCellVM: UpdateCellViewModel
+    @EnvironmentObject var cookieProgress: CookieProgress
     
     init(recipeService: RecipeServiceProtocol = RecipeService()) {
         self._viewModel = StateObject(wrappedValue: HomeReicpeViewModel(recipeService: recipeService))
@@ -25,6 +26,30 @@ struct HomeRecipeView: View {
                 .opacity(viewModel.topOpacity)
                 .animation(.spring(), value: viewModel.topOpacity)
                 .animation(.spring(), value: viewModel.topOffset)
+            
+            Group {
+                HStack {
+                    Text("쿠키 업로드")
+                        .font(.custom(CustomFont.interRegular.rawValue, size: 11))
+                    
+                    Rectangle()
+                        .foregroundColor(.gray_bcbcbc)
+                        .frame(maxWidth: .infinity, maxHeight: 1)
+                        .overlay {
+                            GeometryReader { proxy in
+                                Rectangle()
+                                    .foregroundColor(.mainColor)
+                                    .frame(width: proxy.size.width * cookieProgress.progress.fractionCompleted,
+                                           alignment: .trailing)
+                            }
+                        }
+                }
+                .presentIf(cookieProgress.isUploading)
+                
+                reuploadButton()
+
+            }
+            .padding(.horizontal)
        
             RefreshableRecipeFetchView(viewModel: viewModel)
         }
@@ -43,6 +68,30 @@ struct HomeRecipeView: View {
         .onAppear {
             viewModel.updateCell(updateCellVM.updateCellDict)
             updateCellVM.updateCellDict[.recipe] = nil
+        }
+    }
+    
+    @ViewBuilder
+    private func reuploadButton() -> some View {
+        Button {
+            cookieProgress.reuploadAlertIsPresented = true
+        } label: {
+            HStack {
+                Image(systemName: "exclamationmark.circle")
+                    .resizable()
+                    .frame(width: 13, height: 13)
+                Text("업로드 실패")
+                    .font(.custom(CustomFont.interRegular.rawValue, size: 13))
+            }
+            .foregroundColor(.black)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .presentIf(cookieProgress.uploadingState == .fail)
+        .alert("재업로드 하시겠습니까?", isPresented: $cookieProgress.reuploadAlertIsPresented) {
+            Button("취소", role: .cancel) { }
+            Button("확인") {
+                cookieProgress.repostCookie()
+            }
         }
     }
     
@@ -159,5 +208,6 @@ struct HomeRecipeView_Previews: PreviewProvider {
         HomeRecipeView(recipeService: RecipeSuccessService())
             .environmentObject(NavigateViewModel())
             .environmentObject(UpdateCellViewModel())
+            .environmentObject(CookieProgress(cookieService: CookieService()))
     }
 }

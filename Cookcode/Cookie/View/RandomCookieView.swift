@@ -30,6 +30,19 @@ struct RandomCookieView: View {
                             .scaledToFill()
                             .frame(width: proxy.size.width, height: proxy.size.height)
                             .tag(cookie.id)
+                            .overlay(alignment: .topTrailing, content: {
+                                Button {
+                                    viewModel.selectedDetail = cookie
+                                } label: {
+                                    Image(systemName: "ellipsis")
+                                        .resizable()
+                                        .frame(width: 30, height: 6)
+                                        .foregroundColor(.white)
+                                        .padding(.vertical)
+                                }
+                                .presentIf(cookie.isMyCookie)
+
+                            })
                             .overlay(alignment: .bottomTrailing) {
                                 VStack {
                                     PresentCommentButton(viewModel: viewModel, info: cookie)
@@ -54,6 +67,9 @@ struct RandomCookieView: View {
                     }
                 }
             }
+            .sheet(item: $viewModel.selectedDetail, content: { cookieDetail in
+                ModifyCookieView(cookieDetail: cookieDetail)
+            })
             .simultaneousGesture(
                 DragGesture()
                     .onChanged({ gesture in
@@ -91,8 +107,8 @@ struct RandomCookieView: View {
     }
 }
 
-struct CookieListView_Previews: PreviewProvider {
-    static var previews: some View {
-        RandomCookieView()
-    }
-}
+//struct CookieListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RandomCookieView()
+//    }
+//}

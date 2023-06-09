@@ -39,6 +39,19 @@ struct CookieVideoList: View {
                                 }
                                 .padding()
                             }
+                            .overlay(alignment: .topTrailing, content: {
+                                Button {
+                                    viewModel.selectedDetail = cookie
+                                } label: {
+                                    Image(systemName: "ellipsis")
+                                        .resizable()
+                                        .frame(width: 30, height: 6)
+                                        .foregroundColor(.white)
+                                        .padding(.vertical)
+                                }
+                                .presentIf(cookie.isMyCookie)
+
+                            })
                             .overlay(alignment: .bottomLeading) {
                                 VStack(alignment: .leading, spacing: 10) {
                                     Text("\(cookie.title)")
@@ -56,6 +69,9 @@ struct CookieVideoList: View {
                     }
                 }
             }
+            .sheet(item: $viewModel.selectedDetail, content: { cookieDetail in
+                ModifyCookieView(cookieDetail: cookieDetail)
+            })
             .tabViewStyle(.page(indexDisplayMode: .never))
         }
         .onAppear {

@@ -33,9 +33,8 @@ final class CookieUserViewModel: CookieFetcher {
     func onFetch() async {
         let curPage = pageState.page
         pageState = .loading(curPage)
-        print("page(\(curPage)) loading start")
         
-        let result = await cookieService.fetchCookieCellByUserId(userId)
+        let result = await cookieService.getCookieCellByUserId(userId, page: curPage)
         
         switch result {
         case .success(let success):

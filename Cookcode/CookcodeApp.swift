@@ -13,6 +13,7 @@ struct CookcodeApp: App {
     @StateObject private var updateCellViewModel: UpdateCellViewModel = .init()
     @StateObject private var navigateViewModel: NavigateViewModel = .init()
     @StateObject private var accountViewModel: AccountViewModel = .init(accountService: AccountService())
+    @StateObject private var progressViewModel: CookieProgress = .init(cookieService: CookieService())
     
     var body: some Scene {
         WindowGroup {
@@ -20,6 +21,7 @@ struct CookcodeApp: App {
                 .environmentObject(navigateViewModel)
                 .environmentObject(accountViewModel)
                 .environmentObject(updateCellViewModel)
+                .environmentObject(progressViewModel)
                 .onOpenURL {
                     navigateViewModel.separateURL($0.absoluteString)
                 }

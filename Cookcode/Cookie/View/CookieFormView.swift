@@ -13,6 +13,7 @@ struct CookieFormView: View {
     
     @StateObject private var viewModel = CookieFormViewModel(cookieService: CookieService())
     @EnvironmentObject var navigateVM: NavigateViewModel
+    @EnvironmentObject var progressVM: CookieProgress
     @Environment(\.dismiss) var dismiss
 
     let service = ContentService()
@@ -130,7 +131,11 @@ struct CookieFormView: View {
     fileprivate func completeButton() -> ToolbarItem<(), Button<Text>> {
         return ToolbarItem(placement: .navigationBarTrailing) {
             Button {
-                Task { await viewModel.export(dismiss: navigateVM.dismissOuter) }
+                Task {
+                    await viewModel.export()
+                    progressVM.postCookie(cookieForm: viewModel.cookieForm)
+                    navigateVM.dismissOuter()
+                }
             } label: {
                 Text("완료")
                     .font(CustomFontFactory.INTER_SEMIBOLD_20)
