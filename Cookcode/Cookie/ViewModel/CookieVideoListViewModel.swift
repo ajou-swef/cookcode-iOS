@@ -26,7 +26,6 @@ final class CookieVideoListViewModel: ObservableObject, PresentCommentSheet, lik
     
     init(cookies: [CookieDetail], selectedCookieId: Int) {
         self.cookies = cookies
-        print("\(cookies)")
         guard let firstCookie = cookies.first(where: { $0.contentId == selectedCookieId }) else { return }
         tabSelection = firstCookie.id
     }

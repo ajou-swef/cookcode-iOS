@@ -9,6 +9,10 @@ import Alamofire
 import Foundation
  
 final class CookieFailureService: CookieServiceProtocol {
+    func patchCookie(id: Int, cookieForm: CookieForm) async -> Result<DefaultResponse, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func deleteCookie(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
         .failure(.MOCK())
     }

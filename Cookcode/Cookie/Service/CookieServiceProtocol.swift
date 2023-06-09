@@ -9,6 +9,7 @@ import Alamofire
 import Foundation
 
 protocol CookieServiceProtocol: CommentServiceProtocol {
+    func patchCookie(id: Int, cookieForm: CookieForm) async -> Result<DefaultResponse, ServiceError> 
     func deleteCookie(_ id: Int) async -> Result<DefaultResponse, ServiceError> 
     func likesCookie(_ cookie: CookieDetail) async -> Result<DefaultResponse, ServiceError>
     func postCookie(cookie: CookieForm, closure: @escaping (Progress) -> (Void)) async -> Result<DefaultResponse, ServiceError>

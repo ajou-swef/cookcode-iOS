@@ -9,6 +9,28 @@ import Alamofire
 import Foundation
 
 final class CookieService: CookieServiceProtocol {
+    func patchCookie(id: Int, cookieForm: CookieForm) async -> Result<DefaultResponse, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/cookie/\(id)"
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let param: [String: Any] = [
+            "title": cookieForm.title,
+            "description": cookieForm.description
+        ]
+        
+        let response = await AF.request(url, method: .patch, parameters: param, encoding: JSONEncoding.default, headers: headers)
+            .serializingDecodable(DefaultResponse.self).response
+        
+        print("\(response.debugDescription)")
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.decodeError()
+        }
+    }
+    
     func deleteCookie(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie/\(id)"
         let headers: HTTPHeaders = [

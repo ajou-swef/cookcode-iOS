@@ -23,9 +23,16 @@ final class ModifyCookieViewModel: PatchViewModel {
         cookieId = cookieDetail.contentId
     }
     
-    
+    @MainActor
     func mainButtonTapped(dismissAction: DismissAction) async {
+        let result = await cookieService.patchCookie(id: cookieId, cookieForm: cookieForm)
         
+        switch result {
+        case .success(_):
+            dismissAction()
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
     }
     
     @MainActor
