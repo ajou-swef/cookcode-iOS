@@ -42,8 +42,8 @@ final class CookieService: CookieServiceProtocol {
         }
     }
     
-    func fetchCookieCellByUserId(_ id: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
-        let url = "\(BASE_URL)/api/v1/cookie/user/\(id)"
+    func fetchCookieCellByUserId(_ id: Int, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/cookie/user/\(id)?page=\(page)"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
@@ -135,7 +135,7 @@ final class CookieService: CookieServiceProtocol {
         }
     }
     
-    func postCookie(cookie: CookieForm) async -> Result<DefaultResponse, ServiceError> {
+    func postCookie(cookie: CookieForm, closure: @escaping (Progress) -> (Void)) async -> Result<DefaultResponse, ServiceError> {
         
         let url = "\(BASE_URL)/api/v1/cookie"
         let headers: HTTPHeaders = [
@@ -163,11 +163,8 @@ final class CookieService: CookieServiceProtocol {
             
  
         }, to: url, method: .post, headers: headers)
+            .uploadProgress(queue: .main, closure: closure)
             .serializingDecodable(DefaultResponse.self).response
-//
-//        if response.error != nil {
-//            print("\(response.debugDescription)")
-//        }
         
         print("\(response.debugDescription)")
         

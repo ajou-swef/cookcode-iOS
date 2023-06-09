@@ -10,9 +10,9 @@ import Foundation
 
 protocol CookieServiceProtocol: CommentServiceProtocol {
     func likesCookie(_ cookie: CookieDetail) async -> Result<DefaultResponse, ServiceError>
-    func postCookie(cookie: CookieForm) async -> Result<DefaultResponse, ServiceError>
+    func postCookie(cookie: CookieForm, closure: @escaping (Progress) -> (Void)) async -> Result<DefaultResponse, ServiceError>
     func fetchCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError>
-    func fetchCookieCellByUserId(_ id: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError>
+    func fetchCookieCellByUserId(_ id: Int, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError>
     func searchCookieCellsBy(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> 
 }
 
