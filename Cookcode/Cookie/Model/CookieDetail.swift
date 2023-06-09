@@ -20,6 +20,7 @@ struct CookieDetail: Like, CommentButtonInfo {
     var commentsCount: Int
     var isLiked: Bool = false
     var avPlayer: AVPlayer?
+    var isMyCookie: Bool
     
     mutating func onAppear() {
         guard let url = URL(string: url) else { return }
@@ -33,14 +34,9 @@ struct CookieDetail: Like, CommentButtonInfo {
     
     
     mutating func update(cookie: CookieDetail) {
-        url = cookie.url
-        title = cookie.title
-        contentId = cookie.contentId
-        description = cookie.description
-        likesCount = cookie.likesCount
-        commentsCount = cookie.commentsCount
-        isLiked = cookie.isLiked
-        thumbnail = cookie.thumbnail
+        let originId = self.id
+        self = cookie
+        self.id = originId
     }
     
     static func mock() -> CookieDetail {
@@ -57,6 +53,9 @@ extension CookieDetail {
         description = dto.desc
         likesCount = dto.likeCount
         commentsCount = dto.commentCount
-        isLiked = dto.isLiked == 0 ? false : true
+        isLiked = dto.isLiked
+        
+        let storedId = UserDefaults.standard.integer(forKey: USER_ID)
+        isMyCookie = storedId == dto.user.userID
     }
 }

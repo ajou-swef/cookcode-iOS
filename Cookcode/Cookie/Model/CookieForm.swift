@@ -13,3 +13,10 @@ struct CookieForm {
     var title: String = ""
     var thumbnailData: Data? 
 }
+
+extension CookieForm {
+    init(detail: CookieDetail) {
+        self.title = detail.title
+        self.description = detail.description
+    }
+}

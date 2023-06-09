@@ -9,7 +9,7 @@ import Foundation
 
 struct CookieDetailDTO: Decodable, Mock {
     static func mock() -> CookieDetailDTO {
-        CookieDetailDTO(cookieID: 1, title: "쿠키제목", desc: "쿠키 설명", thumbnailURL: "https://picsum.photos/200/300", videoURL: "", recipeID: nil, createdAt: "2020-01-01", user: .mock(), isLiked: 0, likeCount: 10, commentCount: 10)
+        CookieDetailDTO(cookieID: 1, title: "쿠키제목", desc: "쿠키 설명", thumbnailURL: "https://picsum.photos/200/300", videoURL: "", recipeID: nil, createdAt: "2020-01-01", user: .mock(), isLiked: false, likeCount: 10, commentCount: 10)
     }
     
     let cookieID: Int
@@ -18,7 +18,8 @@ struct CookieDetailDTO: Decodable, Mock {
     let recipeID: Int?
     let createdAt: String
     let user: UserCellDto
-    let isLiked, likeCount, commentCount: Int
+    let isLiked: Bool
+    let likeCount, commentCount: Int
 
     enum CodingKeys: String, CodingKey {
         case cookieID = "cookieId"

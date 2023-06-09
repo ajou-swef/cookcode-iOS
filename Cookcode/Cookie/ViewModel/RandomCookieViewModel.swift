@@ -9,15 +9,13 @@ import SwiftUI
 import AVFoundation
 
 final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, PresentCommentSheet {
-     
-    
 
-    
     @Published var cookies: [CookieDetail] = []
     @Published var cookieSelection: String = ""
     @Published var drag: CGFloat = .zero
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var commentSheetIsPresent: Bool = false
+    @Published var selectedDetail: CookieDetail? 
     
     private let cookieService: CookieServiceProtocol
     var commentService: CommentServiceProtocol
@@ -34,7 +32,7 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
     
     @MainActor
     private func initCookie() async {
-        let result = await cookieService.fetchCookie()
+        let result = await cookieService.getCookie()
         
         switch result {
         case .success(let success):
@@ -59,7 +57,7 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
     
     @MainActor
     private func getCookie() async -> CookieDetail? {
-        let result = await cookieService.fetchCookie()
+        let result = await cookieService.getCookie()
         
         switch result {
         case .success(let success):

@@ -8,7 +8,11 @@
 import Foundation
 
 final class CookieSuccessService: CookieServiceProtocol {
-    func fetchCookieCellByUserId(_ id: Int, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
+    func deleteCookie(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
+        .success(.mock())
+    }
+    
+    func getCookieCellByUserId(_ id: Int, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         .success(.mock())
     }
     
@@ -16,7 +20,7 @@ final class CookieSuccessService: CookieServiceProtocol {
         .success(.mock())
     }
     
-    func searchCookieCellsBy(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
+    func getCookieCellsByQuery(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         .success(.mock())
     }
     
@@ -24,7 +28,7 @@ final class CookieSuccessService: CookieServiceProtocol {
         .success(.mock())
     }
     
-    func fetchCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> {
+    func getCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> {
         .success(.mock())
     }
     

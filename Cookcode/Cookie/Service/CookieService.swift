@@ -9,6 +9,21 @@ import Alamofire
 import Foundation
 
 final class CookieService: CookieServiceProtocol {
+    func deleteCookie(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/cookie/\(id)"
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let response = await AF.request(url, method: .delete, headers: headers)
+            .serializingDecodable(DefaultResponse.self).response
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? ServiceError.decodeError()
+        }
+    }
+    
     func likesCookie(_ cookie: CookieDetail) async -> Result<DefaultResponse, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie/\(cookie.contentId)/likes"
         let headers: HTTPHeaders = [
@@ -24,7 +39,7 @@ final class CookieService: CookieServiceProtocol {
         }
     }
     
-    func searchCookieCellsBy(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
+    func getCookieCellsByQuery(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie/search?query=\(query)"
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let encodedURL = URL(string: encoded)!
@@ -42,7 +57,7 @@ final class CookieService: CookieServiceProtocol {
         }
     }
     
-    func fetchCookieCellByUserId(_ id: Int, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
+    func getCookieCellByUserId(_ id: Int, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie/user/\(id)?page=\(page)"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
@@ -116,7 +131,7 @@ final class CookieService: CookieServiceProtocol {
         }
     }
     
-    func fetchCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> {
+    func getCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
@@ -165,8 +180,6 @@ final class CookieService: CookieServiceProtocol {
         }, to: url, method: .post, headers: headers)
             .uploadProgress(queue: .main, closure: closure)
             .serializingDecodable(DefaultResponse.self).response
-        
-        print("\(response.debugDescription)")
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

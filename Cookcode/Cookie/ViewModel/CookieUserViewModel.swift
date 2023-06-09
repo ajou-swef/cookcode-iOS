@@ -34,7 +34,7 @@ final class CookieUserViewModel: CookieFetcher {
         let curPage = pageState.page
         pageState = .loading(curPage)
         
-        let result = await cookieService.fetchCookieCellByUserId(userId, page: curPage)
+        let result = await cookieService.getCookieCellByUserId(userId, page: curPage)
         
         switch result {
         case .success(let success):

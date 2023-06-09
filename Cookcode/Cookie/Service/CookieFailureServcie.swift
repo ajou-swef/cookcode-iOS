@@ -9,6 +9,10 @@ import Alamofire
 import Foundation
  
 final class CookieFailureService: CookieServiceProtocol {
+    func deleteCookie(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func likesCookie(_ cookie: CookieDetail) async -> Result<DefaultResponse, ServiceError> {
         .failure(.MOCK())
     }
@@ -22,15 +26,15 @@ final class CookieFailureService: CookieServiceProtocol {
         }
     }
     
-    func fetchCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> {
+    func getCookie() async -> Result<ServiceResponse<[CookieDetailDTO]>, ServiceError> {
         .failure(.MOCK())
     }
     
-    func fetchCookieCellByUserId(_ id: Int, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
+    func getCookieCellByUserId(_ id: Int, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         .failure(.MOCK())
     }
     
-    func searchCookieCellsBy(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
+    func getCookieCellsByQuery(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         .failure(.MOCK())
     }
     
