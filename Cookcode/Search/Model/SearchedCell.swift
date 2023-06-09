@@ -6,10 +6,3 @@
 //
 
 import Foundation
-
-protocol SearchedCell: Cell {
-    var userName: String { get set }
-    var createdAt: String { get set }
-    var userProfile: String? { get set }
-    var likesCount: Int { get set }
-}

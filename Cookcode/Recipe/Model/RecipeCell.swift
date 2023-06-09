@@ -7,12 +7,7 @@
 
 import Foundation
 
-struct RecipeCell: SearchedCell {
-    
-    
-    var createdAt: String
-    
-    
+struct RecipeCell: Identifiable, Mock {
     var type: RecipeCell.Type {
         RecipeCell.self
     }
@@ -24,18 +19,17 @@ struct RecipeCell: SearchedCell {
     
     var thumbnail: String
     var title: String
-    var userName: String
-    var userProfile: String?
     var likesCount: Int
+    var userCell: UserCell
+    var createdAt: String
     
     init(dto: RecipeCellDto) {
         recipeId = dto.recipeID
         thumbnail = dto.thumbnail
         title = dto.title
-        userName = dto.user.nickname
         createdAt = dto.createdAt.substring(from: 0, to: 9)
-        userProfile = dto.user.profileImage
         likesCount = dto.likeCount
+        userCell = UserCell(dto: dto.user)
     }
     
     static func mock() -> RecipeCell {

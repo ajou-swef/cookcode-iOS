@@ -8,9 +8,9 @@
 import SwiftUI
 import Kingfisher
 
-struct CellView: View {
+struct RecipeCellView: View {
     
-    let cell: any SearchedCell
+    let cell: RecipeCell
     
     var body: some View {
         VStack(alignment: .center) {
@@ -29,17 +29,7 @@ struct CellView: View {
                 }
             
             HStack(spacing: 5) {
-                if let imageURL = cell.userProfile {
-                    KFImage(URL(string: imageURL)!)
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "person.crop.circle")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.primary)
-                }
+                ProfileNavigateButton(userCell: cell.userCell, width: 30)
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text("\(cell.title)")
@@ -47,7 +37,7 @@ struct CellView: View {
                         .font(CustomFontFactory.INTER_BOLD_16)
                     
                     HStack {
-                        Text(cell.userName)
+                        Text(cell.userCell.userName)
                             .lineLimit(1)
                             .font(CustomFontFactory.INTER_REGULAR_14)
                              
@@ -76,6 +66,6 @@ struct CellView: View {
 
 struct RecipeCellView_Previews: PreviewProvider {
     static var previews: some View {
-        CellView(cell: RecipeCell.mock())
+        RecipeCellView(cell: RecipeCell.mock())
     }
 }

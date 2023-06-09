@@ -12,6 +12,8 @@ struct CommentComponent<ViewModel: CommentCellInteractable>: View {
     
     let comment: Comment
     @ObservedObject var viewModel: ViewModel
+    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var navigateViewModel: NavigateViewModel
     
     init(comment: Comment, viewModel: ViewModel) {
         self.comment = comment
@@ -48,16 +50,24 @@ struct CommentComponent<ViewModel: CommentCellInteractable>: View {
     
     @ViewBuilder
     private func userImage() -> some View {
-        if let url = comment.user.imageURL {
-            let url = URL(string: url)
-            KFImage(url)
-                .resizable()
-                .frame(width: 30, height: 30)
-                .clipShape(Circle())
-        } else {
-            Image(systemName: "person.circle")
-                .resizable()
-                .frame(width: 30, height: 30)
+        Button {
+            dismiss()
+            let homeIdPath = HomeIdPath(path: .profile, id: comment.user.userId)
+            navigateViewModel.navigateWithHome(homeIdPath)
+        } label: {
+            
+            if let url = comment.user.imageURL {
+                KFImage(URL(string: url))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 30, height: 30)
+                    .clipShape(Circle())
+            } else {
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                    .frame(width: 30)
+            }
         }
     }
 }
