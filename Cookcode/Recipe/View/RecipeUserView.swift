@@ -23,7 +23,7 @@ struct RecipeUserView: View {
                    let homeIdPath = HomeIdPath(path: .recipe, id: recipeCell.recipeId)
                    navigateViewModel.navigateWithHome(homeIdPath)
                } label: {
-                   CellView(cell: recipeCell)
+                   RecipeCellView(cell: recipeCell)
                        .foregroundColor(.black)
                        .zIndex(0)
                }

@@ -48,10 +48,6 @@ final class RecipeFailureService: RecipeServiceProtocol {
         .failure(.MOCK())
     }
     
-    func searchCell(page: Int, size: Int, sort: String?, month: Int?) async -> Result<[any SearchedCell], ServiceError> {
-        return .failure(ServiceError.MOCK())
-    }
-    
     func searchRecipe(_ recipeID: Int) async -> Result<ServiceResponse<RecipeDetailDTO>, ServiceError> {
         return .failure(ServiceError(message: "조회 실패", status: 400))
     }

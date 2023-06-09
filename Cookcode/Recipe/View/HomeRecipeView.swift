@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct HomeRecipeView: View {
     
@@ -13,6 +14,7 @@ struct HomeRecipeView: View {
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @EnvironmentObject var updateCellVM: UpdateCellViewModel
     @EnvironmentObject var cookieProgress: CookieProgress
+    @EnvironmentObject var accountViewModel: AccountViewModel
     
     init(recipeService: RecipeServiceProtocol = RecipeService()) {
         self._viewModel = StateObject(wrappedValue: HomeReicpeViewModel(recipeService: recipeService))
@@ -190,10 +192,18 @@ struct HomeRecipeView: View {
             Button {
                 viewModel.myAccountViewIsPresented = true
             } label: {
-                Image(systemName: "person.fill")
-                    .resizable()
-                    .foregroundColor(.black)
-                    .frame(width: 22, height: 22)
+                if let url =  accountViewModel.user.thumbnail {
+                    KFImage(URL(string: url))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                } else {
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                        .frame(width: 30)
+                }
             }
             .fullScreenCover(isPresented: $viewModel.myAccountViewIsPresented) {
                 MyAccountView()

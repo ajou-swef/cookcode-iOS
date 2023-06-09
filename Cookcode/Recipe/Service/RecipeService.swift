@@ -189,10 +189,6 @@ final class RecipeService: RecipeServiceProtocol {
             return serviceErorr ?? ServiceError.MOCK()
         }
     }
-    
-    func searchCell(page: Int, size: Int, sort: String?, month: Int?) async -> Result<[any SearchedCell], ServiceError> {
-        .failure(.MOCK())
-    }
 }
 
 extension RecipeService: CommentServiceProtocol {
