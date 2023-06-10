@@ -56,6 +56,26 @@ struct MyAccountView: View {
                     }
                     
                     Button {
+                        userFormViewModel.requestAuthorityAlertIsPresented = true 
+                    } label: {
+                        Text("인플루언서 권한 요청")
+                            .foregroundColor(.primary)
+                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                    }
+                    .alert("권한 요청", isPresented: $userFormViewModel.requestAuthorityAlertIsPresented) {
+                        Button("취소", role: .cancel) { }
+                        Button {
+                            Task { await userFormViewModel.requesetOkButtonTapped() }
+                        } label: {
+                            Text("확인")
+                        }
+
+                    } message: {
+                        Text("인플루언서 권한을 요청하시겠습니까?")
+                    }
+
+                    
+                    Button {
                         navigateViewModel.clear()
                         accountViewModel.logout()
                     } label: {

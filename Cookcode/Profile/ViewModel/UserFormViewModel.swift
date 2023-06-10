@@ -14,6 +14,7 @@ final class UserFormViewModel: ObservableObject {
     @Published var user: UserDetail = .mock()
     @Published var profileForm: ProfileForm = .mock()
     @Published var serviceAlert: ServiceAlert = .init()
+    @Published var requestAuthorityAlertIsPresented: Bool = false
     
     private let accountService: AccountServiceProtocol
     
@@ -35,6 +36,16 @@ final class UserFormViewModel: ObservableObject {
             break
         }
         
+    }
+    
+    func requesetOkButtonTapped() async {
+        let result = await accountService.requestAuthority(.influencer)
+        switch result {
+        case .success(_):
+            return
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
     }
     
     @MainActor

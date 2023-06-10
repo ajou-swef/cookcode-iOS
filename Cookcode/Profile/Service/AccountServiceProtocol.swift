@@ -9,6 +9,8 @@ import Alamofire
 import Foundation
 
 protocol AccountServiceProtocol {
+    func requestAuthority(_ authority: Authority) async -> Result<DefaultResponse, ServiceError> 
+    
     func updateProfile(_ profileForm: ProfileForm) async -> Result<DefaultResponse, ServiceError>
     
     func fetchMyPublisher() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError>
