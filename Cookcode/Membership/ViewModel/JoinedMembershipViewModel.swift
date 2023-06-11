@@ -18,6 +18,7 @@ final class JoineMembershipViewModel: JoinedMembershipInteractable {
         Task { await fetch() }
     }
     
+    @MainActor
     func fetch() async {
         let result = await membershipService.fetchMyMemberships()
         switch result {
@@ -28,6 +29,7 @@ final class JoineMembershipViewModel: JoinedMembershipInteractable {
         }
     }
     
+    @MainActor
     func joinedMembershipButtonTapped(_ grade: JoinedMembershipDetail) async {
         let _ = await membershipService.cancleMembershipByMembershipId(id: grade.membershipID)
         await fetch()

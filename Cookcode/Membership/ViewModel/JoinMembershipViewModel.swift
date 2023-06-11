@@ -16,6 +16,7 @@ final class JoinMembershipViewModel: ObservableObject, MembershipGradeInteractab
     
     init(userId: Int) {
         self.userId = userId
+        print("init!")
         
         Task { await fetchMembershipGrades() }
     }

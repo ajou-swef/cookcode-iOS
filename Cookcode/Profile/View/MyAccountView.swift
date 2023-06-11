@@ -46,27 +46,38 @@ struct MyAccountView: View {
                         Text("인플루언서 권한을 요청하시겠습니까?")
                     }
                     
-                    
-                    NavigationLink {
-                        ManageAuthView()
-                    } label: {
-                        Text("멤버쉽 생성")
-                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
-                    }
-                    
-                    NavigationLink {
-                        JoineMembershipList()
-                    } label: {
-                        Text("가입한 멤버쉽")
-                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
-                    }
-                    
-                    NavigationLink {
-                        ResetPasswordView()
-                    } label: {
-                        Text("비밀번호 변경")
-                            .foregroundColor(.primary)
-                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                    Group {
+                        NavigationLink {
+                            ManageAuthView()
+                        } label: {
+                            Text("멤버쉽 생성")
+                                .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                        }
+                        .presentIf(accountViewModel.user.authority == .influencer)
+                        
+                        NavigationLink {
+                            JoineMembershipList()
+                        } label: {
+                            Text("가입한 멤버쉽")
+                                .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                        }
+                        
+                        NavigationLink {
+                            TreatAuthRequestView()
+                        } label: {
+                            Text("권한 관리")
+                                .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                        }
+                        .presentIf(accountViewModel.user.authority == .admin)
+
+                        
+                        NavigationLink {
+                            ResetPasswordView()
+                        } label: {
+                            Text("비밀번호 변경")
+                                .foregroundColor(.primary)
+                                .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                        }
                     }
 
                     

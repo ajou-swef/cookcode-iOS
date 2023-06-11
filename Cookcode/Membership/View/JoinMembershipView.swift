@@ -17,12 +17,19 @@ struct JoinMembershipView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 20) {
+                Text("멤버십 가입")
+                    .font(.custom(CustomFont.interBold.rawValue, size: 25))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
                 ForEach(viewModel.membershipGrades) { grade in
                     MembershipCellView(viewModel: viewModel, membershipGradeDetail: grade)
                 }
             }
+            .padding(.top)
+            .padding(.horizontal)
         }
+        .navigationBarTitle("멤버십 목록")
     }
 }
 

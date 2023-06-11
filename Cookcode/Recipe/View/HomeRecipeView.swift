@@ -191,7 +191,7 @@ struct HomeRecipeView: View {
             }
             
             Button {
-                viewModel.myAccountViewIsPresented = true
+                navigateViewModel.myAccountViewIsPresented = true
             } label: {
                 if let url =  accountViewModel.user.thumbnail {
                     KFImage(URL(string: url))
@@ -206,7 +206,7 @@ struct HomeRecipeView: View {
                         .frame(width: 30)
                 }
             }
-            .fullScreenCover(isPresented: $viewModel.myAccountViewIsPresented) {
+            .fullScreenCover(isPresented: $navigateViewModel.myAccountViewIsPresented) {
                 MyAccountView()
             }
         }

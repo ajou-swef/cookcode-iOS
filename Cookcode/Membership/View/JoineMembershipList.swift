@@ -18,7 +18,9 @@ struct JoineMembershipList: View {
                     JoinedMembershipCellView(viewModel: viewModel, membership: membership)
                 }
             }
+            .padding(.horizontal)
         }
+        .navigationTitle("가입 멤버십")
     }
 }
 
