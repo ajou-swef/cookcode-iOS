@@ -8,6 +8,27 @@ import Alamofire
 import Foundation
 
 final class AccountService: AccountServiceProtocol {
+    func requestTemporaryPasswordByEmail(_ email: String) async -> Result<DefaultResponse, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/account/password?email=\(email)"
+        
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let response = await AF.request(url, method: .get, headers: headers)
+            .serializingDecodable(DefaultResponse.self).response
+        
+//        if response.error != nil {
+            print("\(response.debugDescription)")
+//        }
+        
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? .decodeError()
+        }
+    }
+    
     func requestAuthority(_ authority: Authority) async -> Result<DefaultResponse, ServiceError> {
         let url = "\(BASE_URL)/api/v1/account/authority/\(authority.rawValue)"
         let headers: HTTPHeaders = [
@@ -21,7 +42,6 @@ final class AccountService: AccountServiceProtocol {
             print("\(response.debugDescription)")
         }
         
-        print("\(response.debugDescription)")
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }

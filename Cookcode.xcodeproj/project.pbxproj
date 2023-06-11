@@ -77,6 +77,8 @@
 		15508CB02A1329DD00004A1C /* IngredientCellsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15508CAF2A1329DD00004A1C /* IngredientCellsView.swift */; };
 		15508CB22A134DE600004A1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15508CB12A134DE600004A1C /* API.swift */; };
 		15508CB42A134DFD00004A1C /* Ingredient Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */; };
+		15536B3E2A357DC000611AA0 /* RequestPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B3D2A357DC000611AA0 /* RequestPasswordView.swift */; };
+		15536B402A357DD800611AA0 /* RequestPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B3F2A357DD800611AA0 /* RequestPasswordViewModel.swift */; };
 		15581B5E2A2100DC002E0AFB /* UpdateRecipeViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 15581B5D2A2100DC002E0AFB /* UpdateRecipeViewModel .swift */; };
 		155A50762A0B5A9500EBD894 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A50752A0B5A9500EBD894 /* ContentService.swift */; };
 		15634B6B2A1B7C3C00FEABB8 /* CookieFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */; };
@@ -344,6 +346,8 @@
 		15508CAF2A1329DD00004A1C /* IngredientCellsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCellsView.swift; sourceTree = "<group>"; };
 		15508CB12A134DE600004A1C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient Dictionary.swift"; sourceTree = "<group>"; };
+		15536B3D2A357DC000611AA0 /* RequestPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordView.swift; sourceTree = "<group>"; };
+		15536B3F2A357DD800611AA0 /* RequestPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordViewModel.swift; sourceTree = "<group>"; };
 		15581B5D2A2100DC002E0AFB /* UpdateRecipeViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateRecipeViewModel .swift"; sourceTree = "<group>"; };
 		155A50752A0B5A9500EBD894 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
 		15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieFormView.swift; sourceTree = "<group>"; };
@@ -649,7 +653,6 @@
 				159BE2AD29FB875300DE7448 /* Cell */,
 				153B4D9029ED06A500543730 /* Component */,
 				158EFDD82A04CDD1003057A4 /* Container */,
-				15DF8E8C2A10FB0700B58784 /* Login */,
 				15CFE6A629FF7B7000C16FF6 /* Profile */,
 				15B869B129EFD9B900A02872 /* MainTabView.swift */,
 				15B04C672A1C907100B988BF /* PlayerView.swift */,
@@ -1091,6 +1094,9 @@
 				15FD58A42A2C8CC500295B8B /* MyPublishersView.swift */,
 				153C1DC22A30B279001DC06B /* MySubscriberView.swift */,
 				156387D02A330A7600BD7C01 /* ProfileNavigateButton.swift */,
+				1584033229B48E0F0092032A /* LoginView.swift */,
+				1584033429B48EAA0092032A /* MembershipView.swift */,
+				15536B3D2A357DC000611AA0 /* RequestPasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1104,6 +1110,7 @@
 				158D7A8A2A2C6DA200DFFB82 /* MyPublisherViewModel .swift */,
 				153C1DC02A30B25A001DC06B /* MySubscriberViewModel.swift */,
 				153C1DBE2A3092A5001DC06B /* UserFormViewModel.swift */,
+				15536B3F2A357DD800611AA0 /* RequestPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1388,15 +1395,6 @@
 				15C112DA2A1B11F9009B87E1 /* UpdateCellViewModel.swift */,
 			);
 			path = Update;
-			sourceTree = "<group>";
-		};
-		15DF8E8C2A10FB0700B58784 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				1584033429B48EAA0092032A /* MembershipView.swift */,
-				1584033229B48E0F0092032A /* LoginView.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		15DF8E8D2A10FB2200B58784 /* Login */ = {
@@ -1771,6 +1769,7 @@
 				15676CF62A3044DF002A142E /* RefreshableRecipeFetchView.swift in Sources */,
 				15B1F9E02A08D9B500B9CB24 /* IngredientType.swift in Sources */,
 				15AA2F2429EFEA250069813F /* RecipeFormViewModel.swift in Sources */,
+				15536B402A357DD800611AA0 /* RequestPasswordViewModel.swift in Sources */,
 				15B6263E2A009CE6002E1F5F /* SearchedCell.swift in Sources */,
 				15B4CC502A24E90B00DC226E /* Array + Mock.swift in Sources */,
 				1594F4A32A29D40C004A68D6 /* RecipeFetcher.swift in Sources */,
@@ -1793,6 +1792,7 @@
 				158D7A852A2C698100DFFB82 /* CookieUserView.swift in Sources */,
 				1525657F2A077FD000471D52 /* ServiceResponse.swift in Sources */,
 				15B04C592A1C76FF00B988BF /* VideLoadState.swift in Sources */,
+				15536B3E2A357DC000611AA0 /* RequestPasswordView.swift in Sources */,
 				15AA2F8A29F10CA90069813F /* ContentWrappedStepForm.swift in Sources */,
 				153B4DAD29ED179200543730 /* SignInForm.swift in Sources */,
 				15508CB02A1329DD00004A1C /* IngredientCellsView.swift in Sources */,

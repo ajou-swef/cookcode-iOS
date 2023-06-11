@@ -30,7 +30,7 @@ struct MyPublishersView: View {
                 }
             }
             .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-                ServiceAlert.CANCEL_BUTTON
+                ServiceAlert.cancelButton
             }
         }
         .navigationTitle("구독 목록")

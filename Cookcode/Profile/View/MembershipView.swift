@@ -91,7 +91,7 @@ struct MembershipView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-            ServiceAlert.CANCEL_BUTTON
+            ServiceAlert.cancelButton
         }
     }
     
