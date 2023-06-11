@@ -43,6 +43,9 @@ struct CookieVideoList: View {
         .onAppear {
             updateViewModel.scheme = .dark
         }
+        .onDisappear {
+            updateViewModel.scheme = .light
+        }
     }
     
 //    @ViewBuilder

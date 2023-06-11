@@ -44,7 +44,7 @@ final class CookieSearchViewModel: CookieFetcher, Searchable, Refreshable {
         let curPage = pageState.page
         pageState = .loading(curPage)
         
-        let result = await cookieService.getCookieCellsByQuery(query)
+        let result = await cookieService.getCookieCellsByQuery(query, page: curPage)
         
         switch result {
         case .success(let success):

@@ -104,7 +104,7 @@ struct ProfileView: View {
         Button {
             viewModel.viewItem = ProfileViewModel.ViewItem(viewCase: .membership, itemId: viewModel.userId)
         } label: {
-            Text("멤버쉽 가입")
+            Text("멤버십 가입")
                 .font(.custom(CustomFont.interBold.rawValue, size: 15))
                 .foregroundColor(.primary)
                 .frame(maxWidth: .infinity)

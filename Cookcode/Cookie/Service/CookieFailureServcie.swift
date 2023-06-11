@@ -42,7 +42,7 @@ final class CookieFailureService: CookieServiceProtocol {
         .failure(.MOCK())
     }
     
-    func getCookieCellsByQuery(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
+    func getCookieCellsByQuery(_ query: String, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
         .failure(.MOCK())
     }
     

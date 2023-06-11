@@ -74,8 +74,8 @@ final class CookieService: CookieServiceProtocol {
         }
     }
     
-    func getCookieCellsByQuery(_ query: String) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
-        let url = "\(BASE_URL)/api/v1/cookie/search?query=\(query)"
+    func getCookieCellsByQuery(_ query: String, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/cookie/search?&query=\(query)&page=\(page)&size=6"
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let encodedURL = URL(string: encoded)!
         
@@ -93,7 +93,7 @@ final class CookieService: CookieServiceProtocol {
     }
     
     func getCookieCellByUserId(_ id: Int, page: Int) async -> Result<ServiceResponse<PageResponse<CookieDetailDTO>>, ServiceError> {
-        let url = "\(BASE_URL)/api/v1/cookie/user/\(id)?page=\(page)"
+        let url = "\(BASE_URL)/api/v1/cookie/user/\(id)?size=6&page=\(page)"
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
