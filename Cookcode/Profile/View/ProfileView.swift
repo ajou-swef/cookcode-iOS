@@ -22,8 +22,12 @@ struct ProfileView: View {
         ScrollView {
             VStack(alignment: .center, spacing: 10) {
                 userProfile()
-                subscribeButton()
-                unsubscribeButton()
+                
+                HStack(spacing: 0) {
+                    subscribeButton()
+                    unsubscribeButton()
+                    presentMembshipGradeButton()
+                }
                 contentSelectButton()
                 contentView()
             }
@@ -92,6 +96,31 @@ struct ProfileView: View {
                 .font(.custom(CustomFont.interBold.rawValue, size: 20))
                 .padding(.bottom, -5)
                 .offset(y: -10)
+        }
+    }
+    
+    @ViewBuilder
+    private func presentMembshipGradeButton() -> some View {
+        Button {
+            viewModel.viewItem = ProfileViewModel.ViewItem(viewCase: .membership, itemId: viewModel.userId)
+        } label: {
+            Text("멤버쉽 가입")
+                .font(.custom(CustomFont.interBold.rawValue, size: 15))
+                .foregroundColor(.primary)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 10)
+                .background(
+                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                        .padding(.horizontal, 20)
+                        .foregroundColor(.gray_bcbcbc)
+                )
+        }
+        .presentIf(viewModel.membershipButtonIsPresented)
+        .padding(.bottom, 5)
+        .sheet(item: $viewModel.viewItem) { item in
+            if let id = item.itemId {
+                JoinMembershipView(id: id)
+            }
         }
     }
     

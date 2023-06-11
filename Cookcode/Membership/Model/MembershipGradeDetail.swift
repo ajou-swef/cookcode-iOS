@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-struct MembershipGradeDetail: Identifiable {
+struct MembershipGradeDetail: Identifiable, Mock {
+    static func mock() -> MembershipGradeDetail {
+        MembershipGradeDetail(dto: .mock())
+    }
+    
     let id: String = UUID().uuidString
     let membershipID: Int
     let grade: String
@@ -16,5 +20,13 @@ struct MembershipGradeDetail: Identifiable {
     enum CodingKeys: String, CodingKey {
         case membershipID = "membershipId"
         case grade, price
+    }
+}
+
+extension MembershipGradeDetail {
+    init (dto: MembershipGradeDetailDto) {
+        membershipID = dto.membershipID
+        grade = dto.grade
+        price = dto.price
     }
 }

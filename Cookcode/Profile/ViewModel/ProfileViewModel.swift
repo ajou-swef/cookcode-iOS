@@ -9,12 +9,31 @@ import SwiftUI
 
 final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
     
+    enum ViewCase: String, Identifiable {
+        case membership
+        
+        var id: String {
+            return self.rawValue
+        }
+    }
+    
+    struct ViewItem: Identifiable {
+        var id: String = UUID().uuidString
+        let viewCase: ViewCase
+        let itemId: Int?
+    }
+    
     @Published private(set) var userDetail: UserDetail = .mock()
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var seachType: SearchType = .recipe
+    @Published var viewItem: ViewItem? 
     
     private let accountService: AccountServiceProtocol
     let userId: Int
+    
+    var membershipButtonIsPresented: Bool {
+        userDetail.authority == .influencer
+    }
     
     var subscribeButtonIsPresented: Bool {
         userDetail.notSubscribed

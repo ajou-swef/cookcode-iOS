@@ -169,6 +169,10 @@
 		15A53B302A36014E0055D8CB /* MembershipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A53B2F2A36014E0055D8CB /* MembershipService.swift */; };
 		15A53B322A3606C00055D8CB /* MembershipGradeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A53B312A3606C00055D8CB /* MembershipGradeDetail.swift */; };
 		15A53B342A3607140055D8CB /* MembershipGradeDetailDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A53B332A3607140055D8CB /* MembershipGradeDetailDto.swift */; };
+		15A53B362A360A9E0055D8CB /* JoinMembershipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A53B352A360A9E0055D8CB /* JoinMembershipView.swift */; };
+		15A53B382A360AAD0055D8CB /* JoinMembershipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A53B372A360AAD0055D8CB /* JoinMembershipViewModel.swift */; };
+		15A53B3A2A360C3B0055D8CB /* MembershipCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A53B392A360C3B0055D8CB /* MembershipCellView.swift */; };
+		15A53B3C2A360D590055D8CB /* MembershipGradeInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A53B3B2A360D590055D8CB /* MembershipGradeInteractable.swift */; };
 		15A6AB552A03ACA700394490 /* SelectIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6AB542A03ACA700394490 /* SelectIngredientViewModel.swift */; };
 		15A6AB572A03B71700394490 /* RefrigeratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6AB562A03B71700394490 /* RefrigeratorViewModel.swift */; };
 		15A6AB5A2A03BE6400394490 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 15A6AB592A03BE6400394490 /* PopupView */; };
@@ -455,6 +459,10 @@
 		15A53B2F2A36014E0055D8CB /* MembershipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipService.swift; sourceTree = "<group>"; };
 		15A53B312A3606C00055D8CB /* MembershipGradeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipGradeDetail.swift; sourceTree = "<group>"; };
 		15A53B332A3607140055D8CB /* MembershipGradeDetailDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipGradeDetailDto.swift; sourceTree = "<group>"; };
+		15A53B352A360A9E0055D8CB /* JoinMembershipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMembershipView.swift; sourceTree = "<group>"; };
+		15A53B372A360AAD0055D8CB /* JoinMembershipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMembershipViewModel.swift; sourceTree = "<group>"; };
+		15A53B392A360C3B0055D8CB /* MembershipCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCellView.swift; sourceTree = "<group>"; };
+		15A53B3B2A360D590055D8CB /* MembershipGradeInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipGradeInteractable.swift; sourceTree = "<group>"; };
 		15A6AB542A03ACA700394490 /* SelectIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIngredientViewModel.swift; sourceTree = "<group>"; };
 		15A6AB562A03B71700394490 /* RefrigeratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorViewModel.swift; sourceTree = "<group>"; };
 		15A756372A35B5F9008D2350 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
@@ -1239,6 +1247,8 @@
 			isa = PBXGroup;
 			children = (
 				15A53B1D2A35FE850055D8CB /* ManageAuthView.swift */,
+				15A53B352A360A9E0055D8CB /* JoinMembershipView.swift */,
+				15A53B392A360C3B0055D8CB /* MembershipCellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1246,7 +1256,9 @@
 		15A53B242A35FF160055D8CB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				15A53B3B2A360D590055D8CB /* MembershipGradeInteractable.swift */,
 				15A53B1F2A35FEBA0055D8CB /* ManageAuthViewModel.swift */,
+				15A53B372A360AAD0055D8CB /* JoinMembershipViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1720,7 +1732,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15A53B362A360A9E0055D8CB /* JoinMembershipView.swift in Sources */,
 				15AA2F2029EFE47C0069813F /* RecipeFormView.swift in Sources */,
+				15A53B3C2A360D590055D8CB /* MembershipGradeInteractable.swift in Sources */,
 				1515F31D2A0C7BE90003A4BB /* RecipeDetail.swift in Sources */,
 				15B04C5F2A1C7DEF00B988BF /* RandomCookieView.swift in Sources */,
 				1515F3102A0C77220003A4BB /* RecipeDetailDTO.swift in Sources */,
@@ -1733,6 +1747,7 @@
 				1525657A2A076DAE00471D52 /* AppendIngredientViewModel.swift in Sources */,
 				15E43A9E29FA94DF0008DC7A /* AccountSuccessService.swift in Sources */,
 				15A53B2C2A36000A0055D8CB /* MembershipGradeForm.swift in Sources */,
+				15A53B382A360AAD0055D8CB /* JoinMembershipViewModel.swift in Sources */,
 				15B1F9E42A08FD6500B9CB24 /* ServiceDateFormatter.swift in Sources */,
 				1515FB2A2A12095C00119519 /* RecipeDetailViewModel.swift in Sources */,
 				15B1F9E92A0918ED00B9CB24 /* IngredientFormDTO.swift in Sources */,
@@ -1872,6 +1887,7 @@
 				153F127C29FE2359008BDB4E /* RecipeStepDTO.swift in Sources */,
 				158D7A732A2C48BA00DFFB82 /* UserSearchView.swift in Sources */,
 				153B4DB329ED286300543730 /* View + Hidden.swift in Sources */,
+				15A53B3A2A360C3B0055D8CB /* MembershipCellView.swift in Sources */,
 				158D7A7F2A2C66D100DFFB82 /* CookieFetcher.swift in Sources */,
 				159BE2A929FB6E7900DE7448 /* AccountFailureService.swift in Sources */,
 				15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */,
