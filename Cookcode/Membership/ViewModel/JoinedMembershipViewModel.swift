@@ -29,6 +29,7 @@ final class JoineMembershipViewModel: JoinedMembershipInteractable {
     }
     
     func joinedMembershipButtonTapped(_ grade: JoinedMembershipDetail) async {
-        
+        let _ = await membershipService.cancleMembershipByMembershipId(id: grade.membershipID)
+        await fetch()
     }
 }

@@ -9,6 +9,22 @@ import Alamofire
 import SwiftUI
 
 final class MembershipService {
+    func cancleMembershipByMembershipId(id: Int) async -> Result<DefaultResponse, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/membership/\(id)"
+        
+        let headers: HTTPHeaders = [
+            "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
+        ]
+        
+        let response = await AF.request(url, method: .delete, headers: headers)
+            .serializingDecodable(DefaultResponse.self).response
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? .decodeError()
+        }
+    }
+    
     func fetchMyMemberships() async -> Result<ServiceResponse<[JoinedMembershipDetailDto]>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/membership"
         
