@@ -8,6 +8,10 @@
 import Foundation
 
 final class AccountSuccessService: AccountServiceProtocol {
+    func resetPassword(dto: PasswordFormDto) async -> Result<DefaultResponse, ServiceError> {
+        .success(.mock())
+    }
+    
     func requestTemporaryPasswordByEmail(_ email: String) async -> Result<DefaultResponse, ServiceError> {
         .success(.mock())
     }

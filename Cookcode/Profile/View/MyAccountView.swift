@@ -23,37 +23,9 @@ struct MyAccountView: View {
                 userProfile()
                 
                 List {
-                    Button {
-                        dismiss()
-                        let myId = UserDefaults.standard.integer(forKey: USER_ID)
-                        let homeIdPath = HomeIdPath(path: .profile, id: myId)
-                        navigateViewModel.navigateWithHome(homeIdPath)
-                    } label: {
-                        Text("내 채널")
-                            .foregroundColor(.primary)
-                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
-                    }
-                    
-                    
-                    Button {
-                        dismiss()
-                        let homeIdPath = HomeIdPath(path: .publisher, id: nil)
-                        navigateViewModel.navigateWithHome(homeIdPath)
-                    } label: {
-                        Text("구독 목록")
-                            .foregroundColor(.primary)
-                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
-                    }
-                    
-                    Button {
-                        dismiss()
-                        let homeIdPath = HomeIdPath(path: .subscriber, id: nil)
-                        navigateViewModel.navigateWithHome(homeIdPath)
-                    } label: {
-                        Text("내 구독자들")
-                            .foregroundColor(.primary)
-                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
-                    }
+                    navigateToMyChannelButton()
+                    navigateToMyPublishersButton()
+                    navigateToMySubscribersButton()
                     
                     Button {
                         userFormViewModel.requestAuthorityAlertIsPresented = true 
@@ -72,6 +44,14 @@ struct MyAccountView: View {
 
                     } message: {
                         Text("인플루언서 권한을 요청하시겠습니까?")
+                    }
+                    
+                    NavigationLink {
+                        ResetPasswordView()
+                    } label: {
+                        Text("비밀번호 변경")
+                            .foregroundColor(.primary)
+                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
                     }
 
                     
@@ -118,6 +98,46 @@ struct MyAccountView: View {
                     }
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func navigateToMySubscribersButton() -> some View {
+        Button {
+            dismiss()
+            let homeIdPath = HomeIdPath(path: .subscriber, id: nil)
+            navigateViewModel.navigateWithHome(homeIdPath)
+        } label: {
+            Text("내 구독자들")
+                .foregroundColor(.primary)
+                .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+        }
+    }
+    
+    @ViewBuilder
+    private func navigateToMyPublishersButton() -> some View {
+        Button {
+            dismiss()
+            let homeIdPath = HomeIdPath(path: .publisher, id: nil)
+            navigateViewModel.navigateWithHome(homeIdPath)
+        } label: {
+            Text("구독 목록")
+                .foregroundColor(.primary)
+                .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+        }
+    }
+    
+    @ViewBuilder
+    private func navigateToMyChannelButton() -> some View {
+        Button {
+            dismiss()
+            let myId = UserDefaults.standard.integer(forKey: USER_ID)
+            let homeIdPath = HomeIdPath(path: .profile, id: myId)
+            navigateViewModel.navigateWithHome(homeIdPath)
+        } label: {
+            Text("내 채널")
+                .foregroundColor(.primary)
+                .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
         }
     }
     
