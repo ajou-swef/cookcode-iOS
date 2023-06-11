@@ -25,7 +25,7 @@ struct MembershipCellView<ViewModel: MembershipGradeInteractable>: View {
             Spacer()
             
             Button {
-                viewModel.membershipGradeButtonTapped(membershipGradeDetail)
+                Task { await viewModel.membershipGradeButtonTapped(membershipGradeDetail) }
             } label: {
                 Text("가입")
                     .font(.custom(CustomFont.interRegular.rawValue, size: 15))

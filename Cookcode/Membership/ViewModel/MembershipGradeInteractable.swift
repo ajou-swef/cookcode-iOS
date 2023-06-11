@@ -8,5 +8,5 @@
 import SwiftUI
 
 protocol MembershipGradeInteractable: ObservableObject {
-    func membershipGradeButtonTapped(_ grade: MembershipGradeDetail)
+    func membershipGradeButtonTapped(_ grade: MembershipGradeDetail) async
 }

@@ -20,8 +20,16 @@ final class JoinMembershipViewModel: ObservableObject, MembershipGradeInteractab
         Task { await fetchMembershipGrades() }
     }
     
-    func membershipGradeButtonTapped(_ grade: MembershipGradeDetail) {
+    @MainActor
+    func membershipGradeButtonTapped(_ grade: MembershipGradeDetail) async {
+        let result = await membershipService.joinMembershipByMembershipid(grade.membershipID)
         
+        switch result {
+        case .success(_):
+            break
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
     }
     
     @MainActor
