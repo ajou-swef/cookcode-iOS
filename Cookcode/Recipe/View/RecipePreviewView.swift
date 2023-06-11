@@ -36,7 +36,7 @@ struct RecipePreviewView: View {
         .navigationBarBackButtonHidden()
         .statusBarHidden()
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-            ServiceAlert.CANCEL_BUTTON
+            ServiceAlert.cancelButton
         }
     }
     

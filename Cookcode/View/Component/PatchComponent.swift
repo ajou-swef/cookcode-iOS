@@ -52,7 +52,7 @@ struct PatchComponent<ViewModel>: View where ViewModel: PatchViewModel {
             completeButton()
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-            ServiceAlert.CANCEL_BUTTON
+            ServiceAlert.cancelButton
         }
     }
 }

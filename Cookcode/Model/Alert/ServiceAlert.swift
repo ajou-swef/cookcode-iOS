@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ServiceAlert {
-    static let CANCEL_BUTTON = Button("확인", role: .cancel) { }
+    static let cancelButton = Button("확인", role: .cancel) { }
     
     var isPresented: Bool = false
     private(set) var title: String = ""

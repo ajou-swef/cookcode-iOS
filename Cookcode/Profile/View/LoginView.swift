@@ -20,29 +20,31 @@ struct LoginView: View {
     @FocusState private var focused: Field?
     var body: some View {
         NavigationStack(path: $path) {
-            VStack(spacing: 10) {
-                Spacer()
-                
-                Image("cookcode.logo")
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                
-                Text("cookcode")
-                    .font(.custom(CustomFont.interBold.rawValue, size: 30))
-                    .padding(.bottom, 30)
-                
-                emailField()
-                passwordField()
-                loginButton()
-                
-                VStack(alignment: .trailing, spacing: 5) {
-                    navigateCredentialButton()
-                    navigateMembershipViewButton()
+            ScrollView {
+                VStack(spacing: 10) {
+                    Spacer()
+                    
+                    Image("cookcode.logo")
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                    
+                    Text("cookcode")
+                        .font(.custom(CustomFont.interBold.rawValue, size: 30))
+                        .padding(.bottom, 30)
+                    
+                    emailField()
+                    passwordField()
+                    loginButton()
+                    
+                    VStack(alignment: .trailing, spacing: 5) {
+                        navigateCredentialButton()
+                        navigateMembershipViewButton()
+                    }
+                    .frame(maxWidth: 320, alignment: .trailing)
+                    
+                    Spacer()
+                   
                 }
-                .frame(maxWidth: 320, alignment: .trailing)
-                
-                Spacer()
-               
             }
             .onDisappear {
                 viewModel.clear()
@@ -51,7 +53,7 @@ struct LoginView: View {
             .accessibilityIdentifier("LoginView")
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-            ServiceAlert.CANCEL_BUTTON
+            ServiceAlert.cancelButton
         }
     }
     
@@ -101,14 +103,14 @@ struct LoginView: View {
     @ViewBuilder
     private func navigateCredentialButton() -> some View {
         NavigationLink {
-            EmptyView()
+            RequestPasswordView()
         } label: {
-            Text("이메일/비밀번호 찾기")
+            Text("비밀번호 찾기")
                 .foregroundColor(.mainColor)
-                .font(CustomFontFactory.INTER_BOLD_16)
+                .font(.custom(CustomFont.interRegular.rawValue, size: 15))
         }
     }
-//
+
     @ViewBuilder
     private func navigateMembershipViewButton() -> some View {
         NavigationLink {
@@ -116,7 +118,7 @@ struct LoginView: View {
         } label: {
             Text("회원가입")
                 .foregroundColor(.mainColor)
-                .font(CustomFontFactory.INTER_BOLD_16)
+                .font(.custom(CustomFont.interRegular.rawValue, size: 15))
                 .accessibilityIdentifier("MembershipViewNavigationLink")
         }
     }
