@@ -57,7 +57,7 @@ struct IngredientPatchComponent<ViewModel>: View where ViewModel: PatchIngredien
                 
                 Spacer()
                 
-                PatchComponent(viewModel: viewModel)
+                PatchComponent(viewModel: viewModel, cellType: .ingredient, id: viewModel.ingredientCell.ingredId)
             }
             .background {
                 Color.white

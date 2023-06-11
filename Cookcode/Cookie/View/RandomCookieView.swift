@@ -29,6 +29,9 @@ struct RandomCookieView: View {
             }
             .sheet(item: $viewModel.selectedCookie, content: { cookieDetail in
                 ModifyCookieView(cookieDetail: cookieDetail)
+                    .onDisappear {
+                        viewModel.updateCookie(updateViewModel.updateCellDict)
+                    }
             })
             .simultaneousGesture(
                 DragGesture()

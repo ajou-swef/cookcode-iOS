@@ -12,7 +12,8 @@ final class CookieVideoListViewModel: ObservableObject, PresentCommentSheet, lik
     @Published var selectedCookie: CookieDetail?
     @Published var commentSheetIsPresent: Bool = false
     @Published var cookies: [CookieDetail]
-    @Published var tabSelection: String = ""
+    @Published var cookieSelection: String = ""
+    @Published var serviceAlert: ServiceAlert = .init()
     
     
     var cookieService: CookieService = .init()
@@ -22,7 +23,7 @@ final class CookieVideoListViewModel: ObservableObject, PresentCommentSheet, lik
     init(cookies: [CookieDetail], selectedCookieId: Int) {
         self.cookies = cookies
         guard let firstCookie = cookies.first(where: { $0.contentId == selectedCookieId }) else { return }
-        tabSelection = firstCookie.id
+        cookieSelection = firstCookie.id
     }
     
     func cookieInteractButtonTapped(_ cookkie: CookieDetail) {
@@ -45,5 +46,39 @@ final class CookieVideoListViewModel: ObservableObject, PresentCommentSheet, lik
         cookies[index].likeInteract()
         
         let _ = await cookieService.likesCookie(cookies[index])
+    }
+    
+    func updateCookie(_ updateInfo: [CellType: CellUpdateInfo]) {
+        guard let info = updateInfo[.cookie] else { return }
+        
+        switch info.updateType {
+        case .delete:
+            Task { await removeCookie(id:info.cellId) }
+        case .patch:
+            Task { await patchCookie(id: info.cellId) }
+        }
+    }
+    
+    
+    
+    @MainActor
+    private func removeCookie(id: Int) async {
+        guard let index = cookies.firstIndex(where: { $0.contentId == id }) else { return }
+        cookies.remove(at: index)
+    }
+    
+    @MainActor
+    private func patchCookie(id: Int) async {
+        guard let index = cookies.firstIndex(where: { $0.contentId == id }) else { return }
+        let result = await cookieService.getCookieByCookieId(id)
+        
+        switch result {
+        case .success(let success):
+            let cookie = CookieDetail(dto: success.data)
+            cookies[index].update(cookie: cookie)
+            avControll(cookieSelection)
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
     }
 }

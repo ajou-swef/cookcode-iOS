@@ -138,4 +138,58 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
         
         let _ = await cookieService.likesCookie(cookies[index])
     }
+    
+    func updateCookie(_ updateInfo: [CellType: CellUpdateInfo]) {
+        guard let info = updateInfo[.cookie] else { return }
+        
+        switch info.updateType {
+        case .delete:
+            Task { await changeCookie(id:info.cellId) }
+        case .patch:
+            Task { await patchCookie(id: info.cellId) }
+        }
+    }
+    
+    
+    @MainActor
+    private func changeCookie(id: Int) async {
+        guard let index = cookies.firstIndex(where: { $0.contentId == id }) else { return }
+        let result = await cookieService.getCookie()
+        
+        switch result {
+        case .success(let success):
+            if let first = success.data.first {
+                let cookie = CookieDetail(dto: first)
+                cookies[index].update(cookie: cookie)
+                
+                if index == 0 {
+                    cookies[cookies.count - 1].update(cookie: cookie)
+                }
+                
+                avControll(cookieSelection)
+            }
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
+    }
+    
+    @MainActor
+    private func patchCookie(id: Int) async {
+        guard let index = cookies.firstIndex(where: { $0.contentId == id }) else { return }
+        let result = await cookieService.getCookieByCookieId(id)
+        
+        switch result {
+        case .success(let success):
+            let cookie = CookieDetail(dto: success.data)
+            cookies[index].update(cookie: cookie)
+            
+            if index == 0 {
+                cookies[cookies.count - 1].update(cookie: cookie)
+            }
+            
+            avControll(cookieSelection)
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
+    }
 }

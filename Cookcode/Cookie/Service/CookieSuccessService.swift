@@ -8,6 +8,10 @@
 import Foundation
 
 final class CookieSuccessService: CookieServiceProtocol {
+    func getCookieByCookieId(_ id: Int) async -> Result<ServiceResponse<CookieDetailDTO>, ServiceError> {
+        .success(.mock())
+    }
+    
     func patchCookie(id: Int, cookieForm: CookieForm) async -> Result<DefaultResponse, ServiceError> {
         .success(.mock())
     }
