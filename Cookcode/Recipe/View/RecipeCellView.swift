@@ -20,21 +20,30 @@ struct RecipeCellView: View {
                 .aspectRatio(CGSize(width: 4, height: 2.5), contentMode: .fit)
                 .frame(maxWidth: .infinity)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                .overlay(alignment: .bottomTrailing) {
-                    Text(cell.title)
-                        .foregroundColor(.white)
-                        .padding(.vertical, 10)
-                        .padding(.trailing, 10)
-                        .font(CustomFontFactory.INTER_SEMIBOLD_20)
-                }
             
             HStack(spacing: 5) {
                 ProfileNavigateButton(userCell: cell.userCell, width: 30)
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("\(cell.title)")
-                        .lineLimit(1)
-                        .font(CustomFontFactory.INTER_BOLD_16)
+                    HStack {
+                        Text("\(cell.title)")
+                            .lineLimit(1)
+                            .font(CustomFontFactory.INTER_BOLD_16)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "checkmark")
+                            .resizable()
+                            .frame(width: 14, height: 14)
+                            .foregroundColor(.mainColor)
+                            .presentIf(cell.isCookable)
+                        
+                        Text("요리하자")
+                            .lineLimit(1)
+                            .font(CustomFontFactory.INTER_REGULAR_14)
+                            .presentIf(cell.isCookable)
+                            .foregroundColor(.mainColor)
+                    }
                     
                     HStack {
                         Text(cell.userCell.userName)

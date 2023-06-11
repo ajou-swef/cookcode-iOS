@@ -22,6 +22,7 @@ struct RecipeCell: Identifiable, Mock {
     var likesCount: Int
     var userCell: UserCell
     var createdAt: String
+    var isCookable: Bool
     
     init(dto: RecipeCellDto) {
         recipeId = dto.recipeID
@@ -30,6 +31,7 @@ struct RecipeCell: Identifiable, Mock {
         createdAt = dto.createdAt.substring(from: 0, to: 9)
         likesCount = dto.likeCount
         userCell = UserCell(dto: dto.user)
+        isCookable = dto.isCookable
     }
     
     static func mock() -> RecipeCell {
