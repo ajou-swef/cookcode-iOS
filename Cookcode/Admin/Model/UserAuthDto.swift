@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct UserAutoDto: Decodable {
+struct UserAutoDto: Decodable, Mock {
+    static func mock() -> UserAutoDto {
+        UserAutoDto(userID: 1, createdAt: "2023-01-01", authority: .admin)
+    }
+    
     let userID: Int
     let createdAt: String
     let authority: Authority

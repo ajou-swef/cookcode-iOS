@@ -48,14 +48,6 @@ struct MyAccountView: View {
                     
                     
                     NavigationLink {
-                        ResetPasswordView()
-                    } label: {
-                        Text("비밀번호 변경")
-                            .foregroundColor(.primary)
-                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
-                    }
-                    
-                    NavigationLink {
                         ManageAuthView()
                     } label: {
                         Text("멤버쉽 생성")
@@ -63,9 +55,17 @@ struct MyAccountView: View {
                     }
                     
                     NavigationLink {
-                        EmptyView()
+                        JoineMembershipList()
                     } label: {
                         Text("가입한 멤버쉽")
+                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                    }
+                    
+                    NavigationLink {
+                        ResetPasswordView()
+                    } label: {
+                        Text("비밀번호 변경")
+                            .foregroundColor(.primary)
                             .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
                     }
 
