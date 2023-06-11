@@ -963,6 +963,7 @@
 				1537B1CE2A29F37200869718 /* RecipeSearchView.swift */,
 				15676CF32A303E54002A142E /* HomeRecipeView.swift */,
 				15676CF52A3044DF002A142E /* RefreshableRecipeFetchView.swift */,
+				159BE2AE29FB875F00DE7448 /* RecipeCellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1172,7 +1173,6 @@
 			isa = PBXGroup;
 			children = (
 				15AA2F2729EFEBE00069813F /* CCDivider.swift */,
-				159BE2AE29FB875F00DE7448 /* RecipeCellView.swift */,
 				15B626482A00B59B002E1F5F /* MyRecipeCellView.swift */,
 				15F2CC1D2A0272330019FAB6 /* IngredientCellView.swift */,
 				15508CAF2A1329DD00004A1C /* IngredientCellsView.swift */,

@@ -64,6 +64,7 @@ class NavigateViewModel: ObservableObject {
     }
     
     func navigateWithHome(_ path: HomeIdPath) {
+        tab = .home
         homePath.append(path)
     }
     
