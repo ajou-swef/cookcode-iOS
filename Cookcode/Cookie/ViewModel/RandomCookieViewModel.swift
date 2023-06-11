@@ -8,14 +8,15 @@
 import SwiftUI
 import AVFoundation
 
-final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, PresentCommentSheet {
+final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, PresentCommentSheet, CookieInteractable {
 
     @Published var cookies: [CookieDetail] = []
     @Published var cookieSelection: String = ""
     @Published var drag: CGFloat = .zero
     @Published var serviceAlert: ServiceAlert = .init()
     @Published var commentSheetIsPresent: Bool = false
-    @Published var selectedDetail: CookieDetail? 
+    @Published var selectedDetail: CookieDetail?
+    @Published var selectedCookie: CookieDetail?
     
     private let cookieService: CookieServiceProtocol
     var commentService: CommentServiceProtocol
@@ -69,6 +70,11 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
         }
     }
     
+    @MainActor
+    func cookieInteractButtonTapped(_ cookkie: CookieDetail) {
+        self.selectedCookie = cookkie
+    }
+    
     fileprivate func extractedFunc() {
         if cookieSelection == cookies[0].id && drag < 0 {
             guard let last = cookies.last else { return }
@@ -96,7 +102,7 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
         
         guard checkArrayBound() else { return }
         
-        avControll(currentIndex)
+        avControll(cookieSelection)
         let updatedIndex = (currentIndex + 2) % 4
         
         
@@ -110,12 +116,12 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
     }
     
     @MainActor
-    func avControll(_ curIndex: Int) {
-        for i in cookies.indices {
-            if i == curIndex {
-                cookies[i].onAppear()
+    func avControll(_ selection: String) {
+        for (index, cookie) in cookies.enumerated() {
+            if cookie.id == selection {
+                cookies[index].onAppear()
             } else {
-                cookies[i].onDisapper()
+                cookies[index].onDisapper()
             }
         }
     }

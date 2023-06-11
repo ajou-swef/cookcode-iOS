@@ -85,6 +85,8 @@
 		15536B482A35874500611AA0 /* PasswordFormDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B472A35874500611AA0 /* PasswordFormDto.swift */; };
 		15536B4C2A3598E600611AA0 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B4B2A3598E600611AA0 /* WebView.swift */; };
 		15536B4F2A35A35B00611AA0 /* HidableTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 15536B4E2A35A35B00611AA0 /* HidableTabView */; };
+		15536B552A35A6FA00611AA0 /* CookiePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B542A35A6FA00611AA0 /* CookiePlayer.swift */; };
+		15536B572A35A7FD00611AA0 /* CookieInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B562A35A7FD00611AA0 /* CookieInteractable.swift */; };
 		15581B5E2A2100DC002E0AFB /* UpdateRecipeViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 15581B5D2A2100DC002E0AFB /* UpdateRecipeViewModel .swift */; };
 		155A50762A0B5A9500EBD894 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A50752A0B5A9500EBD894 /* ContentService.swift */; };
 		15634B6B2A1B7C3C00FEABB8 /* CookieFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */; };
@@ -359,6 +361,8 @@
 		15536B452A35849400611AA0 /* ResetPasswordForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordForm.swift; sourceTree = "<group>"; };
 		15536B472A35874500611AA0 /* PasswordFormDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFormDto.swift; sourceTree = "<group>"; };
 		15536B4B2A3598E600611AA0 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		15536B542A35A6FA00611AA0 /* CookiePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiePlayer.swift; sourceTree = "<group>"; };
+		15536B562A35A7FD00611AA0 /* CookieInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieInteractable.swift; sourceTree = "<group>"; };
 		15581B5D2A2100DC002E0AFB /* UpdateRecipeViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateRecipeViewModel .swift"; sourceTree = "<group>"; };
 		155A50752A0B5A9500EBD894 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
 		15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieFormView.swift; sourceTree = "<group>"; };
@@ -1219,6 +1223,7 @@
 		15B04C502A1C6B0300B988BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				15536B562A35A7FD00611AA0 /* CookieInteractable.swift */,
 				15B04C522A1C6B4300B988BF /* CookieFormViewModel.swift */,
 				15B04C602A1C7E1800B988BF /* RandomCookieViewModel.swift */,
 				158D7A7E2A2C66D100DFFB82 /* CookieFetcher.swift */,
@@ -1256,6 +1261,7 @@
 		15B4CC1C2A24B2CF00DC226E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				15536B542A35A6FA00611AA0 /* CookiePlayer.swift */,
 				15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */,
 				15B04C5E2A1C7DEF00B988BF /* RandomCookieView.swift */,
 				15D40C3D2A2D9FFA00B82113 /* CookieVideoList.swift */,
@@ -1702,6 +1708,7 @@
 				15B4CC252A24C6E200DC226E /* Refreshable.swift in Sources */,
 				15A6AB572A03B71700394490 /* RefrigeratorViewModel.swift in Sources */,
 				156387CB2A32F95A00BD7C01 /* CookieFailureServcie.swift in Sources */,
+				15536B552A35A6FA00611AA0 /* CookiePlayer.swift in Sources */,
 				15536B482A35874500611AA0 /* PasswordFormDto.swift in Sources */,
 				15676CF02A303B7D002A142E /* RefreshableRecipeFetcher.swift in Sources */,
 				1570194F2A26018500790E34 /* PageResponse.swift in Sources */,
@@ -1717,6 +1724,7 @@
 				15AA2F2229EFE8DE0069813F /* RecipeForm.swift in Sources */,
 				1594F4A72A29D622004A68D6 /* RecipeUserView.swift in Sources */,
 				158D7A7A2A2C603D00DFFB82 /* RecipeUserViewModel.swift in Sources */,
+				15536B572A35A7FD00611AA0 /* CookieInteractable.swift in Sources */,
 				15F82A7329FA92D500DA9381 /* SignInDto.swift in Sources */,
 				15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */,
 				159C99E12A127B450058B18E /* ScrollVelocityDetector.swift in Sources */,

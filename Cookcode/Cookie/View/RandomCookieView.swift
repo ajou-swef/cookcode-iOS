@@ -24,53 +24,10 @@ struct RandomCookieView: View {
         GeometryReader { proxy in
             VTabView(selection: $viewModel.cookieSelection) {
                 ForEach(viewModel.cookies) { cookie in
-                    if cookie.id == viewModel.cookieSelection {
-                        VideoPlayer(player: cookie.avPlayer)
-                            .foregroundColor(.blue)
-                            .scaledToFill()
-                            .frame(width: proxy.size.width, height: proxy.size.height)
-                            .tag(cookie.id)
-                            .onDisappear {
-                                cookie.avPlayer?.pause()
-                            }
-                            .overlay(alignment: .topTrailing, content: {
-                                Button {
-                                    viewModel.selectedDetail = cookie
-                                } label: {
-                                    Image(systemName: "ellipsis")
-                                        .resizable()
-                                        .frame(width: 30, height: 6)
-                                        .foregroundColor(.white)
-                                        .padding(.vertical)
-                                }
-                                .presentIf(cookie.isMyCookie)
-
-                            })
-                            .overlay(alignment: .bottomTrailing) {
-                                VStack {
-                                    PresentCommentButton(viewModel: viewModel, info: cookie)
-                                    LikeButton(viewModel: viewModel, like: cookie, color: .white)
-                                }
-                                .padding()
-                            }
-                            .overlay(alignment: .bottomLeading) {
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text("\(cookie.title)")
-                                        .font(CustomFontFactory.INTER_BOLD_16)
-
-                                    Text("\(cookie.description)")
-                                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                                }
-                                .padding()
-                            }
-                    } else {
-                        let url = URL(string: cookie.thumbnail)
-                        KFImage(url)
-                            .resizable()
-                    }
+                    CookiePlayer(viewModel: viewModel, cookieSelection: viewModel.cookieSelection, cookie: cookie, proxy: proxy)
                 }
             }
-            .sheet(item: $viewModel.selectedDetail, content: { cookieDetail in
+            .sheet(item: $viewModel.selectedCookie, content: { cookieDetail in
                 ModifyCookieView(cookieDetail: cookieDetail)
             })
             .simultaneousGesture(
