@@ -24,8 +24,12 @@ final class CookieUserViewModel: CookieFetcher {
     init (cookieService: CookieServiceProtocol, userId: Int) {
         self.cookieService = cookieService
         self.userId = userId
-        
-        Task { await onFetch() }
+    }
+    
+    @MainActor
+    func refresh() async {
+        contents.removeAll()
+        await onFetch()
     }
     
     
