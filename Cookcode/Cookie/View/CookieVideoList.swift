@@ -25,57 +25,17 @@ struct CookieVideoList: View {
         GeometryReader { proxy in
             VTabView(selection: $viewModel.tabSelection) {
                 ForEach(viewModel.cookies) { cookie in
-                    let url = URL(string: cookie.url)!
-                    let avPlayer = AVPlayer(url: url)
-                    
-                    if cookie.id == viewModel.tabSelection {
-                        VideoPlayer(player: avPlayer)
-                            .scaledToFill()
-                            .frame(width: proxy.size.width, height: proxy.size.height)
-                            .onDisappear {
-                                cookie.avPlayer?.pause()
-                            }
-                            .overlay(alignment: .bottomTrailing) {
-                                VStack {
-                                    PresentCommentButton(viewModel: viewModel, info: cookie)
-                                    LikeButton(viewModel: viewModel, like: cookie, color: .white)
-                                }
-                                .padding()
-                            }
-                            .overlay(alignment: .topTrailing, content: {
-                                Button {
-                                    viewModel.selectedDetail = cookie
-                                } label: {
-                                    Image(systemName: "ellipsis")
-                                        .resizable()
-                                        .frame(width: 30, height: 6)
-                                        .foregroundColor(.white)
-                                        .padding(.vertical)
-                                }
-                                .presentIf(cookie.isMyCookie)
-
-                            })
-                            .overlay(alignment: .bottomLeading) {
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text("\(cookie.title)")
-                                        .font(CustomFontFactory.INTER_BOLD_16)
-
-                                    Text("\(cookie.description)")
-                                        .font(CustomFontFactory.INTER_SEMIBOLD_14)
-                                }
-                                .padding()
-                            }
-                    } else {
-                        let url = URL(string: cookie.thumbnail)
-                        KFImage(url)
-                            .resizable()
-                    }
+                    CookiePlayer(viewModel: viewModel, cookieSelection: viewModel.tabSelection, cookie: cookie, proxy: proxy)
+                        
                 }
             }
-            .sheet(item: $viewModel.selectedDetail, content: { cookieDetail in
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .sheet(item: $viewModel.selectedCookie, content: { cookieDetail in
                 ModifyCookieView(cookieDetail: cookieDetail)
             })
-            .tabViewStyle(.page(indexDisplayMode: .never))
+            .onChange(of: viewModel.tabSelection) { newValue in
+                viewModel.avControll(newValue)
+            }
         }
         .onAppear {
             updateViewModel.scheme = .dark
