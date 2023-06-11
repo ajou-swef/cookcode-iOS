@@ -45,6 +45,7 @@ struct LoginView: View {
                     Spacer()
                    
                 }
+                .padding()
             }
             .onDisappear {
                 viewModel.clear()

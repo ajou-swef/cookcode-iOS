@@ -83,6 +83,8 @@
 		15536B442A35842E00611AA0 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B432A35842E00611AA0 /* ResetPasswordViewModel.swift */; };
 		15536B462A35849400611AA0 /* ResetPasswordForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B452A35849400611AA0 /* ResetPasswordForm.swift */; };
 		15536B482A35874500611AA0 /* PasswordFormDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B472A35874500611AA0 /* PasswordFormDto.swift */; };
+		15536B4C2A3598E600611AA0 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B4B2A3598E600611AA0 /* WebView.swift */; };
+		15536B4F2A35A35B00611AA0 /* HidableTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 15536B4E2A35A35B00611AA0 /* HidableTabView */; };
 		15581B5E2A2100DC002E0AFB /* UpdateRecipeViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 15581B5D2A2100DC002E0AFB /* UpdateRecipeViewModel .swift */; };
 		155A50762A0B5A9500EBD894 /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A50752A0B5A9500EBD894 /* ContentService.swift */; };
 		15634B6B2A1B7C3C00FEABB8 /* CookieFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */; };
@@ -356,6 +358,7 @@
 		15536B432A35842E00611AA0 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		15536B452A35849400611AA0 /* ResetPasswordForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordForm.swift; sourceTree = "<group>"; };
 		15536B472A35874500611AA0 /* PasswordFormDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordFormDto.swift; sourceTree = "<group>"; };
+		15536B4B2A3598E600611AA0 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		15581B5D2A2100DC002E0AFB /* UpdateRecipeViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateRecipeViewModel .swift"; sourceTree = "<group>"; };
 		155A50752A0B5A9500EBD894 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentService.swift; sourceTree = "<group>"; };
 		15634B6A2A1B7C3C00FEABB8 /* CookieFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieFormView.swift; sourceTree = "<group>"; };
@@ -538,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				159BE2B229FB87CD00DE7448 /* Kingfisher in Frameworks */,
+				15536B4F2A35A35B00611AA0 /* HidableTabView in Frameworks */,
 				159C99D82A126DD30058B18E /* LegacyScrollView in Frameworks */,
 				15DAE25829FE3CCA00A4B00A /* ObservedOptionalObject in Frameworks */,
 				15A6AB5A2A03BE6400394490 /* PopupView in Frameworks */,
@@ -589,12 +593,12 @@
 			children = (
 				153B4DA429ED085E00543730 /* Info.plist */,
 				15508CB12A134DE600004A1C /* API.swift */,
-				15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */,
 				15676CEE2A302D72002A142E /* EnvironmentObject */,
 				1594F4932A29BDA7004A68D6 /* Profile */,
 				15B4CC172A24B1A400DC226E /* Cookie */,
 				15637AB32A28BD5E007BFF8E /* Recipe */,
 				15637AB02A28B821007BFF8E /* Search */,
+				15536B532A35A44A00611AA0 /* Ingredient */,
 				15B4CC3B2A24D7FF00DC226E /* ContentInteraction */,
 				15B4CC202A24B54600DC226E /* Components */,
 				153B4D8A29ED050A00543730 /* Helper */,
@@ -871,6 +875,14 @@
 				1599E94D2A13719D00ED1B60 /* ContentDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		15536B532A35A44A00611AA0 /* Ingredient */ = {
+			isa = PBXGroup;
+			children = (
+				15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */,
+			);
+			path = Ingredient;
 			sourceTree = "<group>";
 		};
 		15637AAD2A28A0A6007BFF8E /* ContentInteraction */ = {
@@ -1260,6 +1272,7 @@
 				15B4CC362A24D75500DC226E /* Pagenable */,
 				15B4CC232A24C6C200DC226E /* Refreshable */,
 				154010442A31F21200C2C633 /* CircleGraph.swift */,
+				15536B4B2A3598E600611AA0 /* WebView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1480,6 +1493,7 @@
 				15A6AB592A03BE6400394490 /* PopupView */,
 				159C99D72A126DD30058B18E /* LegacyScrollView */,
 				15B04C6A2A1C94FD00B988BF /* VTabView */,
+				15536B4E2A35A35B00611AA0 /* HidableTabView */,
 			);
 			productName = Cookcode;
 			productReference = 1503F91F29B45560002F3D26 /* Cookcode.app */;
@@ -1561,6 +1575,7 @@
 				15A6AB582A03BE6400394490 /* XCRemoteSwiftPackageReference "PopupView" */,
 				159C99D62A126DD30058B18E /* XCRemoteSwiftPackageReference "LegacyScrollView" */,
 				15B04C692A1C94FD00B988BF /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */,
+				15536B4D2A35A35B00611AA0 /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */,
 			);
 			productRefGroup = 1503F92029B45560002F3D26 /* Products */;
 			projectDirPath = "";
@@ -1803,6 +1818,7 @@
 				1515FB302A123CC100119519 /* RecipeFilterType.swift in Sources */,
 				15D40C3E2A2D9FFA00B82113 /* CookieVideoList.swift in Sources */,
 				15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */,
+				15536B4C2A3598E600611AA0 /* WebView.swift in Sources */,
 				153F127829FE2274008BDB4E /* ImageContent.swift in Sources */,
 				158D7A852A2C698100DFFB82 /* CookieUserView.swift in Sources */,
 				1525657F2A077FD000471D52 /* ServiceResponse.swift in Sources */,
@@ -2171,6 +2187,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		15536B4D2A35A35B00611AA0 /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliMert/HidableTabView-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		159BE2AA29FB810200DE7448 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
@@ -2230,6 +2254,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		15536B4E2A35A35B00611AA0 /* HidableTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15536B4D2A35A35B00611AA0 /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */;
+			productName = HidableTabView;
+		};
 		159BE2AB29FB810200DE7448 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 159BE2AA29FB810200DE7448 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import HidableTabView
 
 struct IngredientCellsView: View {
     
@@ -24,7 +25,14 @@ struct IngredientCellsView: View {
     var body: some View {
         LazyVGrid(columns: columns) {
             ForEach(ingredientCells) { cell in
-                IngredientCellView(cell: cell)
+                NavigationLink {
+                    let ingredient = INGREDIENTS_DICTIONARY[cell.ingredId]?.title ?? ""
+                    MyWebView(urlToLoad: "https://m.coupang.com/nm/search?q=\(ingredient)")
+                        .hideTabBar(animated: false)
+                        
+                } label: {
+                    IngredientCellView(cell: cell)
+                }
             }
         }
     }

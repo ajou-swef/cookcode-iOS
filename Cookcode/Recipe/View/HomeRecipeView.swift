@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import HidableTabView
 
 struct HomeRecipeView: View {
     
@@ -28,7 +29,7 @@ struct HomeRecipeView: View {
                 .opacity(viewModel.topOpacity)
                 .animation(.spring(), value: viewModel.topOpacity)
                 .animation(.spring(), value: viewModel.topOffset)
-            
+
             Group {
                 HStack {
                     Text("쿠키 업로드")

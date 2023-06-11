@@ -26,6 +26,19 @@ struct MainTabView: View {
                 case .cookie:
                     CookieFormView()
                         .transition(.move(edge: .trailing))
+                case .web:
+                    if let id = path.id {
+                        let ingredient = INGREDIENTS_DICTIONARY[id]?.title ?? ""
+                        MyWebView(urlToLoad: "https://m.coupang.com/nm/search?q=오징어")
+                            .onAppear {
+                                print("MyWebView appear")
+                            }
+                    } else {
+                        EmptyView()
+                            .onAppear {
+                                print("Empty view appear")
+                            }
+                    }
                 }
             } else {
                 TabView(selection: $navigateViewModel.tab) {

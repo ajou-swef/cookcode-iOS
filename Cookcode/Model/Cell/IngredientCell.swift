@@ -54,6 +54,7 @@ extension IngredientCell {
     init (ingredientDTO: IngredientDTO) {
         let ingredientCell = INGREDIENTS_DICTIONARY[ingredientDTO.ingredientID] ?? IngredientCell.mock()
         self = ingredientCell
+        presentBadge = ingredientDTO.isLack
     }
     
     init (detail: IngredientDetail) {
