@@ -10,6 +10,7 @@ import SwiftUI
 struct ModifyCookieView: View {
     
     @StateObject private var viewModel: ModifyCookieViewModel
+    @EnvironmentObject var updateViewModel: UpdateCellViewModel
     
     init(cookieSerivce: CookieServiceProtocol = CookieService(), cookieDetail: CookieDetail) {
         self._viewModel = StateObject(wrappedValue: ModifyCookieViewModel(cookieService: cookieSerivce,
@@ -34,7 +35,7 @@ struct ModifyCookieView: View {
             
             Spacer()
             
-            PatchComponent(viewModel: viewModel)
+            PatchComponent(viewModel: viewModel, cellType: .cookie, id: viewModel.cookieId)
         }
         .padding(.top, 40)
         .padding(.horizontal)

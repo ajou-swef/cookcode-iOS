@@ -23,17 +23,20 @@ struct CookieVideoList: View {
     var body: some View {
 
         GeometryReader { proxy in
-            VTabView(selection: $viewModel.tabSelection) {
+            VTabView(selection: $viewModel.cookieSelection) {
                 ForEach(viewModel.cookies) { cookie in
-                    CookiePlayer(viewModel: viewModel, cookieSelection: viewModel.tabSelection, cookie: cookie, proxy: proxy)
+                    CookiePlayer(viewModel: viewModel, cookieSelection: viewModel.cookieSelection, cookie: cookie, proxy: proxy)
                         
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .sheet(item: $viewModel.selectedCookie, content: { cookieDetail in
                 ModifyCookieView(cookieDetail: cookieDetail)
+                    .onDisappear {
+                        viewModel.updateCookie(updateViewModel.updateCellDict)
+                    }
             })
-            .onChange(of: viewModel.tabSelection) { newValue in
+            .onChange(of: viewModel.cookieSelection) { newValue in
                 viewModel.avControll(newValue)
             }
         }

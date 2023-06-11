@@ -14,7 +14,7 @@ final class ModifyCookieViewModel: PatchViewModel {
     @Published var deleteAlertIsPresented: Bool = false
     @Published var cookieForm: CookieForm  = .init()
     
-    private let cookieId: Int
+    let cookieId: Int
     private let cookieService: CookieServiceProtocol
     
     init(cookieService: CookieServiceProtocol, cookieDetail: CookieDetail) {

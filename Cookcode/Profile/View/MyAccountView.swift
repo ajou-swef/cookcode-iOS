@@ -151,7 +151,7 @@ struct MyAccountView: View {
                             .resizable()
                             .frame(width: 100, height: 100)
                             .clipShape(
-                                RoundedRectangle(cornerRadius: 18)
+                                Circle()
                             )
                     } else {
                         Image(systemName: "person.fill")
@@ -186,19 +186,19 @@ struct MyAccountView: View {
     @ViewBuilder
     private func modifyImageButton() -> some View {
         PhotosPicker(selection: $userFormViewModel.profileForm.photosPickerItem) {
-            Circle()
+            RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(Color.gray_bcbcbc)
-                .frame(width: 30, height: 30)
+                .frame(width: 40, height: 30)
                 .overlay {
                     Image(systemName: "camera.fill")
                         .resizable()
                         .foregroundColor(.black)
-                        .frame(width: 15, height: 15)
+                        .frame(width: 20, height: 15)
                 }
                 .onChange(of: userFormViewModel.profileForm.photosPickerItem) { newValue in
                     Task { await userFormViewModel.postProfileImage() }
                 }
-                .offset(x: 10, y: 10)
+                .offset(x: 10)
         }
     }
 }

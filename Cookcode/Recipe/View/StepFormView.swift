@@ -174,7 +174,7 @@ struct StepFormView: View {
     
     @ViewBuilder
     private func BottomButton(_ i: Int) -> some View {
-        PatchComponent(viewModel: viewModel)
+        PatchComponent(viewModel: viewModel, cellType: .recipe, id: -1)
     }
     
     @ViewBuilder
