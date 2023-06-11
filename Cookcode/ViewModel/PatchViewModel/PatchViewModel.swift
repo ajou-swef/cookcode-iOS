@@ -12,9 +12,11 @@ protocol PatchViewModel: ObservableObject {
     var serviceAlert: ServiceAlert { get set }
     var useTrashButton: Bool { get }
     var deleteAlertIsPresented: Bool { get set }
+    var mainButtonText: String { get }
     
     func mainButtonTapped(dismissAction: DismissAction) async
     func deleteOkButtonTapped(dismissAction: DismissAction) async
+    func trashButtonTapped()
 }
 
 extension PatchViewModel {

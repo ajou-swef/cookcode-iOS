@@ -35,7 +35,7 @@ final class CookieFormViewModel: ObservableObject {
     }
     
     @Published private(set) var selectedVideoThumbnails: [VideoThumbnail] = []
-    @Published private var _photosPickerItem: PhotosPickerItem?
+    @Published var photosPickerItem: [PhotosPickerItem] = []
     @Published private(set) var mergedAVPlayer: AVPlayer?
     @Published private var _videoIsPresented: Bool = false
     @Published private(set) var viewState: ViewState = .none
@@ -67,11 +67,6 @@ final class CookieFormViewModel: ObservableObject {
         set { _videoIsPresented = newValue }
     }
     
-    var photosPickerItem: PhotosPickerItem? {
-        get { _photosPickerItem }
-        set {_photosPickerItem = newValue }
-    }
-    
     var mergedVideoThumbnail: UIImage? {
         guard let thumbanil = selectedVideoThumbnails.first else { return nil }
         
@@ -85,18 +80,20 @@ final class CookieFormViewModel: ObservableObject {
     
     @MainActor
     func loadURL() async {
-        
-        guard let photosPickerItem else { return }
         viewState = .videoMerging
         
         do {
-            guard let videoURL = try await photosPickerItem.loadTransferable(type: VideoURL.self) else { return }
-            try await appendThumbnail(videoURL)
-            try await mergeVideo()
+            for item in photosPickerItem {
+                guard let videoURL = try await item.loadTransferable(type: VideoURL.self) else { return }
+                try await appendThumbnail(videoURL)
+                try await mergeVideo()
+            }
+            
         } catch {
             print("\(error.localizedDescription)")
         }
         
+        photosPickerItem = []
         viewState = .none
     }
     
@@ -152,8 +149,6 @@ final class CookieFormViewModel: ObservableObject {
         let item = AVPlayerItem(asset: movie)
         mergedAVPlayer = AVPlayer(playerItem: item)
         print("merge end")
-        
-        viewState = .none
     }
     
 //    @MainActor

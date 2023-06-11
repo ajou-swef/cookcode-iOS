@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum Authority: String {
+enum Authority: String, Codable {
     case influencer = "INFLUENCER"
     case admin = "ADMIN"
+    case user = "USER"
 }

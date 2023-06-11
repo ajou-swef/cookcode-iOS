@@ -42,6 +42,8 @@ struct CookieUserView: View {
         }
         .onAppear {
             updateViewModel.scheme = .light
+            Task { await viewModel.refresh() }
+            
         }
     }
 }

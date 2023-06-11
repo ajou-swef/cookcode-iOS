@@ -10,7 +10,7 @@ import _PhotosUI_SwiftUI
 
 struct UserDetail: Mock {
     static func mock() -> UserDetail {
-        UserDetail(userId: -1, thumbnail: "", nickname: "", email: "", isMyProfile: false, isSubscribed: false)
+        UserDetail(userId: -1, thumbnail: "", nickname: "", email: "", isMyProfile: false, isSubscribed: false, authority: .user)
     }
     
     let userId: Int
@@ -19,6 +19,7 @@ struct UserDetail: Mock {
     let email: String
     let isMyProfile: Bool
     var isSubscribed: Bool
+    var authority: Authority
     
     var isNotMyProfile: Bool {
         !isMyProfile
@@ -42,5 +43,6 @@ extension UserDetail {
         userId = dto.userID
         isMyProfile = (myId == dto.userID)
         isSubscribed = dto.isSubscribed
+        authority = dto.authority
     }
 }
