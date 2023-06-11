@@ -11,12 +11,18 @@ struct AuthenticateEmailView: View {
     
     @ObservedObject var viewModel: MembershipViewModel
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var navigateViewModel: NavigateViewModel
+    
     
     var body: some View {
         VStack {
             guide()
             certificationTextField()
         }
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented, actions: {
+            ServiceAlert.cancelButton
+        })
         .navigationTitle("이메일 인증")
         .onChange(of: viewModel.inputCode, perform: { newValue in
             Task { await viewModel.checkCode() }
@@ -34,7 +40,10 @@ struct AuthenticateEmailView: View {
                }
            })
            .onAppear {
-               viewModel.startTimer()
+               Task {
+                   await viewModel.getCode()
+                   viewModel.startTimer()
+               }
            }
     }
     
@@ -48,7 +57,22 @@ struct AuthenticateEmailView: View {
             Text("6자리 숫자를 입력해주세요.")
                 .padding(.top, 50)
                 .font(.custom(CustomFont.interRegular.rawValue, size: 15))
+                .alert("성공", isPresented: $viewModel.successAlertIsPresented) {
+                    Button {
+                        dismiss() 
+                    } label: {
+                        Text("확인")
+                    }
+                } message: {
+                    Text("회원가입에 성공했습니다.")
+                }
         }
+        .alert("실패", isPresented: $viewModel.missmatchAlertIsPresented) {
+            Button("확인", role: .cancel) { }
+        } message: {
+            Text("인증번호가 일치하지 않습니다.")
+        }
+
     }
     
     @ViewBuilder

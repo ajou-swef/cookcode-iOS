@@ -9,6 +9,8 @@ import Alamofire
 import Foundation
 
 protocol AccountServiceProtocol {
+    func requestEmailCode(email: String) async -> Result<ServiceResponse<String>, ServiceError>
+    
     func resetPassword(dto: PasswordFormDto) async -> Result<DefaultResponse, ServiceError> 
     
     func requestTemporaryPasswordByEmail(_ email: String) async -> Result<DefaultResponse, ServiceError> 

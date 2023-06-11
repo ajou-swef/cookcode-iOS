@@ -19,6 +19,10 @@ class MembershipViewModel: ObservableObject {
     @Published var timer = Timer()
     @Published var startTime = Date.now
     
+    @Published var missmatchAlertIsPresented: Bool = false
+    @Published var successAlertIsPresented: Bool = false
+    @Published var signInSuccess: Bool = false
+    
     private var assignedCode: String = ""
     
     var timeText: String {
@@ -69,26 +73,49 @@ class MembershipViewModel: ObservableObject {
         }
     }
     
+    
     func setNicknameCheckComplteToFalse() {
         membershipForm.setNicknameCheckComplte(false)
     }
     
     @MainActor
-    func signUp(dismiss: DismissAction) async {
+    func checkCode() async {
+        guard inputCode.count == 6 else { return }
+        guard remainTime > 0 else { return missmatchAlertIsPresented = false }
+        
+        if assignedCode == inputCode {
+            await signUp()
+        } else {
+            missmatchAlertIsPresented = true 
+        }
+    }
+    
+    @MainActor
+    func signUp() async {
         let result = await accountService.signUp(membershipForm: membershipForm)
         
         switch result {
         case .success(_):
-            dismiss()
+            signInSuccess = true 
+            successAlertIsPresented = true 
         case .failure(let failure):
             serviceAlert.presentAlert(failure)
         }
     }
     
-    func getCode() {
+    @MainActor
+    func getCode() async {
+        let result = await accountService.requestEmailCode(email: membershipForm.email)
         
+        switch result {
+        case .success(let success):
+            assignedCode = String(success.data) 
+        case .failure(let failure):
+            serviceAlert.presentAlert(failure)
+        }
     }
     
+    @MainActor
     func startTimer() {
         timer.invalidate()
         startTime = Date.now

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+enum SignPath: Hashable {
+    case findPassword
+    case sign
+    case code 
+}

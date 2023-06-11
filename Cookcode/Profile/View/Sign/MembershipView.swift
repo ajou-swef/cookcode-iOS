@@ -19,6 +19,7 @@ struct MembershipView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel: MembershipViewModel
     @FocusState private var focus: Field?
+    @EnvironmentObject var vm: NavigateViewModel
     
     init (accountService: AccountServiceProtocol) {
         self._viewModel = StateObject(wrappedValue: MembershipViewModel(accountService: AccountService()))
@@ -88,6 +89,10 @@ struct MembershipView: View {
         .navigationBarTitleDisplayMode(.large)
         .onAppear {
             focus = .email
+            
+            if viewModel.signInSuccess {
+                dismiss()
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
@@ -124,7 +129,8 @@ struct MembershipView: View {
         } label: {
             Text("완료")
                 .foregroundColor(.white)
-                .roundedRectangle(.ORANGE_320_FILLED, focused: viewModel.completeButtonIsAvailable)
+                .roundedRectangle(.ORANGE_320_FILLED,
+                                  focused: viewModel.completeButtonIsAvailable)
         }
     }
     

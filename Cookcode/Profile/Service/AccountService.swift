@@ -8,6 +8,25 @@ import Alamofire
 import Foundation
 
 final class AccountService: AccountServiceProtocol {
+    func requestEmailCode(email: String) async -> Result<ServiceResponse<String>, ServiceError> {
+        let url = "\(BASE_URL)/api/v1/account/email?email=\(email)"
+        
+        let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+        let encodedURL = URL(string: encoded)!
+      
+        let response = await AF.request(encodedURL, method: .post)
+            .serializingDecodable(ServiceResponse<String>.self).response
+        
+        if response.error != nil {
+            print("\(response.debugDescription)")
+        }
+        
+        return response.result.mapError { err in
+            let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
+            return serviceErorr ?? .decodeError()
+        }
+    }
+    
     func resetPassword(dto: PasswordFormDto) async -> Result<DefaultResponse, ServiceError> {
         let url = "\(BASE_URL)/api/v1/account/password"
         
@@ -21,9 +40,6 @@ final class AccountService: AccountServiceProtocol {
         if response.error != nil {
             print("\(response.debugDescription)")
         }
-        
-        print("\(response.debugDescription)")
-        
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
