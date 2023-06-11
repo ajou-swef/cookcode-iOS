@@ -61,6 +61,13 @@ struct MyAccountView: View {
                         Text("멤버쉽 생성")
                             .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
                     }
+                    
+                    NavigationLink {
+                        EmptyView()
+                    } label: {
+                        Text("가입한 멤버쉽")
+                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                    }
 
                     
                     Button {
