@@ -30,6 +30,9 @@ struct RandomCookieView: View {
                             .scaledToFill()
                             .frame(width: proxy.size.width, height: proxy.size.height)
                             .tag(cookie.id)
+                            .onDisappear {
+                                cookie.avPlayer?.pause()
+                            }
                             .overlay(alignment: .topTrailing, content: {
                                 Button {
                                     viewModel.selectedDetail = cookie

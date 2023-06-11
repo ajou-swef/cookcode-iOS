@@ -32,6 +32,9 @@ struct CookieVideoList: View {
                         VideoPlayer(player: avPlayer)
                             .scaledToFill()
                             .frame(width: proxy.size.width, height: proxy.size.height)
+                            .onDisappear {
+                                cookie.avPlayer?.pause()
+                            }
                             .overlay(alignment: .bottomTrailing) {
                                 VStack {
                                     PresentCommentButton(viewModel: viewModel, info: cookie)

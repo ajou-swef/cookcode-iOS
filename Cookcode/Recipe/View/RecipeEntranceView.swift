@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import HidableTabView
 
 struct RecipeEntranceView: View {
     
@@ -79,6 +80,7 @@ struct RecipeEntranceView: View {
                 .padding(.horizontal, 10)
             }
         }
+        .showTabBar(animated: false)
         .coordinateSpace(name: "entranceView")
     }
 }
