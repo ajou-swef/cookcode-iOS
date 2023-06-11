@@ -18,14 +18,16 @@ struct MyPublishersView: View {
     
     var body: some View {
         ScrollView {
-            PagenableComponent(viewModel: viewModel) {
-                ForEach(viewModel.contents) { userProfileCell in
-                    Button {
-                        let id = userProfileCell.userId
-                        let homeIdPath = HomeIdPath(path: .profile, id: id)
-                        navigateViewModel.navigateWithHome(homeIdPath)
-                    } label: {
-                        UserCellView(userCell: userProfileCell)
+            VStack(spacing: 0) {
+                PagenableComponent(viewModel: viewModel) {
+                    ForEach(viewModel.contents) { userProfileCell in
+                        Button {
+                            let id = userProfileCell.userId
+                            let homeIdPath = HomeIdPath(path: .profile, id: id)
+                            navigateViewModel.navigateWithHome(homeIdPath)
+                        } label: {
+                            UserCellView(userCell: userProfileCell)
+                        }
                     }
                 }
             }

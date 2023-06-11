@@ -78,7 +78,7 @@ struct LoginView: View {
         Button {
             Task {
                 let loginDidSuccess = await viewModel.signIn()
-                accountViewModel.login(loginDidSuccess)
+                await accountViewModel.login(loginDidSuccess)
             }
         } label: {
             Text("로그인")

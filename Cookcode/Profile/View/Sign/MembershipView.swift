@@ -119,14 +119,13 @@ struct MembershipView: View {
     
     @ViewBuilder
     private func SignUpComplteButton() -> some View {
-        Button {
-            Task { await viewModel.signUp(dismiss: dismiss) }
+        NavigationLink {
+            AuthenticateEmailView(viewModel: viewModel)
         } label: {
             Text("완료")
                 .foregroundColor(.white)
                 .roundedRectangle(.ORANGE_320_FILLED, focused: viewModel.completeButtonIsAvailable)
         }
-        .disabled(!viewModel.completeButtonIsAvailable)
     }
     
     @ViewBuilder

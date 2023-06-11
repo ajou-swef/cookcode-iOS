@@ -1124,8 +1124,8 @@
 			children = (
 				15CFE6A729FF7B8500C16FF6 /* ProfileView.swift */,
 				1537B1D02A2A070C00869718 /* UserCellView.swift */,
-				158D7A722A2C48BA00DFFB82 /* UserSearchView.swift */,
 				15FD58A22A2C847600295B8B /* MyAccountView.swift */,
+				158D7A722A2C48BA00DFFB82 /* UserSearchView.swift */,
 				15FD58A42A2C8CC500295B8B /* MyPublishersView.swift */,
 				153C1DC22A30B279001DC06B /* MySubscriberView.swift */,
 				156387D02A330A7600BD7C01 /* ProfileNavigateButton.swift */,

@@ -9,9 +9,23 @@ import SwiftUI
 
 class MembershipViewModel: ObservableObject {
     
+    private let timeDuration: Double = 300
     let accountService: AccountServiceProtocol
     @Published var membershipForm = MembershipForm()
+    @Published var inputCode: String = "" 
     @Published var serviceAlert: ServiceAlert = .init()
+    
+    @Published var remainTime: Double = 300
+    @Published var timer = Timer()
+    @Published var startTime = Date.now
+    
+    private var assignedCode: String = ""
+    
+    var timeText: String {
+        let minutes = Int(remainTime) / 60 % 60
+        let seconds = Int(remainTime) % 60
+        return String(format: "%02i:%02i", minutes, seconds)
+    }
     
     var nicknameIsEmpty: Bool {
         membershipForm.nicknameIsEmpty
@@ -70,4 +84,33 @@ class MembershipViewModel: ObservableObject {
             serviceAlert.presentAlert(failure)
         }
     }
+    
+    func getCode() {
+        
+    }
+    
+    func startTimer() {
+        timer.invalidate()
+        startTime = Date.now
+        remainTime = timeDuration
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { Timer in
+            if self.remainTime > 0 {
+                self.remainTime -= 1
+            } else {
+                self.timer.invalidate()
+            }
+        })
+    }
+    
+    @MainActor
+    func setTimeRemaining() {
+          let curTime = Date.now
+          let diffTime = curTime.distance(to: startTime)
+          let result = Double(diffTime.formatted())!
+          remainTime = 5*60 + result
+          
+          if remainTime < 0 {
+              remainTime = 0
+          }
+      }
 }
