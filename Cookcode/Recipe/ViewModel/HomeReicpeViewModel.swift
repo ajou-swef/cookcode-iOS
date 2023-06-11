@@ -11,6 +11,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
     typealias Dto = RecipeCellDto
     typealias T = RecipeCell
     
+    @Published var sort: SortType = .latest
     @Published var myAccountViewIsPresented: Bool = false
     @Published var presentOnlyCookable: Bool = false
     
@@ -54,7 +55,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
         pageState = .loading(curPage)
         print("page(\(curPage)) loading start")
         
-        let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, sort: nil, month: nil, cookcable: presentOnlyCookable)
+        let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, sort: sort.rawValue, month: nil, cookcable: presentOnlyCookable)
         
         switch result {
         case .success(let success):

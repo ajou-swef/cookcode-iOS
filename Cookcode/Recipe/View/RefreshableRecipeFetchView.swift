@@ -14,7 +14,7 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
     
     var body: some View {
         VStack {
-            presentOnlyCookableButton()
+            header()
             
             RefreshComponent(viewModel: viewModel) {
                 PagenableComponent(viewModel: viewModel) {
@@ -33,13 +33,20 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
                     .padding(.horizontal)
                 }
             }
+            .onChange(of: viewModel.sort) { newValue in
+                Task { await viewModel.onRefresh() }
+            }
         }
         .navigationTitle("")
     }
     
     @ViewBuilder
-    private func presentOnlyCookableButton() -> some View {
+    private func header() -> some View {
         HStack {
+            SortTypePicker(selection: $viewModel.sort, activeTint: .mainColor,
+                           inActiveTint: .gray_bcbcbc, dynamic: false)
+            .padding(.trailing, 100)
+            
             Spacer()
             
             Button {
