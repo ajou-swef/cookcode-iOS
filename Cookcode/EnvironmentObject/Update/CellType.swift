@@ -11,6 +11,7 @@ enum CellType: CaseIterable {
     case recipe
     case cookie
     case ingredient
+    case none 
 }
 
 enum UpdateType {

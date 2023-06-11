@@ -46,11 +46,19 @@ struct MyAccountView: View {
                         Text("인플루언서 권한을 요청하시겠습니까?")
                     }
                     
+                    
                     NavigationLink {
                         ResetPasswordView()
                     } label: {
                         Text("비밀번호 변경")
                             .foregroundColor(.primary)
+                            .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                    }
+                    
+                    NavigationLink {
+                        ManageAuthView()
+                    } label: {
+                        Text("멤버쉽 생성")
                             .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
                     }
 
@@ -88,6 +96,7 @@ struct MyAccountView: View {
                 }
 
             })
+            .navigationTitle("내 계정")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
