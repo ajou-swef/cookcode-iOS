@@ -24,6 +24,11 @@ final class CookieVideoListViewModel: ObservableObject, PresentCommentSheet, lik
         self.cookies = cookies
         guard let firstCookie = cookies.first(where: { $0.contentId == selectedCookieId }) else { return }
         cookieSelection = firstCookie.id
+        
+        Task {
+            await avControll(cookieSelection)
+        }
+        
     }
     
     func cookieInteractButtonTapped(_ cookkie: CookieDetail) {

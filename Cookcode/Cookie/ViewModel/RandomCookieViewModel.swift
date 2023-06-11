@@ -27,6 +27,7 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
         
         Task {
             await initCookie()
+            await avControll(cookieSelection)
         }
         
     }
