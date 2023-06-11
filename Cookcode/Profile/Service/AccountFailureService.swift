@@ -9,6 +9,10 @@ import Alamofire
 import Foundation
 
 final class AccountFailureService: AccountServiceProtocol {
+    func requestEmailCode(email: String) async -> Result<ServiceResponse<String>, ServiceError> {
+        .failure(.MOCK())
+    }
+    
     func resetPassword(dto: PasswordFormDto) async -> Result<DefaultResponse, ServiceError> {
         .failure(.MOCK())
     }

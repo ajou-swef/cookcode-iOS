@@ -20,7 +20,7 @@ final class RecipeSuccessService: RecipeServiceProtocol {
         .success(.mock())
     }
     
-    func searchRecipeCells(query: String, coockable: Bool, page: Int, size: Int) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
+    func searchRecipeCells(query: String, coockable: Bool, page: Int, size: Int, sort: String?) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
         .success(.mock())
     }
     

@@ -57,8 +57,13 @@ class AccountViewModel: ObservableObject {
         
     }
     
-    func login(_ value: Bool) {
+    
+    @MainActor
+    func login(_ value: Bool) async {
         didSignIn = value
+        guard didSignIn else { return }
+        await getUser()
+        
     }
     
     func logout() {

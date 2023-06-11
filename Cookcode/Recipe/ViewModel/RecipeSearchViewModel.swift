@@ -11,6 +11,7 @@ final class RecipeSearchViewModel: RefreshableRecipeFetcher {
     let refreshThreshold: CGFloat = 40
     let spaceName: String = "recipeSearchViewModel"
     
+    @Published var sort: SortType = .latest
     @Published var dragVelocity: CGFloat = .zero
     @Published var scrollOffset: CGFloat = .zero
     @Published var contents: [RecipeCell] = .init()
@@ -44,7 +45,7 @@ final class RecipeSearchViewModel: RefreshableRecipeFetcher {
         pageState = .loading(curPage)
         print("page(\(curPage)) loading start")
         
-        let result = await recipeService.searchRecipeCells(query: query, coockable: presentOnlyCookable, page: curPage, size: pageSize)
+        let result = await recipeService.searchRecipeCells(query: query, coockable: presentOnlyCookable, page: curPage, size: pageSize, sort: sort.rawValue)
         
         switch result {
         case .success(let success):

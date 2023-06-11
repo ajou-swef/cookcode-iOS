@@ -10,7 +10,6 @@ import Kingfisher
 import AVKit
 
 struct CookiePlayer<ViewModel: likeButtonInteractable & PresentCommentSheet & CookieInteractable>: View {
-    
     @ObservedObject var viewModel: ViewModel
     let cookieSelection: String
     let cookie: CookieDetail
@@ -48,6 +47,15 @@ struct CookiePlayer<ViewModel: likeButtonInteractable & PresentCommentSheet & Co
                 }
                 .overlay(alignment: .bottomLeading) {
                     VStack(alignment: .leading, spacing: 10) {
+                        
+                        HStack {
+                            ProfileNavigateButton(userCell: cookie.userCell, width: 30)
+                            
+                            Text("\(cookie.userCell.userName)")
+                                .font(.custom(CustomFont.interSemiBold.rawValue, size: 15))
+                                .foregroundColor(.white)
+                        }
+                        
                         Text("\(cookie.title)")
                             .font(CustomFontFactory.INTER_BOLD_16)
 

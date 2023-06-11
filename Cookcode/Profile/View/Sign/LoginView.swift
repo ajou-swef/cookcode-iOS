@@ -15,11 +15,13 @@ struct LoginView: View {
     }
     
     @EnvironmentObject var accountViewModel: AccountViewModel
-    @State private var path: NavigationPath = NavigationPath()
+    @EnvironmentObject var navigateViewModel: NavigateViewModel
+    
     @StateObject private var viewModel = LoginViewModel(accountService: AccountService())
     @FocusState private var focused: Field?
+    
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack(path: $navigateViewModel.signInPath) {
             ScrollView {
                 VStack(spacing: 10) {
                     Spacer()
@@ -78,7 +80,7 @@ struct LoginView: View {
         Button {
             Task {
                 let loginDidSuccess = await viewModel.signIn()
-                accountViewModel.login(loginDidSuccess)
+                await accountViewModel.login(loginDidSuccess)
             }
         } label: {
             Text("로그인")

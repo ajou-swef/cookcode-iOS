@@ -47,9 +47,14 @@ final class RecipeService: RecipeServiceProtocol {
         }
     }
     
-    func searchRecipeCells(query: String, coockable: Bool, page: Int, size: Int) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
+    func searchRecipeCells(query: String, coockable: Bool, page: Int, size: Int, sort: String?) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
         let cookableValue = coockable ? 1 : 0
-        let url = "\(BASE_URL)/api/v1/recipe/search?query=\(query)&cookable=\(cookableValue)&page=\(page)&size=\(size)"
+        var url = "\(BASE_URL)/api/v1/recipe/search?query=\(query)&cookable=\(cookableValue)&page=\(page)&size=\(size)"
+        
+        if let sort = sort {
+            url.append("&sort=\(sort)")
+        }
+        
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let encodedURL = URL(string: encoded)!
         
@@ -129,6 +134,10 @@ final class RecipeService: RecipeServiceProtocol {
         
         
         var url = "\(BASE_URL)/api/v1/recipe?page=\(page)&size=\(size)"
+        
+        if let sort = sort {
+            url.append("&sort=\(sort)")
+        }
         
         if let cookcable = cookcable {
             let value: Int = cookcable ? 1 : 0

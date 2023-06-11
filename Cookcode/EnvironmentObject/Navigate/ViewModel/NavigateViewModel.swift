@@ -16,6 +16,7 @@ class NavigateViewModel: ObservableObject {
     
     @Published var outerPath: OuterIdPath?
     @Published var profilePath: NavigationPath = .init()
+    @Published var signInPath: NavigationPath = .init()
     
     init() {
         if let openURL = ProcessInfo.processInfo.environment["-openURL"] {
@@ -64,6 +65,7 @@ class NavigateViewModel: ObservableObject {
     }
     
     func navigateWithHome(_ path: HomeIdPath) {
+        tab = .home
         homePath.append(path)
     }
     

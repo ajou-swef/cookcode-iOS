@@ -21,6 +21,7 @@ struct CookieDetail: Like, CommentButtonInfo {
     var isLiked: Bool = false
     var avPlayer: AVPlayer?
     var isMyCookie: Bool
+    var userCell: UserCell
     
     mutating func onAppear() {
         guard let url = URL(string: url) else { return }
@@ -57,5 +58,6 @@ extension CookieDetail {
         
         let storedId = UserDefaults.standard.integer(forKey: USER_ID)
         isMyCookie = storedId == dto.user.userID
+        userCell = UserCell(dto: dto.user)
     }
 }
