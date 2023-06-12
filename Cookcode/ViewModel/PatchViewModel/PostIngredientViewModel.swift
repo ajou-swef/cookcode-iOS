@@ -10,7 +10,7 @@ import SwiftUI
 class PostIngredientViewModel: PatchIngredientViewModel {
     @Published var ingredientForm: IngredientForm
     @Published var ingredientCell: IngredientCell
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var deleteAlertIsPresented: Bool = false
     
     let useTrashButton: Bool = false
@@ -38,7 +38,7 @@ class PostIngredientViewModel: PatchIngredientViewModel {
         case .success(_):
             dismissAction()
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     

@@ -17,7 +17,7 @@ final class UserSearchViewModel: Pagenable, Refreshable, Searchable {
     @Published var dragVelocity: CGFloat = .zero
     @Published var scrollOffset: CGFloat = .zero
     @Published var contents: [UserProfileCell] = []
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     private let accountService: AccountServiceProtocol
     internal let query: String
@@ -54,7 +54,7 @@ final class UserSearchViewModel: Pagenable, Refreshable, Searchable {
             appendCell(success)
             controllPageState(success, curPage)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
             pageState = .noRemain
         }
     }

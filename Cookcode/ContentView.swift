@@ -16,7 +16,7 @@ struct ContentView: View {
         Group {
             LoginView()
                 .hidden(accountViewModel.didSignIn)
-            
+
             MainTabView()
                 .hidden(accountViewModel.didNotSignIn)
         }

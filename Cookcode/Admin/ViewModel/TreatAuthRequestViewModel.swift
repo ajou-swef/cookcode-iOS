@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class TreatAuthRequestViewModel: UserAuthInteractable {
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var userAuth: [UserAuth] = .init()
     private let adminService = AdminService()
     
@@ -22,7 +22,7 @@ final class TreatAuthRequestViewModel: UserAuthInteractable {
         case .success(let success):
             userAuth = success.data.map { UserAuth(dto: $0) }
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     

@@ -99,7 +99,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
         case .success(let success):
             recipeForm = RecipeForm(recipeDetailDTO: success.data)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -248,7 +248,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
         case .success(let response):
             await updateMainImage(response)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
         
     }
@@ -281,7 +281,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
                 case .success(let success):
                     recipeForm.stepAppendContentURL(index, urls: success.data.urls)
                 case .failure(let failure):
-                    serviceAlert.presentAlert(failure)
+                    serviceAlert.presentServiceError(failure)
                 }
                 
             case .image:
@@ -296,7 +296,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
                 case .success(let success):
                     recipeForm.steps[index].imageURLs = success.data.urls
                 case .failure(let failure):
-                    serviceAlert.presentAlert(failure)
+                    serviceAlert.presentServiceError(failure)
                 }
             }
         }
@@ -329,7 +329,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     func uploadButtonTapped(completion: () -> ()) async {
         
         guard !recipeForm.anyStepLacksOfInformation else {
-            serviceAlert.presentAlert(title: "정보가 부족한 스텝이 있습니다.")
+            await serviceAlert.presentAlert(title: "정보 누락", message: "정보가 부족한 스텝이 있습니다.")
             return
         }
         
@@ -341,7 +341,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
             case .success(_):
                 completion()
             case .failure(let error):
-                serviceAlert.presentAlert(error)
+                serviceAlert.presentServiceError(error)
             }
         } else {
             let dto = RecipeFormDTO(recipeForm: recipeForm)
@@ -352,7 +352,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
             case .success(_):
                 completion()
             case .failure(let error):
-                serviceAlert.presentAlert(error)
+                serviceAlert.presentServiceError(error)
             }
         }
     }

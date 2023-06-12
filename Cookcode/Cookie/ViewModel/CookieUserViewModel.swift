@@ -11,7 +11,7 @@ final class CookieUserViewModel: CookieFetcher {
     typealias Dto = CookieDetailDTO
     typealias T = CookieDetail
     
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var pageState: PageState = .wait(0)
     @Published var fetchTriggerOffset: CGFloat = .zero
     @Published var contents: [CookieDetail] = .init()
@@ -45,7 +45,7 @@ final class CookieUserViewModel: CookieFetcher {
             appendCell(success)
             controllPageState(success, curPage)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
             pageState = .noRemain
         }
     }

@@ -13,7 +13,7 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
     @Published var cookies: [CookieDetail] = []
     @Published var cookieSelection: String = ""
     @Published var drag: CGFloat = .zero
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var commentSheetIsPresent: Bool = false
     @Published var selectedDetail: CookieDetail?
     @Published var selectedCookie: CookieDetail?
@@ -53,7 +53,7 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
             cookies.append(cookie4)
             cookies.append(mock)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -66,7 +66,7 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
             guard let dto = success.data.first else { return nil }
             return CookieDetail(dto: dto)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
             return nil
         }
     }
@@ -170,7 +170,7 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
                 avControll(cookieSelection)
             }
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -190,7 +190,7 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
             
             avControll(cookieSelection)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
 }

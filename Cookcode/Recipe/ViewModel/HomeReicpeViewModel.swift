@@ -19,7 +19,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
     @Published var refreshThreshold: CGFloat = 40
     @Published var dragVelocity: CGFloat = .zero
     @Published var scrollOffset: CGFloat = .zero
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     @Published var topOffset: CGFloat = .zero
     @Published var contents: [RecipeCell] = .init()
@@ -63,7 +63,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
             appendCell(success)
             controllPageState(success, curPage)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
             pageState = .noRemain
         }
     }
@@ -111,7 +111,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
             guard let matchIndex = firstIndex else { return }
             contents[index] = RecipeCell(dto: success.data.content[matchIndex])
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
 }

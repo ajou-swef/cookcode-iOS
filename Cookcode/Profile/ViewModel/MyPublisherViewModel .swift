@@ -9,7 +9,7 @@ import SwiftUI
 
 final class MyPublisherViewModel: UserFetcher {
     
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var pageState: PageState = .wait(0)
     @Published var fetchTriggerOffset: CGFloat = .zero
     @Published var contents: [UserProfileCell] = []
@@ -35,7 +35,7 @@ final class MyPublisherViewModel: UserFetcher {
             appendCell(success)
             controllPageState(success, curPage)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
             pageState = .noRemain
         }
     }

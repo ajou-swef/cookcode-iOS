@@ -52,7 +52,7 @@ struct ResetPasswordView: View {
             resetButton()
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-            ServiceAlert.cancelButton
+            ViewAlert.cancelButton
         }
     }
     

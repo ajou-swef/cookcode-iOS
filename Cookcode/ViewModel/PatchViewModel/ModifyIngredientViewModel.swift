@@ -13,7 +13,7 @@ class ModifyIngredientViewModel: PatchIngredientViewModel {
     internal let useTrashButton: Bool = true
     @Published var ingredientForm: IngredientForm
     @Published var ingredientCell: IngredientCell
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var deleteAlertIsPresented: Bool = false
     
     internal let refridgeratorService: RefrigeratorServiceProtocol
@@ -33,7 +33,7 @@ class ModifyIngredientViewModel: PatchIngredientViewModel {
         case .success(_):
             dismissAction()
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -47,7 +47,7 @@ class ModifyIngredientViewModel: PatchIngredientViewModel {
             print("??")
             dismissAction()
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
 }

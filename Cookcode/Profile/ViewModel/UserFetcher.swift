@@ -9,5 +9,5 @@ import Foundation
 
 protocol UserFetcher: Pagenable {
     var accountService: AccountServiceProtocol { get }
-    var serviceAlert: ServiceAlert { get set }
+    var serviceAlert: ViewAlert { get set }
 }

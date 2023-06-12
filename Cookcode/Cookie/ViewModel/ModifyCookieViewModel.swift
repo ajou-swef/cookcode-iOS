@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class ModifyCookieViewModel: PatchViewModel {
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     @Published var useTrashButton: Bool = true
     @Published var deleteAlertIsPresented: Bool = false
@@ -31,7 +31,7 @@ final class ModifyCookieViewModel: PatchViewModel {
         case .success(_):
             dismissAction()
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -43,7 +43,7 @@ final class ModifyCookieViewModel: PatchViewModel {
         case .success(_):
             dismissAction()
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     

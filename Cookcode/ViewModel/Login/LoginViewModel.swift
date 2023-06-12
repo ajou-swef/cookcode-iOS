@@ -11,7 +11,7 @@ class LoginViewModel: ObservableObject {
     
     let accountService: AccountServiceProtocol
     @Published var signInForm: SignInForm = .init()
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     init (accountService: AccountServiceProtocol) {
         self.accountService = accountService
@@ -28,7 +28,7 @@ class LoginViewModel: ObservableObject {
             UserDefaults.standard.set(success.data.userID, forKey: USER_ID)
             return true
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
             return false
         }
     }

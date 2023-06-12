@@ -9,7 +9,7 @@ import SwiftUI
 
 protocol Commentable: ObservableObject, CommentCellInteractable {
     var contentId: Int { get }
-    var serviceAlert: ServiceAlert { get set }
+    var serviceAlert: ViewAlert { get set }
     var commentService: CommentServiceProtocol { get }
     var commentText: String { get set }
     var comments: [Comment] { get set }
@@ -37,7 +37,7 @@ extension Commentable {
             
             self.comments = success.data.content.map({  Comment(dto: $0) })
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -52,7 +52,7 @@ extension Commentable {
         case .success(_):
             await onFetch()
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
         
         selectedComment = nil

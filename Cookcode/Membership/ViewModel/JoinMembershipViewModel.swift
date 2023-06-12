@@ -12,7 +12,7 @@ final class JoinMembershipViewModel: ObservableObject, MembershipGradeInteractab
     private let membershipService = MembershipService()
     
     @Published var membershipGrades: [MembershipGradeDetail] = .init()
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     init(userId: Int) {
         self.userId = userId
@@ -29,7 +29,7 @@ final class JoinMembershipViewModel: ObservableObject, MembershipGradeInteractab
         case .success(_):
             break
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -41,7 +41,7 @@ final class JoinMembershipViewModel: ObservableObject, MembershipGradeInteractab
         case .success(let success):
             membershipGrades = success.data.map { MembershipGradeDetail(dto: $0) }
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
 }

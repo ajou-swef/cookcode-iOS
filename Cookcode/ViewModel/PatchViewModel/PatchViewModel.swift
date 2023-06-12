@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 protocol PatchViewModel: ObservableObject {
-    var serviceAlert: ServiceAlert { get set }
+    var serviceAlert: ViewAlert { get set }
     var useTrashButton: Bool { get }
     var deleteAlertIsPresented: Bool { get set }
     var mainButtonText: String { get }

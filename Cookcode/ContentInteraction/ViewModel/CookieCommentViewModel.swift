@@ -15,7 +15,7 @@ final class CookieCommentViewModel: Commentable {
     @Published var selectedComment: Comment?
     @Published var comments: [Comment] = .init()
     @Published var commentText: String = ""
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     @Published var deleteAlertIsPresented: Bool = false
     @Published var deleteCommentAlertIsPresented: Comment?

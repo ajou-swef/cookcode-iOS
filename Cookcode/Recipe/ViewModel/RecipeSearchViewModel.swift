@@ -17,7 +17,7 @@ final class RecipeSearchViewModel: RefreshableRecipeFetcher {
     @Published var scrollOffset: CGFloat = .zero
     @Published var contents: [RecipeCell] = .init()
     @Published var filterType: RecipeFilterType = .all
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var pageState: PageState = .wait(0)
     @Published var presentOnlyCookable: Bool = false
     @Published var topOffset: CGFloat = .zero
@@ -53,7 +53,7 @@ final class RecipeSearchViewModel: RefreshableRecipeFetcher {
             appendCell(success)
             controllPageState(success, curPage)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
             pageState = .noRemain
         }
     }

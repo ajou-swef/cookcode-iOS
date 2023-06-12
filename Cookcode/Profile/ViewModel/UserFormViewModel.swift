@@ -13,7 +13,7 @@ final class UserFormViewModel: ObservableObject {
     
     @Published var user: UserDetail = .mock()
     @Published var profileForm: ProfileForm = .mock()
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var requestAuthorityAlertIsPresented: Bool = false
     
     private let accountService: AccountServiceProtocol
@@ -44,7 +44,7 @@ final class UserFormViewModel: ObservableObject {
         case .success(_):
             return
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -58,7 +58,7 @@ final class UserFormViewModel: ObservableObject {
         case .success(_):
             await getUser()
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
 
