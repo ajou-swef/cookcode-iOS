@@ -266,6 +266,8 @@
 		15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9B29FA94A40008DC7A /* AccountService.swift */; };
 		15E43A9E29FA94DF0008DC7A /* AccountSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */; };
 		15E6AC7A2A2081F400838210 /* View + PresentIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E6AC792A2081F400838210 /* View + PresentIf.swift */; };
+		15EE3AF52A36A3D100DD462A /* SearchMembershipType .swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE3AF42A36A3D100DD462A /* SearchMembershipType .swift */; };
+		15EE3AF72A36A43E00DD462A /* SearcgMembershipPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE3AF62A36A43E00DD462A /* SearcgMembershipPicker.swift */; };
 		15EFAD6C2A0B34690092B203 /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFAD6B2A0B34690092B203 /* Int + Extension.swift */; };
 		15EFAD6E2A0B3ACB0092B203 /* PatchIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFAD6D2A0B3ACB0092B203 /* PatchIngredientViewModel.swift */; };
 		15EFAD702A0B3CCA0092B203 /* PostIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EFAD6F2A0B3CCA0092B203 /* PostIngredientViewModel.swift */; };
@@ -570,6 +572,8 @@
 		15E43A9B29FA94A40008DC7A /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		15E43A9D29FA94DF0008DC7A /* AccountSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSuccessService.swift; sourceTree = "<group>"; };
 		15E6AC792A2081F400838210 /* View + PresentIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + PresentIf.swift"; sourceTree = "<group>"; };
+		15EE3AF42A36A3D100DD462A /* SearchMembershipType .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchMembershipType .swift"; sourceTree = "<group>"; };
+		15EE3AF62A36A43E00DD462A /* SearcgMembershipPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcgMembershipPicker.swift; sourceTree = "<group>"; };
 		15EFAD6B2A0B34690092B203 /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
 		15EFAD6D2A0B3ACB0092B203 /* PatchIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchIngredientViewModel.swift; sourceTree = "<group>"; };
 		15EFAD6F2A0B3CCA0092B203 /* PostIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostIngredientViewModel.swift; sourceTree = "<group>"; };
@@ -962,6 +966,7 @@
 				1594F49C2A29CD02004A68D6 /* SeachTypeComponent.swift */,
 				1537B1CA2A29EC5700869718 /* SearchTypeList.swift */,
 				15A756392A35B704008D2350 /* SortTypePicker.swift */,
+				15EE3AF62A36A43E00DD462A /* SearcgMembershipPicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1023,6 +1028,7 @@
 				15B6263D2A009CE6002E1F5F /* SearchedCell.swift */,
 				15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */,
 				15A756372A35B5F9008D2350 /* SortType.swift */,
+				15EE3AF42A36A3D100DD462A /* SearchMembershipType .swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1905,6 +1911,7 @@
 				15536B572A35A7FD00611AA0 /* CookieInteractable.swift in Sources */,
 				15F82A7329FA92D500DA9381 /* SignInDto.swift in Sources */,
 				15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */,
+				15EE3AF52A36A3D100DD462A /* SearchMembershipType .swift in Sources */,
 				15A53B422A3612D30055D8CB /* JoinedMembershipGradeInteractable.swift in Sources */,
 				159C99E12A127B450058B18E /* ScrollVelocityDetector.swift in Sources */,
 				15B04C572A1C6BBD00B988BF /* VideoThumbnail.swift in Sources */,
@@ -2028,6 +2035,7 @@
 				1515FB272A12005C00119519 /* DetailPath.swift in Sources */,
 				154010432A31EED600C2C633 /* CookieProgress.swift in Sources */,
 				153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */,
+				15EE3AF72A36A43E00DD462A /* SearcgMembershipPicker.swift in Sources */,
 				158AF5E52A1F6E5A00FF815A /* View + DisableWhenUploading.swift in Sources */,
 				15A53B552A361C1F0055D8CB /* UserAuthInteractable.swift in Sources */,
 				15B626402A009D09002E1F5F /* RecipeCell.swift in Sources */,

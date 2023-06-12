@@ -41,13 +41,13 @@ extension View {
     }
     
     @ViewBuilder
-    func offsetX(_ addObserver: Bool, completion: @escaping (CGRect) -> Void) -> some View {
+    func offsetX(_ addObserver: Bool, coordinateSpace: CoordinateSpace = .global, completion: @escaping (CGRect) -> Void) -> some View {
         self
             .frame(maxWidth: .infinity)
             .overlay {
                 if addObserver {
                     GeometryReader {
-                        let rect = $0.frame(in: .global)
+                        let rect = $0.frame(in: coordinateSpace)
                         Color.clear
                             .preference(key: OffsetKey.self, value: rect)
                             .onPreferenceChange(OffsetKey.self, perform: completion )
