@@ -130,10 +130,10 @@ final class RecipeService: RecipeServiceProtocol {
         }
     }
     
-    func fetchRecipeCells(page: Int, size: Int, sort: String?, month: Int?, cookcable: Bool?) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
+    func fetchRecipeCells(page: Int, size: Int, search: SearchMembershipType, sort: String?, month: Int?, cookcable: Bool?) async -> Result<ServiceResponse<PageResponse<RecipeCellDto>>, ServiceError> {
         
         
-        var url = "\(BASE_URL)/api/v1/recipe?page=\(page)&size=\(size)"
+        var url = "\(BASE_URL)/api/v1/recipe\(search.pathVariable)?page=\(page)&size=\(size)"
         
         if let sort = sort {
             url.append("&sort=\(sort)")

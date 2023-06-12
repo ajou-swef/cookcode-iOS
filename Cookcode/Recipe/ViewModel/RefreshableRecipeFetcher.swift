@@ -12,4 +12,5 @@ protocol RefreshableRecipeFetcher: Refreshable, RecipeFetcher where Dto == Recip
     var presentOnlyCookable: Bool { get set }
     var topOffset: CGFloat { get set }
     var topOpacity: CGFloat { get }
+    var searchType: SearchMembershipType { get set } 
 }

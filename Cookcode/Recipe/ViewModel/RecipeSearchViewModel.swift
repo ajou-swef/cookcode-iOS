@@ -11,6 +11,7 @@ final class RecipeSearchViewModel: RefreshableRecipeFetcher {
     let refreshThreshold: CGFloat = 40
     let spaceName: String = "recipeSearchViewModel"
     
+    @Published var searchType: SearchMembershipType = .all
     @Published var sort: SortType = .latest
     @Published var dragVelocity: CGFloat = .zero
     @Published var scrollOffset: CGFloat = .zero

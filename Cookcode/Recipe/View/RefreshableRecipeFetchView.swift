@@ -11,6 +11,7 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
     
     @ObservedObject var viewModel: ViewModel
     @EnvironmentObject var navigateViewModel: NavigateViewModel
+
     
     var body: some View {
         VStack {
@@ -33,6 +34,7 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
                     .padding(.horizontal)
                 }
             }
+            .zIndex(0)
             .onChange(of: viewModel.sort) { newValue in
                 Task { await viewModel.onRefresh() }
             }
@@ -43,11 +45,22 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
     @ViewBuilder
     private func header() -> some View {
         HStack {
+            
             SortTypePicker(selection: $viewModel.sort, activeTint: .mainColor,
                            inActiveTint: .gray_bcbcbc, dynamic: false)
-            .padding(.trailing, 100)
+            .frame(width: 120)
+            .onChange(of: viewModel.searchType) { newValue in
+                Task { await viewModel.onRefresh() }
+            }
             
-            Spacer()
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    SearcgMembershipPicker(searchMembership: $viewModel.searchType)
+                }
+                .zIndex(200)
+            }
+            .coordinateSpace(name: "hscroll")
+            .zIndex(200)
             
             Button {
                 viewModel.presentOnlyCookable.toggle()
@@ -73,8 +86,8 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
             Text("요리하자")
                 .font(.custom(CustomFont.interRegular.rawValue, size: 16))
         }
-        .foregroundColor(.mainColor)
         .zIndex(100)
+        .foregroundColor(.mainColor)
         .offset(y: viewModel.topOffset)
         .padding(.bottom, viewModel.topOffset)
         .opacity(viewModel.topOpacity)
@@ -84,8 +97,9 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
     }
 }
 
-//struct RefreshableRecipeFetchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RefreshableRecipeFetchView()
-//    }
-//}
+struct RefreshableRecipeFetchView_Previews: PreviewProvider {
+    static var previews: some View {
+        RefreshableRecipeFetchView(viewModel: HomeReicpeViewModel(recipeService: RecipeSuccessService()))
+            .environmentObject(NavigateViewModel())
+    }
+}
