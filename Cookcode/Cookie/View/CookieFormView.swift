@@ -72,7 +72,7 @@ struct CookieFormView: View {
                 completeButton()
             }
             .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-                ServiceAlert.cancelButton
+                ViewAlert.cancelButton
             }
             .disableWhenUploading(viewModel.isUploading)
         }

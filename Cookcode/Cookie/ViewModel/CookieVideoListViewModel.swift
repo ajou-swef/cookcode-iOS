@@ -13,7 +13,7 @@ final class CookieVideoListViewModel: ObservableObject, PresentCommentSheet, lik
     @Published var commentSheetIsPresent: Bool = false
     @Published var cookies: [CookieDetail]
     @Published var cookieSelection: String = ""
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     
     var cookieService: CookieService = .init()
@@ -83,7 +83,7 @@ final class CookieVideoListViewModel: ObservableObject, PresentCommentSheet, lik
             cookies[index].update(cookie: cookie)
             avControll(cookieSelection)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
 }

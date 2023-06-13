@@ -10,8 +10,8 @@ import SwiftUI
 final class RequestPasswordViewModel: ObservableObject {
     
     @Published var email: String = ""
-    @Published var serviceAlert: ServiceAlert = .init()
-    @Published var dismissAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
+    @Published var dismissAlert: ViewAlert = .init()
     
     private let accountSerivce: AccountServiceProtocol
     
@@ -25,9 +25,9 @@ final class RequestPasswordViewModel: ObservableObject {
         
         switch result {
         case .success(let success):
-            dismissAlert.presentAlert(title: success.message)
+            await dismissAlert.presentAlert(title: "", message: success.message)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
 }

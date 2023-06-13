@@ -41,7 +41,7 @@ final class CookieFormViewModel: ObservableObject {
     @Published private(set) var viewState: ViewState = .none
     
     @Published private var _cookieForm: CookieForm = .init()
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     var isMerging: Bool {
         viewState.isMerging

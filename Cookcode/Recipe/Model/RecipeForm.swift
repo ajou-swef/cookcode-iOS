@@ -14,6 +14,7 @@ struct RecipeForm {
     var ingredients: [Int] = []
     var optionalIngredients: [Int] = []
     var photosPickerItem: PhotosPickerItem?
+    var presentToOnlyMembership: Bool? 
     private(set) var _thumbnail: String = ""
     private(set) var deletedThumbnails: [String] = []
     

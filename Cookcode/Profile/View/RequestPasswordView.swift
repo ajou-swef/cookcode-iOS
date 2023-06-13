@@ -43,7 +43,7 @@ struct RequestPasswordView: View {
                     .padding(.top, 10)
             }
             .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-                ServiceAlert.cancelButton
+                ViewAlert.cancelButton
             }
 
         }

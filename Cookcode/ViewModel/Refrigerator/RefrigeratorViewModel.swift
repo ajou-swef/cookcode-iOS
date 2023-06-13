@@ -12,7 +12,7 @@ class RefrigeratorViewModel: ObservableObject {
     @Published var selectedIngredientDetail: IngredientDetail?
     @Published private(set) var refrigerator: [IngredientType: [IngredientDetail]] = [:]
     
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published private(set) var presentedIngredientTypes: [IngredientType] = IngredientType.allCases
     
     
@@ -49,7 +49,7 @@ class RefrigeratorViewModel: ObservableObject {
             
             refrigerator = newRefridgerator
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     

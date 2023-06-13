@@ -25,6 +25,7 @@ struct RecipeFormView: View {
     }
     
     @EnvironmentObject var navigateViewModel: NavigateViewModel
+    @EnvironmentObject var accountViewModel: AccountViewModel
     @StateObject private var viewModel: RecipeFormViewModel
     @FocusState private var isFocused: Field?
     
@@ -49,6 +50,9 @@ struct RecipeFormView: View {
                     .padding(.horizontal, 10)
                     .padding(.top, 30)
                     .padding(.bottom, 40)
+                    .overlay(alignment: .topTrailing) {
+                        presentToOnlyMembershipButton()
+                    }
                 }
                 
                 PresentPreviewButton()
@@ -72,6 +76,37 @@ struct RecipeFormView: View {
                     Text("새 레시피")
                         .font(CustomFontFactory.INTER_BOLD_16)
                 }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func presentToOnlyMembershipButton() -> some View {
+        Button {
+            viewModel.recipeForm.presentToOnlyMembership?.toggle()
+        } label: {
+            
+            HStack {
+                Text("멤버십 전용")
+                    .font(.custom(CustomFont.interRegular.rawValue, size: 14))
+                
+                Circle()
+                    .stroke(lineWidth: 1)
+                    .frame(width: 15,  height: 25)
+                    .background {
+                        Circle()
+                            .padding(2)
+                            .presentIf(viewModel.recipeForm.presentToOnlyMembership ?? false)
+                            .foregroundColor(.mainColor)
+                    }
+            }
+            .foregroundColor(.primary)
+            .padding(.trailing)
+        }
+        .presentIf(accountViewModel.user.authority == .influencer)
+        .onAppear {
+            if accountViewModel.user.authority == .influencer {
+                viewModel.recipeForm.presentToOnlyMembership = false
             }
         }
     }
@@ -332,5 +367,7 @@ struct RecipeFormView: View {
 struct RecipeFormView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeFormView(recipeId: nil)
+            .environmentObject(AccountViewModel(accountService: AccountSuccessService()))
+            .environmentObject(NavigateViewModel())
     }
 }

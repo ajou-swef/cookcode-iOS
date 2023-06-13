@@ -35,7 +35,7 @@ struct RefrigeratorView: View {
                 }
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-            ServiceAlert.cancelButton
+            ViewAlert.cancelButton
         }
         .padding(.horizontal, 10)
         .toolbar {

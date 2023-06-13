@@ -9,7 +9,7 @@ import SwiftUI
 
 final class MembershipFormViewModel: PatchViewModel{
     
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var useTrashButton: Bool = false
     @Published var deleteAlertIsPresented: Bool = false
     @Published var membershipGrade: MembershipGradeForm = .init()
@@ -25,7 +25,7 @@ final class MembershipFormViewModel: PatchViewModel{
         case .success(_):
             dismissAction()
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     

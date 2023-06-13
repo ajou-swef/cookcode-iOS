@@ -21,7 +21,7 @@ struct AuthenticateEmailView: View {
             certificationTextField()
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented, actions: {
-            ServiceAlert.cancelButton
+            ViewAlert.cancelButton
         })
         .navigationTitle("이메일 인증")
         .onChange(of: viewModel.inputCode, perform: { newValue in

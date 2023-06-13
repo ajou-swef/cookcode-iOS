@@ -9,7 +9,7 @@ import SwiftUI
 
 final class ResetPasswordViewModel: ObservableObject {
     @Published var resetPasswordForm: ResetPasswordForm = .init()
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var successAlertIsPresented: Bool = false
     
     private let accountService: AccountServiceProtocol
@@ -31,7 +31,7 @@ final class ResetPasswordViewModel: ObservableObject {
         case .success(_):
             successAlertIsPresented = true 
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
 }

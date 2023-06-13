@@ -13,7 +13,7 @@ final class RecipeUserViewModel: RecipeFetcher {
     
     @Published var contents: [RecipeCell] = .init()
     @Published var filterType: RecipeFilterType = .all
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var pageState: PageState = .wait(0)
     
     internal let recipeService: RecipeServiceProtocol
@@ -48,7 +48,7 @@ final class RecipeUserViewModel: RecipeFetcher {
             appendCell(success)
             controllPageState(success, curPage)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
             pageState = .noRemain
         }
     }

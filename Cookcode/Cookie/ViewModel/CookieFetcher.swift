@@ -9,5 +9,5 @@ import Foundation
 
 protocol CookieFetcher: Pagenable {
     var cookieService: CookieServiceProtocol { get }
-    var serviceAlert: ServiceAlert { get set }
+    var serviceAlert: ViewAlert { get set }
 }

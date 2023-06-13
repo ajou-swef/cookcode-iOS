@@ -55,9 +55,12 @@ struct LoginView: View {
             .frame(maxWidth: .infinity)
             .accessibilityIdentifier("LoginView")
         }
-        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-            ServiceAlert.cancelButton
-        }
+        .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented, actions: {
+            ViewAlert.cancelButton
+            viewModel.serviceAlert.actionButton
+        }, message: {
+            Text(viewModel.serviceAlert.message)
+        })
     }
     
     @ViewBuilder

@@ -66,7 +66,7 @@ struct HomeRecipeView: View {
            bottomButton()
         }
         .alert(viewModel.serviceAlert.title, isPresented: $viewModel.serviceAlert.isPresented) {
-            ServiceAlert.cancelButton
+            ViewAlert.cancelButton
         }
         .onAppear {
             viewModel.updateCell(updateCellVM.updateCellDict)

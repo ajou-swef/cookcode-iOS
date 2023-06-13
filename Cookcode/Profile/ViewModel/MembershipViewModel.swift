@@ -13,7 +13,7 @@ class MembershipViewModel: ObservableObject {
     let accountService: AccountServiceProtocol
     @Published var membershipForm = MembershipForm()
     @Published var inputCode: String = "" 
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     @Published var remainTime: Double = 300
     @Published var timer = Timer()
@@ -69,7 +69,7 @@ class MembershipViewModel: ObservableObject {
         case .success(let data):
             membershipForm.nicknameIsUnique = data.data.isUnique
         case .failure(let serviceError):
-            serviceAlert.presentAlert(serviceError)
+            serviceAlert.presentServiceError(serviceError)
         }
     }
     
@@ -99,7 +99,7 @@ class MembershipViewModel: ObservableObject {
             signInSuccess = true 
             successAlertIsPresented = true 
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -111,7 +111,7 @@ class MembershipViewModel: ObservableObject {
         case .success(let success):
             assignedCode = String(success.data) 
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     

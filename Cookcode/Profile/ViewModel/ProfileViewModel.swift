@@ -24,7 +24,7 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
     }
     
     @Published private(set) var userDetail: UserDetail = .mock()
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     @Published var seachType: SearchType = .recipe
     @Published var viewItem: ViewItem? 
     
@@ -68,7 +68,7 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
             print("구독 성공")
         case .failure(let failure):
             print("구독 실패")
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -84,7 +84,7 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
             print("구독취소 성공")
         case .failure(let failure):
             print("구독취소 실패")
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -96,7 +96,7 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
         case .success(let success):
             userDetail = UserDetail(dto: success.data)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
 }

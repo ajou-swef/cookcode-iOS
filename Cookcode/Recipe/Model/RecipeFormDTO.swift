@@ -12,6 +12,7 @@ struct RecipeFormDTO: Encodable {
     let ingredients, optionalIngredients: [Int]
     let deletedThumbnails: [String] = []
     var steps: [StepFormDTO]
+    var isPremium: Bool?
     
     init (recipeForm: RecipeForm) {
         title = recipeForm.title
@@ -20,6 +21,7 @@ struct RecipeFormDTO: Encodable {
         
         ingredients = recipeForm.ingredients
         optionalIngredients = recipeForm.optionalIngredients
+        isPremium = recipeForm.presentToOnlyMembership
         
         steps = [] 
         for i in recipeForm.steps.indices {

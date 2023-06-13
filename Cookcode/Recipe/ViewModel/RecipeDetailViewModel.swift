@@ -30,7 +30,7 @@ class RecipeDetailViewModel: RecipeViewModel, likeButtonInteractable {
         case .success(_):
             await dismiss()
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     
@@ -44,7 +44,7 @@ class RecipeDetailViewModel: RecipeViewModel, likeButtonInteractable {
             recipeDetail = RecipeDetail(dto: success.data)
             setMyRecipe(recipeDetail.user?.userID ?? -1)
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     

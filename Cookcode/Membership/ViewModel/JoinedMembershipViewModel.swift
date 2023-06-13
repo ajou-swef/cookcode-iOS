@@ -10,7 +10,7 @@ import SwiftUI
 final class JoineMembershipViewModel: JoinedMembershipInteractable {
     
     @Published var memberships: [JoinedMembershipDetail] = .init()
-    @Published var serviceAlert: ServiceAlert = .init()
+    @Published var serviceAlert: ViewAlert = .init()
     
     private let membershipService = MembershipService()
     
@@ -25,7 +25,7 @@ final class JoineMembershipViewModel: JoinedMembershipInteractable {
         case .success(let success):
             memberships = success.data.map { JoinedMembershipDetail(dto: $0) }
         case .failure(let failure):
-            serviceAlert.presentAlert(failure)
+            serviceAlert.presentServiceError(failure)
         }
     }
     

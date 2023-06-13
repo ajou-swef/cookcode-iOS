@@ -12,11 +12,11 @@ class AccountViewModel: ObservableObject {
     @Published private(set) var didSignIn: Bool = false
     @Published var deleteAccountAlertIsPresented: Bool = false
     @Published var user: UserDetail = .mock()
-    @Published private var _serviceAlert: ServiceAlert = .init()
+    @Published private var _serviceAlert: ViewAlert = .init()
     
     private let accountService: AccountServiceProtocol
     
-    var serviceAlert: ServiceAlert {
+    var serviceAlert: ViewAlert {
         get { _serviceAlert }
         set { _serviceAlert = newValue }
     }
