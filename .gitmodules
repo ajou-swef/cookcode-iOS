@@ -1,0 +1,3 @@
+[submodule "iOS-Secret"]
+	path = iOS-Secret
+	url = https://github.com/ajou-swef/iOS-Secret.git
