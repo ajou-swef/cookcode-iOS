@@ -43,7 +43,7 @@ final class HomeRecipeViewModelTests: XCTestCase {
             XCTAssertEqual(vm.pageState, .wait(curPage + 1))
             XCTAssertEqual(vm.contents.count, curCellCount + returnedCellCount)
         } catch {
-            
+            XCTFail("sleep 에러")
         }
     }
     
@@ -63,7 +63,34 @@ final class HomeRecipeViewModelTests: XCTestCase {
             XCTAssertEqual(vm.pageState, .noRemain)
             XCTAssertEqual(vm.contents.count, originCellCount)
         } catch {
+            XCTFail("sleep 에러")
+        }
+    }
+    
+    func test_onRefresh() async throws {
+        //  Given
+        let service = RecipeSuccessServiceStub()
+        let vm = HomeRecipeViewModel(recipeService: service)
+        vm.pageState = .wait(Int.random(in: 1..<100))
+        let returnedCellCount = try await service.fetchRecipeCells(page: 0, size: 0, search: .all, sort: nil, month: nil, cookcable: nil).get().data.content.count
+        
+        //  When
+        await vm.onRefresh()
+        
+        //  Then
+        do {
+            // fetch 후 pageState는 1초 뒤에 바뀌니 이 시간동안 대기
+            try await Task.sleep(nanoseconds: 2000000000)
             
+            let expectedPageState: PageState = .wait(1)
+            let actualPagesState: PageState = vm.pageState
+            XCTAssertEqual(actualPagesState, expectedPageState)
+            
+            let expectedCellCount = returnedCellCount
+            let actualCellCount = vm.contents.count
+            XCTAssertEqual(actualCellCount, expectedCellCount)
+        } catch {
+            XCTFail("sleep 에러")
         }
     }
 }

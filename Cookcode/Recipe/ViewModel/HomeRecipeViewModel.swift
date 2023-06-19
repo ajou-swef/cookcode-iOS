@@ -68,7 +68,7 @@ final class HomeRecipeViewModel: RefreshableRecipeFetcher {
     }
     
     @MainActor
-    func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
+    internal func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
         let newCells = success.data.content.map { RecipeCell(dto: $0) }
         contents.append(contentsOf: newCells)
     }
