@@ -74,7 +74,7 @@
 		154010432A31EED600C2C633 /* CookieProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154010422A31EED600C2C633 /* CookieProgress.swift */; };
 		154010452A31F21200C2C633 /* CircleGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154010442A31F21200C2C633 /* CircleGraph.swift */; };
 		15508CB02A1329DD00004A1C /* IngredientCellsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15508CAF2A1329DD00004A1C /* IngredientCellsView.swift */; };
-		15508CB22A134DE600004A1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15508CB12A134DE600004A1C /* API.swift */; };
+		15508CB22A134DE600004A1C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15508CB12A134DE600004A1C /* Global.swift */; };
 		15508CB42A134DFD00004A1C /* Ingredient Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */; };
 		15536B3E2A357DC000611AA0 /* RequestPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B3D2A357DC000611AA0 /* RequestPasswordView.swift */; };
 		15536B402A357DD800611AA0 /* RequestPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15536B3F2A357DD800611AA0 /* RequestPasswordViewModel.swift */; };
@@ -408,7 +408,7 @@
 		154010422A31EED600C2C633 /* CookieProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieProgress.swift; sourceTree = "<group>"; };
 		154010442A31F21200C2C633 /* CircleGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGraph.swift; sourceTree = "<group>"; };
 		15508CAF2A1329DD00004A1C /* IngredientCellsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCellsView.swift; sourceTree = "<group>"; };
-		15508CB12A134DE600004A1C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		15508CB12A134DE600004A1C /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		15508CB32A134DFD00004A1C /* Ingredient Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient Dictionary.swift"; sourceTree = "<group>"; };
 		15536B3D2A357DC000611AA0 /* RequestPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordView.swift; sourceTree = "<group>"; };
 		15536B3F2A357DD800611AA0 /* RequestPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -684,7 +684,7 @@
 			isa = PBXGroup;
 			children = (
 				153B4DA429ED085E00543730 /* Info.plist */,
-				15508CB12A134DE600004A1C /* API.swift */,
+				15508CB12A134DE600004A1C /* Global.swift */,
 				15676CEE2A302D72002A142E /* EnvironmentObject */,
 				15A53B492A36188E0055D8CB /* Admin */,
 				15A53B222A35FF0D0055D8CB /* Membership */,
@@ -2063,7 +2063,7 @@
 				15CFE66629FF590000C16FF6 /* VideoResponse.swift in Sources */,
 				15A53B462A3613720055D8CB /* JoinedMembershipViewModel.swift in Sources */,
 				154010452A31F21200C2C633 /* CircleGraph.swift in Sources */,
-				15508CB22A134DE600004A1C /* API.swift in Sources */,
+				15508CB22A134DE600004A1C /* Global.swift in Sources */,
 				158D7A872A2C69C200DFFB82 /* CookieSuccessService.swift in Sources */,
 				15B04C682A1C907100B988BF /* PlayerView.swift in Sources */,
 				1599E94E2A13719D00ED1B60 /* ContentDTO.swift in Sources */,
