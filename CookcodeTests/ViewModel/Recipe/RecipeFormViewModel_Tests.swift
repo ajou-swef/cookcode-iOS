@@ -95,7 +95,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         let response: ServiceResponse<ContentDTO> = ServiceResponse(message: "message", status: 200, data: .mock())
         
         //  When
-        await vm.updateMainImage(response)
+        vm.updateMainImage(response)
         
         //  Then
         XCTAssertTrue(vm.recipeMetadataHasThumbnail)

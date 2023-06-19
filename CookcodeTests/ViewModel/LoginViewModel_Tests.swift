@@ -21,18 +21,6 @@ final class LoginViewModel_Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func test_LoginViewModel_idText_shouldBeEmpty() {
-        //  Given
-        guard let vm = viewModel else {
-            XCTFail()
-            return
-        }
-        
-        //  When
-        
-        //  Then
-//        XCTAssertEqual(vm.idText, "")
-    }
     
 //    func test_LoginViewModel_passwordText_shouldBeEmpty() {
 //        //  Given
