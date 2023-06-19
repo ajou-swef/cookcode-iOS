@@ -52,6 +52,7 @@ final class HomeRecipeViewModel: RefreshableRecipeFetcher {
     func onFetch() async {
         let curPage = pageState.page
         pageState = .loading(curPage)
+
         
         let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, search: searchType, sort: sort.rawValue, month: nil, cookcable: presentOnlyCookable)
         

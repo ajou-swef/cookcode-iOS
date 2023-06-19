@@ -38,7 +38,7 @@ final class HomeRecipeViewModelTests: XCTestCase {
         //  Then
         
         do {
-            // fetch 후 pageState는 1초 뒤에 바뀌니 이 시간동안 대기 
+            // fetch 후 pageState는 1초 뒤에 바뀌니 이 시간동안 대기
             try await Task.sleep(nanoseconds: 2000000000)
             XCTAssertEqual(vm.pageState, .wait(curPage + 1))
             XCTAssertEqual(vm.contents.count, curCellCount + returnedCellCount)
@@ -46,12 +46,24 @@ final class HomeRecipeViewModelTests: XCTestCase {
             
         }
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func test_onFetch_failure() async throws {
+        
+        //  Given
+        let vm = HomeRecipeViewModel(recipeService: RecipeFailureServiceStub())
+        let originCellCount = vm.contents.count
+        
+        //  When
+        await vm.onFetch()
+        
+        //  Then
+        do {
+            // fetch 후 pageState는 1초 뒤에 바뀌니 이 시간동안 대기
+            try await Task.sleep(nanoseconds: 2000000000)
+            XCTAssertEqual(vm.pageState, .noRemain)
+            XCTAssertEqual(vm.contents.count, originCellCount)
+        } catch {
+            
         }
     }
-
 }
