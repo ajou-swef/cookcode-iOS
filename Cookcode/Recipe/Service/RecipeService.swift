@@ -62,12 +62,16 @@ final class RecipeService: RecipeServiceProtocol {
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
+        let cacher = ResponseCacher(behavior: .cache)
+        
         let response = await AF.request(encodedURL, method: .get, headers: headers)
+            .cacheResponse(using: cacher)
             .serializingDecodable(ServiceResponse<PageResponse<RecipeCellDto>>.self).response
         
         if response.error != nil {
             print("\(response.debugDescription)")
         }
+
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
@@ -170,6 +174,7 @@ final class RecipeService: RecipeServiceProtocol {
         let headers: HTTPHeaders = [
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
+        
         
         let response = await AF.request(url, method: .get, headers: headers)
             .serializingDecodable(ServiceResponse<RecipeDetailDTO>.self).response

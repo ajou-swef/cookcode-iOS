@@ -26,6 +26,7 @@ class RecipeDetailViewModel: RecipeViewModel, likeButtonInteractable {
     
     func deleteButtonTapepd(dismiss: @MainActor () -> ()) async {
         let result = await recipeService.deleteRecipe(recipeId: recipeDetail.recipeID ?? -1)
+        
         switch result {
         case .success(_):
             await dismiss()
