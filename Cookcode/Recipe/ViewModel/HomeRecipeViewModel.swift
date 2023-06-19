@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class HomeReicpeViewModel: RefreshableRecipeFetcher {
+final class HomeRecipeViewModel: RefreshableRecipeFetcher {
     typealias Dto = RecipeCellDto
     typealias T = RecipeCell
     
@@ -34,8 +34,6 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
     
     init(recipeService: RecipeServiceProtocol) {
         self.recipeService = recipeService
-        
-        Task { await onFetch() }
     }
     
     var topOpacity: CGFloat {
@@ -54,7 +52,6 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
     func onFetch() async {
         let curPage = pageState.page
         pageState = .loading(curPage)
-        print("page(\(curPage)) loading start")
         
         let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, search: searchType, sort: sort.rawValue, month: nil, cookcable: presentOnlyCookable)
         
@@ -62,6 +59,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
         case .success(let success):
             appendCell(success)
             controllPageState(success, curPage)
+            debugPrint("\(pageState)")
         case .failure(let failure):
             serviceAlert.presentServiceError(failure)
             pageState = .noRemain

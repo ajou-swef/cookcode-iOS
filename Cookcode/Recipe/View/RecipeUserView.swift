@@ -36,6 +36,6 @@ struct RecipeUserView: View {
 
 struct RecipePagenableView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeUserView(recipeService: RecipeSuccessService(), userId: 1)
+        RecipeUserView(recipeService: RecipeSuccessServiceStub(), userId: 1)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PageState {
+enum PageState: Equatable {
     case loading(Int)
     case wait(Int)
     case noRemain

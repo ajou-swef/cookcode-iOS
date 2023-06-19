@@ -99,7 +99,7 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
 
 struct RefreshableRecipeFetchView_Previews: PreviewProvider {
     static var previews: some View {
-        RefreshableRecipeFetchView(viewModel: HomeReicpeViewModel(recipeService: RecipeSuccessService()))
+        RefreshableRecipeFetchView(viewModel: HomeRecipeViewModel(recipeService: RecipeSuccessServiceStub()))
             .environmentObject(NavigateViewModel())
     }
 }
