@@ -11,3 +11,5 @@ let BASE_URL = "https://cookcode.link"
 let ACCESS_TOKEN_KEY = "accessToken"
 let REFRESH_TOKEN_KEY = "refreshToken"
 let USER_ID = "userId"
+
+// 임시
