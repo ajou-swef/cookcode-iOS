@@ -74,8 +74,18 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
+            key = "-RecipeService"
+            value = "success"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "-openURL"
             value = ""
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "-AccountService"
+            value = "success"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

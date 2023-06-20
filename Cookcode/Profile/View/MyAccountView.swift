@@ -233,6 +233,6 @@ struct MyAccountView: View {
 struct MyAccountView_Previews: PreviewProvider {
     static var previews: some View {
         MyAccountView()
-            .environmentObject(AccountViewModel(accountService: AccountSuccessService()))
+            .environmentObject(AccountViewModel(accountService: AccountServiceSuccessStub()))
     }
 }

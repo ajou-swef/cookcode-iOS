@@ -16,7 +16,7 @@ class RecipeViewModel: ObservableObject {
     @Published var tabSelection: String = ""
     
     init (recipeService: RecipeServiceProtocol, contentService: ContentServiceProtocol, recipeID: Int?) {
-        self.recipeService = recipeService
+        self.recipeService = RecipeServiceInjector.select(service: recipeService)
     }
 //    func stepID(at :Int) -> String {
 //        String(recipeDetail?.steps[at].seq ?? 1)

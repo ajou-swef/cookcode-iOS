@@ -33,7 +33,7 @@ final class HomeRecipeViewModel: RefreshableRecipeFetcher {
     internal let pageSize: Int = 10
     
     init(recipeService: RecipeServiceProtocol) {
-        self.recipeService = recipeService
+        self.recipeService = RecipeServiceInjector.select(service: recipeService)
     }
     
     var topOpacity: CGFloat {

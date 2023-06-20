@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RecipeSuccessServiceStub: RecipeServiceProtocol {
+final class RecipeServiceSuccessStub: RecipeServiceProtocol {
     func likesContentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
         .success(.mock())
     }

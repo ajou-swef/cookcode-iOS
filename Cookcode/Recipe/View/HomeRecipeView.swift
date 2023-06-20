@@ -216,7 +216,7 @@ struct HomeRecipeView: View {
 
 struct HomeRecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeRecipeView(recipeService: RecipeSuccessServiceStub())
+        HomeRecipeView(recipeService: RecipeServiceSuccessStub())
             .environmentObject(NavigateViewModel())
             .environmentObject(UpdateCellViewModel())
             .environmentObject(CookieProgress(cookieService: CookieService()))

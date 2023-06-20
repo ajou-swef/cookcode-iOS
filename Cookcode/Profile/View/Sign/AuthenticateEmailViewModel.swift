@@ -98,7 +98,7 @@ struct AuthenticateEmailView: View {
 struct AuthenticateEmailViewModel_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            AuthenticateEmailView(viewModel: MembershipViewModel(accountService: AccountSuccessService()))
+            AuthenticateEmailView(viewModel: MembershipViewModel(accountService: AccountServiceSuccessStub()))
         }
     }
 }

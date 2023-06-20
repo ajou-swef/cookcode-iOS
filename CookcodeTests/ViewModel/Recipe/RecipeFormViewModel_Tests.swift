@@ -15,7 +15,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
     var cancellable = Set<AnyCancellable>()
     
     override func setUpWithError() throws {
-        viewModel = RecipeFormViewModel(contentService: ContentSuccessService(), recipeService: RecipeSuccessServiceStub(), recipeId: nil)
+        viewModel = RecipeFormViewModel(contentService: ContentSuccessService(), recipeService: RecipeServiceSuccessStub(), recipeId: nil)
     }
 
     override func tearDownWithError() throws {

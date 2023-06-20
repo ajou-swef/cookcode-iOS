@@ -21,7 +21,7 @@ final class SelectIngredientViewModelTests: XCTestCase {
     func test_RecipeFormViewModel_ingredientCellTapped_appendID() {
         //  Given
         let viewModel = RecipeFormViewModel(contentService: ContentSuccessService(),
-                                            recipeService: RecipeSuccessServiceStub(), recipeId: nil)
+                                            recipeService: RecipeServiceSuccessStub(), recipeId: nil)
         viewModel.useMainIngredient = true
         let counts = Int.random(in: 1..<30)
         
@@ -39,7 +39,7 @@ final class SelectIngredientViewModelTests: XCTestCase {
     func test_RecipeFormViewModel_ingredientCellTapped_removeID() {
         //  Given
         let viewModel = RecipeFormViewModel(contentService: ContentSuccessService(),
-                                            recipeService: RecipeSuccessServiceStub(), recipeId: nil)
+                                            recipeService: RecipeServiceSuccessStub(), recipeId: nil)
         viewModel.useMainIngredient = true
         let id = Int.random(in: 1..<30)
         

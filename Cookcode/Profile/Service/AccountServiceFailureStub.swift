@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-final class AccountFailureService: AccountServiceProtocol {
+final class AccountServiceFailureStub: AccountServiceProtocol {
     func requestEmailCode(email: String) async -> Result<ServiceResponse<String>, ServiceError> {
         .failure(.MOCK())
     }

@@ -22,7 +22,7 @@ final class CookieCommentViewModelTests: XCTestCase {
     func test_commentButtonTapped_() async {
         
         //  Given
-        let viewModel = CookieCommentViewModel(conentsId: 1, commentService: RecipeSuccessServiceStub())
+        let viewModel = CookieCommentViewModel(conentsId: 1, commentService: RecipeServiceSuccessStub())
         
         //  When
         await viewModel.onFetch()

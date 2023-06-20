@@ -41,6 +41,6 @@ struct MyPublishersView: View {
 
 struct MyPublishersView_Previews: PreviewProvider {
     static var previews: some View {
-        MyPublishersView(accountService: AccountSuccessService())
+        MyPublishersView(accountService: AccountServiceSuccessStub())
     }
 }

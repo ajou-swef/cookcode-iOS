@@ -14,7 +14,7 @@ class LoginViewModel: ObservableObject {
     @Published var serviceAlert: ViewAlert = .init()
     
     init (accountService: AccountServiceProtocol) {
-        self.accountService = accountService
+        self.accountService = AccountServiceInjector.select(service: accountService)
     }
     
     @MainActor

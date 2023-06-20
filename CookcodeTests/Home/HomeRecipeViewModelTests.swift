@@ -22,7 +22,7 @@ final class HomeRecipeViewModelTests: XCTestCase {
     func test_onFetch_success() async throws {
         
         //  Given
-        let service = RecipeSuccessServiceStub()
+        let service = RecipeServiceSuccessStub()
         let vm = HomeRecipeViewModel(recipeService: service)
         let curPage = vm.pageState.page
         let curCellCount = vm.contents.count
@@ -67,7 +67,7 @@ final class HomeRecipeViewModelTests: XCTestCase {
     
     func test_onRefresh() async throws {
         //  Given
-        let service = RecipeSuccessServiceStub()
+        let service = RecipeServiceSuccessStub()
         let vm = HomeRecipeViewModel(recipeService: service)
         vm.pageState = .wait(Int.random(in: 1..<100))
         let returnedCellCount = try await service.fetchRecipeCells(page: 0, size: 0, search: .all, sort: nil, month: nil, cookcable: nil).get().data.content.count
@@ -94,7 +94,7 @@ final class HomeRecipeViewModelTests: XCTestCase {
     
     func test_updateCell_delete() async {
         //  Given
-        let vm = HomeRecipeViewModel(recipeService: RecipeSuccessServiceStub())
+        let vm = HomeRecipeViewModel(recipeService: RecipeServiceSuccessStub())
         vm.contents = RecipeCell.mocks(100)
         
         guard let selctedCell = vm.contents.randomElement() else {
