@@ -92,11 +92,23 @@ final class HomeRecipeViewModelTests: XCTestCase {
         }
     }
     
-    func test_updateCell_delete() {
+    func test_updateCell_delete() async {
         //  Given
+        let vm = HomeRecipeViewModel(recipeService: RecipeSuccessServiceStub())
+        vm.contents = RecipeCell.mocks(100)
+        
+        guard let selctedCell = vm.contents.randomElement() else {
+            XCTFail("Reciecell.mocks 에러")
+            return
+        }
+        var info: [CellType: CellUpdateInfo] = .init()
+        info[.recipe] = CellUpdateInfo(updateType: .delete, cellId: selctedCell.recipeId)
         
         //  When
+        await vm.updateCell(info)
         
         //  Then
+        let actual = vm.contents.firstIndex { $0 == selctedCell }
+        XCTAssertNil(actual)
     }
 }

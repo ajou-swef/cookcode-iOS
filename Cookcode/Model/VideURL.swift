@@ -21,7 +21,7 @@ struct VideoURL: Transferable, Hashable {
             if FileManager.default.fileExists(atPath: copy.path()) {
                 try FileManager.default.removeItem(at: copy)
             }
-
+            
             try FileManager.default.copyItem(at: received.file, to: copy)
             return Self.init(url: copy)
         }

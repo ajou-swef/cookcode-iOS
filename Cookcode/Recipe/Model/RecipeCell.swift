@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeCell: Identifiable, Mock {
+struct RecipeCell: Identifiable, Mock, Equatable {
     var type: RecipeCell.Type {
         RecipeCell.self
     }

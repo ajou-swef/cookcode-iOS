@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserCell: Identifiable, Mock {
+struct UserCell: Identifiable, Mock, Equatable {
     static func mock() -> UserCell {
         UserCell(userName: "유저네임", imageURL: "https://picsum.photos/200/300",
                  email: "nou0ggid@gmail.com", userId: 7)
