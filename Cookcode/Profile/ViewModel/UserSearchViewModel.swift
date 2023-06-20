@@ -27,7 +27,7 @@ final class UserSearchViewModel: Pagenable, Refreshable, Searchable {
     
     
     init (accountService: AccountServiceProtocol, query: String) {
-        self.accountService = accountService
+        self.accountService = AccountServiceInjector.select(service: accountService)
         self.query = query
         
         Task { await onFetch() }

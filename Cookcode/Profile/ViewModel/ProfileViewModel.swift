@@ -31,8 +31,12 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
     private let accountService: AccountServiceProtocol
     let userId: Int
     
-    var membershipButtonIsPresented: Bool {
+    var userIsInfluencer: Bool {
         userDetail.authority == .influencer
+    }
+    
+    var doesNotJoinMembership: Bool {
+        userIsInfluencer && userDetail.isNotMyProfile
     }
     
     var subscribeButtonIsPresented: Bool {
@@ -45,7 +49,7 @@ final class ProfileViewModel: ObservableObject, SearchTypeSelectable {
     
     init(accoutnService: AccountServiceProtocol, userId: Int) {
         self.userId = userId
-        self.accountService = accoutnService
+        self.accountService = AccountServiceInjector.select(service: accoutnService)
         
         Task {
             await fetchUserDetail() 

@@ -9,7 +9,7 @@ import Alamofire
 
 struct UserDetailDTO: Codable, Mock {
     static func mock() -> UserDetailDTO {
-        UserDetailDTO(userID: 13, email: "nou0ggid2@gmail.com", nickname: "page", profileImage: "https://picsum.photos/200/300", status: "VALID", authority: .user, isSubscribed: false)
+        UserDetailDTO(userID: 13, email: "nou0ggid2@gmail.com", nickname: "page", profileImage: "https://picsum.photos/200/300", status: "VALID", authority: .influencer, isSubscribed: false)
     }
     
     let userID: Int

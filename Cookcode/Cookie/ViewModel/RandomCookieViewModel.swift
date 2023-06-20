@@ -22,8 +22,8 @@ final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, Pre
     var commentService: CommentServiceProtocol
     
     init(cookieService: CookieServiceProtocol) {
-        self.cookieService = cookieService
-        commentService = cookieService
+        self.cookieService = CookieServiceInjector.select(service: cookieService)
+        commentService = CookieServiceInjector.select(service: cookieService)
         
         Task {
             await initCookie()

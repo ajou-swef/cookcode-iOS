@@ -17,10 +17,10 @@ class RefrigeratorViewModel: ObservableObject {
     
     
     
-    private(set) var fridgeService: RefrigeratorServiceProtocol
+    private(set) var fridgeService: FridgeServiceProtocol
     
-    init (fridgeService: RefrigeratorServiceProtocol) {
-        self.fridgeService = fridgeService
+    init (fridgeService: FridgeServiceProtocol) {
+        self.fridgeService = FridgeServiceInjector.select(service: fridgeService)
         for type in IngredientType.allCases {
             refrigerator[type] = []
         }

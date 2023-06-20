@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
  
-final class CookieFailureService: CookieServiceProtocol {
+final class CookieFailureStub: CookieServiceProtocol {
     func getCookieByCookieId(_ id: Int) async -> Result<ServiceResponse<CookieDetailDTO>, ServiceError> {
         .failure(.MOCK())
     }

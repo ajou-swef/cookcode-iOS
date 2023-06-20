@@ -14,7 +14,6 @@
 		1503F93429B45561002F3D26 /* CookcodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F93329B45561002F3D26 /* CookcodeTests.swift */; };
 		1503F93E29B45561002F3D26 /* CookcodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F93D29B45561002F3D26 /* CookcodeUITests.swift */; };
 		1503F94029B45561002F3D26 /* CookcodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F93F29B45561002F3D26 /* CookcodeUITestsLaunchTests.swift */; };
-		1503F94D29B4557A002F3D26 /* LoginViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F94C29B4557A002F3D26 /* LoginViewModel_Tests.swift */; };
 		1503F94F29B456CE002F3D26 /* LoginView_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F94E29B456CE002F3D26 /* LoginView_UITests.swift */; };
 		1503F95529B459DD002F3D26 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503F95429B459DD002F3D26 /* LoginViewModel.swift */; };
 		150CD44329F397830001FFEB /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150CD44229F397830001FFEB /* ContentType.swift */; };
@@ -45,7 +44,7 @@
 		1537B1CF2A29F37200869718 /* RecipeSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537B1CE2A29F37200869718 /* RecipeSearchView.swift */; };
 		1537B1D12A2A070C00869718 /* UserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537B1D02A2A070C00869718 /* UserCellView.swift */; };
 		1538157A29FF8EB100C3BD11 /* IngredientDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157929FF8EB100C3BD11 /* IngredientDetailDTO.swift */; };
-		1538157C29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */; };
+		1538157C29FF8ED100C3BD11 /* FridgeSuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157B29FF8ED100C3BD11 /* FridgeSuccessStub.swift */; };
 		1538157E29FF8EF300C3BD11 /* RefrigeratorFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */; };
 		153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4D8C29ED061E00543730 /* Color + Extension.swift */; };
 		153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DA729ED097500543730 /* CustomFontFactory.swift */; };
@@ -123,7 +122,7 @@
 		158D7A7F2A2C66D100DFFB82 /* CookieFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A7E2A2C66D100DFFB82 /* CookieFetcher.swift */; };
 		158D7A812A2C675D00DFFB82 /* CookieUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A802A2C675D00DFFB82 /* CookieUserViewModel.swift */; };
 		158D7A852A2C698100DFFB82 /* CookieUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A842A2C698100DFFB82 /* CookieUserView.swift */; };
-		158D7A872A2C69C200DFFB82 /* CookieSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A862A2C69C200DFFB82 /* CookieSuccessService.swift */; };
+		158D7A872A2C69C200DFFB82 /* CookieSuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A862A2C69C200DFFB82 /* CookieSuccessStub.swift */; };
 		158D7A892A2C6CB300DFFB82 /* UserFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A882A2C6CB300DFFB82 /* UserFetcher.swift */; };
 		158D7A8B2A2C6DA200DFFB82 /* MyPublisherViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A8A2A2C6DA200DFFB82 /* MyPublisherViewModel .swift */; };
 		158D7A8D2A2C70C300DFFB82 /* UserProfileCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D7A8C2A2C70C300DFFB82 /* UserProfileCellDto.swift */; };
@@ -131,6 +130,7 @@
 		158DBAFA2A41326400B18E5A /* AccountSerivceInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158DBAF92A41326300B18E5A /* AccountSerivceInjector.swift */; };
 		158DBAFC2A41349E00B18E5A /* RecipeServiceInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158DBAFB2A41349E00B18E5A /* RecipeServiceInjector.swift */; };
 		158DBAFE2A4134AE00B18E5A /* ServiceInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158DBAFD2A4134AE00B18E5A /* ServiceInjector.swift */; };
+		158DBB012A413B1700B18E5A /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158DBB002A413B1700B18E5A /* LoginViewModelTests.swift */; };
 		158EFDD72A04C58F003057A4 /* CellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDD62A04C58F003057A4 /* CellTests.swift */; };
 		158EFDDA2A04CDF1003057A4 /* PatchComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDD92A04CDF1003057A4 /* PatchComponent.swift */; };
 		158EFDDC2A04CE26003057A4 /* PatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EFDDB2A04CE25003057A4 /* PatchViewModel.swift */; };
@@ -255,8 +255,8 @@
 		15CFE66229FF56C700C16FF6 /* ContentServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE66129FF56C700C16FF6 /* ContentServiceProtocol.swift */; };
 		15CFE66429FF587D00C16FF6 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE66329FF587D00C16FF6 /* PhotoResponse.swift */; };
 		15CFE66629FF590000C16FF6 /* VideoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE66529FF590000C16FF6 /* VideoResponse.swift */; };
-		15CFE66829FF593300C16FF6 /* ContentSuccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE66729FF593300C16FF6 /* ContentSuccessService.swift */; };
-		15CFE6A329FF5F0600C16FF6 /* ContentFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A229FF5F0600C16FF6 /* ContentFailureService.swift */; };
+		15CFE66829FF593300C16FF6 /* ContentSuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE66729FF593300C16FF6 /* ContentSuccessStub.swift */; };
+		15CFE6A329FF5F0600C16FF6 /* ContentFailureStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A229FF5F0600C16FF6 /* ContentFailureStub.swift */; };
 		15CFE6A529FF69C800C16FF6 /* RecipeFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A429FF69C800C16FF6 /* RecipeFormTests.swift */; };
 		15CFE6A829FF7B8500C16FF6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A729FF7B8500C16FF6 /* ProfileView.swift */; };
 		15CFE6AA29FF7EAA00C16FF6 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */; };
@@ -270,6 +270,9 @@
 		15DAE25A29FE3F9D00A4B00A /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */; };
 		15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9B29FA94A40008DC7A /* AccountService.swift */; };
 		15E43A9E29FA94DF0008DC7A /* AccountServiceSuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9D29FA94DF0008DC7A /* AccountServiceSuccessStub.swift */; };
+		15E646B22A41615900F2C21D /* ContentServiceInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E646B12A41615900F2C21D /* ContentServiceInjector.swift */; };
+		15E646B42A4169EC00F2C21D /* FridgeServiceInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E646B32A4169EC00F2C21D /* FridgeServiceInjector.swift */; };
+		15E646B62A41753700F2C21D /* CookieServiceInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E646B52A41753700F2C21D /* CookieServiceInjector.swift */; };
 		15E6AC7A2A2081F400838210 /* View + PresentIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E6AC792A2081F400838210 /* View + PresentIf.swift */; };
 		15EE3AF52A36A3D100DD462A /* SearchMembershipType .swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE3AF42A36A3D100DD462A /* SearchMembershipType .swift */; };
 		15EE3AF72A36A43E00DD462A /* SearcgMembershipPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE3AF62A36A43E00DD462A /* SearcgMembershipPicker.swift */; };
@@ -351,7 +354,6 @@
 		1503F93929B45561002F3D26 /* CookcodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CookcodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1503F93D29B45561002F3D26 /* CookcodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookcodeUITests.swift; sourceTree = "<group>"; };
 		1503F93F29B45561002F3D26 /* CookcodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookcodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1503F94C29B4557A002F3D26 /* LoginViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel_Tests.swift; sourceTree = "<group>"; };
 		1503F94E29B456CE002F3D26 /* LoginView_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView_UITests.swift; sourceTree = "<group>"; };
 		1503F95429B459DD002F3D26 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		150CD44229F397830001FFEB /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
@@ -382,7 +384,7 @@
 		1537B1CE2A29F37200869718 /* RecipeSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchView.swift; sourceTree = "<group>"; };
 		1537B1D02A2A070C00869718 /* UserCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellView.swift; sourceTree = "<group>"; };
 		1538157929FF8EB100C3BD11 /* IngredientDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetailDTO.swift; sourceTree = "<group>"; };
-		1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorSuccessService.swift; sourceTree = "<group>"; };
+		1538157B29FF8ED100C3BD11 /* FridgeSuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeSuccessStub.swift; sourceTree = "<group>"; };
 		1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorFailureService.swift; sourceTree = "<group>"; };
 		153B4D8C29ED061E00543730 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		153B4DA429ED085E00543730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -460,7 +462,7 @@
 		158D7A7E2A2C66D100DFFB82 /* CookieFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieFetcher.swift; sourceTree = "<group>"; };
 		158D7A802A2C675D00DFFB82 /* CookieUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieUserViewModel.swift; sourceTree = "<group>"; };
 		158D7A842A2C698100DFFB82 /* CookieUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieUserView.swift; sourceTree = "<group>"; };
-		158D7A862A2C69C200DFFB82 /* CookieSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieSuccessService.swift; sourceTree = "<group>"; };
+		158D7A862A2C69C200DFFB82 /* CookieSuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieSuccessStub.swift; sourceTree = "<group>"; };
 		158D7A882A2C6CB300DFFB82 /* UserFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFetcher.swift; sourceTree = "<group>"; };
 		158D7A8A2A2C6DA200DFFB82 /* MyPublisherViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyPublisherViewModel .swift"; sourceTree = "<group>"; };
 		158D7A8C2A2C70C300DFFB82 /* UserProfileCellDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCellDto.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 		158DBAF92A41326300B18E5A /* AccountSerivceInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSerivceInjector.swift; sourceTree = "<group>"; };
 		158DBAFB2A41349E00B18E5A /* RecipeServiceInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeServiceInjector.swift; sourceTree = "<group>"; };
 		158DBAFD2A4134AE00B18E5A /* ServiceInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInjector.swift; sourceTree = "<group>"; };
+		158DBB002A413B1700B18E5A /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		158EFDD62A04C58F003057A4 /* CellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTests.swift; sourceTree = "<group>"; };
 		158EFDD92A04CDF1003057A4 /* PatchComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchComponent.swift; sourceTree = "<group>"; };
 		158EFDDB2A04CE25003057A4 /* PatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchViewModel.swift; sourceTree = "<group>"; };
@@ -594,8 +597,8 @@
 		15CFE66129FF56C700C16FF6 /* ContentServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentServiceProtocol.swift; sourceTree = "<group>"; };
 		15CFE66329FF587D00C16FF6 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
 		15CFE66529FF590000C16FF6 /* VideoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponse.swift; sourceTree = "<group>"; };
-		15CFE66729FF593300C16FF6 /* ContentSuccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSuccessService.swift; sourceTree = "<group>"; };
-		15CFE6A229FF5F0600C16FF6 /* ContentFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFailureService.swift; sourceTree = "<group>"; };
+		15CFE66729FF593300C16FF6 /* ContentSuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSuccessStub.swift; sourceTree = "<group>"; };
+		15CFE6A229FF5F0600C16FF6 /* ContentFailureStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFailureStub.swift; sourceTree = "<group>"; };
 		15CFE6A429FF69C800C16FF6 /* RecipeFormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFormTests.swift; sourceTree = "<group>"; };
 		15CFE6A729FF7B8500C16FF6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		15CFE6A929FF7EAA00C16FF6 /* SearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
@@ -608,6 +611,9 @@
 		15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		15E43A9B29FA94A40008DC7A /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		15E43A9D29FA94DF0008DC7A /* AccountServiceSuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountServiceSuccessStub.swift; sourceTree = "<group>"; };
+		15E646B12A41615900F2C21D /* ContentServiceInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentServiceInjector.swift; sourceTree = "<group>"; };
+		15E646B32A4169EC00F2C21D /* FridgeServiceInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeServiceInjector.swift; sourceTree = "<group>"; };
+		15E646B52A41753700F2C21D /* CookieServiceInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieServiceInjector.swift; sourceTree = "<group>"; };
 		15E6AC792A2081F400838210 /* View + PresentIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + PresentIf.swift"; sourceTree = "<group>"; };
 		15EE3AF42A36A3D100DD462A /* SearchMembershipType .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchMembershipType .swift"; sourceTree = "<group>"; };
 		15EE3AF62A36A43E00DD462A /* SearcgMembershipPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcgMembershipPicker.swift; sourceTree = "<group>"; };
@@ -727,6 +733,7 @@
 		1503F93229B45561002F3D26 /* CookcodeTests */ = {
 			isa = PBXGroup;
 			children = (
+				158DBAFF2A413B0A00B18E5A /* Login */,
 				152E73212A407B3B009325E7 /* Home */,
 				15637AAD2A28A0A6007BFF8E /* ContentInteraction */,
 				15F2CC0C2A025CFE0019FAB6 /* Service */,
@@ -1139,7 +1146,7 @@
 			children = (
 				158AF5DC2A1F66FD00FF815A /* CookieServiceProtocol.swift */,
 				158AF5E22A1F687100FF815A /* CookieService.swift */,
-				158D7A862A2C69C200DFFB82 /* CookieSuccessService.swift */,
+				158D7A862A2C69C200DFFB82 /* CookieSuccessStub.swift */,
 				156387CA2A32F95A00BD7C01 /* CookieFailureServcie.swift */,
 			);
 			path = Service;
@@ -1151,8 +1158,19 @@
 				158DBAFD2A4134AE00B18E5A /* ServiceInjector.swift */,
 				158DBAF92A41326300B18E5A /* AccountSerivceInjector.swift */,
 				158DBAFB2A41349E00B18E5A /* RecipeServiceInjector.swift */,
+				15E646B12A41615900F2C21D /* ContentServiceInjector.swift */,
+				15E646B32A4169EC00F2C21D /* FridgeServiceInjector.swift */,
+				15E646B52A41753700F2C21D /* CookieServiceInjector.swift */,
 			);
 			path = ServiceInjector;
+			sourceTree = "<group>";
+		};
+		158DBAFF2A413B0A00B18E5A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				158DBB002A413B1700B18E5A /* LoginViewModelTests.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		158EFDD82A04CDD1003057A4 /* Container */ = {
@@ -1299,7 +1317,6 @@
 			children = (
 				158F674A2A148A5A00E6D646 /* Fridge */,
 				15DF8E902A11107A00B58784 /* Recipe */,
-				1503F94C29B4557A002F3D26 /* LoginViewModel_Tests.swift */,
 				15F2CC132A02669C0019FAB6 /* MembershipFormViewModelTests.swift */,
 				15C805BB2A0345C6000A1A29 /* SelectIngredientViewModelTests.swift */,
 			);
@@ -1623,8 +1640,8 @@
 			isa = PBXGroup;
 			children = (
 				15CFE66129FF56C700C16FF6 /* ContentServiceProtocol.swift */,
-				15CFE66729FF593300C16FF6 /* ContentSuccessService.swift */,
-				15CFE6A229FF5F0600C16FF6 /* ContentFailureService.swift */,
+				15CFE66729FF593300C16FF6 /* ContentSuccessStub.swift */,
+				15CFE6A229FF5F0600C16FF6 /* ContentFailureStub.swift */,
 				155A50752A0B5A9500EBD894 /* ContentService.swift */,
 			);
 			path = Content;
@@ -1643,7 +1660,7 @@
 			children = (
 				15CFE6AE29FF8D7700C16FF6 /* RefrigeratorServiceProtocol .swift */,
 				15B1F9E52A09118900B9CB24 /* RefridgeratorService.swift */,
-				1538157B29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift */,
+				1538157B29FF8ED100C3BD11 /* FridgeSuccessStub.swift */,
 				1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */,
 			);
 			path = Refrigerator;
@@ -1898,6 +1915,7 @@
 			files = (
 				15A53B362A360A9E0055D8CB /* JoinMembershipView.swift in Sources */,
 				15AA2F2029EFE47C0069813F /* RecipeFormView.swift in Sources */,
+				15E646B42A4169EC00F2C21D /* FridgeServiceInjector.swift in Sources */,
 				15A53B3C2A360D590055D8CB /* MembershipGradeInteractable.swift in Sources */,
 				1515F31D2A0C7BE90003A4BB /* RecipeDetail.swift in Sources */,
 				15B04C5F2A1C7DEF00B988BF /* RandomCookieView.swift in Sources */,
@@ -1924,7 +1942,7 @@
 				15B04C5B2A1C77A400B988BF /* VideoLoadView.swift in Sources */,
 				15CFE66429FF587D00C16FF6 /* PhotoResponse.swift in Sources */,
 				15CFE6A829FF7B8500C16FF6 /* ProfileView.swift in Sources */,
-				15CFE66829FF593300C16FF6 /* ContentSuccessService.swift in Sources */,
+				15CFE66829FF593300C16FF6 /* ContentSuccessStub.swift in Sources */,
 				153F128C29FE28D3008BDB4E /* RecipeFailureServiceStub.swift in Sources */,
 				15B4CC432A24DF1C00DC226E /* Comment.swift in Sources */,
 				15F2CC122A0260D30019FAB6 /* AccountViewModel.swift in Sources */,
@@ -1964,6 +1982,7 @@
 				15F82A6D29FA901500DA9381 /* AccoutCheckResponse.swift in Sources */,
 				15CFE66229FF56C700C16FF6 /* ContentServiceProtocol.swift in Sources */,
 				153B4DAF29ED1AB400543730 /* MembershipForm.swift in Sources */,
+				15E646B62A41753700F2C21D /* CookieServiceInjector.swift in Sources */,
 				15B4CC3F2A24D89700DC226E /* Commentable.swift in Sources */,
 				15AE41812A2DC5A4004DDD0E /* LikeButtonInteractable.swift in Sources */,
 				15A53B532A361BDE0055D8CB /* TreatAuthRequestViewModel.swift in Sources */,
@@ -2041,18 +2060,19 @@
 				151E1C9F2A0CD12A00BC0DA5 /* Proxy.swift in Sources */,
 				15AA2F4B29F0D80E0069813F /* RecipePath.swift in Sources */,
 				15A53B1E2A35FE850055D8CB /* ManageAuthView.swift in Sources */,
+				15E646B22A41615900F2C21D /* ContentServiceInjector.swift in Sources */,
 				15B4CC1B2A24B23300DC226E /* CookieDetail.swift in Sources */,
 				15B626472A00B516002E1F5F /* MyRecipeView.swift in Sources */,
 				150CD44329F397830001FFEB /* ContentType.swift in Sources */,
 				152389D429F69AD60090CA9B /* RecipeEntranceView.swift in Sources */,
 				15B626452A00ABDD002E1F5F /* FecthCellServiceProtocol.swift in Sources */,
-				15CFE6A329FF5F0600C16FF6 /* ContentFailureService.swift in Sources */,
+				15CFE6A329FF5F0600C16FF6 /* ContentFailureStub.swift in Sources */,
 				151E1CA52A0CF0D100BC0DA5 /* PageState.swift in Sources */,
 				1594F49D2A29CD02004A68D6 /* SeachTypeComponent.swift in Sources */,
 				15193E462A0C9B7C00615BE1 /* RecipePreviewView.swift in Sources */,
 				15A7563F2A35DA93008D2350 /* SignPath.swift in Sources */,
 				15EFAD702A0B3CCA0092B203 /* PostIngredientViewModel.swift in Sources */,
-				1538157C29FF8ED100C3BD11 /* RefrigeratorSuccessService.swift in Sources */,
+				1538157C29FF8ED100C3BD11 /* FridgeSuccessStub.swift in Sources */,
 				15B4CC272A24C71000DC226E /* RefreshComponent.swift in Sources */,
 				15676CF42A303E54002A142E /* HomeRecipeView.swift in Sources */,
 				158EFDDA2A04CDF1003057A4 /* PatchComponent.swift in Sources */,
@@ -2087,7 +2107,7 @@
 				15A53B462A3613720055D8CB /* JoinedMembershipViewModel.swift in Sources */,
 				154010452A31F21200C2C633 /* CircleGraph.swift in Sources */,
 				15508CB22A134DE600004A1C /* Global.swift in Sources */,
-				158D7A872A2C69C200DFFB82 /* CookieSuccessService.swift in Sources */,
+				158D7A872A2C69C200DFFB82 /* CookieSuccessStub.swift in Sources */,
 				15B04C682A1C907100B988BF /* PlayerView.swift in Sources */,
 				1599E94E2A13719D00ED1B60 /* ContentDTO.swift in Sources */,
 				15A19D892A0BB005008C71EA /* PostRecipeResponse.swift in Sources */,
@@ -2155,7 +2175,6 @@
 			files = (
 				159FA86C29F8BD3E00ECB9E7 /* RecipeFormViewModel_Tests.swift in Sources */,
 				153B4DB929ED58B900543730 /* MembershipForm_Tests.swift in Sources */,
-				1503F94D29B4557A002F3D26 /* LoginViewModel_Tests.swift in Sources */,
 				158F674C2A148A7B00E6D646 /* RefridgeratorViewModelTests.swift in Sources */,
 				15CFE6A529FF69C800C16FF6 /* RecipeFormTests.swift in Sources */,
 				158EFDD72A04C58F003057A4 /* CellTests.swift in Sources */,
@@ -2165,6 +2184,7 @@
 				15F2CC102A025D1D0019FAB6 /* AccountServiceTests.swift in Sources */,
 				152E73232A407B52009325E7 /* HomeRecipeViewModelTests.swift in Sources */,
 				1566059029F914ED008B9F9F /* ContentWrappedStepForm_Tests.swift in Sources */,
+				158DBB012A413B1700B18E5A /* LoginViewModelTests.swift in Sources */,
 				1503F93429B45561002F3D26 /* CookcodeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

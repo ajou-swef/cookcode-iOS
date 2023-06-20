@@ -14,9 +14,9 @@ class PostIngredientViewModel: PatchIngredientViewModel {
     @Published var deleteAlertIsPresented: Bool = false
     
     let useTrashButton: Bool = false
-    internal let refridgeratorService: RefrigeratorServiceProtocol
+    internal let refridgeratorService: FridgeServiceProtocol
     
-    init (ingredientCell: IngredientCell, refridgeratorService: RefrigeratorServiceProtocol) {
+    init (ingredientCell: IngredientCell, refridgeratorService: FridgeServiceProtocol) {
         ingredientForm = IngredientForm(ingredId: ingredientCell.ingredId)
         self.ingredientCell = ingredientCell
         self.refridgeratorService = refridgeratorService

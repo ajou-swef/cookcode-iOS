@@ -50,6 +50,6 @@ struct CookieSearchView: View {
 
 struct CookieSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        CookieSearchView(cookieService: CookieSuccessService(), query: "query")
+        CookieSearchView(cookieService: CookieSuccessStub(), query: "query")
     }
 }

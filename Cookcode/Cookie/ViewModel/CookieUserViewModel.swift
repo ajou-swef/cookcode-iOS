@@ -22,7 +22,7 @@ final class CookieUserViewModel: CookieFetcher {
     let columns: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     init (cookieService: CookieServiceProtocol, userId: Int) {
-        self.cookieService = cookieService
+        self.cookieService = CookieServiceInjector.select(service: cookieService)
         self.userId = userId
     }
     

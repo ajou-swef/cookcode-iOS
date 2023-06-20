@@ -16,10 +16,10 @@ class ModifyIngredientViewModel: PatchIngredientViewModel {
     @Published var serviceAlert: ViewAlert = .init()
     @Published var deleteAlertIsPresented: Bool = false
     
-    internal let refridgeratorService: RefrigeratorServiceProtocol
+    internal let refridgeratorService: FridgeServiceProtocol
     private let fridgeIngredId: Int
     
-    init(ingredientDetail: IngredientDetail, refridgeratorService: RefrigeratorServiceProtocol) {
+    init(ingredientDetail: IngredientDetail, refridgeratorService: FridgeServiceProtocol) {
         ingredientCell = IngredientCell(detail: ingredientDetail)
         ingredientForm = IngredientForm(detail: ingredientDetail)
         self.refridgeratorService = refridgeratorService

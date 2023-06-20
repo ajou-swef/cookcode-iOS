@@ -9,6 +9,8 @@ import Foundation
 
 protocol ServiceInjector {
     associatedtype ServiceProtocol
-    var dependency: ServiceProtocol { get } 
+    
+    var dependency: ServiceProtocol { get }
+    
     static func select(service: ServiceProtocol) -> ServiceProtocol
 }

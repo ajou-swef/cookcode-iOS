@@ -47,7 +47,7 @@ struct LikeButton<ViewModel: likeButtonInteractable>: View {
 
 struct LikeComponent_Previews: PreviewProvider {
     static var previews: some View {
-        LikeButton(viewModel: RandomCookieViewModel(cookieService: CookieSuccessService()), like: CookieDetail.mock(), color: .white)
+        LikeButton(viewModel: RandomCookieViewModel(cookieService: CookieSuccessStub()), like: CookieDetail.mock(), color: .white)
             .preferredColorScheme(.dark)
             
     }

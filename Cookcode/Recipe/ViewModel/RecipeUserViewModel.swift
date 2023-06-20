@@ -22,7 +22,7 @@ final class RecipeUserViewModel: RecipeFetcher {
     @Published var fetchTriggerOffset: CGFloat = .zero
     
     init(recipeService: RecipeServiceProtocol, userId: Int) {
-        self.recipeService = recipeService
+        self.recipeService = RecipeServiceInjector.select(service: recipeService)
         self.userId = userId
         
         Task {

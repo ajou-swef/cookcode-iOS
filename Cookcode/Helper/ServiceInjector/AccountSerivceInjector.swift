@@ -23,7 +23,7 @@ enum AccountServiceInjector: String, ServiceInjector {
            return AccountServiceFailureStub()
        }
     }
-   
+    
     static func select(service: AccountServiceProtocol) -> AccountServiceProtocol {
        if let serviceVariable = ProcessInfo.processInfo.environment["-AccountService"] {
            return Self(rawValue: serviceVariable)?.dependency ?? service

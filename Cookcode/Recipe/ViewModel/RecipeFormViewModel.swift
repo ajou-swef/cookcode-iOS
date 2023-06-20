@@ -76,7 +76,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
     
     
     init(_ preview: Bool = false, contentService: ContentServiceProtocol, recipeService: RecipeServiceProtocol, recipeId: Int?) {
-        self.contentService = contentService
+        self.contentService = ContentServiceInjector.select(service: contentService)
         super.init(recipeService: recipeService, contentService: contentService, recipeID: nil)
         
         

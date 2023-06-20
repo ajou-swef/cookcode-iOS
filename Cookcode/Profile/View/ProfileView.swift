@@ -115,7 +115,7 @@ struct ProfileView: View {
                         .foregroundColor(.gray_bcbcbc)
                 )
         }
-        .presentIf(viewModel.membershipButtonIsPresented && viewModel.userDetail.isNotMyProfile)
+        .presentIf(viewModel.doesNotJoinMembership)
         .padding(.bottom, 5)
         .sheet(item: $viewModel.viewItem) { item in
             if let id = item.itemId {

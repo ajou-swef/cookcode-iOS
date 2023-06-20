@@ -10,5 +10,5 @@ import Foundation
 protocol PatchIngredientViewModel: PatchViewModel {
     var ingredientForm: IngredientForm { get set }
     var ingredientCell: IngredientCell { get set }
-    var refridgeratorService: RefrigeratorServiceProtocol { get } 
+    var refridgeratorService: FridgeServiceProtocol { get } 
 }
