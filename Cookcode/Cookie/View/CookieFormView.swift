@@ -21,49 +21,24 @@ struct CookieFormView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 30) {
-                    cookieThumbnail()
-                        .opacity(viewModel.isMerging ? 0.3 : 1)
-                        .disabled(viewModel.isMerging)
-                        .overlay {
-                            ProgressView()
-                                .tint(.mainColor)
-                                .hidden(!viewModel.isMerging)
-                        }
-
+                VStack(spacing: 20) {
+                    Text("미리보기")
+                        .font(.custom(CustomFont.interSemiBold.rawValue, size: 16))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.black)
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(viewModel.selectedVideoThumbnails.indices, id: \.self) { index in
-                                
-                                let thumbnail = viewModel.selectedVideoThumbnails[index]
-                                
-                                Button {
-                                    Task { await viewModel.thumbnailTapped(at: index) }
-                                } label: {
-                                    VideoLoadView(state: thumbnail.loadState)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
-                                        .frame(width: 100, alignment: .top)
-                                }
-                            }
-                            
-                            
-                            ProgressView()
-                                .hidden(!viewModel.isMerging)
-                                .frame(width: 100, height: 100)
-                                .tint(.mainColor)
-                            
-                            selectVideoButton()
-                            
-                        }
-                        .offset(x: 20)
-                        .padding(.trailing, 40)
-                    }
+                    cookieThumbnail()
+                        .padding(.bottom, 10)
+                    
+                    mergedVideos()
+                        .padding(.bottom, 30)
                     
                     titleSection()
+                        .padding(.bottom, 10)
+                    
                     descriptionSection()
                 }
+                .padding()
             }
             .navigationTitle("쿠키 생성")
             .navigationBarTitleDisplayMode(.inline)
@@ -79,24 +54,86 @@ struct CookieFormView: View {
     }
     
     @ViewBuilder
+    private func mergedVideos() -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 15) {
+                ForEach(viewModel.selectedVideoThumbnails) { thumbnail in
+                    mergedVideoThumbnail(thumbnail)
+                }
+                
+                Color.clear
+                    .frame(width: 100)
+                    .overlay {
+                        ProgressView()
+                    }
+                    .presentIf(viewModel.isMerging)
+                
+                selectVideoButton()
+            }
+            .padding(.top)
+        }
+    }
+    
+    @ViewBuilder
+    private func mergedVideoThumbnail(_ thumbnail: VideoThumbnail) -> some View {
+        VideoLoadView(state: thumbnail.loadState)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+            .frame(width: 100, alignment: .top)
+            .overlay(alignment: .topTrailing) {
+                Button {
+                    Task { await viewModel.videoThumbnailXmarkTapped(thumbnail) }
+                } label: {
+                    Image(systemName: "xmark.app.fill")
+                        .fontWeight(.bold)
+                        .foregroundColor(.red)
+                        .offset(x: 10, y: -10)
+                }
+            }
+    }
+    
+    @ViewBuilder
     private func cookieThumbnail() -> some View {
-        if let thumbnail = viewModel.mergedVideoThumbnail {
-            Button {
-                viewModel.videoIsPresented = true
-            } label: {
-                Image(uiImage: thumbnail)
-                    .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
+        Group {
+            if viewModel.isMerging {
+                Color.clear
                     .aspectRatio(CGSize(width: 2, height: 3), contentMode: .fit)
                     .frame(maxWidth: 200)
-            }
-            .sheet(isPresented: $viewModel.videoIsPresented) {
-                VideoPlayer(player: viewModel.mergedAVPlayer)
-                    .ignoresSafeArea()
-                    .scaledToFill()
-                    .onAppear {
-                        viewModel.mergedAVPlayer?.play()
+                    .overlay(alignment: .center) {
+                        ProgressView()
                     }
+                    .presentIf(viewModel.isMerging)
+            } else {
+                if let thumbnail = viewModel.mergedVideoThumbnail {
+                    Button {
+                        viewModel.videoIsPresented = true
+                    } label: {
+                        Image(uiImage: thumbnail)
+                            .resizable()
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .aspectRatio(CGSize(width: 2, height: 3), contentMode: .fit)
+                            .frame(maxWidth: 200)
+                    }
+                    .sheet(isPresented: $viewModel.videoIsPresented) {
+                        VideoPlayer(player: viewModel.mergedAVPlayer)
+                            .ignoresSafeArea()
+                            .scaledToFill()
+                            .onAppear {
+                                viewModel.mergedAVPlayer?.play()
+                            }
+                    }
+                } else {
+                    Color.clear
+                        .aspectRatio(CGSize(width: 2, height: 3), contentMode: .fit)
+                        .frame(maxWidth: 200)
+                        .overlay {
+                            Text("영상을 선택하시면\n 제작될 영상을 미리 볼 수 있습니다.")
+                                .padding(-50)
+                                .font(.custom(CustomFont.interSemiBold.rawValue, size: 16))
+                                .foregroundColor(.gray808080)
+                                .multilineTextAlignment(.center)
+                        }
+                }
             }
         }
     }
@@ -111,7 +148,6 @@ struct CookieFormView: View {
             TextField("쿠키 제목을 입력해주세요", text: $viewModel.cookieForm.title)
                 .font(CustomFontFactory.INTER_SEMIBOLD_14)
         }
-        .padding(.leading)
     }
     
     @ViewBuilder
@@ -123,7 +159,6 @@ struct CookieFormView: View {
             TextField("입력해주세요", text: $viewModel.cookieForm.description)
                 .font(CustomFontFactory.INTER_SEMIBOLD_14)
         }
-        .padding(.leading)
     }
     
     
@@ -137,8 +172,8 @@ struct CookieFormView: View {
                     navigateVM.dismissOuter()
                 }
             } label: {
-                Text("완료")
-                    .font(CustomFontFactory.INTER_SEMIBOLD_20)
+                Text("업로드")
+                    .font(.custom(CustomFont.interSemiBold.rawValue, size: 16))
                     .foregroundColor(.black)
             }
         }
@@ -163,7 +198,7 @@ struct CookieFormView: View {
             Image(systemName: "plus.square")
                 .resizable()
                 .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
-                .frame(width: viewModel.mergedVideoThumbnail == nil ? 250 : 100)
+                .frame(width: 100)
                 .foregroundColor(.primary)
         }
         .onChange(of: viewModel.photosPickerItem) { newValue in

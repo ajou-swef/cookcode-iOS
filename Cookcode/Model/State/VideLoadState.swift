@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum VideoLoadState {
+enum VideoLoadState: Equatable {
     case loading
     case loaded(UIImage)
 }

@@ -9,6 +9,7 @@ import Alamofire
 import Foundation
 
 final class CookieService: CookieServiceProtocol {
+    
     func getCookieByCookieId(_ id: Int) async -> Result<ServiceResponse<CookieDetailDTO>, ServiceError> {
         let url = "\(BASE_URL)/api/v1/cookie/\(id)"
         let headers: HTTPHeaders = [

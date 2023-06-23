@@ -43,6 +43,7 @@ final class CookieFormViewModel: ObservableObject {
     @Published private var _cookieForm: CookieForm = .init()
     @Published var serviceAlert: ViewAlert = .init()
     
+    
     var isMerging: Bool {
         viewState.isMerging
     }
@@ -59,7 +60,7 @@ final class CookieFormViewModel: ObservableObject {
     private let cookieService: CookieServiceProtocol
     
     init(cookieService: CookieServiceProtocol) {
-        self.cookieService = cookieService
+        self.cookieService = CookieServiceInjector.select(service: cookieService)
     }
     
     var videoIsPresented: Bool {
@@ -96,18 +97,7 @@ final class CookieFormViewModel: ObservableObject {
         photosPickerItem = []
         viewState = .none
     }
-    
-    @MainActor
-    func thumbnailTapped(at: Int) async {
-        selectedVideoThumbnails.remove(at: at)
-        
-        do {
-            try await mergeVideo()
-        } catch {
-            print("\(error.localizedDescription)")
-        }
-    }
-    
+
     @MainActor
     private func appendThumbnail(_ url: VideoURL) async throws {
         
@@ -120,6 +110,18 @@ final class CookieFormViewModel: ObservableObject {
             if selectedVideoThumbnails.count == 1 {
                 cookieForm.thumbnailData = uiImage.pngData()
             }
+        }
+    }
+    
+    @MainActor
+    func videoThumbnailXmarkTapped(_ thumbnail: VideoThumbnail) async {
+        guard let index = selectedVideoThumbnails.firstIndex(where: { $0 == thumbnail }) else { return }
+        selectedVideoThumbnails.remove(at: index)
+        
+        do {
+            try await mergeVideo()
+        } catch {
+            print("\(error.localizedDescription)")
         }
     }
     
@@ -151,24 +153,6 @@ final class CookieFormViewModel: ObservableObject {
         print("merge end")
     }
     
-//    @MainActor
-//    fileprivate func postCookie(_ url: URL) async {
-//        cookieForm.videoURL = url
-//        let result = await cookieService.postCookie(cookie: cookieForm, closure: {
-//            self.progress = $0
-//        })
-//
-//        switch result {
-//        case .success(_):
-//            print("업로드 성공")
-//        case .failure(_):
-//            print("업로드 실패")
-//        }
-//
-//        print("???")
-//        viewState = .none
-//    }
-//
     @MainActor
     func export(ithPreset preset: String = AVAssetExportPresetHighestQuality,
                 toFileType outputFileType: AVFileType = .mov) async {
@@ -207,7 +191,5 @@ final class CookieFormViewModel: ObservableObject {
         cookieForm.videoURL = url 
         print("Success to export sesion")
         print("movieURL: \(url)")
-
-//        await postCookie(url)
     }
 }
