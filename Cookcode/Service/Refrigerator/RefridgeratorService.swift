@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-final class RefridgeratorService: RefrigeratorServiceProtocol {
+final class RefridgeratorService: FridgeServiceProtocol {
     func deleteIngredient(fridgeIngredId: Int) async -> Result<DefaultResponse, ServiceError> {
         
         let url = "\(BASE_URL)/api/v1/fridge/ingred/\(fridgeIngredId)"

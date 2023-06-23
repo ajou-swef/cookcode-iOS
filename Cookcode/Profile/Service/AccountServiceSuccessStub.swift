@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class AccountSuccessService: AccountServiceProtocol {
+final class AccountServiceSuccessStub: AccountServiceProtocol {
     func requestEmailCode(email: String) async -> Result<ServiceResponse<String>, ServiceError> {
         .success(.mock())
     }

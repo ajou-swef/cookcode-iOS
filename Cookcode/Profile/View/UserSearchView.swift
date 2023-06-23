@@ -35,7 +35,7 @@ struct UserSearchView: View {
 
 struct UserSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSearchView(accountService: AccountSuccessService(),
+        UserSearchView(accountService: AccountServiceSuccessStub(),
                        query: "쿼리")
     }
 }

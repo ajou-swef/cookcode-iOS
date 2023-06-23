@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class HomeReicpeViewModel: RefreshableRecipeFetcher {
+final class HomeRecipeViewModel: RefreshableRecipeFetcher {
     typealias Dto = RecipeCellDto
     typealias T = RecipeCell
     
@@ -33,9 +33,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
     internal let pageSize: Int = 10
     
     init(recipeService: RecipeServiceProtocol) {
-        self.recipeService = recipeService
-        
-        Task { await onFetch() }
+        self.recipeService = RecipeServiceInjector.select(service: recipeService)
     }
     
     var topOpacity: CGFloat {
@@ -54,7 +52,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
     func onFetch() async {
         let curPage = pageState.page
         pageState = .loading(curPage)
-        print("page(\(curPage)) loading start")
+
         
         let result = await recipeService.fetchRecipeCells(page: curPage, size: pageSize, search: searchType, sort: sort.rawValue, month: nil, cookcable: presentOnlyCookable)
         
@@ -62,6 +60,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
         case .success(let success):
             appendCell(success)
             controllPageState(success, curPage)
+            debugPrint("\(pageState)")
         case .failure(let failure):
             serviceAlert.presentServiceError(failure)
             pageState = .noRemain
@@ -69,7 +68,7 @@ final class HomeReicpeViewModel: RefreshableRecipeFetcher {
     }
     
     @MainActor
-    func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
+    internal func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
         let newCells = success.data.content.map { RecipeCell(dto: $0) }
         contents.append(contentsOf: newCells)
     }

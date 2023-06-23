@@ -8,8 +8,12 @@
 import Foundation
 
 struct RecipeCellDto: Decodable, Hashable, Mock {
+    
+    static var createdMockCount: Int = 0
+    
     static func mock() -> RecipeCellDto {
-        RecipeCellDto(recipeID: Int.random(in: 0...10000), user: UserCellDto.mock(), title: "title", description: "description", createdAt: "2023-12-12", updatedAt: "2023-12-14", thumbnail: "https://picsum.photos/800/200", likeCount: 1, isCookable: Bool.random())
+        createdMockCount += 1
+        return RecipeCellDto(recipeID: createdMockCount, user: UserCellDto.mock(), title: "title", description: "description", createdAt: "2023-12-12", updatedAt: "2023-12-14", thumbnail: "https://picsum.photos/800/200", likeCount: 1, isCookable: Bool.random())
     }
     
     let recipeID: Int

@@ -115,7 +115,7 @@ struct ProfileView: View {
                         .foregroundColor(.gray_bcbcbc)
                 )
         }
-        .presentIf(viewModel.membershipButtonIsPresented && viewModel.userDetail.isNotMyProfile)
+        .presentIf(viewModel.doesNotJoinMembership)
         .padding(.bottom, 5)
         .sheet(item: $viewModel.viewItem) { item in
             if let id = item.itemId {
@@ -181,6 +181,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(accountService: AccountSuccessService(), userId: 1)
+        ProfileView(accountService: AccountServiceSuccessStub(), userId: 1)
     }
 }

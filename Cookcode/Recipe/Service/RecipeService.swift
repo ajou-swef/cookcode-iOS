@@ -62,10 +62,7 @@ final class RecipeService: RecipeServiceProtocol {
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
-        let cacher = ResponseCacher(behavior: .cache)
-        
         let response = await AF.request(encodedURL, method: .get, headers: headers)
-            .cacheResponse(using: cacher)
             .serializingDecodable(ServiceResponse<PageResponse<RecipeCellDto>>.self).response
         
         if response.error != nil {

@@ -17,7 +17,7 @@ class RecipeDetailViewModel: RecipeViewModel, likeButtonInteractable {
     
     init(recipeId: Int) {
         self.recipeId = recipeId
-        super.init(recipeService: RecipeService(), contentService: ContentSuccessService(), recipeID: recipeId)
+        super.init(recipeService: RecipeService(), contentService: ContentSuccessStub(), recipeID: recipeId)
         
         Task {
             await fetchRecipe(recipeId)

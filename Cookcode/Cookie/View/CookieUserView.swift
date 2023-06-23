@@ -50,6 +50,6 @@ struct CookieUserView: View {
 
 struct CookieUserView_Previews: PreviewProvider {
     static var previews: some View {
-        CookieUserView(cookieService: CookieSuccessService(), userId: 1)
+        CookieUserView(cookieService: CookieSuccessStub(), userId: 1)
     }
 }

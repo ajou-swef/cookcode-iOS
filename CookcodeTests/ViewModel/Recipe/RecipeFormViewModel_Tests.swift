@@ -15,7 +15,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
     var cancellable = Set<AnyCancellable>()
     
     override func setUpWithError() throws {
-        viewModel = RecipeFormViewModel(contentService: ContentSuccessService(), recipeService: RecipeSuccessService(), recipeId: nil)
+        viewModel = RecipeFormViewModel(contentService: ContentSuccessStub(), recipeService: RecipeServiceSuccessStub(), recipeId: nil)
     }
 
     override func tearDownWithError() throws {
@@ -95,7 +95,7 @@ final class RecipeFormViewModel_Tests: XCTestCase {
         let response: ServiceResponse<ContentDTO> = ServiceResponse(message: "message", status: 200, data: .mock())
         
         //  When
-        await vm.updateMainImage(response)
+        vm.updateMainImage(response)
         
         //  Then
         XCTAssertTrue(vm.recipeMetadataHasThumbnail)

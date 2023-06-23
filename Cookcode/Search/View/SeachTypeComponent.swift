@@ -25,6 +25,6 @@ struct SearchTypeComponent<ViewModel: SearchTypeSelectable>: View {
 struct SeachTypeSelectView_Previews: PreviewProvider {
     static var previews: some View {
         SearchTypeComponent(searchType: .cookie,
-                            viewModel: ProfileViewModel(accoutnService: AccountSuccessService(), userId: 1))
+                            viewModel: ProfileViewModel(accoutnService: AccountServiceSuccessStub(), userId: 1))
     }
 }

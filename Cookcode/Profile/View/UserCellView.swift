@@ -53,7 +53,7 @@ struct UserCellView: View {
 
 struct UserCellView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSearchView(accountService: AccountSuccessService(),
+        UserSearchView(accountService: AccountServiceSuccessStub(),
                        query: "쿼리")
     }
 }

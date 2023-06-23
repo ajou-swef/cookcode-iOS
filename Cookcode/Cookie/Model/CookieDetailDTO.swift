@@ -9,7 +9,7 @@ import Foundation
 
 struct CookieDetailDTO: Decodable, Mock {
     static func mock() -> CookieDetailDTO {
-        CookieDetailDTO(cookieID: 1, title: "쿠키제목", desc: "쿠키 설명", thumbnailURL: "https://picsum.photos/200/300", videoURL: "", recipeID: nil, createdAt: "2020-01-01", user: .mock(), isLiked: false, likeCount: 10, commentCount: 10)
+        CookieDetailDTO(cookieID: 1, title: "쿠키제목", desc: "쿠키 설명", thumbnailURL: "https://picsum.photos/200/300", videoURL: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", recipeID: nil, createdAt: "2020-01-01", user: .mock(), isLiked: false, likeCount: 10, commentCount: 10)
     }
     
     let cookieID: Int

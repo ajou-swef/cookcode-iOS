@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RefrigeratorSuccessService: RefrigeratorServiceProtocol {
+final class FridgeSuccessStub: FridgeServiceProtocol {
     func deleteIngredient(fridgeIngredId: Int) async -> Result<DefaultResponse, ServiceError> {
         .success(.mock())
     }

@@ -11,14 +11,14 @@ import HidableTabView
 
 struct HomeRecipeView: View {
     
-    @StateObject private var viewModel: HomeReicpeViewModel
+    @StateObject private var viewModel: HomeRecipeViewModel
     @EnvironmentObject var navigateViewModel: NavigateViewModel
     @EnvironmentObject var updateCellVM: UpdateCellViewModel
     @EnvironmentObject var cookieProgress: CookieProgress
     @EnvironmentObject var accountViewModel: AccountViewModel
     
     init(recipeService: RecipeServiceProtocol = RecipeService()) {
-        self._viewModel = StateObject(wrappedValue: HomeReicpeViewModel(recipeService: recipeService))
+        self._viewModel = StateObject(wrappedValue: HomeRecipeViewModel(recipeService: recipeService))
     }
     var body: some View {
         VStack {
@@ -216,7 +216,7 @@ struct HomeRecipeView: View {
 
 struct HomeRecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeRecipeView(recipeService: RecipeSuccessService())
+        HomeRecipeView(recipeService: RecipeServiceSuccessStub())
             .environmentObject(NavigateViewModel())
             .environmentObject(UpdateCellViewModel())
             .environmentObject(CookieProgress(cookieService: CookieService()))

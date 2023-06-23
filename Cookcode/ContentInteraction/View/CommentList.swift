@@ -80,6 +80,6 @@ struct CommentList<ViewModel: Commentable>: View {
 
 struct CommentComponent_Previews: PreviewProvider {
     static var previews: some View {
-        CommentList(viewModel: CookieCommentViewModel(conentsId: 1, commentService: RecipeSuccessService()))
+        CommentList(viewModel: CookieCommentViewModel(conentsId: 1, commentService: RecipeServiceSuccessStub()))
     }
 }

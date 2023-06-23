@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CookieSuccessService: CookieServiceProtocol {
+final class CookieSuccessStub: CookieServiceProtocol {
     func getCookieByCookieId(_ id: Int) async -> Result<ServiceResponse<CookieDetailDTO>, ServiceError> {
         .success(.mock())
     }

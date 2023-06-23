@@ -21,7 +21,7 @@ final class RefridgeratorViewModelTests: XCTestCase {
     func test_When_ContainsType_Expected_RemoveType() {
         
         //  Given
-        let vm = RefrigeratorViewModel(fridgeService: RefrigeratorSuccessService())
+        let vm = RefrigeratorViewModel(fridgeService: FridgeSuccessStub())
         guard let ingredientType = IngredientType.allCases.randomElement() else { return }
         
         //  When
@@ -34,7 +34,7 @@ final class RefridgeratorViewModelTests: XCTestCase {
     func test_When_DoseNotContainsType_Expected_AppendType() {
         
         //  Given
-        let vm = RefrigeratorViewModel(fridgeService: RefrigeratorSuccessService())
+        let vm = RefrigeratorViewModel(fridgeService: FridgeSuccessStub())
         guard let ingredientType = IngredientType.allCases.randomElement() else { return }
         vm.ingredientTypeButtonTapped(ingredientType)
         

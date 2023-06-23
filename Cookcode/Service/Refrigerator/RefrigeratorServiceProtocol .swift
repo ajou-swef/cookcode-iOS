@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-protocol RefrigeratorServiceProtocol {
+protocol FridgeServiceProtocol {
     func getMyIngredientCells() async -> Result<ServiceResponse<IngredientDetailDTOs>, ServiceError>
     func postIngredient(dto: IngredientFormDTO) async -> Result<DefaultResponse, ServiceError>
     func patchIngredient(dto: IngredientFormDTO, fridgeIngredId: Int) async -> Result<DefaultResponse, ServiceError>

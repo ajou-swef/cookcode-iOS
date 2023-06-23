@@ -42,6 +42,6 @@ struct MySubscriberView: View {
 
 struct MySubscriberView_Previews: PreviewProvider {
     static var previews: some View {
-        MySubscriberView(accountService: AccountSuccessService())
+        MySubscriberView(accountService: AccountServiceSuccessStub())
     }
 }

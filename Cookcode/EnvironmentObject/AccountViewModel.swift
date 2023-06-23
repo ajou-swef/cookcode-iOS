@@ -22,7 +22,7 @@ class AccountViewModel: ObservableObject {
     }
     
     init(accountService: AccountServiceProtocol) {
-        self.accountService = accountService
+        self.accountService = AccountServiceInjector.select(service: accountService)
         
         let token = UserDefaults.standard.object(forKey: ACCESS_TOKEN_KEY)
         if token != nil {

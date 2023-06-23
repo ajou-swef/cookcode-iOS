@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ContentSuccessService: ContentServiceProtocol {
+final class ContentSuccessStub: ContentServiceProtocol {
     func postVideos(_ videoURLs: [VideoURL]) async -> Result<ServiceResponse<ContentDTO>, ServiceError> {
         .success(.mock())
     }

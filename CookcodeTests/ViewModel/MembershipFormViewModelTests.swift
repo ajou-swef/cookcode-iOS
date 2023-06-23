@@ -20,7 +20,7 @@ final class MembershipFormViewModelTests: XCTestCase {
 
     func test_MembershipFormViewModel_checkNickname_nicknameIsUniqueShouldBeTrue() async {
         //  Given
-        let viewModel = MembershipViewModel(accountService: AccountSuccessService())
+        let viewModel = MembershipViewModel(accountService: AccountServiceSuccessStub())
         viewModel.membershipForm.nickname = "123"
         //  When
         await viewModel.checkNickname()

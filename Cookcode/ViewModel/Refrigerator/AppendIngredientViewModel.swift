@@ -9,14 +9,14 @@ import SwiftUI
 
 class AppendIngredientViewModel: SelectIngredientViewModel {
     
-    let refridgeratorService: RefrigeratorServiceProtocol
+    let refridgeratorService: FridgeServiceProtocol
     
     @Published var selectedIngredientCell: IngredientCell?
     
     @Published var searchText: String = ""
     @Published var selectIngredientFormIsPresneted: Bool = false
     
-    init (refridgeratorService: RefrigeratorServiceProtocol) {
+    init (refridgeratorService: FridgeServiceProtocol) {
         self.refridgeratorService = refridgeratorService
     }
     

@@ -120,7 +120,7 @@ struct LoginView: View {
     @ViewBuilder
     private func navigateMembershipViewButton() -> some View {
         NavigationLink {
-            MembershipView(accountService: AccountSuccessService())
+            MembershipView(accountService: AccountServiceSuccessStub())
         } label: {
             Text("회원가입")
                 .foregroundColor(.mainColor)

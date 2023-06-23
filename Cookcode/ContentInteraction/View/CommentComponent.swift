@@ -74,6 +74,6 @@ struct CommentComponent<ViewModel: CommentCellInteractable>: View {
 
 struct CommentCell_Previews: PreviewProvider {
     static var previews: some View {
-        CommentComponent(comment: .mock(), viewModel: CookieCommentViewModel(conentsId: 1, commentService: RecipeSuccessService()))
+        CommentComponent(comment: .mock(), viewModel: CookieCommentViewModel(conentsId: 1, commentService: RecipeServiceSuccessStub()))
     }
 }

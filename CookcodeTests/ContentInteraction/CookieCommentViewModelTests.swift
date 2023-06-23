@@ -9,6 +9,7 @@ import XCTest
 @testable import Cookcode
 
 final class CookieCommentViewModelTests: XCTestCase {
+    
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,7 +22,7 @@ final class CookieCommentViewModelTests: XCTestCase {
     func test_commentButtonTapped_() async {
         
         //  Given
-        let viewModel = CookieCommentViewModel(conentsId: 1, commentService: RecipeSuccessService())
+        let viewModel = CookieCommentViewModel(conentsId: 1, commentService: RecipeServiceSuccessStub())
         
         //  When
         await viewModel.onFetch()

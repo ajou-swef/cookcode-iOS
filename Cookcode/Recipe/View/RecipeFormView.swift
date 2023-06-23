@@ -367,7 +367,7 @@ struct RecipeFormView: View {
 struct RecipeFormView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeFormView(recipeId: nil)
-            .environmentObject(AccountViewModel(accountService: AccountSuccessService()))
+            .environmentObject(AccountViewModel(accountService: AccountServiceSuccessStub()))
             .environmentObject(NavigateViewModel())
     }
 }

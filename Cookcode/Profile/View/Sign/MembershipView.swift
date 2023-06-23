@@ -198,6 +198,6 @@ struct MembershipView: View {
 
 struct MembershipView_Previews: PreviewProvider {
     static var previews: some View {
-        MembershipView(accountService: AccountFailureService())
+        MembershipView(accountService: AccountServiceFailureStub())
     }
 }
