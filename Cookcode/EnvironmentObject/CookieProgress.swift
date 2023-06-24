@@ -43,11 +43,21 @@ final class CookieProgress: ObservableObject {
             switch result {
             case .success(_):
                 uploadingState = .none
-                print("업로드 성공")
+                debugPrint("업로드 성공")
+                guard let url = cookieForm.videoURL else { return }
+                removeUploadedFile(url: url)
             case .failure(_):
                 uploadingState = .fail
-                print("업로드 실패")
+                debugPrint("업로드 실패")
             }
+        }
+    }
+    
+    private func removeUploadedFile(url: URL) {
+        do {
+            try FileManager.default.removeItem(at: url)
+        } catch  {
+            debugPrint(error)
         }
     }
     
