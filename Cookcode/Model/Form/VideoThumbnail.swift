@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct VideoThumbnail: Identifiable {
+struct VideoThumbnail: Identifiable, Equatable {
     let id: String = UUID().uuidString
     var url: URL
     var loadState: VideoLoadState
