@@ -85,7 +85,7 @@ struct StepFormView: View {
                 Image(systemName: "photo.fill")
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: 100)
-                    .foregroundColor(.gray_bcbcbc)
+                    .foregroundColor(.grayBCBCBC)
             }
         }
     }
@@ -102,7 +102,7 @@ struct StepFormView: View {
             } else {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(maxWidth: .infinity, maxHeight: 100)
-                    .foregroundColor(.gray_bcbcbc)
+                    .foregroundColor(.grayBCBCBC)
                     .overlay {
                         Image(systemName: "video.fill")
                             .resizable()
@@ -166,7 +166,7 @@ struct StepFormView: View {
         )
         .background(
             RoundedRectangle(cornerRadius: 25)
-                .fill(Color.gray_bcbcbc)
+                .fill(Color.grayBCBCBC)
         )
         .padding(.trailing, 10)
         .animation(.spring(), value: viewModel.recipeForm.steps[i].contentType)

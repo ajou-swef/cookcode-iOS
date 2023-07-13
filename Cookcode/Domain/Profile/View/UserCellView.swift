@@ -46,7 +46,7 @@ struct UserCellView: View {
         .overlay {
             Rectangle()
                 .stroke(lineWidth: 1)
-                .foregroundColor(.gray_bcbcbc)
+                .foregroundColor(.grayBCBCBC)
         }
     }
 }

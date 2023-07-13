@@ -36,7 +36,7 @@ struct HomeRecipeView: View {
                         .font(.custom(CustomFont.interRegular.rawValue, size: 11))
                     
                     Rectangle()
-                        .foregroundColor(.gray_bcbcbc)
+                        .foregroundColor(.grayBCBCBC)
                         .frame(maxWidth: .infinity, maxHeight: 1)
                         .overlay {
                             GeometryReader { proxy in
@@ -58,7 +58,7 @@ struct HomeRecipeView: View {
         }
         .disabled(viewModel.contentTypeButtonIsShowing)
         .overlay {
-            Color.gray_bcbcbc.opacity(0.5)
+            Color.grayBCBCBC.opacity(0.5)
                 .ignoresSafeArea(.all)
                 .presentIf(viewModel.contentTypeButtonIsShowing)
         }

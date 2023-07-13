@@ -5,6 +5,7 @@
 //  Created by 노우영 on 2023/04/24.
 //
 
+import cookcode_resource
 import SwiftUI
 import Kingfisher
 import HidableTabView

@@ -214,7 +214,7 @@ struct MyAccountView: View {
     private func modifyImageButton() -> some View {
         PhotosPicker(selection: $userFormViewModel.profileForm.photosPickerItem) {
             RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color.gray_bcbcbc)
+                .foregroundColor(.grayBCBCBC)
                 .frame(width: 40, height: 30)
                 .overlay {
                     Image(systemName: "camera.fill")

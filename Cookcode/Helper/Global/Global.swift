@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import cookcode_secret
 
-let BASE_URL = ServiceSecret.baseURL
-let ACCESS_TOKEN_KEY = ServiceSecret.accessTokenKey
-let REFRESH_TOKEN_KEY = ServiceSecret.refreshTokenKey
+let BASE_URL = ""
+let ACCESS_TOKEN_KEY = ""
+let REFRESH_TOKEN_KEY = ""
 let USER_ID = "userId"
 
 // 임시

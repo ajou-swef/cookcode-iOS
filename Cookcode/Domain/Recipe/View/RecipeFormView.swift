@@ -179,7 +179,7 @@ struct RecipeFormView: View {
                     } else {
                         Image(systemName: "photo.fill")
                             .resizable()
-                            .foregroundColor(.gray_bcbcbc)
+                            .foregroundColor(.grayBCBCBC)
                             .frame(maxWidth: 320, minHeight: 200)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }

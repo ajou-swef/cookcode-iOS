@@ -13,7 +13,7 @@ extension View {
         self
             .overlay {
                 ZStack(alignment: .center) {
-                    Color.gray_bcbcbc.opacity(0.5)
+                    Color.grayBCBCBC.opacity(0.5)
                     ProgressView()
                 }
                 .hidden(!trigger)

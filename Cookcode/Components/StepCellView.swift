@@ -20,10 +20,10 @@ struct StepCellView: View {
                 .resizable()
                 .aspectRatio(CGSize(width: 4, height: 3), contentMode: .fit)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.gray_bcbcbc)
+                .foregroundColor(.grayBCBCBC)
                 .background {
                     Rectangle()
-                        .foregroundColor(.gray_bcbcbc)
+                        .foregroundColor(.grayBCBCBC)
                         .overlay {
                             Rectangle()
                                 .padding(.vertical, 30)

@@ -11,7 +11,7 @@ struct CCDivider: View {
     var body: some View {
         Rectangle()
             .frame(maxHeight: 1)
-            .foregroundColor(.gray_bcbcbc)
+            .foregroundColor(.grayBCBCBC)
     }
 }
 

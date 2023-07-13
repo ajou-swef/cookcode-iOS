@@ -46,7 +46,6 @@
 		1538157A29FF8EB100C3BD11 /* IngredientDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157929FF8EB100C3BD11 /* IngredientDetailDTO.swift */; };
 		1538157C29FF8ED100C3BD11 /* FridgeSuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157B29FF8ED100C3BD11 /* FridgeSuccessStub.swift */; };
 		1538157E29FF8EF300C3BD11 /* RefrigeratorFailureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */; };
-		153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4D8C29ED061E00543730 /* Color + Extension.swift */; };
 		153B4DA829ED097500543730 /* CustomFontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DA729ED097500543730 /* CustomFontFactory.swift */; };
 		153B4DAB29ED0FF000543730 /* RoundedRectangleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DAA29ED0FF000543730 /* RoundedRectangleModifier.swift */; };
 		153B4DAD29ED179200543730 /* SignInForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153B4DAC29ED179200543730 /* SignInForm.swift */; };
@@ -246,8 +245,6 @@
 		15B869B229EFD9B900A02872 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B129EFD9B900A02872 /* MainTabView.swift */; };
 		15B869B429EFDA9D00A02872 /* NavigateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */; };
 		15B869BD29EFDC5000A02872 /* RefrigeratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B869BC29EFDC5000A02872 /* RefrigeratorView.swift */; };
-		15BFE49E2A3F0A180025408D /* cookcode_secret.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BFE49A2A3F0A080025408D /* cookcode_secret.framework */; };
-		15BFE49F2A3F0A180025408D /* cookcode_secret.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15BFE49A2A3F0A080025408D /* cookcode_secret.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15C112DB2A1B11F9009B87E1 /* UpdateCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C112DA2A1B11F9009B87E1 /* UpdateCellViewModel.swift */; };
 		15C112DE2A1B1225009B87E1 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C112DD2A1B1225009B87E1 /* CellType.swift */; };
 		15C805BA2A0344BC000A1A29 /* SelectIngredientForRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C805B92A0344BC000A1A29 /* SelectIngredientForRecipeViewModel.swift */; };
@@ -268,6 +265,7 @@
 		15D69CDD2A2D82C900A63B8C /* CookieSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D69CDC2A2D82C900A63B8C /* CookieSearchView.swift */; };
 		15DAE25829FE3CCA00A4B00A /* ObservedOptionalObject in Frameworks */ = {isa = PBXBuildFile; productRef = 15DAE25729FE3CCA00A4B00A /* ObservedOptionalObject */; };
 		15DAE25A29FE3F9D00A4B00A /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DAE25929FE3F9D00A4B00A /* RecipeViewModel.swift */; };
+		15E1BB1C2A5FB7FE0090A0F7 /* cookcode-resource in Frameworks */ = {isa = PBXBuildFile; productRef = 15E1BB1B2A5FB7FE0090A0F7 /* cookcode-resource */; };
 		15E43A9C29FA94A40008DC7A /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9B29FA94A40008DC7A /* AccountService.swift */; };
 		15E43A9E29FA94DF0008DC7A /* AccountServiceSuccessStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E43A9D29FA94DF0008DC7A /* AccountServiceSuccessStub.swift */; };
 		15E646B22A41615900F2C21D /* ContentServiceInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E646B12A41615900F2C21D /* ContentServiceInjector.swift */; };
@@ -313,35 +311,7 @@
 			remoteGlobalIDString = 1503F91E29B45560002F3D26;
 			remoteInfo = Cookcode;
 		};
-		15BFE4992A3F0A080025408D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 15BFE4942A3F0A080025408D /* cookcode-secret.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 15BFE47A2A3F097F0025408D;
-			remoteInfo = "cookcode-secret";
-		};
-		15BFE49B2A3F0A080025408D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 15BFE4942A3F0A080025408D /* cookcode-secret.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 15BFE4842A3F097F0025408D;
-			remoteInfo = "cookcode-secretTests";
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		15BFE4A02A3F0A180025408D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				15BFE49F2A3F0A180025408D /* cookcode_secret.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1503F91F29B45560002F3D26 /* Cookcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cookcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,7 +356,6 @@
 		1538157929FF8EB100C3BD11 /* IngredientDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetailDTO.swift; sourceTree = "<group>"; };
 		1538157B29FF8ED100C3BD11 /* FridgeSuccessStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeSuccessStub.swift; sourceTree = "<group>"; };
 		1538157D29FF8EF300C3BD11 /* RefrigeratorFailureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorFailureService.swift; sourceTree = "<group>"; };
-		153B4D8C29ED061E00543730 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		153B4DA429ED085E00543730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		153B4DA729ED097500543730 /* CustomFontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontFactory.swift; sourceTree = "<group>"; };
 		153B4DAA29ED0FF000543730 /* RoundedRectangleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleModifier.swift; sourceTree = "<group>"; };
@@ -589,7 +558,6 @@
 		15B869B129EFD9B900A02872 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		15B869B329EFDA9D00A02872 /* NavigateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateViewModel.swift; sourceTree = "<group>"; };
 		15B869BC29EFDC5000A02872 /* RefrigeratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefrigeratorView.swift; sourceTree = "<group>"; };
-		15BFE4942A3F0A080025408D /* cookcode-secret.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "cookcode-secret.xcodeproj"; path = "iOS-Secret/cookcode-secret.xcodeproj"; sourceTree = "<group>"; };
 		15C112DA2A1B11F9009B87E1 /* UpdateCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCellViewModel.swift; sourceTree = "<group>"; };
 		15C112DD2A1B1225009B87E1 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		15C805B92A0344BC000A1A29 /* SelectIngredientForRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIngredientForRecipeViewModel.swift; sourceTree = "<group>"; };
@@ -650,8 +618,8 @@
 				15A6AB5A2A03BE6400394490 /* PopupView in Frameworks */,
 				15F82A6A29FA8D5F00DA9381 /* Alamofire in Frameworks */,
 				159BE2AC29FB810200DE7448 /* Introspect in Frameworks */,
+				15E1BB1C2A5FB7FE0090A0F7 /* cookcode-resource in Frameworks */,
 				15B04C6B2A1C94FD00B988BF /* VTabView in Frameworks */,
-				15BFE49E2A3F0A180025408D /* cookcode_secret.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +643,6 @@
 		1503F91629B45560002F3D26 = {
 			isa = PBXGroup;
 			children = (
-				15BFE4942A3F0A080025408D /* cookcode-secret.xcodeproj */,
 				1503F92129B45560002F3D26 /* Cookcode */,
 				1503F93229B45561002F3D26 /* CookcodeTests */,
 				1503F93C29B45561002F3D26 /* CookcodeUITests */,
@@ -842,14 +809,6 @@
 				159C99E02A127B450058B18E /* ScrollVelocityDetector.swift */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		153B4D8B29ED051100543730 /* Color + Extension */ = {
-			isa = PBXGroup;
-			children = (
-				153B4D8C29ED061E00543730 /* Color + Extension.swift */,
-			);
-			path = "Color + Extension";
 			sourceTree = "<group>";
 		};
 		153B4D9129ED081C00543730 /* Font */ = {
@@ -1359,13 +1318,6 @@
 			path = Form;
 			sourceTree = "<group>";
 		};
-		15AA2F4829F0D4210069813F /* Binding + Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Binding + Extension";
-			sourceTree = "<group>";
-		};
 		15B04C502A1C6B0300B988BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1525,15 +1477,6 @@
 				15B626442A00ABDD002E1F5F /* FecthCellServiceProtocol.swift */,
 			);
 			path = FetchCell;
-			sourceTree = "<group>";
-		};
-		15BFE4952A3F0A080025408D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				15BFE49A2A3F0A080025408D /* cookcode_secret.framework */,
-				15BFE49C2A3F0A080025408D /* cookcode-secretTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		15BFE49D2A3F0A180025408D /* Frameworks */ = {
@@ -1722,9 +1665,7 @@
 		15F51A3A2A483906009C974B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				153B4D8B29ED051100543730 /* Color + Extension */,
 				150CD44429F628900001FFEB /* Swift Standar + Extension */,
-				15AA2F4829F0D4210069813F /* Binding + Extension */,
 				153B4DA929ED0F9500543730 /* View + Extension */,
 			);
 			path = Extension;
@@ -1765,7 +1706,6 @@
 				1503F91B29B45560002F3D26 /* Sources */,
 				1503F91C29B45560002F3D26 /* Frameworks */,
 				1503F91D29B45560002F3D26 /* Resources */,
-				15BFE4A02A3F0A180025408D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1781,6 +1721,7 @@
 				159C99D72A126DD30058B18E /* LegacyScrollView */,
 				15B04C6A2A1C94FD00B988BF /* VTabView */,
 				15536B4E2A35A35B00611AA0 /* HidableTabView */,
+				15E1BB1B2A5FB7FE0090A0F7 /* cookcode-resource */,
 			);
 			productName = Cookcode;
 			productReference = 1503F91F29B45560002F3D26 /* Cookcode.app */;
@@ -1863,15 +1804,10 @@
 				159C99D62A126DD30058B18E /* XCRemoteSwiftPackageReference "LegacyScrollView" */,
 				15B04C692A1C94FD00B988BF /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */,
 				15536B4D2A35A35B00611AA0 /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */,
+				15E1BB1A2A5FB7FE0090A0F7 /* XCRemoteSwiftPackageReference "cookcode-resource" */,
 			);
 			productRefGroup = 1503F92029B45560002F3D26 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 15BFE4952A3F0A080025408D /* Products */;
-					ProjectRef = 15BFE4942A3F0A080025408D /* cookcode-secret.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1503F91E29B45560002F3D26 /* Cookcode */,
@@ -1880,23 +1816,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		15BFE49A2A3F0A080025408D /* cookcode_secret.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = cookcode_secret.framework;
-			remoteRef = 15BFE4992A3F0A080025408D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		15BFE49C2A3F0A080025408D /* cookcode-secretTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "cookcode-secretTests.xctest";
-			remoteRef = 15BFE49B2A3F0A080025408D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1503F91D29B45560002F3D26 /* Resources */ = {
@@ -2172,7 +2091,6 @@
 				15508CB02A1329DD00004A1C /* IngredientCellsView.swift in Sources */,
 				1515FB272A12005C00119519 /* DetailPath.swift in Sources */,
 				154010432A31EED600C2C633 /* CookieProgress.swift in Sources */,
-				153B4D8D29ED061E00543730 /* Color + Extension.swift in Sources */,
 				15EE3AF72A36A43E00DD462A /* SearcgMembershipPicker.swift in Sources */,
 				158AF5E52A1F6E5A00FF815A /* View + DisableWhenUploading.swift in Sources */,
 				15A53B552A361C1F0055D8CB /* UserAuthInteractable.swift in Sources */,
@@ -2593,6 +2511,14 @@
 				kind = branch;
 			};
 		};
+		15E1BB1A2A5FB7FE0090A0F7 /* XCRemoteSwiftPackageReference "cookcode-resource" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ajou-swef/cookcode-resource.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		15F82A6829FA8D5F00DA9381 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -2638,6 +2564,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 15DAE25629FE3CCA00A4B00A /* XCRemoteSwiftPackageReference "observed-optional-object" */;
 			productName = ObservedOptionalObject;
+		};
+		15E1BB1B2A5FB7FE0090A0F7 /* cookcode-resource */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15E1BB1A2A5FB7FE0090A0F7 /* XCRemoteSwiftPackageReference "cookcode-resource" */;
+			productName = "cookcode-resource";
 		};
 		15F82A6929FA8D5F00DA9381 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

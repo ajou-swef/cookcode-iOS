@@ -47,7 +47,7 @@ struct RefreshableRecipeFetchView<ViewModel: RefreshableRecipeFetcher>: View {
         HStack {
             
             SortTypePicker(selection: $viewModel.sort, activeTint: .mainColor,
-                           inActiveTint: .gray_bcbcbc, dynamic: false)
+                           inActiveTint: .grayBCBCBC, dynamic: false)
             .frame(width: 120)
             .onChange(of: viewModel.searchType) { newValue in
                 Task { await viewModel.onRefresh() }

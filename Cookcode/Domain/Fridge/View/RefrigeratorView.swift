@@ -153,7 +153,7 @@ struct RefrigeratorView: View {
                     .background(
                         Rectangle()
                             .stroke(lineWidth: 1)
-                            .foregroundColor(.gray_bcbcbc)
+                            .foregroundColor(.grayBCBCBC)
                     )
             }
             
@@ -168,7 +168,7 @@ struct RefrigeratorView: View {
                     .background(
                         Rectangle()
                             .stroke(lineWidth: 1)
-                            .foregroundColor(.gray_bcbcbc)
+                            .foregroundColor(.grayBCBCBC)
                     )
             }
         }

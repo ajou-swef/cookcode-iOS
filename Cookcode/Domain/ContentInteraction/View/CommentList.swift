@@ -68,7 +68,7 @@ struct CommentList<ViewModel: Commentable>: View {
             .overlay {
                 Rectangle()
                     .stroke(lineWidth: 1)
-                    .foregroundColor(.gray_bcbcbc)
+                    .foregroundColor(.grayBCBCBC)
             }
             .background(Color(UIColor.systemBackground))
         }

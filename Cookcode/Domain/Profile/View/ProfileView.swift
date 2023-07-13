@@ -112,7 +112,7 @@ struct ProfileView: View {
                 .background(
                     RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                         .padding(.horizontal, 20)
-                        .foregroundColor(.gray_bcbcbc)
+                        .foregroundColor(.grayBCBCBC)
                 )
         }
         .presentIf(viewModel.doesNotJoinMembership)
@@ -144,7 +144,7 @@ struct ProfileView: View {
             .background(
                 RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                     .padding(.horizontal, 20)
-                    .foregroundColor(.gray_bcbcbc)
+                    .foregroundColor(.grayBCBCBC)
             )
         }
         .presentIf(viewModel.subscribeButtonIsPresented)
@@ -171,7 +171,7 @@ struct ProfileView: View {
             .background(
                 RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                     .padding(.horizontal, 20)
-                    .foregroundColor(.gray_bcbcbc)
+                    .foregroundColor(.grayBCBCBC)
             )
         }
         .presentIf(viewModel.unsubscribeButtonIsPresented)

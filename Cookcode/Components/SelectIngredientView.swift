@@ -48,7 +48,7 @@ struct SelectIngredientView<ViewModel>: View where ViewModel: SelectIngredientVi
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
             .background {
-                Color.gray_bcbcbc
+                Color.grayBCBCBC
             }
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .padding(.horizontal, 10)
