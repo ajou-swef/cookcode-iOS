@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import cookcode_service
 import SwiftUI
 
 final class MembershipService {

@@ -6,6 +6,7 @@
 //
 import Alamofire
 import Foundation
+import cookcode_service
 
 final class AccountService: AccountServiceProtocol {
     func requestEmailCode(email: String) async -> Result<ServiceResponse<String>, ServiceError> {
@@ -112,7 +113,7 @@ final class AccountService: AccountServiceProtocol {
             "accessToken" : UserDefaults.standard.string(forKey: ACCESS_TOKEN_KEY) ?? ""
         ]
         
-        guard let imageData = profileForm.data else { return .failure(.MOCK()) }
+        guard let imageData = profileForm.data else { return .failure(.mock()) }
         
         let response = await AF.upload(multipartFormData: { multipart in
             
@@ -128,7 +129,7 @@ final class AccountService: AccountServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
     
@@ -216,7 +217,7 @@ final class AccountService: AccountServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
     
@@ -235,7 +236,7 @@ final class AccountService: AccountServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
     
@@ -252,7 +253,7 @@ final class AccountService: AccountServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
     
@@ -271,11 +272,11 @@ final class AccountService: AccountServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
     
     func getUserAccountByID(_ userID: Int) -> Result<ServiceResponse<UserAccountDto>, ServiceError> {
-        .failure(ServiceError.MOCK())
+        .failure(ServiceError.mock())
     }
 }

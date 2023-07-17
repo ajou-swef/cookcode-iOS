@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct PageResponse<T: Decodable & Mock>: Decodable, Mock {
-    static func mock() -> PageResponse<T> {
-        PageResponse(content: .mock(), numberOfElements: 1, hasNext: true)
-    }
-    
-    let content: [T]
-    var numberOfElements: Int
-    var hasNext: Bool
-}
+//struct PageResponse<T: Decodable & Mock>: Decodable, Mock {
+//    static func mock() -> PageResponse<T> {
+//        PageResponse(content: .mock(), numberOfElements: 1, hasNext: true)
+//    }
+//    
+//    let content: [T]
+//    var numberOfElements: Int
+//    var hasNext: Bool
+//}

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import cookcode_service
 
 class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchViewModel {
     
@@ -334,7 +335,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
         }
         
         if usePost {
-            let dto = RecipeFormDTO(recipeForm: recipeForm)
+            let dto = recipeForm.convert()
             let result = await recipeService.postRecipe(dto)
             
             switch result {
@@ -344,7 +345,7 @@ class RecipeFormViewModel: RecipeViewModel, SelectIngredientViewModel, PatchView
                 serviceAlert.presentServiceError(error)
             }
         } else {
-            let dto = RecipeFormDTO(recipeForm: recipeForm)
+            let dto = recipeForm.convert()
             guard let recipeId = recipeId else { return }
             let result = await recipeService.patchRecipe(formDTO: dto, recipeId: recipeId)
             

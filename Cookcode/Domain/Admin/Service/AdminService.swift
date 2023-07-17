@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import cookcode_service
 
 final class AdminService {
     func treatAuthRequest(userId: Int, isAccepted: Bool) async -> Result<DefaultResponse, ServiceError> {

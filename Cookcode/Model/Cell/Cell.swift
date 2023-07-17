@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 protocol Cell: Identifiable, Hashable, Mock {
     var id: String { get set }

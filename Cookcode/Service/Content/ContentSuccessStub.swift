@@ -5,6 +5,7 @@
 //  Created by 노우영 on 2023/05/01.
 //
 
+import cookcode_service
 import Foundation
 
 final class ContentSuccessStub: ContentServiceProtocol {

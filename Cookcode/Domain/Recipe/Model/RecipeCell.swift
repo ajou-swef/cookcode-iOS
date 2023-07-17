@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct RecipeCell: Identifiable, Mock, Equatable {
     var type: RecipeCell.Type {
@@ -24,7 +25,7 @@ struct RecipeCell: Identifiable, Mock, Equatable {
     var createdAt: String
     var isCookable: Bool
     
-    init(dto: RecipeCellDto) {
+    init(dto: RecipeCellDTO) {
         recipeId = dto.recipeID
         thumbnail = dto.thumbnail
         title = dto.title
@@ -35,6 +36,6 @@ struct RecipeCell: Identifiable, Mock, Equatable {
     }
     
     static func mock() -> RecipeCell {
-        RecipeCell(dto: RecipeCellDto.mock())
+        RecipeCell(dto: .mock())
     }
 }

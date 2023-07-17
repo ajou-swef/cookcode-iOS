@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 final class RecipeUserViewModel: RecipeFetcher {
-    typealias Dto = RecipeCellDto
+    typealias Dto = RecipeCellDTO
     typealias T = RecipeCell
     
     @Published var contents: [RecipeCell] = .init()
@@ -30,7 +31,7 @@ final class RecipeUserViewModel: RecipeFetcher {
         }
     }
     
-    func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
+    func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDTO>>) {
         let newCells = success.data.content.map { RecipeCell(dto: $0) }
         contents.append(contentsOf: newCells)
     }
@@ -47,8 +48,9 @@ final class RecipeUserViewModel: RecipeFetcher {
         case .success(let success):
             appendCell(success)
             controllPageState(success, curPage)
+            break
         case .failure(let failure):
-            serviceAlert.presentServiceError(failure)
+//            serviceAlert.presentServiceError(failure)
             pageState = .noRemain
         }
     }

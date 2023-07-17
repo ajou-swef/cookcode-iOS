@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct UserProfileCellDto: Decodable, Mock {
     static func mock() -> UserProfileCellDto {

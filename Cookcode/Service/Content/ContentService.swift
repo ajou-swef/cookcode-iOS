@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import cookcode_service
 import Foundation
 import UIKit
 
@@ -36,7 +37,7 @@ final class ContentService: ContentServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     
     }
@@ -60,7 +61,7 @@ final class ContentService: ContentServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     
     }

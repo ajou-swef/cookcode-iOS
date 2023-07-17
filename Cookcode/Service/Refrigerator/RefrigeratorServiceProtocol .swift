@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import cookcode_service
 
 protocol FridgeServiceProtocol {
     func getMyIngredientCells() async -> Result<ServiceResponse<IngredientDetailDTOs>, ServiceError>

@@ -7,17 +7,17 @@
 
 import Foundation
 
-protocol Mock {
-    static func mock() -> Self
-    static func mocks(_ count: Int) -> [Self]
-}
-
-extension Mock {
-    static func mocks(_ count: Int) -> [Self] {
-        var mocks: [Self] = []
-        for _ in 0..<count {
-            mocks.append(mock())
-        }
-        return mocks
-    }
-}
+//protocol Mock {
+//    static func mock() -> Self
+//    static func mocks(_ count: Int) -> [Self]
+//}
+//
+//extension Mock {
+//    static func mocks(_ count: Int) -> [Self] {
+//        var mocks: [Self] = []
+//        for _ in 0..<count {
+//            mocks.append(mock())
+//        }
+//        return mocks
+//    }
+//}

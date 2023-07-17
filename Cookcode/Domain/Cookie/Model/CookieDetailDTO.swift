@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct CookieDetailDTO: Decodable, Mock {
     static func mock() -> CookieDetailDTO {
@@ -17,7 +18,7 @@ struct CookieDetailDTO: Decodable, Mock {
     let thumbnailURL, videoURL: String
     let recipeID: Int?
     let createdAt: String
-    let user: UserCellDto
+    let user: UserCellDTO
     let isLiked: Bool
     let likeCount, commentCount: Int
 

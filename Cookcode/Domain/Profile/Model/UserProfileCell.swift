@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct UserProfileCell: Identifiable, Mock {
     static func mock() -> UserProfileCell {

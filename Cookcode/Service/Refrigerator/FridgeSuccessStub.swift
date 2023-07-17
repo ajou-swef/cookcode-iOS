@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 final class FridgeSuccessStub: FridgeServiceProtocol {
     func deleteIngredient(fridgeIngredId: Int) async -> Result<DefaultResponse, ServiceError> {

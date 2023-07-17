@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 final class AccountServiceSuccessStub: AccountServiceProtocol {
     func requestEmailCode(email: String) async -> Result<ServiceResponse<String>, ServiceError> {

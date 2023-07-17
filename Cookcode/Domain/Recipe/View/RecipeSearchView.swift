@@ -5,6 +5,7 @@
 //  Created by 노우영 on 2023/06/02.
 //
 
+import cookcode_service
 import SwiftUI
 
 struct RecipeSearchView: View {

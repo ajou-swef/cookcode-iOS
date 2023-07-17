@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct SignInDto: Codable, Mock {
     static func mock() -> SignInDto {

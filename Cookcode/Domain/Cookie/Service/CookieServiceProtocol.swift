@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import cookcode_service
 
 protocol CookieServiceProtocol: CommentServiceProtocol {
     func patchCookie(id: Int, cookieForm: CookieForm) async -> Result<DefaultResponse, ServiceError> 

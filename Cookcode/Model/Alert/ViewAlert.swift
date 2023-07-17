@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 protocol AlertDelegate: AnyObject {
     func actionButtonTapped() async

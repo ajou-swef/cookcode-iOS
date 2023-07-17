@@ -5,6 +5,7 @@
 //  Created by 노우영 on 2023/05/29.
 //
 
+import cookcode_service
 import SwiftUI
 
 struct CommentList<ViewModel: Commentable>: View {

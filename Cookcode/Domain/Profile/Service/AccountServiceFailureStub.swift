@@ -7,69 +7,70 @@
 
 import Alamofire
 import Foundation
+import cookcode_service
 
 final class AccountServiceFailureStub: AccountServiceProtocol {
     func requestEmailCode(email: String) async -> Result<ServiceResponse<String>, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func resetPassword(dto: PasswordFormDto) async -> Result<DefaultResponse, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func requestTemporaryPasswordByEmail(_ email: String) async -> Result<DefaultResponse, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func requestAuthority(_ authority: Authority) async -> Result<DefaultResponse, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func fetchMySubscriber() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func updateProfile(_ profileForm: ProfileForm) async -> Result<DefaultResponse, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func fetchMyPublisher() async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func unsubscribeUserById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func searchUser(query: String) async -> Result<ServiceResponse<PageResponse<UserProfileCellDto>>, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func toggleUserSubscribeById(_ id: Int) async -> Result<DefaultResponse, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func getUserDetailById(_ userId: Int) async -> Result<ServiceResponse<UserDetailDTO>, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func signIn(_ signInForm: SignInForm) async -> Result<ServiceResponse<SignInDto>, ServiceError> {
-        return .failure(ServiceError(message: "에러 메시지", status: 400))
+        return .failure(.mock())
     }
     
     func deleteAccount() async -> Result<DefaultResponse, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func check(_ nickname: String) -> Result<ServiceResponse<AccountCheckDto>, ServiceError> {
-        return .failure(.MOCK())
+        return .failure(.mock())
     }
     
     func signUp(membershipForm: MembershipForm) async -> Result<ServiceResponse<SignUpDto>, ServiceError> {
-        return .failure(ServiceError(message: "에러 메시지", status: 400))
+        .failure(.mock())
     }
     
     func getUserAccountByID(_ userID: Int) -> Result<ServiceResponse<UserAccountDto>, ServiceError> {
-        return .failure(ServiceError(message: "에러 메시지", status: 400))
+        .failure(.mock())
     }
 }

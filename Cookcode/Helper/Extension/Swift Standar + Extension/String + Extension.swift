@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 extension String {
     static func createRandomString(length: Int) -> String {
@@ -18,7 +19,7 @@ extension String {
 }
 
 extension String: Mock {
-    static func mock() -> String {
+    public static func mock() -> String {
         "mock string"
     }
 }

@@ -5,6 +5,7 @@
 //  Created by 노우영 on 2023/05/03.
 //
 
+import cookcode_service
 import Foundation
 
 struct IngredientCell: Cell, Equatable {

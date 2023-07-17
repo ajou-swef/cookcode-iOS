@@ -7,6 +7,7 @@
 
 import Foundation
 import _PhotosUI_SwiftUI
+import cookcode_service
 
 struct UserDetail: Mock {
     static func mock() -> UserDetail {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 final class CookieCommentViewModel: Commentable {
     

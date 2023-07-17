@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct MembershipGradeDetailDto: Decodable, Mock {
     static func mock() -> MembershipGradeDetailDto {

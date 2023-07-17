@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct UserCell: Identifiable, Mock, Equatable {
     static func mock() -> UserCell {
@@ -21,7 +22,7 @@ struct UserCell: Identifiable, Mock, Equatable {
 }
 
 extension UserCell {
-    init(dto: UserCellDto) {
+    init(dto: UserCellDTO) {
         userName = dto.nickname
         imageURL = dto.profileImage
         userId = dto.userID

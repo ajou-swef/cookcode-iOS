@@ -1,19 +1,20 @@
 //
-//  ServiceResponse.swift
-//  Cookcode
+//  File.swift
+//  
 //
-//  Created by 노우영 on 2023/05/07.
+//  Created by wooyoung on 2023/07/13.
 //
 
 import Foundation
 
-struct ServiceResponse<T: Decodable & Mock>: Decodable  {
-    
-    let message: String
-    let status: Int
-    let data: T
-    
-    static func mock() -> ServiceResponse<T> {
-        ServiceResponse(message: "응답 성공", status: 200, data: T.mock())
-    }
-}
+//struct ServiceResponse<T: Decodable & Mock>: Decodable  {
+//    
+//    let message: String
+//    let status: Int
+//    let data: T
+//    
+//    static func mock() -> ServiceResponse<T> {
+//        ServiceResponse(message: "응답 성공", status: 200, data: T.mock())
+//    }
+//}
+//

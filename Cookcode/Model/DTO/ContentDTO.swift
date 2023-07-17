@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct ContentDTO: Codable, Mock {
     static func mock() -> ContentDTO {

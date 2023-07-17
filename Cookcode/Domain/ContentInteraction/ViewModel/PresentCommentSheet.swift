@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 protocol PresentCommentSheet: ObservableObject {
     var commentSheetIsPresent: Bool { get set }

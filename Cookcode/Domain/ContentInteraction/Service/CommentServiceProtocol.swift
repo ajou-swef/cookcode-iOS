@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol CommentServiceProtocol {
-    func fetchCommentsById(_ id: Int) async -> Result<ServiceResponse<PageResponse<CommentDTO>>, ServiceError>
-    
-    func postCommentWithId(_ comments: String, id: Int) async -> Result<DefaultResponse, ServiceError>
-    
-    func deleteCommentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> 
-    
-}
+//protocol CommentServiceProtocol {
+//    func fetchCommentsById(_ id: Int) async -> Result<ServiceResponse<PageResponse<CommentDTO>>, ServiceError>
+//    
+//    func postCommentWithId(_ comments: String, id: Int) async -> Result<DefaultResponse, ServiceError>
+//    
+//    func deleteCommentById(_ id: Int) async -> Result<DefaultResponse, ServiceError> 
+//    
+//}

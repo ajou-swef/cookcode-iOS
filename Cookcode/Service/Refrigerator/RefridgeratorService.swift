@@ -5,8 +5,9 @@
 //  Created by 노우영 on 2023/05/08.
 //
 
-import Foundation
 import Alamofire
+import cookcode_service
+import Foundation
 
 final class RefridgeratorService: FridgeServiceProtocol {
     func deleteIngredient(fridgeIngredId: Int) async -> Result<DefaultResponse, ServiceError> {
@@ -23,7 +24,7 @@ final class RefridgeratorService: FridgeServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
     
@@ -42,7 +43,7 @@ final class RefridgeratorService: FridgeServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
     
@@ -59,7 +60,7 @@ final class RefridgeratorService: FridgeServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
     
@@ -77,7 +78,7 @@ final class RefridgeratorService: FridgeServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
 }

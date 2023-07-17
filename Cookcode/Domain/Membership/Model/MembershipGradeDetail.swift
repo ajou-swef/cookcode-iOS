@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 struct MembershipGradeDetail: Identifiable, Mock {
     static func mock() -> MembershipGradeDetail {

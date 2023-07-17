@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import cookcode_service
 
-protocol RefreshableRecipeFetcher: Refreshable, RecipeFetcher where Dto == RecipeCellDto, T == RecipeCell {
+protocol RefreshableRecipeFetcher: Refreshable, RecipeFetcher where Dto == RecipeCellDTO, T == RecipeCell {
     var sort: SortType { get set } 
     var presentOnlyCookable: Bool { get set }
     var topOffset: CGFloat { get set }

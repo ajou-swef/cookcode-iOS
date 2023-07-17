@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import cookcode_service
 import Foundation
 
 final class CookieService: CookieServiceProtocol {
@@ -182,7 +183,7 @@ final class CookieService: CookieServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
     }
     
@@ -219,7 +220,7 @@ final class CookieService: CookieServiceProtocol {
         
         return response.result.mapError { err in
             let serviceErorr = response.data.flatMap { try? JSONDecoder().decode(ServiceError.self, from: $0) }
-            return serviceErorr ?? ServiceError.MOCK()
+            return serviceErorr ?? ServiceError.mock()
         }
        
     }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 final class RecipeSearchViewModel: RefreshableRecipeFetcher {
     let refreshThreshold: CGFloat = 40
@@ -66,7 +67,7 @@ final class RecipeSearchViewModel: RefreshableRecipeFetcher {
     }
     
     @MainActor
-    func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
+    func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDTO>>) {
         let newCells = success.data.content.map { RecipeCell(dto: $0) }
         contents.append(contentsOf: newCells)
     }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct JoinedMembershipDetail: Identifiable, Mock {
     static func mock() -> JoinedMembershipDetail {

@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import cookcode_service
 
 protocol AccountServiceProtocol {
     func requestEmailCode(email: String) async -> Result<ServiceResponse<String>, ServiceError>

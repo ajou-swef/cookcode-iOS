@@ -5,6 +5,7 @@
 //  Created by 노우영 on 2023/06/04.
 //
 
+import cookcode_service
 import SwiftUI
 
 final class MyPublisherViewModel: UserFetcher {

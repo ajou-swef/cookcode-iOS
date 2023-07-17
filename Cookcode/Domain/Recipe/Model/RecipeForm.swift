@@ -7,6 +7,7 @@
 
 import Foundation
 import _PhotosUI_SwiftUI
+import cookcode_service
 
 struct RecipeForm {
     var title: String = ""
@@ -55,6 +56,16 @@ struct RecipeForm {
     
     mutating func stepAppendContentURL(_ at: Int, urls: [String]) {
         steps[at].resetContentURLto(urls)
+    }
+    
+    func convert() -> RecipeFormDTO {
+        
+        var stepDTOs: [StepFormDTO] = []
+        for (index, value) in steps.enumerated() {
+            stepDTOs.append(value.convert(sequence: index))
+        }
+        
+        return RecipeFormDTO(title: title, description: description, thumbnail: thumbnail, ingredients: ingredients, optionalIngredients: optionalIngredients, steps: stepDTOs)
     }
 }
 

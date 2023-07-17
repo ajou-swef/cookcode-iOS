@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import cookcode_service
 
 final class ContentFailureStub: ContentServiceProtocol {
     func postVideos(_ videoURLs: [VideoURL]) async -> Result<ServiceResponse<ContentDTO>, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
     
     func postPhotos(_ data: [Data]) async -> Result<ServiceResponse<ContentDTO>, ServiceError> {
-        .failure(.MOCK())
+        .failure(.mock())
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 protocol RecipeFetcher: Pagenable {
     var recipeService: RecipeServiceProtocol { get }
@@ -13,7 +14,7 @@ protocol RecipeFetcher: Pagenable {
 }
 
 extension RecipeFetcher {
-    func controllPageState(_ response: ServiceResponse<PageResponse<RecipeCellDto>>, _ curPage: Int) {
+    func controllPageState(_ response: ServiceResponse<PageResponse<RecipeCellDTO>>, _ curPage: Int) {
         if response.data.hasNext {
             waitInPage(curPage + 1)
         } else {

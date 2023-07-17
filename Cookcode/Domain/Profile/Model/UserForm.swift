@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import cookcode_service
 
 struct ProfileForm: Mock {
     static func mock() -> ProfileForm {

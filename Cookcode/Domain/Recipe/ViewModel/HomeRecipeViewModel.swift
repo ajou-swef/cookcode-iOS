@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 final class HomeRecipeViewModel: RefreshableRecipeFetcher {
-    typealias Dto = RecipeCellDto
+    typealias Dto = RecipeCellDTO
     typealias T = RecipeCell
     
     @Published var searchType: SearchMembershipType = .all
@@ -68,7 +69,7 @@ final class HomeRecipeViewModel: RefreshableRecipeFetcher {
     }
     
     @MainActor
-    internal func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDto>>) {
+    internal func appendCell(_ success: ServiceResponse<PageResponse<RecipeCellDTO>>) {
         let newCells = success.data.content.map { RecipeCell(dto: $0) }
         contents.append(contentsOf: newCells)
     }

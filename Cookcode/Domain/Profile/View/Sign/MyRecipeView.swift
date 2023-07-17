@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 struct MyRecipeView: View {
     
@@ -17,7 +18,7 @@ struct MyRecipeView: View {
             ForEach(mocks) { mock in
                 MyRecipeCellView(recipeCell: mock)
                     .onTapGesture {
-                        navigateViewModel.navigateWithProfile(RecipeCellDto.mock())
+                        navigateViewModel.navigateWithProfile(RecipeCellDTO.mock())
                     }
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         Button {

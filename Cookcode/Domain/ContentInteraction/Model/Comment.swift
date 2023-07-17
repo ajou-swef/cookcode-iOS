@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 struct Comment: Identifiable, Mock {
     
@@ -30,14 +31,14 @@ extension Comment {
         isMyComment = (id == dto.user.userID)
     }
 }
-
-struct CommentDTO: Decodable, Mock {
-    static func mock() -> CommentDTO {
-        CommentDTO(commentId: 1, user: .mock(), comment: "댓글")
-    }
-    
-    let commentId: Int
-    let user: UserCellDto
-    let comment: String
-}
-
+//
+//struct CommentDTO: Decodable, Mock {
+//    static func mock() -> CommentDTO {
+//        CommentDTO(commentId: 1, user: .mock(), comment: "댓글")
+//    }
+//    
+//    let commentId: Int
+//    let user: UserCellDto
+//    let comment: String
+//}
+//

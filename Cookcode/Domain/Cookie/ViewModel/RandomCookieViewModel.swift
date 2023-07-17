@@ -5,8 +5,10 @@
 //  Created by 노우영 on 2023/05/23.
 //
 
-import SwiftUI
+
 import AVFoundation
+import cookcode_service
+import SwiftUI
 
 final class RandomCookieViewModel: ObservableObject, likeButtonInteractable, PresentCommentSheet, CookieInteractable {
 

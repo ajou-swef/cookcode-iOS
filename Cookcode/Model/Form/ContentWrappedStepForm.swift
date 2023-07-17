@@ -5,6 +5,7 @@
 //  Created by 노우영 on 2023/04/20.
 //
 
+import cookcode_service
 import SwiftUI
 import PhotosUI
 
@@ -88,6 +89,24 @@ struct ContentWrappedStepForm: Identifiable, Codable {
             deletedVideos.append(contentsOf: videoURLs)
             videoURLs.removeAll()
         }
+    }
+    
+    func convert(sequence: Int) -> StepFormDTO {
+        StepFormDTO(seq: sequence, description: description, videos: videoURLs, photos: imageURLs, deletedVideos: deletedVideos, deletedPhotos: deletedPhotos)
+    }
+    
+    func convertStepDTO(sequence: Int) -> StepDTO {
+        var photoDTO: [PhotoDTO] = []
+        var videoDTO: [VideoDTO] = []
+        for (index, value) in imageURLs.enumerated() {
+            photoDTO.append(PhotoDTO(stepPhotoID: index, photoURL: value))
+        }
+        
+        for (index, value) in videoURLs.enumerated() {
+            videoDTO.append(VideoDTO(stepVideoID: index, videoURL: value))
+        }
+        
+        return StepDTO(stepID: sequence, seq: sequence, description: description, photos: photoDTO, videos: videoDTO)
     }
 }
 

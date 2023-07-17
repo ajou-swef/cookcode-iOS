@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import cookcode_service
 
 extension Int: Mock {
-    static func mock() -> Int {
+    public static func mock() -> Int {
         1
     }
 }

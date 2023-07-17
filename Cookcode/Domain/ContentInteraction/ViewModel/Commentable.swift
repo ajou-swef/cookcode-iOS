@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import cookcode_service
 
 protocol Commentable: ObservableObject, CommentCellInteractable {
     var contentId: Int { get }

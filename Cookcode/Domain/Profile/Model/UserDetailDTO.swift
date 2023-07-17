@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import cookcode_service
 
 struct UserDetailDTO: Codable, Mock {
     static func mock() -> UserDetailDTO {

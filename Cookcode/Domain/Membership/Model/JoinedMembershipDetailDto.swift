@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct JoinedMembershipDetailDto: Decodable, Mock {
     static func mock() -> JoinedMembershipDetailDto {
@@ -16,7 +17,7 @@ struct JoinedMembershipDetailDto: Decodable, Mock {
     let membershipID: Int
     let grade: String
     let price: Int
-    let creater: UserCellDto
+    let creater: UserCellDTO
 
     enum CodingKeys: String, CodingKey {
         case membershipID = "membershipId"

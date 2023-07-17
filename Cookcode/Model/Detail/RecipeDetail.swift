@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import cookcode_service
 
 struct RecipeDetail: Like {
     var id: String = UUID().uuidString
     var isLiked: Bool
     var likesCount: Int
     let recipeID: Int?
-    let user: UserCellDto?
+    let user: UserCellDTO?
     let title, description: String
     let createdAt, updatedAt: String?
     var commentsCount: Int
@@ -46,7 +47,7 @@ extension RecipeDetail {
         
         steps = []
         for (index, value) in form.steps.enumerated() {
-            steps.append(StepDTO(form: value, seq: index + 1))
+            steps.append(value.convertStepDTO(sequence: index))
         }
         recipeID = nil
         user = nil
